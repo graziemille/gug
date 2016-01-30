@@ -1,0 +1,130 @@
+;;; -*- Mode: TDL; Coding: utf-8 -*-
+;;; Inflecting Lexical Rule Instances
+
+1sg-a-prefix :=
+%prefix (* a)
+1sg-a-lex-rule.
+
+1sg-a-2sg-o-prefix :=
+%prefix (* ro)
+1sg-a-2sg-o-lex-rule.
+
+1sg-a-2pl-o-prefix :=
+%prefix (* po)
+1sg-a-2pl-o-lex-rule.
+
+1sg-o-23-a-prefix :=
+%prefix (* che)
+1sg-o-23-a-lex-rule.
+
+2sg-a-3-o-prefix :=
+%prefix (* re)
+2sg-a-3-o-lex-rule.
+
+2sg-o-3-a-prefix :=
+%prefix (* nde)
+2sg-o-3-a-lex-rule.
+
+3-a-3-o-prefix :=
+%prefix (* o)
+3-a-3-o-lex-rule.
+
+1pl-incl-a-prefix :=
+%prefix (* ja)
+1pl-incl-a-lex-rule.
+
+1pl-excl-a-prefix :=
+%prefix (* ro)
+1pl-excl-a-lex-rule.
+
+1pl-incl-o-23-a-prefix :=
+%prefix (* nNande)
+1pl-incl-o-23-a-lex-rule.
+
+1pl-excl-o-23-a-prefix :=
+%prefix (* ore)
+1pl-excl-o-23-a-lex-rule.
+
+2pl-a-3-o-prefix :=
+%prefix (* pe)
+2pl-a-3-o-lex-rule.
+
+2pl-o-3-a-prefix :=
+%prefix (* pende)
+2pl-o-3-a-lex-rule.
+
+prefix-neg-prefix :=
+%prefix (* nd)
+prefix-neg-lex-rule.
+
+suffix-neg-suffix :=
+%suffix (* i)
+suffix-neg-lex-rule.
+
+suffix-fut-neg-suffix :=
+%suffix (* moHaNi)
+suffix-fut-neg-lex-rule.
+
+fut-asp-suffix :=
+%suffix (* ta)
+fut-asp-lex-rule.
+
+comp-asp-suffix :=
+%suffix (* pa)
+comp-asp-lex-rule.
+
+perf-asp-suffix :=
+%suffix (* ma)
+perf-asp-lex-rule.
+
+1sg-dyn-intr-prefix :=
+%prefix (* a)
+1sg-dyn-intr-lex-rule.
+
+2sg-dyn-intr-prefix :=
+%prefix (* re)
+2sg-dyn-intr-lex-rule.
+
+3-dyn-intr-prefix :=
+%prefix (* o)
+3-dyn-intr-lex-rule.
+
+1pl-incl-dyn-intr-prefix :=
+%prefix (* ja)
+1pl-incl-dyn-intr-lex-rule.
+
+1pl-excl-dyn-intr-prefix :=
+%prefix (* ro)
+1pl-excl-dyn-intr-lex-rule.
+
+2pl-dyn-intr-prefix :=
+%prefix (* pe)
+2pl-dyn-intr-lex-rule.
+
+1sg-stat-intr-prefix :=
+%prefix (* che)
+1sg-stat-intr-lex-rule.
+
+2sg-stat-intr-prefix :=
+%prefix (* nde)
+2sg-stat-intr-lex-rule.
+
+3-stat-intr-prefix :=
+%prefix (* i)
+3-stat-intr-lex-rule.
+
+1pl-incl-stat-intr-prefix :=
+%prefix (* nNande)
+1pl-incl-stat-intr-lex-rule.
+
+1pl-excl-stat-intr-prefix :=
+%prefix (* ore)
+1pl-excl-stat-intr-lex-rule.
+
+2pl-stat-intr-prefix :=
+%prefix (* pende)
+2pl-stat-intr-lex-rule.
+
+pros-asp-suffix :=
+%suffix (* pota)
+pros-asp-lex-rule.

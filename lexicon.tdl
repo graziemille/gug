@@ -1,0 +1,291 @@
+;;; -*- Mode: TDL; Coding: utf-8 -*-
+;;; Nouns
+
+juHi := com-anim-noun-lex &
+  [ STEM < "juHi" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_frog_n_rel" ].
+
+vakaA := com-anim-noun-lex &
+  [ STEM < "vakaA" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_cow_n_rel" ].
+
+nNakyra := com-anim-noun-lex &
+  [ STEM < "nNakyra" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_cricket_n_rel" ].
+
+jagua := com-anim-noun-lex &
+  [ STEM < "jagua" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_dog_n_rel" ].
+
+aguara := com-anim-noun-lex &
+  [ STEM < "aguara" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_fox_n_rel" ].
+
+tunich := com-inam-noun-lex &
+  [ STEM < "tunich" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_stone_n_rel" ].
+
+po_1 := com-inam-noun-lex &
+  [ STEM < "po" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_hand_n_rel" ].
+
+ajaka := com-inam-noun-lex &
+  [ STEM < "ajaka" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_basket_n_rel" ].
+
+yvyra := com-inam-noun-lex &
+  [ STEM < "yvyra" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_tree_n_rel" ].
+
+raka := com-inam-noun-lex &
+  [ STEM < "raka" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_branch_n_rel" ].
+
+roAga := com-inam-noun-lex &
+  [ STEM < "roAga" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_house_n_rel" ].
+
+yvytu := com-inam-noun-lex &
+  [ STEM < "yvytu" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_wind_n_rel" ].
+
+kaHa := com-inam-noun-lex &
+  [ STEM < "kaHa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_herb_n_rel" ].
+
+avatityA := com-inam-noun-lex &
+  [ STEM < "avatityA" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_cornfield_n_rel" ].
+
+koty := com-inam-noun-lex &
+  [ STEM < "koty" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_room_n_rel" ].
+
+mombyry := com-inam-noun-lex &
+  [ STEM < "mombyry" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_far-away_n_rel" ].
+
+ahojaA := com-inam-noun-lex &
+  [ STEM < "ahojaA" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_blanket_n_rel" ].
+
+che := 1sg-pron-nom-noun-lex &
+  [ STEM < "che" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
+
+nde := 2sg-pron-nom-noun-lex &
+  [ STEM < "nde" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
+
+haHe := 3sg-pron-nom-noun-lex &
+  [ STEM < "haHe" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
+
+nNande := 1pl-incl-pron-nom-noun-lex &
+  [ STEM < "nNande" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
+
+ore := 1pl-excl-pron-nom-noun-lex &
+  [ STEM < "ore" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
+
+peeN := 2pl-pron-nom-noun-lex &
+  [ STEM < "peeN" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
+
+haHekueAra := 3pl-pron-nom-noun-lex &
+  [ STEM < "haHekueAra" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
+
+cheve := 1sg-pron-nonag-noun-lex &
+  [ STEM < "cheve" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
+
+ndeve := 2sg-pron-nonag-noun-lex &
+  [ STEM < "ndeve" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
+
+chupe := 3sg-pron-nonag-noun-lex &
+  [ STEM < "chupe" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
+
+nNandeve := 1pl-incl-pron-nonag-noun-lex &
+  [ STEM < "nNandeve" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
+
+oreve := 1pl-excl-pron-nonag-noun-lex &
+  [ STEM < "oreve" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
+
+pendeve := 2pl-pron-nonag-noun-lex &
+  [ STEM < "pendeve" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
+
+chupekueAra := 3pl-pron-nonag-noun-lex &
+  [ STEM < "chupekueAra" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
+
+mboHehaAra := com-anim-human-noun-lex &
+  [ STEM < "mboHehaAra" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_professor_n_rel" ].
+
+temimboHe := com-anim-human-noun-lex &
+  [ STEM < "temimboHe" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_student_n_rel" ].
+
+sy_1 := com-anim-human-noun-lex &
+  [ STEM < "sy" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_mother_n_rel" ].
+
+;;; Adjectives
+
+poraN_2 := attributive-adj-lex &
+  [ STEM < "poraN" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_beautiful_a_rel" ].
+
+kaneHo_2 := attributive-adj-lex &
+  [ STEM < "kaneHo" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_tired_a_rel" ].
+
+tuicha := attributive-adj-lex &
+  [ STEM < "tuicha" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_big_a_rel" ].
+
+reiaHe := attributive-adj-lex &
+  [ STEM < "reiaHe" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_happy_a_rel" ].
+
+nNaro_2 := attributive-adj-lex &
+  [ STEM < "nNaro" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_angry_a_rel" ].
+
+hata := attributive-adj-lex &
+  [ STEM < "hata" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_strong_a_rel" ].
+
+;;; Case-marking adpositions
+
+acc%2C%20DAT-marker := case-marking-adp-lex &
+  [ STEM < "pe" >,
+    SYNSEM.LOCAL [ CONT [ HOOK [ ICONS-KEY.IARG1 #clause,
+                                 CLAUSE-KEY #clause ],
+                          ICONS <!  !> ],
+                   CAT.HEAD [ CASE non-NOM,
+                              CASE-MARKED + ] ] ].
+
+;;; Verbs
+
+hecha := trans-verb-lex &
+  [ STEM < "hecha" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_see_v_rel" ].
+
+suHu := trans-verb-lex &
+  [ STEM < "suHu" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_bite_v_rel" ].
+
+hunga := trans-verb-lex &
+  [ STEM < "hunga" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_hurt_v_rel" ].
+
+hendu := trans-verb-lex &
+  [ STEM < "hendu" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_hear_v_rel" ].
+
+ikuua := trans-verb-lex &
+  [ STEM < "ikuua" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_know_v_rel" ].
+
+porandu := trans-verb-lex &
+  [ STEM < "porandu" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_ask_v_rel" ].
+
+japo := trans-verb-lex &
+  [ STEM < "japo" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_do_v_rel" ].
+
+jogua := trans-verb-lex &
+  [ STEM < "jogua" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_buy_v_rel" ].
+
+jahoHi := trans-verb-lex &
+  [ STEM < "jahoHi" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_cover_v_rel" ].
+
+kaigue := stative-intrans-verb-lex &
+  [ STEM < "kaigue" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_lazy_v_rel" ].
+
+kaneHo_1 := stative-intrans-verb-lex &
+  [ STEM < "kaneHo" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_tired_v_rel" ].
+
+poraN_1 := stative-intrans-verb-lex &
+  [ STEM < "poraN" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_beautiful_v_rel" ].
+
+nNaro_1 := stative-intrans-verb-lex &
+  [ STEM < "nNaro" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_angry_v_rel" ].
+
+sy_2 := stative-intrans-verb-lex &
+  [ STEM < "sy" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_mother_v_rel" ].
+
+aguiN := stative-intrans-verb-lex &
+  [ STEM < "aguiN" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_near_v_rel" ].
+
+kiririN := stative-intrans-verb-lex &
+  [ STEM < "kiririN" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_quiet_v_rel" ].
+
+guata := dynamic-intrans-verb-lex &
+  [ STEM < "guata" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_walk_v_rel" ].
+
+kyA := dynamic-intrans-verb-lex &
+  [ STEM < "kyA" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_rain_v_rel" ].
+
+jeroky := dynamic-intrans-verb-lex &
+  [ STEM < "jeroky" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_dance_v_rel" ].
+
+jatapy := dynamic-intrans-verb-lex &
+  [ STEM < "jatapy" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_make-fire_v_rel" ].
+
+pyta := dynamic-intrans-verb-lex &
+  [ STEM < "pyta" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_leave_v_rel" ].
+
+po_2 := dynamic-intrans-verb-lex &
+  [ STEM < "po" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_jump_v_rel" ].
+
+kanNy := dynamic-intrans-verb-lex &
+  [ STEM < "kanNy" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_hide_v_rel" ].
+
+ime := dynamic-intrans-verb-lex &
+  [ STEM < "ime" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_be_v_rel" ].
+
+ju := dynamic-intrans-verb-lex &
+  [ STEM < "ju" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_come_v_rel" ].
+
+;;; Determiners
+
+la := def-sg-determiner-lex &
+  [ STEM < "la" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_exist_q_rel" ].
+
+lo := def-pl-determiner-lex &
+  [ STEM < "lo" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_exist_q_rel" ].
+
+ha2 := conj-lex &
+  [ STEM < "ha" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_and_coord_rel",
+    CFORM "2" ].
