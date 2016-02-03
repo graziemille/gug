@@ -54,7 +54,6 @@ nonocons := nonolist & cons &
     REST  nonolist ].
 nononull := nonolist & null.
 
-
 ; We can't just use the V-final and V-initial word
 ; order modules together to get a good free word order
 ; module. The root of the problem seems to be that we
@@ -274,7 +273,11 @@ dynamic-intrans-verb-lex := intrans-verb-lex & completive-aspect-or-perfective-a
 
 ;;; Adjectives
 
-adj-lex := basic-intersective-adjective-lex.
+adj-lex := gug-intersective-adjective-lex.
+
+gug-intersective-adjective-lex := basic-adjective-lex &
+  [ SYNSEM [ LOCAL.CONT.HOOK.XARG event-or-ref-index & #xarg,
+           LKEYS.KEYREL.ARG1 #xarg ] ].
 
 attributive-adj-lex := attr-only-adj-lex &
   [ SYNSEM.LOCAL.CAT [ POSTHEAD +,
@@ -282,9 +285,14 @@ attributive-adj-lex := attr-only-adj-lex &
 
 ; Basic attributive adjective definition
 
+;Commented out to test what happens when HEAD noun restriction is removed
+;attr-adj-lex := adj-lex & intersective-mod-lex &
+;  [ SYNSEM.LOCAL.CAT.HEAD.MOD < [ LOCAL.CAT [ HEAD noun,
+;                                              VAL.SPR cons ] ] > ].
+
 attr-adj-lex := adj-lex & intersective-mod-lex &
-  [ SYNSEM.LOCAL.CAT.HEAD.MOD < [ LOCAL.CAT [ HEAD noun,
-                                              VAL.SPR cons ] ] > ].
+  [ SYNSEM.LOCAL.CAT.HEAD.MOD < [ LOCAL.CAT [ HEAD +nv ] ] > ].
+
 
 attr-only-adj-lex := attr-adj-lex &
   [ SYNSEM.LOCAL.CAT [ HEAD.PRD -,
@@ -564,12 +572,12 @@ head-final-head-nexus := head-final &
 
 ;intermediate type added to force order of rule application between
 ;Basic-Head-OPT-COMP and any head-subj / subj-head rules
-comps-empty-head-subj-phrase := decl-head-subj-phrase &
-[ SYNSEM.LOCAL.CAT.VAL [COMPS < >] ].
+gug-head-subj-phrase := decl-head-subj-phrase &
+[ SYNSEM.LOCAL.CAT.VAL [COMPS nonolist] ].
 
-head-subj-phrase := comps-empty-head-subj-phrase & head-initial-head-nexus.
+head-subj-phrase := decl-head-subj-phrase & head-initial-head-nexus.
 
-subj-head-phrase := comps-empty-head-subj-phrase & head-final-head-nexus.
+subj-head-phrase := gug-head-subj-phrase & head-final-head-nexus.
 
 ; The head of head-comp-phrase can't be: ['adp']
 
