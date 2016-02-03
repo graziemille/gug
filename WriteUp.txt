@@ -1,0 +1,1435 @@
+# 567 LAB4
+# LANGUAGE: gug / Paraguayan Guaraní
+# AUTHOR: Lisa Tittle Caballero
+# PARTNER: Thor Wicke Monteverde
+
+
+I. Documentation of the phenomena you have added to your test suite, illustrated with examples from the test suite.
+
+
+1.	Matrix Yes-No Questions
+
+Guarani uses what we understand as second position marking for matrix yes-no questions.  The question particle pa or piko can come after any element in the sentence and make it the focus of the yes/no question.  So that in examples 121  and 122, we are asking whether the cricket saw the cow, whereas in 123 the question focus shifts to cricket and we are asking something like “Was it the cricket who saw the cow?,” and in 124 we shift the focus to cow with a meaning like “Was it the cow that the cricket saw?”
+
+Although Guarani has free word order, the position of focused phrase and question particle are very strict.  The focused phrase is at the start of the sentence immediately followed by the question word/particle.  Here we say to use the term “phrase” to highlight that the question word applies after any adpositions or other modifiers to an NP.  Examples 116-120 are all examples of ungrammatical orders for interrogative sentences.  
+
+
+#Ex.121: Yes-No question with focus marker on verb predicate, and use of marker piko
+Source: c
+Vetted: f
+Judgment: g
+Phenomena: {q, wo}
+ohecha piko ñakyra  vakápe? 
+ohecha piko nNakyra vakaA pe
+o-hecha=piko nNakyra vakaA=pe
+O.3-see=Q cricket.ANIM.NOM cow.ANIM=ACC
+'Did the cricket see the cow?
+
+#Ex.122: Yes-No question with focus marker on verb predicate, and use of marker pa
+Source: c
+Vetted: f
+Judgment: g
+Phenomena: {q, wo}
+ohechapa ñakyra vakápe?
+ohecha pa nNakyra vakaA pe
+o-hecha=pa nNakyra vakaA=pe
+O.3-see=Q cricket.ANIM.NOM cow.ANIM=ACC
+'Did the cricket see the cow?'
+
+#Ex.123: Yes-No question with focus marker on subject
+Source: c
+Vetted: f
+Judgment: g
+Phenomena: {q, wo}
+ñakyrapa ohecha vakápe?
+nNakyra pa ohecha vakaA pe
+nNakyra=pa o-hecha vakaA=pe
+cricket.ANIM.NOM=Q O.3-see cow.ANIM=ACC
+'Was it the cricket, who saw the cow?'
+
+#Ex.124: Yes-No question with focus marker on verb object
+Source: c
+Vetted: f
+Judgment: g
+Phenomena: {q, wo}
+vakápepa ohecha ñakyra?
+vakaA pe pa ohecha nNakyra
+vakaA=pe=pa o-hecha nNakyra
+cow.ANIM=ACC=Q O.3-see cricket.ANIM.NOM
+'Is it the cow, that the cricket saw?’
+
+#Ex.116: Yes-No question with question marker in wrong position, should be second position.
+Source: c
+Vetted: f
+Judgment: u
+Phenomena: q
+ohecha  ñakyrapa vakápe? 
+ohecha nNakyra pa vakaA pe
+o-hecha nNakyra=pa vakaA=pe
+O.3-see cricket.ANIM.NOM-Q cow.ANIM=ACC
+*'Did the cricket see the cow?
+
+#Ex.117: Yes-No question with question marker in wrong position, should be second position.
+Source: c
+Vetted: f
+Judgment: u
+Phenomena: q
+ohecha ñakyra vakápepa? 
+ohecha nNakyra vakaA pe pa
+o-hecha nNakyra vakaA=pe=pa
+O.3-see cricket.ANIM.NOM cow.ANIM=ACC=Q
+*'Did the cricket see the cow?
+
+#Ex.118: Yes-No question with question marker in wrong position, should be end suffix.
+Source: c
+Vetted: f
+Judgment: u
+Phenomena: q
+vakápape ohecha ñakyra? 
+vakaApa pe ohecha nNakyra
+vakaA-pa=pe o-hecha nNakyra
+cow.ANIM-Q=ACC O.3-see cricket.ANIM.NOM
+*'Was it the cricket, who saw the cow?'
+
+#Ex.119: Yes-No question with focus marker on verb predicate, wrong position of marker pike
+Source: c
+Vetted: f
+Judgment: u
+Phenomena: {q, wo}
+piko ohecha ñakyra  vakápe? 
+piko ohecha nNakyra vakaA pe
+piko o-hecha nNakyra vakaA=pe
+Q O.3-see cricket.ANIM.NOM cow.ANIM=ACC
+*'Did the cricket see the cow?
+
+#Ex.120: Yes-No question with focus marker on verb predicate, and use of marker piko
+Source: c
+Vetted: f
+Judgment: u
+Phenomena: {q, wo}
+ohecha ñakyra  vakápe piko? 
+ohecha nNakyra vakaA pe piko
+o-hecha nNakyra vakaA=pe=piko
+O.3-see cricket.ANIM.NOM cow.ANIM=ACC=Q
+*'Did the cricket see the cow?
+
+We can also see in the examples above that Guarani has two different question particles pa and piko.  There is scholarly disagreement about the differences between these words, see for example the following quote from an upcoming grammar sketch of Guarani, by Prof. Bruno Estigarribia:
+
+“The difference between the two markers is unclear, with grammars giving contradictory statements about their distribution. For example, Krivoshein de Canese and Alcaraz (2007) state that the differences between both particles are of little significance, with =piko being “softer and less emphatic” than =pa. However, Guarania (2008: 62) considers that =pa is a neutral interrogative and =piko is more forceful in demanding an answer.”
+
+There is an additional claim in our most comprehensive source, El Guarani Correntino, by Leonardo Cerno, that the difference has something to do with the prior knowledge of the speaker.  We find the question interesting but not immediately relevant to the current work so we just gloss both words as Q.  
+
+Finally, there is a mismatch between how the two question particles are generally written.  =piko has two syllables and because of some writing conventions requiring affixes to be monosyllabic, it is usually realized as separate word.  =pa has only one syllable is therefore often glossed as an affix attaching to the preceding word, though Estigarribia notes it is also sometimes written as a stand alone word.  
+
+We follow Estigarribia’s analysis and analyze both of them as second position clitics, as can be seen in our glossing of 121 and 122 below.  
+ 
+#Ex.121: Yes-No question with focus marker on verb predicate, and use of marker piko
+Source: c
+Vetted: f
+Judgment: g
+Phenomena: {q, wo}
+ohecha piko ñakyra  vakápe? 
+ohecha piko nNakyra vakaA pe
+o-hecha=piko nNakyra vakaA=pe
+O.3-see=Q cricket.ANIM.NOM cow.ANIM=ACC
+'Did the cricket see the cow?
+
+#Ex.122: Yes-No question with focus marker on verb predicate, and use of marker pa
+Source: c
+Vetted: f
+Judgment: g
+Phenomena: {q, wo}
+ohechapa ñakyra vakápe?
+ohecha pa nNakyra vakaA pe
+o-hecha=pa nNakyra vakaA=pe
+O.3-see=Q cricket.ANIM.NOM cow.ANIM=ACC
+'Did the cricket see the cow?'
+
+
+2.	Matrix  Wh Questions
+
+For Wh-questions Guarani employs the question words mbaHeA, “what” and maAva, “who.” There are some similarities between Matrix Yes-No Questions and Matrix Wh-Questions in Guarani.  As we can see in Ex. 125, 126, and 130, questions about who and what can both be formed using the second position clitics =piko and =pa.  As with the Yes-No examples, when there is a question particle present, it must immediately follow the question word, which itself must be sentence initial. See 125, 126, 130 for grammatical ordering. An example of ungrammatical ordering can be seen 129. 
+
+However Wh- questions can also appear without a particle at all as seen in example 127 which has an unmarked question word followed by a verb, mbaHeA re-japo, “what do you do.”  In these cases the question word must still be sentence initial, and strings like Verb + Question Word, e.g., “re-japo mbaHeA,” are ungrammatical (seen example 128 below for the full gloss of this string).  
+
+#Ex.125: Wh question for 'what' object, with 'piko' word
+Source: d
+Vetted: f
+Judgment: g
+Phenomena: {wh, wo}
+mba'é piko rejapo ?
+mbaHeA piko rejapo ?
+mbaHeA=piko re-japo
+what=Q A.2SG-do
+'What do you do?'
+
+#Ex.126: Wh question for 'what' object, with -pa particle
+Source: d
+Vetted: f
+Judgment: g
+Phenomena: {wh, wo}
+mba'épa rejapo ?
+mbaHeApa rejapo ?
+mbaHeA=pa re-japo
+what=Q A.2SG-do
+'What do you do?'
+
+#Ex.127: Wh question for 'what' object, without any particle
+Source: d
+Vetted: f
+Judgment: g
+Phenomena: {wh, wo}
+mba'é rejapo ?
+mbaHeA rejapo ?
+mbaHeA re-japo
+what A.2SG-do
+'What do you do?'
+
+
+#Ex.128: Wh question for 'what' object, wrong order, should be at the front
+Source: d
+Vetted: f
+Judgment: u
+Phenomena: wh
+rejapo mba'é?
+rejapo mbaHeA?
+re-japo mbaHeA 
+A.2SG-do what
+*'What do you do?'
+
+#Ex.129: Wh question for 'who' in subject position, with =pa particle in wrong position.
+Source: d
+Vetted: f
+Judgment: u
+Phenomena: wh
+ou mávapa
+oju maAvapa
+o-ju maAva-pa
+A.3-come who-Q 
+*'Who is coming?'
+
+#Ex.130: Wh question for 'who' in subject position, with =pa particle
+Source: d
+Vetted: f
+Judgment: g
+Phenomena: {wh, wo}
+mávapa ou
+maAva=pa oju
+maAva=pa o-ju
+who-Q A.3-come
+'Who is coming?'
+
+
+
+3. 	Coordination
+
+There is some speculation that Guarani originally had no overt conjunctions, but our sources all agree that Modern Guarani has two forms of coordination, asyndeton coordination, and monosyndeton coordination with a conjunctive particle. 
+
+  3.A  	Asyndeton Coordination 
+
+The only cases of asyndeton coordination that we came across were cases of two coordinated independent clauses, which we are told tend to have a consecutive interpretation when possible.  Examples like 160 might seem like VP coordination, but it is really hard to make that claim in a language with such frequent subject drop.  Example 161 is an example of asyndenton coordination noun phrases, which we have marked (tentatively) as ungrammatical because we do not see any attested cases of this kind of coordination.  It seems likely that with free ordering and often unmarked verbal arguments, Guarani might disallow unmarked NP coordination, so that is our working hypothesis.  For now we have limited asyndenton coordination in our grammar to only sentences on the coordination page of the grammar customization system.  This gives us one (and only one) parse for Example 160 and no parses for Example 161, which (for now at least) is what we want. 
+
+
+#Ex.159: Asyndeton coordination with two sentences
+Source: b
+Vetted: f
+Judgment: g
+Phenomena: {crd, neg, wo}
+nikiriri᷉i  ndopytai
+ndikiririNi ndopytai
+nd-i-kiririN-i nd-o-pyta-i
+NEG-O.3-be.quiet-NEG NEG-A.3-leave-NEG
+'He is not quiet and does not leave'
+
+#Ex.160: asyndenton coordination with subject drop
+Source: b
+Vetted: f
+Judgment: g
+Phenomena: {crd, wo}
+aguara opo okañy
+aguara opo okanNy
+aguara o-po o-kanNy
+fox.ANIM.NOM A.3-jump A.3-hide
+'the fox jumped and hid'
+
+#Ex.161: Unattested use of asyndeton coordination with nominal constituents
+Source: b
+Vetted: f
+Judgment: u
+Phenomena: crd
+aguara jagua okañy
+aguara jagua okanNy
+aguara jagua o-kanNy
+fox.ANIM.NOM dog.ANIM.NOM A.3-hide
+*'the fox and the dog hid'
+
+
+  3.B	Monosyndeton Coordination with ha
+
+Guarani also uses the conjunctive particle “ha” for coordination, which occurs between the two coordinands. We have yet to see coordinated lists of longer than two, and because we are unsure of the form/grammaticality of longer lists, we haven’t added any of those examples to our testsuite.  With ‘ha’ we see coordination between sentences and NP’s, examples 143 & 162 respectively.  As with example 160 above, because of subject drop, example 146 is ambiguously an example of sentence or VP coordination.  For now we have opted to say in the customization system that “ha” can coordinate NPs, VPs and Sentences, which, results in two separate parses for 146.  We have decided to be more conservative in not allowing coordination between N’s because we have no relevant examples in our data, and the frequent use of postpositions in Guarani makes the N/NP distinction a significant one. We would need to find examples of coordinated objects with modifiers or case marking.   
+
+#Ex.143: Use of 'and' coordination with two sentences
+Source: b
+Vetted: f
+Judgment: g
+Phenomena: {crd, neg, wo}
+nikiriri᷉i ha ndopytai
+ndikiririNi ha ndopytai
+nd-i-kiririN-i ha nd-o-pyta-i
+NEG-O.3-be.quiet-NEG and NEG-A.3-leave-NEG
+'He is not quiet and does not leave'
+
+#Ex.144: Wrong position of 'and' conjunction
+Source: b
+Vetted: f
+Judgment: u
+Phenomena: crd
+nikiriri᷉i ndopytai ha
+ndikiririNi ndopytai ha
+nd-i-kiririN-i nd-o-pyta-i ha
+NEG-O.3-be.quiet-NEG NEG-A.3-leave-NEG and
+*'He is not quiet and does not leave'
+
+#Ex.145: Wrong position of 'and' conjunction
+Source: b
+Vetted: f
+Judgment: u
+Phenomena: crd
+ha nikiriri᷉i ndopytai
+ha ndikiririNi ndopytai
+ha nd-i-kiririN-i nd-o-pyta-i
+and NEG-O.3-be.quiet-NEG NEG-A.3-leave-NEG 
+*'He is not quiet and does not leave'
+
+#Ex.146: Use of 'and' coordination with verbal constituents / optionally seen as sentence constituents because of subject drop
+Source: b
+Vetted: f
+Judgment: g
+Phenomena: {crd, wo}
+aguara opo ha okañy
+aguara opo ha okanNy
+aguara o-po ha o-kanNy
+fox.ANIM.NOM A.3-jump and A.3-hide
+'the fox jumped and hid'
+
+#Ex.147: Wrong position of 'and' particle for coordination
+Source: b
+Vetted: f
+Judgment: u
+Phenomena: {crd, wo}
+aguara ha opo okañy
+aguara ha opo okanNy
+aguara ha o-po o-kanNy
+fox.ANIM.NOM and A.3-jump A.3-hide
+*'the fox jumped and hid'
+
+#Ex.162: Use of 'and' coordination with nominal constituents
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {crd, wo}
+aguara ha jagua okañy
+aguara ha jagua okanNy
+aguara ha jagua o-kanNy
+fox.ANIM.NOM and dog.ANIM.NOM A.3-hide
+'the fox and the dog hid'
+
+#Ex.163: Wrong position of 'and' particle for coordination
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: {crd, wo}
+ha aguara jagua okañy
+ha aguara jagua okanNy
+ha aguara jagua o-kanNy
+and fox.ANIM.NOM dog.ANIM.NOM A.3-hide
+*'the fox and the dog hid'
+
+
+4. 	Attributive Adjectives
+
+One of the very interesting properties of Guarani is the way it differentiates between attributive and predicative uses of an adjective.  We have not yet seen examples of adjectives that are only one or the other, though of course that remains a possibility.   
+
+In attributive form the adjective immediately follows, rather than precedes the the noun that it modifies as seen in the difference in grammaticality between 134 and 135.  
+
+#Ex.134: Use of adjective as an attribute of the subject of verb predicate
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {adj, wo}
+mita᷉ reia'e oguata
+mitaN reiaHe oguata
+mitaN reiaHe o-guata
+child happy.NOM A.3-walk
+'The happy child walks'
+
+#Ex.135: Adjectives come after their noun, not before
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: adj
+reia'e mita᷉ oguata
+reiaHe mitaN oguata
+reiaHe mitaN o-guata
+happy child.ANIM.HUM.NOM A.3-walk
+*'The happy child walks'
+
+In predicative form, the adjective receives verbal inflection and the noun it “modifies” acts as its subject.  So that you get examples like 136, where angry is attributive contrasting with examples like 138 where angry is functioning of as the main predicate of the sentence. Sentences like 133 & 137 where there is an adjectival and verbal predicate, are ungrammatical, though because Guarani has asyndeton coordination of clauses and subject drop, we will still get a parse for 137 as something like “the dog is angry and he walks,” and a parse for 133 as “I see a cow and it is big.”  
+
+#Ex.136: Use of adjective as an attribute of the subject of a verb predicate
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {adj, wo}
+jagua ñaro oguata
+jagua nNaro oguata
+jagua nNaro o-guata
+dog.ANIM angry.NOM A.3-walk
+'The angry dog walks'
+
+#Ex.137: Attributive adjective should not have predicate markings 
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: adj
+jagua iñaro oguata
+jagua inNaro oguata
+jagua i-nNaro o-guata
+dog.ANIM O.3-angry.NOM A.3-walk
+*'The angry dog walks'
+
+#Ex.138: Use of adjective as a predicate (copula)
+Source: b
+Vetted: f
+Judgment: g
+Phenomena: cop
+jagua iñaro
+jagua inNaro
+jagua i-nNaro
+dog.ANIM O.3-angry
+'The dog is angry'
+
+#Ex.133: Attributive adjective should not have predicate markings
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: c
+ahecha vakaApe ituicha
+ahecha vakaA pe ituicha
+a-hecha vakaA=pe i-tuicha
+A.1SG-see cow.ANIM=ACC O.3-big
+*'I see the big cow'
+
+Because Guarani uses case-marking adpositions, we get patterns like we see in 131 & 132, with case “attaching” to the adjective.
+
+
+#Ex.131: Use of adjective as an attribute of the object of verb predicate
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {adj, c}
+ahecha vakaA tuichape
+ahecha vakaA tuicha pe
+a-hecha vakaA tuicha=pe
+A.1SG-see cow.ANIM big=ACC 
+'I see the big cow'
+
+#Ex.132: Wrong position of accusative marking for noun phrase with adjective
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: c
+ahecha vakaApe tuicha
+ahecha vakaA pe tuicha
+a-hecha vakaA=pe tuicha
+A.1SG-see cow.ANIM=ACC big 
+*'I see the big cow'
+
+Guarani’s non-verbal predicates are discussed in more detail in Section 7 and our implementation strategy in the customization system is laid out in Section II. 
+
+
+5. 	Adverbs
+
+Guarani’s adverbs share a similar form and behavior to its adjectives. As with adjectives they should immediately follow the word that they modify, leading to the grammatically differences between 153, 155, 157 and 154, 156, and 158 below.   
+
+Unsurprisingly now (given what we are learning about Guarani), the same forms can function as adjective or adverb depending on whether they immediately follow a verb or noun. While seeing this is true for “bad” and “quick” is not that notable for speakers of English, we were pleased to see that you can even get the form for “big” functioning as an adverb, and we see it modifying the verb for “make-a-fire” in example 155.
+
+#Ex.153: Use of manner adverb after verb predicate
+Source: a (#b.30)
+Vetted: f
+Judgment: g
+Phenomena: {adv, wo}
+hase᷉ vai la ñakyra
+haseN vai la nNakyra
+h-aseN vai la nNakyra
+O.3-cry bad the cricket.ANIM.NOM
+'the cricket cried in an ugly way' 
+
+#Ex.154: Adverb should come after the verb predicate not before
+Source: b
+Vetted: f
+Judgment: u
+Phenomena: adv
+vai hase᷉ la ñakyra
+vai haseN la nNakyra
+vai h-aseN la nNakyra
+bad O.3-cry the cricket.ANIM.NOM
+*'the cricket cried in an ugly way' 
+
+#Ex.155: Use of adverb after verb predicate
+Source: a (#a.8)
+Vetted: f
+Judgment: g
+Phenomena: {adv, wo}
+ha'e ojatapy tuicha
+haHe ojatapy tuicha
+haHe o-jatapy tuicha
+3SG.pron A.3-make.fire big
+'She made a fire in a big way' 
+
+#Ex.156: Adverbs should not have predicate markings
+Source: a (#a.8)
+Vetted: f
+Judgment: u
+Phenomena: adv
+ha'e ojatapy ituicha
+haHe ojatapy ituicha
+haHe o-jatapy i-tuicha
+3SG.pron A.3-make.fire O.3-big
+*'She made a fire in a big way' 
+
+#Ex.157: Use of manner adverb after verb predicate
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {adv, wo}
+aguata pya'e
+aguata pyaHe
+a-guata pyaHe
+1SG-walk quick
+'I walk quickly'
+
+#Ex.158: Adverb in wrong position, should be after the verb predicate
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: adv
+pya'e aguata
+pyaHe aguata
+pyaHe a-guata
+quickly 1SG-walk
+*'I walk quickly'
+
+It seems like the strategy you mentioned in class for allowing roots to functions as both adverbial and adjectival would be especially helpful for Guarani… which seems to want to share all its roots.
+
+
+6. 	Embedded Clauses
+
+Guarani uses suffixes for embedded clauses.  Like many languages it distinguishes between declarative and interrogative embedded clauses.
+
+
+  6.A  	Declarative
+
+The nominalizing suffix -ha is used for declarative embedded clauses, attaching to an inflected verb and allowing it to become an argument of a verb like see, as we can see in example 148. Again, while 149 is ungrammatical as a way of saying “I know he is coming,” the combination asyndeton coordination and argument drop gives us a parse of this as conjoined independent clauses. 
+
+#Ex.148: Use embedded clause for declarative sentence
+Source: e
+Vetted: f
+Judgment: g
+Phenomena: {emb-d, wo}
+aikuua ouha
+aikuua ojuha
+a-ikuua o-ju-ha
+A.1SG-know A.3-go-COMP
+'I know he is coming'
+
+#Ex.149: Missing marker for embedded clause 
+Source: e
+Vetted: f
+Judgment: u
+Phenomena: emb-d
+aikuua ou
+aikuua oju
+a-ikuua o-ju
+A.1SG-know A.3-go
+*'I know he is coming'
+
+As we see in 150, The interrogative suffix -pa (discussed further below) cannot be used with arguments of verbs like “know”
+
+#Ex.150: Wrong marker for embedding of a declarative clause
+Source: e
+Vetted: f
+Judgment: u
+Phenomena: emb-d
+aikuua oupa
+aikuua ojupa
+a-ikuua o-ju-pa
+A.1SG-know A.3-go-Q
+*'I know he is coming'
+
+Finally, declarative nominalizers are one more place we see a reference to something like “tense” in Guarani, with a separate marker -hague being used to mark the difference between “I know he is coming” and “I know he was coming.”  But we have not included any of those examples in the testsuite because we have officially decided that, with all of the disagreement on the topic, tense in Guarani is not a rabbit hole we will fall into.  
+
+  6.B  	Interrogative
+The interrogative suffix -pa is used for interrogative embedded clauses, attaching to an inflected verb and allowing it to become an argument of a verb like ask, as we can see in example 151.  We see in 152, that the declarative nominalizer -ha cannot be used to make arguments for verbs like “ask.” 
+
+
+#Ex.151: Use embedded clause for interrogative sentence
+Source: e
+Vetted: f
+Judgment: g
+Phenomena: {emb-q, wo}
+aporandu oupa
+aporandu ojupa
+a-porandu o-ju-pa
+A.1SG-know A.3-go-Q
+'I ask whether he is coming'
+
+#Ex.152: Wrong marker for embedding of interrogative clause
+Source: e
+Vetted: f
+Judgment: u
+Phenomena: emb-q
+aporandu ouha
+aporandu ojuha
+a-porandu o-ju-ha
+A.1SG-know A.3-go-COMP
+*'I ask whether he is coming'
+
+
+
+7.	Non-verbal predicates
+
+This is perhaps the most fun property of Guarani so far. Guarani easily makes predicative use of its adjectival, nominal, and adverbial roots.  When it does so those roots take on verbal inflection and become the main predicate of the sentence.  So the nNaro (angry) can take on verbal inflection and be used as the main predicate in “The dog is angry,” as seen in 138.  We see this with the word “near” in 141, and (most amusingly to me) with the nominal root for “day,” in 142, to get a sentence meaning “It was his day.”
+
+These verbed words, like all stative verbs, are inflected with nonAgentive or as we’ve been referring to it O-inflection, and because O-inflection is also optionally used to mark possessives in Guarani, we get ambiguity between in sentences like 139 between the reading of “I am a mother” and “my mother,” though for the time being our grammar only gives a parse for the first of these since we haven’t implemented possessives yet.   
+
+
+#Ex.138: Use of adjective as a predicate (copula)
+Source: b
+Vetted: f
+Judgment: g
+Phenomena: cop
+jagua iñaro
+jagua inNaro
+jagua i-nNaro
+dog.ANIM O.3-angry
+'The dog is angry'
+
+#Ex.139: Use of noun predicate/ambiguity
+Source: b
+Vetted: f
+Judgment: g
+Phenomena: cop
+chesy
+chesy
+che-sy
+O.1SG-mother.ANIM
+'I am a mother/My mother’
+
+#Ex.140: Ambiguity between noun predict and possessive marker
+Source: b
+Vetted: f
+Judgment: g
+Phenomena: cop
+chesy oguata
+chesy oguata
+che-sy o-guata
+O.1SG-mother.ANIM A.3-walk
+'My mother walks'
+
+#Ex.141: predicative use of location adverb
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: cop
+ore oreaguĩ óga
+ore oreaguiN roAga
+ore ore-aguiN roAga
+A.1PL.EXCL.PRON O.1PL.EXCL-near house
+'We are near the house'
+
+#Ex.142: Use of noun predicate
+Source: b
+Vetted: f
+Judgment: g
+Phenomena: cop
+hi'árama
+hiHaArama
+hi-aAra-ma
+O.3-day-PERF
+'It was his day' 
+
+This root-sharing has led a lot of Guarani scholars to hypothesize that part of speech distinctions have been artificially imposed upon Guarani, and at root form there are no “true” verbs/nouns/adjectives… etc.  I find this interesting as a thought project, but of course it is “out of the scope” of our current grammar.
+
+Further details of how we implemented this in our grammar are given below.
+
+
+II. Documentation of the new or revised choices you made in the customization system, illustrated with examples from your test suite. (Diff your lab3 and lab4 choices files to make sure you've caught all the changes.)
+
+I’ve split up the following section into (1) new choices we made based off of this weeks phenomena, and (2)changes we made given new data (or in some cases opted not to make) 
+
+
+1. 	New Choices 
+
+  1.A	Matrix Yes-No Questions
+
+A detailed discussion of the Yes/No Questions can been found in Section I.1.A above, but I should mention here that Guarani has two question particles, piko and pa shown in 121 & 122. We follow Estigarribia’s analysis and analyzing both of these “particles” as second position clitics, an analysis supported by the ungrammaticality of examples like 116 & 117 below, despite the fact that Guarani has free word order.  
+ 
+#Ex.121: Yes-No question with focus marker on verb predicate, and use of marker piko
+Source: c
+Vetted: f
+Judgment: g
+Phenomena: {q, wo}
+ohecha piko ñakyra  vakápe? 
+ohecha piko nNakyra vakaA pe
+o-hecha=piko nNakyra vakaA=pe
+O.3-see=Q cricket.ANIM.NOM cow.ANIM=ACC
+'Did the cricket see the cow?
+
+#Ex.122: Yes-No question with focus marker on verb predicate, and use of marker pa
+Source: c
+Vetted: f
+Judgment: g
+Phenomena: {q, wo}
+ohechapa ñakyra vakápe?
+ohecha pa nNakyra vakaA pe
+o-hecha=pa nNakyra vakaA=pe
+O.3-see=Q cricket.ANIM.NOM cow.ANIM=ACC
+'Did the cricket see the cow?'
+
+#Ex.116: Yes-No question with question marker in wrong position, should be second position.
+Source: c
+Vetted: f
+Judgment: u
+Phenomena: q
+ohecha  ñakyrapa vakápe? 
+ohecha nNakyra pa vakaA pe
+o-hecha nNakyra=pa vakaA=pe
+O.3-see cricket.ANIM.NOM-Q cow.ANIM=ACC
+*'Did the cricket see the cow?
+
+#Ex.117: Yes-No question with question marker in wrong position, should be second position.
+Source: c
+Vetted: f
+Judgment: u
+Phenomena: q
+ohecha ñakyra vakápepa? 
+ohecha nNakyra vakaA pe pa
+o-hecha nNakyra vakaA=pe=pa
+O.3-see cricket.ANIM.NOM cow.ANIM=ACC=Q
+*'Did the cricket see the cow?
+
+We did not make any changes to this Matrix page, as the customization system cannot yet implement this analysis. However we understand that there are similar phenomena in Russian and other languages that in past years have been dealt with successfully through .tdl editing, so we look forward to that. 
+
+  1.B	Coordination
+
+Modern Guarani has two forms of coordination, asyndeton coordination, and monosyndeton coordination with a conjunctive particle. The grammatical examples below are repeated from Section I.3 above for ease of reading, more examples can be found there.
+
+  3.A  	Asyndeton Coordination 
+
+The first coordination strategy we added was asyndeton coordination which we restricted to coordination of sentences. 
+
+While, examples like 160 might seem like VP coordination, it is really hard to make that claim in a language with such frequent subject drop.  Finally, Example 161 is an example of asyndenton coordination noun phrases, which we have marked (tentatively) as ungrammatical because we do not see any attested cases of this kind of coordination.  It seems likely that with free ordering and often unmarked verbal arguments, Guarani might disallow unmarked NP coordination, so that is our working hypothesis.  
+
+For now we have limiting asyndenton coordination to only apply to sentences gives us one (and only one) parse for Example 160 and no parses for Example 161, which (for now at least) is what we want. 
+
+
+#Ex.159: Asyndeton coordination with two sentences
+Source: b
+Vetted: f
+Judgment: g
+Phenomena: {crd, neg, wo}
+nikiriri᷉i  ndopytai
+ndikiririNi ndopytai
+nd-i-kiririN-i nd-o-pyta-i
+NEG-O.3-be.quiet-NEG NEG-A.3-leave-NEG
+'He is not quiet and does not leave'
+
+#Ex.160: asyndenton coordination with subject drop
+Source: b
+Vetted: f
+Judgment: g
+Phenomena: {crd, wo}
+aguara opo okañy
+aguara opo okanNy
+aguara o-po o-kanNy
+fox.ANIM.NOM A.3-jump A.3-hide
+'the fox jumped and hid'
+
+#Ex.161: Unattested use of asyndeton coordination with nominal constituents
+Source: b
+Vetted: f
+Judgment: u
+Phenomena: crd
+aguara jagua okañy
+aguara jagua okanNy
+aguara jagua o-kanNy
+fox.ANIM.NOM dog.ANIM.NOM A.3-hide
+*'the fox and the dog hid'
+
+
+  3.B	Monosyndeton Coordination with ha
+
+The second coordination strategy we added was a monosyndeton strategy marked with the word “ha,” which comes before the last coordinand. It should be noted that we have yet to see coordinated lists of longer than two, so it is also possible that coordination with “ha” is a polysyndeton strategy. 
+
+Grammatical examples are shown in 143, 146, and 162 below. One example of ungrammatical ha placement is shown in 144, and more examples are available in Section I.3 above
+
+With ha we see coordination between sentences and NP’s, examples 143 & 162 respectively.  As with example 160 above, because of subject drop, example 146 is ambiguous between being an example of sentence or VP coordination.  
+
+For now we have opted to say in the customization system that “ha” can coordinate NPs, VPs and Sentences, which results in two separate parses for 146. This is probably undesirable because it is unlikely the second verb predicate is referring to anyone other than fox, so there is unlikely to be a meaningful distinction between those two parses. However we have left this issue to deal with (maybe) later. 
+
+We have also decided to not allow coordination between N’s for now because the frequent use of postpositions in Guarani makes the N/NP distinction a significant one, and we have no relevant examples in our data, e.g., examples of coordinated objects with modifiers or case marking.   
+
+#Ex.143: Use of 'and' coordination with two sentences
+Source: b
+Vetted: f
+Judgment: g
+Phenomena: {crd, neg, wo}
+nikiriri᷉i ha ndopytai
+ndikiririNi ha ndopytai
+nd-i-kiririN-i ha nd-o-pyta-i
+NEG-O.3-be.quiet-NEG and NEG-A.3-leave-NEG
+'He is not quiet and does not leave'
+
+#Ex.146: Use of 'and' coordination with verbal constituents / optionally seen as sentence constituents because of subject drop
+Source: b
+Vetted: f
+Judgment: g
+Phenomena: {crd, wo}
+aguara opo ha okañy
+aguara opo ha okanNy
+aguara o-po ha o-kanNy
+fox.ANIM.NOM A.3-jump and A.3-hide
+'the fox jumped and hid'
+
+#Ex.162: Use of 'and' coordination with nominal constituents
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {crd, wo}
+aguara ha jagua okañy
+aguara ha jagua okanNy
+aguara ha jagua o-kanNy
+fox.ANIM.NOM and dog.ANIM.NOM A.3-hide
+'the fox and the dog hid'
+
+#Ex.144: Wrong position of 'and' conjunction
+Source: b
+Vetted: f
+Judgment: u
+Phenomena: crd
+nikiriri᷉i ndopytai ha
+ndikiririNi ndopytai ha
+nd-i-kiririN-i nd-o-pyta-i ha
+NEG-O.3-be.quiet-NEG NEG-A.3-leave-NEG and
+*'He is not quiet and does not leave'
+
+  1.C	Adjectives
+
+As we will see in fuller detail in 1.D and 1.E below, Guarani allows it’s adjectives to be both attributive and predicative.  We have not yet seen examples of adjectives that are only one or the other, though of course that remains a possibility.   
+
+In attributive form the adjective immediately follows, rather than precedes the the noun that it modifies as seen in the difference in grammaticality between 134 and 135.  
+
+#Ex.134: Use of adjective as an attribute of the subject of verb predicate
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {adj, wo}
+mita᷉ reia'e oguata
+mitaN reiaHe oguata
+mitaN reiaHe o-guata
+child happy.NOM A.3-walk
+'The happy child walks'
+
+#Ex.135: Adjectives come after their noun, not before
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: adj
+reia'e mita᷉ oguata
+reiaHe mitaN oguata
+reiaHe mitaN o-guata
+happy child.ANIM.HUM.NOM A.3-walk
+*'The happy child walks'
+
+In predicative form, the adjective receives verbal inflection and the noun it “modifies” acts as its subject.  So that you get examples like 136, where angry is attributive contrasting with examples like 138 where angry is functioning of as the main predicate of the sentence. Sentences like 137 where there is an adjectival and verbal predicate, are ungrammatical, though because Guarani has asyndeton coordination of clauses and subject drop, we will still get a parse for 137 as something like “the dog is angry and he walks.”
+
+#Ex.136: Use of adjective as an attribute of the subject of a verb predicate
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {adj, wo}
+jagua ñaro oguata
+jagua nNaro oguata
+jagua nNaro o-guata
+dog.ANIM angry.NOM A.3-walk
+'The angry dog walks'
+
+#Ex.137: Attributive adjective should not have predicate markings 
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: adj
+jagua iñaro oguata
+jagua inNaro oguata
+jagua i-nNaro o-guata
+dog.ANIM O.3-angry.NOM A.3-walk
+*'The angry dog walks'
+
+#Ex.138: Use of adjective as a predicate (copula)
+Source: b
+Vetted: f
+Judgment: g
+Phenomena: cop
+jagua iñaro
+jagua inNaro
+jagua i-nNaro
+dog.ANIM O.3-angry
+'The dog is angry'
+
+To implement this we decided to treat attributive and predicative uses of adjectives as homonyms, which we added to the lexicon as both adjectives AND stative verbs.  The stative verb treatment is discussed in more detail below in section 1.E.  
+
+For the roots added to lexicon as adjectives we specified that they were attributive only, modified the item immediately before them, and could not appear predicatively. 
+
+This gave us roots like “poraN” with a predicate as a “_beautiful_a_rel”
+
+Because we found no examples with multiple modifiers (and in fact examples with attributive adjectives were themselves rare) we checked the box indicating that adjective “behaving attributively must be the only modifier of its modificand”  
+
+Because adjectives in Guarani do not display any agreement properties, this was all that we had to do.  Though it should be noted that because case (among other things) is marked with postpositions, case-marking adpositions “attach to the adjective” when you have an NP like “big cow.” This pattern is demonstrated by examples 131 & 132.  The implementation of this is handled neatly by the customization system by adding a case marking appositions, and the details of how we did this are discussed in the section on case below.
+
+#Ex.131: Use of adjective as an attribute of the object of verb predicate
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {adj, c}
+ahecha vakaA tuichape
+ahecha vakaA tuicha pe
+a-hecha vakaA tuicha=pe
+A.1SG-see cow.ANIM big=ACC 
+'I see the big cow'
+
+#Ex.132: Wrong position of accusative marking for noun phrase with adjective
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: c
+ahecha vakaApe tuicha
+ahecha vakaA pe tuicha
+a-hecha vakaA=pe tuicha
+A.1SG-see cow.ANIM=ACC big 
+*'I see the big cow'
+
+
+  1.D	Copula
+
+When we were first investigating copular constructions in Guarani we came across example 164 (modified a little bit from the original to remove a proper name).
+
+#Ex.164: non-copular use of be, contentful postpositions  
+Source: b
+Vetted: f
+Judgment: g
+Phenomena: {cop, adp}
+Oime kotýpe jaguandi
+o-ime koty=pe jagua=ndi
+3.ACT-be room=in dog=with
+'He/She is in the room with the dog’
+
+At first we were tempted to call 164 an example of copular be, but we have ultimately decided not to for two main reasons. The first is because the verb be shows active marking in 164 rather than the stative marking, the marking you would see on "jump" or any other dynamic intransitive verb.  It’s also the same marking you see on the verb “come” in the similarly-structured example 165.  
+
+#Ex.165: Contentful postpositions  
+Source: b
+Vetted: f
+Judgment: g
+Phenomena: adp
+ou mombyry-vi 
+oju mombyryA-gui 
+o-ju mombyry=gui
+3.ACT-come far=from
+'I come from far(a far place)' 
+
+Furthermore, when we look at translations “(i)me” translates to the Spanish "estar"  which means to actively be/stay in a place. There is no translation in Guarani for the more general/semantically bleached Spanish verb "ser" which is the one that is used for copular constructions in Spanish.
+
+Finally all of our sources say that Guarani does not require copula for non-verbal predicates and we have many examples like the ones below (138-142), that show that the strategy for making non-verbal predicates in Guarani is actually to add verbal markings to the root, whether it be a root associated with a noun, an adjective, or a location.  When this happens the marking that is used is the marking for stative intransitive not the active marking we see in 164 and 165.   For this reason we have opted to say that Guarani does NOT have copular be.  Our solution for parsing examples like those below is given in the next section. 
+
+#Ex.138: Use of adjective as a predicate (copula)
+Source: b
+Vetted: f
+Judgment: g
+Phenomena: cop
+jagua iñaro
+jagua inNaro
+jagua i-nNaro
+dog.ANIM O.3-angry
+'The dog is angry'
+
+#Ex.139: Use of noun predicate
+Source: b
+Vetted: f
+Judgment: g
+Phenomena: cop
+chesy
+chesy
+che-sy
+O.1SG-mother.ANIM
+'I am a mother/My mother’
+
+#Ex.140: Ambiguity between noun predict and possessive marker
+Source: b
+Vetted: f
+Judgment: g
+Phenomena: cop
+chesy oguata
+chesy oguata
+che-sy o-guata
+O.1SG-mother.ANIM A.3-walk
+'My mother walks / I am a mother, she walks’
+
+#Ex.141: predicative use of location adverb
+Source: b
+Vetted: f
+Judgment: g
+Phenomena: cop
+ore oreaguĩ nderógagui
+ore oreaguiN nderoAgagui
+ore ore-aguiN nde-roAga=gui
+A.1PL.EXCL.PRON O.1PL.EXCL-near O.2SG-house=from
+'We are near your house'
+
+#Ex.142: Use of noun predicate
+Source: b
+Vetted: f
+Judgment: g
+Phenomena: cop
+hi'árama
+hiHaArama
+hi-aAra-ma
+O.3-day-PERF
+'It was his day' 
+
+  1.E	Other Changes to Lexicon and Morphology
+
+As noted in sections 1.D and 1.C above, Guarani easily makes predicative use of its adjectival, nominal, and adverbial roots.  When it does so those roots take on verbal inflection and become the main predicate of the sentence.  In order to model this we have simply added the individual roots to our lexicon as roots for stative-intransitive verbs in addition to adding them as roots for their “original” category.  So for example we have an entry for the attributive adjective nNaro, “angry,” and also for the stative intransitive verb nNaro, which allows us to get both 136 and 138.  
+
+#Ex.136: Use of adjective as an attribute of the subject of a verb predicate
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {adj, wo}
+jagua ñaro oguata
+jagua nNaro oguata
+jagua nNaro o-guata
+dog.ANIM angry.NOM A.3-walk
+'The angry dog walks'
+
+#Ex.138: Use of adjective as a predicate (copula)
+Source: b
+Vetted: f
+Judgment: g
+Phenomena: cop
+jagua iñaro
+jagua inNaro
+jagua i-nNaro
+dog.ANIM O.3-angry
+'The dog is angry'
+
+All of verbs of these type are required (with a require constraint) to go through a morphological rule that takes roots like -nNAro (angry), -aAra (day), and -aguiN (near) and inflects them for person and number, with one of our O markers, so that we get the fully inflected forms in 138, 141, and 142.   
+
+#Ex.141: predicative use of location adverb
+Source: b
+Vetted: f
+Judgment: g
+Phenomena: cop
+ore oreaguĩ nderógagui
+ore oreaguiN nderoAgagui
+ore ore-aguiN nde-roAga=gui
+A.1PL.EXCL.PRON O.1PL.EXCL-near O.2SG-house=from
+'We are near your house'
+
+#Ex.142: Use of noun predicate
+Source: b
+Vetted: f
+Judgment: g
+Phenomena: cop
+hi'árama
+hiHaArama
+hi-aAra-ma
+O.3-day-PERF
+'It was his day' 
+
+These forms are impossible to distinguish from “regular” stative verbs (whatever those would even be) so no additional changes had to be made to our lexical rule, though it would be interesting to see if we can get any non-verbal predicates with more than one argument. 
+
+
+2. Changes
+
+  2.A   Word Order
+
+Our sources say that in Guaraní, by far the most common word order for transitive sentences is VO (with subject dropped), followed by SVO, then VOS, then OV.    Our authors don't provide examples of SOV or OSV sentences, but they do reiterate that argument assignment is never related to word order, and that even in cases where there might be resulting ambiguity like my  example #168 , that ambiguity is resolved by "reference to the world knowledge"  
+
+#Ex.168:  Shows ambiguity due to lack of fixed word order.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: wo
+ahojá ojaho'i ajaka
+ahojaA ojahoHi ajaka
+ahojaA o-jahoHi ajaka
+blanket A.3-cover basket
+'The blanket cover the basket / the basket covers the blanket'
+
+We asked Judith whether she felt examples like 24 & 21 (below) were ungrammatical.  And she responded that “would not think that SOV or OSV are ungrammatical. I would call them pragmatically highly marked, i.e., they should be able to occur if you can get the discourse context to be just right.” So we have opted to leave order designated as free, and we treat both (24) and (21) as grammatical in our test suite.
+
+#Ex.24: Transitive verb agrees with 3per subject. Accusative marking on animate object. OSV word order. No determiners, underspecified number.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {wo, agr, c}
+vakápe ju'i ohecha
+vakaA pe juHi ohecha
+vakaA=pe juHi o-hecha
+cow.ANIM=ACC frog.ANIM.NOM A.3-see
+'The frog sees the cow'
+
+#Ex.21: Transitive verb agrees with 3per subject. Accusative marking on animate object. SOV word order. No determiners, underspecified number.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {wo, agr, c}
+ju'i vakápe ohecha
+juHi vakaA pe ohecha
+juHi vakaA=pe o-hecha
+frog.ANIM.NOM cow.ANIM=ACC A.3-see
+'The frogs see the cows'
+
+	
+  2.B   Case
+
+Many of our sources made claims like “Guarani is a split intransitive language with active and inactive predicate prefixes,” but we have opted NOT to choose the Split-S option precisely because the active/inactive distinction is marked on predicates and NOT the arguments themselves, and therefore is not a case distinction at all.
+
+We also encountered the claim that Guarani has no case at all, and only post positions, but as you pointed out these are not mutually exclusive.  We have decided for now to treat some postpositions as contentful rather than case marking (most notably locatives), but we have also included a three-way NOM-ACC-DAT case distinction.  This decision is supported by the fact that pronouns show a case distinction between NOM & non-NOM forms:
+
+1SG che / chéve 
+2SG nde / ndéve 
+3 ha’e / ichupe / 
+1PL inclusive / ñande / ñandéve
+1PL exclusive / ore / oréve
+2PL peẽ / peẽme 
+
+We implemented the paradigm above by adding both forms to our lexicon.  We made a subtype of noun called pronoun, that does not allow a determiner.  Then under that category we made subtypes for nominative, and non-agentive pronouns.  The nominative subtype is specified as having NOM case, but the non-agentive forms have case underspecified as either ACC or DAT.
+ 
+Further investigation of case marking revealed that the marking for ACC and DAT is identical, the postposition =pe.  We treat this as a case of homophony rather than treating ditransitives as verbs that take two arguments with a non-agentive case that is an umbrella term for both ACC & DAT.   This choice can be seen in our testsuite in examples like 70 and 71 below, though they will not yet parse with our grammar since we can’t handle Ditransitives:
+
+#Ex.70:  Ditransitive agrees with 2SG subject. Indirect object marked with 1SG dative pronoun.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {pro-d, agr, pn, c}
+reme'e᷉ cheve mbo'ehárape
+remeHeN cheve mboHehaAra pe
+re-meHeN cheve mboHehaAra=pe
+A.2SG-give 1SG.DAT professor.ANIM=ACC
+'You gave the professor to me’
+
+#Ex.43A: Ditransitive verb agrees with 3SG object. Animate direct object with accusative marking. Inanimate indirect object with dative marking.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: agr
+ju'i ohechauka vakápe tunichpe
+juHi ohechauka vakaA pe tunich pe
+juHi o-hecha-uka vakaA=pe tunich=pe
+frog.ANIM.NOM A.3-see-CAUS cow.ANIM=ACC stone.INAM=DAT
+'The frog shows the cow to the stones'
+
+#Ex.43B: Ditransitive verb agrees with 3SG object. Inanimate direct object with accusative marking. Animate indirect object with dative marking.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: agr
+ju'i ohechauka vakápe tunichpe
+juHi ohechauka vakaA pe tunich pe
+juHi o-hecha-uka vakaA=pe tunich=pe
+frog.ANIM.NOM A.3-see-CAUS cow.ANIM=DAT stone.INAM=ACC
+'The frog shows the stones to the cows’
+
+
+We had initially dealt with implementing case by requiring all of our common nouns to go through a case-assigning lexical rule, but this week our further digging bought two major changes to our understanding and implementation of case, (1) We realized that case markers in Guarani are adpositions and NOT affixes.  (2) We realized that case marking is in fact optional.  
+
+Major Change #1: From affixes to appositions 
+
+Our investigation of adjectives in Guarani revealed examples like 131 and 132 which showed that when a noun is modified by an adjective, case 
+attaches NOT directly to the noun but to the fully formed NP.   
+
+#Ex.131: Use of adjective as an attribute of the object of verb predicate
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {adj, wo}
+ahecha vakaA tuichape
+ahecha vakaA tuicha pe
+a-hecha vakaA tuicha=pe
+A.1SG-see cow.ANIM big=ACC 
+'I see the big cow'
+
+#Ex.132: Wrong position of accusative marking for noun phrase with adjective
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: c
+ahecha vakaApe tuicha
+ahecha vakaA pe tuicha
+a-hecha vakaA=pe tuicha
+A.1SG-see cow.ANIM=ACC big 
+*'I see the big cow'
+ 
+To account for this we deleted the lexical rule in our morphology section that was tasked with assigning case, and also the requirement on our lexicon page that all nouns go through that lexical rule.
+
+Our (now deleted) lexical rule had two potential forms of the accusative case, one with =pe and one with =∅. All common nouns were required to either pass through the =∅ to receive lexical case, or if they were animate, an accusative rule that added accusative case and =pe. If they were an inanimate noun they could pass through a =∅ marking accusative rule.  Animates and inanimates were forbidden from entering each other’s accusative rules. This was meant to model examples like 8.A and 9.A in our test suite last week:
+
+#Ex.8.A: Wrong use of accusative marker (none for inanimate nouns)
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: c
+ju'i ohecha tunichpe
+juHi ohecha tunich pe
+juHi o-hecha tunich=pe
+frog.ANIM.NOM O.3-see stone.INAM=ACC
+*'The frog sees the stone'
+
+#Ex.9.A: Two animate arguments, but no accusative object marked in the sentence
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: c
+la ju'i ohecha vaká
+la juHi ohecha vakaA
+la juHi o-hecha vakaA
+the.SG frog O.3-see cow
+*’The frog sees the cow / The cow sees the frog'
+
+Instead, we allowed all of our common nouns to remain unspecified for case and added a single postposition, that optionally applies to all common nouns and adds either ACC or DAT case to the NP it combines with.  
+
+This was all that we had to do to make case work appropriately, because, as outlined below, we discovered that case marking in Guarani is optional rather than obligatory. 
+
+Major Change #2: Change to optional case marking
+
+We found the following information in our new more-comprehensive account of Guarani, which helps clear up some confusion with respect to examples we were finding.
+
+"DOM in Guarani is usually described in the following way: inanimate objects are not marked, human direct objects are often but not always differentially marked with =pe (e.g, Lustig 2005), and animals are marked also optionally and less frequently (Krivoshein de Canese & Acosta Alcaraz, 2007). Shain and Tonhauser (2010) further clarify this situation. First of all, marking of direct objects by =pe is infrequent (even with animates, see (97) below): in their corpus, only 27 out of 233 nonpronominal direct objects are marked (12%). They also show that marking is not categorical: human direct objects tend to be marked, especially if they are topical; inanimate direct objects tend to be unmarked but can be (under somewhat unclear conditions); finally, the evidence for non-human animate objects in inconclusive"
+
+Because it seems that =pe marking is optional for all arguments and is NOT in fact disallowed for inanimates, just uncommon, we have decided NOT to try and account for the distributional differences outlined in the quote above. 
+When we added the case marking apposition =pe we made it optional and allowed it to apply to all common nouns.  This also simplifies the implementation of the finding that inanimate objects are OFTEN marked with =pe when they are indirect objects.  We can now deal with both of these processes with a single postposition entry in our lexicon that is underspecified for case.  
+
+This means that we’ve made changes from 8.A to 8.B in our test suite, where the new Example 8 is interpreted as grammatical.  As a result of this change we have lost some negative examples (though not many since we didn’t have a lot of marked inanimate objects).  We also introduced some ambiguity, because now all sentences composed of transitive verbs and unmarked arguments are potentially ambiguous, as seen below in Ex.9.B and Ex.168, and above in the differing interpretations of 43B and 43B. 
+
+#Ex.8.B: Accusative marker on an inanimate noun
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: c
+ju'i ohecha tunichpe
+juHi ohecha tunich pe
+juHi o-hecha tunich=pe
+frog.ANIM.NOM O.3-see stone.INAM=ACC
+'The frog sees the stone'
+
+#Ex.9.B: Two animate arguments, but no accusative object marked in the sentence
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: c
+la ju'i ohecha vaká
+la juHi ohecha vakaA
+la juHi o-hecha vakaA
+the.SG frog O.3-see cow
+'The frog sees the cow / The cow sees the frog'
+
+#Ex.168:  Shows ambiguity due to lack of fixed word order.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: wo
+ahojá ojaho'i ajaka
+ahojaA ojahoHi ajaka
+ahojaA o-jahoHi ajaka
+blanket A.3-cover basket
+'The blanket cover the basket / the basket covers the blanket'
+
+On the lexicon page of our grammar all of our common nouns are underspecified for case and so case only becomes fixed with the optional addition of the =pe postposition. There is no longer a requirement that the words be assigned case by a lexical rule or apposition before they get to play in the grammar.  This analysis seems in keeping with our emergent understanding of Guarani. This leaving things underspecified with optional post-positions available to narrow down interpretations seems in keeping with the way it marks “plural” (the optional post-position kuera) or “time” (optional adverbs) both of which we are not tackling in this grammar fragment, because they are (HIGHLY) contested and do not actually factor into distinguishing between grammatical and ungrammatical strings. 
+
+  2.C   TAM
+
+Changes discussed in III.4 Below.
+
+III. Descriptions of any properties of your language illustrated in your test suite but not covered by your starter grammar and/or the customization system. This will be most of the additions to your test suite this week. Here, too, please include IGT from your testsuite, and give explanations along the lines of the example above (though without the information about the customization system).
+
+1. Matrix Yes-No Questions
+This topic is covered in “I.A” and “II.A.1” above.  
+
+2. Who/What Questions
+
+This topic is already covered in “I.B above.”
+
+3. Contentful postpostions
+
+Guarani has an elaborate list of post-positions that contribute semantic information to the sentence.  In examples 164 and 165 below we see examples of =pe (in/around), =ndi (with), =gui (from).   While we can easily add case marking adpositions to the customization system there is not yet away to attach a contentful adpositions, so we will have to implement that through .tdl.
+
+#Ex.164: Potential copular use of be, contentful postpositions  
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: {cop, adp}
+Oime kotýpe jaguandi
+o-ime koty=pe jagua=ndi
+3.ACT-be room=in dog=with
+'He/She is in the room with the dog'
+
+#Ex.165: Contentful postpositions  
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: {adp}
+oime mombyry-vi 
+ojo mombyryA-gui 
+o-jo mombyry=gui
+3.ACT-come far=from
+'I come from far(a far place)' 
+
+4. Free-order in aspect combination
+
+The customization system CAN combine aspects (sorry about our misunderstanding there). As instructed we:
+
+(1) set up this subtype in our list of aspects, and then 
+(2) allowed (in a particular order) the aspect rules to take the output of another aspect rule as an input.
+
+This allowed us to get many of our combined aspects.  Unfortunately the requirement that aspects combine in a particular order cannot account for the fact that Guarani seems to allow its aspects to combine in any order. So 63-67 are all grammatical, but our current implementation only allows for half of these possibilities.
+
+#Ex.63: Transitive verb. Completive aspect. Future aspect. Subject drop. Object drop.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {agr, tam, pro-d}
+ahendupata
+ahendupata
+a-hendu-pa-ta
+A.1SG-hear-COMPL-FUT
+'I will have heard it all'
+
+#Ex.64: Transitive verb. Future aspect. Completive aspect. Subject drop. Object drop.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {agr, tam, pro-d}
+ahendutapa
+ahendutapa
+a-hendu-ta-pa
+A.1SG-hear-FUT-COMPL
+'I will have heard it all'
+
+#Ex.66: Transitive verb. Perfective aspect. Future aspect. Subject drop. Object drop.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {agr, tam, pro-d}
+ahendumata
+ahendumata
+a-hendu-ma-ta
+A.1SG-hear-PERF-FUT
+'I will have heard it already'
+
+#Ex.67: Transitive verb. Future aspect. Perfective aspect. Subject drop. Object drop.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {agr, tam, pro-d}
+ahendutama
+ahendutama
+a-hendu-ta-ma
+A.1SG-hear-FUT-PERF
+'I will have heard it already'
+
+IV. Documentation of the coverage of your grammar over the testsuite. If there are examples that are parsed incorrectly (unanalyzed grammatical examples, analyzed ungrammatical examples, or grammatical examples assigned surprising parses), reflect on why that might be.
+
+
+--General Stats
+
+Analyze | Coverage
+	Total Items: 168
+	Positive Items: 100 
+	Word String 0: 2.67
+	Lexical Items 0: 3.71
+	Distinct Analyses: 1.19
+	Total Results: 58
+	Overall Coverage: 58.0
+
+Analyze | Overgeneration
+	Total Items: 168
+	Negative Items: 68
+	Word String 0: 2.72
+	Lexical Items 0: 3.54
+	Distinct Analyses: 1
+	Total Results: 5
+	Overall Coverage: 7.4
+
+--Specific Examples
+
+Discussion of examples. I’ve tried to discuss some cases where our grammar overgeneralizes throughout the write-up, but by far the most common source of “overgeneralization” is the addition of our new unmarked coordination rule, particularly because we have both subject and object drop.  So while both 137 are and 149 are ungrammatical under the readings given, or as a single independent clause, they get parsed as two separate clauses that are conjoined without a marker.  So the parse for (137) is “The dog is angry and walks” and for (149) is “I know and he is coming.”  This may be fine, even desirable, but it is particularly awkward in cases like (140) where the 1 parse given is NOT the possessive that example is in there to test, but a conjoined expression that means (awfully) “I am a mother and she comes.”  
+
+Example 1
+	
+Input: 
+#Ex.137: Attributive adjective should not have predicate markings 
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: adj
+jagua iñaro oguata
+jagua inNaro oguata
+jagua i-nNaro o-guata
+dog.ANIM O.3-angry.NOM A.3-walk
+*'The angry dog walks'		
+
+Expected Outcome:  Shouldn’t parse	
+Actual Outcome: Parses with the wrong MRS
+	
+Example 2
+	
+#Ex.149: Missing marker for embedded clause 
+Source: e
+Vetted: f
+Judgment: u
+Phenomena: emb-d
+aikuua ou
+aikuua oju
+a-ikuua o-ju
+A.1SG-know A.3-go
+*'I know he is coming'
+
+Expected Outcome:  Shouldn’t parse
+Actual Outcome: Parses with the wrong MRS
+
+Example 3
+
+#Ex.140: Ambiguity between noun predict and possessive marker
+Source: b
+Vetted: f
+Judgment: g
+Phenomena: cop
+chesy oguata
+chesy oguata
+che-sy o-guata
+O.1SG-mother.ANIM A.3-walk
+'My mother walks'
+
+Expected Outcome:  Shouldn’t parse (we don’t have possessives)	
+Actual Outcome: Parses with the wrong MRS		
+
+Final thoughts/questions:  With a free-order language with lots of underspecification and ambiguous marking, it’s really hard to get strictly ungrammatical examples, and what we are getting are a lot of cases where we get something but not the MRS we intend.  It is difficult to assert the grammaticality of some sentences with unexpected parses and with only our rudimentary understanding of the grammar as a tool. While this isn’t really a bug… it’s hard to know how to use the tools/numbers effectively to track our progress in this situation.  Thankfully because we’ve been doing this step by step we have an idea of what kinds of sentences the grammar might get wrong, but we are a little concerned that we have such a hard time coming up with truly negative examples for our phenomena, and not just “wrong with this interpretation” examples.  
+
+
+V. Documentation of any changes you made to your grammar to improve its performance (coverage and accuracy). Include the examples that motivated the change and explain what changes you made to the choices file or tdl.
+
+This is documented above in section “II.2 Changes”
+
+
+
