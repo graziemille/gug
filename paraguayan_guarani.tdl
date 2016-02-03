@@ -44,6 +44,16 @@ basic-head-comp-phrase :+ [ SYNSEM.LOCAL.CAT.MC #mc,
 basic-head-mod-phrase-simple :+ [ SYNSEM.LOCAL.CAT.MC #mc,
     NON-HEAD-DTR.SYNSEM.LOCAL.CAT.MC #mc ].
 
+;trying to force a single order betweeen basic-head-opt-comp
+;and head-subj/subj-head
+;Additional modifications made to head-subj subj-head below
+
+nonolist := list.
+nonocons := nonolist & cons &
+  [ FIRST unexpressed & [ OPT - ],
+    REST  nonolist ].
+nononull := nonolist & null.
+
 ; We can't just use the V-final and V-initial word
 ; order modules together to get a good free word order
 ; module. The root of the problem seems to be that we
@@ -550,9 +560,14 @@ head-initial-head-nexus := head-initial &
 head-final-head-nexus := head-final &
   [ SYNSEM.ATTACH rmod ].
 
-head-subj-phrase := decl-head-subj-phrase & head-initial-head-nexus.
+;intermediate type added to force order of rule application between
+;Basic-Head-OPT-COMP and any head-subj / subj-head rules
+comps-empty-head-subj-phrase := decl-head-subj-phrase &
+[ SYNSEM.LOCAL.CAT.VAL [COMPS < >] ].
 
-subj-head-phrase := decl-head-subj-phrase & head-final-head-nexus.
+head-subj-phrase := comps-empty-head-subj-phrase & head-initial-head-nexus.
+
+subj-head-phrase := comps-empty-head-subj-phrase & head-final-head-nexus.
 
 ; The head of head-comp-phrase can't be: ['adp']
 
