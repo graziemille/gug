@@ -253,7 +253,7 @@ juHi o-hecha vakaA=pe
 frog.ANIM.NOM O,3-see cow.ANIM=ACC
 'The frogs sees the cows'
 
-#Ex.23: Transitive verb should agree with 3per subject and not 3per object.
+#Ex.23: Transitive verb should agree with 3per subject and not 3per object
 Source: author
 Vetted: f
 Judgment: u
