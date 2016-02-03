@@ -4,7 +4,7 @@
 # PARTNER: Thor Wicke Monteverde
 
 
-I. Documentation of the phenomena you have added to your test suite, illustrated with examples from the test suite.
+I. Documentation of the phenomena you have added to your test suite, illustrated with examples from the test suite
 
 
 1.	Matrix Yes-No Questions
