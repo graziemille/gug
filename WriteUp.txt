@@ -23,7 +23,7 @@ ohecha piko ñakyra  vakápe?
 ohecha piko nNakyra vakaA pe
 o-hecha=piko nNakyra vakaA=pe
 O.3-see=Q cricket.ANIM.NOM cow.ANIM=ACC
-'Did the cricket see the cow?
+'Did the cricket see the cow?’
 
 #Ex.122: Yes-No question with focus marker on verb predicate, and use of marker pa
 Source: c
