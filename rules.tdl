@@ -1,4 +1,7 @@
 ;;; -*- Mode: TDL; Coding: utf-8 -*-
+
+poss := poss-phrase.
+
 head-adj-int := head-adj-int-phrase.
 
 decl-head-opt-subj := decl-head-opt-subj-phrase.

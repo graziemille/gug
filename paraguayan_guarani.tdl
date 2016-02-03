@@ -54,6 +54,7 @@ nonocons := nonolist & cons &
     REST  nonolist ].
 nononull := nonolist & null.
 
+
 ; We can't just use the V-final and V-initial word
 ; order modules together to get a good free word order
 ; module. The root of the problem seems to be that we
@@ -128,6 +129,7 @@ future := aspect.
 prospective := aspect.
 future-completive := future & completive.
 future-perfective := future & perfective.
+
 
 ;;;;;;;;;;;;;;;;;;;
 ;;; Lexical Types
@@ -631,3 +633,30 @@ s3-top-coord-rule := basic-s-top-coord-rule & apoly-top-coord-rule &
 s3-bottom-coord-rule := unary-bottom-coord-rule & s-bottom-coord-phrase &
   [ SYNSEM.LOCAL [ COORD-STRAT "3",
                    COORD-REL.PRED "_and_coord_rel" ] ].
+
+;;; Possessives
+;This snipped should add juxtaposition possessives e.g., where "dog cat"
+;means something like the equivalent of "the dog's cat"
+
+poss-phrase := head-final &
+  [ SYNSEM.LOCAL.CAT [ HEAD #head,
+           VAL [ SPR < >,
+           COMPS < >,
+           SUBJ < > ] ],
+    C-CONT [ HOOK.INDEX #index,
+       RELS < ! arg12-ev-relation & [ PRED "poss_rel",
+             LBL #lbl,
+             ARG1 #index,
+             ARG2 #poss ],
+       quant-relation & [ PRED "exist_q_rel",
+              ARG0 #index,
+              RSTR #harg ] ! >,
+       HCONS < ! qeq & [ HARG #harg, LARG #lbl ] ! >,
+       ICONS < ! ! > ],
+    HEAD-DTR.SYNSEM.LOCAL [ CAT [ HEAD #head & noun,
+          VAL.SPR < [ ] > ],
+          CONT.HOOK [ INDEX #index & [ COG-ST uniq+fam+act ],
+          LTOP #lbl ] ],
+    NON-HEAD-DTR.SYNSEM.LOCAL [ CAT [ HEAD noun,
+              VAL.SPR < > ],
+        CONT.HOOK.INDEX #poss ] ].
