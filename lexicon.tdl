@@ -279,11 +279,11 @@ ju := dynamic-intrans-verb-lex &
 
 la := def-sg-determiner-lex &
   [ STEM < "la" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_exist_q_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_exist_q_rel"].
 
 lo := def-pl-determiner-lex &
   [ STEM < "lo" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_exist_q_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_exist_q_rel"].
 
 ha2 := conj-lex &
   [ STEM < "ha" >,
