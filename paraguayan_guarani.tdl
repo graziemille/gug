@@ -125,6 +125,15 @@ future-perfective := future & perfective.
 
 ;;; Nouns
 
+;;; POSS Feature to distinguish nouns can can have a possessor or not in possessive constructions
+;;; through the juxtaposition rule
+
+noun:+ [POSS bool].
+
+non-poss-com-noun-inam-lex := com-inam-noun-lex & 
+ 				[SYNSEM.LOCAL.CAT.HEAD.POSS -].
+
+
 noun-lex := basic-noun-lex & basic-one-arg & no-hcons-lex-item & non-mod-lex-item &
   [ SYNSEM.LOCAL.CAT.VAL [ SPR < #spr &
                                  [ LOCAL.CAT.HEAD det ] >,
