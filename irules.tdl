@@ -128,3 +128,30 @@ perf-asp-lex-rule.
 pros-asp-suffix :=
 %suffix (* pota)
 pros-asp-lex-rule.
+
+1sg-poss-prefix :=
+%prefix (* che)
+1sg-poss-lex-rule.
+
+2sg-poss-prefix :=
+%prefix (* nde)
+1sg-poss-lex-rule.
+
+3-poss-prefix :=
+%prefix (* i)
+3-poss-lex-rule.
+
+1pl-incl-poss-prefix :=
+%prefix (* nNande)
+1pl-incl-poss-lex-rule.
+
+1pl-excl-poss-prefix :=
+%prefix (* ore)
+1pl-excl-poss-lex-rule.
+
+2pl-poss-prefix :=
+%prefix (* pende)
+2pl-poss-lex-rule.
+
+
+
