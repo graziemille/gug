@@ -44,13 +44,12 @@ basic-head-comp-phrase :+ [ SYNSEM.LOCAL.CAT.MC #mc,
 basic-head-mod-phrase-simple :+ [ SYNSEM.LOCAL.CAT.MC #mc,
     NON-HEAD-DTR.SYNSEM.LOCAL.CAT.MC #mc ].
 
-;trying to force a single order betweeen basic-head-opt-comp
-;and head-subj/subj-head
-;Additional modifications made to head-subj subj-head below
+;trying to reduce redundancy caused by multiple attachment sites 
+;and head-subj/subj-head. Additional modifications made to head-subj subj-head below
 
 nonolist := list.
 nonocons := nonolist & cons &
-  [ FIRST unexpressed & [ OPT - ],
+  [ FIRST [ OPT - ],
     REST  nonolist ].
 nononull := nonolist & null.
 
@@ -357,10 +356,25 @@ neg2-rule-dtr := word-or-lexrule.
 
 ;;; Lexical rule types
 
-poss-lex-rule-super := infl-add-only-lex-rule.
+;poss-lex-rule-super := infl-add-only-lex-rule.
 
-1sg-poss-lex-rule := poss-lex-rule-super &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1SG ].
+;1sg-poss-lex-rule := poss-lex-rule-super &
+;  [ SYNSEM.LKEYS.KEYREL.ARG0.PNG.PERNUM 1SG ].
+
+;2sg-poss-lex-rule := poss-lex-rule-super &
+;  [ SYNSEM.LKEYS.KEYREL.ARG0.PNG.PERNUM 2SG ].
+
+;3-poss-lex-rule := poss-lex-rule-super &
+;  [ SYNSEM.LKEYS.KEYREL.ARG0.PNG.PERNUM 3 ].
+
+;1pl-incl-poss-lex-rule := poss-lex-rule-super &
+;  [ SYNSEM.LKEYS.KEYREL.ARG0.PNG.PERNUM 3 ].
+
+;1pl-excl-poss-lex-rule := poss-lex-rule-super &
+;  [ SYNSEM.LKEYS.KEYREL.ARG0.PNG.PERNUM 3 ].
+
+;2PL-poss-lex-rule := poss-lex-rule-super &
+;  [ SYNSEM.LKEYS.KEYREL.ARG0.PNG.PERNUM 2PL ].
 
 
 pernum-trans-lex-rule-super := add-only-no-ccont-rule & completive-aspect-or-perfective-aspect-or-prospective-aspect-rule-dtr & future-aspect-rule-dtr & infl-lex-rule & neg1-rule-dtr & neg2-rule-dtr &
@@ -590,6 +604,7 @@ head-final-head-nexus := head-final &
 
 ;intermediate type added to force order of rule application between
 ;Basic-Head-OPT-COMP and any head-subj / subj-head rules
+
 gug-head-subj-phrase := decl-head-subj-phrase &
 [ SYNSEM.LOCAL.CAT.VAL [COMPS nonolist] ].
 
