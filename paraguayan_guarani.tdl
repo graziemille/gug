@@ -250,7 +250,7 @@ intransitive-verb-lex := verb-lex & intransitive-lex-item &
     ARG-ST.FIRST.LOCAL.CAT.HEAD +np ].
 
 transitive-verb-lex := verb-lex & transitive-lex-item & completive-aspect-or-perfective-aspect-or-prospective-aspect-rule-dtr & future-aspect-rule-dtr & neg1-rule-dtr & neg2-rule-dtr &
-  [ SYNSEM.LOCAL.CAT.VAL.COMPS < #comps & [COG-ST in-foc]>,
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS < #comps & [OPT-CS in-foc]>,
     ARG-ST < [ LOCAL.CAT.HEAD +np ],
              #comps &
              [ LOCAL.CAT [ VAL [ SPR < >,
