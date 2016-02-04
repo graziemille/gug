@@ -346,6 +346,12 @@ neg2-rule-dtr := word-or-lexrule.
 
 ;;; Lexical rule types
 
+poss-lex-rule-super := infl-add-only-lex-rule.
+
+1sg-poss-lex-rule := poss-lex-rule-super &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1SG ].
+
+
 pernum-trans-lex-rule-super := add-only-no-ccont-rule & completive-aspect-or-perfective-aspect-or-prospective-aspect-rule-dtr & future-aspect-rule-dtr & infl-lex-rule & neg1-rule-dtr & neg2-rule-dtr &
   [ INFLECTED [ PERNUM-DYN-INTRANS-OR-PERNUM-TRANS-FLAG +,
                 PERNUM-TRANS-FLAG +,
