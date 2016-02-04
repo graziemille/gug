@@ -129,9 +129,9 @@ pros-asp-suffix :=
 %suffix (* pota)
 pros-asp-lex-rule.
 
-;1sg-poss-prefix :=
-;%prefix (* che)
-;1sg-poss-lex-rule.
+1sg-poss-prefix :=
+%prefix (* che)
+1sg-poss-lex-rule.
 
 ;2sg-poss-prefix :=
 ;%prefix (* nde)
