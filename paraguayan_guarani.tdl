@@ -334,7 +334,7 @@ determiner-lex := basic-determiner-lex & basic-zero-arg & non-mod-lex-item &
   [ SYNSEM.LOCAL.CAT.VAL [ SPR < >,
                            COMPS < >,
                              SUBJ < >,
-         SPEC<[LOCAL.CONT.HOOK.INDEX.COG-ST uniq-id]> ] ].
+         SPEC<[LOCAL.CONT.HOOK.INDEX.COG-ST uniq+fam+act]> ] ].
 
 def-sg-determiner-lex := determiner-lex & no-icons-lex-item &
   [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM SG ].
