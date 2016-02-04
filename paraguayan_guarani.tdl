@@ -9,7 +9,7 @@
 ;;; LING 567 - Lab 1
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-; Type assigning empty mod list. Added to basic types for nouns, verbs and determiners.
+; Type assigning empty mod list, Added to basic types for nouns, verbs and determiners.
 
 non-mod-lex-item := lex-item &
   [ SYNSEM.LOCAL.CAT.HEAD.MOD < > ].
