@@ -33,7 +33,7 @@ ajaka := com-inam-noun-lex &
   [ STEM < "ajaka" >,
     SYNSEM.LKEYS.KEYREL.PRED "_basket_n_rel" ].
 
-yvyra := non-poss-com-noun-inam-lex &
+yvyra := com-inam-noun-lex &
   [ STEM < "yvyra" >,
     SYNSEM.LKEYS.KEYREL.PRED "_tree_n_rel" ].
 
@@ -45,7 +45,7 @@ roAga := com-inam-noun-lex &
   [ STEM < "roAga" >,
     SYNSEM.LKEYS.KEYREL.PRED "_house_n_rel" ].
 
-yvytu := com-inam-noun-lex &
+yvytu := non-poss-com-noun-inam-lex &
   [ STEM < "yvytu" >,
     SYNSEM.LKEYS.KEYREL.PRED "_wind_n_rel" ].
 
