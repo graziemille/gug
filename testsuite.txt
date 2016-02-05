@@ -1886,7 +1886,7 @@ O.3-big cow.ANIM A.1SG-see
 #Ex.171: Pronouns cannot be part of possessive constructions
 Source: author
 Vetted: f
-Judgment: 
+Judgment: u
 Phenomena: poss
 ojeroky ha'e jagua
 ojeroky haHe jagua
@@ -1959,3 +1959,14 @@ haHe reiaHe oguata
 haHe reiaHe o-guata
 3SG.PRON.NOM happy.NOM A.3-walk
 *'The happy he walks'
+
+#Ex.178: Possessive Affixes
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: poss
+ojeroky chejagua
+ojeroky chejagua
+o-jeroky chejagua
+A.3-dance 1SG.POSS.dog
+'My dog dances'
