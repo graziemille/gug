@@ -617,7 +617,7 @@ o-guata juHi lo
 A.3-walk frog.ANIM.NOM the.PL 
 *'Frogs the walk'
 
-#Ex.56:  Determiner failing to combing with a pronoun. 
+#Ex.56:  Pronouns should not take determiners. 
 Source: author
 Vetted: f
 Judgment: u
@@ -802,7 +802,7 @@ hecha vakápe
 hecha vakaA pe
 hecha vakaA=pe
 see cow.ANIM=ACC
-*'I see the cow'
+*'see the cow'
 
 #Ex.73: Transitive verb with 3PER subject, correctly agrees with 1SG object.  Object drop.
 Source: author
@@ -1107,9 +1107,9 @@ Vetted: f
 Judgment: u
 Phenomena: poss
 ahecha rakape yvyra
-ahecha raka=pe yvyra
-a-hecha raka pe yvyra
-A.1G-see branch tree
+ahecha raka pe yvyra
+a-hecha raka=pe yvyra
+A.1G-see branch=ACC tree
 *'I see tree branches'
 
 #Ex.101: Noun Noun Possessives. Human Possessor. Inanimate Alienable Possession.
