@@ -113,7 +113,7 @@ Phenomena: corpus
 Ipoipaite pe ipopeguagui ha ho'a oti᷉vo ype.
 ipoipaite pe ipopeguagui ha hoHa otiNvo ype
 i-poi-pa-ite        pe   i-po-pe-gua-gui    ha  h-oHa   otiNvo         y=pe
-O.3-let.go-COMPL-very that O.3-hand-LOC-of-FROM and A.3.fall embarrassingly water=LOC
+O.3-let.go-COMPL-very that O.3-hand-LOC-of-FROM and A.3-fall embarrassingly water=LOC
 'He let go all that he was holding in his hands and fell face first into the water.'
 
 #Sentence.11
@@ -210,7 +210,7 @@ Vetted: t
 Judgment: g
 Phenomena: corpus
 Ha upéi omaña henonde gotyo amoite yvyra neñoari ju'i opuka hesekuéra.
-ha upeAi omanNa  ienonde  gotyo   amoite     yvyra  nenNoari  juHi o-puka   hese-kueAra
+ha upeAi omanNa  ienonde  gotyo   amoite     yvyra  nenNoari  juHi opuka   hesekueAra
 ha upeAi o-manNa i-enonde gotyo   amo-ite    yvyra  nenNo-ari juHi o-puka   hese-kueAra
 and then A.3-see O.3-front  towards there-very tree   lie-on    frog A3-laugh to.3-PL
 'And then Juan saw in front of him, right there on a tree trunk, the frog laughing about them.'
@@ -223,7 +223,7 @@ Phenomena: corpus
 Ha he'i Juan-chi:
 ha  oe     Juan-chi
 ha  o-e    Juan-chi
-and A.3.say Juan-DIM
+and A.3-say Juan-DIM
 'And Juanito says:'
 
 #Sentence.21 
