@@ -1651,18 +1651,7 @@ a-porandu o-ju-ha
 A.1SG-ask A.3-go-COMP
 *'I ask whether he is coming'
 
-#Ex.150: Wrong marker for embedding of a declarative clause
-Source: e
-Vetted: f
-Judgment: u
-Phenomena: emb-d
-aikuua oupa
-aikuua ojupa
-a-ikuua o-ju-pa
-A.1SG-know A.3-come-Q
-*'I know he is coming'
-
-#Ex.151: Use embedded clause for interrogative sentence
+#Ex.150: Use embedded clause for interrogative sentence
 Source: e
 Vetted: f
 Judgment: g
@@ -1672,6 +1661,17 @@ aporandu ojupa
 a-porandu o-ju-pa
 A.1SG-ask A.3-go-Q
 'I ask whether he is coming'
+
+#Ex.151: Adverb should come directly after the verb predicate with no intervening words.
+Source: b
+Vetted: f
+Judgment: g
+Phenomena: adv
+jagua osuHu vai vakaApe 
+jagua osuHu vai vakaA pe
+jagua o-suHu vai vakaA=pe 
+dog A.3-bite bad cow.ANIM=ACC
+'the dog bit the cow in an ugly way' 
 
 #Ex.152: Adverb should come directly after the verb predicate with no intervening words.
 Source: b
