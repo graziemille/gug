@@ -2004,7 +2004,7 @@ o-jeroky pende-jagua
 A.3-dance 2PL.POSS-dog
 'Your(pl) dog dances'
 
-#Ex.181: Possessive Affixes
+#Ex.182: Possessive Affixes
 Source: author
 Vetted: f
 Judgment: g
@@ -2016,7 +2016,7 @@ A.3-dance 1PL.INCL.POSS-dog
 'Our(incl) dog dances'
 
 
-#Ex.182: Possessive Affixes
+#Ex.183: Possessive Affixes
 Source: author
 Vetted: f
 Judgment: g
