@@ -1880,7 +1880,7 @@ Phenomena: adj
 tuicha vakaA ahecha  
 tuicha vakaA ahecha 
 tuicha vakaA a-hecha 
-O.3-big cow.ANIM A.1SG-see 
+big cow.ANIM A.1SG-see 
 *'I see the big cow'
 
 #Ex.171: Pronouns cannot be part of possessive constructions
