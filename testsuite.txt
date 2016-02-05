@@ -1957,5 +1957,5 @@ Phenomena: adj
 ha'e reia'e oguata
 haHe reiaHe oguata
 haHe reiaHe o-guata
-3.SG.pron happy.NOM A.3-walk
-*'Happy him walks'
+3SG.PRON.NOM happy.NOM A.3-walk
+*'The happy he walks'
