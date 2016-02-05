@@ -19,6 +19,7 @@
 ;;; the list lexicographically before output.
 ;;;
 
-(((:path . "lab2") (:content . "Test suite created in lab 2")))
+(((:path . "testSuite") (:content . "Test suite created in lab 5"))
+	((:path . "testCorpus") (:content . "Test corpus created in lab 5")))
 
  
