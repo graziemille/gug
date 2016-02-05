@@ -356,25 +356,48 @@ neg2-rule-dtr := word-or-lexrule.
 
 ;;; Lexical rule types
 
-;poss-lex-rule-super := infl-add-only-lex-rule.
+;; The possessive lexical rule as possessive affixes to possessums
+;; e.g., chesy, che-sy, "my mother"
 
-;1sg-poss-lex-rule := poss-lex-rule-super &
-;  [ SYNSEM.LKEYS.KEYREL.ARG0.PNG.PERNUM 1SG ].
+poss-lex-rule-super := infl-add-only-lex-rule &
+[SYNSEM.LKEYS.ALTKEYREL #altkeyrel,
+C-CONT [ HOOK [INDEX #index, 
+            LTOP #lbl  ],
+  RELS <! arg12-ev-relation &
+          [ PRED "poss_rel",
+            LBL #lbl,
+            ARG1 #index,
+            ARG2 #arg2 ],
+          quant-relation &
+          [PRED "exist_q_rep",
+           ARG0 #arg2,
+           RSTR #harg ],
+          #altkeyrel & noun-relation &
+            [PRED "pron_rel",
+             LBL #lbl2,
+             ARG0 #arg2 & [ COG-ST activ-or-more,
+                SPECI + ] ] !>, 
+  HCONS <! qeq & [ HARG #harg, 
+       LARG #lbl2 ] !>,
+  ICONS <! !>] ].
 
-;2sg-poss-lex-rule := poss-lex-rule-super &
-;  [ SYNSEM.LKEYS.KEYREL.ARG0.PNG.PERNUM 2SG ].
+1sg-poss-lex-rule := poss-lex-rule-super &
+  [ SYNSEM.LKEYS.ALTKEYREL.ARG0.PNG.PERNUM 1SG ].
 
-;3-poss-lex-rule := poss-lex-rule-super &
-;  [ SYNSEM.LKEYS.KEYREL.ARG0.PNG.PERNUM 3 ].
+2sg-poss-lex-rule := poss-lex-rule-super &
+  [ SYNSEM.LKEYS.ALTKEYREL.ARG0.PNG.PERNUM 2SG ].
 
-;1pl-incl-poss-lex-rule := poss-lex-rule-super &
-;  [ SYNSEM.LKEYS.KEYREL.ARG0.PNG.PERNUM 3 ].
+3-poss-lex-rule := poss-lex-rule-super &
+  [ SYNSEM.LKEYS.ALTKEYREL.ARG0.PNG.PERNUM 3rd ].
 
-;1pl-excl-poss-lex-rule := poss-lex-rule-super &
-;  [ SYNSEM.LKEYS.KEYREL.ARG0.PNG.PERNUM 3 ].
+1pl-incl-poss-lex-rule := poss-lex-rule-super &
+  [ SYNSEM.LKEYS.ALTKEYREL.ARG0.PNG.PERNUM 1PL_incl ].
 
-;2PL-poss-lex-rule := poss-lex-rule-super &
-;  [ SYNSEM.LKEYS.KEYREL.ARG0.PNG.PERNUM 2PL ].
+1pl-excl-poss-lex-rule := poss-lex-rule-super &
+  [ SYNSEM.LKEYS.ALTKEYREL.ARG0.PNG.PERNUM 1PL_excl ].
+
+2PL-poss-lex-rule := poss-lex-rule-super &
+  [ SYNSEM.LKEYS.ALTKEYREL.ARG0.PNG.PERNUM 2PL ].
 
 
 pernum-trans-lex-rule-super := add-only-no-ccont-rule & completive-aspect-or-perfective-aspect-or-prospective-aspect-rule-dtr & future-aspect-rule-dtr & infl-lex-rule & neg1-rule-dtr & neg2-rule-dtr &
