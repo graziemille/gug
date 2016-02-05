@@ -1967,6 +1967,62 @@ Judgment: g
 Phenomena: poss
 ojeroky chejagua
 ojeroky chejagua
-o-jeroky chejagua
-A.3-dance 1SG.POSS.dog
+o-jeroky che-jagua
+A.3-dance 1SG.POSS-dog
 'My dog dances'
+
+#Ex.179: Possessive Affixes
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: poss
+ojeroky ndejagua
+ojeroky ndejagua
+o-jeroky nde-jagua
+A.3-dance 2SG.POSS-dog
+'Your(sg) dog dances'
+
+#Ex.180: Possessive Affixes
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: poss
+ojeroky ijagua
+ojeroky ijagua
+o-jeroky i-jagua
+A.3-dance 3.POSS-dog
+'His dog dances'
+
+#Ex.181: Possessive Affixes
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: poss
+ojeroky pendejagua
+ojeroky pendejagua
+o-jeroky pende-jagua
+A.3-dance 2PL.POSS-dog
+'Your(pl) dog dances'
+
+#Ex.181: Possessive Affixes
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: poss
+ojeroky ñandejagua
+ojeroky nNandejagua
+o-jeroky nNande-jagua
+A.3-dance 1PL.INCL.POSS-dog
+'Our(incl) dog dances'
+
+
+#Ex.182: Possessive Affixes
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: poss
+ojeroky orejagua
+ojeroky orejagua
+o-jeroky ore-jagua
+A.3-dance 1PL.EXCL.POSS-dog
+'Our(excl) dog dances'
