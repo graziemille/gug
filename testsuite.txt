@@ -1872,11 +1872,11 @@ a-hecha vakaA tuicha
 A.1SG-see cow.ANIM big
 'I see the big cow'
 
-#Ex.170: Attributive adjetive should not have predicate markings
+#Ex.170: Attributive adjetive in the wrong order
 Source: author
 Vetted: f
 Judgment: u
-Phenomena: c
+Phenomena: adj
 tuicha vakaA ahecha  
 tuicha vakaA ahecha 
 tuicha vakaA a-hecha 
