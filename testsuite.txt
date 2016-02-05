@@ -1205,9 +1205,9 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: poss
-ahendu avatity´ yvutu hata 
-ahendu avatityA yvutu hata 
-a-hendu avatityA yvutu hata
+ahendu avatity´ yvytu hata 
+ahendu avatityA yvuytu hata 
+a-hendu avatityA yvytu hata
 A.1SG-hear cornfield wind.INAM strong
 'I hear the cornfield's strong wind'
 
