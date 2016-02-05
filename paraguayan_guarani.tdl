@@ -359,8 +359,12 @@ neg2-rule-dtr := word-or-lexrule.
 ;; The possessive lexical rule as possessive affixes to possessums
 ;; e.g., chesy, che-sy, "my mother"
 
-poss-lex-rule-super := infl-add-only-lex-rule &
+pposs-lex-rule-super := infl-add-only-lex-rule &
 [SYNSEM.LKEYS.ALTKEYREL #altkeyrel,
+DTR common-noun-lex & [ SYNSEM.LOCAL [ CONT.HOOK [  INDEX #index,  
+              LTOP #lbl  ] ,
+            CAT [ HEAD.POSS - ,
+            VAL.SPR <[OPT +]> ] ]],  
 C-CONT [ HOOK [INDEX #index, 
             LTOP #lbl  ],
   RELS <! arg12-ev-relation &
