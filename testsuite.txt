@@ -1095,13 +1095,13 @@ Source: author
 Vetted: f
 Judgment: g
 Phenomena: {poss, wo}
-ahecha yvyra raka
-ahecha yvyra raka
-a-hecha yvyra raka
-A.1SG-see tree  branch
+ahecha yvyra rakape
+ahecha yvyra raka pe
+a-hecha yvyra raka=pe
+A.1SG-see tree  branch=ACC
 'I see tree branches'
 
-#Ex.100: Noun Noun Possessives. Wrong order of possessor
+#Ex.100: Noun Noun Possessives. Wrong order of possessor and case marking adposition
 Source: author
 Vetted: f
 Judgment: u
@@ -1140,9 +1140,9 @@ Vetted: f
 Judgment: u
 Phenomena: poss
 ahecha rogape mbo'ehára
-ahecha rogape mboHehaAra
-a-hecha roga pe mboHehaAra
-A.1SG-see house ACC professor.ANIM
+ahecha roga pe mboHehaAra
+a-hecha roga=pe mboHehaAra
+A.1SG-see house=ACC professor.ANIM
 *'I see the professor's house'
 
 #Ex.104: Affix-marked Possessive. Human Possessor. Inanimate Inalienable Possession. Subject Drop.
@@ -1156,7 +1156,7 @@ a-hunga che-po
 A.1SG-hurt 0.1SG-hand.INAM
 'I hurt my hands'
 
-#Ex.105: Inalianable possession requires a possessor
+#Ex.105: Inalianable possession cannot have a non-possessive determiner, requires a possessor.
 Source: author
 Vetted: f
 Judgment: u
@@ -1167,26 +1167,26 @@ a-hunga lo po
 A.1SG-hurt the.PL hand.INAM
 *'I hurt the hands'
 
-#Ex.106:  Unmarked Alienable Possession. Subject Drop.
+#Ex.106:  Nouns that are not designated as unalianable, do not require a possessor and can occur with determiners.
 Source: author
 Vetted: f
 Judgment: g
 Phenomena: poss
-ohecha ajaka
-ohecha ajaka
-o-hecha ajaka
-A.3-see basket.INAM
+ohecha la ajaka
+ohecha la ajaka
+o-hecha la ajaka
+A.3-see the.SG basket.INAM
 'I see the basket'
 
-#Ex.107: Affix-marked Possessive. Human Possessor. Inanimate Alienable Possession. Subject Drop.
+#Ex.107: Affix-marked Possessive. Alienable Possession. Subject Drop.
 Source: author
 Vetted: f
 Judgment: g
 Phenomena: poss
-ohecha cheajaka
-ohecha cheajaka
-o-hecha che-ajaka
-A.3-see O.1SG-basket.INAM
+ahecha cheajaka
+ahecha cheajaka
+a-hecha che-ajaka
+A.1SG-see O.1SG-basket.INAM
 'I see my basket'
 
 #Ex.108: Unmarked 'unpossessable' noun.
@@ -1200,27 +1200,27 @@ a-hendu yvytu hata
 A.1SG-hear wind.INAM strong
 'I hear the strong wind'
 
-#Ex.109: Ungrammatically marked 'unpossessable' noun.
+#Ex.109: Ungrammatically possessed 'unpossessable' noun.
 Source: author
 Vetted: f
 Judgment: u
 Phenomena: poss
-ahendu Chaco yvutu hata 
-ahendu Chaco yvutu hata 
-a-hendu Chaco yvutu hata
-A.1SG-hear Chaco wind.INAM strong
-'I hear the Chaco region's wind strong'
+ahendu avatityA yvutu hata 
+ahendu avatityA yvutu hata 
+a-hendu avatityA yvutu hata
+A.1SG-hear cornfield wind.INAM strong
+'I hear the cornfield's strong wind'
 
-#Ex.110: Inanimate nouns don't show up as pronouns
+#Ex.110: Ungrammatically possessed 'unpossessable' pronoun.
 Source: author
 Vetted: f
 Judgment: u
 Phenomena: pro-d
-ahecha chupe
-ahecha chupe
-a-hecha chupe
-A.1SG-see it.INAM
-*'I see it'
+ahecha vakaA chupe
+ahecha vakaA chupe
+a-hecha vakaA chupe
+A.1SG-see cow it
+*'I see the cow's it'
 
 #Ex.111: Portmanteau marker for 12PL
 Source: author
