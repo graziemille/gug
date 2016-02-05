@@ -1227,7 +1227,7 @@ Source: author
 Vetted: f
 Judgment: g
 Phenomena: {agr, pn, pro-d}
-pome'e᷉ chupe
+pome'e᷉  chupe
 pomeHeN chupe
 po-meHeN chupe
 12.PL-give 3SG.DAT
