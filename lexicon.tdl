@@ -163,6 +163,10 @@ hata := attributive-adj-lex &
   [ STEM < "hata" >,
     SYNSEM.LKEYS.KEYREL.PRED "_strong_a_rel" ].
 
+vai := attributive-adj-lex &
+  [ STEM < "vai" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_bad_a_rel" ].
+
 ;;; Case-marking adpositions
 
 acc%2C%20DAT-marker := case-marking-adp-lex &
