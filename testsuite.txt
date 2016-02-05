@@ -1883,7 +1883,7 @@ a-hecha tuicha vakaA
 A.1SG-see O.3-big cow.ANIM
 *'I see the big cow'
 
-#Ex.XX: Pronouns cannot be part of possessive constructions
+#Ex.171: Pronouns cannot be part of possessive constructions
 Source: author
 Vetted: f
 Judgment: 
@@ -1894,17 +1894,6 @@ a-hecha haHe yvyra
 A.1SG-see A.3.pron tree
 *'I see his tree'
 
-#Ex.171: Pronouns cannot be part of possessive constructions
-Source: author
-Vetted: f
-Judgment: u
-Phenomena: poss
-ahecha yvyra ha'e
-ahecha yvyra haHe
-a-hecha haHe yvyra
-A.1SG-see tree A.3.pron
-*'I see him with a tree'
-
 #Ex.172: Pronouns cannot be part of possessive constructions
 Source: author
 Vetted: f
@@ -1912,7 +1901,7 @@ Judgment: u
 Phenomena: poss
 ahecha yvyra ha'e
 ahecha yvyra haHe
-a-hecha haHe yvyra
+a-hecha yvyra haHe
 A.1SG-see tree A.3.pron
 *'I see him with a tree'
 
