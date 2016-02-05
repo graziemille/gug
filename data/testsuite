@@ -253,7 +253,7 @@ juHi o-hecha vakaA=pe
 frog.ANIM.NOM O,3-see cow.ANIM=ACC
 'The frogs sees the cows'
 
-#Ex.23: Transitive verb should agree with 3per subject and not 3per object.
+#Ex.23: Transitive verb should agree with 3per subject and not 3per object
 Source: author
 Vetted: f
 Judgment: u
@@ -617,7 +617,7 @@ o-guata juHi lo
 A.3-walk frog.ANIM.NOM the.PL 
 *'Frogs the walk'
 
-#Ex.56:  Determiner failing to combing with a pronoun. 
+#Ex.56:  Pronouns should not take determiners. 
 Source: author
 Vetted: f
 Judgment: u
@@ -802,7 +802,7 @@ hecha vakápe
 hecha vakaA pe
 hecha vakaA=pe
 see cow.ANIM=ACC
-*'I see the cow'
+*'see the cow'
 
 #Ex.73: Transitive verb with 3PER subject, correctly agrees with 1SG object.  Object drop.
 Source: author
@@ -1095,55 +1095,55 @@ Source: author
 Vetted: f
 Judgment: g
 Phenomena: {poss, wo}
-yvyra raka
-yvyra raka
-yvyra raka
-tree  branch
-'Tree branches'
+ahecha yvyra rakape
+ahecha yvyra raka pe
+a-hecha yvyra raka=pe
+A.1SG-see tree  branch=ACC
+'I see tree branches'
 
-#Ex.100: Noun Noun Possessives. Wrong order of possessor and possessee
+#Ex.100: Noun Noun Possessives. Wrong order of possessor and case marking adposition
 Source: author
 Vetted: f
 Judgment: u
 Phenomena: poss
-raka yvyra
-raka yvyra
-raka yvyra
-brach tree
-*'Tree branches'
+ahecha rakape yvyra
+ahecha raka pe yvyra
+a-hecha raka=pe yvyra
+A.1G-see branch=ACC tree
+*'I see tree branches'
 
 #Ex.101: Noun Noun Possessives. Human Possessor. Inanimate Alienable Possession.
 Source: author
 Vetted: f
 Judgment: g
 Phenomena: {poss, wo}
-mbo'ehára roga
-mboHehaAra roga
-mboHehaAra roga
-professor   house
-'The professor's house'
+ahecha mbo'ehára roga
+ahecha mboHehaAra roga
+a-hecha mboHehaAra roga
+A.1SG-see professor   house
+'I see the professor's house'
 
 #Ex.102: Affix-marked Possessives. 
 Source: author
 Vetted: f
 Judgment: g
 Phenomena: poss
-iroga
-iroga
-i-roga
-O.3-roga
-'Her house'
+ahecha iroga
+ahecha iroga
+a-hecha i-roga
+A.1SG-see O.3-roga
+'I see her house'
 
-#Ex.103: Noun Noun Possessives. Wrong order of possessor and possessee
+#Ex.103: Noun Noun Possessives. wrong order of possessor
 Source: author
 Vetted: f
 Judgment: u
 Phenomena: poss
-roga mbo'ehára
-roga mboHehaAra
-roga mboHehaAra
-house professor.ANIM
-*'The professor's house'
+ahecha rogape mbo'ehára
+ahecha roga pe mboHehaAra
+a-hecha roga=pe mboHehaAra
+A.1SG-see house=ACC professor.ANIM
+*'I see the professor's house'
 
 #Ex.104: Affix-marked Possessive. Human Possessor. Inanimate Inalienable Possession. Subject Drop.
 Source: author
@@ -1156,7 +1156,7 @@ a-hunga che-po
 A.1SG-hurt 0.1SG-hand.INAM
 'I hurt my hands'
 
-#Ex.105: Inalianable possession requires a possessor
+#Ex.105: Inalianable possession cannot have a non-possessive determiner, requires a possessor.
 Source: author
 Vetted: f
 Judgment: u
@@ -1167,26 +1167,26 @@ a-hunga lo po
 A.1SG-hurt the.PL hand.INAM
 *'I hurt the hands'
 
-#Ex.106:  Unmarked Alienable Possession. Subject Drop.
+#Ex.106:  Nouns that are not designated as unalianable, do not require a possessor and can occur with determiners.
 Source: author
 Vetted: f
 Judgment: g
 Phenomena: poss
-ohecha ajaka
-ohecha ajaka
-o-hecha ajaka
-A.3-see basket.INAM
+ohecha la ajaka
+ohecha la ajaka
+o-hecha la ajaka
+A.3-see the.SG basket.INAM
 'I see the basket'
 
-#Ex.107: Affix-marked Possessive. Human Possessor. Inanimate Alienable Possession. Subject Drop.
+#Ex.107: Affix-marked Possessive. Alienable Possession. Subject Drop.
 Source: author
 Vetted: f
 Judgment: g
 Phenomena: poss
-ohecha cheajaka
-ohecha cheajaka
-o-hecha che-ajaka
-A.3-see O.1SG-basket.INAM
+ahecha cheajaka
+ahecha cheajaka
+a-hecha che-ajaka
+A.1SG-see O.1SG-basket.INAM
 'I see my basket'
 
 #Ex.108: Unmarked 'unpossessable' noun.
@@ -1200,34 +1200,34 @@ a-hendu yvytu hata
 A.1SG-hear wind.INAM strong
 'I hear the strong wind'
 
-#Ex.109: Ungrammatically marked 'unpossessable' noun.
+#Ex.109: Ungrammatically possessed 'unpossessable' noun.
 Source: author
 Vetted: f
 Judgment: u
 Phenomena: poss
-ahendu Chaco yvutu hata 
-ahendu Chaco yvutu hata 
-a-hendu Chaco yvutu hata
-A.1SG-hear Chaco wind.INAM strong
-'I hear the Chaco region's wind strong'
+ahendu avatity´ yvytu hata 
+ahendu avatityA yvuytu hata 
+a-hendu avatityA yvytu hata
+A.1SG-hear cornfield wind.INAM strong
+'I hear the cornfield's strong wind'
 
-#Ex.110: Inanimate nouns don't show up as pronouns
+#Ex.110: Ungrammatically possessed 'unpossessable' pronoun.
 Source: author
 Vetted: f
 Judgment: u
 Phenomena: pro-d
-ahecha chupe
-ahecha chupe
-a-hecha chupe
-A.1SG-see it.INAM
-*'I see it'
+ahecha vaká chupe
+ahecha vakaA chupe
+a-hecha vakaA chupe
+A.1SG-see cow it
+*'I see the cow's it'
 
 #Ex.111: Portmanteau marker for 12PL
 Source: author
 Vetted: f
 Judgment: g
 Phenomena: {agr, pn, pro-d}
-pome'e᷉ chupe
+pome'e᷉  chupe
 pomeHeN chupe
 po-meHeN chupe
 12.PL-give 3SG.DAT
@@ -1253,7 +1253,7 @@ pee˜ pohecha
 peeN pohecha
 peeN po-hecha
 You.PL.NOM 12.PL-see
-*'You see me'
+*'You see me
 
 #Ex.114: Transitive verb correctly agrees with 1SG object rather that 2PL subject.  Object drop. 
 Source: author
@@ -1276,8 +1276,6 @@ peeN pehecha cheve
 peeN pe-hecha me.ACC
 You.PL A.2PL-see me.ACC 
 *'You see me'
-
-
 
 #Ex.116: Yes-No question with question marker in wrong position, should be second position.
 Source: c
@@ -1422,7 +1420,7 @@ re-japo mbaHeA
 A.2SG-do what
 *'What do you do?'
 
-#Ex.129: Wh question for 'who' in subject position, with -pa particle in wrong position.
+#Ex.129: Wh question for 'who,’ with -pa particle in wrong position.
 Source: d
 Vetted: f
 Judgment: u
@@ -1433,7 +1431,7 @@ o-ju maAva-pa
 A.3-come who-Q 
 *'Who is coming?'
 
-#Ex.130: Wh question for 'who' in subject position, with -pa particle
+#Ex.130: Wh question for 'who,’ with -pa particle
 Source: d
 Vetted: f
 Judgment: g
@@ -1471,10 +1469,10 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: c
-ahecha vakaApe ituichape
-ahecha vakaA pe ituicha pe
-a-hecha vakaA=pe i-tuicha=pe
-A.1SG-see cow.ANIM=ACC O.3-big=ACC 
+ahecha vakaA ituichape
+ahecha vakaA ituicha pe
+a-hecha vakaA i-tuicha=pe
+A.1SG-see cow.ANIM O.3-big=ACC 
 *'I see the big cow'
 
 #Ex.134: Use of adjective as an attribute of the subject of verb predicate
@@ -1504,24 +1502,24 @@ Source: author
 Vetted: f
 Judgment: g
 Phenomena: {adj, wo}
-jagua ñaro oguata
-jagua nNaro oguata
-jagua nNaro o-guata
-dog.ANIM angry.NOM A.3-walk
-'The angry dog walks'
+jagua ñarope ahendu
+jagua nNaro pe ahendu
+jagua nNaro=pe a-hendu
+dog.ANIM angry=ACC A.1SG-hear
+'I hear the angry dog'
 
 #Ex.137: Attributive adjective should not have predicate markings 
 Source: author
 Vetted: f
 Judgment: u
 Phenomena: adj
-jagua iñaro oguata
-jagua inNaro oguata
-jagua i-nNaro o-guata
-dog.ANIM O.3-angry.NOM A.3-walk
-*'The angry dog walks'
+jagua iñarope ahendu
+jagua inNaro pe ahendu
+jagua i-nNaro=pe a-hendu
+dog.ANIM O.3-angry=ACC A.1SG-hear
+*'I hear the angry dog'
 
-#Ex.138: Use of adjective as a predicate (copula)
+#Ex.138: Use of adjective as a predicate
 Source: b
 Vetted: f
 Judgment: g
@@ -1562,7 +1560,7 @@ Phenomena: cop
 ore oreaguĩ óga
 ore oreaguiN roAga
 ore ore-aguiN roAga
-A.1PL.EXCL.PRON O.1PL.EXCL-near house
+1PL.EXCL.PRON.NOM O.1PL.EXCL-near house
 'We are near the house'
 
 #Ex.142: predicative use of noun
@@ -1639,19 +1637,19 @@ Phenomena: {emb-d, wo}
 aikuua ouha
 aikuua ojuha
 a-ikuua o-ju-ha
-A.1SG-know A.3-go-COMP
+A.1SG-know A.3-come-COMP
 'I know he is coming'
 
-#Ex.149: Missing marker for embedded clause 
+#Ex.149: Wrong marker for embedding of interrogative clause
 Source: e
 Vetted: f
 Judgment: u
-Phenomena: emb-d
-aikuua ou
-aikuua oju
-a-ikuua o-ju
-A.1SG-know A.3-go
-*'I know he is coming'
+Phenomena: emb-q
+aporandu ouha
+aporandu ojuha
+a-porandu o-ju-ha
+A.1SG-ask A.3-go-COMP
+*'I ask whether he is coming'
 
 #Ex.150: Wrong marker for embedding of a declarative clause
 Source: e
@@ -1661,7 +1659,7 @@ Phenomena: emb-d
 aikuua oupa
 aikuua ojupa
 a-ikuua o-ju-pa
-A.1SG-know A.3-go-Q
+A.1SG-know A.3-come-Q
 *'I know he is coming'
 
 #Ex.151: Use embedded clause for interrogative sentence
@@ -1672,19 +1670,19 @@ Phenomena: {emb-q, wo}
 aporandu oupa
 aporandu ojupa
 a-porandu o-ju-pa
-A.1SG-know A.3-go-Q
+A.1SG-ask A.3-go-Q
 'I ask whether he is coming'
 
-#Ex.152: Wrong marker for embedding of interrogative clause
-Source: e
+#Ex.152: Adverb should come directly after the verb predicate with no intervening words.
+Source: b
 Vetted: f
 Judgment: u
-Phenomena: emb-q
-aporandu ouha
-aporandu ojuha
-a-porandu o-ju-ha
-A.1SG-know A.3-go-COMP
-*'I ask whether he is coming'
+Phenomena: adv
+jagua osuHu vakaApe vai
+jagua osuHu vakaA pe vai
+jagua o-suHu vakaA=pe vai
+dog A.3-bite cow.ANIM=ACC bad
+*'the dog bit the cow in an ugly way' 
 
 #Ex.153: Use of manner adverb after verb predicate
 Source: a (#b.30)
@@ -1716,7 +1714,7 @@ Phenomena: {adv, wo}
 ha'e ojatapy tuicha
 haHe ojatapy tuicha
 haHe o-jatapy tuicha
-3SG.pron A.3-make.fire big
+3SG.PRON.NOM A.3-make.fire big
 'She made a fire in a big way' 
 
 #Ex.156: Adverbs should not have predicate markings
@@ -1727,7 +1725,7 @@ Phenomena: adv
 ha'e ojatapy ituicha
 haHe ojatapy ituicha
 haHe o-jatapy i-tuicha
-3SG.pron A.3-make.fire O.3-big
+3SG.PRON.NOM A.3-make.fire O.3-big
 *'She made a fire in a big way' 
 
 #Ex.157: Use of manner adverb after verb predicate
@@ -1779,11 +1777,11 @@ Source: b
 Vetted: f
 Judgment: u
 Phenomena: crd
-aguara jagua okañy
-aguara jagua okanNy
-aguara jagua o-kanNy
-fox.ANIM.NOM dog.ANIM.NOM A.3-hide
-*'the fox and the dog hid'
+aguarape jaguape ahecha
+aguara pe jagua pe ahecha
+aguara=pe jagua=pe a-hecha
+fox.ANIM=ACC dog.ANIM=ACC A.1SG-see
+*'I see the fox and the dog'
 
 
 #Ex.162: Use of 'and' coordination with nominal constituents
@@ -1813,7 +1811,7 @@ Source: b
 Vetted: f
 Judgment: g
 Phenomena: {cop, adp}
-Oime kotýpe jaguandi
+Oime kotýpe jaguandi
 oime kotype jaguandi
 o-ime koty=pe jagua=ndi
 3.ACT-be room=in dog=with
@@ -1824,7 +1822,7 @@ Source: author
 Vetted: f
 Judgment: g
 Phenomena: adp
-Ojeroky kotýpe jaguandi
+Ojeroky kotýpe jaguandi
 ojeroky kotype jaguandi
 o-jeroky koty=pe jagua=ndi
 3.ACT-dance room=in dog=with
@@ -1849,7 +1847,7 @@ Phenomena: cop
 ore oreaguĩ nderógagui
 ore oreaguiN nderoAgagui
 ore ore-aguiN nde-roAga=gui
-A.1PL.EXCL.PRON O.1PL.EXCL-near O.2SG-house=from
+1PL.EXCL.PRON.NOM O.1PL.EXCL-near O.2SG-house=from
 'We are near your house'
 
 #Ex.168:  Shows ambiguity due to lack of fixed word order.
@@ -1862,3 +1860,168 @@ ahojaA ojahoHi ajaka
 ahojaA o-jahoHi ajaka
 blanket A.3-cover basket
 'The blanket cover the basket / the basket covers the blanket'
+
+#Ex.169: Use of adjective as an attribute of the object of verb predicate
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {adj, wo}
+ahecha vakaA tuicha
+ahecha vakaA tuicha
+a-hecha vakaA tuicha
+A.1SG-see cow.ANIM big
+'I see the big cow'
+
+#Ex.170: Attributive adjetive in the wrong order
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: adj
+tuicha vakaA ahecha  
+tuicha vakaA ahecha 
+tuicha vakaA a-hecha 
+big cow.ANIM A.1SG-see 
+*'I see the big cow'
+
+#Ex.171: Pronouns cannot be part of possessive constructions
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: poss
+ojeroky ha'e jagua
+ojeroky haHe jagua
+o-jeroky haHe jagua
+A.3-dance 3SG.PRON.NOM dog
+*'His dog dances'
+
+#Ex.172: Pronouns cannot be part of possessive constructions
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: poss
+ojeroky jagua ha'e
+ojeroky  jagua haHe
+o-jeroky jagua haHe
+A.1SG-see dog 3SG.PRON.NOM
+*'The he that belongs to the dog dances'
+
+#Ex.173: Transitive verb two personal pronoun arguments.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {agr, pn}
+che ahecha chupe
+che ahecha chupe
+che a-hecha chupe
+I.NOM A.1SG-see 3.PRON.ACC
+'I see him'
+
+#Ex.174: Dropped argument on a transitive verb in 2nd person subject.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {agr}
+rehecha
+rehecha
+re-hecha
+A.2SG-see
+'I don't see (it/him/her/them)'
+
+#Ex.175: Dropped argument on a transitive verb marked with a portmanteau marker.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {agr}
+pohecha
+pohecha
+po-hecha
+A.1SG_2SG-see
+'I see you(pl)'
+
+#Ex.176: Transitive verb marked with a marker and full pronoun arguments.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {agr}
+che ahecha ndeve
+che ahecha ndeve
+che a-heach ndeve
+1SG.PRON.NOM A.1SG_2SG-see 2PL.PRON.ACC
+'I see you(pl)'
+
+#Ex.177: Wrong use of adjective with a pronouns 
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: adj
+ha'e reia'e oguata
+haHe reiaHe oguata
+haHe reiaHe o-guata
+3SG.PRON.NOM happy.NOM A.3-walk
+*'The happy he walks'
+
+#Ex.178: Possessive Affixes
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: poss
+ojeroky chejagua
+ojeroky chejagua
+o-jeroky che-jagua
+A.3-dance 1SG.POSS-dog
+'My dog dances'
+
+#Ex.179: Possessive Affixes
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: poss
+ojeroky ndejagua
+ojeroky ndejagua
+o-jeroky nde-jagua
+A.3-dance 2SG.POSS-dog
+'Your(sg) dog dances'
+
+#Ex.180: Possessive Affixes
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: poss
+ojeroky ijagua
+ojeroky ijagua
+o-jeroky i-jagua
+A.3-dance 3.POSS-dog
+'His dog dances'
+
+#Ex.181: Possessive Affixes
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: poss
+ojeroky pendejagua
+ojeroky pendejagua
+o-jeroky pende-jagua
+A.3-dance 2PL.POSS-dog
+'Your(pl) dog dances'
+
+#Ex.182: Possessive Affixes
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: poss
+ojeroky ñandejagua
+ojeroky nNandejagua
+o-jeroky nNande-jagua
+A.3-dance 1PL.INCL.POSS-dog
+'Our(incl) dog dances'
+
+#Ex.183: Possessive Affixes
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: poss
+ojeroky orejagua
+ojeroky orejagua
+o-jeroky ore-jagua
+A.3-dance 1PL.EXCL.POSS-dog
+'Our(excl) dog dances'

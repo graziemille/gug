@@ -69,7 +69,7 @@
 69@author@@@1@agr,pn,pro-d@romeHeN chupe@@@@1@2@12.SG-give 3SG.DAT'I gave you to him'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 70@author@@@1@pro-d,agr,pn,c@remeHeN cheve mboHehaAra pe@@@@1@4@A.2SG-give 1SG.DAT professor.ANIM=ACC'You gave the professor to me'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 71@author@@@1@pro-d,agr,pn@ohecha vakaA pe@@@@1@3@A.3-see cow.ANIM=ACC'He sees the cow'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-72@author@@@1@agr@hecha vakaA pe@@@@0@3@see cow.ANIM=ACC*'I see the cow'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+72@author@@@1@agr@hecha vakaA pe@@@@0@3@see cow.ANIM=ACC*'see the cow'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 73@author@@@1@agr@chehecha vakaA@@@@1@2@O.1SG-see   cow.ANIM.NOM'The cow sees me'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 74@author@@@1@agr@ndehecha vakaA@@@@1@2@0.2SG-see cow.ANIM.NOM'The cow sees you'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 75@author@@@1@agr,pro-d@ahechauka mboHehaAra pe temimboHe pe@@@@1@5@A.3-see-CAUS mboHehaAra=ACC temimboHe=DAT'I showed the professor to the student'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
@@ -96,21 +96,21 @@
 96@author@@@1@neg@okyAmoHaNi@@@@0@1@A.3-rain-FUT.NEG*'It won't rain'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 97@author@@@1@neg@ndokyAtai@@@@0@1@NEG-A.3-rain-FUT-NEG*'It won't rain'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 98@author@@@1@neg@ndokyA@@@@0@1@NEG-A.3-rain*'It won't rain'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-99@author@@@1@poss,wo@yvyra raka@@@@1@2@tree  branch'Tree branches'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-100@author@@@1@poss@raka yvyra@@@@0@2@brach tree*'Tree branches'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-101@author@@@1@poss,wo@mboHehaAra roga@@@@1@2@professor   house'The professor's house'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-102@author@@@1@poss@iroga@@@@1@1@O.3-roga'Her house'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-103@author@@@1@poss@roga mboHehaAra@@@@0@2@house professor.ANIM*'The professor's house'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+99@author@@@1@poss,wo@ahecha yvyra raka pe@@@@1@4@A.1SG-see tree  branch=ACC'I see tree branches'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+100@author@@@1@poss@ahecha raka pe yvyra@@@@0@4@A.1G-see branch=ACC tree*'I see tree branches'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+101@author@@@1@poss,wo@ahecha mboHehaAra roga@@@@1@3@A.1SG-see professor   house'I see the professor's house'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+102@author@@@1@poss@ahecha iroga@@@@1@2@A.1SG-see O.3-roga'I see her house'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+103@author@@@1@poss@ahecha roga pe mboHehaAra@@@@0@4@A.1SG-see house=ACC professor.ANIM*'I see the professor's house'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 104@author@@@1@poss@ahunga chepo@@@@1@2@A.1SG-hurt 0.1SG-hand.INAM'I hurt my hands'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 105@author@@@1@poss@ahunga lo po@@@@0@3@A.1SG-hurt the.PL hand.INAM*'I hurt the hands'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-106@author@@@1@poss@ohecha ajaka@@@@1@2@A.3-see basket.INAM'I see the basket'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-107@author@@@1@poss@ohecha cheajaka@@@@1@2@A.3-see O.1SG-basket.INAM'I see my basket'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+106@author@@@1@poss@ohecha la ajaka@@@@1@3@A.3-see the.SG basket.INAM'I see the basket'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+107@author@@@1@poss@ahecha cheajaka@@@@1@2@A.1SG-see O.1SG-basket.INAM'I see my basket'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 108@author@@@1@poss@ahendu yvytu hata@@@@1@3@A.1SG-hear wind.INAM strong'I hear the strong wind'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-109@author@@@1@poss@ahendu Chaco yvutu hata@@@@0@4@A.1SG-hear Chaco wind.INAM strong'I hear the Chaco region's wind strong'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-110@author@@@1@pro-d@ahecha chupe@@@@0@2@A.1SG-see it.INAM*'I see it'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+109@author@@@1@poss@ahendu avatityA yvuytu hata@@@@0@4@A.1SG-hear cornfield wind.INAM strong'I hear the cornfield's strong wind'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+110@author@@@1@pro-d@ahecha vakaA chupe@@@@0@3@A.1SG-see cow it*'I see the cow's it'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 111@author@@@1@agr,pn,pro-d@pomeHeN chupe@@@@1@2@12.PL-give 3SG.DAT'I gave you to him' (meaning you plural)@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 112@author@@@1@agr@nde rohecha@@@@0@2@You.SG.NOM 12.SG-see*'You see me'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-113@author@@@1@agr@peeN pohecha@@@@0@2@You.PL.NOM 12.PL-see*'You see me'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+113@author@@@1@agr@peeN pohecha@@@@0@2@You.PL.NOM 12.PL-see*'You see me@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 114@author@@@1@agr,pro-d@peeN chehecha@@@@1@2@You.PL.NOM O.1SG-see'You see me'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 115@author@@@1@agr@peeN pehecha cheve@@@@0@3@You.PL A.2PL-see me.ACC*'You see me'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 116@c@@@1@q@ohecha nNakyrapa vakaA pe@@@@0@4@O.3-see cricket.ANIM.NOM-Q cow.ANIM=ACC*'Did the cricket see the cow?@lisa tittle caballero, thor wicke monteverde@january 14, 2016
@@ -130,39 +130,54 @@
 130@d@@@1@wh,wo@maAvapa oju@@@@1@2@who-Q A.3-come'Who is coming?'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 131@author@@@1@adj,wo@ahecha vakaA tuicha pe@@@@1@4@A.1SG-see cow.ANIM big=ACC'I see the big cow'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 132@author@@@1@c@ahecha vakaA pe tuicha@@@@0@4@A.1SG-see cow.ANIM=ACC big*'I see the big cow'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-133@author@@@1@c@ahecha vakaA pe ituicha pe@@@@0@5@A.1SG-see cow.ANIM=ACC O.3-big=ACC*'I see the big cow'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+133@author@@@1@c@ahecha vakaA ituicha pe@@@@0@4@A.1SG-see cow.ANIM O.3-big=ACC*'I see the big cow'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 134@author@@@1@adj,wo@mitaN reiaHe oguata@@@@1@3@child happy.NOM A.3-walk'The happy child walks'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 135@author@@@1@adj@reiaHe mitaN oguata@@@@0@3@happy child.ANIM.HUM.NOM A.3-walk*'The happy child walks'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-136@author@@@1@adj,wo@jagua nNaro oguata@@@@1@3@dog.ANIM angry.NOM A.3-walk'The angry dog walks'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-137@author@@@1@adj@jagua inNaro oguata@@@@0@3@dog.ANIM O.3-angry.NOM A.3-walk*'The angry dog walks'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+136@author@@@1@adj,wo@jagua nNaro pe ahendu@@@@1@4@dog.ANIM angry=ACC A.1SG-hear'I hear the angry dog'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+137@author@@@1@adj@jagua inNaro pe ahendu@@@@0@4@dog.ANIM O.3-angry=ACC A.1SG-hear*'I hear the angry dog'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 138@b@@@1@cop@jagua inNaro@@@@1@2@dog.ANIM O.3-angry'The dog is angry'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 139@b@@@1@cop@chesy@@@@1@1@O.1SG-mother.ANIM'I am a mother'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 140@b@@@1@cop@chesy oguata@@@@1@2@O.1SG-mother.ANIM A.3-walk'My mother walks'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-141@author@@@1@cop@ore oreaguiN roAga@@@@1@3@A.1PL.EXCL.PRON O.1PL.EXCL-near house'We are near the house'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+141@author@@@1@cop@ore oreaguiN roAga@@@@1@3@1PL.EXCL.PRON.NOM O.1PL.EXCL-near house'We are near the house'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 142@f@@@1@cop@hiHaArama@@@@1@1@O.3-day-PERF'It was his day'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 143@b@@@1@crd,neg,wo@ndikiririNi ha ndopytai@@@@1@3@NEG-O.3-be.quiet-NEG and NEG-A.3-leave-NEG'He is not quiet and does not leave'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 144@b@@@1@crd@ndikiririNi ndopytai ha@@@@0@3@NEG-O.3-be.quiet-NEG NEG-A.3-leave-NEG and*'He is not quiet and does not leave'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 145@b@@@1@crd@ha ndikiririNi ndopytai@@@@0@3@and NEG-O.3-be.quiet-NEG NEG-A.3-leave-NEG*'He is not quiet and does not leave'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 146@b@@@1@crd,wo@aguara opo ha okanNy@@@@1@4@fox.ANIM.NOM A.3-jump and A.3-hide'the fox jumped and hid'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 147@b@@@1@crd,wo@aguara ha opo okanNy@@@@0@4@fox.ANIM.NOM and A.3-jump A.3-hide*'the fox jumped and hid'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-148@e@@@1@emb-d,wo@aikuua ojuha@@@@1@2@A.1SG-know A.3-go-COMP'I know he is coming'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-149@e@@@1@emb-d@aikuua oju@@@@0@2@A.1SG-know A.3-go*'I know he is coming'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-150@e@@@1@emb-d@aikuua ojupa@@@@0@2@A.1SG-know A.3-go-Q*'I know he is coming'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-151@e@@@1@emb-q,wo@aporandu ojupa@@@@1@2@A.1SG-know A.3-go-Q'I ask whether he is coming'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-152@e@@@1@emb-q@aporandu ojuha@@@@0@2@A.1SG-know A.3-go-COMP*'I ask whether he is coming'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+148@e@@@1@emb-d,wo@aikuua ojuha@@@@1@2@A.1SG-know A.3-come-COMP'I know he is coming'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+149@e@@@1@emb-q@aporandu ojuha@@@@0@2@A.1SG-ask A.3-go-COMP*'I ask whether he is coming'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+150@e@@@1@emb-d@aikuua ojupa@@@@0@2@A.1SG-know A.3-come-Q*'I know he is coming'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+151@e@@@1@emb-q,wo@aporandu ojupa@@@@1@2@A.1SG-ask A.3-go-Q'I ask whether he is coming'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+152@b@@@1@adv@jagua osuHu vakaA pe vai@@@@0@5@dog A.3-bite cow.ANIM=ACC bad*'the dog bit the cow in an ugly way'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 153@a (#b.30)@@@1@adv,wo@haseN vai la nNakyra@@@@1@4@O.3-cry bad the cricket.ANIM.NOM'the cricket cried in an ugly way'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 154@b@@@1@adv@vai haseN la nNakyra@@@@0@4@bad O.3-cry the cricket.ANIM.NOM*'the cricket cried in an ugly way'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-155@a (#a.8)@@@1@adv,wo@haHe ojatapy tuicha@@@@1@3@3SG.pron A.3-make.fire big'She made a fire in a big way'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-156@a (#a.8)@@@1@adv@haHe ojatapy ituicha@@@@0@3@3SG.pron A.3-make.fire O.3-big*'She made a fire in a big way'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+155@a (#a.8)@@@1@adv,wo@haHe ojatapy tuicha@@@@1@3@3SG.PRON.NOM A.3-make.fire big'She made a fire in a big way'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+156@a (#a.8)@@@1@adv@haHe ojatapy ituicha@@@@0@3@3SG.PRON.NOM A.3-make.fire O.3-big*'She made a fire in a big way'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 157@author@@@1@adv,wo@aguata pyaHe@@@@1@2@1SG-walk quick'I walk quickly'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 158@author@@@1@adv@pyaHe aguata@@@@0@2@quickly 1SG-walk*'I walk quickly'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 159@b@@@1@crd,neg,wo@ndikiririNi ndopytai@@@@1@2@NEG-O.3-be.quiet-NEG NEG-A.3-leave-NEG'He is not quiet and does not leave'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 160@b@@@1@crd,wo@aguara opo okanNy@@@@1@3@fox.ANIM.NOM A.3-jump A.3-hide'the fox jumped and the fox hid'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-161@b@@@1@crd@aguara jagua okanNy@@@@0@3@fox.ANIM.NOM dog.ANIM.NOM A.3-hide*'the fox and the dog hid'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+161@b@@@1@crd@aguara pe jagua pe ahecha@@@@0@5@fox.ANIM=ACC dog.ANIM=ACC A.1SG-see*'I see the fox and the dog'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 162@author@@@1@crd,wo@aguara ha jagua okanNy@@@@1@4@fox.ANIM.NOM and dog.ANIM.NOM A.3-hide'the fox and the dog hid'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 163@author@@@1@crd,wo@ha aguara jagua okanNy@@@@0@4@and fox.ANIM.NOM dog.ANIM.NOM A.3-hide*'the fox and the dog hid'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 164@b@@@1@cop,adp@oime kotype jaguandi@@@@1@3@3.ACT-be room=in dog=with'He/She is in the room with the dog'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 165@author@@@1@adp@ojeroky kotype jaguandi@@@@1@3@3.ACT-dance room=in dog=with'He/She dances in the room with the dog'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 166@author@@@1@adp@oju mombyryA gui@@@@1@3@3.ACT-come far=from'I come from far(a far place)'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-167@f@@@1@cop@ore oreaguiN nderoAgagui@@@@1@3@A.1PL.EXCL.PRON O.1PL.EXCL-near O.2SG-house=from'We are near your house'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+167@f@@@1@cop@ore oreaguiN nderoAgagui@@@@1@3@1PL.EXCL.PRON.NOM O.1PL.EXCL-near O.2SG-house=from'We are near your house'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 168@author@@@1@wo@ahojaA ojahoHi ajaka@@@@1@3@blanket A.3-cover basket'The blanket cover the basket / the basket covers the blanket'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+169@author@@@1@adj,wo@ahecha vakaA tuicha@@@@1@3@A.1SG-see cow.ANIM big'I see the big cow'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+170@author@@@1@adj@tuicha vakaA ahecha@@@@0@3@big cow.ANIM A.1SG-see*'I see the big cow'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+171@author@@@1@poss@ojeroky haHe jagua@@@@0@3@A.3-dance 3SG.PRON.NOM dog*'His dog dances'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+172@author@@@1@poss@ojeroky  jagua haHe@@@@0@3@A.1SG-see dog 3SG.PRON.NOM*'The he that belongs to the dog dances'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+173@author@@@1@agr,pn@che ahecha chupe@@@@1@3@I.NOM A.1SG-see 3.PRON.ACC'I see him'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+174@author@@@1@agr@rehecha@@@@1@1@A.2SG-see'I don't see (it/him/her/them)'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+175@author@@@1@agr@pohecha@@@@1@1@A.1SG_2SG-see'I see you(pl)'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+176@author@@@1@agr@che ahecha ndeve@@@@1@3@1SG.PRON.NOM A.1SG_2SG-see 2PL.PRON.ACC'I see you(pl)'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+177@author@@@1@adj@haHe reiaHe oguata@@@@0@3@3SG.PRON.NOM happy.NOM A.3-walk*'The happy he walks'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+178@author@@@1@poss@ojeroky chejagua@@@@1@2@A.3-dance 1SG.POSS-dog'My dog dances'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+179@author@@@1@poss@ojeroky ndejagua@@@@1@2@A.3-dance 2SG.POSS-dog'Your(sg) dog dances'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+180@author@@@1@poss@ojeroky ijagua@@@@1@2@A.3-dance 3.POSS-dog'His dog dances'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+181@author@@@1@poss@ojeroky pendejagua@@@@1@2@A.3-dance 2PL.POSS-dog'Your(pl) dog dances'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+182@author@@@1@poss@ojeroky nNandejagua@@@@1@2@A.3-dance 1PL.INCL.POSS-dog'Our(incl) dog dances'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+183@author@@@1@poss@ojeroky orejagua@@@@1@2@A.3-dance 1PL.EXCL.POSS-dog'Our(excl) dog dances'@lisa tittle caballero, thor wicke monteverde@january 14, 2016

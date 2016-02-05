@@ -1504,9 +1504,9 @@ Judgment: g
 Phenomena: {adj, wo}
 jagua ñarope ahendu
 jagua nNaro pe ahendu
-jagua nNaro=pe ahendu
+jagua nNaro=pe a-hendu
 dog.ANIM angry=ACC A.1SG-hear
-'The angry dog walks'
+'I hear the angry dog'
 
 #Ex.137: Attributive adjective should not have predicate markings 
 Source: author
@@ -1515,7 +1515,7 @@ Judgment: u
 Phenomena: adj
 jagua iñarope ahendu
 jagua inNaro pe ahendu
-jagua i-nNaro=pe ahendu
+jagua i-nNaro=pe a-hendu
 dog.ANIM O.3-angry=ACC A.1SG-hear
 *'I hear the angry dog'
 
@@ -1681,7 +1681,7 @@ Phenomena: adv
 jagua osuHu vakaApe vai
 jagua osuHu vakaA pe vai
 jagua o-suHu vakaA=pe vai
-dog A.3-bite the cow.ANIM=ACC bad
+dog A.3-bite cow.ANIM=ACC bad
 *'the dog bit the cow in an ugly way' 
 
 #Ex.153: Use of manner adverb after verb predicate
@@ -1778,10 +1778,10 @@ Vetted: f
 Judgment: u
 Phenomena: crd
 aguarape jaguape ahecha
-aguara=pe jagua=pe ahecha
-aguara=ACC jagua=ACC a-hecha
-fox.ANIM.NOM dog.ANIM.NOM A.1SG-see
-*'the fox and the dog hid'
+aguara pe jagua pe ahecha
+aguara=pe jagua=pe a-hecha
+fox.ANIM=ACC dog.ANIM=ACC A.1SG-see
+*'I see the fox and the dog'
 
 
 #Ex.162: Use of 'and' coordination with nominal constituents
@@ -2014,7 +2014,6 @@ ojeroky nNandejagua
 o-jeroky nNande-jagua
 A.3-dance 1PL.INCL.POSS-dog
 'Our(incl) dog dances'
-
 
 #Ex.183: Possessive Affixes
 Source: author
