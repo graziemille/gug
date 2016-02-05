@@ -175,8 +175,9 @@ com-inam-noun-lex := common-noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.GEND inam ].
 
 pron-noun-lex := no-spr-noun-lex &
-      [SYNSEM.LOCAL [CAT.HEAD.POSS -,
-                     CONT.HOOK.INDEX [COG-ST activ-or-more, SPECI +]]].
+      [SYNSEM [ MODIFIED hasmod,
+                LOCAL [CAT.HEAD.POSS -,
+                     CONT.HOOK.INDEX [COG-ST activ-or-more, SPECI +]]]].
 
 1sg-pron-nom-noun-lex := pron-nom-noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1SG ].
