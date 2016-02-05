@@ -6,7 +6,7 @@ head-adj-int := head-adj-int-phrase.
 
 decl-head-opt-subj := decl-head-opt-subj-phrase.
 
-basic-head-opt-comp := basic-head-opt-comp-phrase.
+basic-head-opt-comp := gug-head-opt-comp-phrase.
 
 head-comp := head-comp-phrase.
 

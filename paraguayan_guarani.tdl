@@ -620,6 +620,13 @@ pros-asp-lex-rule := prospective-aspect-lex-rule-super &
 ;;; Phrasal Types
 ;;;;;;;;;;;;;;;;;;;
 
+;;Changing the lightness value of basic-head-opt-comp so that we don't
+;;get spurious ambiguity when modifiers attach to transitive verbs with
+;;dropped subjects
+
+gug-head-opt-comp-phrase := basic-head-opt-comp-phrase &
+  [ SYNSEM.LIGHT -].
+  
 ;Constraint on MC used to be part of matrix.tdl
 ;;it applies to all wo implementations, except for v2
 
