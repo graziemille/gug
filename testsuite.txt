@@ -1420,7 +1420,7 @@ re-japo mbaHeA
 A.2SG-do what
 *'What do you do?'
 
-#Ex.129: Wh question for 'who' in subject position, with -pa particle in wrong position.
+#Ex.129: Wh question for 'who,’ with -pa particle in wrong position.
 Source: d
 Vetted: f
 Judgment: u
@@ -1431,7 +1431,7 @@ o-ju maAva-pa
 A.3-come who-Q 
 *'Who is coming?'
 
-#Ex.130: Wh question for 'who' in subject position, with -pa particle
+#Ex.130: Wh question for 'who,’ with -pa particle
 Source: d
 Vetted: f
 Judgment: g
@@ -1519,7 +1519,7 @@ jagua i-nNaro=pe ahendu
 dog.ANIM O.3-angry=ACC A.1SG-hear
 *'I hear the angry dog'
 
-#Ex.138: Use of adjective as a predicate (copula)
+#Ex.138: Use of adjective as a predicate
 Source: b
 Vetted: f
 Judgment: g
@@ -1648,7 +1648,7 @@ Phenomena: emb-q
 aporandu ouha
 aporandu ojuha
 a-porandu o-ju-ha
-A.1SG-know A.3-go-COMP
+A.1SG-ask A.3-go-COMP
 *'I ask whether he is coming'
 
 #Ex.150: Wrong marker for embedding of a declarative clause
@@ -1670,7 +1670,7 @@ Phenomena: {emb-q, wo}
 aporandu oupa
 aporandu ojupa
 a-porandu o-ju-pa
-A.1SG-know A.3-go-Q
+A.1SG-ask A.3-go-Q
 'I ask whether he is coming'
 
 #Ex.152: Adverb should come directly after the verb predicate with no intervening words.
