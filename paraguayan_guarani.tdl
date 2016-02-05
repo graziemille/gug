@@ -140,7 +140,7 @@ poss-or := poss-or-ee.
 poss-ee := poss-or-ee.
 
 non-poss-com-noun-inam-lex := com-inam-noun-lex & 
-        [SYNSEM.LOCAL.CAT.HEAD.POSS poss-ee].
+        [SYNSEM.LOCAL.CAT.HEAD.POSS poss-or].
 
 ;;;;;;;;;;;;;;;;;;;
 ;;; Lexical Types
