@@ -128,21 +128,25 @@ prospective := aspect.
 future-completive := future & completive.
 future-perfective := future & perfective.
 
+;;; POSS Feature to distinguish nouns can can have a possessor or not in possessive constructions
+;;; through the juxtaposition rule
+
+noun:+ [POSS poss].
+
+poss := *top*.
+non-poss := poss.
+poss-or-ee := poss.
+poss-or := poss-or-ee.
+poss-ee := poss-or-ee.
+
+non-poss-com-noun-inam-lex := com-inam-noun-lex & 
+        [SYNSEM.LOCAL.CAT.HEAD.POSS poss-ee].
 
 ;;;;;;;;;;;;;;;;;;;
 ;;; Lexical Types
 ;;;;;;;;;;;;;;;;;;;
 
 ;;; Nouns
-
-;;; POSS Feature to distinguish nouns can can have a possessor or not in possessive constructions
-;;; through the juxtaposition rule
-
-noun:+ [POSS bool].
-
-non-poss-com-noun-inam-lex := com-inam-noun-lex & 
- 				[SYNSEM.LOCAL.CAT.HEAD.POSS -].
-
 
 noun-lex := basic-noun-lex & basic-one-arg & no-hcons-lex-item & non-mod-lex-item &
   [ SYNSEM.LOCAL.CAT.VAL [ SPR < #spr &
@@ -176,7 +180,7 @@ com-inam-noun-lex := common-noun-lex &
 
 pron-noun-lex := no-spr-noun-lex &
       [SYNSEM [ MODIFIED hasmod,
-                LOCAL [CAT.HEAD.POSS -,
+                LOCAL [CAT.HEAD.POSS non-poss,
                      CONT.HOOK.INDEX [COG-ST activ-or-more, SPECI +]]]].
 
 1sg-pron-nom-noun-lex := pron-nom-noun-lex &
@@ -365,7 +369,7 @@ poss-lex-rule-super := infl-add-only-lex-rule &
 [SYNSEM.LKEYS.ALTKEYREL #altkeyrel,
 DTR common-noun-lex & [ SYNSEM.LOCAL [ CONT.HOOK [  INDEX #index,  
               LTOP #lbl  ] ,
-            CAT [ HEAD.POSS - ,
+            CAT [ HEAD.POSS non-poss ,
             VAL.SPR <[OPT +]> ] ]],  
 C-CONT [ HOOK [INDEX #index, 
             LTOP #lbl  ],
@@ -716,7 +720,7 @@ s3-bottom-coord-rule := unary-bottom-coord-rule & s-bottom-coord-phrase &
 ;means something like the equivalent of "the dog's cat"
 
 poss-phrase := head-final &
-  [ SYNSEM.LOCAL.CAT [ HEAD #head & [POSS +],
+  [ SYNSEM.LOCAL.CAT [ HEAD #head & [POSS poss-or-ee],
            VAL [ SPR < >,
            COMPS < >,
            SUBJ < > ] ],
@@ -730,10 +734,10 @@ poss-phrase := head-final &
               RSTR #harg ] ! >,
        HCONS < ! qeq & [ HARG #harg, LARG #lbl ] ! >,
        ICONS < ! ! > ],
-    HEAD-DTR.SYNSEM.LOCAL [ CAT [ HEAD #head & noun,
+    HEAD-DTR.SYNSEM.LOCAL [ CAT [ HEAD #head & [POSS poss-ee] & noun,
           VAL.SPR < [ ] > ],
           CONT.HOOK [ INDEX #index & [ COG-ST uniq+fam+act ],
           LTOP #lbl ] ],
-    NON-HEAD-DTR.SYNSEM.LOCAL [ CAT [ HEAD noun,
+    NON-HEAD-DTR.SYNSEM.LOCAL [ CAT [ HEAD noun & [POSS poss-or],
               VAL.SPR < > ],
         CONT.HOOK.INDEX #poss ] ].
