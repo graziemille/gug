@@ -1952,3 +1952,13 @@ che a-heach ndeve
 A.1.pron A.1SG_2SG-see 2.PL.pron.ACC
 'I see you(pl)'
 
+#Ex.177: Wrong use of adjective with a pronouns 
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: adj
+ha'e reia'e oguata
+haHe reiaHe oguata
+haHe reiaHe o-guata
+3.SG.pron happy.NOM A.3-walk
+*'Beautiful him walks'
