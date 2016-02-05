@@ -1860,3 +1860,106 @@ ahojaA ojahoHi ajaka
 ahojaA o-jahoHi ajaka
 blanket A.3-cover basket
 'The blanket cover the basket / the basket covers the blanket'
+
+#Ex.169: Use of adjective as an attribute of the object of verb predicate
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {adj, wo}
+ahecha vakaA tuicha
+ahecha vakaA tuicha
+a-hecha vakaA tuicha
+A.1SG-see cow.ANIM big
+'I see the big cow'
+
+#Ex.170: Attributive adjetive should not have predicate markings
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: c
+ahecha  tuicha vakaA 
+ahecha tuicha vakaA
+a-hecha tuicha vakaA
+A.1SG-see O.3-big cow.ANIM
+*'I see the big cow'
+
+#Ex.XX: Pronouns cannot be part of possessive constructions
+Source: author
+Vetted: f
+Judgment: 
+Phenomena: poss
+ahecha ha'e yvyra
+ahecha haHe yvyra
+a-hecha haHe yvyra
+A.1SG-see A.3.pron tree
+*'I see his tree'
+
+#Ex.171: Pronouns cannot be part of possessive constructions
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: poss
+ahecha yvyra ha'e
+ahecha yvyra haHe
+a-hecha haHe yvyra
+A.1SG-see tree A.3.pron
+*'I see him with a tree'
+
+#Ex.172: Pronouns cannot be part of possessive constructions
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: poss
+ahecha yvyra ha'e
+ahecha yvyra haHe
+a-hecha haHe yvyra
+A.1SG-see tree A.3.pron
+*'I see him with a tree'
+
+#Ex.173: Transitive verb two personal pronoun arguments.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {agr, pn}
+che ahecha chupe
+che ahecha chupe
+che a-hecha chupe
+I.NOM A.1SG-see 0.3.pron.ACC
+'I see him'
+
+#Ex.174: Dropped argument on a transitive verb in 2nd person subject.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {agr}
+rehecha
+rehecha
+re-hecha
+A.2SG-see
+'I don't see (it/him/her/them)'
+
+Our current grammar imposses the restriction that the object of this transitive predicate be 3rd person.
+Similarly, portmanteau markers implement this restrictions:
+
+#Ex.175: Dropped argument on a transitive verb marked with a portmanteau marker.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {agr}
+pohecha
+pohecha
+po-hecha
+A.1SG_2SG-see
+'I see you(pl)'
+
+#Ex.176: Transitive verb marked with a marker and full pronoun arguments.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {agr}
+che ahecha ndeve
+che ahecha ndeve
+che a-heach ndeve
+A.1.pron A.1SG_2SG-see 2.PL.pron.ACC
+'I see you(pl)'
+
