@@ -2025,3 +2025,14 @@ ojeroky orejagua
 o-jeroky ore-jagua
 A.3-dance 1PL.EXCL.POSS-dog
 'Our(excl) dog dances'
+
+#Ex.184:  Meant to test that we fixed overgeneration problem when adverbs modify transitive verbs with dropped objects 
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: poss
+ahecha vai
+ahecha vai
+a-jeroky bad
+A.1SG-see bad
+'I see poorly'
