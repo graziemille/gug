@@ -1205,7 +1205,7 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: poss
-ahendu avatityA yvutu hata 
+ahendu avatity´ yvutu hata 
 ahendu avatityA yvutu hata 
 a-hendu avatityA yvutu hata
 A.1SG-hear cornfield wind.INAM strong
@@ -1216,7 +1216,7 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: pro-d
-ahecha vakaA chupe
+ahecha vaká chupe
 ahecha vakaA chupe
 a-hecha vakaA chupe
 A.1SG-see cow it
