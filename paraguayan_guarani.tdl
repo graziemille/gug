@@ -291,7 +291,8 @@ gug-intersective-adjective-lex := basic-adjective-lex &
 
 attributive-adj-lex := attr-only-adj-lex &
   [ SYNSEM.LOCAL.CAT [ POSTHEAD +,
-                       HEAD.MOD < [ MODIFIED notmod ] > ] ].
+                       HEAD.MOD < [ LIGHT +,
+                                    MODIFIED notmod ] > ] ].
 
 ; Basic attributive adjective definition
 
@@ -653,7 +654,8 @@ comp-head-phrase-2 := basic-head-2nd-comp-phrase & head-final-head-nexus.
 ; introduced to match the semantic effect of bare NPs in your language.
 
 bare-np-phrase := basic-bare-np-phrase &
-  [ C-CONT.RELS <! [ PRED "exist_q_rel" ] !> ].
+  [ SYNSEM.LIGHT -,
+    C-CONT.RELS <! [ PRED "exist_q_rel" ] !> ].
 
 ;;;;;;;;;;;;;;;;;;
 ;;; Coordination
