@@ -1560,7 +1560,7 @@ Phenomena: cop
 ore oreaguĩ óga
 ore oreaguiN roAga
 ore ore-aguiN roAga
-A.1PL.EXCL.PRON O.1PL.EXCL-near house
+1PL.EXCL.PRON.NOM O.1PL.EXCL-near house
 'We are near the house'
 
 #Ex.142: predicative use of noun
@@ -1714,7 +1714,7 @@ Phenomena: {adv, wo}
 ha'e ojatapy tuicha
 haHe ojatapy tuicha
 haHe o-jatapy tuicha
-3SG.pron A.3-make.fire big
+3SG.PRON.NOM A.3-make.fire big
 'She made a fire in a big way' 
 
 #Ex.156: Adverbs should not have predicate markings
@@ -1725,7 +1725,7 @@ Phenomena: adv
 ha'e ojatapy ituicha
 haHe ojatapy ituicha
 haHe o-jatapy i-tuicha
-3SG.pron A.3-make.fire O.3-big
+3SG.PRON.NOM A.3-make.fire O.3-big
 *'She made a fire in a big way' 
 
 #Ex.157: Use of manner adverb after verb predicate
@@ -1847,7 +1847,7 @@ Phenomena: cop
 ore oreaguĩ nderógagui
 ore oreaguiN nderoAgagui
 ore ore-aguiN nde-roAga=gui
-A.1PL.EXCL.PRON O.1PL.EXCL-near O.2SG-house=from
+1PL.EXCL.PRON.NOM O.1PL.EXCL-near O.2SG-house=from
 'We are near your house'
 
 #Ex.168:  Shows ambiguity due to lack of fixed word order.
@@ -1888,22 +1888,22 @@ Source: author
 Vetted: f
 Judgment: 
 Phenomena: poss
-ahecha ha'e yvyra
-ahecha haHe yvyra
-a-hecha haHe yvyra
-A.1SG-see A.3.pron tree
-*'I see his tree'
+ojeroky ha'e jagua
+ojeroky haHe jagua
+o-jeroky haHe jagua
+A.3-dance 3SG.PRON.NOM dog
+*'His dog dances'
 
 #Ex.172: Pronouns cannot be part of possessive constructions
 Source: author
 Vetted: f
 Judgment: u
 Phenomena: poss
-ahecha yvyra chupe
-ahecha yvyra chupe
-a-hecha yvyra chupe
-A.1SG-see tree A.3.pron.ACC
-*'I see the tree's him'
+ojeroky jagua ha'e
+ojeroky  jagua haHe
+o-jeroky jagua haHe
+A.1SG-see dog 3SG.PRON.NOM
+*'The he that belongs to the dog dances'
 
 #Ex.173: Transitive verb two personal pronoun arguments.
 Source: author
@@ -1913,7 +1913,7 @@ Phenomena: {agr, pn}
 che ahecha chupe
 che ahecha chupe
 che a-hecha chupe
-I.NOM A.1SG-see 0.3.pron.ACC
+I.NOM A.1SG-see 3.PRON.ACC
 'I see him'
 
 #Ex.174: Dropped argument on a transitive verb in 2nd person subject.
@@ -1946,7 +1946,7 @@ Phenomena: {agr}
 che ahecha ndeve
 che ahecha ndeve
 che a-heach ndeve
-A.1.pron A.1SG_2SG-see 2.PL.pron.ACC
+1SG.PRON.NOM A.1SG_2SG-see 2PL.PRON.ACC
 'I see you(pl)'
 
 #Ex.177: Wrong use of adjective with a pronouns 
@@ -1957,5 +1957,5 @@ Phenomena: adj
 ha'e reia'e oguata
 haHe reiaHe oguata
 haHe reiaHe o-guata
-3.SG.pron happy.NOM A.3-walk
-*'Beautiful him walks'
+3SG.PRON.NOM happy.NOM A.3-walk
+*'The beautiful he walks'
