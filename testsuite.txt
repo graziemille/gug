@@ -1899,11 +1899,11 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: poss
-ahecha yvyra ha'e
-ahecha yvyra haHe
-a-hecha yvyra haHe
-A.1SG-see tree A.3.pron
-*'I see him with a tree'
+ahecha yvyra chupe
+ahecha yvyra chupe
+a-hecha yvyra chupe
+A.1SG-see tree A.3.pron.ACC
+*'I see the tree's him'
 
 #Ex.173: Transitive verb two personal pronoun arguments.
 Source: author
