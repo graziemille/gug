@@ -1877,10 +1877,10 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: c
-ahecha  tuicha vakaA 
-ahecha tuicha vakaA
-a-hecha tuicha vakaA
-A.1SG-see O.3-big cow.ANIM
+tuicha vakaA ahecha  
+tuicha vakaA ahecha 
+tuicha vakaA a-hecha 
+O.3-big cow.ANIM A.1SG-see 
 *'I see the big cow'
 
 #Ex.171: Pronouns cannot be part of possessive constructions
