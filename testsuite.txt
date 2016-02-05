@@ -1253,7 +1253,7 @@ pee˜ pohecha
 peeN pohecha
 peeN po-hecha
 You.PL.NOM 12.PL-see
-*'You see me'
+*'You see me
 
 #Ex.114: Transitive verb correctly agrees with 1SG object rather that 2PL subject.  Object drop. 
 Source: author
@@ -1276,8 +1276,6 @@ peeN pehecha cheve
 peeN pe-hecha me.ACC
 You.PL A.2PL-see me.ACC 
 *'You see me'
-
-
 
 #Ex.116: Yes-No question with question marker in wrong position, should be second position.
 Source: c
@@ -1471,10 +1469,10 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: c
-ahecha vakaApe ituichape
-ahecha vakaA pe ituicha pe
-a-hecha vakaA=pe i-tuicha=pe
-A.1SG-see cow.ANIM=ACC O.3-big=ACC 
+ahecha vakaA ituichape
+ahecha vakaA ituicha pe
+a-hecha vakaA i-tuicha=pe
+A.1SG-see cow.ANIM O.3-big=ACC 
 *'I see the big cow'
 
 #Ex.134: Use of adjective as an attribute of the subject of verb predicate
@@ -1504,10 +1502,10 @@ Source: author
 Vetted: f
 Judgment: g
 Phenomena: {adj, wo}
-jagua ñaro oguata
-jagua nNaro oguata
-jagua nNaro o-guata
-dog.ANIM angry.NOM A.3-walk
+jagua ñarope ahendu
+jagua nNaro pe ahendu
+jagua nNaro=pe ahendu
+dog.ANIM angry=ACC A.1SG-hear
 'The angry dog walks'
 
 #Ex.137: Attributive adjective should not have predicate markings 
@@ -1515,11 +1513,11 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: adj
-jagua iñaro oguata
-jagua inNaro oguata
-jagua i-nNaro o-guata
-dog.ANIM O.3-angry.NOM A.3-walk
-*'The angry dog walks'
+jagua iñarope ahendu
+jagua inNaro pe ahendu
+jagua i-nNaro=pe ahendu
+dog.ANIM O.3-angry=ACC A.1SG-hear
+*'I hear the angry dog'
 
 #Ex.138: Use of adjective as a predicate (copula)
 Source: b
@@ -1639,19 +1637,19 @@ Phenomena: {emb-d, wo}
 aikuua ouha
 aikuua ojuha
 a-ikuua o-ju-ha
-A.1SG-know A.3-go-COMP
+A.1SG-know A.3-come-COMP
 'I know he is coming'
 
-#Ex.149: Missing marker for embedded clause 
+#Ex.149: Wrong marker for embedding of interrogative clause
 Source: e
 Vetted: f
 Judgment: u
-Phenomena: emb-d
-aikuua ou
-aikuua oju
-a-ikuua o-ju
-A.1SG-know A.3-go
-*'I know he is coming'
+Phenomena: emb-q
+aporandu ouha
+aporandu ojuha
+a-porandu o-ju-ha
+A.1SG-know A.3-go-COMP
+*'I ask whether he is coming'
 
 #Ex.150: Wrong marker for embedding of a declarative clause
 Source: e
@@ -1661,7 +1659,7 @@ Phenomena: emb-d
 aikuua oupa
 aikuua ojupa
 a-ikuua o-ju-pa
-A.1SG-know A.3-go-Q
+A.1SG-know A.3-come-Q
 *'I know he is coming'
 
 #Ex.151: Use embedded clause for interrogative sentence
@@ -1675,16 +1673,16 @@ a-porandu o-ju-pa
 A.1SG-know A.3-go-Q
 'I ask whether he is coming'
 
-#Ex.152: Wrong marker for embedding of interrogative clause
-Source: e
+#Ex.152: Adverb should come directly after the verb predicate with no intervening words.
+Source: b
 Vetted: f
 Judgment: u
-Phenomena: emb-q
-aporandu ouha
-aporandu ojuha
-a-porandu o-ju-ha
-A.1SG-know A.3-go-COMP
-*'I ask whether he is coming'
+Phenomena: adv
+jagua osuHu vakaApe vai
+jagua osuHu vakaA pe vai
+jagua o-suHu vakaA=pe vai
+dog A.3-bite the cow.ANIM=ACC bad
+*'the dog bit the cow in an ugly way' 
 
 #Ex.153: Use of manner adverb after verb predicate
 Source: a (#b.30)
@@ -1779,10 +1777,10 @@ Source: b
 Vetted: f
 Judgment: u
 Phenomena: crd
-aguara jagua okañy
-aguara jagua okanNy
-aguara jagua o-kanNy
-fox.ANIM.NOM dog.ANIM.NOM A.3-hide
+aguarape jaguape ahecha
+aguara=pe jagua=pe ahecha
+aguara=ACC jagua=ACC a-hecha
+fox.ANIM.NOM dog.ANIM.NOM A.1SG-see
 *'the fox and the dog hid'
 
 
