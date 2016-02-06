@@ -2051,7 +2051,7 @@ dog 1SG.POS-mother A.3-walk
 #Ex.186: Noun with possessive prefix being possessor of another noun. Ambiguous reading
 Source: author
 Vetted: f
-Judgment: u
+Judgment: g
 Phenomena: poss
 chesy jagua oguata
 chesy jagua oguata
