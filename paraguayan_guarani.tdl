@@ -369,7 +369,7 @@ poss-lex-rule-super := infl-add-only-lex-rule &
 [SYNSEM.LKEYS.ALTKEYREL #altkeyrel,
 DTR common-noun-lex & [ SYNSEM.LOCAL [ CONT.HOOK [  INDEX #index,  
               LTOP #lbl  ] ,
-            CAT [ HEAD.POSS non-poss ,
+            CAT [ HEAD.POSS poss-or ,
             VAL.SPR <[OPT +]> ] ]],  
 C-CONT [ HOOK [INDEX #index, 
             LTOP #lbl  ],
