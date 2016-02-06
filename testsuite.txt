@@ -2048,13 +2048,13 @@ jagua che-sy o-guata
 dog 1SG.POS-mother A.3-walk
 *'The my mother of the dog walks'
 
-#Ex.186: Unattested case of a noun that has passed throught possessive lexical rule acting as the possessor of another noun.  Judged ungrammatical for now  but easy to change if need be.
+#Ex.186: Unattested case of a noun that has passed through the possessive lexical rule acting as the possessor of another noun.  Judged grammatical for now  but easy to change if need be.
 Source: author
 Vetted: f
-Judgment: u
+Judgment: g
 Phenomena: poss
 chesy jagua oguata
 chesy jagua oguata
 che-sy jagua o-guata
 1SG.POS-mother dog A.3-walk
-*'My mother's dog walks'
+'My mother's dog walks'
