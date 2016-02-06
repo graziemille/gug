@@ -320,7 +320,7 @@ rehecha
 rehecha
 re-hecha
 A.2SG-see
-'I don't see (it/him/her/them)'
+'You don't see (it/him/her/them)'
 
 Our current grammar imposes the constraint that the object of this transitive predicate be 3rd person. Similarly, portmanteau markers implement other constraints:
 
