@@ -125,11 +125,11 @@ pyaHe a-guata
 quickly 1SG-walk
 *'I walk quickly'
 
-As we appreciate from these examples, there is no agreement between noun and adjective. A sentence fragement like 'mitaN reiaHe', could mean in English 'the happy child', 'a happy child', 'the happy children' or even 'happy children'. There is no especial inflection in Guarani to mark this difference. It seems that context and the discourse use of words determine  the correct semantics of a sentence, if relevant for Guarani speakers at all. Also we note that in sentences 169 and 152, the same word 'tuicha', meaning 'big', is used but as an attributive adjective in the first one, and as an adverb in the second sentence. Their overt form  is the same. Their location is the same, being after their modifee in the word order. Therefore we will implement their use in the grammar in a similar way by taking a general rule that applies to 'adjectives' (as a common name for adverbs and adjective) to both nouns and verbs.This will be further explaing in section III. 
+As we appreciate from these examples, there is no agreement between noun and adjective. A sentence fragement like 'mitaN reiaHe', could mean in English 'the happy child', 'a happy child', 'the happy children' or even 'happy children'. There is no special inflection in Guarani to mark this difference. It seems that context and the discourse use of words determine  the correct semantics of a sentence, if relevant for Guarani speakers at all. Also we note that in sentences 169 and 152, the same word 'tuicha', meaning 'big', is used but as an attributive adjective in the first one, and as an adverb in the second sentence. Their overt form  is the same. Their location is the same, being directly after the word they modify in the word order. Therefore we will implement their use in the grammar in a similar way by taking a general rule that applies to 'adjectives' (as a common name for adverbs and adjective) to both nouns and verbs. This will be further explained in section III. 
 
 2. Possessives.
 
-As mentioned in the previous section, there are two constructions used to express possessiveness: a simple juxtaposition and the use of personal pronouns prefixes. Here some examples of those, as they are present in our testsuite (IGTs 99 and 101):
+As mentioned in the previous section, there are two constructions used to express possessiveness: a simple juxtaposition and the use of prefixes. Here some examples of those, as they are present in our testsuite (IGTs 99 and 101):
 
 #Ex.99: Noun Noun Possessives. Inanimate Possessor. Inanimate Alienable Possession.
 Source: author
@@ -153,7 +153,7 @@ a-hecha mboHehaAra roAga
 A.1SG-see professor   house
 'I see the professor's house'
 
-A reverse order of the arguments, while syntactically possible, it is semantically limited. The possessor should be able to possess the possesse. In our examples, branches do not possess a tree, nor a house do possess a professor (apart from the effort to having a mortgage to pay). This semantic limitation is not dealt with in our grammar, as it is dependent on the semantics of the specific situation. Therefore we asume in general that nouns can take the role of possessor in our grammar (with the exception of personal pronouns and prefix possessiv constructions mentioned belo as stated in I.2). Ungrammatical therefore are examples like the following:
+A reverse order of the arguments, while syntactically possible, is semantically limited. The possessor should be able to possess the possessum. In our examples, branches do not possess trees, nor houses possess a professor (apart from the effort to having a mortgage to pay). This semantic limitation is not dealt with in our grammar, as it is dependent on the semantics of the specific situation. Therefore we assume in general that all nouns can take the role of possessor in our grammar (with the exception of personal pronouns and prefix possessive constructions mentioned below as stated in I.2). Ungrammatical therefore are examples like the following:
 
 #Ex.171: Pronouns cannot be part of possessive constructions
 Source: author
@@ -177,7 +177,7 @@ a-hecha haHe yvyra
 A.1SG-see tree A.3.pron
 *'I see his tree'
 
-The semantics of the above sentences cannot be reflected with a juxtapostion. The first sentece though, can be implemented with the other possessive construction that usses personal pronoun prefixes on the nouns. For example the following IGT's:
+The semantics of the above sentences cannot be reflected with a juxtapostion. The first sentance though, can be implemented with the other possessive construction that uses personal pronoun prefixes on the nouns. For example the following IGT's:
 
 #Ex.102: Affix-marked Possessives. 
 Source: author
