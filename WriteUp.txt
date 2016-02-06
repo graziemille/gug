@@ -348,7 +348,7 @@ che a-hecha ndeve
 A.1.pron A.1SG_2SG-see 2.PL.pron.ACC
 'I see you(pl)'
 
-In the case of dropped pronouns arguments, their pernum reference works as expected, but the object cognitive status is still underspecified before the beginning of the lab. While the subject arguments remain 'in-foc' after being dropped, the same is not originally applied to the grammer for the object arguments. This is implemented as in III.4.
+In the case of dropped pronouns arguments, their pernum reference works as expected, but the object cognitive status is still underspecified before the beginning of the lab. While the subject arguments remain 'in-foc' after being dropped, the same is not originally applied to the grammar for the object arguments. This is implemented as in III.4.
 
 5. Anything else.
 --- Non-Possessor Nouns
@@ -409,7 +409,7 @@ haHe reiaHe o-guata
 The implementation is mentioned below in III.1.
 
 -- Wrong parsing trees
-We hade over- and undergeneration of some parses, due in part to the generous argument optionality built in our language, and its the free word order. This is not related to specific IGTs or theirexpressed ungrammaticallity, but were rather related to the grammar implementation. Therefore further details in III.5. We used though the following sentences to be sure that the different ambigous parsings were happening, which include the different SVO,SOV, VOS, VSO, OSV, OVS parses, as well as possessive juxtaposition of nouns:
+We hade over- and undergeneration of some parses, due in part to the generous argument optionality built in our language, and its the free word order. This is not related to specific IGTs or their expressed ungrammaticallity, but were rather related to the grammar implementation. Therefore further details in III.5. We used though the following sentences to be sure that the different ambigous parsings were happening, which include the different SVO,SOV, VOS, VSO, OSV, OVS parses, as well as possessive juxtaposition of nouns:
 
 #Ex.3:  Transitive verb with  ambiguous subject and object.
 Source: author
