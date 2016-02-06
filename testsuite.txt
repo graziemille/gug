@@ -2036,3 +2036,25 @@ ahecha vai
 a-jeroky bad
 A.1SG-see bad
 'I see poorly'
+
+#Ex.185:  Nouns that have passed through the possessive lexical rule should not be allowed to be the possessums of other nouns. 
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: poss
+jagua chesy oguata
+jagua chesy oguata
+jagua che-sy o-guata
+dog 1SG.POS-mother A.3-walk
+*'The my mother of the dog walks'
+
+#Ex.186: Unattested case of a noun that has passed throught possessive lexical rule acting as the possessor of another noun.  Judged ungrammatical for now  but easy to change if need be.
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: poss
+chesy jagua oguata
+chesy jagua oguata
+che-sy jagua o-guata
+1SG.POS-mother dog A.3-walk
+*'My mother's dog walks'
