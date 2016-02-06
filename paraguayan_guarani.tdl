@@ -647,7 +647,7 @@ head-final-head-nexus := head-final &
 gug-head-subj-phrase := decl-head-subj-phrase &
 [ SYNSEM.LOCAL.CAT.VAL [COMPS nonolist] ].
 
-head-subj-phrase := decl-head-subj-phrase & head-initial-head-nexus.
+head-subj-phrase := gug-head-subj-phrase & head-initial-head-nexus.
 
 subj-head-phrase := gug-head-subj-phrase & head-final-head-nexus.
 
