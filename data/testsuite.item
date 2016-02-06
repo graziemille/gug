@@ -100,13 +100,13 @@
 100@author@@@1@poss@ahecha raka pe yvyra@@@@0@4@A.1G-see branch=ACC tree*'I see tree branches'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 101@author@@@1@poss,wo@ahecha mboHehaAra roAga@@@@1@3@A.1SG-see professor   house'I see the professor's house'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 102@author@@@1@poss@ahecha iroAga@@@@1@2@A.1SG-see O.3-roAga'I see her house'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-103@author@@@1@poss@ahecha roAga pe mboHehaAra@@@@0@4@A.1SG-see house=ACC professor.ANIM*'I see the professor's house'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+103@author@@@1@poss@ahecha roga pe mboHehaAra@@@@0@4@A.1SG-see house=ACC professor.ANIM*'I see the professor's house'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 104@author@@@1@poss@ahunga chepo@@@@1@2@A.1SG-hurt 0.1SG-hand.INAM'I hurt my hands'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 105@author@@@1@poss@ahunga lo po@@@@0@3@A.1SG-hurt the.PL hand.INAM*'I hurt the hands'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 106@author@@@1@poss@ohecha la ajaka@@@@1@3@A.3-see the.SG basket.INAM'I see the basket'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 107@author@@@1@poss@ahecha cheajaka@@@@1@2@A.1SG-see O.1SG-basket.INAM'I see my basket'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 108@author@@@1@poss@ahendu yvytu hata@@@@1@3@A.1SG-hear wind.INAM strong'I hear the strong wind'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-109@author@@@1@poss@ahendu avatityA yvuytu hata@@@@0@4@A.1SG-hear cornfield wind.INAM strong'I hear the cornfield's strong wind'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+109@author@@@1@poss@ahendu avatityA yvytu hata@@@@0@4@A.1SG-hear cornfield wind.INAM strong'I hear the cornfield's strong wind'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 110@author@@@1@pro-d@ahecha vakaA chupe@@@@0@3@A.1SG-see cow it*'I see the cow's it'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 111@author@@@1@agr,pn,pro-d@pomeHeN chupe@@@@1@2@12.PL-give 3SG.DAT'I gave you to him' (meaning you plural)@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 112@author@@@1@agr@nde rohecha@@@@0@2@You.SG.NOM 12.SG-see*'You see me'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
@@ -139,7 +139,7 @@
 139@b@@@1@cop@chesy@@@@1@1@O.1SG-mother.ANIM'I am a mother'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 140@b@@@1@cop@chesy oguata@@@@1@2@O.1SG-mother.ANIM A.3-walk'My mother walks'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 141@author@@@1@cop@ore oreaguiN roAga@@@@1@3@1PL.EXCL.PRON.NOM O.1PL.EXCL-near house'We are near the house'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-142@f@@@1@cop@hiHaArama@@@@1@1@O.3-day-PERF'It was his day'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+142@f@@@1@cop@iaArama@@@@1@1@O.3-day-PERF'It was his day'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 143@b@@@1@crd,neg,wo@ndikiririNi ha ndopytai@@@@1@3@NEG-O.3-be.quiet-NEG and NEG-A.3-leave-NEG'He is not quiet and does not leave'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 144@b@@@1@crd@ndikiririNi ndopytai ha@@@@0@3@NEG-O.3-be.quiet-NEG NEG-A.3-leave-NEG and*'He is not quiet and does not leave'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 145@b@@@1@crd@ha ndikiririNi ndopytai@@@@0@3@and NEG-O.3-be.quiet-NEG NEG-A.3-leave-NEG*'He is not quiet and does not leave'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
@@ -182,3 +182,5 @@
 182@author@@@1@poss@ojeroky nNandejagua@@@@1@2@A.3-dance 1PL.INCL.POSS-dog'Our(incl) dog dances'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 183@author@@@1@poss@ojeroky orejagua@@@@1@2@A.3-dance 1PL.EXCL.POSS-dog'Our(excl) dog dances'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 184@author@@@1@poss@ahecha vai@@@@1@2@A.1SG-see bad'I see poorly'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+185@author@@@1@poss@jagua chesy oguata@@@@0@3@dog 1SG.POS-mother A.3-walk*'The my mother of the dog walks'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+186@author@@@1@poss@chesy jagua oguata@@@@1@3@1SG.POS-mother dog A.3-walk'My mother's dog walks' or 'I am a mother and the dog walks'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
