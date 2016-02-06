@@ -348,7 +348,7 @@ che a-hecha ndeve
 A.1.pron A.1SG_2SG-see 2.PL.pron.ACC
 'I see you(pl)'
 
-In the case of dropped pronouns arguments, ther pernum reference works as expected, but the object cognitive status is still underspecified before the beginning of the lab. While the subject arguments remain 'in-foc' after being dropped, the same is not originally applied to the grammer for the object arguments. This is implemented as in III.4.
+In the case of dropped pronouns arguments, their pernum reference works as expected, but the object cognitive status is still underspecified before the beginning of the lab. While the subject arguments remain 'in-foc' after being dropped, the same is not originally applied to the grammer for the object arguments. This is implemented as in III.4.
 
 5. Anything else.
 --- Non-Possessor Nouns
