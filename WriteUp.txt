@@ -344,7 +344,7 @@ Judgment: g
 Phenomena: {agr}
 che ahecha ndeve
 che ahecha ndeve
-che a-heach ndeve
+che a-hecha ndeve
 A.1.pron A.1SG_2SG-see 2.PL.pron.ACC
 'I see you(pl)'
 
