@@ -1205,7 +1205,7 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: poss
-ahendu avatity´ yvytu hata 
+ahendu avatitý yvytu hata 
 ahendu avatityA yvytu hata 
 a-hendu avatityA yvytu hata
 A.1SG-hear cornfield wind.INAM strong
@@ -1833,9 +1833,9 @@ Source: author
 Vetted: f
 Judgment: g
 Phenomena: adp
-oiju mombyry-vi 
+oiju mombyrý-vi 
 oju mombyryA gui 
-o-ju mombyry=gui
+o-ju mombyryA=gui
 3.ACT-come far=from
 'I come from far(a far place)' 
 
