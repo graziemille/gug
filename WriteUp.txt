@@ -731,6 +731,45 @@ Implementation is working accoding to the expectations of our analysis and data 
 
 V. Statement of the current overage of the grammar over your testsuite (using number you can get from Analyze|Coverage and Analyze|Overgeneration in [incr tsdb()]) and a comparison between your baseline testsuite run and your final one for this lab (see Compare|Competence).
 
+--General Stats
+
+Analyze | Coverage
+	Total Items: 194
+	Positive Items: 122 
+	Word String 0: 2.70
+	Lexical Items 0: 4.07
+	Distinct Analyses: 1.36
+	Total Results: 89
+	Overall Coverage: 73.0
+
+Analyze | Overgeneration
+	Total Items: 194
+	Negative Items: 72
+	Word String 0: 2.89
+	Lexical Items 0: 4.12
+	Distinct Analyses: 1
+	Total Results: 1
+	Overall Coverage: 1.4
+
+Comparison ob baseline(gold) and final version of this lab
+
+	Baseline
+		lexical 0:  1.25
+		analyses 0: 1.26
+		in 0:       59.0
+		out 0:      2.8
+
+	New
+		lexical 0:  1.35
+		analyses 0: 1.36
+		in 0:       73.0
+		out 0:      1.4
+
+These numbers point to two results: Frist the coverage of the grammar increased from 59% to 73%, which makes sense as several phenomenon that were in the testsuite can finally being displayed. Second, the overgeneration decreased, from 2.8% to 1.4%. Our grammar was previousely very precise due to the fact that we used relatively short sentences. We think that the major effect of this decrease is dut to the elimination of wrong parses that the grammar was generating before the added some restrictions to the head-subj/subj-head rule in combination with object-drop interprestation of some parses.
+When inspecting the comparison of ill-formed sentences, we found 4 sentences. Three of them were not previously parsing because of their missing lexicon, but still would not generate a parse, because they represented ungrammatical sentences. This is a positive  result. Then the fourth sentence (#177) was previously parsing under the older grammar, but not now. The sentence is ungrammatical, as it displays the wrong use of an adjective on a pronoun. Therefore this evolution in the results is also correct. 
+When inspecting the well-formed sentences, we had 32 sentences that had improvements. Five sentences that did not parse because lack of lexicon in a new grammatical feature (adjectival, adverbial constructions, prefix markings for possessives), were able to parse. 6 sentences double their number of parses because possessive juxtaposition was added to the grammar. 11 sentences got a parse for the first time, because we were able to add possessive prefixes to nouns. 3 sentences decreased their number of parses because we implemented a better use of head-sub/sub-head rules. 4 sentences increased their parses because the possessive juxtapostion of nouns works now. Two sentences increased their number of parses because of ambiguous readings the the sentential juxtaposition and the possessive prefixes allow.
+These results reflect our expectations in the changes we did in the grammar this week.
+
 VI. Describe briefly your test corpus, including: where you collected it, how many sentences it contains, and what format (transliterated, etc) it is in. The corpus was extracted from a thesis work from Judith Tonahauser: The Temporal Semantics of Noun Phrases: Evidence FROM Guarani. She presented an appendix with two stories told by a native speaker. We selected the story "A Bo, a Dog and a Frog", which was glossed and translated to English. We took the first 21 sentences of this story. Therefore all sentences are all continously followign one after the other. We formatted the senteces using the standard of our test suites. Here as an examples the first sentece in our corpus:
 
 #Sentence.1
