@@ -38,7 +38,7 @@ Personal pronouns are also another word class that gets a classification for its
 
 PG allows for argument optionality in contextually rich situations, where the semantics of missed arguments are preserved in the context although not expressed syntactically. Some sources suggested that animacy played a role in argument drop, but a recent paper by Judith Tonhauser, cites corpus data to suggest that it is not quantifiably true that argument optionality is based on animacy/gender of PG nouns. 
 
-Argument drop is syntactically supported by the systematic use of cross-referential markers on predicates, which facilitate the interpretation of dropped arguments. The cross-referential markers only represent either the subject or object argument of a predicate at a given time, but due to the rules and hierarchy they represent, they also point to limitations imposed on the argument not marked. This was already expressed in lab 2 and 3. This system or markings has been already implemented in our grammar and will not further discussed here, as we want to concentrate in the cognitive status of dropped arguments. 
+Argument drop is syntactically supported by the systematic use of cross-referential markers on predicates, which facilitate the interpretation of dropped arguments. The cross-referential markers only represent either the subject or object argument of a predicate at a given time, but due to the rules and hierarchy they represent, they also point to constraints imposed on the argument not marked. This was already expressed in lab 2 and 3. This system or markings has been already implemented in our grammar and will not further discussed here, as we want to concentrate in the cognitive status of dropped arguments. 
 
 Semantically, our sources suggest that context plays an important role in the semantic construction of dropped arguments, and therefore we will follow an interpretation of 'definite null instantiation', simply DNI, for our dropped arguments. As PG is a language that accepts different orders of sentence constituents, and therefore arguments might be dropped at different locations of a sentence, it is important that parses are sufficiently ambiguous to represent the different combinations of S, V, and O arguments, when the subject, the object or both might have been dropped. At the end, getting the equivalent semantic representation in our MRS will determine the correctness of the analysis. 
 
@@ -103,7 +103,7 @@ a-guata pyaHe
 
 Therefore it is ungrammatical to have adjectives or adverbs preceding the words they modify.
 
-#Ex.170: Attributive adjetive before a noun is wrong position
+#Ex.170: Attributive adjective before a noun is wrong position
 Source: author
 Vetted: f
 Judgment: u
@@ -125,7 +125,7 @@ pyaHe a-guata
 quickly 1SG-walk
 *'I walk quickly'
 
-As we appreciate from these examples, there is no agreement between noun and adjective. A sentence fragement like 'mitaN reiaHe', could mean in English 'the happy child', 'a happy child', 'the happy children' or even 'happy children'. There is no special inflection in Guarani to mark this difference. It seems that context and the discourse use of words determine  the correct semantics of a sentence, if relevant for Guarani speakers at all. Also we note that in sentences 169 and 152, the same word 'tuicha', meaning 'big', is used but as an attributive adjective in the first one, and as an adverb in the second sentence. Their overt form  is the same. Their location is the same, being directly after the word they modify in the word order. Therefore we will implement their use in the grammar in a similar way by taking a general rule that applies to 'adjectives' (as a common name for adverbs and adjective) to both nouns and verbs. This will be further explained in section III. 
+As we appreciate from these examples, there is no agreement between noun and adjective. A sentence fragment like 'mitaN reiaHe', could mean in English 'the happy child', 'a happy child', 'the happy children' or even 'happy children'. There is no special inflection in Guarani to mark this difference. It seems that context and the discourse use of words determine  the correct semantics of a sentence with respect to those parameters, if relevant for Guarani speakers at all. Also we note that in sentences 169 and 152, the same word 'tuicha', meaning 'big', is used but as an attributive adjective in the first one, and as an adverb in the second sentence. Their overt form  is the same. Their location is the same, being directly after the word they modify in the word order. Therefore we will implement their use in the grammar in a similar way by taking a general rule that applies to 'adjectives' (as a common name for adverbs and adjective) to both nouns and verbs. This will be further explained in section III. 
 
 2. Possessives.
 
@@ -153,7 +153,7 @@ a-hecha mboHehaAra roAga
 A.1SG-see professor   house
 'I see the professor's house'
 
-A reverse order of the arguments, while syntactically possible, is semantically limited. The possessor should be able to possess the possessum. In our examples, branches do not possess trees, nor houses possess a professor (apart from the effort to having a mortgage to pay). This semantic limitation is not dealt with in our grammar, as it is dependent on the semantics of the specific situation. Therefore we assume in general that all nouns can take the role of possessor in our grammar (with the exception of personal pronouns and prefix possessive constructions mentioned below as stated in I.2). Ungrammatical therefore are examples like the following:
+A reverse order of the arguments, while syntactically possible, is semantically constrained. The possessor should be able to possess the possessum. In our examples, branches do not possess trees, nor houses possess a professor (apart from the effort to having a mortgage to pay). This semantic constraint is not dealt with in our grammar, as it is dependent on the semantics of the specific situation. Therefore we assume in general that all nouns can take the role of possessor in our grammar (with the exception of personal pronouns and prefix possessive constructions mentioned below as stated in I.2). Ungrammatical therefore are examples like the following:
 
 #Ex.171: Pronouns cannot be part of possessive constructions
 Source: author
@@ -177,7 +177,7 @@ a-hecha haHe yvyra
 A.1SG-see tree A.3.pron
 *'I see his tree'
 
-The semantics of the above sentences cannot be reflected with a juxtapostion. The first sentance though, can be implemented with the other possessive construction that uses personal pronoun prefixes on the nouns. For example the following IGT's:
+The semantics of the above sentences cannot be reflected with a juxtapostion. The first sentence though, can be implemented with the other possessive construction that uses personal pronoun prefixes on the nouns. For example the following IGT's:
 
 #Ex.102: Affix-marked Possessives. 
 Source: author
@@ -203,12 +203,12 @@ che-sy o-guata
 O.1SG-mother.ANIM A.3-walk
 'My mother walks' / 'I am a mother and she walks'
 
-In the first interpretation the noun is just a noun with a personal prefix followed by a verb predicate that uses that noun as its subject argument. In a second reading this is a conjuntion of two prediates (in simple juxtaposition). 
+In the first interpretation the noun is just a noun with a personal prefix followed by a verb predicate that uses that noun as its subject argument. In a second reading this is a asyndeton conjunction of two predicates. 
 
 
-3. Definiteness and other aspects of discours status.
+3. Definiteness and other aspects of discourse status.
 
-Determiners preceed the nouns they refer to. Here are two examples of the use of determiners in PG.
+Determiners precede the nouns they refer to. Here are two examples of the use of determiners in PG.
 
 #Ex.1: Transitive verb agrees with 3Per subject. Singular determiners. Accusative case marking on the animate object.
 Source: author
@@ -232,7 +232,7 @@ lo juHi o-guata
 the.PL frog.ANIM.NOM A.3-walk
 'The frogs walk'
 
-Neverthless, not using these determiners, just leaves the noun underspecified, with several possible translations in languages like English, where number and definiteness are still relevant.
+Nevertheless, not using these determiners, just leaves the noun underspecified, with several possible translations in languages like English, where number and definiteness are still relevant.
 
 #Ex.19: Dynamic intransitive verb agrees with 3rd subject. VS word order.
 Source: author
@@ -271,10 +271,10 @@ che a-hecha chupe
 I.NOM A.1SG-see 0.3.pron.ACC
 'I see him'
 
-The cognitive status of such arguments should be represented according to the standards specified in our lab. This implementation is further explaines in III.4.
+The cognitive status of such arguments should be represented according to the standards specified in our lab. This implementation is further explained in III.4.
 
 4. Argument optionality
-Argument optionality, understood as the free option of the overt presense or absense of noun phrases that act as the arguments of a predicate, is common in PG, as it is visible in several of our sentences in the testsuite:
+Argument optionality, understood as the free option of the overt presence or absence of noun phrases that act as the arguments of a predicate, is common in PG, as it is visible in several of our sentences in the testsuite:
 
 #Ex.57:  Dynamic intransitive verb agrees with 1SG subject marking. Subject dropped.
 Source: author
@@ -309,7 +309,7 @@ a-hecha
 A.1SG-see
 'I see (you/him/her/it/them)'
 
-Currently our grammar captures in general the limitations impossed by the cross-reference markers of the predicate. In the sentence #57 the dropped subject argument is 1SG, the same for sentences 61 and 81. The dropped object of the transitive predicate in sentences 61 and 81 is underspecified, as a subject 1SG is the highest marker in the hierarchy, and therefore does not impose restrictions on dropped objects. This is not to be confused with reflexive predicate arguments, which are handled different in PG (further to this point in section VI.4). The pernum is underspecified for sentences 61 and 81. On the other side in sentences that use any other markers would include restrictions on the objects:
+Currently our grammar captures in general the constraints imposed by the cross-reference markers of the predicate. In the sentence #57 the dropped subject argument is 1SG, the same for sentences 61 and 81. The dropped object of the transitive predicate in sentences 61 and 81 is underspecified, as a subject 1SG is the highest marker in the hierarchy, and therefore does not impose constraints on dropped objects. This is not to be confused with reflexive predicate arguments, which are handled different in PG (further to this point in section VI.4). The pernum is underspecified for sentences 61 and 81. On the other side in sentences that use any other markers would include constraints on the objects:
 
 #Ex.174: Dropped argument on a transitive verb in 2nd person subject.
 Source: author
@@ -322,7 +322,7 @@ re-hecha
 A.2SG-see
 'I don't see (it/him/her/them)'
 
-Our current grammar imposses the restriction that the object of this transitive predicate be 3rd person. Similarly, portmanteau markers implement other restrictions:
+Our current grammar imposes the constraint that the object of this transitive predicate be 3rd person. Similarly, portmanteau markers implement other constraints:
 
 #Ex.175: Dropped argument on a transitive verb marked with a portmanteau marker.
 Source: author
@@ -335,7 +335,7 @@ po-hecha
 A.1SG_2SG-see
 'I see you(pl)'
 
-This sentence is has the pernum restriction marked in its arguments, and therefore not ambiguous, even though the arguments are not overt as full NPs. The equivalent sentence with full NPs is:
+This sentence is has the pernum constraint marked in its arguments, and therefore is not ambiguous, even though the arguments are not overt as full NPs. The equivalent sentence with full NPs is:
 
 #Ex.176: Transitive verb marked with a marker and full pronoun arguments.
 Source: author
@@ -348,7 +348,7 @@ che a-heach ndeve
 A.1.pron A.1SG_2SG-see 2.PL.pron.ACC
 'I see you(pl)'
 
-In the case of dropped pronouns arguments, ther pernum reference works as expected, but the object cognitive status is still underspecified before the beginning of the lab. While the subject arguments remain 'in-foc' after being dropped, the same is not originally applied to the grammer for the object arguments. This is implemented as in III.4.
+In the case of dropped pronouns arguments, their pernum reference works as expected, but the object cognitive status is still underspecified before the beginning of the lab. While the subject arguments remain 'in-foc' after being dropped, the same is not originally applied to the grammar for the object arguments. This is implemented as in III.4.
 
 5. Anything else.
 --- Non-Possessor Nouns
@@ -376,11 +376,10 @@ a-hendu avatityA yvytu hata
 A.1SG-hear cornfield wind.INAM strong
 *'I hear the cornfield's strong wind'
 
-This constrain is limited to the constrain to be implemented for pronouns (which cannot be possessors nor possessums). Nevertheless, as seen below in III.5, they could jointly be implemented.
+This is limited to the constraint implemented for pronouns (which cannot be possessors nor possessums). Nevertheless, as seen below in III.5, they could jointly be implemented.
 
 -- No adjective modifiers for pronouns
-Aditionally the implemented that attribute adjectives cannot be modifiers of pronouns. So while this sentence 
-is gramatical:
+Additionally we implemented that attribute adjectives cannot be modifiers of pronouns. So while this sentence is grammatical:
 
 #Ex.134: Use of adjective as an attribute of the subject of verb predicate
 Source: author
@@ -409,7 +408,7 @@ haHe reiaHe o-guata
 The implementation is mentioned below in III.1.
 
 -- Wrong parsing trees
-We hade over- and undergeneration of some parses, due in part to the generous argument optionality built in our language, and its the free word order. This is not related to specific IGTs or theirexpressed ungrammaticallity, but were rather related to the grammar implementation. Therefore further details in III.5. We used though the following sentences to be sure that the different ambigous parsings were happening, which include the different SVO,SOV, VOS, VSO, OSV, OVS parses, as well as possessive juxtaposition of nouns:
+We had over- and undergeneration of some parses, due in part to the generous argument optionality built in our language, and its the free word order. This is not related to specific IGTs or their expressed ungrammaticality, but were rather related to the grammar implementation. Therefore further details in III.5. We used though the following sentences to be sure that the different ambiguous parsings were happening, which include the different SVO,SOV, VOS, VSO, OSV, OVS parses, as well as possessive juxtaposition of nouns:
 
 #Ex.3:  Transitive verb with  ambiguous subject and object.
 Source: author
@@ -446,31 +445,31 @@ A.3-see frog.ANIM stone.INAM
 
 
 
-III. A statement of how you implemented teh phenomenon in terms of types you added/modified and particular tdl contraints. That is, the actual tdl snippets with prose description around them.
+III. A statement of how you implemented the phenomenon in terms of types you added/modified and particular tdl constraints. That is, the actual tdl snippets with prose description around them.
 
 NOTE: Unless otherwise specified, all tdl changes here were included in our paraguayan_guarani.tdl file.
 
-1. Adjectival and advervial modifiers.
+1. Adjectival and adverbial modifiers.
 
-As the syntactic behaviour of attributive adjectives and adverbs is the same in most aspects, we decided to create rules that would include both arguments at the same time .  We verified that the right entry is found in rules tdl, which reflects that attibutive adjectives and adverbs follow the words they modify
+As the syntactic behaviour of attributive adjectives and adverbs is the same in most aspects, we decided to create rules that would include both arguments at the same time .  We verified that the right entry is found in rules tdl, which reflects that attributive adjectives and adverbs follow the words they modify
 
 
 head-adj-int := head-adj-int-phrase.
 
-We changed the basic-intersective-adjective-lex which usually has a value 'ref-ind' for its XARG feature. This value refers to nouns. The more general 'event-or-ref-index' includes verbal and nominal elements, therefore more suitable for our purposes. We decided also to keep rules that were already instantiated for adjective as a general designation for adjectives and adverbs (just saving us some time). We added also the 'gug' reference in front of some rules, to express the exclusive use in our language. Therfore the adverb/adjective lex supertype looked as folows:
+We changed the basic-intersective-adjective-lex which usually has a value 'ref-ind' for its XARG feature. This value refers to nouns. The more general 'event-or-ref-index' includes verbal and nominal elements, therefore more suitable for our purposes. We decided also to keep rules that were already instantiated for adjective as a general designation for adjectives and adverbs (just saving us some time). We added also the 'gug' reference in front of some rules, to express the exclusive use in our language. Therefore the adverb/adjective lex supertype looked as follows:
 
 adj-lex := gug-intersective-adjective-lex.
 gug-intersective-adjective-lex := basic-adjective-lex &
   [ SYNSEM [ LOCAL.CONT.HOOK.XARG event-or-ref-index & #xarg,
            LKEYS.KEYREL.ARG1 #xarg ] ].
 
-Additionally we had to make changes in teh attr-adj-lex. It originally looked as follows:
+Additionally we had to make changes in the attr-adj-lex. It originally looked as follows:
 
 attr-adj-lex := adj-lex & intersective-mod-lex &
   [ SYNSEM.LOCAL.CAT.HEAD.MOD < [ LOCAL.CAT [ HEAD noun,
                                               VAL.SPR cons ] ] > ].
 
-In this form, it allowed only noun as possible modifees. This was changed to a disjuntive type +nv which included adverbs. Also VAL.SPR as a restriction was taken, as verbs no longer have SPR values in this grammar.
+In this form, it allowed only noun as possible element to be modified. This was changed to a disjunctive type +nv which included adverbs. Also VAL.SPR as a constraint was taken out, as verbs no longer have SPR values in this grammar.
 
 attr-adj-lex := adj-lex & intersective-mod-lex &
   [ SYNSEM.LOCAL.CAT.HEAD.MOD < [ LOCAL.CAT [ HEAD +nv ] ] > ].
@@ -482,22 +481,20 @@ attributive-adj-lex := attr-only-adj-lex &
                        HEAD.MOD < [ LIGHT +,
                                     MODIFIED notmod ] > ] ].
 
-As we wanted to secure that adverbs would not be able to attache to S, but just to VP, we included
-[LIGHT +] as a value of HEAD.MOD, while the bare-np would include a [LIGHT -] contraint:
+As we wanted to secure that adverbs would not be able to attache to S, but just to VP, we included [LIGHT +] as a value of HEAD.MOD, while the bare-np would include a [LIGHT -] contraint:
 
 bare-np-phrase := basic-bare-np-phrase &
   [ SYNSEM.LIGHT -,
     C-CONT.RELS <! [ PRED "exist_q_rel" ] !> ].
 
-The additional constrain in the [HEAD.MOD<MODIFIED notmod>] of the attributive-adj-lex  was built in order to limit the use of adjectives with pronouns. As its counterpart, the restriction of [MODIFIED hasmod] was added to the pron-noun-lex, so pronouns would not unify under the attributive-adj-lex.
+The additional constrain in the [HEAD.MOD<MODIFIED notmod>] of the attributive-adj-lex  was built in order to limit the use of adjectives with pronouns. As its counterpart, the constraint of [MODIFIED hasmod] was added to the pron-noun-lex, so pronouns would not unify under the attributive-adj-lex.
 
 pron-noun-lex := no-spr-noun-lex &
       [SYNSEM [ MODIFIED hasmod,
                 LOCAL [CAT.HEAD.POSS -,
                      CONT.HOOK.INDEX [COG-ST activ-or-more, SPECI +]]]].
 
-The other changes shown here for the pron-lex are related to sections below, but for completeness
-the whole IGT is presented here.
+The other changes shown here for the pron-lex are related to sections below, but for completeness the whole IGT is presented here.
 
 
 2. Possessives
@@ -548,7 +545,7 @@ pron-noun-lex := no-spr-noun-lex &
 This would allow our desired behaviour to constrain ungrammtical sentences that combine adjective and pronouns under 
 one NP.
 
-Similarly we wanted to guarantee that certain words cannot be possessum but possessor. This is specilly true for our nous like 'wind'. The feature [POSS] with its value [POSS poss-or] would allow for nouns just to be in the position  of possessor or just imply alone (because not in a possessive construction). Therefore we created a lex type for some common-nouns, that would allow this. As we currently have only one inanimate common noun in this category ('wind'), this is the only supertype we would look at, but if the lexicon is expanded, the rule would have to be adjusted to include also animate nouns. So the lex-rule is as follows:
+Similarly we wanted to guarantee that certain words cannot be possessum but possessor. This is especially true for our nouns like 'wind'. The feature [POSS] with its value [POSS poss-or] would allow for nouns just to be in the position  of possessor or just imply alone (because not in a possessive construction). Therefore we created a lex type for some common-nouns, that would allow this. As we currently have only one inanimate common noun in this category ('wind'), this is the only supertype we would look at, but if the lexicon is expanded, the rule would have to be adjusted to include also animate nouns. So the lex-rule is as follows:
 
 non-poss-com-noun-inam-lex := com-inam-noun-lex & 
         [SYNSEM.LOCAL.CAT.HEAD.POSS poss-or].
@@ -559,7 +556,7 @@ yvytu := non-poss-com-noun-inam-lex &
   [ STEM < "yvytu" >,
     SYNSEM.LKEYS.KEYREL.PRED "_wind_n_rel" ].
 
-Appart from the juxtaposition, we dealt also with personal pronoun prefixes and nouns ,as a second possessive construction in PG. For that purpose we had to create a new class positional of nouns, where possessive pronouns where possessive pronouns were encoded as affixes. The rule would inherit from one supertype 'infl-only-lex-rule'. The C-CONS.RELS and the C-CONT.HCONS of the rule had to be modeled on teh possessive pronouns that are already existent in our lexicon, but dropping the exist-Q-rel aht goes with the possessum, and the associated qeq in the HCONS. C-CONS.ICONS had to be empty. The daughter had to be a common-noun-lex. The following lex-rule was created:
+Appart from the juxtaposition, we dealt also with personal pronoun prefixes and nouns ,as a second possessive construction in PG. For that purpose we had to create a new class positional of nouns, where possessive pronouns where possessive pronouns were encoded as affixes. The rule would inherit from one supertype 'infl-only-lex-rule'. The C-CONS.RELS and the C-CONT.HCONS of the rule had to be modeled on the possessive pronouns that are already existent in our lexicon, but dropping the exist-Q-rel aht goes with the possessum, and the associated qeq in the HCONS. C-CONS.ICONS had to be empty. The daughter had to be a common-noun-lex. The following lex-rule was created:
 
 poss-lex-rule-super := infl-add-only-lex-rule &
   [SYNSEM.LKEYS.ALTKEYREL #altkeyrel,
@@ -631,9 +628,9 @@ Additionally some entries in the irules.tdl:
 %prefix (* pende)
 2pl-poss-lex-rule.
 
-3. Definiteness and other aspects of discours status.
+3. Definiteness and other aspects of discourse status.
 
-As stated in I.3 and II.3 we target determiners and pronouns as the only elements in our current grammar that mark some reference to definitiveness. Following the recomendations and our current understanding of the grammar in PG, we included the follwing cognitive status to the supertype for determiners:
+As stated in I.3 and II.3 we target determiners and pronouns as the only elements in our current grammar that mark some reference to definitiveness. Following the recommendations and our current understanding of the grammar in PG, we included the following cognitive status to the supertype for determiners:
 
 determiner-lex := basic-determiner-lex & basic-zero-arg & non-mod-lex-item &
   [ SYNSEM.LOCAL.CAT.VAL [ SPR < >,
@@ -654,9 +651,9 @@ Additionally, the cognitive status value of dropped arguments had to be complete
 
 4. Argument optionality
 
-Our current grammar provides already bookkeeping of relevant information about dropped arguments of predicates. The cross-markers of verb predicates imposse restrictions in pernum values of subject and nouns, that even in the case of dropped NP arguments in a sentences, are kept as information in AVM of the predicates, and therefore reflectedin the MRS of those predicates.
+Our current grammar provides already bookkeeping of relevant information about dropped arguments of predicates. The cross-markers of verb predicates impose constraints in pernum values of subject and nouns, that even in the case of dropped NP arguments in a sentences, are kept as information in AVM of the predicates, and therefore reflected in the MRS of those predicates.
 
-The grammar also seem to provide already for a cognitive status value for dropped subject arguments, which is also acceptabel for our current understanding of PG grammer, at [COG-ST in-foc].
+The grammar also seem to provide already for a cognitive status value for dropped subject arguments, which is also acceptabel for our current understanding of PG grammar, at [COG-ST in-foc].
 
 The grammar though doesn't provide for cognitive status value for the dropped object arguments of our transitive verbs. Therefore we made some changes in the transitive-verb-lex that would record that value.
 
@@ -690,7 +687,7 @@ nonocons := nonolist & cons &
     REST  nonolist ].
 nononull := nonolist & null.
 
-We then contrainte the COMPS value of head-daughter (or mother) of the head-sub/sub-head rules to be this nonlist:
+We then constrained the COMPS value of head-daughter (or mother) of the head-sub/sub-head rules to be this nonlist:
 
 gug-head-subj-phrase := decl-head-subj-phrase &
 [ SYNSEM.LOCAL.CAT.VAL [COMPS nonolist] ].
@@ -713,20 +710,20 @@ Therefore the 'unexpressed' element was taken out in the final version, shown so
 
 IV. If the analysis is not fully working, a description of the problems you are encountering.
 
-1. Adjectival and advervial modifiers.
-Implementation is working accoding to the expectations of our analysis and data available.
+1. Adjectival and adverbial modifiers.
+Implementation is working according to the expectations of our analysis and data available.
 
 2. Possessives
-Implementation is working accoding to the expectations of our analysis and data available. We missed to be able to make the distinction between alienable and inaliebable nouns for the possessive constructions. After creating the Feature [POSS poss] used in our implementation above, we feel that in a coming week we might be closer to reflect the possibility in our sentences if time allows.
+Implementation is working according to the expectations of our analysis and data available. We missed to be able to make the distinction between alienable and inalienable nouns for the possessive constructions. After creating the Feature [POSS poss] used in our implementation above, we feel that in a coming week we might be closer to reflect the possibility in our sentences if time allows.
 
-3. Definiteness and other aspects of discours status.
-Implementation is working accoding to the expectations of our analysis and data available.
+3. Definiteness and other aspects of discourse status.
+Implementation is working according to the expectations of our analysis and data available.
 
 4. Argument optionality
-Reflexives are not part of grammar, but nevertheless they slipped in the overgeneration of arguments that our transitive verbs can generate in some of the cross-marker combinations. Cross-markers on predicates do not limit perse reflexivity, but the grammar in PG has a distinctive way to mark the reflexive arguments and predicate with which they are related. As we are not dealing with reflexive predicates in this course, we will ignore the overgeneration, as this is in it self not a wrong behaviour of our predicate, but rather an underuse of proper markers that would make such a sentence complete.
+Reflexives are not part of grammar, but nevertheless they slipped in the overgeneration of arguments that our transitive verbs can generate in some of the cross-marker combinations. Cross-markers on predicates do not limit parse reflexivity, but the grammar in PG has a distinctive way to mark the reflexive arguments and predicate with which they are related. As we are not dealing with reflexive predicates in this course, we will ignore the overgeneration, as this is in it self not a wrong behaviour of our predicate, but rather an underuse of proper markers that would make such a sentence complete.
 
 5. Anything else.
-Implementation is working accoding to the expectations of our analysis and data available.
+Implementation is working according to the expectations of our analysis and data available.
 
 
 V. Statement of the current overage of the grammar over your testsuite (using number you can get from Analyze|Coverage and Analyze|Overgeneration in [incr tsdb()]) and a comparison between your baseline testsuite run and your final one for this lab (see Compare|Competence).
@@ -765,12 +762,15 @@ Comparison ob baseline(gold) and final version of this lab
 		in 0:       73.0
 		out 0:      1.4
 
-These numbers point to two results: Frist the coverage of the grammar increased from 59% to 73%, which makes sense as several phenomenon that were in the testsuite can finally being displayed. Second, the overgeneration decreased, from 2.8% to 1.4%. Our grammar was previousely very precise due to the fact that we used relatively short sentences. We think that the major effect of this decrease is dut to the elimination of wrong parses that the grammar was generating before the added some restrictions to the head-subj/subj-head rule in combination with object-drop interprestation of some parses.
+These numbers point to two results: First the coverage of the grammar increased from 59% to 73%, which makes sense as several phenomenon that were in the testsuite can finally being displayed. Second, the overgeneration decreased, from 2.8% to 1.4%. Our grammar was previously very precise due to the fact that we used relatively short sentences. We think that the major effect of this decrease is due to the elimination of wrong parses that the grammar was generating before the added some constraints to the head-subj/subj-head rule in combination with object-drop interpretation of some parses.
+
 When inspecting the comparison of ill-formed sentences, we found 4 sentences. Three of them were not previously parsing because of their missing lexicon, but still would not generate a parse, because they represented ungrammatical sentences. This is a positive  result. Then the fourth sentence (#177) was previously parsing under the older grammar, but not now. The sentence is ungrammatical, as it displays the wrong use of an adjective on a pronoun. Therefore this evolution in the results is also correct. 
+
 When inspecting the well-formed sentences, we had 32 sentences that had improvements. Five sentences that did not parse because lack of lexicon in a new grammatical feature (adjectival, adverbial constructions, prefix markings for possessives), were able to parse. 6 sentences double their number of parses because possessive juxtaposition was added to the grammar. 11 sentences got a parse for the first time, because we were able to add possessive prefixes to nouns. 3 sentences decreased their number of parses because we implemented a better use of head-sub/sub-head rules. 4 sentences increased their parses because the possessive juxtapostion of nouns works now. Two sentences increased their number of parses because of ambiguous readings the the sentential juxtaposition and the possessive prefixes allow.
+
 These results reflect our expectations in the changes we did in the grammar this week.
 
-VI. Describe briefly your test corpus, including: where you collected it, how many sentences it contains, and what format (transliterated, etc) it is in. The corpus was extracted from a thesis work from Judith Tonahauser: The Temporal Semantics of Noun Phrases: Evidence FROM Guarani. She presented an appendix with two stories told by a native speaker. We selected the story "A Bo, a Dog and a Frog", which was glossed and translated to English. We took the first 21 sentences of this story. Therefore all sentences are all continously followign one after the other. We formatted the senteces using the standard of our test suites. Here as an examples the first sentece in our corpus:
+VI. Describe briefly your test corpus, including: where you collected it, how many sentences it contains, and what format (transliterated, etc) it is in. The corpus was extracted from a thesis work from Judith Tonahauser: The Temporal Semantics of Noun Phrases: Evidence FROM Guarani. She presented an appendix with two stories told by a native speaker. We selected the story "A Bo, a Dog and a Frog", which was glossed and translated to English. We took the first 21 sentences of this story. Therefore all sentences are all continuously following one after the other. We formatted the senteces using the standard of our test suites. Here as an examples the first sentece in our corpus:
 
 #Sentence.1
 Source: a, attested
@@ -783,7 +783,7 @@ o-iNndaje   rakaHe peteiN  mitaN  tyreHyN o-hayhu-va  mymba-kueAra pe
 A.3-be.say  PAST   one     child  orphan  A3-love-RC  wild.animal-PL ACC
 'There once was an orphan who loved animals.'
 
-Each sentence is numbered separately. The orignal source is indexed as 'a', but mentioned in the corpus file. All the sentences are attested and vetted by a native speaker. Thefore we assume them to be grammatical.
+Each sentence is numbered separately. The original source is indexed as 'a', but mentioned in the corpus file. All the sentences are attested and vetted by a native speaker. Therefore we assume them to be grammatical.
 
 The five sentences of the IGT represent: 	
 1.- the natural use in the original orthography of the language
@@ -792,7 +792,7 @@ The five sentences of the IGT represent:
 4.- the glosses and word-by-word translation of the sentence
 5.- the general English translation of the sentence.
 
-The glosses were revised to correspond to the glosses used in our grammar, and to reflect current standtards used in the field.
+The glosses were revised to correspond to the glosses used in our grammar, and to reflect current standards used in the field.
 
 
 
