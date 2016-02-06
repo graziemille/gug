@@ -45,6 +45,10 @@ roAga := com-inam-noun-lex &
   [ STEM < "roAga" >,
     SYNSEM.LKEYS.KEYREL.PRED "_house_n_rel" ].
 
+aAra := com-inam-noun-lex &
+  [ STEM < "aAra" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_day_n_rel" ].
+
 yvytu := non-poss-com-noun-inam-lex &
   [ STEM < "yvytu" >,
     SYNSEM.LKEYS.KEYREL.PRED "_wind_n_rel" ].
@@ -132,6 +136,10 @@ mboHehaAra := com-anim-human-noun-lex &
 temimboHe := com-anim-human-noun-lex &
   [ STEM < "temimboHe" >,
     SYNSEM.LKEYS.KEYREL.PRED "_student_n_rel" ].
+
+mitan := com-anim-human-noun-lex &
+  [ STEM < "mitan" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_child_n_rel" ].
 
 sy_1 := com-anim-human-noun-lex &
   [ STEM < "sy" >,
@@ -230,6 +238,10 @@ poraN_1 := stative-intrans-verb-lex &
 nNaro_1 := stative-intrans-verb-lex &
   [ STEM < "nNaro" >,
     SYNSEM.LKEYS.KEYREL.PRED "_angry_v_rel" ].
+
+aAra_2 := stative-intrans-verb-lex &
+  [ STEM < "aAra" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_day_v_rel" ].
 
 sy_2 := stative-intrans-verb-lex &
   [ STEM < "sy" >,
