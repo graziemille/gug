@@ -793,6 +793,3 @@ The five sentences of the IGT represent:
 5.- the general English translation of the sentence.
 
 The glosses were revised to correspond to the glosses used in our grammar, and to reflect current standards used in the field.
-
-
-
