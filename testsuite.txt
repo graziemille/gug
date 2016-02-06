@@ -1491,7 +1491,7 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: adj
-reia'e mita᷉ oguata
+reia'e mita᷉  oguata
 reiaHe mitaN oguata
 reiaHe mitaN o-guata
 happy child.ANIM.HUM.NOM A.3-walk
