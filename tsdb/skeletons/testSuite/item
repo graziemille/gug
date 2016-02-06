@@ -1,6 +1,6 @@
 1@author@@@1@wo,agr,c@la juHi ohecha la vakaA pe@@@@1@6@the.SG frog.ANIM.NOM A.3-see the.SG cow.ANIM=ACC'The frog sees the cow'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 2@author@@@1@agr@la juHi hecha la vakaA pe@@@@0@6@the.SG frog.ANIM.NOM see the.SG cow.ANIM=ACC*'The frog sees the cow'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-3@author@@@1@wo,agr,c@juHi ohecha tunich@@@@1@3@frog.ANIM.NOM A.3-see stone.INAM'The frog sees the stone'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+3@author@@@1@wo,agr,c@juHi ohecha tunich@@@@1@3@frog.ANIM A.3-see stone.INAM'The frog sees the stone' / 'The stone sees the frog'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 4@author@@@1@agr@juHi ihecha tunich@@@@0@3@frog.ANIM.NOM 0.3-see stone.INAM*'The frog sees the stone'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 5@author@@@1@wo,agr,c,pro-d@ohecha tunich@@@@1@2@A.3-see stone.INAM'He/She sees the stone'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 6@author@@@1@agr@ihecha tunich@@@@0@2@O.3-see stone.INAM*'He sees the stone'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
@@ -184,3 +184,11 @@
 184@author@@@1@poss@ahecha vai@@@@1@2@A.1SG-see bad'I see poorly'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 185@author@@@1@poss@jagua chesy oguata@@@@0@3@dog 1SG.POS-mother A.3-walk*'The my mother of the dog walks'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 186@author@@@1@poss@chesy jagua oguata@@@@1@3@1SG.POS-mother dog A.3-walk'My mother's dog walks' or 'I am a mother and the dog walks'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+187@author@@@1@wo,agr,c@juHi tunich ohecha@@@@1@3@frog.ANIM stone.INAM A.3-see'The frog sees the stone'/'the stone sees the frog'/'The frog's stone sees something'/ 'something sees the frog's stone'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+188@author@@@1@wo,agr,c@ohecha juHi tunich@@@@1@3@A.3-see frog.ANIM stone.INAM'The frog sees the stone'/'the stone sees the frog'/'The frog's stone sees something'/ 'something sees the frog's stone'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+189@author@@@1@wo@juHi ohecha vakaA@@@@1@3@frog.ANIM.NOM O.3-see cow.ANIM'The frogs see the cows'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+190@author@@@1@wo@juHi vakaA ohecha@@@@1@3@frog.ANIM.NOM cow.ANIM O.3-see'The frogs see the cows'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+191@author@@@1@wo@vakaA juHi ohecha@@@@1@3@cow.ANIM frog.ANIM.NOM O.3-see'The frogs see the cows'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+192@author@@@1@wo@vakaA ohecha juHi@@@@1@3@cow.ANIM O.3-see frog.ANIM.NOM'The frogs see the cows'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+193@author@@@1@wo@ohecha juHi vakaA@@@@1@3@O.3-see frog.ANIM.NOM cow.ANIM'The frogs see the cows'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+194@author@@@1@wo@ohecha juHi vakaA@@@@1@3@O.3-see frog.ANIM.NOM cow.ANIM'The frogs see the cows'@lisa tittle caballero, thor wicke monteverde@january 14, 2016

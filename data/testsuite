@@ -41,8 +41,8 @@ Phenomena: {wo, agr, c}
 ju'i ohecha tunich
 juHi ohecha tunich
 juHi o-hecha tunich
-frog.ANIM.NOM A.3-see stone.INAM
-'The frog sees the stone'
+frog.ANIM A.3-see stone.INAM
+'The frog sees the stone' / 'The stone sees the frog'
 
 #Ex.4: Transitive verb should agree with 3per subject and not 3per object.
 Source: author
@@ -1480,7 +1480,7 @@ Source: author
 Vetted: f
 Judgment: g
 Phenomena: {adj, wo}
-mita᷉ reia'e oguata
+mita᷉  reia'e oguata
 mitaN reiaHe oguata
 mitaN reiaHe o-guata
 child happy.NOM A.3-walk
@@ -1491,7 +1491,7 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: adj
-reia'e mita᷉ oguata
+reia'e mita᷉  oguata
 reiaHe mitaN oguata
 reiaHe mitaN o-guata
 happy child.ANIM.HUM.NOM A.3-walk
@@ -2058,3 +2058,91 @@ chesy jagua oguata
 che-sy jagua o-guata
 1SG.POS-mother dog A.3-walk
 'My mother's dog walks' or 'I am a mother and the dog walks'
+
+#Ex.187:  Transitive verb with ambiguous subject/object, drop of object/subject due to possessive
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {wo, agr, c}
+ju'i tunich ohecha 
+juHi tunich ohecha
+juHi tunich o-hecha
+frog.ANIM stone.INAM A.3-see
+'The frog sees the stone'/'the stone sees the frog'/'The frog's stone sees something'/ 'something sees the frog's stone'
+
+#Ex.188:  Transitive verb, agrees with 3per subject. Inanimate object.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {wo, agr, c}
+ohecha ju'i tunich
+ohecha juHi tunich
+o-hecha juHi tunich
+A.3-see frog.ANIM stone.INAM
+'The frog sees the stone'/'the stone sees the frog'/'The frog's stone sees something'/ 'something sees the frog's stone'
+
+#Ex.189 Transitive verb agrees with 3per subject. No marking on animate object. SVO word order. No determiners, underspecified number. Ambiguous.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: wo
+ju'i ohecha vaká
+juHi ohecha vakaA
+juHi o-hecha vakaA
+frog.ANIM.NOM O.3-see cow.ANIM
+'The frogs see the cows'
+
+#Ex.190 Transitive verb agrees with 3per subject. No marking on animate object. SOV word order. No determiners, underspecified number. Ambiguous.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: wo
+ju'i vaká ohecha 
+juHi vakaA ohecha 
+juHi vakaA o-hecha 
+frog.ANIM.NOM cow.ANIM O.3-see 
+'The frogs see the cows'
+
+#Ex.191 Transitive verb agrees with 3per subject. No marking on animate object. OSV word order. No determiners, underspecified number. Ambiguous.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: wo
+vaká ju'i ohecha
+vakaA juHi ohecha 
+vakaA juHi o-hecha 
+cow.ANIM frog.ANIM.NOM O.3-see
+'The frogs see the cows'
+
+#Ex.192 Transitive verb agrees with 3per subject. No marking on animate object. OVS word order. No determiners, underspecified number. Ambiguous.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: wo
+vaká ohecha ju'i 
+vakaA ohecha juHi 
+vakaA o-hecha juHi 
+cow.ANIM O.3-see frog.ANIM.NOM 
+'The frogs see the cows'
+
+#Ex.193 Transitive verb agrees with 3per subject. No marking on animate object. VSO word order. No determiners, underspecified number. Ambiguous.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: wo
+ohecha ju'i vaká
+ohecha juHi vakaA
+o-hecha juHi vakaA
+O.3-see frog.ANIM.NOM cow.ANIM
+'The frogs see the cows'
+
+#Ex.194 Transitive verb agrees with 3per subject. No marking on animate object. VOS word order. No determiners, underspecified number. Ambiguous.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: wo
+ohecha ju'i vaká
+ohecha juHi vakaA
+o-hecha juHi vakaA
+O.3-see frog.ANIM.NOM cow.ANIM
+'The frogs see the cows'
