@@ -376,7 +376,7 @@ a-hendu avatityA yvytu hata
 A.1SG-hear cornfield wind.INAM strong
 *'I hear the cornfield's strong wind'
 
-This constrain is limited to the constrain to be implemented for pronouns (which cannot be possessors nor possessums). Nevertheless, as seen below in III.5, they could jointly be implemented.
+This constrain is similar to the constrain to be implemented for pronouns (which cannot be possessors nor possessums). Nevertheless, as seen below in III.5, they could jointly be implemented.
 
 -- No adjective modifiers for pronouns
 Aditionally, attribute adjectives cannot be modifiers of pronouns. So while this sentence 
