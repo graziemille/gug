@@ -6,24 +6,17 @@
 
 I. A descriptive statement of the facts of your language. 
 
-1. Adjectival and advervial modifiers.
+1. Adjectival and adverbial modifiers.
 
-As stated in lab4, modifiers in Paraguayan Guaraní (hereafter PG or simply Guaraní), be they attributive 
-adjectives or adverbs, have similar behaviors and forms.
-With adjectives, we recognize that there is no inflection agreement between adjectives and their nouns, as 
-nouns also don't show any surface inflection for the different PNG values they might semantically include. 
-Attributive adjectives follow their modifees.
-Similar to adjectives, adverbs follow also their modifees, the verb predictes, and also do not show any 
-specific agreement with the verb they are attached to. 
-In a language like PG, it seems that the modifees, nouns and verbs in our case, are very similar. Nouns can
-have also the function of predicates as verbs do, and nouns can get cross-referential markers the same way 
-verbs do. This distinction of verbs and nouns, that might play a bigger role in languages like English, is
-blurred in PG. 
-Although there are group of words that can only be used as adjectives or as adverbs because of their semantics,
-possible, words that can be used for both categories seem to have the same form,
-with no morphological difference whatsoever. Therefore in the application of our grammar  
-It seems that it makes sense to treat both adjective and adverbs as one same lexical type, when applying
-further changes to our grammar. 
+As stated in lab4, modifiers in Paraguayan Guaraní (hereafter PG or simply Guaraní), be they attributive adjectives or adverbs, have similar behaviors and forms.
+With adjectives, we recognize that there is no inflection agreement between adjectives and their nouns. Attributive adjectives immediately follow the nouns they modify. Similar to adjectives, adverbs immediately follow the verbs they modify.  Like adjectives, adverbs do not show any 
+specific agreement with the verb they modify. 
+
+In PG, it seems that nouns and verbs being modified are very similar. Nouns can have also the function of predicates as verbs do, and nouns can get cross-referential markers the same way 
+verbs do. This distinction of verbs and nouns, that might play a bigger role in languages like English, is blurred in PG. 
+
+Although there may be words that are only used as adjectives or as adverbs because of their semantics, words that can be used for both categories seem to have the same form,
+with no morphological difference whatsoever in either use. Therefore in the application of our grammar   It seems that it makes sense to treat both adjective and adverbs as one same lexical type, when applying further changes to our grammar. 
 
 2. Possessives.
 
