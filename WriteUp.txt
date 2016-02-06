@@ -36,23 +36,26 @@ Personal pronouns are also another word class that gets a classification for its
 
 4. Argument optionality
 
-PG allows for argument optionality in contextually rich situations, where the semantics of missed arguments are preserved in the context although not expressed syntactically. Some sources suggested that animacy played a role in the argument drop, but a recent paper by Judith Tonhauser, suggest that animacy is not relevant in this phenomenon. Argument optionality is not based on animacy or gender of PG nouns. Syntactically this might be an expression of lexically licensed argument drop. In some other cases, this is syntactically  supported by the systematic use of cross-referential markers on predicates, which facilitate the interpretation of dropped arguments. The cross-referential markers, although only being able to represent either the subject or object argument of a predicate, due to the rules and hierarchy they represent, they point to limitations impossed on the argument not marked. This was already expressed in lab 2 and 3. This system or markings has been alreay implemented in our grammar and will not further discussed here, as we want to concentrate in the cognitive status of dropped arguments. 
+PG allows for argument optionality in contextually rich situations, where the semantics of missed arguments are preserved in the context although not expressed syntactically. Some sources suggested that animacy played a role in argument drop, but a recent paper by Judith Tonhauser, cites corpus data to suggest that it is not quantifiably true that argument optionality is based on animacy/gender of PG nouns. 
 
-Semantically, our sources sugest that context plays an important role in the semantic construction of dropped arguments, and therefore we will follow an interpretation of 'definite null instantiation', simply DNI, for our dropped arguments. As PG is a language that accepts diffent orders of sentence constituents, and therefore arguments might be dropped at  different locations of a sentence, it is important that parses are sufficiently ambiguous to represent the different combinations of S, V, and O arguments, even then just the subject or the object or both might have been dropped. At the end, getting the equivalent semantic representation in our MRS will determine the correctness of the analysis. 
+Argument drop is syntactically supported by the systematic use of cross-referential markers on predicates, which facilitate the interpretation of dropped arguments. The cross-referential markers only represent either the subject or object argument of a predicate at a given time, but due to the rules and hierarchy they represent, they also point to limitations imposed on the argument not marked. This was already expressed in lab 2 and 3. This system or markings has been already implemented in our grammar and will not further discussed here, as we want to concentrate in the cognitive status of dropped arguments. 
+
+Semantically, our sources suggest that context plays an important role in the semantic construction of dropped arguments, and therefore we will follow an interpretation of 'definite null instantiation', simply DNI, for our dropped arguments. As PG is a language that accepts different orders of sentence constituents, and therefore arguments might be dropped at different locations of a sentence, it is important that parses are sufficiently ambiguous to represent the different combinations of S, V, and O arguments, when the subject, the object or both might have been dropped. At the end, getting the equivalent semantic representation in our MRS will determine the correctness of the analysis. 
 
 5. Anything else.
 
-As we are dealing with possessives this week, we decided to include a phenomenon characteristic of PG. PG exhibits a group of nouns that resist their use in possessive construction, being those mostly words denoting natural things like wind, the sun, plants. These nouns cannot come up in juxtapositions with another noun, nor can they have a pronoun prefix that indicate being owned or part something or somebody else. It seems that the implementation could be rather simple. 
-Additionally, as we deal with adjectives in this lab, we wanted to secure that adjectives cannot be the modifiers of pronouns, as we don't have any sentence that attest such use of adjectives. This limitation could be done with the same tools for the limitations of pronouns in possessive contructions. Aditionally we implemented the phenomenen that adjectives cannot be modifiers to pronouns. Pronouns are in our documentation elements that do not take modifiers. Therefore we wanted to make sure that such a constrain is implemented.
-Finally, as we worked with argument optionality in this lab, we decided to clean the way that some of our parses were being generated, which pointed to a wrong use of head-subj/subj-head and head-comp/comp-head and their optionality. This involved not only wrong parses but also overgeneration or missing parses. 
+As we are dealing with possessives this week, we decided to include a phenomenon characteristic of PG. PG exhibits a group of nouns that resist being possessums in possessive construction, being those mostly words denoting natural things like wind, the sun, plants. These nouns cannot undergo possessive juxtapositions with another noun (as the possessum), nor can they have a pronoun prefix that indicates being owned or part something or somebody else. It seems that the implementation could be rather simple. 
+
+Additionally, as we deal with adjectives in this lab, we wanted to secure that adjectives cannot be the modifiers of pronouns, as we don't have any sentences that attest such use of adjectives.  Additionally we implemented the phenomenon that adjectives cannot be modifiers to pronouns. Pronouns are in our documentation elements that do not take modifiers. Therefore we wanted to make sure that such a constrain is implemented.
+
+Finally, as we worked with argument optionality in this lab, we decided to clean the way that some of our parses were being generated, and some spurious over-generation resulting from the order of  head-subj/subj-head and head-comp/comp-head and the argument optionality rules. This involved looking for wrong parses, overgeneration, and or missing parses. 
 
 
 II. Illustrative IGT examples from your testsuite.
 
-1. Adjectival and advervial modifiers.
+1. Adjectival and adverbial modifiers.
 
-Adjectives and adverbs follow their modifees. This is illustrated for attributive adjectives and adverbs with the
-following IGTs: 
+Adjectives and adverbs follow the words they modify. This is illustrated for attributive adjectives and adverbs with the following IGTs: 
 
 #Ex.169: Use of adjective as an attribute of the object of verb predicate
 Source: author
@@ -98,7 +101,7 @@ a-guata pyaHe
 1SG-walk quick
 'I walk quickly'
 
-Therefore it is ungrammatical to have adjective and adverbs preceeding their modifees.
+Therefore it is ungrammatical to have adjectives or adverbs preceding the words they modify.
 
 #Ex.170: Attributive adjetive before a noun is wrong position
 Source: author
@@ -449,11 +452,12 @@ NOTE: Unless otherwise specified, all tdl changes here were included in our para
 
 1. Adjectival and advervial modifiers.
 
-As the syntactic behaviour of attributive adjectives and adverbs is the same in most aspects, we decided to create rules that would include both arguments at the same time .  We verified that the right entry is found in rules tdl, which reflects that attibutive adjectives and adverbs follow their modifees:
+As the syntactic behaviour of attributive adjectives and adverbs is the same in most aspects, we decided to create rules that would include both arguments at the same time .  We verified that the right entry is found in rules tdl, which reflects that attibutive adjectives and adverbs follow the words they modify
+
 
 head-adj-int := head-adj-int-phrase.
 
-We changed the basic-intersective-adjective-lex which usually has a value 'ref-ind' for its XARG feature. This value refers to nouns. The more general 'event-or-ref-index' includes verbal and nominal modifees, therefore more suitable for our purposes. We decided also to keep rules that were already instantiated for adjective as a general designation for adjectives and adverbs (just saving us some time). We added also the 'gug' reference in front of some rules, to express the exclusive use in our language. Therfore the adverb/adjective lex supertype looked as folows:
+We changed the basic-intersective-adjective-lex which usually has a value 'ref-ind' for its XARG feature. This value refers to nouns. The more general 'event-or-ref-index' includes verbal and nominal elements, therefore more suitable for our purposes. We decided also to keep rules that were already instantiated for adjective as a general designation for adjectives and adverbs (just saving us some time). We added also the 'gug' reference in front of some rules, to express the exclusive use in our language. Therfore the adverb/adjective lex supertype looked as folows:
 
 adj-lex := gug-intersective-adjective-lex.
 gug-intersective-adjective-lex := basic-adjective-lex &
