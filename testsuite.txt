@@ -2048,7 +2048,7 @@ jagua che-sy o-guata
 dog 1SG.POS-mother A.3-walk
 *'The my mother of the dog walks'
 
-#Ex.186: Unattested case of a noun that has passed throught possessive lexical rule acting as the possessor of another noun.  Judged ungrammatical for now  but easy to change if need be.
+#Ex.186: Noun with possessive prefix being possessor of another noun. Ambiguous reading
 Source: author
 Vetted: f
 Judgment: u
@@ -2057,4 +2057,4 @@ chesy jagua oguata
 chesy jagua oguata
 che-sy jagua o-guata
 1SG.POS-mother dog A.3-walk
-*'My mother's dog walks'
+'My mother's dog walks'or 'I am a mother and the dog walks'
