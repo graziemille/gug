@@ -2080,3 +2080,69 @@ ohecha juHi tunich
 o-hecha juHi tunich
 A.3-see frog.ANIM stone.INAM
 'The frog sees the stone'/'the stone sees the frog'/'The frog's stone sees something'/ 'something sees the frog's stone'
+
+#Ex.189 Transitive verb agrees with 3per subject. No marking on animate object. SVO word order. No determiners, underspecified number. Ambiguous.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: wo
+ju'i ohecha vaká
+juHi ohecha vakaA
+juHi o-hecha vakaA
+frog.ANIM.NOM O.3-see cow.ANIM
+'The frogs see the cows'
+
+#Ex.190 Transitive verb agrees with 3per subject. No marking on animate object. SOV word order. No determiners, underspecified number. Ambiguous.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: wo
+ju'i vaká ohecha 
+juHi vakaA ohecha 
+juHi vakaA o-hecha 
+frog.ANIM.NOM cow.ANIM O.3-see 
+'The frogs see the cows'
+
+#Ex.191 Transitive verb agrees with 3per subject. No marking on animate object. OSV word order. No determiners, underspecified number. Ambiguous.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: wo
+vaká ju'i ohecha
+vakaA juHi ohecha 
+vakaA juHi o-hecha 
+cow.ANIM frog.ANIM.NOM O.3-see
+'The frogs see the cows'
+
+#Ex.192 Transitive verb agrees with 3per subject. No marking on animate object. OVS word order. No determiners, underspecified number. Ambiguous.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: wo
+vaká ohecha ju'i 
+vakaA ohecha juHi 
+vakaA o-hecha juHi 
+cow.ANIM O.3-see frog.ANIM.NOM 
+'The frogs see the cows'
+
+#Ex.193 Transitive verb agrees with 3per subject. No marking on animate object. VSO word order. No determiners, underspecified number. Ambiguous.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: wo
+ohecha ju'i vaká
+ohecha juHi vakaA
+o-hecha juHi vakaA
+O.3-see frog.ANIM.NOM cow.ANIM
+'The frogs see the cows'
+
+#Ex.194 Transitive verb agrees with 3per subject. No marking on animate object. VOS word order. No determiners, underspecified number. Ambiguous.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: wo
+ohecha ju'i vaká
+ohecha juHi vakaA
+o-hecha juHi vakaA
+O.3-see frog.ANIM.NOM cow.ANIM
+'The frogs see the cows'
