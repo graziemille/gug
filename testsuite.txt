@@ -1480,7 +1480,7 @@ Source: author
 Vetted: f
 Judgment: g
 Phenomena: {adj, wo}
-mita᷉ reia'e oguata
+mita᷉  reia'e oguata
 mitaN reiaHe oguata
 mitaN reiaHe o-guata
 child happy.NOM A.3-walk
