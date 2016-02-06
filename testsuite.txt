@@ -1206,7 +1206,7 @@ Vetted: f
 Judgment: u
 Phenomena: poss
 ahendu avatity´ yvytu hata 
-ahendu avatityA yvuytu hata 
+ahendu avatityA yvytu hata 
 a-hendu avatityA yvytu hata
 A.1SG-hear cornfield wind.INAM strong
 'I hear the cornfield's strong wind'
@@ -1569,8 +1569,8 @@ Vetted: f
 Judgment: g
 Phenomena: cop
 hi'árama
-hiHaArama
-hi-aAra-ma
+iaArama
+i-aAra-ma
 O.3-day-PERF
 'It was his day' 
 
