@@ -175,6 +175,10 @@ vai := attributive-adj-lex &
   [ STEM < "vai" >,
     SYNSEM.LKEYS.KEYREL.PRED "_bad_a_rel" ].
 
+pyaHe := attributive-adj-lex &
+  [ STEM < "pyaHe" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_quick_a_rel" ].
+
 ;;; Case-marking adpositions
 
 acc%2C%20DAT-marker := case-marking-adp-lex &
