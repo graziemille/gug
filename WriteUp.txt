@@ -153,7 +153,7 @@ a-hecha mboHehaAra roAga
 A.1SG-see professor   house
 'I see the professor's house'
 
-A reverse order of the arguments, while syntactically possible, is semantically limited. The possessor should be able to possess the possessum. In our examples, branches do not possess trees, nor houses possess a professor (apart from the effort to having a mortgage to pay). This semantic limitation is not dealt with in our grammar, as it is dependent on the semantics of the specific situation. Therefore we assume in general that all nouns can take the role of possessor in our grammar (with the exception of personal pronouns and prefix possessive constructions mentioned below as stated in I.2). Ungrammatical therefore are examples like the following:
+A reverse order of the arguments, while syntactically possible, is semantically limited. The possessor should be able to possess the possessum. In our examples, branches do not possess trees, nor houses possess a professor (apart from the effort to having a mortgage to pay). This semantic limitation is not dealt with in our grammar, as it is dependent on the semantics of the specific situation. Therefore we assume in general that all nouns can take the role of possessor in our grammar (with the exception of personal pronouns and prefix possessive constructions mentioned as stated in I.2). Ungrammatical therefore are examples like the following:
 
 #Ex.171: Pronouns cannot be part of possessive constructions
 Source: author
@@ -320,7 +320,7 @@ rehecha
 rehecha
 re-hecha
 A.2SG-see
-'I don't see (it/him/her/them)'
+'You don't see (it/him/her/them)'
 
 Our current grammar imposses the restriction that the object of this transitive predicate be 3rd person. Similarly, portmanteau markers implement other restrictions:
 
@@ -379,7 +379,7 @@ A.1SG-hear cornfield wind.INAM strong
 This constrain is limited to the constrain to be implemented for pronouns (which cannot be possessors nor possessums). Nevertheless, as seen below in III.5, they could jointly be implemented.
 
 -- No adjective modifiers for pronouns
-Aditionally the implemented that attribute adjectives cannot be modifiers of pronouns. So while this sentence 
+Aditionally, attribute adjectives cannot be modifiers of pronouns. So while this sentence 
 is gramatical:
 
 #Ex.134: Use of adjective as an attribute of the subject of verb predicate
