@@ -73,7 +73,7 @@ Source: author
 Vetted: f
 Judgment: g
 Phenomena: {adj, wo}
-mita᷉ reia'e oguata
+mita᷉  reia'e oguata
 mitaN reiaHe oguata
 mitaN reiaHe o-guata
 child happy.NOM A.3-walk
@@ -158,7 +158,7 @@ A reverse order of the arguments, while syntactically possible, is semantically 
 #Ex.171: Pronouns cannot be part of possessive constructions
 Source: author
 Vetted: f
-Judgment: 
+Judgment: u
 Phenomena: poss
 ahecha ha'e yvyra
 ahecha haHe yvyra
@@ -232,7 +232,7 @@ lo juHi o-guata
 the.PL frog.ANIM.NOM A.3-walk
 'The frogs walk'
 
-Nevertheless, not using these determiners, just leaves the noun underspecified, with several possible translations in languages like English, where number and definiteness are still relevant.
+Nevertheless, not using these determiners just leaves the noun underspecified, with several possible translations in languages like English, where number and definiteness are still relevant.
 
 #Ex.19: Dynamic intransitive verb agrees with 3rd subject. VS word order.
 Source: author
@@ -376,7 +376,7 @@ a-hendu avatityA yvytu hata
 A.1SG-hear cornfield wind.INAM strong
 *'I hear the cornfield's strong wind'
 
-This is limited to the constraint implemented for pronouns (which cannot be possessors nor possessums). Nevertheless, as seen below in III.5, they could jointly be implemented.
+This is similar to the constraint implemented for pronouns (which cannot be possessors nor possessums). As to be seen below in III.5, they could jointly be implemented.
 
 -- No adjective modifiers for pronouns
 Additionally we implemented that attribute adjectives cannot be modifiers of pronouns. So while this sentence is grammatical:
@@ -386,7 +386,7 @@ Source: author
 Vetted: f
 Judgment: g
 Phenomena: {adj, wo}
-mita᷉ reia'e oguata
+mita᷉  reia'e oguata
 mitaN reiaHe oguata
 mitaN reiaHe o-guata
 child happy.NOM A.3-walk
