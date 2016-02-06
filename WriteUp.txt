@@ -409,7 +409,7 @@ haHe reiaHe o-guata
 The implementation is mentioned below in III.1.
 
 -- Wrong parsing trees
-We hade over- and undergeneration of some parses, due in part to the generous argument optionality built in our language, and its the free word order. This is not related to specific IGTs or their expressed ungrammaticallity, but were rather related to the grammar implementation. Therefore further details in III.5. We used though the following sentences to be sure that the different ambigous parsings were happening, which include the different SVO,SOV, VOS, VSO, OSV, OVS parses, as well as possessive juxtaposition of nouns:
+We had over- and undergeneration of some parses, due in part to the generous argument optionality built in our language, and its the free word order. This is not related to specific IGTs or their expressed ungrammaticallity, but were rather related to the grammar implementation. Therefore further details in III.5. We used though the following sentences to be sure that the different ambigous parsings were happening, which include the different SVO,SOV, VOS, VSO, OSV, OVS parses, as well as possessive juxtaposition of nouns:
 
 #Ex.3:  Transitive verb with  ambiguous subject and object.
 Source: author
@@ -453,7 +453,6 @@ NOTE: Unless otherwise specified, all tdl changes here were included in our para
 1. Adjectival and advervial modifiers.
 
 As the syntactic behaviour of attributive adjectives and adverbs is the same in most aspects, we decided to create rules that would include both arguments at the same time .  We verified that the right entry is found in rules tdl, which reflects that attibutive adjectives and adverbs follow the words they modify
-
 
 head-adj-int := head-adj-int-phrase.
 
