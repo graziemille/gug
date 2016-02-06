@@ -41,8 +41,8 @@ Phenomena: {wo, agr, c}
 ju'i ohecha tunich
 juHi ohecha tunich
 juHi o-hecha tunich
-frog.ANIM.NOM A.3-see stone.INAM
-'The frog sees the stone'
+frog.ANIM A.3-see stone.INAM
+'The frog sees the stone' / 'The stone sees the frog'
 
 #Ex.4: Transitive verb should agree with 3per subject and not 3per object.
 Source: author
@@ -2058,3 +2058,25 @@ chesy jagua oguata
 che-sy jagua o-guata
 1SG.POS-mother dog A.3-walk
 'My mother's dog walks' or 'I am a mother and the dog walks'
+
+#Ex.187:  Transitive verb with ambiguous subject/object, drop of object/subject due to possessive
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {wo, agr, c}
+ju'i tunich ohecha 
+juHi tunich ohecha
+juHi tunich o-hecha
+frog.ANIM stone.INAM A.3-see
+'The frog sees the stone'/'the stone sees the frog'/'The frog's stone sees something'/ 'something sees the frog's stone'
+
+#Ex.188:  Transitive verb, agrees with 3per subject. Inanimate object.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {wo, agr, c}
+ohecha ju'i tunich
+ohecha juHi tunich
+o-hecha juHi tunich
+A.3-see frog.ANIM stone.INAM
+'The frog sees the stone'/'the stone sees the frog'/'The frog's stone sees something'/ 'something sees the frog's stone'
