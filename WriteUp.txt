@@ -8,15 +8,25 @@ I. A descriptive statement of the facts of your language.
 
 1. Adjectival and adverbial modifiers.
 
-As stated in lab4, modifiers in Paraguayan Guaraní (hereafter PG or simply Guaraní), be they attributive adjectives or adverbs, have similar behaviors and forms. With adjectives, we recognize that there is no inflection agreement between adjectives and their nouns. Attributive adjectives immediately follow the nouns they modify. Similar to adjectives, adverbs immediately follow the verbs they modify.  Like adjectives, adverbs do not show any specific agreement with the verb they modify. 
+As stated in lab4, modifiers in Paraguayan Guaraní (hereafter PG or simply Guaraní), be they attributive adjectives or adverbs, have similar behaviors and forms. With adjectives, we recognize that there is no inflection agreement between adjectives and their nouns. Attributive adjectives immediately follow the nouns they modify. Similar to adjectives, adverbs immediately follow the verbs they modify, they also do not show any agreement with the verb they modify. 
 
-In PG, it seems that nouns and verbs being modified are very similar. Nouns can have also the function of predicates as verbs do, and nouns can get cross-referential markers the same way verbs do. This distinction of verbs and nouns, that might play a bigger role in languages like English, is blurred in PG. 
+In PG, it seems that nouns and verbs are very similar roots. Nominal roots can also have the function of predicates as verbal roots do, and nouns can get cross-referential markers the same way verbs do. This distinction of verbs and nouns, that might play a bigger role in languages like English, is blurred in PG. 
 
-Although there may be words that are only used as adjectives or as adverbs because of their semantics, words that can be used for both categories seem to have the same form,with no morphological difference whatsoever in either use. Therefore in the application of our grammar   It seems that it makes sense to treat both adjective and adverbs as one same lexical type, when applying further changes to our grammar. 
+Although there may be words that are only used as adjectives or as adverbs because of their semantics, words that can be used for both categories seem to have the same form, with no morphological difference whatsoever between the two uses. Therefore in the application of our grammar   It seems that it makes sense to treat both adjectives and adverbs as one same lexical type. 
 
 2. Possessives.
 
-Paraguayan Guarani has a basic possessive construction of juxtapositon of two nouns to display their possessive relation, the first noun is the possessor, the second noun is the possessee. Semantically the possessor must possess the quality of being able to possess. There is an exemption for that we asses to be reasonable: only common nouns and proper nouns can be possessors or possessees.  That excludes pronouns from these constructions. We don't find possessive construction using personal pronouns in our testsuite. Also, as our testsuite currently does not implement proper nouns, we will concentrate in the implementation with common nouns in this week's lab. A juxtaposition is also used for noun classifications, but this phenomenon will not be analized as we are only concerned with possessives in this section.  Keeping the basic order of possessor followed by possessee, there is also another possessive contruction which employs a prefix (denoting the possessor) on a noun (possesse). Morphologically such prefixes are identical to personal pronouns, but are part of the nouns. This last construction is also similar to the one with predicative nouns that get markers assigned for their arguments. We will try to be aware of this distinction and be explicit of sentence constructions that ambiguously could be interpreted in these both ways.  Also we want to be aware that possessive contruction with possessive prefixes cannot undergo again a possessive contruction as a possessee. This limitation is similar to simple nouns that don't allow to be a possesse (e.g.'wind' in PG), whose solution should have similarities. Nouns in PG exhibit different degrees of alienability depending of the semantics they contain, as we previously stated in lab 3. While the majority of nouns can optionaly take the role of a possessee in a possessive construction, there are nouns where such a construction is obbligatory. This applies especially to nouns that express kindship, parts of body, personal attributes or spatial relationships. These nouns can only exist in a possessive construction, either in simple juxtaposition, or with a personal suffix (e.g. an impersonal 3rd person suffix that indicates at least being possessed by something or somebody). This aspect of alienability and inalienability of nouns will not be resolved in this lab, although present in our testsuite examples.
+Paraguayan Guarani has a basic possessive construction of juxtapositon of two nouns to display their possessive relation. The first noun is the possessor. The second noun is the possessum. Semantically the possessor must possess the quality of being able to possess. 
+
+There is an exemption for that we asses to be reasonable: only common nouns and proper nouns can be possessors or possessums.  That excludes pronouns from these constructions. We don't find possessive construction using personal pronouns in our sources. Also, as our testsuite currently does not implement proper nouns, we concentrated on the implementation with common nouns in this week's lab. 
+
+Juxtaposition is also used for noun relations (e.g., to mean “with x”), but this phenomenon will not be analyzed this week as we are only concerned with possessives in this section.  
+
+Keeping the basic order of possessor followed by possessum, there is also another possessive construction which employs a prefix (denoting the possessor) on a noun (possessum). Morphologically such prefixes are identical to markers we get on stative intransitive verbs.  We will try to be aware of this distinction and be explicit about sentence constructions that ambiguously could be interpreted in these both ways.  
+
+Also we want to be aware that possessive construction with possessive prefixes cannot undergo a possessive construction as a possessum. This constraint is similar to the one on some common nouns that can’t be a possessum (e.g.'wind' in PG), whose solution should have similarities. 
+
+Nouns in PG also exhibit different degrees of alienability depending of the semantics they contain, as we previously stated in lab 3. While the majority of nouns can optionally take the role of a possessum in a possessive construction, there are nouns where such a construction is obligatory. This applies especially to nouns that express kinship, parts of body, personal attributes or spatial relationships. These nouns can only exist in a possessive construction, either in simple juxtaposition, or with a possessive affix. This aspect of alienability and inalienability of nouns will not be resolved in this lab, although present in one of our testsuite examples.
 
 3. Definiteness and other aspects of discourse status.
 
@@ -361,7 +371,7 @@ a-hendu avatityA yvytu hata
 A.1SG-hear cornfield wind.INAM strong
 *'I hear the cornfield's strong wind'
 
-This constrain is limited to the constrain to be implemented for pronouns (which cannot be possessors nor possessees). Nevertheless, as seen below in III.5, they could jointly be implemented.
+This constrain is limited to the constrain to be implemented for pronouns (which cannot be possessors nor possessums). Nevertheless, as seen below in III.5, they could jointly be implemented.
 
 -- No adjective modifiers for pronouns
 Aditionally the implemented that attribute adjectives cannot be modifiers of pronouns. So while this sentence 
@@ -521,7 +531,7 @@ poss-or-ee := poss.
 poss-or := poss-or-ee.
 poss-ee := poss-or-ee.
 
-This feature should help us to make distinction between some nouns that can or not be possessor or possessees. This feature was used in the juxtaposition rule from above. So the head daughter has to have the quality of being a possesee and the non-head daughter of being a possessor. 
+This feature should help us to make distinction between some nouns that can or not be possessor or possessums. This feature was used in the juxtaposition rule from above. So the head daughter has to have the quality of being a possessum and the non-head daughter of being a possessor. 
 The feature [POSS] has a additionally possible value [PSS non-poss]. This feature value helps us to not allow pronouns to go through the juxtaposition rule, as there would be no unification:
 
 pron-noun-lex := no-spr-noun-lex &
@@ -532,7 +542,7 @@ pron-noun-lex := no-spr-noun-lex &
 This would allow our desired behaviour to constrain ungrammtical sentences that combine adjective and pronouns under 
 one NP.
 
-Similarly we wanted to guarantee that certain words cannot be possesee but possessor. This is specilly true for our nous like 'wind'. The feature [POSS] with its value [POSS poss-or] would allow for nouns just to be in the position  of possessor or just imply alone (because not in a possessive construction). Therefore we created a lex type for some common-nouns, that would allow this. As we currently have only one inanimate common noun in this category ('wind'), this is the only supertype we would look at, but if the lexicon is expanded, the rule would have to be adjusted to include also animate nouns. So the lex-rule is as follows:
+Similarly we wanted to guarantee that certain words cannot be possessum but possessor. This is specilly true for our nous like 'wind'. The feature [POSS] with its value [POSS poss-or] would allow for nouns just to be in the position  of possessor or just imply alone (because not in a possessive construction). Therefore we created a lex type for some common-nouns, that would allow this. As we currently have only one inanimate common noun in this category ('wind'), this is the only supertype we would look at, but if the lexicon is expanded, the rule would have to be adjusted to include also animate nouns. So the lex-rule is as follows:
 
 non-poss-com-noun-inam-lex := com-inam-noun-lex & 
         [SYNSEM.LOCAL.CAT.HEAD.POSS poss-or].
@@ -543,7 +553,7 @@ yvytu := non-poss-com-noun-inam-lex &
   [ STEM < "yvytu" >,
     SYNSEM.LKEYS.KEYREL.PRED "_wind_n_rel" ].
 
-Appart from the juxtaposition, we dealt also with personal pronoun prefixes and nouns ,as a second possessive construction in PG. For that purpose we had to create a new class positional of nouns, where possessive pronouns where possessive pronouns were encoded as affixes. The rule would inherit from one supertype 'infl-only-lex-rule'. The C-CONS.RELS and the C-CONT.HCONS of the rule had to be modeled on teh possessive pronouns that are already existent in our lexicon, but dropping the exist-Q-rel aht goes with the possesee, and the associated qeq in the HCONS. C-CONS.ICONS had to be empty. The daughter had to be a common-noun-lex. The following lex-rule was created:
+Appart from the juxtaposition, we dealt also with personal pronoun prefixes and nouns ,as a second possessive construction in PG. For that purpose we had to create a new class positional of nouns, where possessive pronouns where possessive pronouns were encoded as affixes. The rule would inherit from one supertype 'infl-only-lex-rule'. The C-CONS.RELS and the C-CONT.HCONS of the rule had to be modeled on teh possessive pronouns that are already existent in our lexicon, but dropping the exist-Q-rel aht goes with the possessum, and the associated qeq in the HCONS. C-CONS.ICONS had to be empty. The daughter had to be a common-noun-lex. The following lex-rule was created:
 
 poss-lex-rule-super := infl-add-only-lex-rule &
   [SYNSEM.LKEYS.ALTKEYREL #altkeyrel,
@@ -571,7 +581,7 @@ poss-lex-rule-super := infl-add-only-lex-rule &
        LARG #lbl2 ] !>,
   ICONS <! !>] ].
 
-In order to avoid that words that undergo this prefix construction go again into a possessive construction as possesee, the mother has a [HEAD.POSS poss-or] value. This leads to the same situation we had before with nouns like 'wind' that cannot be possessed. 
+In order to avoid that words that undergo this prefix construction go again into a possessive construction as possessum, the mother has a [HEAD.POSS poss-or] value. This leads to the same situation we had before with nouns like 'wind' that cannot be possessed. 
 
 Subtypes had to constrain the PNG value of the pron_rel:
 
