@@ -41,8 +41,10 @@ png :+ [ PERNUM pernum,
 basic-head-comp-phrase :+ [ SYNSEM.LOCAL.CAT.MC #mc,
     HEAD-DTR.SYNSEM.LOCAL.CAT.MC #mc ].
 
-basic-head-mod-phrase-simple :+ [ SYNSEM.LOCAL.CAT.MC #mc,
-    NON-HEAD-DTR.SYNSEM.LOCAL.CAT.MC #mc ].
+basic-head-mod-phrase-simple :+ 
+   [ SYNSEM.LOCAL.CAT.MC #mc,  NON-HEAD-DTR.SYNSEM.LOCAL.CAT.MC #mc ] &
+   [ HEAD-DTR.SYNSEM.L-PERIPH #periph,
+    NON-HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD.MOD < [ L-PERIPH #periph ] > ].
 
 ;trying to reduce redundancy caused by multiple attachment sites 
 ;and head-subj/subj-head. Additional modifications made to head-subj subj-head below
@@ -141,6 +143,24 @@ poss-ee := poss-or-ee.
 
 non-poss-com-noun-inam-lex := com-inam-noun-lex & 
         [SYNSEM.LOCAL.CAT.HEAD.POSS poss-or].
+
+;;; Feature to capture the left peripheral position for YN questions
+
+canonical-synsem :+ [ L-PERIPH bool ].
+
+; Add Feature for semantics of YNQ
+
+non-local :+ [ YNQ 0-1-dlist ].
+
+non-ynq-word := lex-item &
+  [ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
+
+basic-zero-arg :+ [ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
+basic-one-arg :+ [ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
+basic-two-arg :+ [ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
+basic-three-arg :+ [ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
+intersective-mod-lex :+ [ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
+
 
 ;;;;;;;;;;;;;;;;;;;
 ;;; Lexical Types
@@ -333,6 +353,19 @@ case-marking-adp-lex := basic-one-arg & raise-sem-lex-item &
                            HEAD noun &
                                 [ CASE #case,
                                   CASE-MARKED - ] ] ] > ].
+
+
+; Lexical type for question marks
+; adding non-empty YNQ value
+
+question-clitic-lex := no-hcons-lex-item &
+ [ SYNSEM [ LOCAL [ CAT [ VAL [ SPR < >, COMPS < >, SUBJ < >, SPEC < >],
+                                        HEAD adv &
+                                                [ MOD < [ LIGHT +,
+                                                          L-PERIPH +,
+							 LOCAL intersective-mod ] > ]],
+                                CONT.RELS <! !> ],
+                  NON-LOCAL.YNQ <! *top* !>  ]].
 
 ;;; Determiners
 ;;; SPEC is non-empty, and already specified by basic-determiner-lex.
@@ -624,12 +657,77 @@ pros-asp-lex-rule := prospective-aspect-lex-rule-super &
 ;;; Phrasal Types
 ;;;;;;;;;;;;;;;;;;;
 
+;; ading int and decl clauses 
+
+int-cl := head-only & interrogative-clause &
+  [ SYNSEM [ LOCAL.CAT [ VAL #val & [SUBJ< >, COMPS< >, SPR< >], MC bool ],
+                    NON-LOCAL.YNQ <! !> ],
+    HEAD-DTR.SYNSEM [ LOCAL.CAT [ MC na, VAL #val, HEAD verb],
+                    NON-LOCAL.YNQ <! *top* !> ]].
+
+
+
+decl-cl := head-only & declarative-clause & same-ynq-unary-phrase &
+  [ SYNSEM.LOCAL.CAT [ VAL #val & [SUBJ< >, COMPS< >, SPR< >], MC bool ],
+    HEAD-DTR.SYNSEM [ LOCAL.CAT [ MC na, VAL #val ],
+                     NON-LOCAL.YNQ 0-dlist ]].
+
+s-coord-phrase :+
+  [ SYNSEM.LOCAL.CAT.MC bool,
+    LCOORD-DTR.SYNSEM.LOCAL.CAT.MC bool,
+    RCOORD-DTR.SYNSEM.LOCAL.CAT.MC bool ].
+
+s-bottom-coord-phrase :+
+  [ SYNSEM.LOCAL.CAT.MC bool,
+    NONCONJ-DTR.SYNSEM.LOCAL.CAT.MC bool ].
+
+
+;; Adding L-PERIPH to basic rules so they get percolated with [L-PERIPH] to the right
+;; Adding constrain for YNQ
+
+
+basic-binary-phrase :+
+ [ SYNSEM [ L-PERIPH #periph,
+            NON-LOCAL.YNQ [ LIST #list,
+                            LAST #last ] ],
+   ARGS < [ SYNSEM [ L-PERIPH #periph,
+                     NON-LOCAL.YNQ [ LIST #list,
+                                     LAST #middle ] ] ],
+          [ SYNSEM [ L-PERIPH -,
+                     NON-LOCAL.YNQ [ LIST #middle,
+                                     LAST #last ] ] ] > ].
+
+; constraining other head headed phrases to produce MC na mothers and
+; take MC na head daughters. 
+
+mc-na-headed-phrase := headed-phrase &
+  [ SYNSEM.LOCAL.CAT.MC na,
+    HEAD-DTR.SYNSEM.LOCAL.CAT.MC na ].
+
+
+same-periph-unary-phrase := unary-phrase &
+ [ SYNSEM.L-PERIPH #periph,
+   ARGS < [ SYNSEM.L-PERIPH #periph ] > ].
+
+
+same-ynq-unary-phrase := unary-phrase &
+  [ SYNSEM.NON-LOCAL.YNQ #ynq,
+    ARGS < [ SYNSEM.NON-LOCAL.YNQ #ynq ] > ].
+
+YNQ-contrains-phrase := same-periph-unary-phrase & same-ynq-unary-phrase & 
+			mc-na-headed-phrase.
+
 ;;Changing the lightness value of basic-head-opt-comp so that we don't
 ;;get spurious ambiguity when modifiers attach to transitive verbs with
 ;;dropped subjects
+;;adding constrains related to YNQ
 
-gug-head-opt-comp-phrase := basic-head-opt-comp-phrase &
-  [ SYNSEM.LIGHT -].
+gug-head-opt-comp-phrase := basic-head-opt-comp-phrase & YNQ-contrains-phrase &
+  			[ SYNSEM.LIGHT -].
+
+basic-head-opt-comp-phrase :+
+ [ SYNSEM.L-PERIPH #periph,
+   ARGS < [ SYNSEM.L-PERIPH #periph ] > ].
   
 ;Constraint on MC used to be part of matrix.tdl
 ;;it applies to all wo implementations, except for v2
@@ -641,15 +739,21 @@ head-initial-head-nexus := head-initial &
 head-final-head-nexus := head-final &
   [ SYNSEM.ATTACH rmod ].
 
+; constrains related to YNQ
+
+basic-head-opt-subj-phrase:+ YNQ-contrains-phrase.
+
 ;intermediate type added to force order of rule application between
 ;Basic-Head-OPT-COMP and any head-subj / subj-head rules
 
 gug-head-subj-phrase := decl-head-subj-phrase &
-[ SYNSEM.LOCAL.CAT.VAL [COMPS nonolist] ].
+        [ SYNSEM.LOCAL.CAT.VAL [COMPS nonolist] ].
 
 head-subj-phrase := gug-head-subj-phrase & head-initial-head-nexus.
 
 subj-head-phrase := gug-head-subj-phrase & head-final-head-nexus.
+
+;Assing same-periph-unary-phrase to basic-head-comp
 
 ; The head of head-comp-phrase can't be: ['adp']
 
@@ -664,8 +768,9 @@ comp-head-phrase-2 := basic-head-2nd-comp-phrase & head-final-head-nexus.
 
 ; Bare NP phrase.  Consider modifying the PRED value of the quantifier relation
 ; introduced to match the semantic effect of bare NPs in your language.
+; adding constrains related to YNQ
 
-bare-np-phrase := basic-bare-np-phrase &
+bare-np-phrase := basic-bare-np-phrase & YNQ-contrains-phrase &
   [ SYNSEM.LIGHT -,
     C-CONT.RELS <! [ PRED "exist_q_rel" ] !> ].
 
