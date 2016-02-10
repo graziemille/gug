@@ -1541,7 +1541,7 @@ che-sy
 O.1SG-mother.ANIM
 'I am a mother'
 
-#Ex.140: Ambiguity between noun predict and possessive marker
+#Ex.140: Ambiguity between noun predicate and possessive marker
 Source: b
 Vetted: f
 Judgment: g
@@ -1550,18 +1550,18 @@ chesy oguata
 chesy oguata
 che-sy o-guata
 O.1SG-mother.ANIM A.3-walk
-'My mother walks'
+'My mother walks/I am a mother and she walks'
 
 #Ex.141: predicative use of location adverb
 Source: author
 Vetted: f
 Judgment: g
 Phenomena: cop
-ore oreaguĩ óga
-ore oreaguiN roAga
-ore ore-aguiN roAga
-1PL.EXCL.PRON.NOM O.1PL.EXCL-near house
-'We are near the house'
+ore oreaguĩ
+ore oreaguiN
+ore ore-aguiN
+1PL.EXCL.PRON.NOM
+'We are near'
 
 #Ex.142: predicative use of noun
 Source: f
@@ -1812,7 +1812,7 @@ Vetted: f
 Judgment: g
 Phenomena: {cop, adp}
 Oime kotýpe jaguandi
-oime kotype jaguandi
+oime koty pe jagua ndi
 o-ime koty=pe jagua=ndi
 3.ACT-be room=in dog=with
 'He/She is in the room with the dog'
@@ -1823,7 +1823,7 @@ Vetted: f
 Judgment: g
 Phenomena: adp
 Ojeroky kotýpe jaguandi
-ojeroky kotype jaguandi
+ojeroky koty pe jagua ndi
 o-jeroky koty=pe jagua=ndi
 3.ACT-dance room=in dog=with
 'He/She dances in the room with the dog'
@@ -1845,7 +1845,7 @@ Vetted: f
 Judgment: g
 Phenomena: cop
 ore oreaguĩ nderógagui
-ore oreaguiN nderoAgagui
+ore oreaguiN nderoAga gui
 ore ore-aguiN nde-roAga=gui
 1PL.EXCL.PRON.NOM O.1PL.EXCL-near O.2SG-house=from
 'We are near your house'
