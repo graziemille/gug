@@ -189,6 +189,15 @@ acc%2C%20DAT-marker := case-marking-adp-lex &
                    CAT.HEAD [ CASE non-NOM,
                               CASE-MARKED + ] ] ].
 
+; Clitic for question marks
+
+pa := question-clitic-lex &
+    [STEM <"pa">].
+
+piko:= question-clitic-lex &
+    [STEM<"piko">].
+
+
 ;;; Verbs
 
 hecha := trans-verb-lex &
@@ -294,6 +303,24 @@ ime := dynamic-intrans-verb-lex &
 ju := dynamic-intrans-verb-lex &
   [ STEM < "ju" >,
     SYNSEM.LKEYS.KEYREL.PRED "_come_v_rel" ].
+
+
+;hechauka := ditransitive-lex-item &
+;   [STEM<"hechauka">,
+;    SYNSEM.LKEYS.KEYREL.PRED "_show_v_rel"].
+
+;meHeN := ditransitive-lex-item &
+;   [STEM<"meHeN">,
+;    SYNSEM.LKEYS.KEYREL.PRED "_give_v_rel"].
+
+;porandu := int-cl-verb-lex &
+;   [STEM<"porandu">,
+;    SYNSEM.LKEYS.KEYREL.PRED "_ask_v_rel"].
+
+;ikuua := decl-cl-verb-lex &
+;   [STEM<"ikuua">,
+;    SYNSEM.LKEYS.KEYREL.PRED "_know_v_rel"].
+
 
 ;;; Determiners
 
