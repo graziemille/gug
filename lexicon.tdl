@@ -238,35 +238,35 @@ jahoHi := trans-verb-lex &
 
 kaigue := stative-intrans-verb-lex &
   [ STEM < "kaigue" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_lazy_v_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_lazy_a_rel" ].
 
 kaneHo_1 := stative-intrans-verb-lex &
   [ STEM < "kaneHo" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_tired_v_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_tired_a_rel" ].
 
 poraN_1 := stative-intrans-verb-lex &
   [ STEM < "poraN" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_beautiful_v_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_beautiful_a_rel" ].
 
 nNaro_1 := stative-intrans-verb-lex &
   [ STEM < "nNaro" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_angry_v_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_angry_a_rel" ].
 
 aAra_2 := stative-intrans-verb-lex &
   [ STEM < "aAra" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_day_v_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_day_n_rel" ].
 
 sy_2 := stative-intrans-verb-lex &
   [ STEM < "sy" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_mother_v_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_mother_n_rel" ].
 
 aguiN := stative-intrans-verb-lex &
   [ STEM < "aguiN" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_near_v_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_near_a_rel" ].
 
 kiririN := stative-intrans-verb-lex &
   [ STEM < "kiririN" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_quiet_v_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_quiet_a_rel" ].
 
 guata := dynamic-intrans-verb-lex &
   [ STEM < "guata" >,
@@ -326,11 +326,11 @@ ju := dynamic-intrans-verb-lex &
 
 la := def-sg-determiner-lex &
   [ STEM < "la" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_exist_q_rel"].
+    SYNSEM.LKEYS.KEYREL.PRED "exist_q_rel"].
 
 lo := def-pl-determiner-lex &
   [ STEM < "lo" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_exist_q_rel"].
+    SYNSEM.LKEYS.KEYREL.PRED "exist_q_rel"].
 
 ha2 := conj-lex &
   [ STEM < "ha" >,
