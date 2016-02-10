@@ -1,5 +1,9 @@
 ;;; -*- Mode: TDL; Coding: utf-8 -*-
 
+int-cl := int-cl.
+
+decl-cl := decl-cl.
+
 poss := poss-phrase.
 
 head-adj-int := head-adj-int-phrase.
