@@ -252,14 +252,6 @@ nNaro_1 := stative-intrans-verb-lex &
   [ STEM < "nNaro" >,
     SYNSEM.LKEYS.KEYREL.PRED "_angry_a_rel" ].
 
-aAra_2 := stative-intrans-verb-lex &
-  [ STEM < "aAra" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_day_n_rel" ].
-
-sy_2 := stative-intrans-verb-lex &
-  [ STEM < "sy" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_mother_n_rel" ].
-
 aguiN := stative-intrans-verb-lex &
   [ STEM < "aguiN" >,
     SYNSEM.LKEYS.KEYREL.PRED "_near_a_rel" ].
