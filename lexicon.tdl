@@ -218,10 +218,6 @@ hendu := trans-verb-lex &
   [ STEM < "hendu" >,
     SYNSEM.LKEYS.KEYREL.PRED "_hear_v_rel" ].
 
-ikuua := trans-verb-lex &
-  [ STEM < "ikuua" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_know_v_rel" ].
-
 japo := trans-verb-lex &
   [ STEM < "japo" >,
     SYNSEM.LKEYS.KEYREL.PRED "_do_v_rel" ].
@@ -311,13 +307,13 @@ ju := dynamic-intrans-verb-lex &
 ;   [STEM<"meHeN">,
 ;    SYNSEM.LKEYS.KEYREL.PRED "_give_v_rel"].
 
-porandu := clausal-verb-lex &
+porandu := int-cl-verb-lex &
    [STEM<"porandu">,
     SYNSEM.LKEYS.KEYREL.PRED "_ask_v_rel"].
 
-;ikuua := decl-cl-verb-lex &
-;   [STEM<"ikuua">,
-;    SYNSEM.LKEYS.KEYREL.PRED "_know_v_rel"].
+ikuua := decl-cl-verb-lex &
+   [STEM<"ikuua">,
+    SYNSEM.LKEYS.KEYREL.PRED "_know_v_rel"].
 
 
 ;;; Determiners

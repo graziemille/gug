@@ -294,14 +294,14 @@ NOM-cl-verb-lex := cl-verb-lex &
 clausal-verb-lex := NOM-cl-verb-lex.
 
 int-cl-verb-lex:= clausal-verb-lex &
-    [SYNSEM.LOCAL.CAT.VAL.COMPS< [LOCAL[CAT[HEAD verb,
-                                            VAL [COMPS < >, SUBJ < >]],
-                                  CONT.HOOK.INDEX.SF ques ]]>].
+    [ SYNSEM.LOCAL.CAT.VAL.COMPS< [LOCAL[CAT[HEAD verb,
+                                             VAL [COMPS < >, SUBJ < >]],
+                                   CONT.HOOK.INDEX.SF ques ]]>].
 
-;decl-cl-verb-lex:= cl-verb-lex &
-;    [ SYNSEM.LOCAL.CAT.VAL.COMPS < [LOCAL[CAT[HEAD comp,
-;                                              VAL.COMPS < >, SUBJ < > ],
-;                                    CONT.HOOK.INDEX.SF prop ]]>].
+decl-cl-verb-lex:= clausal-verb-lex &
+    [ SYNSEM.LOCAL.CAT.VAL.COMPS < [LOCAL[CAT[HEAD comp,
+                                              VAL[COMPS < >, SUBJ < >] ],
+                                    CONT.HOOK.INDEX.SF prop ]]>].
 
 
 
@@ -486,7 +486,6 @@ poss-lex-rule-super := infl-add-only-lex-rule &
 
 2PL-poss-lex-rule := poss-lex-rule-super &
   [ SYNSEM.LKEYS.ALTKEYREL.ARG0.PNG.PERNUM 2PL ].
-
 
 
 pernum-cl-verb-lex-rule-super := add-only-no-ccont-rule & completive-aspect-or-perfective-aspect-or-prospective-aspect-rule-dtr & future-aspect-rule-dtr & infl-lex-rule & neg1-rule-dtr & neg2-rule-dtr &
@@ -747,7 +746,7 @@ int-cl := head-cl-only & interrogative-clause &
 
 decl-cl := head-cl-only & declarative-clause & 
   [ SYNSEM.LOCAL.CAT [ VAL #val & [SUBJ< >, COMPS< >, SPR< >], MC bool & - ],
-    HEAD-DTR.SYNSEM [ LOCAL.CAT [ MC na, VAL #val ],
+    HEAD-DTR.SYNSEM [ LOCAL.CAT [ MC na, VAL #val, HEAD comp ],
                      NON-LOCAL.YNQ 0-dlist ]].
 
 
