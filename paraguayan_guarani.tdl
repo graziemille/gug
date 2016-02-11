@@ -308,7 +308,7 @@ transitive-verb-lex := verb-lex & transitive-lex-item & completive-aspect-or-per
 
 ;;Adding clause complement verb lexemes
 
-cl-verb-lex:= verb-lex & clausal-second-arg-trans-lex-item &
+cl-verb-lex:= gug-dyn-loc-verb & clausal-second-arg-trans-lex-item &
     [SYNSEM.LOCAL.CAT.VAL.COMPS <#comps>,
      ARG-ST.REST.FIRST #comps].
 
