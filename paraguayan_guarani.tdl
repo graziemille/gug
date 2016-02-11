@@ -41,10 +41,14 @@ png :+ [ PERNUM pernum,
 basic-head-comp-phrase :+ [ SYNSEM.LOCAL.CAT.MC #mc,
     HEAD-DTR.SYNSEM.LOCAL.CAT.MC #mc ].
 
+basic-head-subj-phrase :+ [ SYNSEM.LOCAL.CAT.MC #mc,
+    HEAD-DTR.SYNSEM.LOCAL.CAT.MC #mc ].
+
 basic-head-mod-phrase-simple :+ 
-   [ SYNSEM.LOCAL.CAT.MC #mc,  NON-HEAD-DTR.SYNSEM.LOCAL.CAT.MC #mc ] &
-   [ HEAD-DTR.SYNSEM.L-PERIPH #periph,
-    NON-HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD.MOD < [ L-PERIPH #periph ] > ].
+   [ SYNSEM.LOCAL.CAT.MC #mc,  
+     NON-HEAD-DTR.SYNSEM.LOCAL.CAT [ HEAD.MOD < [ L-PERIPH #periph ] >,
+				     MC #mc ],
+     HEAD-DTR.SYNSEM.L-PERIPH #periph ].
 
 ;trying to reduce redundancy caused by multiple attachment sites 
 ;and head-subj/subj-head. Additional modifications made to head-subj subj-head below
@@ -95,6 +99,7 @@ NOM := case.  ; NOM
 non-NOM := case.
 DAT := non-NOM.
 ACC := non-NOM.
+LOC := non-NOM.
 
 ;;; Pernum
 
@@ -267,7 +272,7 @@ locative-verb-lex := gug-dyn-loc-verb & trans-first-arg-control-lex-item &
   [ SYNSEM.LOCAL [ CAT.VAL [ SUBJ < #subj >,
                              COMPS < #comps >,
                              SPR < >,
-                             SPEC < > ],
+                             SPEC < >   ],
                    CONT.HOOK.XARG #xarg ],
     ARG-ST < #subj &
              [ LOCAL [ CONT.HOOK.INDEX #xarg,
@@ -276,13 +281,14 @@ locative-verb-lex := gug-dyn-loc-verb & trans-first-arg-control-lex-item &
                              HEAD noun ] ] ],
              #comps &
              [ LOCAL.CAT [ VAL [ COMPS < > ],
-                           HEAD adp ] ] > ].
+                           HEAD adp & [CASE LOC] ] ] > ].
 
 
 verb-lex := basic-verb-lex & non-mod-lex-item &
-  [ SYNSEM.LOCAL [ CAT.VAL [ SPR < >,
+  [ SYNSEM.LOCAL [ CAT [ MC na,
+			 VAL [ SPR < >,
                              SPEC < >,
-                             SUBJ < #subj > ],
+                             SUBJ < #subj > ] ],
                    CONT.HOOK.XARG #xarg ],
     ARG-ST.FIRST #subj &
                  [ LOCAL [ CAT.VAL [ SPR < >,
@@ -407,7 +413,20 @@ case-marking-adp-lex := basic-one-arg & raise-sem-lex-item &
                                 [ CASE #case,
                                   CASE-MARKED - ] ] ] > ].
 
-contentful-adp-lex := basic-int-mod-adposition-lex.
+contentful-adp-lex := basic-int-mod-adposition-lex
+  [ SYNSEM.LOCAL.CAT [ HEAD 
+                            [ CASE LOC,
+                              MOD < [ LIGHT +,
+                                    MODIFIED notmod ] > ],
+                       VAL [ SPR < >,
+                             SUBJ < >,
+                             COMPS < #comps >,
+                             SPEC < > ] ],
+    ARG-ST < #comps &
+             [ LOCAL.CAT [ VAL.SPR < >,
+                           HEAD noun &
+                                [ 
+                                  CASE-MARKED - ] ] ] > ].
 
 ; Lexical type for question marks
 ; adding non-empty YNQ value
@@ -711,12 +730,36 @@ pros-asp-lex-rule := prospective-aspect-lex-rule-super &
 ;;; Phrasal Types
 ;;;;;;;;;;;;;;;;;;;
 
+n-bar-predicate-rule := unary-phrase & nocoord &
+  [ SYNSEM.LOCAL.CAT [ HEAD verb & [MOD < >],
+                       VAL [ COMPS < >,
+           SUBJ < [ LOCAL [ CONT.HOOK.INDEX #arg1,
+                CAT [ HEAD noun,
+                      VAL.SPR < > ] ] ] > ] ],
+    C-CONT [ HOOK [ LTOP #ltop,
+        INDEX #index,
+        XARG #arg1 ],
+       RELS <! arg12-ev-relation &
+       [ PRED "_be_v_id_rel",
+         LBL #ltop,
+         ARG0 #index,
+         ARG1 #arg1,
+         ARG2 #arg2 ],
+       quant-relation &
+       [ PRED "exist_q_rel",
+         ARG0 #arg2,
+         RSTR #harg ] !>,
+       HCONS <! qeq & [ HARG #harg, LARG #larg ] !> ],
+    ARGS < [ SYNSEM.LOCAL [ CAT [ HEAD noun,
+          VAL.SPR cons ],
+          CONT.HOOK [ INDEX #arg2,
+          LTOP #larg ]]] > ].
 
 
 ;; ading int and decl clauses 
 
 int-cl := head-only & interrogative-clause &
-  [ SYNSEM[  LOCAL.CAT [ VAL #val & [SUBJ< >, COMPS< >, SPR< >], MC bool ],
+  [ SYNSEM [ LOCAL.CAT [ VAL #val & [SUBJ< >, COMPS< >, SPR< >], MC bool ],
              NON-LOCAL.YNQ <! !> ],
     HEAD-DTR.SYNSEM [ LOCAL.CAT [ MC na, VAL #val, HEAD verb],
                     NON-LOCAL.YNQ <! *top* !> ]].
@@ -724,7 +767,7 @@ int-cl := head-only & interrogative-clause &
 
 
 decl-cl := head-only & declarative-clause & 
-  [ SYNSEM.LOCAL.CAT [ VAL #val & [SUBJ< >, COMPS< >, SPR< >], MC bool & - ],
+  [ SYNSEM.LOCAL.CAT [ VAL #val & [SUBJ< >, COMPS< >, SPR< >], MC bool ],
     HEAD-DTR.SYNSEM [ LOCAL.CAT [ MC na, VAL #val ],
                      NON-LOCAL.YNQ 0-dlist ]].
 
@@ -836,6 +879,7 @@ bare-np-phrase := basic-bare-np-phrase & YNQ-contrains-phrase &
 ;;;;;;;;;;;;;;;;;;
 
 ;;; Coordination Strategy 2
+
 
 np2-top-coord-rule := basic-np-top-coord-rule & monopoly-top-coord-rule &
   [ SYNSEM.LOCAL.COORD-STRAT "2" ].
