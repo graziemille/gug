@@ -305,9 +305,9 @@ ime := locative-verb-lex &
 ;   [STEM<"meHeN">,
 ;    SYNSEM.LKEYS.KEYREL.PRED "_give_v_rel"].
 
-;porandu := int-cl-verb-lex &
-;   [STEM<"porandu">,
-;    SYNSEM.LKEYS.KEYREL.PRED "_ask_v_rel"].
+porandu := int-cl-verb-lex &
+   [STEM<"porandu">,
+    SYNSEM.LKEYS.KEYREL.PRED "_ask_v_rel"].
 
 ;ikuua := decl-cl-verb-lex &
 ;   [STEM<"ikuua">,
