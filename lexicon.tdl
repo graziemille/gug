@@ -288,13 +288,13 @@ kanNy := dynamic-intrans-verb-lex &
   [ STEM < "kanNy" >,
     SYNSEM.LKEYS.KEYREL.PRED "_hide_v_rel" ].
 
-ime := dynamic-intrans-verb-lex &
-  [ STEM < "ime" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_be_v_rel" ].
-
 ju := dynamic-intrans-verb-lex &
   [ STEM < "ju" >,
     SYNSEM.LKEYS.KEYREL.PRED "_come_v_rel" ].
+
+ime := locative-verb-lex &
+  [ STEM < "ime" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_be+located_v_rel" ].
 
 
 ;hechauka := ditransitive-lex-item &
