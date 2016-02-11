@@ -152,27 +152,3 @@ pros-asp-lex-rule.
 2pl-poss-prefix :=
 %prefix (* pende)
 2pl-poss-lex-rule.
-
-1sg-a-cl-prefix :=
-%prefix (* a)
-1sg-a-cl-lex-rule.
-
-2sg-a-cl :=
-%prefix (* re)
-1sg-a-cl-lex-rule.
-
-3-a-cl :=
-%prefix (* o)
-3-a-cl-lex-rule.
-
-1pl-incl-a-cl :=
-%prefix (* ja)
-1pl-incl-a-cl-lex-rule.
-
-1pl-excl-a-cl :=
-%prefix (* ro)
-1pl-excl-cl-lex-rule.
-
-2pl-a-lex-cl :=
-%prefix (* pe)
-2pl-a-cl-lex-rule.
