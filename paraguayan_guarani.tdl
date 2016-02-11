@@ -143,10 +143,6 @@ poss-ee := poss-or-ee.
 
 
 
-;;; Feature to capture the left peripheral position for YN questions
-
-canonical-synsem :+ [ L-PERIPH bool ].
-
 ; Add Feature for semantics of YNQ
 
 non-local :+ [ YNQ 0-1-dlist ].
@@ -309,6 +305,18 @@ transitive-verb-lex := verb-lex & transitive-lex-item & completive-aspect-or-per
                            HEAD +np ] ] >,
     INFLECTED.PERNUM-TRANS-FLAG - ].
 
+;;Attempt for ditransitive-verb-lex
+
+;ditransitive-verb-lex := verb-lex & ditransitive-lex-item & completive-aspect-or-perfective-aspect-or-prospective-aspect-rule-dtr & future-aspect-rule-dtr & neg1-rule-dtr & neg2-rule-dtr &
+;  [ SYNSEM.LOCAL.CAT.VAL.COMPS < #comps & [OPT-CS in-foc]>,
+;    ARG-ST < [ LOCAL.CAT.HEAD +np ],
+;             #comps &
+;             [ LOCAL.CAT [ VAL [ SPR < >,
+;                                 COMPS < > ],
+;                           HEAD +np ] ] >,
+;    INFLECTED.PERNUM-TRANS-FLAG - ].
+
+
 NOM-intransitive-verb-lex := intransitive-verb-lex &
   [ ARG-ST.FIRST.LOCAL.CAT.HEAD noun &
                                 [ CASE NOM ],
@@ -332,6 +340,24 @@ stative-intrans-verb-lex := verb-lex & intrans-verb-lex & completive-aspect-or-p
 
 ;;inherits from verb lex via gug-dyn-loc-verb 
 dynamic-intrans-verb-lex := gug-dyn-loc-verb & intrans-verb-lex & completive-aspect-or-perfective-aspect-or-prospective-aspect-rule-dtr & future-aspect-rule-dtr & neg1-rule-dtr & neg2-rule-dtr.
+
+
+;;Adding clause complement verb lexemes
+
+;cl-verb-lex:= verb-lex &  clausal-second-arg-trans-lex-item &
+;    [SYNSEM.LOCAL.CAT.VAL.COMPS <#comps>,
+;     ARG-ST.REST.FIRST #comps].
+
+;int-cl-verb-lex:= cl-verb-lex &
+;    [SYNSEM.LOCAL.CAT.VAL.COMPS< [LOCAL[CAT[HEAD verb,
+;                                            VAL [COMPS < >, SUBJ < >]],
+;                                  CONT.HOOK.INDEX.SF ques ]]>].
+
+;decl-cl-verb-lex:= cl-verb-lex &
+;    [ SYNSEM.LOCAL.CAT.VAL.COMPS < [SYNSEM.LOCAL[CAT[HEAD comp,
+;                                                       VAL.COMPS < > ],
+;                                                 CONT.HOOK.INDEX.SF prop ]]>].
+
 
 ;;; Adjectives
 
@@ -427,14 +453,14 @@ neg2-rule-dtr := word-or-lexrule.
 ;; e.g., chesy, che-sy, "my mother"
 
 poss-lex-rule-super := infl-add-only-lex-rule &
-[SYNSEM.LKEYS.ALTKEYREL #altkeyrel,
-DTR common-noun-lex & [ SYNSEM.LOCAL [ CONT.HOOK [  INDEX #index,  
+	[SYNSEM.LKEYS.ALTKEYREL #altkeyrel,
+	DTR common-noun-lex & [ SYNSEM.LOCAL [ CONT.HOOK [  INDEX #index,  
               LTOP #lbl  ] ,
             CAT [ HEAD.POSS poss-or ,
             VAL.SPR <[OPT +]> ] ]],  
-C-CONT [ HOOK [INDEX #index, 
+	C-CONT [ HOOK [INDEX #index, 
             LTOP #lbl  ],
-  RELS <! arg12-ev-relation &
+  	RELS <! arg12-ev-relation &
           [ PRED "poss_rel",
             LBL #lbl,
             ARG1 #index,
@@ -448,9 +474,9 @@ C-CONT [ HOOK [INDEX #index,
              LBL #lbl2,
              ARG0 #arg2 & [ COG-ST activ-or-more,
                 SPECI + ] ] !>, 
-  HCONS <! qeq & [ HARG #harg, 
-       LARG #lbl2 ] !>,
-  ICONS <! !>] ].
+  	HCONS <! qeq & [ HARG #harg, 
+       			LARG #lbl2 ] !>,
+  	ICONS <! !>] ].
 
 1sg-poss-lex-rule := poss-lex-rule-super &
   [ SYNSEM.LKEYS.ALTKEYREL.ARG0.PNG.PERNUM 1SG ].
@@ -716,17 +742,20 @@ n-bar-predicate-rule := unary-phrase & nocoord &
 ;; ading int and decl clauses 
 
 int-cl := head-only & interrogative-clause &
-  [ SYNSEM [ LOCAL.CAT [ VAL #val & [SUBJ< >, COMPS< >, SPR< >], MC bool ],
-                    NON-LOCAL.YNQ <! !> ],
+  [ SYNSEM[  LOCAL.CAT [ VAL #val & [SUBJ< >, COMPS< >, SPR< >], MC bool ],
+             NON-LOCAL.YNQ <! !> ],
     HEAD-DTR.SYNSEM [ LOCAL.CAT [ MC na, VAL #val, HEAD verb],
                     NON-LOCAL.YNQ <! *top* !> ]].
 
 
 
-decl-cl := head-only & declarative-clause & same-ynq-unary-phrase &
-  [ SYNSEM.LOCAL.CAT [ VAL #val & [SUBJ< >, COMPS< >, SPR< >], MC bool ],
+decl-cl := head-only & declarative-clause & 
+  [ SYNSEM.LOCAL.CAT [ VAL #val & [SUBJ< >, COMPS< >, SPR< >], MC bool & - ],
     HEAD-DTR.SYNSEM [ LOCAL.CAT [ MC na, VAL #val ],
                      NON-LOCAL.YNQ 0-dlist ]].
+
+;same-ynq-unary-phrase &
+
 
 s-coord-phrase :+
   [ SYNSEM.LOCAL.CAT.MC bool,
@@ -742,28 +771,26 @@ s-bottom-coord-phrase :+
 ;; Adding constrain for YNQ
 
 
-basic-binary-phrase :+
+basic-binary-phrase:+
  [ SYNSEM [ L-PERIPH #periph,
-            NON-LOCAL.YNQ [ LIST #list,
-                            LAST #last ] ],
+            NON-LOCAL.YNQ [ LIST #list, LAST #last ] ],
    ARGS < [ SYNSEM [ L-PERIPH #periph,
-                     NON-LOCAL.YNQ [ LIST #list,
-                                     LAST #middle ] ] ],
+                     NON-LOCAL.YNQ [ LIST #list, LAST #middle ] ] ],
           [ SYNSEM [ L-PERIPH -,
-                     NON-LOCAL.YNQ [ LIST #middle,
-                                     LAST #last ] ] ] > ].
+                     NON-LOCAL.YNQ [ LIST #middle, LAST #last ] ] ] > ].
+
 
 ; constraining other head headed phrases to produce MC na mothers and
 ; take MC na head daughters. 
 
-mc-na-headed-phrase := headed-phrase &
-  [ SYNSEM.LOCAL.CAT.MC na,
-    HEAD-DTR.SYNSEM.LOCAL.CAT.MC na ].
+mc-na-headed-phrase := headed-phrase .
+;  [ SYNSEM.LOCAL.CAT.MC na,
+;    HEAD-DTR.SYNSEM.LOCAL.CAT.MC na ].
 
 
-same-periph-unary-phrase := unary-phrase &
- [ SYNSEM.L-PERIPH #periph,
-   ARGS < [ SYNSEM.L-PERIPH #periph ] > ].
+same-periph-unary-phrase := unary-phrase.
+; [ SYNSEM.L-PERIPH #periph,
+;   ARGS < [ SYNSEM.L-PERIPH #periph ] > ].
 
 
 same-ynq-unary-phrase := unary-phrase &
@@ -809,7 +836,6 @@ head-subj-phrase := gug-head-subj-phrase & head-initial-head-nexus.
 
 subj-head-phrase := gug-head-subj-phrase & head-final-head-nexus.
 
-;Assing same-periph-unary-phrase to basic-head-comp
 
 ; The head of head-comp-phrase can't be: ['adp']
 
@@ -821,6 +847,7 @@ comp-head-phrase := basic-head-1st-comp-phrase & head-final-head-nexus.
 head-comp-phrase-2 := basic-head-2nd-comp-phrase & head-initial-head-nexus.
 
 comp-head-phrase-2 := basic-head-2nd-comp-phrase & head-final-head-nexus.
+
 
 ; Bare NP phrase.  Consider modifying the PRED value of the quantifier relation
 ; introduced to match the semantic effect of bare NPs in your language.
@@ -902,3 +929,23 @@ poss-phrase := head-final &
     NON-HEAD-DTR.SYNSEM.LOCAL [ CAT [ HEAD noun & [POSS poss-or],
               VAL.SPR < > ],
         CONT.HOOK.INDEX #poss ] ].
+
+
+;head-adj-phrase:+ ordinary-lperiph-binary-phrase.
+;adj-head-phrase:+ ordinary-lperiph-binary-phrase.
+;head-subj-phrase:+ ordinary-lperiph-binary-phrase.
+;subj-head-phrase:+ ordinary-lperiph-binary-phrase.
+;head-comp-phrase:+ ordinary-lperiph-binary-phrase.
+;head-comp-phrase-2:+ ordinary-lperiph-binary-phrase.
+;poss-phrase:+ ordinary-lperiph-binary-phrase.
+;np2-bottom-coord-rule:+ ordinary-lperiph-binary-phrase.
+;np2-mid-coord-rule:+ ordinary-lperiph-binary-phrase.
+;np2-top-coord-rule:+ ordinary-lperiph-binary-phrase.
+;s2-bottom-coord-rule:+ ordinary-lperiph-binary-phrase.
+;s2-mid-coord-rule:+ ordinary-lperiph-binary-phrase.
+;s2-top-coord-rule:+ ordinary-lperiph-binary-phrase.
+;s3-bottom-coord-rule:+ ordinary-lperiph-binary-phrase.
+;s3-top-coord-rule:+ ordinary-lperiph-binary-phrase.
+;vp2-bottom-coord-rule:+ ordinary-lperiph-binary-phrase.
+;vp2-mid-coord-rule:+ ordinary-lperiph-binary-phrase.
+;vp2-top-coord-rule:+ ordinary-lperiph-binary-phrase.
