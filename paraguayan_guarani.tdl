@@ -873,23 +873,3 @@ poss-phrase := head-final &
     NON-HEAD-DTR.SYNSEM.LOCAL [ CAT [ HEAD noun & [POSS poss-or],
               VAL.SPR < > ],
         CONT.HOOK.INDEX #poss ] ].
-
-
-;head-adj-phrase:+ ordinary-lperiph-binary-phrase.
-;adj-head-phrase:+ ordinary-lperiph-binary-phrase.
-;head-subj-phrase:+ ordinary-lperiph-binary-phrase.
-;subj-head-phrase:+ ordinary-lperiph-binary-phrase.
-;head-comp-phrase:+ ordinary-lperiph-binary-phrase.
-;head-comp-phrase-2:+ ordinary-lperiph-binary-phrase.
-;poss-phrase:+ ordinary-lperiph-binary-phrase.
-;np2-bottom-coord-rule:+ ordinary-lperiph-binary-phrase.
-;np2-mid-coord-rule:+ ordinary-lperiph-binary-phrase.
-;np2-top-coord-rule:+ ordinary-lperiph-binary-phrase.
-;s2-bottom-coord-rule:+ ordinary-lperiph-binary-phrase.
-;s2-mid-coord-rule:+ ordinary-lperiph-binary-phrase.
-;s2-top-coord-rule:+ ordinary-lperiph-binary-phrase.
-;s3-bottom-coord-rule:+ ordinary-lperiph-binary-phrase.
-;s3-top-coord-rule:+ ordinary-lperiph-binary-phrase.
-;vp2-bottom-coord-rule:+ ordinary-lperiph-binary-phrase.
-;vp2-mid-coord-rule:+ ordinary-lperiph-binary-phrase.
-;vp2-top-coord-rule:+ ordinary-lperiph-binary-phrase.
