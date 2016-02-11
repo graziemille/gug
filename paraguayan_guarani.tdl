@@ -261,6 +261,28 @@ com-anim-human-noun-lex := com-anim-noun-lex &
 
 ;;; Verbs
 
+;;New supertype replacing inheritance from verb-lex for both locative-verb-lex and dynamic-intransitive verb lex and ensuring that both these categories of verbs pass through the verb appropriate verb inflection rule
+
+gug-dyn-loc-verb := verb-lex & 
+[ INFLECTED.PERNUM-DYN-INTRANS-OR-PERNUM-TRANS-FLAG - ].
+
+;; New verb type for attaching locative PP's
+locative-verb-lex := gug-dyn-loc-verb & trans-first-arg-control-lex-item &
+  [ SYNSEM.LOCAL [ CAT.VAL [ SUBJ < #subj >,
+                             COMPS < #comps >,
+                             SPR < >,
+                             SPEC < > ],
+                   CONT.HOOK.XARG #xarg ],
+    ARG-ST < #subj &
+             [ LOCAL [ CONT.HOOK.INDEX #xarg,
+                       CAT [ VAL [ SPR < >,
+                                   COMPS < > ],
+                             HEAD noun ] ] ],
+             #comps &
+             [ LOCAL.CAT [ VAL [ COMPS < > ],
+                           HEAD adp ] ] > ].
+
+
 verb-lex := basic-verb-lex & non-mod-lex-item &
   [ SYNSEM.LOCAL [ CAT.VAL [ SPR < >,
                              SPEC < >,
@@ -273,7 +295,8 @@ verb-lex := basic-verb-lex & non-mod-lex-item &
     INFLECTED [ NEG1-FLAG na-or--,
                 PERNUM-DYN-INTRANS-OR-PERNUM-STAT-INTRANS-OR-PERNUM-TRANS-FLAG na-or-- ] ].
 
-intransitive-verb-lex := verb-lex & intransitive-lex-item &
+;;had to remove verb-lex from the path here, because the two intransitive verb subtypes need to inherit this seperately
+intransitive-verb-lex := intransitive-lex-item &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS < >,
     ARG-ST.FIRST.LOCAL.CAT.HEAD +np ].
 
@@ -303,11 +326,12 @@ trans-verb-lex := NOM-ACC-transitive-verb-lex.
 
 intrans-verb-lex := NOM-intransitive-verb-lex.
 
-stative-intrans-verb-lex := intrans-verb-lex & completive-aspect-or-perfective-aspect-or-prospective-aspect-rule-dtr & future-aspect-rule-dtr & neg1-rule-dtr & neg2-rule-dtr &
+;;has to inherit from verb-lex directly
+stative-intrans-verb-lex := verb-lex & intrans-verb-lex & completive-aspect-or-perfective-aspect-or-prospective-aspect-rule-dtr & future-aspect-rule-dtr & neg1-rule-dtr & neg2-rule-dtr &
   [ INFLECTED.PERNUM-STAT-INTRANS-FLAG - ].
 
-dynamic-intrans-verb-lex := intrans-verb-lex & completive-aspect-or-perfective-aspect-or-prospective-aspect-rule-dtr & future-aspect-rule-dtr & neg1-rule-dtr & neg2-rule-dtr &
-  [ INFLECTED.PERNUM-DYN-INTRANS-OR-PERNUM-TRANS-FLAG - ].
+;;inherits from verb lex via gug-dyn-loc-verb 
+dynamic-intrans-verb-lex := gug-dyn-loc-verb & intrans-verb-lex & completive-aspect-or-perfective-aspect-or-prospective-aspect-rule-dtr & future-aspect-rule-dtr & neg1-rule-dtr & neg2-rule-dtr.
 
 ;;; Adjectives
 
@@ -592,7 +616,7 @@ pernum-dyn-intrans-lex-rule-super := add-only-no-ccont-rule & completive-aspect-
                 PERNUM-STAT-INTRANS-FLAG #pernum-stat-intrans,
                 NEG2-FLAG #neg2,
                 PERNUM-TRANS-FLAG #pernum-trans ],
-    DTR dynamic-intrans-verb-lex &
+    DTR gug-dyn-loc-verb &
         [ INFLECTED [ NEG1-FLAG #neg1,
                       PERNUM-STAT-INTRANS-FLAG #pernum-stat-intrans,
                       NEG2-FLAG #neg2,
