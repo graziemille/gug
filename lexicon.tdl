@@ -197,6 +197,8 @@ pa := question-clitic-lex &
 piko:= question-clitic-lex &
     [STEM<"piko">].
 
+ha3: = compl-clitic-lex &
+    [STEM<"ha">].
 
 ;;; Verbs
 
@@ -219,10 +221,6 @@ hendu := trans-verb-lex &
 ikuua := trans-verb-lex &
   [ STEM < "ikuua" >,
     SYNSEM.LKEYS.KEYREL.PRED "_know_v_rel" ].
-
-porandu := trans-verb-lex &
-  [ STEM < "porandu" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_ask_v_rel" ].
 
 japo := trans-verb-lex &
   [ STEM < "japo" >,
