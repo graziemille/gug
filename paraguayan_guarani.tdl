@@ -141,8 +141,6 @@ poss-or-ee := poss.
 poss-or := poss-or-ee.
 poss-ee := poss-or-ee.
 
-
-
 ; Add Feature for semantics of YNQ
 
 non-local :+ [ YNQ 0-1-dlist ].

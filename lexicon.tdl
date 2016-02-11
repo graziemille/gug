@@ -303,11 +303,7 @@ ime := locative-verb-lex &
 ;   [STEM<"meHeN">,
 ;    SYNSEM.LKEYS.KEYREL.PRED "_give_v_rel"].
 
-<<<<<<< Updated upstream
 porandu := int-cl-verb-lex &
-=======
-porandu := cl-verb-lex &
->>>>>>> Stashed changes
    [STEM<"porandu">,
     SYNSEM.LKEYS.KEYREL.PRED "_ask_v_rel"].
 
