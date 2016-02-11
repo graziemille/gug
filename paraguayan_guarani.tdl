@@ -350,7 +350,7 @@ dynamic-intrans-verb-lex := gug-dyn-loc-verb & intrans-verb-lex & completive-asp
 
 ;;Adding clause complement verb lexemes
 
-cl-verb-lex:= verb-lex &  clausal-second-arg-trans-lex-item &
+cl-verb-lex:= gug-dyn-loc-verb &  clausal-second-arg-trans-lex-item &
     [SYNSEM.LOCAL.CAT.VAL.COMPS <#comps>,
      ARG-ST.REST.FIRST #comps].
 
@@ -360,7 +360,7 @@ int-cl-verb-lex:= cl-verb-lex &
                                   CONT.HOOK.INDEX.SF ques ]]>].
 
 decl-cl-verb-lex:= cl-verb-lex &
-    [ SYNSEM.LOCAL.CAT.VAL.COMPS < [LOCAL[CAT[HEAD comp,
+    [ SYNSEM.LOCAL.CAT.VAL.COMPS < [LOCAL[CAT[HEAD verb,
                                                        VAL.COMPS < > ],
                                                  CONT.HOOK.INDEX.SF prop ]]>].
 
@@ -766,7 +766,7 @@ int-cl := head-only & interrogative-clause &
 
 decl-cl := head-only & declarative-clause & 
   [ SYNSEM.LOCAL.CAT [ VAL #val & [SUBJ< >, COMPS< >, SPR< >], MC bool ],
-    HEAD-DTR.SYNSEM [ LOCAL.CAT [ MC na, VAL #val, HEAD comp ],
+    HEAD-DTR.SYNSEM [ LOCAL.CAT [ MC na, VAL #val, HEAD verb ],
                      NON-LOCAL.YNQ 0-dlist ]].
 
 ;same-ynq-unary-phrase &
