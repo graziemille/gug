@@ -195,7 +195,7 @@ gui := contentful-adp-lex &
 
 ; Clitic for question marks
 
-pa := question-clitic-lex &
+pa := question-clitic-lex   &
     [STEM <"pa">].
 
 piko:= question-clitic-lex &
