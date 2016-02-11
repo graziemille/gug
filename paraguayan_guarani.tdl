@@ -711,32 +711,6 @@ pros-asp-lex-rule := prospective-aspect-lex-rule-super &
 ;;; Phrasal Types
 ;;;;;;;;;;;;;;;;;;;
 
-;;; Non-branching rule for zero - copula
-
-n-bar-predicate-rule := unary-phrase & nocoord &
-  [ SYNSEM.LOCAL.CAT [ HEAD verb,
-           VAL [ COMPS < >,
-           SUBJ < [ LOCAL [ CONT.HOOK.INDEX #arg1,
-                CAT [ HEAD noun,
-              VAL.SPR < > ] ] ] > ] ],
-    C-CONT [ HOOK [ LTOP #ltop,
-        INDEX #index,
-        XARG #arg1 ],
-       RELS <! arg12-ev-relation &
-       [ PRED "_be_v_id_rel",
-         LBL #ltop,
-         ARG0 #index,
-         ARG1 #arg1,
-         ARG2 #arg2 ],
-       quant-relation &
-       [ PRED "exist_q_rel",
-         ARG0 #arg2,
-         RSTR #harg ] !>,
-       HCONS <! qeq & [ HARG #harg, LARG #larg ] !> ],
-    ARGS < [ SYNSEM.LOCAL [ CAT [ HEAD noun,
-          VAL.SPR cons ],
-          CONT.HOOK [ INDEX #arg2,
-          LTOP #larg ]]] > ].
 
 
 ;; ading int and decl clauses 
