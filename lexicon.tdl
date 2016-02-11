@@ -188,6 +188,10 @@ acc%2C%20DAT-marker := case-marking-adp-lex &
                           ICONS <!  !> ],
                    CAT.HEAD [ CASE non-NOM,
                               CASE-MARKED + ] ] ].
+;; Contentful adpostion
+gui := contentful-adp-lex & 
+  [ STEM < "gui" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_from_p_rel" ].
 
 ; Clitic for question marks
 
