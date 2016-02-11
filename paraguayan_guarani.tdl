@@ -141,8 +141,7 @@ poss-or-ee := poss.
 poss-or := poss-or-ee.
 poss-ee := poss-or-ee.
 
-non-poss-com-noun-inam-lex := com-inam-noun-lex & 
-        [SYNSEM.LOCAL.CAT.HEAD.POSS poss-or].
+
 
 ;;; Feature to capture the left peripheral position for YN questions
 
@@ -167,6 +166,10 @@ intersective-mod-lex :+ [ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
 ;;;;;;;;;;;;;;;;;;;
 
 ;;; Nouns
+
+;; subtype added to deal with nouns that cannot be possessed.
+non-poss-com-noun-inam-lex := com-inam-noun-lex & 
+        [SYNSEM.LOCAL.CAT.HEAD.POSS poss-or].
 
 noun-lex := basic-noun-lex & basic-one-arg & no-hcons-lex-item & non-mod-lex-item &
   [ SYNSEM.LOCAL.CAT.VAL [ SPR < #spr &
