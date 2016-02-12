@@ -189,8 +189,8 @@ acc%2C%20DAT-marker := case-marking-adp-lex &
                    CAT.HEAD [ CASE ACC,
                               CASE-MARKED + ] ] ].
 ;; Contentful adpostion
-pa2 := contentful-adp-lex & 
-  [ STEM < "pa" >,
+pe2 := contentful-adp-lex & 
+  [ STEM < "pe" >,
     SYNSEM.LKEYS.KEYREL.PRED "_in_p_rel" ].
 
 gui := contentful-adp-lex & 
