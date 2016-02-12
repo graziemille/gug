@@ -1,7 +1,6 @@
 # 567 LAB5
 # LANGUAGE: gug / Paraguayan Guaraní
-# AUTHOR: Thor Wicke Monteverde
-# PARTNER: Lisa Tittle Caballero
+
 
 
 I. A descriptive statement of the facts of your language. 
