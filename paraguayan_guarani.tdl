@@ -285,7 +285,8 @@ locative-verb-lex := gug-dyn-loc-verb & trans-first-arg-control-lex-item &
                    CONT.HOOK.XARG #xarg ],
     ARG-ST < #subj &
              [ LOCAL [ CONT.HOOK.INDEX #xarg,
-                       CAT [ VAL [ SPR < >,
+                       CAT [ HEAD noun, 
+                             VAL [ SPR < >,
                                    COMPS < > ],
                              HEAD noun ] ] ],
              #comps &
@@ -426,15 +427,17 @@ case-marking-adp-lex := basic-one-arg & raise-sem-lex-item &
 
 contentful-adp-lex := basic-int-mod-adposition-lex
 [ SYNSEM.LOCAL.CAT [ HEAD adp & [CASE LOC,
-                                 MOD <[LOCAL.CAT.HEAD verb,
-                                        LIGHT +] > ],
+                                 MOD <[ LOCAL.CAT[ MC na, 
+                                                   HEAD verb,
+                                                   VAL [SUBJ < >]],
+                                        L-PERIPH +] > ],
                        VAL [ SPR < >,
                              COMPS < #comps >,
-                             SPEC < > ]  ],
-    ARG-ST < #comps & [OPT -],
-             [ LOCAL.CAT [ VAL.SPR < >,
-                           HEAD noun ] ] > ].
-
+                             SPEC < >, 
+                             SUBJ < > ]  ],
+    ARG-ST < #comps & [ OPT -,
+                        LOCAL.CAT[ HEAD +np,
+                                   VAL [SPR < >] ] ] > ].
 
 ; Lexical type for question marks
 ; adding non-empty YNQ value
