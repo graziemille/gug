@@ -439,8 +439,8 @@ compl-clitic-lex := no-hcons-lex-item &
                                                          LIGHT +,
                                                           L-PERIPH +,
                                                   LOCAL intersective-mod ] > ]],
-                                CONT.RELS <! !> ],
-                  NON-LOCAL.YNQ <! *top* !>  ]].
+                                CONT.RELS <! !> ] ]].
+
 
 ;;; Determiners
 ;;; SPEC is non-empty, and already specified by basic-determiner-lex.
