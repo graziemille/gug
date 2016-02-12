@@ -360,22 +360,19 @@ dynamic-intrans-verb-lex := gug-dyn-loc-verb & intrans-verb-lex & completive-asp
 ;;Adding clause complement verb lexemes
 
 
-
-
-
 cl-verb-lex:= gug-dyn-loc-verb &  clausal-second-arg-trans-lex-item &
     [SYNSEM.LOCAL.CAT.VAL.COMPS <#comps>,
      ARG-ST.REST.FIRST #comps].
 
 int-cl-verb-lex:= cl-verb-lex &
     [SYNSEM.LOCAL.CAT.VAL.COMPS< [LOCAL[CAT[HEAD verb,
-                                            VAL [COMPS < >, SUBJ < >]],
-                                        CONT.HOOK.INDEX.SF ques ]]>].
+					    VAL [COMPS < >, SUBJ < >]],
+					CONT.HOOK.INDEX.SF ques ]]>].
 
 decl-cl-verb-lex:= cl-verb-lex &
     [ SYNSEM.LOCAL.CAT.VAL.COMPS < [LOCAL[CAT[HEAD verb,
-                                                       VAL.COMPS < > ],
-                                                 CONT.HOOK.INDEX.SF prop ]]>].
+					      VAL.COMPS < > ],
+					  CONT.HOOK.INDEX.SF prop ]]>].
 
 
 ;;; Adjectives
@@ -1018,8 +1015,3 @@ poss-phrase := head-final &
     NON-HEAD-DTR.SYNSEM.LOCAL [ CAT [ HEAD noun & [POSS poss-or],
               VAL.SPR < > ],
         CONT.HOOK.INDEX #poss ] ].
-
-;;; other rules
-head-adj-int-phrase:+
-  [SYNSEM.LOCAL.CAT.EC #ec,
-   NON-HEAD-DTR.SYNSEM.LOCAL.CAT.EC #ec].
