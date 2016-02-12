@@ -9,6 +9,7 @@
 root := phrase &
   [ SYNSEM[LOCAL [ COORD -, CAT [ VAL [ SUBJ < >, COMPS < > ],
                                   MC +,
+				  EC -,
                                   HEAD +vj]],
            NON-LOCAL.YNQ 0-dlist ]].
 
