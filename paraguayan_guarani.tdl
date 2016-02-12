@@ -18,6 +18,7 @@ non-mod-lex-item := lex-item &
 ;;; Matrix Type Addenda
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
+
 +np :+ [ CASE case,
     CASE-MARKED bool ].
 
@@ -359,22 +360,19 @@ dynamic-intrans-verb-lex := gug-dyn-loc-verb & intrans-verb-lex & completive-asp
 ;;Adding clause complement verb lexemes
 
 
-
-
-
 cl-verb-lex:= gug-dyn-loc-verb &  clausal-second-arg-trans-lex-item &
     [SYNSEM.LOCAL.CAT.VAL.COMPS <#comps>,
      ARG-ST.REST.FIRST #comps].
 
 int-cl-verb-lex:= cl-verb-lex &
     [SYNSEM.LOCAL.CAT.VAL.COMPS< [LOCAL[CAT[HEAD verb,
-                                            VAL [COMPS < >, SUBJ < >]],
-                                        CONT.HOOK.INDEX.SF ques ]]>].
+					    VAL [COMPS < >, SUBJ < >]],
+					CONT.HOOK.INDEX.SF ques ]]>].
 
 decl-cl-verb-lex:= cl-verb-lex &
     [ SYNSEM.LOCAL.CAT.VAL.COMPS < [LOCAL[CAT[HEAD verb,
-                                                       VAL.COMPS < > ],
-                                                 CONT.HOOK.INDEX.SF prop ]]>].
+					      VAL.COMPS < > ],
+					  CONT.HOOK.INDEX.SF prop ]]>].
 
 
 ;;; Adjectives
@@ -476,9 +474,15 @@ neg2-rule-dtr := word-or-lexrule.
 
 ;;; Lexical rule types
 
+;;rule that takes in nouns and updates their PRED value so that they can take part in the n-bar-predicate rule
+
+pred-noun-lex-rule-super := constant-lex-rule & neg1-rule-dtr & neg2-rule-dtr & 
+  [SYNSEM.LOCAL.CAT.HEAD noun & [PRD +],
+   DTR common-noun-lex ].
+
+
 ;; The possessive lexical rule as possessive affixes to possessums
 ;; e.g., chesy, che-sy, "my mother"
-
 poss-lex-rule-super := infl-add-only-lex-rule &
 	[SYNSEM.LKEYS.ALTKEYREL #altkeyrel,
 	DTR common-noun-lex & [ SYNSEM.LOCAL [ CONT.HOOK [  INDEX #index,  
@@ -738,12 +742,18 @@ pros-asp-lex-rule := prospective-aspect-lex-rule-super &
 ;;; Phrasal Types
 ;;;;;;;;;;;;;;;;;;;
 
+
+;; Allows us to generate NP predicates with no copula or morphology.
 n-bar-predicate-rule := unary-phrase & nocoord &
-  [ SYNSEM.LOCAL.CAT [ HEAD verb & [MOD < >],
-                       VAL [ COMPS < >,
+  [ SYNSEM.LOCAL [ AGR #agr3,
+                   CAT [  MC na,
+                        HEAD verb & [MOD < >],
+                        VAL [ SPEC < >,
+                              SPR  < >,
+                              COMPS < >,
            SUBJ < [ LOCAL [ CONT.HOOK.INDEX #arg1,
                 CAT [ HEAD noun,
-                      VAL.SPR < > ] ] ] > ] ],
+                      VAL.SPR < > ] ] ] > ] ]],
     C-CONT [ HOOK [ LTOP #ltop,
         INDEX #index,
         XARG #arg1 ],
@@ -758,8 +768,9 @@ n-bar-predicate-rule := unary-phrase & nocoord &
          ARG0 #arg2,
          RSTR #harg ] !>,
        HCONS <! qeq & [ HARG #harg, LARG #larg ] !> ],
-    ARGS < [ SYNSEM.LOCAL [ CAT [ HEAD noun,
-          VAL.SPR cons ],
+    ARGS < [ SYNSEM.LOCAL [ AGR #agr3,
+                            CAT [ HEAD noun & [PRD +],
+                            VAL.SPR cons ],
           CONT.HOOK [ INDEX #arg2,
           LTOP #larg ]]] > ].
 
@@ -1006,8 +1017,3 @@ poss-phrase := head-final &
     NON-HEAD-DTR.SYNSEM.LOCAL [ CAT [ HEAD noun & [POSS poss-or],
               VAL.SPR < > ],
         CONT.HOOK.INDEX #poss ] ].
-
-;;; other rules
-head-adj-int-phrase:+
-  [SYNSEM.LOCAL.CAT.EC #ec,
-   NON-HEAD-DTR.SYNSEM.LOCAL.CAT.EC #ec].
