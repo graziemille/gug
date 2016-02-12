@@ -357,7 +357,7 @@ cl-verb-lex:= gug-dyn-loc-verb &  clausal-second-arg-trans-lex-item &
 int-cl-verb-lex:= cl-verb-lex &
     [SYNSEM.LOCAL.CAT.VAL.COMPS< [LOCAL[CAT[HEAD verb,
                                             VAL [COMPS < >, SUBJ < >]],
-                                  CONT.HOOK.INDEX.SF ques ]]>].
+                                        CONT.HOOK.INDEX.SF ques ]]>].
 
 decl-cl-verb-lex:= cl-verb-lex &
     [ SYNSEM.LOCAL.CAT.VAL.COMPS < [LOCAL[CAT[HEAD verb,
@@ -433,7 +433,7 @@ compl-clitic-lex := no-hcons-lex-item &
                                         HEAD adv &
                                                 [ MOD < [LOCAL.CAT.HEAD verb,
                                                          LIGHT +,
-                                                          L-PERIPH +,
+                                                         L-PERIPH +,
                                                   LOCAL intersective-mod ] > ]],
                                 CONT.RELS <! !> ],
                   NON-LOCAL.YNQ <! *top* !>  ]].
@@ -753,10 +753,47 @@ n-bar-predicate-rule := unary-phrase & nocoord &
           CONT.HOOK [ INDEX #arg2,
           LTOP #larg ]]] > ].
 
+;; Special rule for the unary distribution of L-PERIPH in int-cl and decl-cl
+
+basic-unary-int-decl-cl-phrase := phrase &
+  [ STEM #stem,
+    SYNSEM [
+	     LOCAL [ CAT.MKG #mkg,
+		     CONT [ RELS [ LIST #first,
+				   LAST #last ],
+			    HCONS [ LIST #scfirst,
+				    LAST #sclast ],
+			    ICONS [ LIST #icfirst,
+				    LAST #iclast ] ] ] ],
+    C-CONT [ RELS [ LIST #middle,
+		    LAST #last ],
+	     HCONS [ LIST #scmiddle,
+		     LAST #sclast ],
+	     ICONS [ LIST #icmiddle,
+		     LAST #iclast ] ],
+    ARGS < sign & [ STEM #stem,
+		    SYNSEM [
+			     LOCAL local &
+			      [ CAT.MKG #mkg,
+				CONT [ RELS [ LIST #first,
+					      LAST #middle ],
+				       HCONS [ LIST #scfirst,
+					       LAST #scmiddle ],
+				       ICONS [ LIST #icfirst,
+					       LAST #icmiddle ] ] ] ] ] > ].
+unary-int-decl-cl-phrase := basic-unary-int-decl-cl-phrase &
+  [ INFLECTED infl-satisfied,
+    ARGS < [ INFLECTED infl-satisfied ] > ].
+
+head-only-int-decl-clause := unary-int-decl-cl-phrase & headed-phrase &
+  [ HEAD-DTR #head,
+    ARGS < #head > ].
+
+
 
 ;; ading int and decl clauses 
 
-int-cl := head-only & interrogative-clause &
+int-cl := head-only-int-decl-clause & interrogative-clause &
   [ SYNSEM [ LOCAL.CAT [ VAL #val & [SUBJ< >, COMPS< >, SPR< >], MC bool ],
              NON-LOCAL.YNQ <! !> ],
     HEAD-DTR.SYNSEM [ LOCAL.CAT [ MC na, VAL #val, HEAD verb],
@@ -764,10 +801,15 @@ int-cl := head-only & interrogative-clause &
 
 
 
-decl-cl := head-only & declarative-clause & 
+decl-cl := head-only-int-decl-clause & declarative-clause & 
   [ SYNSEM.LOCAL.CAT [ VAL #val & [SUBJ< >, COMPS< >, SPR< >], MC bool ],
     HEAD-DTR.SYNSEM [ LOCAL.CAT [ MC na, VAL #val, HEAD verb ],
                      NON-LOCAL.YNQ 0-dlist ]].
+
+
+
+
+
 
 ;same-ynq-unary-phrase &
 
@@ -798,7 +840,7 @@ basic-binary-phrase:+
 ; constraining other head headed phrases to produce MC na mothers and
 ; take MC na head daughters. 
 
-mc-na-headed-phrase := headed-phrase .
+mc-na-headed-phrase := headed-phrase.
 ;  [ SYNSEM.LOCAL.CAT.MC na,
 ;    HEAD-DTR.SYNSEM.LOCAL.CAT.MC na ].
 
@@ -945,23 +987,3 @@ poss-phrase := head-final &
     NON-HEAD-DTR.SYNSEM.LOCAL [ CAT [ HEAD noun & [POSS poss-or],
               VAL.SPR < > ],
         CONT.HOOK.INDEX #poss ] ].
-
-
-;head-adj-phrase:+ ordinary-lperiph-binary-phrase.
-;adj-head-phrase:+ ordinary-lperiph-binary-phrase.
-;head-subj-phrase:+ ordinary-lperiph-binary-phrase.
-;subj-head-phrase:+ ordinary-lperiph-binary-phrase.
-;head-comp-phrase:+ ordinary-lperiph-binary-phrase.
-;head-comp-phrase-2:+ ordinary-lperiph-binary-phrase.
-;poss-phrase:+ ordinary-lperiph-binary-phrase.
-;np2-bottom-coord-rule:+ ordinary-lperiph-binary-phrase.
-;np2-mid-coord-rule:+ ordinary-lperiph-binary-phrase.
-;np2-top-coord-rule:+ ordinary-lperiph-binary-phrase.
-;s2-bottom-coord-rule:+ ordinary-lperiph-binary-phrase.
-;s2-mid-coord-rule:+ ordinary-lperiph-binary-phrase.
-;s2-top-coord-rule:+ ordinary-lperiph-binary-phrase.
-;s3-bottom-coord-rule:+ ordinary-lperiph-binary-phrase.
-;s3-top-coord-rule:+ ordinary-lperiph-binary-phrase.
-;vp2-bottom-coord-rule:+ ordinary-lperiph-binary-phrase.
-;vp2-mid-coord-rule:+ ordinary-lperiph-binary-phrase.
-;vp2-top-coord-rule:+ ordinary-lperiph-binary-phrase.
