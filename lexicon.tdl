@@ -45,6 +45,10 @@ roAga := com-inam-noun-lex &
   [ STEM < "roAga" >,
     SYNSEM.LKEYS.KEYREL.PRED "_house_n_rel" ].
 
+mombyryA := com-inam-noun-lex &
+  [ STEM < "mombyryA" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_far+place_n_rel" ].
+
 aAra := com-inam-noun-lex &
   [ STEM < "aAra" >,
     SYNSEM.LKEYS.KEYREL.PRED "_day_n_rel" ].
@@ -64,10 +68,6 @@ avatityA := com-inam-noun-lex &
 koty := com-inam-noun-lex &
   [ STEM < "koty" >,
     SYNSEM.LKEYS.KEYREL.PRED "_room_n_rel" ].
-
-mombyry := com-inam-noun-lex &
-  [ STEM < "mombyry" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_far-away_n_rel" ].
 
 ahojaA := com-inam-noun-lex &
   [ STEM < "ahojaA" >,
@@ -301,7 +301,6 @@ ju := dynamic-intrans-verb-lex &
 ime := locative-verb-lex &
   [ STEM < "ime" >,
     SYNSEM.LKEYS.KEYREL.PRED "_be+located_v_rel" ].
-
 
 ;hechauka := ditransitive-lex-item &
 ;   [STEM<"hechauka">,
