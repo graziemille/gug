@@ -421,22 +421,19 @@ contentful-adp-lex := basic-int-mod-adposition-lex.
 
 question-clitic-lex := no-hcons-lex-item &
  [ SYNSEM [ LOCAL [ CAT [ VAL [ SPR < >, COMPS < >, SUBJ < >, SPEC < >],
-                                        HEAD adv &
-                                                [ MOD < [ LIGHT +,
-                                                          L-PERIPH +,
-							 LOCAL intersective-mod ] > ]],
-                                CONT.RELS <! !> ],
-                  NON-LOCAL.YNQ <! *top* !>  ]].
+                          HEAD adv & [ MOD < [ LIGHT +,
+                                               L-PERIPH +,
+				               LOCAL intersective-mod] > ]],
+                    CONT.RELS <! !> ],
+             NON-LOCAL.YNQ <! *top* !>  ]].
 
 compl-clitic-lex := no-hcons-lex-item &
  [ SYNSEM [ LOCAL [ CAT [ VAL [ SPR < >, COMPS < >, SUBJ < >, SPEC < >],
-                                        HEAD adv &
-                                                [ MOD < [LOCAL.CAT.HEAD verb,
-                                                         LIGHT +,
-                                                         L-PERIPH +,
-                                                  LOCAL intersective-mod ] > ]],
-                                CONT.RELS <! !> ],
-                  NON-LOCAL.YNQ <! *top* !>  ]].
+                          HEAD adv & [ MOD < [LOCAL.CAT.HEAD verb,
+                                              LIGHT +,
+                                              L-PERIPH +,
+                                              LOCAL intersective-mod ] > ]],
+                    CONT.RELS <! !> ]]].
 
 ;;; Determiners
 ;;; SPEC is non-empty, and already specified by basic-determiner-lex.
