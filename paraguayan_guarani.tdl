@@ -39,11 +39,11 @@ infl-satisfied :+ [ PERNUM-STAT-INTRANS-FLAG na-or-+,
 png :+ [ PERNUM pernum,
     GEND gender ].
 
-basic-head-comp-phrase :+ [ SYNSEM.LOCAL.CAT[MC #mc, EC #ec],
-    HEAD-DTR.SYNSEM.LOCAL.CAT [ MC #mc, EC #ec] ].
+basic-head-comp-phrase :+ [ SYNSEM.LOCAL.CAT.MC #mc,
+    HEAD-DTR.SYNSEM.LOCAL.CAT.MC #mc].
 
-basic-head-subj-phrase :+ [ SYNSEM.LOCAL.CAT [ MC #mc, EC #ec],
-    HEAD-DTR.SYNSEM.LOCAL.CAT [ MC #mc, EC #ec ]].
+basic-head-subj-phrase :+ [ SYNSEM.LOCAL.CAT.MC #mc,
+    HEAD-DTR.SYNSEM.LOCAL.CAT.MC #mc].
 
 basic-head-mod-phrase-simple :+ 
    [ SYNSEM.LOCAL.CAT.MC #mc,  
@@ -372,7 +372,8 @@ int-cl-verb-lex:= cl-verb-lex &
 					CONT.HOOK.INDEX.SF ques ]]>].
 
 decl-cl-verb-lex:= cl-verb-lex &
-    [ SYNSEM.LOCAL.CAT.VAL.COMPS < [LOCAL[CAT[HEAD verb,
+    [ SYNSEM.LOCAL.CAT.VAL.COMPS < [LOCAL[CAT[EC +,
+ 					      HEAD verb,
 					      VAL.COMPS < > ],
 					  CONT.HOOK.INDEX.SF prop ]]>].
 
@@ -830,9 +831,9 @@ head-only-int-decl-clause := unary-int-decl-cl-phrase & headed-phrase &
 
 
 int-cl := head-only-int-decl-clause & interrogative-clause &
-  [ SYNSEM [ LOCAL.CAT [ VAL #val & [SUBJ< >, COMPS< >, SPR< >], MC bool, EC #ec ],
+  [ SYNSEM [ LOCAL.CAT [ VAL #val & [SUBJ< >, COMPS< >, SPR< >], MC bool ],
              NON-LOCAL.YNQ <! !> ],
-    HEAD-DTR.SYNSEM [ LOCAL.CAT [ MC na, VAL #val, HEAD verb, EC #ec],
+    HEAD-DTR.SYNSEM [ LOCAL.CAT [ MC na, VAL #val, HEAD verb],
                     NON-LOCAL.YNQ <! *top* !> ]].
 
 
@@ -843,21 +844,14 @@ decl-cl := head-only-int-decl-clause & declarative-clause &
                      NON-LOCAL.YNQ 0-dlist ]].
 
 
-
-
-
-
-;same-ynq-unary-phrase &
-
-
 s-coord-phrase :+
-  [ SYNSEM.LOCAL.CAT.MC bool,
-    LCOORD-DTR.SYNSEM.LOCAL.CAT.MC bool,
-    RCOORD-DTR.SYNSEM.LOCAL.CAT.MC bool ].
+  [ SYNSEM.LOCAL.CAT [ MC bool, EC #ec],
+    LCOORD-DTR.SYNSEM.LOCAL.CAT [ MC bool, EC #ec ],
+    RCOORD-DTR.SYNSEM.LOCAL.CAT [ MC bool, EC #ec ]].
 
 s-bottom-coord-phrase :+
-  [ SYNSEM.LOCAL.CAT.MC bool,
-    NONCONJ-DTR.SYNSEM.LOCAL.CAT.MC bool ].
+  [ SYNSEM.LOCAL.CAT[ MC bool, EC #ec],
+    NONCONJ-DTR.SYNSEM.LOCAL.CAT [ MC bool, EC #ec] ].
 
 
 ;; Adding L-PERIPH to basic rules so they get percolated with [L-PERIPH] to the right
@@ -892,6 +886,14 @@ same-ynq-unary-phrase := unary-phrase &
   [ SYNSEM.NON-LOCAL.YNQ #ynq,
     ARGS < [ SYNSEM.NON-LOCAL.YNQ #ynq ] > ].
 
+basic-head-opt-subj-phrase:+ YNQ-contrains-phrase &
+    [ SYNSEM.LOCAL.CAT.EC # ec ,
+     ARGS < [ SYNSEM.LOCAL.CAT.EC #ec ] > ].
+
+head-adj-int-phrase:+ 
+    [ SYNSEM.LOCAL.CAT.EC # ec ,
+     NON-HEAD-DTR.SYNSEM.LOCAL.CAT.EC #ec ].
+
 YNQ-contrains-phrase := same-periph-unary-phrase & same-ynq-unary-phrase & 
 			mc-na-headed-phrase & same-ec-unary-phrase.
 
@@ -903,12 +905,25 @@ YNQ-contrains-phrase := same-periph-unary-phrase & same-ynq-unary-phrase &
 gug-head-opt-comp-phrase := basic-head-opt-comp-phrase & YNQ-contrains-phrase &
   			[ SYNSEM.LIGHT -].
 
+
+basic-head-comp-phrase :+ [ SYNSEM.LOCAL.CAT.EC #ec,
+                            HEAD-DTR.SYNSEM.LOCAL.CAT.EC #ec ].
+
+basic-head-subj-phrase :+ [ SYNSEM.LOCAL.CAT.EC #ec,
+                            HEAD-DTR.SYNSEM.LOCAL.CAT.EC #ec].
+
+
 basic-head-opt-comp-phrase :+
  [ SYNSEM[ L-PERIPH #periph,
            LOCAL.CAT.EC # ec],
    ARGS < [ SYNSEM [ L-PERIPH #periph, 
                      LOCAL.CAT.EC #ec] ] > ].
-  
+ 
+trans-verb-lex:+ [SYNSEM.LOCAL.CAT.EC -].
+intrans-verb-lex: + [SYNSEM.LOCAL.CAT.EC -].
+
+
+ 
 ;Constraint on MC used to be part of matrix.tdl
 ;;it applies to all wo implementations, except for v2
 
@@ -921,9 +936,7 @@ head-final-head-nexus := head-final &
 
 ; constrains related to YNQ
 
-basic-head-opt-subj-phrase:+ YNQ-contrains-phrase &
-    [ SYNSEM.LOCAL.CAT.EC # ec ,
-     ARGS < [ SYNSEM.LOCAL.CAT.EC #ec ] > ].
+
 
 ;intermediate type added to force order of rule application between
 ;Basic-Head-OPT-COMP and any head-subj / subj-head rules
@@ -1031,3 +1044,25 @@ poss-phrase := head-final &
     NON-HEAD-DTR.SYNSEM.LOCAL [ CAT [ HEAD noun & [POSS poss-or],
               VAL.SPR < > ],
         CONT.HOOK.INDEX #poss ] ].
+
+np2-top-coord-rule :+ [ SYNSEM.LOCAL.CAT.EC #ec, 
+ 			RCOORD-DTR.SYNSEM.LOCAL.CAT.EC #ec ,LCOORD-DTR.SYNSEM.LOCAL.CAT.EC #ec ].
+np2-mid-coord-rule :+ [ SYNSEM.LOCAL.CAT.EC #ec, 
+ 			RCOORD-DTR.SYNSEM.LOCAL.CAT.EC #ec ,LCOORD-DTR.SYNSEM.LOCAL.CAT.EC #ec ].
+np2-bottom-coord-rule :+ [ SYNSEM.LOCAL.CAT.EC #ec, 
+ 			NONCONJ-DTR.SYNSEM.LOCAL.CAT.EC #ec ].
+vp2-top-coord-rule :+ [ SYNSEM.LOCAL.CAT.EC #ec, 
+ 			RCOORD-DTR.SYNSEM.LOCAL.CAT.EC #ec ,LCOORD-DTR.SYNSEM.LOCAL.CAT.EC #ec ].
+vp2-mid-coord-rule :+ [ SYNSEM.LOCAL.CAT.EC #ec, 
+ 			RCOORD-DTR.SYNSEM.LOCAL.CAT.EC #ec ,LCOORD-DTR.SYNSEM.LOCAL.CAT.EC #ec ].
+vp2-bottom-coord-rule :+ [ SYNSEM.LOCAL.CAT.EC #ec, 
+ 			NONCONJ-DTR.SYNSEM.LOCAL.CAT.EC #ec ].
+s2-top-coord-rule :+ [ SYNSEM.LOCAL.CAT.EC #ec, 
+ 			RCOORD-DTR.SYNSEM.LOCAL.CAT.EC #ec ,LCOORD-DTR.SYNSEM.LOCAL.CAT.EC #ec ].
+s2-mid-coord-rule :+ [ SYNSEM.LOCAL.CAT.EC #ec, 
+ 			RCOORD-DTR.SYNSEM.LOCAL.CAT.EC #ec ,LCOORD-DTR.SYNSEM.LOCAL.CAT.EC #ec ].
+s2-bottom-coord-rule :+ [ SYNSEM.LOCAL.CAT.EC #ec, 
+ 			NONCONJ-DTR.SYNSEM.LOCAL.CAT.EC #ec ].
+s3-top-coord-rule :+ [ SYNSEM.LOCAL.CAT.EC #ec, 
+ 			RCOORD-DTR.SYNSEM.LOCAL.CAT.EC #ec ,LCOORD-DTR.SYNSEM.LOCAL.CAT.EC #ec ].
+s3-bottom-coord-rule :+ [ SYNSEM.LOCAL.CAT.EC #ec, NONCONJ-DTR.SYNSEM.LOCAL.CAT.EC #ec ].
