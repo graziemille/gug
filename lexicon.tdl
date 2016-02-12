@@ -195,12 +195,14 @@ gui := contentful-adp-lex &
 
 ; Clitic for question marks
 
-pa := question-clitic-lex &
+pa := question-clitic-lex   &
     [STEM <"pa">].
 
 piko:= question-clitic-lex &
     [STEM<"piko">].
 
+ha3: = compl-clitic-lex &
+    [STEM<"ha">].
 
 ;;; Verbs
 
@@ -219,14 +221,6 @@ hunga := trans-verb-lex &
 hendu := trans-verb-lex &
   [ STEM < "hendu" >,
     SYNSEM.LKEYS.KEYREL.PRED "_hear_v_rel" ].
-
-ikuua := trans-verb-lex &
-  [ STEM < "ikuua" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_know_v_rel" ].
-
-porandu := trans-verb-lex &
-  [ STEM < "porandu" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_ask_v_rel" ].
 
 japo := trans-verb-lex &
   [ STEM < "japo" >,
@@ -313,9 +307,9 @@ porandu := int-cl-verb-lex &
    [STEM<"porandu">,
     SYNSEM.LKEYS.KEYREL.PRED "_ask_v_rel"].
 
-;ikuua := decl-cl-verb-lex &
-;   [STEM<"ikuua">,
-;    SYNSEM.LKEYS.KEYREL.PRED "_know_v_rel"].
+ikuua := decl-cl-verb-lex &
+   [STEM<"ikuua">,
+    SYNSEM.LKEYS.KEYREL.PRED "_know_v_rel"].
 
 
 ;;; Determiners

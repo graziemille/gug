@@ -350,19 +350,19 @@ dynamic-intrans-verb-lex := gug-dyn-loc-verb & intrans-verb-lex & completive-asp
 
 ;;Adding clause complement verb lexemes
 
-;cl-verb-lex:= verb-lex &  clausal-second-arg-trans-lex-item &
-;    [SYNSEM.LOCAL.CAT.VAL.COMPS <#comps>,
-;     ARG-ST.REST.FIRST #comps].
+cl-verb-lex:= gug-dyn-loc-verb &  clausal-second-arg-trans-lex-item &
+    [SYNSEM.LOCAL.CAT.VAL.COMPS <#comps>,
+     ARG-ST.REST.FIRST #comps].
 
-;int-cl-verb-lex:= cl-verb-lex &
-;    [SYNSEM.LOCAL.CAT.VAL.COMPS< [LOCAL[CAT[HEAD verb,
-;                                            VAL [COMPS < >, SUBJ < >]],
-;                                  CONT.HOOK.INDEX.SF ques ]]>].
+int-cl-verb-lex:= cl-verb-lex &
+    [SYNSEM.LOCAL.CAT.VAL.COMPS< [LOCAL[CAT[HEAD verb,
+                                            VAL [COMPS < >, SUBJ < >]],
+                                  CONT.HOOK.INDEX.SF ques ]]>].
 
-;decl-cl-verb-lex:= cl-verb-lex &
-;    [ SYNSEM.LOCAL.CAT.VAL.COMPS < [SYNSEM.LOCAL[CAT[HEAD comp,
-;                                                       VAL.COMPS < > ],
-;                                                 CONT.HOOK.INDEX.SF prop ]]>].
+decl-cl-verb-lex:= cl-verb-lex &
+    [ SYNSEM.LOCAL.CAT.VAL.COMPS < [LOCAL[CAT[HEAD verb,
+                                                       VAL.COMPS < > ],
+                                                 CONT.HOOK.INDEX.SF prop ]]>].
 
 
 ;;; Adjectives
@@ -413,20 +413,8 @@ case-marking-adp-lex := basic-one-arg & raise-sem-lex-item &
                                 [ CASE #case,
                                   CASE-MARKED - ] ] ] > ].
 
-contentful-adp-lex := basic-int-mod-adposition-lex
-  [ SYNSEM.LOCAL.CAT [ HEAD 
-                            [ CASE LOC,
-                              MOD < [ LIGHT +,
-                                    MODIFIED notmod ] > ],
-                       VAL [ SPR < >,
-                             SUBJ < >,
-                             COMPS < #comps >,
-                             SPEC < > ] ],
-    ARG-ST < #comps &
-             [ LOCAL.CAT [ VAL.SPR < >,
-                           HEAD noun &
-                                [ 
-                                  CASE-MARKED - ] ] ] > ].
+contentful-adp-lex := basic-int-mod-adposition-lex.
+
 
 ; Lexical type for question marks
 ; adding non-empty YNQ value
@@ -437,6 +425,16 @@ question-clitic-lex := no-hcons-lex-item &
                                                 [ MOD < [ LIGHT +,
                                                           L-PERIPH +,
 							 LOCAL intersective-mod ] > ]],
+                                CONT.RELS <! !> ],
+                  NON-LOCAL.YNQ <! *top* !>  ]].
+
+compl-clitic-lex := no-hcons-lex-item &
+ [ SYNSEM [ LOCAL [ CAT [ VAL [ SPR < >, COMPS < >, SUBJ < >, SPEC < >],
+                                        HEAD adv &
+                                                [ MOD < [LOCAL.CAT.HEAD verb,
+                                                         LIGHT +,
+                                                          L-PERIPH +,
+                                                  LOCAL intersective-mod ] > ]],
                                 CONT.RELS <! !> ],
                   NON-LOCAL.YNQ <! *top* !>  ]].
 
@@ -768,7 +766,7 @@ int-cl := head-only & interrogative-clause &
 
 decl-cl := head-only & declarative-clause & 
   [ SYNSEM.LOCAL.CAT [ VAL #val & [SUBJ< >, COMPS< >, SPR< >], MC bool ],
-    HEAD-DTR.SYNSEM [ LOCAL.CAT [ MC na, VAL #val ],
+    HEAD-DTR.SYNSEM [ LOCAL.CAT [ MC na, VAL #val, HEAD verb ],
                      NON-LOCAL.YNQ 0-dlist ]].
 
 ;same-ynq-unary-phrase &

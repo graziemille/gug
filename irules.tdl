@@ -152,6 +152,3 @@ pros-asp-lex-rule.
 2pl-poss-prefix :=
 %prefix (* pende)
 2pl-poss-lex-rule.
-
-
-
