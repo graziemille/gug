@@ -831,13 +831,13 @@ decl-cl := head-only-int-decl-clause & declarative-clause &
 
 
 s-coord-phrase :+
-  [ SYNSEM.LOCAL.CAT.MC bool,
-    LCOORD-DTR.SYNSEM.LOCAL.CAT.MC bool,
-    RCOORD-DTR.SYNSEM.LOCAL.CAT.MC bool ].
+  [ SYNSEM.LOCAL.CAT [ MC bool, EC #ec],
+    LCOORD-DTR.SYNSEM.LOCAL.CAT [ MC bool, EC #ec ],
+    RCOORD-DTR.SYNSEM.LOCAL.CAT [ MC bool, EC #ec ]].
 
 s-bottom-coord-phrase :+
-  [ SYNSEM.LOCAL.CAT.MC bool,
-    NONCONJ-DTR.SYNSEM.LOCAL.CAT.MC bool ].
+  [ SYNSEM.LOCAL.CAT[ MC bool, EC #ec],
+    NONCONJ-DTR.SYNSEM.LOCAL.CAT [ MC bool, EC #ec] ].
 
 
 ;; Adding L-PERIPH to basic rules so they get percolated with [L-PERIPH] to the right
@@ -1030,3 +1030,25 @@ poss-phrase := head-final &
     NON-HEAD-DTR.SYNSEM.LOCAL [ CAT [ HEAD noun & [POSS poss-or],
               VAL.SPR < > ],
         CONT.HOOK.INDEX #poss ] ].
+
+np2-top-coord-rule :+ [ SYNSEM.LOCAL.CAT.EC #ec, 
+ 			RCOORD-DTR.SYNSEM.LOCAL.CAT.EC #ec ,LCOORD-DTR.SYNSEM.LOCAL.CAT.EC #ec ].
+np2-mid-coord-rule :+ [ SYNSEM.LOCAL.CAT.EC #ec, 
+ 			RCOORD-DTR.SYNSEM.LOCAL.CAT.EC #ec ,LCOORD-DTR.SYNSEM.LOCAL.CAT.EC #ec ].
+np2-bottom-coord-rule :+ [ SYNSEM.LOCAL.CAT.EC #ec, 
+ 			NONCONJ-DTR.SYNSEM.LOCAL.CAT.EC #ec ].
+vp2-top-coord-rule :+ [ SYNSEM.LOCAL.CAT.EC #ec, 
+ 			RCOORD-DTR.SYNSEM.LOCAL.CAT.EC #ec ,LCOORD-DTR.SYNSEM.LOCAL.CAT.EC #ec ].
+vp2-mid-coord-rule :+ [ SYNSEM.LOCAL.CAT.EC #ec, 
+ 			RCOORD-DTR.SYNSEM.LOCAL.CAT.EC #ec ,LCOORD-DTR.SYNSEM.LOCAL.CAT.EC #ec ].
+vp2-bottom-coord-rule :+ [ SYNSEM.LOCAL.CAT.EC #ec, 
+ 			NONCONJ-DTR.SYNSEM.LOCAL.CAT.EC #ec ].
+s2-top-coord-rule :+ [ SYNSEM.LOCAL.CAT.EC #ec, 
+ 			RCOORD-DTR.SYNSEM.LOCAL.CAT.EC #ec ,LCOORD-DTR.SYNSEM.LOCAL.CAT.EC #ec ].
+s2-mid-coord-rule :+ [ SYNSEM.LOCAL.CAT.EC #ec, 
+ 			RCOORD-DTR.SYNSEM.LOCAL.CAT.EC #ec ,LCOORD-DTR.SYNSEM.LOCAL.CAT.EC #ec ].
+s2-bottom-coord-rule :+ [ SYNSEM.LOCAL.CAT.EC #ec, 
+ 			NONCONJ-DTR.SYNSEM.LOCAL.CAT.EC #ec ].
+s3-top-coord-rule :+ [ SYNSEM.LOCAL.CAT.EC #ec, 
+ 			RCOORD-DTR.SYNSEM.LOCAL.CAT.EC #ec ,LCOORD-DTR.SYNSEM.LOCAL.CAT.EC #ec ].
+s3-bottom-coord-rule :+ [ SYNSEM.LOCAL.CAT.EC #ec, NONCONJ-DTR.SYNSEM.LOCAL.CAT.EC #ec ].
