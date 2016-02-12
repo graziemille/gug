@@ -282,7 +282,8 @@ locative-verb-lex := gug-dyn-loc-verb & trans-first-arg-control-lex-item &
                                    COMPS < > ],
                              HEAD noun ] ] ],
              #comps &
-             [ LOCAL.CAT [ VAL [ COMPS < > ],
+             [ OPT -,
+               LOCAL.CAT [ VAL [ COMPS < > ],
                            HEAD adp & [CASE LOC] ] ] > ].
 
 
