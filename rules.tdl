@@ -30,24 +30,24 @@ head-spec := head-spec-phrase.
 
 bare-np := bare-np-phrase.
 
-;np2-top-coord := np2-top-coord-rule.
+np2-top-coord := np2-top-coord-rule.
 
-;np2-mid-coord := np2-mid-coord-rule.
+np2-mid-coord := np2-mid-coord-rule.
 
-;np2-bottom-coord := np2-bottom-coord-rule.
+np2-bottom-coord := np2-bottom-coord-rule.
 
-;vp2-top-coord := vp2-top-coord-rule.
+vp2-top-coord := vp2-top-coord-rule.
 
-;vp2-mid-coord := vp2-mid-coord-rule.
+vp2-mid-coord := vp2-mid-coord-rule.
 
-;vp2-bottom-coord := vp2-bottom-coord-rule.
+vp2-bottom-coord := vp2-bottom-coord-rule.
 
-;s2-top-coord := s2-top-coord-rule.
+s2-top-coord := s2-top-coord-rule.
 
-;s2-mid-coord := s2-mid-coord-rule.
+s2-mid-coord := s2-mid-coord-rule.
 
-;s2-bottom-coord := s2-bottom-coord-rule.
+s2-bottom-coord := s2-bottom-coord-rule.
 
-;s3-top-coord := s3-top-coord-rule.
+s3-top-coord := s3-top-coord-rule.
 
-;s3-bottom-coord := s3-bottom-coord-rule.
+s3-bottom-coord := s3-bottom-coord-rule.
