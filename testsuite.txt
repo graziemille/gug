@@ -1817,7 +1817,7 @@ o-ime koty=pe jagua=ndi
 3.ACT-be room=in dog=with
 'He/She is in the room with the dog'
 
-#Ex.165: contentful postpositions  
+#Ex.165: Contentful postpositions  
 Source: author
 Vetted: f
 Judgment: g
@@ -1837,7 +1837,7 @@ oiju mombyrý-vi
 oju mombyryA gui 
 o-ju mombyryA=gui
 3.ACT-come far=from
-'I come from far(a far place)' 
+'He/she comes from far(a far place)' 
 
 #Ex.167: predicative use of location adverb, the unedited version of 141 above. 
 Source: f
