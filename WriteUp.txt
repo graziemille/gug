@@ -908,4 +908,197 @@ We recorded also the possible lexicon entries for our ditransitive verbs:
 The ditransitive uses also the marker =pe for [CASE dat] arguments, but different to similar looking accusative marker, the dative marker is in those cases obligatory. This means that we will have to implement this as a different =pe.
 
 
+Testsuite:
+Adding NP predicates “broke” many of our negative examples again, but I think we did a pretty good job of re-writing things with NP predicates, and using pronouns like #18 below so that no coordination rules could apply.
+
+#Ex.18: Dynamic intransitive has 3SG subject but 1SG marking
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: agr
+ha'e aguata
+haHe aguata
+haHe a-guata
+3.SG.PRON.NOM A.1SG-walk
+*'He/she walks'
+
+
 5. Statement of the current overage of the grammar over your testsuite (using number you can get from Analyze|Coverage and Analyze|Overgeneration in [incr tsdb()]) and a comparison between your baseline testsuite run and your final one for this lab (see Compare|Competence).
+
+
+
+--General Stats
+
+Analyze | Coverage
+	Total Items: 202
+	Positive Items: 129 
+	Word String 0: 2.88
+	Lexical Items 0: 4.49
+	Distinct Analyses: 2.71
+	Total Results: 102
+	Overall Coverage: 79.1
+
+Analyze | Overgeneration
+	Total Items: 202
+	Negative Items: 73
+	Word String 0: 2.95
+	Lexical Items 0: 4.49
+	Distinct Analyses: 3.71
+	Total Results: 7
+	Overall Coverage: 9.6
+
+Comparison of baseline(gold-lab5) and final version of this lab 
+(Compare | Competence)
+
+	Baseline
+		lexical 0:  1.33
+		analyses 0: 1.34
+		in 0:       66.7
+		out 0:      1.4
+
+	New
+		lexical 0:  1.46
+		analyses 0: 2.77
+		in 0:       79.1
+		out 0:      9.6
+
+The comparison between the baseline and this week’s grammar show that we were able to increase the coverage from 66.7% to 79.1%. This is an obvious result as we were able to deal with some grammar phenomena in our testsuite which were not solved with our previous grammar. On the other side we see that we have a significant increase in the overgeneration from 1.4% to 9.6%. The explanation for these results in our test suite are discussed in further detail in the next lines. 
+We found nine illformed sentences:
+
+#9: This sentence illustrates the wrong use of a PP as a modifier, as the PP is placed at the beginning of the sentence, although its MOD element should be to the left. The sentence could not parse before, because the appositions were not specified in the lexicon of our grammar. Now the grammar can read it and confirms it is ungrammatical.
+
+#Ex.9: Wrong order for PP moodifier. 
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: adp
+lo nNakyrandi ajeroky avatitýpe
+lo nNakyra ndi ajeroky avatityA pe
+lo nNakyra=ndi a-jeroky avatityA=pe
+the.PL crickets=with 1SG.3-dance cornfield=in
+*'I dance in the cornfield with the crickets'
+
+
+#109: This sentence was thought to be ungrammatical as it illustrates a possessive construction with a possessum that cannot be possessed (wind). As we implemented noun predicates this week (especially zero-copula), the grammar is generating in alternative parses each noun as a separate noun predicate, which conjoins other nouns in a juxtaposition of individual predicates. This combination allows for the amount of generation found here. This phenomenon is often present in this week’s results, and we might find it at different places, specially when there is a use of several common nouns in a sentence. 
+
+#Ex.109: Ungrammatically possessed 'unpossessable' noun.
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: poss
+ahendu avatitý yvytu hata 
+ahendu avatityA yvytu hata 
+a-hendu avatityA yvytu hata
+A.1SG-hear cornfield wind.INAM strong
+'I hear the cornfield's strong wind'
+
+
+#116/117/120: These sentences represent the wrong use of the question clitic, which should be placed in second position. The sentences were not processed previously, because yes-no-questions and its clitics did not exist in the grammar. The grammar is able to offer us other readings which were unexpected. Several of the new parses are the result of the same phenomenon previously described.
+
+#Ex.116: Yes-No question with question marker in wrong position, should be second position.
+Source: c
+Vetted: f
+Judgment: u
+Phenomena: q
+ohecha ñakyrapa vakápe? 
+ohecha nNakyra pa vakaA pe
+o-hecha nNakyra=pa vakaA=pe
+O.3-see cricket.ANIM.NOM=Q cow.ANIM=ACC
+*'Did the cricket see the cow?
+
+#Ex.117: Yes-No question with question marker in wrong position, should be second position.
+Source: c
+Vetted: f
+Judgment: u
+Phenomena: q
+ohecha ñakyra vakápepa? 
+ohecha nNakyra vakaA pe pa
+o-hecha nNakyra vakaA=pe=pa
+O.3-see cricket.ANIM.NOM cow.ANIM=ACC=Q
+*'Did the cricket see the cow?
+
+#Ex.120: Yes-No question with focus marker on verb predicate, and use of marker piko
+Source: c
+Vetted: f
+Judgment: u
+Phenomena: {q, wo}
+ohecha ñakyra  vakápe piko? 
+ohecha nNakyra vakaA pe piko
+o-hecha nNakyra vakaA=pe piko
+O.3-see cricket.ANIM.NOM cow.ANIM=ACC Q
+*'Did the cricket see the cow?
+
+
+#118: This sentence was also previously not read by our grammar, because it belongs to the group of yes-no-questions. The grammar confirm it is now ungrammatical, as the accusative marker =pe should be postponed inside the NP and not after the question clitic.
+
+#Ex.118: Yes-No question with question marker in wrong position, should be end suffix.
+Source: c
+Vetted: f
+Judgment: u
+Phenomena: q
+vakápape ohecha ñakyra? 
+vakaA pa pe ohecha nNakyra
+vakaA=pa=pe o-hecha nNakyra
+cow.ANIM=Q=ACC O.3-see cricket.ANIM.NOM
+*'Was it the cricket, who saw the cow?'
+
+#119: This sentence was previously not read by the grammar as it has the question clitic =piko, not present in the lexicon of lab5. Now that the lexicon and the yes-no-question phenomenon is understood by the grammar and confirmed as ungrammatical.
+
+#Ex.119: Yes-No question with focus marker on verb predicate, wrong position of marker piko
+Source: c
+Vetted: f
+Judgment: u
+Phenomena: {q, wo}
+piko ohecha ñakyra  vakápe? 
+piko ohecha nNakyra vakaA pe
+piko o-hecha nNakyra vakaA=pe
+Q O.3-see cricket.ANIM.NOM cow.ANIM=ACC
+*'Did the cricket see the cow?
+
+
+#152: This sentence demonstrates the wrong use of an adverb, which should be positioned after the predicates it modifies. The adverb is shown here at the end of the sentence, and our understanding was that this is ungrammatical. We see here again the generation of parses through coordination of bare-np predicates. Nevertheless, we take the verdict of our parses, and as we are suspicious of the use of an adverb in such a way, start thinking about what we can do better next time. 
+
+#Ex.152: Adverb should come directly after the verb predicate with no intervening words.
+Source: b
+Vetted: f
+Judgment: u
+Phenomena: adv
+jagua osuHu vakaApe vai
+jagua osuHu vakaA pe vai
+jagua o-suHu vakaA=pe vai
+dog A.3-bite cow.ANIM=ACC bad
+*'the dog bit the cow in an ugly way' 
+
+#185: In the previous grammar, this sentence represented the wrong use of possessives in a juxtaposition of individual nouns. Especially, a noun with a possessor (chesy - ‘my mother’) cannot be possessed again. This week’s grammar implementation though counts both nouns(dog and mother) as independent bare-np nouns with their own predication. Therefore grammatical from that perspective.
+
+#Ex.185:  Nouns that have passed through the possessive lexical rule should not be allowed to be the possessums of other nouns. 
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: poss
+jagua chesy
+jagua chesy
+dog che-sy
+dog 1SG.POS-mother
+*'There is a my mother of the dog'
+
+
+As for the changes in the wellformed sentences, we detect similar trends. There are 62 sentences that show some changes in the parses:
+14 of those are sentences that represent lexicon and phenomena not previously illustrated in our grammar. While some of those sentences got just one new parse, several other had a broader ambiguity in their parses. In an extreme example, a sentence which was simply not parsing (because the phenomenon was not properly illustrated in the grammar) generated now 12 different parses. This sentence (#202) has some ambiguity embedded because the verb arguments do not show their accusative or nominative cases, and also because two consecutive nouns can be interpreted as a complex noun (possessive). Additionally, the main clauses can be declarative or interrogative in their expression. Nevertheless, the phenomenon of bare-np and juxtaposition of predicates visits us here as well, and generates some additional parses.   
+
+#Ex.202: Embedding of interrogative clause
+Source: e
+Vetted: f
+Judgment: g
+Phenomena: emb-d
+aikuua ohechaha ju'i vakaA
+aikuua ohecha ha juHi vakaA
+a-ikuua o-hecha=ha juHi vakaA
+A.1SG-know A.3-see=COMPL frog cow
+'I know that somebody sees the frog's cow' / ' I know that the frog's cow sees it' / 'I know that the frog sees the cow' / 'I know that the cow sees the frog'
+
+
+All the other sentences had an increase of their total amount of parses. The number of parses doubles, or even quadruples in some cases. This correlates strongly with the number of nouns present in the sentence. 
+
+As the juxtaposition rule and bare-np creation seem to be natural occurrences in PG, we respect the results offered here, although have some doubts that the same parses exist in such an exuberance in the natural use of PG.  We think that this generation of additional parses makes our analysis of other parses more opaque. During analysis we tended to comment out the coordination rules in order to find parses more strongly related to our phenomena or even the ‘wrong’ parses. While pragmatically there could be situations that could make use of the different interpretations offered by the coordination rules, we think that we should limit the scope of how they must be reviewed in detail, as they are mostly based on simple phenomena.
+
