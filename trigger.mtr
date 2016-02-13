@@ -15,3 +15,15 @@ acc%2C%20DAT-marker_gr_3 := arg0e_gtr &
   [ CONTEXT.RELS <! [ ARG3 individual & #i ] !>,
     FLAGS [ SUBSUME < #i >,
             TRIGGER "acc%2C%20DAT-marker" ] ].
+
+piko_gr := generator_rule &
+  [ CONTEXT.RELS <! [ ARG0.SF ques ] !>,
+    FLAGS.TRIGGER "piko" ].
+
+pa_gr := generator_rule &
+  [ CONTEXT.RELS <! [ ARG0.SF ques ] !>,
+    FLAGS.TRIGGER "pa" ].
+
+ha_gr := generator_rule &
+  [ CONTEXT.RELS <! [ ARG0.SF prop ] !>,
+    FLAGS.TRIGGER "ha" ].

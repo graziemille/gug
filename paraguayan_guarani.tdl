@@ -452,7 +452,7 @@ question-clitic-lex := no-hcons-lex-item &
  [ SYNSEM [ LOCAL [ CAT [ IC +, 
                           VAL [ SPR < >, COMPS < >, SUBJ < >, SPEC < >],
                           HEAD adj & [ MOD < [ LIGHT +,
-                                             
+                                               L-PERIPH +,
 				                                       LOCAL intersective-mod] > ]],
                                                CONT.RELS <! !> ],
             NON-LOCAL.YNQ <! *top* !>  ]].
@@ -463,7 +463,7 @@ compl-clitic-lex := no-hcons-lex-item &
                           VAL [ SPR < >, COMPS < >, SUBJ < >, SPEC < >],
                           HEAD adj & [ MOD < [LOCAL.CAT.HEAD verb,
                                               LIGHT +,
-                                        
+                                              L-PERIPH +,
                                               LOCAL intersective-mod ] > ]],
                     CONT.RELS <! !> ]]].
 
