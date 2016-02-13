@@ -11,7 +11,7 @@ Source e: Jose Valentin Ayala (1996). Gramática Guaraní.
 Source f: Bruno Estigarribia (unpublished). A Grammar Sketch of Paraguayan Guaraní
 
 
-#Ex.1: Transitive verb agrees with 3Per subject. Singular determiners. Accusative case marking on the animate object.
+#Ex.1: Transitive verb. 3Per subject verb agreement. Singular determiners. Accusative case marking on animate object.
 Source: author
 Vetted: f
 Judgment: g
@@ -22,7 +22,7 @@ la juHi o-hecha la vakaA=pe
 the.SG frog.ANIM.NOM A.3-see the.SG cow.ANIM=ACC
 'The frog sees the cow'
 
-#Ex.2:  Transitive verb missing agreement with 3Per subject (prefix o-)
+#Ex.2:  Missing 3Per subject verb agreement (prefix o-).
 Source: author
 Vetted: f
 Judgment: u
@@ -33,7 +33,7 @@ la juHi hecha la vakaA=pe
 the.SG frog.ANIM.NOM see the.SG cow.ANIM=ACC
 *'The frog sees the cow'
 
-#Ex.3:  Transitive verb, agrees with 3per subject. Inanimate object.
+#Ex.3:  Transitive verb. 3Per subject verb agreement. Inanimate object.
 Source: author
 Vetted: f
 Judgment: g
@@ -44,7 +44,7 @@ juHi o-hecha tunich
 frog.ANIM A.3-see stone.INAM
 'The frog sees the stone' / 'The stone sees the frog'
 
-#Ex.4: Transitive verb should agree with 3per subject and not 3per object.
+#Ex.4: Improper verb agreement with 3per object rather 3per object.
 Source: author
 Vetted: f
 Judgment: u
@@ -55,7 +55,7 @@ juHi i-hecha tunich
 frog.ANIM.NOM 0.3-see stone.INAM
 *'The frog sees the stone'
 
-#Ex.5:  Transitive verb agrees with 3per subject. Inanimate object. Subject dropped.
+#Ex.5:  Transitive verb.  3per subject verb agreement. Inanimate object. Subject dropped.
 Source: author
 Vetted: f
 Judgment: g
@@ -66,7 +66,7 @@ o-hecha tunich
 A.3-see stone.INAM
 'He/She sees the stone'
 
-#Ex.6: Transitive verb should agree with 3per subject and not 3per object
+#Ex.6: Improper verb agreement with 3per object rather 3per object. Dropped argument.
 Source: author
 Vetted: f
 Judgment: u
@@ -77,7 +77,7 @@ i-hecha tunich
 O.3-see stone.INAM
 *'He/She sees the stone'
 
-#Ex.7: Transitive verb, missing agreement marker.
+#Ex.7: Transitive verb. Dropped argument. Missing verb agreement marker.
 Source: author
 Vetted: f
 Judgment: u
@@ -88,38 +88,38 @@ hecha tunich
 see stone.INAM
 *'I sees the stone'
 
-#Ex.8: Wrong use of accusative marker (none for inanimate nouns)
+#Ex.8: Multiple contentful adpostions as modifiers. 
 Source: author
 Vetted: f
 Judgment: g
-Phenomena: c
-ju'i ohecha tunichpe
-juHi ohecha tunich pe
-juHi o-hecha tunich=pe
-frog.ANIM.NOM O.3-see stone.INAM=ACC
-'The frog sees the stone'
+Phenomena: adp
+ajeroky avatitýpe lo nNakyrandi
+ajeroky avatityA pe lo nNakyra ndi
+a-jeroky avatityA=pe lo nNakyra=ndi
+1SG.3-dance cornfield=in+near the.PL crickets=with
+'I dance in the cornfield with the crickets'
 
-#Ex.9: Two animate arguments, but no accusative object marked in the sentence
+#Ex.9: Wrong order for PP moodifier. 
 Source: author
 Vetted: f
-Judgment: g
-Phenomena: c
-la ju'i ohecha vaká
-la juHi ohecha vakaA
-la juHi o-hecha vakaA
-the.SG frog O.3-see cow
-'The frog sees the cow / The cow sees the frog'
+Judgment: u
+Phenomena: adp
+lo nNakyrandi ajeroky avatitýpe
+lo nNakyra ndi ajeroky avatityA pe
+lo nNakyra=ndi a-jeroky avatityA=pe
+the.PL crickets=with 1SG.3-dance cornfield=in
+*'I dance in the cornfield with the crickets'
 
-#Ex.10: Singular determiner. Transitive verb agrees with 3per subject. OVS word order.
+#Ex.10: Raising verb. PP argument and PP modifier.
 Source: author
 Vetted: f
 Judgment: g
-Phenomena: {wo, c, agr, det}
-la ju'ipe ohecha tunich
-la juHi pe ohecha tunich
-la juHi=pe o-hecha tunich
-the.SG frog.ANIM=ACC O.3-see stone.INAM
-'The stone sees the frog'
+Phenomena: adp
+yvyra oime vatitýpe roAgape
+yvyra oime vatityA pe roAga pe
+yvyra o-ime vatityA=pe roAga=pe
+tree A.3-be+located cornfield=in house=in
+'The tree is located in the cornfield in (near) the house'
 
 #Ex.11: Transitive verb with two accusative arguments.
 Source: author
@@ -1051,7 +1051,7 @@ Source: author
 Vetted: f
 Judgment: g
 Phenomena: tam
-ndoky´mo'a᷉i
+ndokýmo'a᷉i
 ndokyAmoHaNi
 nd-o-kyA-moHaNi
 NG-A.3-rain-FUT.NEG
@@ -1062,7 +1062,7 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: neg
-oky´mo'a᷉i
+okýmo'a᷉i
 okyAmoHaNi
 o-kyA-moHaNi
 A.3-rain-FUT.NEG
@@ -1073,7 +1073,7 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: neg
-ndoky´tai
+ndokýtai
 ndokyAtai
 nde-o-kyA-ta-i
 NEG-A.3-rain-FUT-NEG
@@ -1084,7 +1084,7 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: neg
-ndoky´
+ndoký
 ndokyA
 nde-o-kyA
 NEG-A.3-rain
@@ -1296,7 +1296,7 @@ Phenomena: q
 ohecha ñakyra vakápepa? 
 ohecha nNakyra vakaA pe pa
 o-hecha nNakyra vakaA=pe=pa
-O.3-see cricket.ANIM.NOM cow.ANIM=ACC-Q
+O.3-see cricket.ANIM.NOM cow.ANIM=ACC=Q
 *'Did the cricket see the cow?
 
 #Ex.118: Yes-No question with question marker in wrong position, should be end suffix.
@@ -1420,7 +1420,7 @@ re-japo mbaHeA
 A.2SG-do what
 *'What do you do?'
 
-#Ex.129: Wh question for 'who,’ with question clitic in wrong position.
+#Ex.129: Wh question for 'who,' with question clitic in wrong position.
 Source: d
 Vetted: f
 Judgment: u
@@ -1431,7 +1431,7 @@ o-ju maAva=pa
 A.3-come who=Q 
 *'Who is coming?'
 
-#Ex.130: Wh question for 'who,’ with pa question clitic
+#Ex.130: Wh question for 'who,' with pa question clitic
 Source: d
 Vetted: f
 Judgment: g
@@ -1575,7 +1575,7 @@ POSS.3-day-PERF
 'It is his/her day already' 
 
 
-#Ex.143: Use of 'and' coordination with two sentences
+#Ex.143: Use of and coordination with two sentences
 Source: b
 Vetted: f
 Judgment: g
@@ -2153,9 +2153,9 @@ Source: author
 Vetted: f
 Judgment: g
 Phenomena: cop
-hi'árama
-iaArama
-i-aAra-ma
+hi'ára
+iaAra
+i-aAra
 POSS.3-day
 'It is his/her day' 
 
@@ -2164,29 +2164,29 @@ Source: author
 Vetted: f
 Judgment: g
 Phenomena: emb-q
-aporandu ohechapa ju’ipe
+aporandu ohechapa ju'ipe
 aporandu ohecha pa juHi pe
 a-porandu o-hecha=pa juHi=pe
-A.1SG-know A.3-see-COMPL frog=ACC
-‘I ask if somebody sees the frog’
+A.1SG-know A.3-see=COMPL frog=ACC
+'I ask if somebody sees the frog'
 
 #Ex.197: Embedding of interrogative clause
 Source: author
 Vetted: f
 Judgment: g
 Phenomena: emb-q
-aporandu ohechapa ju’i
+aporandu ohechapa ju'i
 aporandu ohecha pa juHi
 a-porandu o-hecha=pa juHi=pe
 A.1SG-know A.3-see=COMPL frog=ACC
-‘I ask if somebody sees the frog’ / ‘I ask if the frog sees it’
+'I ask if somebody sees the frog' / 'I ask if the frog sees it'
 
 #Ex.198: Use embedded clause for declarative sentence
 Source: author
 Vetted: f
 Judgment: g
 Phenomena: {emb-d, wo}
-aikuua ohecha ju’ipe
+aikuua ohecha ju'ipe
 aikuua ohecha pa juHi pe
 a-ikuua o-hecha=pa juHi=pe
 A.1SG-know A.3-go=COMPL juHi=ACC
@@ -2197,11 +2197,11 @@ Source: author
 Vetted: f
 Judgment: g
 Phenomena: {emb-d, wo}
-aikuua ohecha ju’ipe
+aikuua ohecha ju'ipe
 aikuua ohecha pa juHi
 a-ikuua o-hecha=pa juHi
 A.1SG-know A.3-go=COMPL juHi
-'I know he/she/it sees the frog' / ‘I know the frog sees it’
+'I know he/she/it sees the frog' / 'I know the frog sees it'
 
 #Ex.200: Nominal predicate. Contentful postposition modifier.
 Source: author
@@ -2212,4 +2212,4 @@ jagua jaguandi
 jagua jagua ndi
 jagua jagua=ndi
 dog.PRED dog=with
-‘There is a dog with a dog’
+'There is a dog with a dog'
