@@ -470,7 +470,7 @@ As mentioned in the previous sections there were some limitations to this implem
 
 2.2. Embedded Clauses (declarative)
 
-In Guarani, there are verb predicates that allow declarative sentences to be their complements. These verbs assert, confirm or share knowledge. One of those verbs is ‘to know’, which allows therefore an embedded declarative clause. The embedded clause has a similar construction as the yes-no-questions, but with a different marker. This marker, a complementizer =ha, is also in the second position of the declarative clause, but the first element of the declarative clause has to be the verb predicate of that clause. Therefore this marker doesn’t have the focal function as in the =pa/=piko marker of yes-no-questions.
+In Guarani, there are verb predicates that allow declarative sentences to be their complements. These verbs assert, confirm or share knowledge. One of those verbs is ‘to know’, which allows an embedded declarative clause. The embedded clause has a similar construction as the one we saw in yes-no-questions, but with a different marker. This marker, a complementizer =ha, is also in the second position of the declarative clause, but the first element of the declarative clause has to be the verb predicate of that clause. Therefore this marker doesn’t have the same focal function as the =pa/=piko marker of yes-no-questions.
 
 Here some examples with the use and misuse of such embedded declarative sentences:
 
@@ -485,7 +485,7 @@ a-ikuua o-ju=ha
 A.1SG-know A.3-come=COMPL
 'I know he comes'
 
-#Ex.149: Wrong marker for embedding of interrogative clause
+#Ex.149: Declarative clitic cannot bet used with interrogative main-clause verb
 Source: e
 Vetted: f
 Judgment: u
@@ -496,16 +496,6 @@ a-porandu o-ju=ha
 A.1SG-ask A.3-go=COMPL
 *'I ask whether he comes'
 
-#Ex.150: Use embedded clause for interrogative sentence
-Source: e
-Vetted: f
-Judgment: g
-Phenomena: {emb-q, wo}
-aporandu oupa
-aporandu oju pa
-a-porandu o-ju=pa
-A.1SG-ask A.3-go=Q
-'I ask whether he comes'
 
 #Ex.198: Use embedded clause for declarative sentence
 Source: author
@@ -533,34 +523,46 @@ A.1SG-know A.3-go=COMPL juHi
 For the implementation of this phenomenon, we had to create a verb-lexeme, that is a subtype to the previously mentioned super type cl-verb-lex:
 
 	decl-cl-verb-lex:= cl-verb-lex &
-    			[ SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL [ CAT [ EC +,
-                       		                                IC -,
- 					                                HEAD verb,
-					                                VAL.COMPS < > ],
+    		[ SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL [ CAT [ EC +,
+                       		                               IC -,
+ 					                       HEAD verb,
+					                       VAL.COMPS < > ],
 			    				 CONT.HOOK.INDEX.SF prop ]]>].
 
-The main verb requires the clause to be exclusively embedding ([EC +]), not an interrogative clause ([IC-]), and it go be a sentence  (therefore the HEAD verb for the complement). The semantic is to be a embedded clause have to express a proposition ([SF prop]).
+The main verb requires the clause to be exclusively embedding ([EC +]), not an interrogative clause ([IC-]), and for its complement to be HEAD verb. The semantics requires for the embedded clause complement to express a proposition ([SF prop]).
 
-The rule the license the embedded clause is the following:
+The rule that licenses the embedded clause is the following:
 
  	decl-cl := head-only-int-decl-clause & declarative-clause & 
-  		[ SYNSEM.LOCAL.CAT [ VAL #val & [SUBJ< >, COMPS< >, SPR< >], MC bool, EC #ec, IC #ic],
-    		  HEAD-DTR.SYNSEM [ LOCAL.CAT [ MC na, VAL #val, HEAD verb, EC #ec, IC #ic],
-                     NON-LOCAL.YNQ 0-dlist ]].
+  		[ SYNSEM.LOCAL.CAT [ VAL #val & [ SUBJ< >, 
+						  COMPS< >, 
+						  SPR< >], 
+				     MC bool, 
+				     EC #ec, 
+				     IC #ic],
+    		  HEAD-DTR.SYNSEM [ LOCAL.CAT [ MC na, 
+						HEAD verb, 										VAL #val, 
+						EC #ec, 
+						IC #ic],
+                     		    NON-LOCAL.YNQ 0-dlist ]].
 
-As mentioned in the previous section, we introduced a new feature [EC bool]. This feature checkes if a sentence is an exclusively embedding sentence. In order to unify with the requirements of the decl-co-verb-lex, [EC] has to be [EC +]. Similarly [IC -]. These value is introduced the the complementizer-clitic:
+As mentioned in the previous section, we introduced a new feature [EC bool]. This feature checks for when =ha has attached to a VP, ensuring that that VP can now only appear in an embedded clause. In order to unify with the requirements of the decl-co-verb-lex, [EC] has to be [EC +]. Similarly because this is not an interrogative clause, it is specified as [IC -]. 
 
 	compl-clitic-lex := no-hcons-lex-item &
  			[ SYNSEM [ LOCAL [ CAT [ IC -, 
-                       			   EC +,
-                          VAL [ SPR < >, COMPS < >, SUBJ < >, SPEC < >],
-                          HEAD adj & [ MOD < [LOCAL.CAT.HEAD verb,
-                                              LIGHT +,
-                                              L-PERIPH +,
-                                              LOCAL intersective-mod ] > ]],
-                    CONT.RELS <! !> ]]].
+	                       			 EC +,
+						 HEAD adj & 
+						    [ MOD < [ LOCAL.CAT.HEAD verb,
+                                             		      LIGHT +,
+                                              		      L-PERIPH +,
+                                              		     LOCAL intersective-mod ] >],        
+						  VAL [ SPR < >, 
+					               COMPS < >, 
+						       SUBJ < >, 
+						       SPEC < >]],
+                    			   CONT.RELS <! !> ]]].
 
-The values are copied into the parse by the head-ada-phrase rule, which was mentioned in the previous section about interrogative clauses. The clitic requires to have a second position, and being attached as a modifier to a verb word, or it will not unify. The mechanics are similar to the one employed with the interrogative clauses, just with he additional EC feature. By definition, verbs have a [EC -], so only the proper attachment with the complementizer clitic guarantees that the unification of the embedded clause with the main clause verb works.
+The values are copied into the parse by the head-ada-phrase rule, which was mentioned in the previous section about interrogative clauses. The clitic is requires to be in a second position and attach as a modifier to a verb word, or it will not unify. The mechanics are similar to the one employed with the interrogative clauses, just with the use in this case of the EC feature instead. By definition, verbs have a [EC -], so only the proper attachment with the complementizer clitic allows unification of the embedded clause with the clause embedding verb.
 
 We experimented the parsing with single noun arguments.
 
@@ -576,7 +578,7 @@ a-ikuua o-hecha=ha juHi vakaA
 A.1SG-know A.3-see=COMPL frog cow
 'I know that somebody sees the frog's cow' / ' I know that the frog's cow sees it' / 'I know that the frog sees the cow' / 'I know that the cow sees the frog'
 
-Ignoring the parses generated by the coordination rules, we were satisfied with  the results. This embedded declarative construction was also able to construct int-cl and decl-cl versions for each of the possible parses. 
+Ignoring the parses generated by the coordination rules, we were satisfied with the results. This embedded declarative construction was also able to construct int-cl and decl-cl versions for each of the possible parses. 
 
 Nevertheless there are limitations. As mentioned before, the grammar is not able to handle constituents in the first position that are made of more than one word (which might include complex nouns made of nouns in juxtaposition, as well as case markings). This is something that could be addressed when time and workload allows it.
 
@@ -586,7 +588,7 @@ Nevertheless there are limitations. As mentioned before, the grammar is not able
 
 3.1 Adjective
 
-As mentioned in a previous lab (lab 4), PG has attributive and predicative use of adjectives. In predicative form, the adjective receives verbal inflection and the noun it “modifies” acts as its subject. Adjectives behave in this form as stative-intransitive-verbs, and the cross-markers refer to the subject exclusively using the O-group of markers (patient markers). The different use of attributive and predicative adjectives is illustrated in the following IGT examples.
+As mentioned in a previous lab (lab 4), PG has attributive and predicative use of adjectives. In predicative form, the adjective receives verbal inflection. Adjectives behave in the same way as stative-intransitive-verbs, and the cross-markers refer to the subject exclusively using the O-group of markers (patient markers). The different use of attributive and predicative adjectives is illustrated in the following IGT examples.
 
 #Ex.136: Use of adjective as an attribute of the subject of a verb predicate
 Source: author
@@ -621,18 +623,18 @@ jagua i-nNaro
 dog.ANIM O.3-angry
 'The dog is angry'
 
-The implementation followed creating extra lexical entries for the predicative adjectives as stative-intransitive verbs, letting them follow our already stablished grammar for their behavior. In difference to other verb predicates, the semantic predicates are marked as ‘_a_rel’ instead of ‘_v_rel’. Here an example of a lexical entry as used for the previous IGT examples: 
+We have continued to treat predicative adjectives as indistinguishable from stative-intransitive verbs, and this implementation was already accomplished in previous labs. It involved creating extra homophonous lexical entries for attributive adjectives and stative-intransitive verbs (our predicative adjectives).  One important change we did make this week was to change the semantic predication of these verbs to ‘_a_rel’ instead of the ‘_v_rel’ that other verb predicates mark. Here an example of a lexical entry used in the previous IGT examples: 
 
 	nNaro_1 := stative-intrans-verb-lex &
   		[ STEM < "nNaro" >,
     		SYNSEM.LKEYS.KEYREL.PRED "_angry_a_rel" ].
 
-Additive predicates work in our expected way. We have not had time to experiment the combinations that this phenomenon might have with other features, as our test suite is mostly tailored towards sentences that check single phenomena. Nevertheless we expect, that this and other rules might have to be adjusted to operate in conjunction.
+Adjective predicates work in our expected way, since we have had them implemented now for a week and have tested them thoroughly.
 
 
 3.2 Noun
 
-Our original analysis of PG, suggested that noun predicates are present exclusively through the use of cross-markers, similar to the way cross-markers are used with stative-intransitive verbs:
+Our original analysis of PG, suggested that noun predicates presented exclusively through the use of cross-markers, similar to the way cross-markers are used with stative-intransitive verbs.  This was done on the basis of examples below which we originally misread (based on faulty IGT from our sources!). 
 
 #Ex.139: Use of noun predicate
 Source: b
@@ -645,19 +647,20 @@ che-sy
 O.1SG-mother.ANIM
 'I am a mother'/‘There is my mother’
 
-#Ex.142: NP Predicate, Possessive marking. Aspect marking (not currently handled by our grammar).
-Source: f
+#Ex.195: NP predicate, possessive marking
+Source: author
 Vetted: f
 Judgment: g
 Phenomena: cop
-hi'árama
-iaArama
-i-aAra-ma
-POSS.3-day-PERF
-'It is his/her day already' 
+hi'ára
+iaAra
+i-aAra
+POSS.3-day
+'It is his/her day' 
 
-These noun predicates take markings like subject markers and other aspect markers, especially as shown in IGT 142.There are also additional noun predication that can have other meanings like a semantic of ‘_have_rel’, which are not shown here. These noun predications are outside of scope for our current analysis and will not treated here.
-Nevertheless, IGT# 139 showed also the existence of an additional type of noun predication, with the semantics of ‘There is my mother. This suggests the existence of zero-copula noun predicates:
+Nevertheless when we did more digging we realized that what we were mistaking as verb marking was actually the combination of tense markers and possessive marking, which is has the exact same form as our O-verb markers, but of course different semantics.
+
+Our adjusted interpretations show the existence of an additional type of noun predication, with the semantics of ‘There is my mother. This suggests the existence of zero-copula noun predicates.  This was further confirmed when we found examples without possessive markers still functioning as predicates, and we see an example of this in IGT #200. 
 
 #Ex.200: Nominal predicate. Contentful postposition modifier.
 Source: author
@@ -670,47 +673,71 @@ jagua jagua=ndi
 dog.PRED dog=with
 'There is a dog with a dog'
 
-We implemented this kind of noun predicates with a new type of rule:
+We implemented this kind of noun predicates with a new type of rule, added to our PG.tdl file and also rules.tdl.  This rule takes noun phrases, changes their head value to verb and adds two semantic predications, “exist_q_rel,” and “_be_v_id_rel.”
 
 n-bar-predicate-rule := unary-phrase & nocoord &
   [ SYNSEM.LOCAL [ AGR #agr3,
-                   CAT [ MC na,
-                        HEAD verb & [MOD < >],
-                        VAL [ SPEC < >,
-                              SPR  < >,
-                              COMPS < >,
-           SUBJ < [ LOCAL [ CONT.HOOK.INDEX #arg1,
-                CAT [ HEAD noun,
-                      VAL.SPR < > ] ] ] > ] ]],
-    C-CONT [ HOOK [ LTOP #ltop,
-        INDEX #index,
-        XARG #arg1 ],
-       RELS <! arg12-ev-relation &
-       [ PRED "_be_v_id_rel",
-         LBL #ltop,
-         ARG0 #index,
-         ARG1 #arg1,
-         ARG2 #arg2 ],
-       quant-relation &
-       [ PRED "exist_q_rel",
-         ARG0 #arg2,
-         RSTR #harg ] !>,
-       HCONS <! qeq & [ HARG #harg, LARG #larg ] !> ],
+                   CAT [  EC -, 
+			  IC -, 
+			  MC na,
+                          HEAD verb & [MOD < >],
+                          VAL [ SPEC < >,
+                                SPR  < >,
+                                COMPS < >,
+           	   		SUBJ < > ] ]],
+    		   C-CONT [ HOOK [ LTOP #ltop,
+        			   INDEX #index],
+       				   RELS <!  arg12-ev-relation &
+					  [ PRED "_be_v_id_rel",
+         			     	    LBL #ltop,
+         				    ARG0 #index,
+         				    ARG2 #arg2 ],
+       					    quant-relation &
+       				         [ PRED "exist_q_rel",
+         				   ARG0 #arg2,
+         				   RSTR #harg ] !>,
+       		   		   HCONS <! qeq & [ HARG #harg, LARG #larg ] !> ],
     ARGS < [ SYNSEM.LOCAL [ AGR #agr3,
-                            CAT [ HEAD noun & [POSS poss-or-eel],
-                            VAL.SPR cons ],
-          CONT.HOOK [ INDEX #arg2,
-          LTOP #larg ]]] > ].
+                            CAT [ HEAD noun & [POSS poss-or-ee],
+                                  VAL.SPR cons ],
+          		    CONT.HOOK [ INDEX #arg2,
+          				LTOP #larg ]]] > ].
 
-We see that this unary rule, that extends over noun phrases, adds the predication ‘of to be’. The rule was added to the rule.tdl file, in order to instantiate these predicates. The rules requires the argument to be a noun, but with a restriction [POSS poss-or-eell], which means that pronouns are not acceptable.
+
+We used the base in the lab for implementation, but modified it extensively after experimentation. Adding all the new feature that we need for embedding clauses and constraining the mod, spec, spr, comps and subj values all to be empty, since we do not what our verb predicates in Guarani to combine with any arguments. We also do not want pronouns to take part in this rule, and we implemented this (somewhat quickly) with the one feature that easily distinguishes between our pronouns and other nouns, POSS, which we introduced last lab.  The rules requires the argument to be a noun, but with a restriction [POSS poss-or-eell], which means that pronouns are not acceptable.
+
+
 Our implementation works satisfactorily for our goals here. It generates in all other kind of phenomena of our grammar additional sentence parses, as each individual noun could be also interpreted as a separate noun predicate, which combined with our sentential juxtaposition can multiply the number of interpretations. This result is allowed in this grammar.
-Something that we were not able to implement in this grammar, is to allow our noun predicates to have markers, like the cross-reference markers with other arguments, as well as possibly combinations with other aspect markers. We leave this for another time.
+
+Something that we were not able to implement in this grammar, is to allow our noun predicates to have markers like aspect marking which we see in IGT 142, or the additional meaning of “I am a mother” for IGT 139. We leave this for another time.
+
+#Ex.142: NP Predicate, Possessive marking. Aspect marking (not currently handled by our grammar).
+Source: f
+Vetted: f
+Judgment: g
+Phenomena: cop
+hi'árama
+iaArama
+i-aAra-ma
+POSS.3-day-PERF
+
+'It is his/her day already' 
+#Ex.139: Use of noun predicate
+Source: b
+Vetted: f
+Judgment: g
+Phenomena: cop
+chesy
+chesy
+che-sy
+O.1SG-mother.ANIM
+'I am a mother'/‘There is my mother’
 
 
 3.3 Prepositions
 
-In Guarani, our analysis indicates that prepositional phrases work with conttentful appositions that add significant meaning to a sentence. 
-These appositions usually interact with different kind of predicates, some of them with full semantic content, so that the appositions work more as a modifier:
+In Guarani, our analysis indicates that prepositional phrases work with contentful appositions that add significant meaning to a sentence. 
+These appositions usually interact with predicates with full semantic content acting (and unifying) as a modifier:
 
 #Ex.166: Contentful postpositions  
 Source: author
@@ -723,7 +750,6 @@ o-ju mombyryA=gui
 3.ACT-come far=from
 'He/she comes from far(a far place)' 
 
-Similarly in the case of noun predicates, which we have analyzed as zero-copulas, the prepositional phrases act also as a modifier:
 
 #Ex.200: Nominal predicate. Contentful postposition modifier.
 Source: author
@@ -735,6 +761,17 @@ jagua jagua ndi
 jagua jagua=ndi
 dog.PRED dog=with
 'There is a dog with a dog'
+
+#Ex.165: Contentful postpositions  
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: adp
+Ojeroky kotýpe jaguandi
+ojeroky koty pe jagua ndi
+o-jeroky koty=pe jagua=ndi
+3.ACT-dance room=in dog=with
+'He/She dances in the room with the dog'
 
 In other cases these appositions interact with raising verbs, which are not-fully semantically bleached. These are verbs with a similar meaning as ‘to-be-located’. 
 
@@ -769,7 +806,13 @@ locative-verb-lex := gug-dyn-loc-verb & trans-first-arg-control-lex-item &
 		LOCAL.CAT [ VAL [ COMPS < > ],
                            HEAD adp & [CASE LOC] ] ] > ].
 
-This type takes the cross-markings of agents in dynamic verbs. Additionally is first argument is a noun phrase, and its second argument a contentfull adposition which identifies with the locative case.
+This type instantiates the type gug-dyn-loc-verb, which is inherited by our dynamic stative verbs and also are clausal embedding verbs so that all of these verb classes can appropriates implement the lexical rules for affixation already in place.
+
+gug-dyn-loc-verb := verb-lex & 
+[ INFLECTED.PERNUM-DYN-INTRANS-OR-PERNUM-TRANS-FLAG - ].
+
+All other verb types inherit from verb-lex directly, since they go through separate inflectional rules.  This type of verb cannot undergo complement drop, and is required take a complement that is HEAD dap and, to prevent it from unifying with our case-marking adpositions, HEAD LOC. 
+
 
 We added also the entry in the lexicon for our non-semantically bleached raising verb, which has a similar use like the Spanish verb ‘star’, close to ‘be+located’ in English:
 
@@ -807,9 +850,34 @@ contentful-adp-lex := basic-int-mod-adposition-lex
                         LOCAL.CAT[ HEAD +np,
                                    VAL [SPR < >] ] ] > ].
 
-This lexical type then unifies with other elements of a sentence forming prepositional phrases that are either modifiers (like in the first two IGTs shown here) as a contentful complement of locative verbs.
+This lexical type then unifies with other elements of a sentence forming prepositional phrases that are either modifiers (like in the first two IGTs shown here), or complements of locative verbs like IGT 10 below and 164 above.
 
-There are some aspects of our implementation that don’t reflect the full reality of prepositional predicates. They currently act as modifiers or complements of verbal and noun predicates. They can though also be complements of noun phrases that do not need to be predicative. This is not what our grammar does. This would require to change the MOD value of our locative adpositions. We leave this idea for a future intend, when time and workload allows for it.
+There are some aspects of our implementation that don’t reflect the full reality of prepositional predicates. They currently act as modifiers or complements of verbal and noun predicates, which does not allow us to represent the full spectrum of possible ambiguity in sentences like 
+
+#Ex.8: Multiple contentful postpositions as modifiers. 
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: adp
+ajeroky avatitýpe lo nNakyrandi
+ajeroky avatityA pe lo nNakyra ndi
+a-jeroky avatityA=pe lo nNakyra=ndi
+1SG.3-dance cornfield=in+near the.PL crickets=with
+'I dance in the cornfield with the crickets'
+
+#Ex.10: be+located raising verb. PP argument and PP modifier.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: adp
+yvyra oime vatitýpe roAgape
+yvyra oime vatityA pe roAga pe
+yvyra o-ime vatityA=pe roAga=pe
+tree A.3-be+located cornfield=in house=in
+'The tree is located in the cornfield in (near) the house'
+
+
+This would require to change the MOD value of our locative adpositions. We leave this idea for a future intend, when time and workload allows for it.
 
 
 4. Anything else.
