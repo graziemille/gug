@@ -36,11 +36,11 @@ np2-mid-coord := np2-mid-coord-rule.
 
 np2-bottom-coord := np2-bottom-coord-rule.
 
-;vp2-top-coord := vp2-top-coord-rule.
+vp2-top-coord := vp2-top-coord-rule.
 
-;vp2-mid-coord := vp2-mid-coord-rule.
+vp2-mid-coord := vp2-mid-coord-rule.
 
-;vp2-bottom-coord := vp2-bottom-coord-rule.
+vp2-bottom-coord := vp2-bottom-coord-rule.
 
 s2-top-coord := s2-top-coord-rule.
 

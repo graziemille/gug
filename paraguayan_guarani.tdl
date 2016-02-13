@@ -1017,14 +1017,14 @@ np2-bottom-coord-rule := conj-first-bottom-coord-rule & np-bottom-coord-phrase &
 
 ;;; Coordination Strategy 2
 
-;vp2-top-coord-rule := basic-vp-top-coord-rule & monopoly-top-coord-rule &
-;  [ SYNSEM.LOCAL.COORD-STRAT "2" ].
+vp2-top-coord-rule := basic-vp-top-coord-rule & monopoly-top-coord-rule &
+  [ SYNSEM.LOCAL.COORD-STRAT "2" ].
 
-;vp2-mid-coord-rule := basic-vp-mid-coord-rule & monopoly-mid-coord-rule &
-;  [ SYNSEM.LOCAL.COORD-STRAT "2" ].
+vp2-mid-coord-rule := basic-vp-mid-coord-rule & monopoly-mid-coord-rule &
+  [ SYNSEM.LOCAL.COORD-STRAT "2" ].
 
-;vp2-bottom-coord-rule := conj-first-bottom-coord-rule & vp-bottom-coord-phrase &
-;  [ SYNSEM.LOCAL.COORD-STRAT "2" ].
+vp2-bottom-coord-rule := conj-first-bottom-coord-rule & vp-bottom-coord-phrase &
+  [ SYNSEM.LOCAL.COORD-STRAT "2" ].
 
 ;;; Coordination Strategy 2
 
@@ -1079,12 +1079,12 @@ np2-mid-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
  			RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ,LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
 np2-bottom-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
  			NONCONJ-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
-;vp2-top-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
-; 			RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ,LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
-;vp2-mid-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
-; 			RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ,LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
-;vp2-bottom-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
-; 			NONCONJ-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
+vp2-top-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
+ 			RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ,LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
+vp2-mid-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
+ 			RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ,LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
+vp2-bottom-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
+ 			NONCONJ-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
 s2-top-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
  			RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ,LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
 s2-mid-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
