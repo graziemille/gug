@@ -800,7 +800,7 @@ n-bar-predicate-rule := unary-phrase & nocoord &
          RSTR #harg ] !>,
        HCONS <! qeq & [ HARG #harg, LARG #larg ] !> ],
     ARGS < [ SYNSEM.LOCAL [ AGR #agr3,
-                            CAT [ HEAD noun & [PRD +],
+                            CAT [ HEAD noun,
                             VAL.SPR cons ],
           CONT.HOOK [ INDEX #arg2,
           LTOP #larg ]]] > ].

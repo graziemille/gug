@@ -75,7 +75,7 @@ ihecha tunich
 ihecha tunich
 i-hecha tunich
 O.3-see stone.INAM
-*'He sees the stone'
+*'He/She sees the stone'
 
 #Ex.7: Transitive verb, missing agreement marker.
 Source: author
@@ -373,7 +373,7 @@ ha'e iguata
 haHe iguata
 haHe i-guata
 She.NOM 03.-walk
-*'She walks'
+*'He/She walks'
 
 #Ex.34: Dynamic intransitive verb has agreement marker of stative intransitive verb. 1PL.INCL subject.
 Source: author
@@ -670,7 +670,7 @@ ohechata chupe la imbo'ehára
 ohechata chupe la imboHehaAra
 o-hecha-ta   chupe   la  i-mboHehaAra
 A.3-see-FUT  3SG.ACC the.SG  O.3SG-profesor.NOM
-'The professor will see her'
+'The professor will see him/her'
 
 #Ex.61: Transitive verb. Completive aspect. Subject drop. Object drop.
 Source: author
@@ -956,7 +956,7 @@ ikaigue
 ikaigue
 i-kaigue
 O.3-lazy
-'They are lazy'
+'He/she is lazy'
 
 #Ex.87: Stative intransitive has dynamic intransitive agreement marker. 3PER subject.
 Source: author
@@ -967,7 +967,7 @@ okaigue
 okaigue
 o-kaigue
 A.3-lazy
-*'They are lazy'
+*'He/she is lazy'
 
 #Ex.88: Stative intransitve agrees with 2PL subject. Subject drop.
 Source: author
@@ -1132,7 +1132,7 @@ ahecha iróga
 ahecha iroAga
 a-hecha i-roAga
 A.1SG-see O.3-roAga
-'I see her house'
+'I see his/her house'
 
 #Ex.103: Noun Noun Possessives. wrong order of possessor
 Source: author
@@ -1283,9 +1283,9 @@ Vetted: f
 Judgment: u
 Phenomena: q
 ohecha  ñakyrapa vakápe? 
-ohecha nNakyrapa vakaA pe
-o-hecha nNakyra-pa vakaA=pe
-O.3-see cricket.ANIM.NOM-Q cow.ANIM=ACC
+ohecha nNakyra pa vakaA pe
+o-hecha nNakyra=pa vakaA=pe
+O.3-see cricket.ANIM.NOM=Q cow.ANIM=ACC
 *'Did the cricket see the cow?
 
 #Ex.117: Yes-No question with question marker in wrong position, should be second position.
@@ -1294,8 +1294,8 @@ Vetted: f
 Judgment: u
 Phenomena: q
 ohecha ñakyra vakápepa? 
-ohecha nNakyra vakaA pepa
-o-hecha nNakyra vakaA=pe-pa
+ohecha nNakyra vakaA pe pa
+o-hecha nNakyra vakaA=pe=pa
 O.3-see cricket.ANIM.NOM cow.ANIM=ACC-Q
 *'Did the cricket see the cow?
 
@@ -1305,9 +1305,9 @@ Vetted: f
 Judgment: u
 Phenomena: q
 vakápape ohecha ñakyra? 
-vakaApa pe ohecha nNakyra
-vakaA-pa=pe o-hecha nNakyra
-cow.ANIM-Q=ACC O.3-see cricket.ANIM.NOM
+vakaA pa pe ohecha nNakyra
+vakaA=pa=pe o-hecha nNakyra
+cow.ANIM=Q=ACC O.3-see cricket.ANIM.NOM
 *'Was it the cricket, who saw the cow?'
 
 #Ex.119: Yes-No question with focus marker on verb predicate, wrong position of marker piko
@@ -1349,9 +1349,9 @@ Vetted: f
 Judgment: g
 Phenomena: {q, wo}
 ohechapa ñakyra vakápe?
-ohechapa nNakyra vakaA pe
-o-hecha-pa nNakyra vakaA=pe
-O.3-see-Q cricket.ANIM.NOM cow.ANIM=ACC
+ohecha pa nNakyra vakaA pe
+o-hecha=pa nNakyra vakaA=pe
+O.3-see=Q cricket.ANIM.NOM cow.ANIM=ACC
 'Did the cricket see the cow?'
 
 #Ex.123: Yes-No question with focus marker on subject
@@ -1360,9 +1360,9 @@ Vetted: f
 Judgment: g
 Phenomena: {q, wo}
 ñakyrapa ohecha vakápe?
-nNakyrapa ohecha vakaA pe
-nNakyra-pa o-hecha vakaA=pe
-cricket.ANIM.NOM-Q O.3-see cow.ANIM=ACC
+nNakyra pa ohecha vakaA pe
+nNakyra=pa o-hecha vakaA=pe
+cricket.ANIM.NOM=Q O.3-see cow.ANIM=ACC
 'Was it the cricket, who saw the cow?'
 
 #Ex.124: Yes-No question with focus marker on verb object
@@ -1371,34 +1371,34 @@ Vetted: f
 Judgment: g
 Phenomena: {q, wo}
 vakápepa ohecha ñakyra?
-vakaA pepa ohecha nNakyra
-vakaA=pe-pa o-hecha nNakyra
-cow.ANIM=ACC-Q O.3-see cricket.ANIM.NOM
+vakaA pe pa ohecha nNakyra
+vakaA=pe=pa o-hecha nNakyra
+cow.ANIM=ACC=Q O.3-see cricket.ANIM.NOM
 'Is it the cow, that the cricket?'
 
-#Ex.125: Wh question for 'what' object, with 'piko' word
+#Ex.125: Wh question for 'what' object, with piko question clitic
 Source: d
 Vetted: f
 Judgment: g
 Phenomena: {wh, wo}
 mba'é piko rejapo ?
 mbaHeA piko rejapo ?
-mbaHeA piko re-japo
-what Q A.2SG-do
+mbaHeA=piko re-japo
+what=Q A.2SG-do
 'What do you do?'
 
-#Ex.126: Wh question for 'what' object, with -pa particle
+#Ex.126: Wh question for 'what' object, with pa question clitic
 Source: d
 Vetted: f
 Judgment: g
 Phenomena: {wh, wo}
 mba'épa rejapo ?
-mbaHeApa rejapo ?
-mbaHeA-pa re-japo
-what-Q A.2SG-do
+mbaHeA pa rejapo ?
+mbaHeA=pa re-japo
+what=Q A.2SG-do
 'What do you do?'
 
-#Ex.127: Wh question for 'what' object, without any particle
+#Ex.127: Wh question for 'what' object, without any clitic
 Source: d
 Vetted: f
 Judgment: g
@@ -1420,26 +1420,26 @@ re-japo mbaHeA
 A.2SG-do what
 *'What do you do?'
 
-#Ex.129: Wh question for 'who,’ with -pa particle in wrong position.
+#Ex.129: Wh question for 'who,’ with question clitic in wrong position.
 Source: d
 Vetted: f
 Judgment: u
 Phenomena: wh
 ou mávapa
-oju maAvapa
-o-ju maAva-pa
-A.3-come who-Q 
+oju maAva pa
+o-ju maAva=pa
+A.3-come who=Q 
 *'Who is coming?'
 
-#Ex.130: Wh question for 'who,’ with -pa particle
+#Ex.130: Wh question for 'who,’ with pa question clitic
 Source: d
 Vetted: f
 Judgment: g
 Phenomena: {wh, wo}
 mávapa ou
-maAvapa oju
-maAva-pa o-ju
-who-Q A.3-come
+maAva pa oju
+maAva=pa o-ju
+who=Q A.3-come
 'Who is coming?'
 
 #Ex.131: Use of adjective as an attribute of the object of verb predicate
@@ -1552,7 +1552,7 @@ che-sy o-guata
 O.1SG-mother.ANIM A.3-walk
 'My mother walks/I am a mother and she walks'
 
-#Ex.141: predicative use of location adverb
+#Ex.141: Adverb Predicate. 
 Source: author
 Vetted: f
 Judgment: g
@@ -1560,10 +1560,10 @@ Phenomena: cop
 ore oreaguĩ
 ore oreaguiN
 ore ore-aguiN
-1PL.EXCL.PRON.NOM
+1PL.EXCL.PRON.NOM O.1PL.EXCL-near
 'We are near'
 
-#Ex.142: predicative use of noun
+#Ex.142: NP Predicate, Possessive marking. Aspect marking (not currently handled by our grammar).
 Source: f
 Vetted: f
 Judgment: g
@@ -1571,8 +1571,9 @@ Phenomena: cop
 hi'árama
 iaArama
 i-aAra-ma
-O.3-day-PERF
-'It was his day' 
+POSS.3-day-PERF
+'It is his/her day already' 
+
 
 #Ex.143: Use of 'and' coordination with two sentences
 Source: b
@@ -1583,7 +1584,7 @@ nikiriri᷉i ha ndopytai
 ndikiririNi ha ndopytai
 nd-i-kiririN-i ha nd-o-pyta-i
 NEG-O.3-be.quiet-NEG and NEG-A.3-leave-NEG
-'He is not quiet and does not leave'
+'He/she is not quiet and does not leave'
 
 #Ex.144: Wrong position of 'and' conjunction
 Source: b
@@ -1594,7 +1595,7 @@ nikiriri᷉i ndopytai ha
 ndikiririNi ndopytai ha
 nd-i-kiririN-i nd-o-pyta-i ha
 NEG-O.3-be.quiet-NEG NEG-A.3-leave-NEG and
-*'He is not quiet and does not leave'
+*'He/she is not quiet and does not leave'
 
 #Ex.145: Wrong position of 'and' conjunction
 Source: b
@@ -1605,7 +1606,7 @@ ha nikiriri᷉i ndopytai
 ha ndikiririNi ndopytai
 ha nd-i-kiririN-i nd-o-pyta-i
 and NEG-O.3-be.quiet-NEG NEG-A.3-leave-NEG 
-*'He is not quiet and does not leave'
+*'He/she is not quiet and does not leave'
 
 #Ex.146: Use of 'and' coordination with sentence constituents
 Source: b
@@ -1638,7 +1639,7 @@ aikuua ouha
 aikuua ojuha
 a-ikuua o-ju-ha
 A.1SG-know A.3-come-COMP
-'I know he is coming'
+'I know he comes'
 
 #Ex.149: Wrong marker for embedding of interrogative clause
 Source: e
@@ -1649,7 +1650,7 @@ aporandu ouha
 aporandu ojuha
 a-porandu o-ju-ha
 A.1SG-ask A.3-go-COMP
-*'I ask whether he is coming'
+*'I ask whether he comes'
 
 #Ex.150: Use embedded clause for interrogative sentence
 Source: e
@@ -1657,10 +1658,10 @@ Vetted: f
 Judgment: g
 Phenomena: {emb-q, wo}
 aporandu oupa
-aporandu ojupa
-a-porandu o-ju-pa
-A.1SG-ask A.3-go-Q
-'I ask whether he is coming'
+aporandu oju pa
+a-porandu o-ju=pa
+A.1SG-ask A.3-go=Q
+'I ask whether he comes'
 
 #Ex.151: Adverb should come directly after the verb predicate with no intervening words.
 Source: b
@@ -1726,7 +1727,7 @@ ha'e ojatapy ituicha
 haHe ojatapy ituicha
 haHe o-jatapy i-tuicha
 3SG.PRON.NOM A.3-make.fire O.3-big
-*'She made a fire in a big way' 
+*'He/she made a fire in a big way' 
 
 #Ex.157: Use of manner adverb after verb predicate
 Source: author
@@ -1759,7 +1760,7 @@ nikiriri᷉i  ndopytai
 ndikiririNi ndopytai
 nd-i-kiririN-i nd-o-pyta-i
 NEG-O.3-be.quiet-NEG NEG-A.3-leave-NEG
-'He is not quiet and does not leave'
+'He/she is not quiet and does not leave'
 
 #Ex.160: asyndenton coordination with subject drop
 Source: b
@@ -1814,8 +1815,8 @@ Phenomena: {cop, adp}
 Oime kotýpe jaguandi
 oime koty pe jagua ndi
 o-ime koty=pe jagua=ndi
-3.ACT-be room=in dog=with
-'He/She is in the room with the dog'
+3.ACT-be.located room=in dog=with
+'He/She is located in the room with the dog'
 
 #Ex.165: Contentful postpositions  
 Source: author
@@ -1991,7 +1992,7 @@ ojeroky ijagua
 ojeroky ijagua
 o-jeroky i-jagua
 A.3-dance 3.POSS-dog
-'His dog dances'
+'His/her dog dances'
 
 #Ex.181: Possessive Affixes
 Source: author
@@ -2145,4 +2146,16 @@ ohecha ju'i vaká
 ohecha juHi vakaA
 o-hecha juHi vakaA
 O.3-see frog.ANIM.NOM cow.ANIM
-'The frogs see the cows'
+'The frog sees the cow'
+
+#Ex.195: NP predicate, possessive marking
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: cop
+hi'árama
+iaArama
+i-aAra-ma
+POSS.3-day
+'It is his/her day' 
+
