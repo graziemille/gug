@@ -15,9 +15,9 @@
 15@author@@@1@agr@cheguata che@@@@0@2@O.1SG-walk I.NOM(*)'I walk'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 16@author@@@1@wo,agr,pn@vakaA oguata@@@@1@2@cow.ANIM.NOM A.3-walk'The cow walks'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 17@author@@@1@agr@vakaA iguata@@@@0@2@cow.ANIM.NOM O.3-walk(*)'The cow walks'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-18@author@@@1@agr@vakaA aguata@@@@0@2@cow.ANIM.NOM A.1SG-walk*'The cow walks'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+18@author@@@1@agr@haHe aguata@@@@0@2@3.SG.PRON.NOM A.1SG-walk*'He/she walks'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 19@author@@@1@wo@oguata juHi@@@@1@2@A.3-Walk frog.ANIM.NOM'The frog walks'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-20@author@@@1@agr@aguata vakaA@@@@0@2@A.1SG-walk cow.ANIM.NOM*'The cow walks'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+20@author@@@1@agr@aguata nde@@@@0@2@A.1SG-walk 2.SG.PRON*'you walk'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 21@author@@@1@wo,agr,c@juHi vakaA pe ohecha@@@@1@4@frog.ANIM.NOM cow.ANIM=ACC A.3-see'The frogs see the cows'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 22@author@@@1@wo,agr,c@juHi ohecha vakaA pe@@@@1@4@frog.ANIM.NOM O,3-see cow.ANIM=ACC'The frogs sees the cows'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 23@author@@@1@agr@juHi ihecha vakaA pe@@@@0@4@frog.ANIM.NOM A.3-see cow.ANIM=ACC(*)'The frog sees the cow'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
@@ -97,7 +97,7 @@
 97@author@@@1@neg@ndokyAtai@@@@0@1@NEG-A.3-rain-FUT-NEG*'It won't rain'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 98@author@@@1@neg@ndokyA@@@@0@1@NEG-A.3-rain*'It won't rain'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 99@author@@@1@poss,wo@ahecha yvyra raka pe@@@@1@4@A.1SG-see tree  branch=ACC'I see tree branches'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-100@author@@@1@poss@ahecha raka pe yvyra@@@@0@4@A.1G-see branch=ACC tree*'I see tree branches'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+100@author@@@1@c@raka pe yvyra@@@@0@3@branch=ACC tree*'There are tree's branches'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 101@author@@@1@poss,wo@ahecha mboHehaAra roAga@@@@1@3@A.1SG-see professor   house'I see the professor's house'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 102@author@@@1@poss@ahecha iroAga@@@@1@2@A.1SG-see O.3-roAga'I see his/her house'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 103@author@@@1@poss@ahecha roga pe mboHehaAra@@@@0@4@A.1SG-see house=ACC professor.ANIM*'I see the professor's house'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
@@ -107,7 +107,7 @@
 107@author@@@1@poss@ahecha cheajaka@@@@1@2@A.1SG-see O.1SG-basket.INAM'I see my basket'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 108@author@@@1@poss@ahendu yvytu hata@@@@1@3@A.1SG-hear wind.INAM strong'I hear the strong wind'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 109@author@@@1@poss@ahendu avatityA yvytu hata@@@@0@4@A.1SG-hear cornfield wind.INAM strong'I hear the cornfield's strong wind'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-110@author@@@1@pro-d@ahecha vakaA chupe@@@@0@3@A.1SG-see cow it*'I see the cow's it'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+110@author@@@1@pro-d@vakaA chupe@@@@0@2@cow it*'There is a cow's it'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 111@author@@@1@agr,pn,pro-d@pomeHeN chupe@@@@1@2@12.PL-give 3SG.DAT'I gave you to him' (meaning you plural)@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 112@author@@@1@agr@nde rohecha@@@@0@2@You.SG.NOM 12.SG-see*'You see me'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 113@author@@@1@agr@peeN pohecha@@@@0@2@You.PL.NOM 12.PL-see*'You see me@lisa tittle caballero, thor wicke monteverde@january 14, 2016
@@ -144,9 +144,9 @@
 144@b@@@1@crd@ndikiririNi ndopytai ha@@@@0@3@NEG-O.3-be.quiet-NEG NEG-A.3-leave-NEG and*'He/she is not quiet and does not leave'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 145@b@@@1@crd@ha ndikiririNi ndopytai@@@@0@3@and NEG-O.3-be.quiet-NEG NEG-A.3-leave-NEG*'He/she is not quiet and does not leave'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 146@b@@@1@crd,wo@aguara opo ha okanNy@@@@1@4@fox.ANIM.NOM A.3-jump and A.3-hide'the fox jumped and hid'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-147@b@@@1@crd,wo@aguara ha opo okanNy@@@@0@4@fox.ANIM.NOM and A.3-jump A.3-hide*'the fox jumped and hid'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-148@e@@@1@emb-d,wo@aikuua ojuha@@@@1@2@A.1SG-know A.3-come-COMP'I know he comes'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-149@e@@@1@emb-q@aporandu ojuha@@@@0@2@A.1SG-ask A.3-go-COMP*'I ask whether he comes'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+147@b@@@1@crd,wo@haHe ha opo okanNy@@@@0@4@3.SG.PRON.NOM and A.3-jump A.3-hide*'He/she jumped and hid'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+148@e@@@1@emb-d,wo@aikuua oju ha@@@@1@3@A.1SG-know A.3-come=COMPL'I know he comes'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+149@e@@@1@emb-q@aporandu oju ha@@@@0@3@A.1SG-ask A.3-go=COMPL*'I ask whether he comes'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 150@e@@@1@emb-q,wo@aporandu oju pa@@@@1@3@A.1SG-ask A.3-go=Q'I ask whether he comes'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 151@b@@@1@adv@jagua osuHu vai vakaA pe@@@@1@5@dog A.3-bite bad cow.ANIM=ACC'the dog bit the cow in an ugly way'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 152@b@@@1@adv@jagua osuHu vakaA pe vai@@@@0@5@dog A.3-bite cow.ANIM=ACC bad*'the dog bit the cow in an ugly way'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
@@ -168,8 +168,8 @@
 168@author@@@1@wo@ahojaA ojahoHi ajaka@@@@1@3@blanket A.3-cover basket'The blanket cover the basket / the basket covers the blanket'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 169@author@@@1@adj,wo@ahecha vakaA tuicha@@@@1@3@A.1SG-see cow.ANIM big'I see the big cow'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 170@author@@@1@adj@tuicha vakaA ahecha@@@@0@3@big cow.ANIM A.1SG-see*'I see the big cow'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-171@author@@@1@poss@ojeroky haHe jagua@@@@0@3@A.3-dance 3SG.PRON.NOM dog*'His dog dances'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-172@author@@@1@poss@ojeroky  jagua haHe@@@@0@3@A.1SG-see dog 3SG.PRON.NOM*'The he that belongs to the dog dances'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+171@author@@@1@poss@haHe jagua@@@@0@2@3SG.PRON.NOM dog*'There is his/her dog'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+172@author@@@1@poss@jagua haHe@@@@0@2@dog 3SG.PRON.NOM*'There is a he that belongs to the dog'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 173@author@@@1@agr,pn@che ahecha chupe@@@@1@3@I.NOM A.1SG-see 3.PRON.ACC'I see him'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 174@author@@@1@agr@rehecha@@@@1@1@A.2SG-see'I don't see (it/him/her/them)'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 175@author@@@1@agr@pohecha@@@@1@1@A.1SG_2SG-see'I see you(pl)'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
@@ -182,7 +182,7 @@
 182@author@@@1@poss@ojeroky nNandejagua@@@@1@2@A.3-dance 1PL.INCL.POSS-dog'Our(incl) dog dances'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 183@author@@@1@poss@ojeroky orejagua@@@@1@2@A.3-dance 1PL.EXCL.POSS-dog'Our(excl) dog dances'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 184@author@@@1@poss@ahecha vai@@@@1@2@A.1SG-see bad'I see poorly'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-185@author@@@1@poss@jagua chesy oguata@@@@0@3@dog 1SG.POS-mother A.3-walk*'The my mother of the dog walks'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+185@author@@@1@poss@jagua chesy@@@@0@2@dog 1SG.POS-mother*'There is a my mother of the dog'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 186@author@@@1@poss@chesy jagua oguata@@@@1@3@1SG.POS-mother dog A.3-walk'My mother's dog walks' or 'I am a mother and the dog walks'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 187@author@@@1@wo,agr,c@juHi tunich ohecha@@@@1@3@frog.ANIM stone.INAM A.3-see'The frog sees the stone'/'the stone sees the frog'/'The frog's stone sees something'/ 'something sees the frog's stone'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 188@author@@@1@wo,agr,c@ohecha juHi tunich@@@@1@3@A.3-see frog.ANIM stone.INAM'The frog sees the stone'/'the stone sees the frog'/'The frog's stone sees something'/ 'something sees the frog's stone'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
@@ -195,6 +195,8 @@
 195@author@@@1@cop@iaAra@@@@1@1@POSS.3-day'It is his/her day'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 196@author@@@1@emb-q@aporandu ohecha pa juHi pe@@@@1@5@A.1SG-know A.3-see=COMPL frog=ACC'I ask if somebody sees the frog'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 197@author@@@1@emb-q@aporandu ohecha pa juHi@@@@1@4@A.1SG-know A.3-see=COMPL frog=ACC'I ask if somebody sees the frog' / 'I ask if the frog sees it'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-198@author@@@1@emb-d,wo@aikuua ohecha pa juHi pe@@@@1@5@A.1SG-know A.3-go=COMPL juHi=ACC'I know he/she/it sees the frog'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-199@author@@@1@emb-d,wo@aikuua ohecha pa juHi@@@@1@4@A.1SG-know A.3-go=COMPL juHi'I know he/she/it sees the frog' / 'I know the frog sees it'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+198@author@@@1@emb-d,wo@aikuua ohecha ha juHi pe@@@@1@5@A.1SG-know A.3-go=COMPL juHi=ACC'I know he/she/it sees the frog'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+199@author@@@1@emb-d,wo@aikuua ohecha ha juHi@@@@1@4@A.1SG-know A.3-go=COMPL juHi'I know he/she/it sees the frog' / 'I know the frog sees it'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 200@author@@@1@cop,adp@jagua jagua ndi@@@@1@3@dog.PRED dog=with'There is a dog with a dog'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+201@e@@@1@emb-q@aporandu ohecha pa juHi vakaA@@@@1@5@A.1SG-ask A.3-see=COMPL frog cow'I ask if somebody sees the frog's cow'/ ' I ask if the frog's cow sees it' / 'I ask if the frog sees the cow' / 'I ask if the cow sees the frog'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+202@e@@@1@emb-d@aikuua ohecha ha juHi vakaA@@@@1@5@A.1SG-know A.3-see=COMPL frog cow'I know that somebody sees the frog's cow' / ' I know that the frog's cow sees it' / 'I know that the frog sees the cow' / 'I know that the cow sees the frog'@lisa tittle caballero, thor wicke monteverde@january 14, 2016

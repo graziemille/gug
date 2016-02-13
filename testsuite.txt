@@ -203,11 +203,11 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: agr
-vaká aguata
-vakaA aguata
-vakaA a-guata
-cow.ANIM.NOM A.1SG-walk
-*'The cow walks'
+ha'e aguata
+haHe aguata
+haHe a-guata
+3.SG.PRON.NOM A.1SG-walk
+*'He/she walks'
 
 #Ex.19: Dynamic intransitive verb agrees with 3SG subject. VS word order.
 Source: author
@@ -220,16 +220,16 @@ o-guata juHi
 A.3-Walk frog.ANIM.NOM
 'The frog walks'
 
-#Ex.20: Dynamic intransitive has 3SG subject but 1SG marking
+#Ex.20: Dynamic intransitive has 2SG subject but 1SG marking
 Source: author
 Vetted: f
 Judgment: u
 Phenomena: agr
-aguata vaká
-aguata vakaA
-a-guata vakaA
-A.1SG-walk cow.ANIM.NOM
-*'The cow walks'
+aguata nde
+aguata nde
+a-guata nde
+A.1SG-walk 2.SG.PRON
+*'you walk'
 
 #Ex.21: Transitive verb agrees with 3per subject. Accusative marking on animate object. SOV word order. No determiners, underspecified number.
 Source: author
@@ -1101,16 +1101,16 @@ a-hecha yvyra raka=pe
 A.1SG-see tree  branch=ACC
 'I see tree branches'
 
-#Ex.100: Noun Noun Possessives. Wrong order of possessor and case marking adposition
+#Ex.100: Noun Noun Possessives. Wrong order of case marking adposition
 Source: author
 Vetted: f
 Judgment: u
-Phenomena: poss
-ahecha rakape yvyra
-ahecha raka pe yvyra
-a-hecha raka=pe yvyra
-A.1G-see branch=ACC tree
-*'I see tree branches'
+Phenomena: c
+rakape yvyra
+raka pe yvyra
+raka=pe yvyra
+branch=ACC tree
+*'There are tree's branches'
 
 #Ex.101: Noun Noun Possessives. Human Possessor. Inanimate Alienable Possession.
 Source: author
@@ -1216,11 +1216,11 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: pro-d
-ahecha vaká chupe
-ahecha vakaA chupe
-a-hecha vakaA chupe
-A.1SG-see cow it
-*'I see the cow's it'
+vaká chupe
+vakaA chupe
+vakaA chupe
+cow it
+*'There is a cow's it'
 
 #Ex.111: Portmanteau marker for 12PL
 Source: author
@@ -1282,7 +1282,7 @@ Source: c
 Vetted: f
 Judgment: u
 Phenomena: q
-ohecha  ñakyrapa vakápe? 
+ohecha ñakyrapa vakápe? 
 ohecha nNakyra pa vakaA pe
 o-hecha nNakyra=pa vakaA=pe
 O.3-see cricket.ANIM.NOM=Q cow.ANIM=ACC
@@ -1624,11 +1624,11 @@ Source: b
 Vetted: f
 Judgment: u
 Phenomena: {crd, wo}
-aguara ha opo okañy
-aguara ha opo okanNy
-aguara ha o-po o-kanNy
-fox.ANIM.NOM and A.3-jump A.3-hide
-*'the fox jumped and hid'
+ha'e ha opo okañy
+haHe ha opo okanNy
+haHe ha o-po o-kanNy
+3.SG.PRON.NOM and A.3-jump A.3-hide
+*'He/she jumped and hid'
 
 #Ex.148: Use embedded clause for declarative sentence
 Source: e
@@ -1636,9 +1636,9 @@ Vetted: f
 Judgment: g
 Phenomena: {emb-d, wo}
 aikuua ouha
-aikuua ojuha
-a-ikuua o-ju-ha
-A.1SG-know A.3-come-COMP
+aikuua oju ha
+a-ikuua o-ju=ha
+A.1SG-know A.3-come=COMPL
 'I know he comes'
 
 #Ex.149: Wrong marker for embedding of interrogative clause
@@ -1647,9 +1647,9 @@ Vetted: f
 Judgment: u
 Phenomena: emb-q
 aporandu ouha
-aporandu ojuha
-a-porandu o-ju-ha
-A.1SG-ask A.3-go-COMP
+aporandu oju ha
+a-porandu o-ju=ha
+A.1SG-ask A.3-go=COMPL
 *'I ask whether he comes'
 
 #Ex.150: Use embedded clause for interrogative sentence
@@ -1889,11 +1889,11 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: poss
-ojeroky ha'e jagua
-ojeroky haHe jagua
-o-jeroky haHe jagua
-A.3-dance 3SG.PRON.NOM dog
-*'His dog dances'
+ha'e jagua
+haHe jagua
+haHe jagua
+3SG.PRON.NOM dog
+*'There is his/her dog'
 
 #Ex.172: Pronouns cannot be part of possessive constructions
 Source: author
@@ -1901,10 +1901,10 @@ Vetted: f
 Judgment: u
 Phenomena: poss
 ojeroky jagua ha'e
-ojeroky  jagua haHe
-o-jeroky jagua haHe
-A.1SG-see dog 3SG.PRON.NOM
-*'The he that belongs to the dog dances'
+jagua haHe
+jagua haHe
+dog 3SG.PRON.NOM
+*'There is a he that belongs to the dog'
 
 #Ex.173: Transitive verb two personal pronoun arguments.
 Source: author
@@ -2043,11 +2043,11 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: poss
-jagua chesy oguata
-jagua chesy oguata
-jagua che-sy o-guata
-dog 1SG.POS-mother A.3-walk
-*'The my mother of the dog walks'
+jagua chesy
+jagua chesy
+dog che-sy
+dog 1SG.POS-mother
+*'There is a my mother of the dog'
 
 #Ex.186: Unattested case of a noun that has passed through the possessive lexical rule acting as the possessor of another noun.  Judged grammatical for now but easy to change if need be. Ambiguous reading
 Source: author
@@ -2186,9 +2186,9 @@ Source: author
 Vetted: f
 Judgment: g
 Phenomena: {emb-d, wo}
-aikuua ohecha ju'ipe
-aikuua ohecha pa juHi pe
-a-ikuua o-hecha=pa juHi=pe
+aikuua ohechaha ju'ipe
+aikuua ohecha ha juHi pe
+a-ikuua o-hecha=ha juHi=pe
 A.1SG-know A.3-go=COMPL juHi=ACC
 'I know he/she/it sees the frog'
 
@@ -2197,9 +2197,9 @@ Source: author
 Vetted: f
 Judgment: g
 Phenomena: {emb-d, wo}
-aikuua ohecha ju'ipe
-aikuua ohecha pa juHi
-a-ikuua o-hecha=pa juHi
+aikuua ohechaha ju'ipe
+aikuua ohecha ha juHi
+a-ikuua o-hecha=ha juHi
 A.1SG-know A.3-go=COMPL juHi
 'I know he/she/it sees the frog' / 'I know the frog sees it'
 
@@ -2213,3 +2213,26 @@ jagua jagua ndi
 jagua jagua=ndi
 dog.PRED dog=with
 'There is a dog with a dog'
+
+#Ex.201: Embedding of interrogative clause
+Source: e
+Vetted: f
+Judgment: g
+Phenomena: emb-q
+aporandu ohechapa ju'i vakaA
+aporandu ohecha pa juHi vakaA
+a-porandu o-hecha=pa juHi vakaA
+A.1SG-ask A.3-see=COMPL frog cow
+'I ask if somebody sees the frog's cow'/ ' I ask if the frog's cow sees it' / 'I ask if the frog sees the cow' / 'I ask if the cow sees the frog'
+
+#Ex.202: Embedding of interrogative clause
+Source: e
+Vetted: f
+Judgment: g
+Phenomena: emb-d
+aikuua ohechaha ju'i vakaA
+aikuua ohecha ha juHi vakaA
+a-ikuua o-hecha=ha juHi vakaA
+A.1SG-know A.3-see=COMPL frog cow
+'I know that somebody sees the frog's cow' / ' I know that the frog's cow sees it' / 'I know that the frog sees the cow' / 'I know that the cow sees the frog'
+
