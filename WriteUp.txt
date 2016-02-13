@@ -7,9 +7,9 @@
 
 1. Matrix yes-no questions 
 
-Guarani uses a second position focus marker for matrix yes-no questions, of which this language uses two. The question particles =pa or =piko can come after any element in the sentence and make it the focus of a matrix yes/no question. Syntactically both particles behave in the same way, and although there might be some disagreement about the semantics implied by each of them, as explained previously in Lab 4, the difference is irrelevant for our purpose. We treat both particles the same. 
+Guarani uses second position focus markers for matrix yes-no questions, of which there are two. The question clitics =pa or =piko can come after any element in the sentence and make it the focus of a matrix yes/no question. Syntactically both particles behave in the same way, and although there might be some disagreement about the semantics implied by each of them, as explained previously in Lab 4, the difference is irrelevant for our purpose. Following the analysis of our Prof. Bruno Estigarribia, we are treating both particles the same. 
 
-There is also a mismatch between how the two question particles are generally written.  =piko has two syllables and because of some writing conventions requiring affixes to be monosyllabic, it is usually realized as separate word.  =pa has only one syllable is therefore often glossed as an affix attaching to the preceding word, though it is also sometimes written as a stand alone word.  We follow one of the conventions that treat both particles as clitics. 
+There is also a mismatch between how the two question particles are generally written.  =piko has two syllables and because of some writing conventions requiring affixes to be monosyllabic, it is usually realized as separate word.  =pa has only one syllable and is therefore often glossed as an affix attaching to the preceding word, though it is also sometimes written as a stand alone word.  Based on their shared behavior as outlined above we treat both particles as clitics. 
 
 Here some example IGT showing the use and misuse of these particles.
 
@@ -35,16 +35,16 @@ o-hecha=pa nNakyra vakaA=pe
 O.3-see=Q cricket.ANIM.NOM cow.ANIM=ACC
 'Did the cricket see the cow?'
 
-#Ex.116: Yes-No question with question marker in wrong position, should be second position.
+#Ex.116: Yes-No question with question marker in wrong position, grammatical but parses as conjoined separate phrases since pa is constrained to be in second position.
 Source: c
 Vetted: f
-Judgment: u
+Judgment: g
 Phenomena: q
 ohecha ñakyrapa vakápe? 
 ohecha nNakyra pa vakaA pe
 o-hecha nNakyra=pa vakaA=pe
 O.3-see cricket.ANIM.NOM=Q cow.ANIM=ACC
-*'Did the cricket see the cow?
+'Did the cricket see the cow?
 
 #Ex.117: Yes-No question with question marker in wrong position, should be second position.
 Source: c
@@ -57,7 +57,10 @@ o-hecha nNakyra vakaA=pe=pa
 O.3-see cricket.ANIM.NOM cow.ANIM=ACC=Q
 *'Did the cricket see the cow?
 
+Because of our nominal predicates and asyndenton conjunction there are now parses for some of our original ungrammatical strings.  We have reanalyzed the ones that parse with a valid sentence as grammatical with the new reading, but left as ungrammatical the ones like 117 that parse because of something we still need to fix in our grammar.
+
 Guarani has free word order, but in the constructions of matrix yes-no questions, there is a requirement to put the question clitics in the second position. This means that different sentence elements can be positioned in the first position spot, giving them a special focus consideration. 
+
 Here some examples that illustrate this sentence:
 
 #Ex.122: Yes-No question with focus marker on verb predicate, and use of marker pa
@@ -91,9 +94,9 @@ vakápepa ohecha ñakyra?
 vakaA pe pa ohecha nNakyra
 vakaA=pe=pa o-hecha nNakyra
 cow.ANIM=ACC=Q O.3-see cricket.ANIM.NOM
-'Is it the cow, that the cricket?'
+'Is it the cow, that the cricket saw?’
 
-Currently in our grammar, IGTs 122 and 123 will parse, but IGT #124 not.  The accusative marker =pe is taking middle position between first position noun and question marker =pa, therefore the second position not available for the clitic. This was not implemented in our grammar. 
+Currently in our grammar, IGTs 122 and 123 will parse, but not IGT #124.  The accusative marker =pe is taking middle position between first position noun and question marker =pa, therefore the second position not available for the clitic. This was not implemented in our grammar. 
 
 The implementation of this phenomena involved several changes in our grammar.
 
@@ -112,14 +115,18 @@ We decided to implement the question markers (=pa/=piko) as adj clitics, and cre
 
        question-clitic-lex := no-hcons-lex-item &
   			[ SYNSEM [ LOCAL [ CAT [ IC +, 
-                                          VAL [ SPR < >, COMPS < >, SUBJ < >, SPEC < >],
-                                          HEAD adj & [ MOD < [ LIGHT +,
-								  L-PERIPH +,
-				                                 LOCAL intersective-mod] > ]],
+                                           VAL [ SPR < >, 
+						 COMPS < >, 
+						 SUBJ < >, 
+						 SPEC < >],
+                                           HEAD	 adj & 
+						[ MOD < [ LIGHT +,
+							L-PERIPH +,
+				                       	LOCAL intersective-mod] > ]],
                                           CONT.RELS <! !> ],
                                  NON-LOCAL.YNQ <! *top* !>  ]].
 
-The clitic is allowed only to have a modifier, which has to be [LIGHT +, LOCAL interserctive-mod]. The MOD is not of a particular word category, so that any sentence component can be focal point of a yes-no-question. The MOD element has also to have [L-PERIPH +], which allows the clitic to be in second positions. Additional we implemented the feature IC (for interrogative clause), which as explained in the next section, allows it to combine with main clause verbs to form embedded interrogative clauses. 
+The clitic is allowed only to have a modifier, which has to be [LIGHT +, LOCAL intersective-mod]. The MOD is not of a particular word category, so that any sentence component can be focal point of a yes-no-question. The MOD element has also to have [L-PERIPH +], which allows the clitic to be in second positions. Additionally we implemented the feature IC (for interrogative clause), which as explained in the next section, allows it to combine with main clause verbs to form embedded interrogative clauses. 
 
 We added two clitics to the lexicon:
 
@@ -137,7 +144,6 @@ It was not enough to put a non-empty YNQ value in the clitic, but other words ha
 
 	non-ynq-word := lex-item &
   			[ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
-
 	basic-zero-arg :+ [ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
 	basic-one-arg :+ [ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
 	basic-two-arg :+ [ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
@@ -149,72 +155,47 @@ We constrained binary phrases to gather up YNQ from both daughters, for which we
 
 	basic-binary-phrase:+
 	 [ SYNSEM [ L-PERIPH #periph,
-                   NON-LOCAL.YNQ [ LIST #list, LAST #last ] ],
+                    NON-LOCAL.YNQ [ LIST #list, 
+				    LAST #last ] ],
 	   ARGS < [ SYNSEM [ L-PERIPH #periph,
-                     NON-LOCAL.YNQ [ LIST #list, LAST #middle ] ] ],
+                    	     NON-LOCAL.YNQ [ LIST #list, 
+					     LAST #middle ] ] ],
         	  [ SYNSEM [ L-PERIPH -,
-               		      NON-LOCAL.YNQ [ LIST #middle, LAST #last ] ] ] > ].
+               		      NON-LOCAL.YNQ [ LIST #middle, 
+					      LAST #last ] ] ] > ].
 
 We constrained some unary phrases (bare-np, opt-subj, and opt-subj) to copy up these YNQ list, by adding this phrase rule :
 
 	same-ynq-unary-phrase := unary-phrase &
   		[ SYNSEM.NON-LOCAL.YNQ #ynq,
-    		ARGS < [ SYNSEM.NON-LOCAL.YNQ #ynq ] > ].
+    		  ARGS < [ SYNSEM.NON-LOCAL.YNQ #ynq ] > ].
 
 
 Also the root symbol was constrained to require an empty YNQ value:
 
 	root := phrase &
-  		[ SYNSEM[LOCAL [ COORD -, CAT [ VAL [ SUBJ < >, COMPS < > ],
-                                  MC +,
-				    EC-,
-                                  HEAD +vj]],
-           		NON-LOCAL.YNQ 0-dlist ]].
+  		[ SYNSEM [ LOCAL [ COORD -, 
+				   CAT [ HEAD +vj,
+					 VAL [  SUBJ < >, 
+					 	COMPS < > ],
+                                   	 MC +,
+				   	 EC-]],
+           		   NON-LOCAL.YNQ 0-dlist ]].
 
 Then we created a non-branching rule (int-cl) which empties the YNQ list and returns [L-PERIPH] to be underspecified, so that clitics can appear in embedded clauses. 
 
 	int-cl := head-only-int-decl-clause & interrogative-clause &
-  		[ SYNSEM [ LOCAL.CAT [ VAL #val & [SUBJ< >, COMPS< >, SPR< >], MC bool, IC #ic],
+  		[ SYNSEM [ LOCAL.CAT [  VAL #val & [ SUBJ< >, 
+						    COMPS< >, 
+						    SPR< >], 
+					MC bool, 
+					IC +],
              		   NON-LOCAL.YNQ <! !> ],
-    		HEAD-DTR.SYNSEM [ LOCAL.CAT [ IC +, MC na, VAL #val, HEAD verb, IC #ic],
-                    	   NON-LOCAL.YNQ <! *top* !> ]].
-
-We notice here a new super type head-only-int-decl-clause. This supertype was constructed based on a super type that was only existent in the matrix.tdl file (therefore untouchable).The original supertype head-only (actually its supertyp basic-unary-phrase) restricted the passing of the [L-PERIPH] feature in a strict way through the unary rules (among other things). In the case of an embedded sentence, head-only would have not allowed to get a ‘second position’ clitic inside the sentence in the presence of a main clause verb that pushed the positions of the embedded words further down in the hierarchy. The changes on the supertype
- involved changes on other supertypes of the hierarchy. While other rules where allowed to unify with head-only, int-cl (and decl-cl) inherited from head-only-int-decl-clause, which involved these changes:
-
-	basic-unary-int-decl-cl-phrase := phrase &
-  	[ STEM #stem,
-    		SYNSEM [ LOCAL [ CAT.MKG #mkg,
-		     		CONT [ RELS [ LIST #first,
-					   LAST #last ],
-			    	HCONS [ LIST #scfirst,
-					    LAST #sclast ],
-			    	ICONS [ LIST #icfirst,
-					    LAST #iclast ] ] ] ],
-    		C-CONT [ RELS [ LIST #middle,
-				    LAST #last ],
-	     		HCONS [ LIST #scmiddle,
-		     		LAST #sclast ],
-	     	ICONS [ LIST #icmiddle,
-			     LAST #iclast ] ],
-    		ARGS < sign & [ STEM #stem,
-			    SYNSEM [ LOCAL local &
-			      	[ CAT.MKG #mkg,
-					CONT [ RELS [ LIST #first,
-					      LAST #middle ],
-				       HCONS [ LIST #scfirst,
-					       LAST #scmiddle ],
-				       ICONS [ LIST #icfirst,
-					       LAST #icmiddle ] ] ] ] ] > ].
-	unary-int-decl-cl-phrase := basic-unary-int-decl-cl-phrase &
-  		[ INFLECTED infl-satisfied,
-    		ARGS < [ INFLECTED infl-satisfied ] > ].
-
-	head-only-int-decl-clause := unary-int-decl-cl-phrase & headed-phrase &
-  		[ HEAD-DTR #head,
-    		ARGS < #head > ].
-
-
+    		  HEAD-DTR.SYNSEM [ LOCAL.CAT [ IC +, 
+						MC na, 
+						VAL #val, 
+						HEAD verb],
+                    	   	    NON-LOCAL.YNQ <! *top* !> ]].
 
 
 This rule has a MC bool value, that allows it to unify with the root. Also it empties the YNQ list, which is also required by the root. The rest of the nodes below it have [MC na], so that the compatibility is guaranteed. It collects the IC boolean value for embedded interrogative clauses from the daughter (further below for this).
@@ -229,22 +210,70 @@ To constrain other headed phrases to produce [MC na] mothers and daughters, this
   		[ SYNSEM.LOCAL.CAT.MC na,
     		  HEAD-DTR.SYNSEM.LOCAL.CAT.MC na ].
 
+There is a new super type head-only-int-decl-clause. This supertype was constructed based on a supertype that was only existent in the matrix.tdl file (therefore untouchable).The original supertype head-only (actually its supertype basic-unary-phrase) restricted the passing of the [L-PERIPH] feature in a strict way through the unary rules (among other things). In the case of an embedded sentence, head-only would have not allowed a ‘second position’ clitic inside the sentence in the presence of a main clause verb that pushed the positions of the embedded words further down in the hierarchy. While other rules where allowed to unify with head-only, int-cl (and decl-cl) inherited from head-only-int-decl-clause, which involved these changes:
+
+	basic-unary-int-decl-cl-phrase := phrase &
+  	      [ STEM #stem,
+    		SYNSEM [ LOCAL [ CAT.MKG #mkg,
+		     		 CONT [ RELS [  LIST #first,
+					   	LAST #last ],
+			    	 	HCONS [ LIST #scfirst,
+					 	LAST #sclast ],
+			    		ICONS [ LIST #icfirst,
+					    	LAST #iclast ] ] ] ],
+    				C-CONT [ RELS [ LIST #middle,
+				    		LAST #last ],
+	     				HCONS [ LIST #scmiddle,
+		     				LAST #sclast ],
+	     				ICONS [ LIST #icmiddle,
+			     			LAST #iclast ] ],
+    		ARGS < sign & [ STEM #stem,
+			    	SYNSEM [ LOCAL  local &
+			      			[ CAT.MKG #mkg,
+						  CONT [ RELS [ LIST #first,
+					      			LAST #middle ],
+				       			HCONS [ LIST #scfirst,
+					       		LAST #scmiddle ],
+				       			ICONS [ LIST #icfirst,
+					       		LAST #icmiddle ] ] ] ] ] > ].
+
+	unary-int-decl-cl-phrase := basic-unary-int-decl-cl-phrase &
+  		[ INFLECTED infl-satisfied,
+    		  ARGS < [ INFLECTED infl-satisfied ] > ].
+
+	head-only-int-decl-clause := unary-int-decl-cl-phrase & headed-phrase &
+  		[ HEAD-DTR #head,
+    		  ARGS < #head > ].
+
+
 To avoid ambiguity the following restriction was added:
 		
 		bare-np-phrase:+ [SYNSEM.LIGHT -]
 
 	s-coord-phrase :+
-  	[ SYNSEM.LOCAL.CAT [ MC bool, EC #ec, IC #ic],
-    	  LCOORD-DTR.SYNSEM.LOCAL.CAT [ MC bool, EC #ec,  IC #ic],
-     	  RCOORD-DTR.SYNSEM.LOCAL.CAT [ MC bool, EC #ec,  IC #ic]].
+  	[ SYNSEM.LOCAL.CAT [ MC bool, 
+			     EC #ec, 
+                             IC #ic],
+    	  LCOORD-DTR.SYNSEM.LOCAL.CAT [ MC bool, 
+					EC #ec,  
+					IC #ic],
+     	  RCOORD-DTR.SYNSEM.LOCAL.CAT [ MC bool, 
+					EC #ec,  
+					IC #ic]].
 
  	s-bottom-coord-phrase :+
-   	[ SYNSEM.LOCAL.CAT[ MC bool, EC #ec, IC #ic ],
-         NONCONJ-DTR.SYNSEM.LOCAL.CAT [ MC bool, EC #ec, IC #ic ] ].
+   	[ SYNSEM.LOCAL.CAT [ MC bool, 
+			     EC #ec, 
+			     IC #ic ],
+         NONCONJ-DTR.SYNSEM.LOCAL.CAT [ MC bool, 
+					EC #ec, 
+					IC #ic ] ].
 
- 	We were able to implement the analysis with single-word NP (without case marks) and VP arguments for the predicate, as well as dropped arguments. 
-	We were not able to implement the analysis when the first word in a yes-no-question sentence was a multi-word NP or marked with an apposition that was modeled as a clitic (e.g. the accusative marker =pe). The clitics and the multi-word NPs would move the question clitics out of the 2nd position, which our grammar was not able to recognize at this time.  There are some thoughts for a possible solution: The appositions and other nouns would have to copy the [L-PERIPH] value of its first left argument argument, either lexical rule, or other rules.
- 	Also something not implemented in this section, was the focal aspect of question markers. A yes-no-question in Guarani involves also the focus of a sentence constituent. This kind of structural information are out of focus and are not dealt with further here. 
+We were able to implement the analysis with single-word NP (without case marks) and VP arguments for the predicate, as well as dropped arguments. We were not able to implement the analysis when the first word in a yes-no-question sentence was a multi-word NP or marked with an apposition that was modeled as a clitic (e.g. the accusative marker =pe). The clitics and the multi-word NPs would move the question clitics out of the 2nd position, which our grammar was not able to recognize at this time.  
+
+Here are some thoughts for a possible solution: The appositions and other nouns would have to copy the [L-PERIPH] value of its first left argument argument, either lexical rule, or other rules.
+
+Also something not implemented in this section, was the focal aspect of question markers. A yes-no-question in Guarani involves also the focus of a sentence constituent. This kind of structural information are out of focus and are not dealt with further here. 
 
 
 2. Embedded Clauses (interrogative and declarative)
@@ -256,9 +285,12 @@ Guarani uses suffixes for embedded clauses.  Like many languages it distinguishe
 
 I. A descriptive statement of the facts of your language. 
 
-There are certain verbs is Guarani that take questions as complements. These are verbs that try to inquire knowledge or express some doubts. We found in Guarani the verb predicate ‘ask’ to allow this kind of construction. 
-The embedded interrogative clause follows the same patters as the matrix yes-no questions, and therefore we can build over the work of the using the second position question markers inside of the interrogative clause to distinguish a first position element, which is in focus for the question.
-Also, the free word order might allow for sentences, where the embedded clause is embedded in different parts of the sentence, although we could attest in our test suite only sentences where the embedded sentence was after the main clause. We allow free word order as this is consistent with the situation in other transitive verbs of this language.
+There are certain verbs is Guarani that take questions as complements. These are verbs that inquire something or express doubts. We found that the Guarani verb ‘ask’ allows this kind of construction. 
+
+The embedded interrogative clause follows the same patters as the matrix yes-no questions, and therefore we can build over the work of using the second position question markers inside of the interrogative clause to distinguish a first position element, which is in focus for the question.
+
+Also, the free word order might allow for sentences, where the embedded clause is embedded
+in different parts of the sentence, although we could attest in our test suite only sentences where the embedded sentence was after the main clause. We allow free word order as this is consistent with the situation in other transitive verbs of this language.
 
 Here some example of an embedded interrogative sentence:
 
@@ -311,21 +343,20 @@ A.1SG-know A.3-see=COMPL frog=ACC
 
 The implementation built over the implementation of previous matrix yes-no questions, which are the embedded complements.
 
-For that purpose we created a super type, that we would use for interrogative clause clause verbs and declarative clause complement verbs, and let that type be inherited by our specific type of verb type (e.g. int-cl-verb-lex is the type for ’ask’):
+For that purpose we created a super type, that we would use for interrogative clause complement verbs and declarative clause complement verbs, and let that type be inherited by the lexical entry (e.g. int-cl-verb-lex is the type for ’ask’):
 
 	cl-verb-lex:= gug-dyn-loc-verb &  clausal-second-arg-trans-lex-item &
-    			[SYNSEM.LOCAL.CAT.VAL.COMPS <#comps>,
-     			 ARG-ST.REST.FIRST #comps].
+    		[SYNSEM.LOCAL.CAT.VAL.COMPS <#comps>,
+     		 ARG-ST.REST.FIRST #comps].
 
  	int-cl-verb-lex:= cl-verb-lex &
-    			[SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL [ CAT [ IC +,
-                                                                    HEAD verb,
-					                              VAL [ COMPS < >, 
+    		[SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL [ CAT [ IC +,
+                                                              HEAD verb,
+					                      VAL [ COMPS < >, 
                                                                     SUBJ < > ] ],
-				 CONT.HOOK.INDEX.SF ques ]]>].
+				 			CONT.HOOK.INDEX.SF ques ]]>].
 
-The complement clause had to be a verb, with [SF ques] value, as this is a question clause. Additionally, 
-the complement needs to have [IC +] which is a boolean value introduced by the question-clitic element.
+The complement clause had to be a verb, with [SF ques] value, as this is a question clause. Additionally, the complement needs to have [IC +] which is a boolean value we introduced to keep track of presence or absence of the question-clitic element.
 
 		cat :+ [EC bool, IC bool].
 
@@ -334,51 +365,54 @@ This feature helps us to define an embedded clause as an interrogative clause. T
 
 Here the question clitic as it was implemented:
 
-       question-clitic-lex := no-hcons-lex-item &
-  			[ SYNSEM [ LOCAL [ CAT [ IC +, 
-                                          VAL [ SPR < >, COMPS < >, SUBJ < >, SPEC < >],
-                                          HEAD adj & [ MOD < [ LIGHT +,
-								  L-PERIPH +,
-				                                 LOCAL intersective-mod] > ]],
-                                          CONT.RELS <! !> ],
-                                 NON-LOCAL.YNQ <! *top* !>  ]].
+    question-clitic-lex := no-hcons-lex-item &
+	[ SYNSEM [ LOCAL [ CAT [IC +, 
+				HEAD adj & [ MOD < [ LIGHT +,
+						      L-PERIPH +,
+				                      LOCAL intersective-mod] > ],
+				VAL [ SPR < >, 
+				      COMPS < >, 
+                                      SUBJ < >, 
+                                      SPEC < > ]],
+                           CONT.RELS <! !> ],
+                   NON-LOCAL.YNQ <! *top* !>  ]].
 
-The head-adj-phrase copies that value up in the parse tree.
+The head-adj-phrase that fires when the clitic attaches copies that value up in the parse tree.
 
 	head-adj-int-phrase :+ 
-    			[ SYNSEM.LOCAL.CAT [ EC #ec, 
-                       		      IC #ic ],
-     			  NON-HEAD-DTR.SYNSEM.LOCAL.CAT [ EC #ec,
-                         		             IC #ic ]].
-This feature value is copied up the parse through a unary rule that was appended to head-subj-opt, head-opt-comp and the bare-np-rule. add the unify these values up the parse.
+    	      [ SYNSEM.LOCAL.CAT [ EC #ec, 
+                    		   IC #ic ],
+     		NON-HEAD-DTR.SYNSEM.LOCAL.CAT [ EC #ec,
+                         		        IC #ic ]].
+
+This feature value is also copied up the parse through a unary rule that was appended to head-subj-opt, head-opt-comp and the bare-np-rule. 
 
 	same-ec-unary-phrase := headed-phrase &
-  			[ SYNSEM.LOCAL.CAT [ EC #ec,
+  		[ SYNSEM.LOCAL.CAT [ EC #ec,
                        		     IC #ic],
-    			  HEAD-DT.SYNSEM.LOCAL.CAT [ EC #ec,
-                         		            IC #ic] ].
+    		  HEAD-DT.SYNSEM.LOCAL.CAT [ EC #ec,
+                         		     IC #ic ] ].
 
 Additionally the following binary rule addendum let the feature percolate through the binary branches:
 
 
-
 	basic-head-comp-phrase :+ [ SYNSEM.LOCAL.CAT [ EC #ec, 
         	                                       IC #ic ],
-                            HEAD-DTR.SYNSEM.LOCAL.CAT [EC #ec,
-                                                       IC #ic ]].
+                            	    HEAD-DTR.SYNSEM.LOCAL.CAT [ EC #ec,
+                                                       		IC #ic ]].
 
 	basic-head-subj-phrase :+ [  SYNSEM.LOCAL.CAT [ EC #ec, 
-                                               IC #ic ],
-                            HEAD-DTR.SYNSEM.LOCAL.CAT [EC #ec,
-                                                       IC #ic ]].
+                                               		IC #ic ],
+                            	     HEAD-DTR.SYNSEM.LOCAL.CAT [EC #ec,
+                                                       		IC #ic ]].
 
 	basic-head-opt-comp-phrase :+
  				[ SYNSEM [ L-PERIPH #periph,
-            				LOCAL.CAT [ EC #ec,
-                        			IC #ic ]],
-            			ARGS < [ SYNSEM [ L-PERIPH #periph, 
-                              		LOCAL.CAT [ EC #ec,
-                                      	    IC #ic  ] ] ] > ].
+            				   LOCAL.CAT [ EC #ec,
+                        			       IC #ic ]],
+            			  ARGS < [ SYNSEM [ L-PERIPH #periph, 
+                              			    LOCAL.CAT [ EC #ec,
+                                      	    			IC #ic  ] ] ] > ].
 
 The feature worked also in conjunction with the value definition for verbs. Verb lexemes had the feature defined as [IC -]:
 
@@ -387,23 +421,30 @@ The feature worked also in conjunction with the value definition for verbs. Verb
 	intrans-verb-lex: + [SYNSEM.LOCAL.CAT [EC -,
         	                               IC - ]].
 
-So if the question clitic was not present in the clause (as we had in some of our wrong parses), the IC value of the of the verb predicate would percolate up, and not unify with the [IC +] requirement of the int-cl rule. This would not happen with stand-alone interrogative clauses, as the question clitic is by definition part of the whole clause. This was the main reason of the implementation of this clitic. The MC value, is untouched in this process, which guarantees also that the implementation of matrix yes-no-questions was not interfered by this phenomenon.
+So if the question clitic was not present in the clause (as we had in some of our wrong parses), the IC value of the of the verb predicate would percolate up, and not unify with the [IC +] requirement of the int-cl rule. This would not happen with stand-alone interrogative clauses, as the question clitic is by definition part of the whole clause. This was the main reason of the implementation of this clitic. We had initially thought of trying to leverage the MC value, but found it better to leave it untouched, because even though the phenomena is not the same because unlike =ha, =pa does appear in matrix-clause-questions, and so it would be wrong to say it was restricted to embedded clauses.
 
-Here the int-rule and the int-co-verb-lex again that instantiate the embedded interrogative clause:
+Here are the int-rule and the int-co-verb-lex again that instantiate the embedded interrogative clause:
 
 	int-cl := head-only-int-decl-clause & interrogative-clause &
-  		[ SYNSEM [ LOCAL.CAT [ VAL #val & [SUBJ< >, COMPS< >, SPR< >], MC bool, IC #ic],
+  		[ SYNSEM [ LOCAL.CAT [ VAL #val & [ SUBJ< >, 
+						    COMPS< >, 
+						    SPR< >], 
+					MC bool, 
+					IC +],
              		   NON-LOCAL.YNQ <! !> ],
-    		HEAD-DTR.SYNSEM [ LOCAL.CAT [ IC +, MC na, VAL #val, HEAD verb, IC #ic],
+    		HEAD-DTR.SYNSEM [ LOCAL.CAT [ IC +, 
+					      MC na,
+					      HEAD verb,
+					      VAL #val],
                     	   NON-LOCAL.YNQ <! *top* !> ]].
 
 
  	int-cl-verb-lex:= cl-verb-lex &
-    			[SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL [ CAT [ IC +,
-                                                                    HEAD verb,
-					                              VAL [ COMPS < >, 
+    		[SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL [ CAT [ IC +,
+                                                              HEAD verb,
+					                      VAL [ COMPS < >, 
                                                                     SUBJ < > ] ],
-				 CONT.HOOK.INDEX.SF ques ]]>].
+				 			CONT.HOOK.INDEX.SF ques ]]>].
 
 The verb lexical type will unify with the interrogative clause only if the interrogative clause inherited [IC +] from its parses, which happens then the question-clitics attaches correctly to the clause. 
 
@@ -420,10 +461,11 @@ a-porandu o-hecha=pa juHi vakaA
 A.1SG-ask A.3-see=COMPL frog cow
 'I ask if somebody sees the frog's cow'/ ' I ask if the frog's cow sees it' / 'I ask if the frog sees the cow' / 'I ask if the cow sees the frog'
 
- We had around 10 parses, most due to our coordination rule and reading of noun phrases as independent noun predicates. Those readings were not in our interest. 
- We detected that our implementation was able to generate declaration clauses at the top root, but not interrogative clauses, which is separate from the embedded clause, which worked well. The unification error showed that YNQ lists were not emptied by our int-cl rule. With further time, it is an improvement to happen, and potentially something we could check the next weeks. Nevertheless the basic functionality to generate this sentences with interrogative embedded clauses did succeed.
+ We had around 10 parses, most due to our coordination rule and reading of noun phrases as independent noun predicates. Those readings were not in our area of interest. 
 
-As mentioned in the previous sections there were some limitations to this implementation, which were related to the size of word element in the  first position of the embedded clause. Potentially we should be able to able to increase this capability in the coming weeks, if time allows.
+We detected that our implementation was able to generate declaration clauses at the top root, but not interrogative clauses, which is separate from the embedded clause, which worked well. The unification error showed that YNQ lists were not emptied by our int-cl rule. With further time, it is an improvement to happen, and potentially something we could check the next weeks. Nevertheless the basic functionality to generate sentences with interrogative embedded clauses did succeed.
+
+As mentioned in the previous sections there were some limitations to this implementation, which were related to the number of words that occupy the first position of the embedded clause (e.g., our =pe examples above). Potentially we should be able to able to increase this capability in the coming weeks, if time allows.
 
 
 2.2. Embedded Clauses (declarative)
