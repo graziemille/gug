@@ -1,794 +1,801 @@
-# 567 LAB5
+# 567 LAB6
 # LANGUAGE: gug / Paraguayan Guaraní
-Thor 
-Lisa
+# AUTHOR: Thor Wicke Monteverde
+# PARTNER: Lisa Tittle Caballero
+
+
+
+1. Matrix yes-no questions 
+
+Guarani uses a second position focus marker for matrix yes-no questions, of which this language uses two. The question particles =pa or =piko can come after any element in the sentence and make it the focus of a matrix yes/no question. Syntactically both particles behave in the same way, and although there might be some disagreement about the semantics implied by each of them, as explained previously in Lab 4, the difference is irrelevant for our purpose. We treat both particles the same. 
+
+There is also a mismatch between how the two question particles are generally written.  =piko has two syllables and because of some writing conventions requiring affixes to be monosyllabic, it is usually realized as separate word.  =pa has only one syllable is therefore often glossed as an affix attaching to the preceding word, though it is also sometimes written as a stand alone word.  We follow one of the conventions that treat both particles as clitics. 
+
+Here some example IGT showing the use and misuse of these particles.
+
+#Ex.121: Yes-No question with focus marker on verb predicate, and use of marker piko
+Source: c
+Vetted: f
+Judgment: g
+Phenomena: {q, wo}
+ohecha piko ñakyra  vakápe? 
+ohecha piko nNakyra vakaA pe
+o-hecha piko nNakyra vakaA=pe
+O.3-see Q cricket.ANIM.NOM cow.ANIM=ACC
+'Did the cricket see the cow?
+
+#Ex.122: Yes-No question with focus marker on verb predicate, and use of marker pa
+Source: c
+Vetted: f
+Judgment: g
+Phenomena: {q, wo}
+ohechapa ñakyra vakápe?
+ohecha pa nNakyra vakaA pe
+o-hecha=pa nNakyra vakaA=pe
+O.3-see=Q cricket.ANIM.NOM cow.ANIM=ACC
+'Did the cricket see the cow?'
+
+#Ex.116: Yes-No question with question marker in wrong position, should be second position.
+Source: c
+Vetted: f
+Judgment: u
+Phenomena: q
+ohecha ñakyrapa vakápe? 
+ohecha nNakyra pa vakaA pe
+o-hecha nNakyra=pa vakaA=pe
+O.3-see cricket.ANIM.NOM=Q cow.ANIM=ACC
+*'Did the cricket see the cow?
+
+#Ex.117: Yes-No question with question marker in wrong position, should be second position.
+Source: c
+Vetted: f
+Judgment: u
+Phenomena: q
+ohecha ñakyra vakápepa? 
+ohecha nNakyra vakaA pe pa
+o-hecha nNakyra vakaA=pe=pa
+O.3-see cricket.ANIM.NOM cow.ANIM=ACC=Q
+*'Did the cricket see the cow?
+
+Guarani has free word order, but in the constructions of matrix yes-no questions, there is a requirement to put the question clitics in the second position. This means that different sentence elements can be positioned in the first position spot, giving them a special focus consideration. 
+Here some examples that illustrate this sentence:
+
+#Ex.122: Yes-No question with focus marker on verb predicate, and use of marker pa
+Source: c
+Vetted: f
+Judgment: g
+Phenomena: {q, wo}
+ohechapa ñakyra vakápe?
+ohecha pa nNakyra vakaA pe
+o-hecha=pa nNakyra vakaA=pe
+O.3-see=Q cricket.ANIM.NOM cow.ANIM=ACC
+'Did the cricket see the cow?'
+
+#Ex.123: Yes-No question with focus marker on subject
+Source: c
+Vetted: f
+Judgment: g
+Phenomena: {q, wo}
+ñakyrapa ohecha vakápe?
+nNakyra pa ohecha vakaA pe
+nNakyra=pa o-hecha vakaA=pe
+cricket.ANIM.NOM=Q O.3-see cow.ANIM=ACC
+'Was it the cricket, who saw the cow?'
+
+#Ex.124: Yes-No question with focus marker on verb object
+Source: c
+Vetted: f
+Judgment: g
+Phenomena: {q, wo}
+vakápepa ohecha ñakyra?
+vakaA pe pa ohecha nNakyra
+vakaA=pe=pa o-hecha nNakyra
+cow.ANIM=ACC=Q O.3-see cricket.ANIM.NOM
+'Is it the cow, that the cricket?'
+
+Currently in our grammar, IGTs 122 and 123 will parse, but IGT #124 not.  The accusative marker =pe is taking middle position between first position noun and question marker =pa, therefore the second position not available for the clitic. This was not implemented in our grammar. 
+
+The implementation of this phenomena involved several changes in our grammar.
+
+As the marker for YN matrix questions in Guarani requires to be in the second position. It was important to identify a feature, that would able to mark the position of the words at the extreme left of the sentence. The feature [L-PERIPH bool] was used for that purpose. The feature is passed already through the binary and unary phrase rules of the grammar between mother and (left-side) daughter, and marks for binary rules the right-side daughter as negative. This feature did not have to be implemented by ourselves.
+
+For the head-mod-phrase-simple and  we needed an addendum:
+
+	basic-head-mod-phrase-simple :+ 
+   		[ SYNSEM.LOCAL.CAT.MC #mc,  
+     		  NON-HEAD-DTR.SYNSEM.LOCAL.CAT [ HEAD.MOD < [ L-PERIPH #periph ] >,
+				     MC #mc ],
+     		  HEAD-DTR.SYNSEM.L-PERIPH #periph ].
+
+
+We decided to implement the question markers (=pa/=piko) as adj clitics, and created a especial lexical type for it:
+
+       question-clitic-lex := no-hcons-lex-item &
+  			[ SYNSEM [ LOCAL [ CAT [ IC +, 
+                                          VAL [ SPR < >, COMPS < >, SUBJ < >, SPEC < >],
+                                          HEAD adj & [ MOD < [ LIGHT +,
+								  L-PERIPH +,
+				                                 LOCAL intersective-mod] > ]],
+                                          CONT.RELS <! !> ],
+                                 NON-LOCAL.YNQ <! *top* !>  ]].
+
+The clitic is allowed only to have a modifier, which has to be [LIGHT +, LOCAL interserctive-mod]. The MOD is not of a particular word category, so that any sentence component can be focal point of a yes-no-question. The MOD element has also to have [L-PERIPH +], which allows the clitic to be in second positions. Additional we implemented the feature IC (for interrogative clause), which as explained in the next section, allows it to combine with main clause verbs to form embedded interrogative clauses. 
+
+We added two clitics to the lexicon:
+
+	pa := question-clitic-lex   &
+    		[STEM <"pa">].
+
+	piko:= question-clitic-lex &
+    		[STEM<"piko">].
+
+To address the semantics of these sentences that required to identify to a feature value of [SF ques], a feature YNQ was created, that would register the presence of a question clitic in a non-local feature, which is accumulated from the daughters. 
+
+	non-local:= [YNQ 0-1-dlist]
+
+It was not enough to put a non-empty YNQ value in the clitic, but other words have to have an empty YNQ value. This is done with this:
+
+	non-ynq-word := lex-item &
+  			[ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
+
+	basic-zero-arg :+ [ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
+	basic-one-arg :+ [ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
+	basic-two-arg :+ [ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
+	basic-three-arg :+ [ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
+	intersective-mod-lex :+ [ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
+
+
+We constrained binary phrases to gather up YNQ from both daughters, for which we put an addendum to the basic-binary-phrase:
+
+	basic-binary-phrase:+
+	 [ SYNSEM [ L-PERIPH #periph,
+                   NON-LOCAL.YNQ [ LIST #list, LAST #last ] ],
+	   ARGS < [ SYNSEM [ L-PERIPH #periph,
+                     NON-LOCAL.YNQ [ LIST #list, LAST #middle ] ] ],
+        	  [ SYNSEM [ L-PERIPH -,
+               		      NON-LOCAL.YNQ [ LIST #middle, LAST #last ] ] ] > ].
+
+We constrained some unary phrases (bare-np, opt-subj, and opt-subj) to copy up these YNQ list, by adding this phrase rule :
+
+	same-ynq-unary-phrase := unary-phrase &
+  		[ SYNSEM.NON-LOCAL.YNQ #ynq,
+    		ARGS < [ SYNSEM.NON-LOCAL.YNQ #ynq ] > ].
+
+
+Also the root symbol was constrained to require an empty YNQ value:
+
+	root := phrase &
+  		[ SYNSEM[LOCAL [ COORD -, CAT [ VAL [ SUBJ < >, COMPS < > ],
+                                  MC +,
+				    EC-,
+                                  HEAD +vj]],
+           		NON-LOCAL.YNQ 0-dlist ]].
+
+Then we created a non-branching rule (int-cl) which empties the YNQ list and returns [L-PERIPH] to be underspecified, so that clitics can appear in embedded clauses. 
+
+	int-cl := head-only-int-decl-clause & interrogative-clause &
+  		[ SYNSEM [ LOCAL.CAT [ VAL #val & [SUBJ< >, COMPS< >, SPR< >], MC bool, IC #ic],
+             		   NON-LOCAL.YNQ <! !> ],
+    		HEAD-DTR.SYNSEM [ LOCAL.CAT [ IC +, MC na, VAL #val, HEAD verb, IC #ic],
+                    	   NON-LOCAL.YNQ <! *top* !> ]].
+
+We notice here a new super type head-only-int-decl-clause. This supertype was constructed based on a super type that was only existent in the matrix.tdl file (therefore untouchable).The original supertype head-only (actually its supertyp basic-unary-phrase) restricted the passing of the [L-PERIPH] feature in a strict way through the unary rules (among other things). In the case of an embedded sentence, head-only would have not allowed to get a ‘second position’ clitic inside the sentence in the presence of a main clause verb that pushed the positions of the embedded words further down in the hierarchy. The changes on the supertype
+ involved changes on other supertypes of the hierarchy. While other rules where allowed to unify with head-only, int-cl (and decl-cl) inherited from head-only-int-decl-clause, which involved these changes:
+
+	basic-unary-int-decl-cl-phrase := phrase &
+  	[ STEM #stem,
+    		SYNSEM [ LOCAL [ CAT.MKG #mkg,
+		     		CONT [ RELS [ LIST #first,
+					   LAST #last ],
+			    	HCONS [ LIST #scfirst,
+					    LAST #sclast ],
+			    	ICONS [ LIST #icfirst,
+					    LAST #iclast ] ] ] ],
+    		C-CONT [ RELS [ LIST #middle,
+				    LAST #last ],
+	     		HCONS [ LIST #scmiddle,
+		     		LAST #sclast ],
+	     	ICONS [ LIST #icmiddle,
+			     LAST #iclast ] ],
+    		ARGS < sign & [ STEM #stem,
+			    SYNSEM [ LOCAL local &
+			      	[ CAT.MKG #mkg,
+					CONT [ RELS [ LIST #first,
+					      LAST #middle ],
+				       HCONS [ LIST #scfirst,
+					       LAST #scmiddle ],
+				       ICONS [ LIST #icfirst,
+					       LAST #icmiddle ] ] ] ] ] > ].
+	unary-int-decl-cl-phrase := basic-unary-int-decl-cl-phrase &
+  		[ INFLECTED infl-satisfied,
+    		ARGS < [ INFLECTED infl-satisfied ] > ].
+
+	head-only-int-decl-clause := unary-int-decl-cl-phrase & headed-phrase &
+  		[ HEAD-DTR #head,
+    		ARGS < #head > ].
+
+
+
+
+This rule has a MC bool value, that allows it to unify with the root. Also it empties the YNQ list, which is also required by the root. The rest of the nodes below it have [MC na], so that the compatibility is guaranteed. It collects the IC boolean value for embedded interrogative clauses from the daughter (further below for this).
+
+This rule was included in rules.tdl so that the YN question could be link to the root and generate a parses according to their specified rules.:
+
+	int-cl:= int-cl.
+
+To constrain other headed phrases to produce [MC na] mothers and daughters, this rule was included:
+
+	mc-na-headed-phrase := headed-phrase &
+  		[ SYNSEM.LOCAL.CAT.MC na,
+    		  HEAD-DTR.SYNSEM.LOCAL.CAT.MC na ].
+
+To avoid ambiguity the following restriction was added:
+		
+		bare-np-phrase:+ [SYNSEM.LIGHT -]
+
+	s-coord-phrase :+
+  	[ SYNSEM.LOCAL.CAT [ MC bool, EC #ec, IC #ic],
+    	  LCOORD-DTR.SYNSEM.LOCAL.CAT [ MC bool, EC #ec,  IC #ic],
+     	  RCOORD-DTR.SYNSEM.LOCAL.CAT [ MC bool, EC #ec,  IC #ic]].
+
+ 	s-bottom-coord-phrase :+
+   	[ SYNSEM.LOCAL.CAT[ MC bool, EC #ec, IC #ic ],
+         NONCONJ-DTR.SYNSEM.LOCAL.CAT [ MC bool, EC #ec, IC #ic ] ].
+
+ 	We were able to implement the analysis with single-word NP (without case marks) and VP arguments for the predicate, as well as dropped arguments. 
+	We were not able to implement the analysis when the first word in a yes-no-question sentence was a multi-word NP or marked with an apposition that was modeled as a clitic (e.g. the accusative marker =pe). The clitics and the multi-word NPs would move the question clitics out of the 2nd position, which our grammar was not able to recognize at this time.  There are some thoughts for a possible solution: The appositions and other nouns would have to copy the [L-PERIPH] value of its first left argument argument, either lexical rule, or other rules.
+ 	Also something not implemented in this section, was the focal aspect of question markers. A yes-no-question in Guarani involves also the focus of a sentence constituent. This kind of structural information are out of focus and are not dealt with further here. 
+
+
+2. Embedded Clauses (interrogative and declarative)
+
+Guarani uses suffixes for embedded clauses.  Like many languages it distinguishes between declarative and interrogative embedded clauses.
+
+
+2.1. Embedded Clauses (interrogative)
 
 I. A descriptive statement of the facts of your language. 
 
-1. Adjectival and adverbial modifiers.
+There are certain verbs is Guarani that take questions as complements. These are verbs that try to inquire knowledge or express some doubts. We found in Guarani the verb predicate ‘ask’ to allow this kind of construction. 
+The embedded interrogative clause follows the same patters as the matrix yes-no questions, and therefore we can build over the work of the using the second position question markers inside of the interrogative clause to distinguish a first position element, which is in focus for the question.
+Also, the free word order might allow for sentences, where the embedded clause is embedded in different parts of the sentence, although we could attest in our test suite only sentences where the embedded sentence was after the main clause. We allow free word order as this is consistent with the situation in other transitive verbs of this language.
 
-As stated in lab4, modifiers in Paraguayan Guaraní (hereafter PG or simply Guaraní), be they attributive adjectives or adverbs, have similar behaviors and forms. With adjectives, we recognize that there is no inflection agreement between adjectives and their nouns. Attributive adjectives immediately follow the nouns they modify. Similar to adjectives, adverbs immediately follow the verbs they modify, they also do not show any agreement with the verb they modify. 
-
-In PG, it seems that nouns and verbs are very similar roots. Nominal roots can also have the function of predicates as verbal roots do, and nouns can get cross-referential markers the same way verbs do. This distinction of verbs and nouns, that might play a bigger role in languages like English, is blurred in PG. 
-
-Although there may be words that are only used as adjectives or as adverbs because of their semantics, words that can be used for both categories seem to have the same form, with no morphological difference whatsoever between the two uses. Therefore in the application of our grammar   It seems that it makes sense to treat both adjectives and adverbs as one same lexical type. 
-
-2. Possessives.
-
-Paraguayan Guarani has a basic possessive construction of juxtapositon of two nouns to display their possessive relation. The first noun is the possessor. The second noun is the possessum. Semantically the possessor must possess the quality of being able to possess. 
-
-There is an exemption for that we asses to be reasonable: only common nouns and proper nouns can be possessors or possessums.  That excludes pronouns from these constructions. We don't find possessive construction using personal pronouns in our sources. Also, as our testsuite currently does not implement proper nouns, we concentrated on the implementation with common nouns in this week's lab. 
-
-Juxtaposition is also used for noun relations (e.g., to mean “with x”), but this phenomenon will not be analyzed this week as we are only concerned with possessives in this section.  
-
-Keeping the basic order of possessor followed by possessum, there is also another possessive construction which employs a prefix (denoting the possessor) on a noun (possessum). Morphologically such prefixes are identical to markers we get on stative intransitive verbs.  We will try to be aware of this distinction and be explicit about sentence constructions that ambiguously could be interpreted in these both ways.  
-
-Also we want to be aware that possessive construction with possessive prefixes cannot undergo a possessive construction as a possessum. This constraint is similar to the one on some common nouns that can’t be a possessum (e.g.'wind' in PG), whose solution should have similarities. 
-
-Nouns in PG also exhibit different degrees of alienability depending of the semantics they contain, as we previously stated in lab 3. While the majority of nouns can optionally take the role of a possessum in a possessive construction, there are nouns where such a construction is obligatory. This applies especially to nouns that express kinship, parts of body, personal attributes or spatial relationships. These nouns can only exist in a possessive construction, either in simple juxtaposition, or with a possessive affix. This aspect of alienability and inalienability of nouns will not be resolved in this lab, although present in one of our testsuite examples.
-
-3. Definiteness and other aspects of discourse status.
-
-We are able to identify the overt use of definite determiners and personal pronouns in our data as syntactically present elements that express some kind of definiteness. In general, it seems that PG does not make a wide use of definiteness, and the use of the determiners just optionally constrains a more common underspecification on the semantics of the noun. The existence of the determiners la/lo for singular and plural are a borrowing from Spanish. They are not consistently used in sentences which express the definiteness of nouns and their absence is not an expression of indefiniteness.  An uninflected argument in a sentence can be definite or indefinite just depending on the context in which it is being expressed. Determiners nevertheless establish some uniqueness, familiarity or active presence of a noun, so we will try to implement their cognitive status. 
-
-Personal pronouns are also another word class that gets a classification for its cognitive status. They represent situationally relevant arguments of a predicate and express therefore some degree of specificity. As pronouns often in context often reference and substitute for noun phrases, nouns, or even full sentences, they exist in a syntactically or contextually rich situation, which allows them sometimes to be dropped. In such  cases of argument optionality (next section),  it therefore important to keep some record of a cognitive status that is relevant in the discourse. The grammar should be able to track those elements in the semantics of the predicates.
-
-4. Argument optionality
-
-PG allows for argument optionality in contextually rich situations, where the semantics of missed arguments are preserved in the context although not expressed syntactically. Some sources suggested that animacy played a role in argument drop, but a recent paper by Judith Tonhauser, cites corpus data to suggest that it is not quantifiably true that argument optionality is based on animacy/gender of PG nouns. 
-
-Argument drop is syntactically supported by the systematic use of cross-referential markers on predicates, which facilitate the interpretation of dropped arguments. The cross-referential markers only represent either the subject or object argument of a predicate at a given time, but due to the rules and hierarchy they represent, they also point to constraints imposed on the argument not marked. This was already expressed in lab 2 and 3. This system or markings has been already implemented in our grammar and will not further discussed here, as we want to concentrate in the cognitive status of dropped arguments. 
-
-Semantically, our sources suggest that context plays an important role in the semantic construction of dropped arguments, and therefore we will follow an interpretation of 'definite null instantiation', simply DNI, for our dropped arguments. As PG is a language that accepts different orders of sentence constituents, and therefore arguments might be dropped at different locations of a sentence, it is important that parses are sufficiently ambiguous to represent the different combinations of S, V, and O arguments, when the subject, the object or both might have been dropped. At the end, getting the equivalent semantic representation in our MRS will determine the correctness of the analysis. 
-
-5. Anything else.
-
-As we are dealing with possessives this week, we decided to include a phenomenon characteristic of PG. PG exhibits a group of nouns that resist being possessums in possessive construction, being those mostly words denoting natural things like wind, the sun, plants. These nouns cannot undergo possessive juxtapositions with another noun (as the possessum), nor can they have a pronoun prefix that indicates being owned or part something or somebody else. It seems that the implementation could be rather simple. 
-
-Additionally, as we deal with adjectives in this lab, we wanted to secure that adjectives cannot be the modifiers of pronouns, as we don't have any sentences that attest such use of adjectives.  Additionally we implemented the phenomenon that adjectives cannot be modifiers to pronouns. Pronouns are in our documentation elements that do not take modifiers. Therefore we wanted to make sure that such a constrain is implemented.
-
-Finally, as we worked with argument optionality in this lab, we decided to clean the way that some of our parses were being generated, and some spurious over-generation resulting from the order of  head-subj/subj-head and head-comp/comp-head and the argument optionality rules. This involved looking for wrong parses, overgeneration, and or missing parses. 
+Here some example of an embedded interrogative sentence:
 
 
-II. Illustrative IGT examples from your testsuite.
+#Ex.150: Use embedded clause for interrogative sentence
+Source: e
+Vetted: f
+Judgment: g
+Phenomena: {emb-q, wo}
+aporandu oupa
+aporandu oju pa
+a-porandu o-ju=pa
+A.1SG-ask A.3-go=Q
+'I ask whether he comes'
 
-1. Adjectival and adverbial modifiers.
+#Ex.149: Wrong marker for embedding of interrogative clause
+Source: e
+Vetted: f
+Judgment: u
+Phenomena: emb-q
+aporandu ouha
+aporandu ojuha
+a-porandu o-ju-ha
+A.1SG-ask A.3-go-COMP
+*'I ask whether he comes'
 
-Adjectives and adverbs follow the words they modify. This is illustrated for attributive adjectives and adverbs with the following IGTs: 
 
-#Ex.169: Use of adjective as an attribute of the object of verb predicate
+#Ex.196: NP predicate, possessive marking
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: emb-q
+aporandu ohechapa ju'ipe
+aporandu ohecha pa juHi pe
+a-porandu o-hecha=pa juHi=pe
+A.1SG-know A.3-see=COMPL frog=ACC
+'I ask if somebody sees the frog'
+
+#Ex.197: Embedding of interrogative clause
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: emb-q
+aporandu ohechapa ju'i
+aporandu ohecha pa juHi
+a-porandu o-hecha=pa juHi=pe
+A.1SG-know A.3-see=COMPL frog=ACC
+'I ask if somebody sees the frog' / 'I ask if the frog sees it'
+
+
+The implementation built over the implementation of previous matrix yes-no questions, which are the embedded complements.
+
+For that purpose we created a super type, that we would use for interrogative clause clause verbs and declarative clause complement verbs, and let that type be inherited by our specific type of verb type (e.g. int-cl-verb-lex is the type for ’ask’):
+
+	cl-verb-lex:= gug-dyn-loc-verb &  clausal-second-arg-trans-lex-item &
+    			[SYNSEM.LOCAL.CAT.VAL.COMPS <#comps>,
+     			 ARG-ST.REST.FIRST #comps].
+
+ 	int-cl-verb-lex:= cl-verb-lex &
+    			[SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL [ CAT [ IC +,
+                                                                    HEAD verb,
+					                              VAL [ COMPS < >, 
+                                                                    SUBJ < > ] ],
+				 CONT.HOOK.INDEX.SF ques ]]>].
+
+The complement clause had to be a verb, with [SF ques] value, as this is a question clause. Additionally, 
+the complement needs to have [IC +] which is a boolean value introduced by the question-clitic element.
+
+		cat :+ [EC bool, IC bool].
+
+
+This feature helps us to define an embedded clause as an interrogative clause. The other feature [EC bool] was employed for the declarative clause implementation, which is explained further in the next section.
+
+Here the question clitic as it was implemented:
+
+       question-clitic-lex := no-hcons-lex-item &
+  			[ SYNSEM [ LOCAL [ CAT [ IC +, 
+                                          VAL [ SPR < >, COMPS < >, SUBJ < >, SPEC < >],
+                                          HEAD adj & [ MOD < [ LIGHT +,
+								  L-PERIPH +,
+				                                 LOCAL intersective-mod] > ]],
+                                          CONT.RELS <! !> ],
+                                 NON-LOCAL.YNQ <! *top* !>  ]].
+
+The head-adj-phrase copies that value up in the parse tree.
+
+	head-adj-int-phrase :+ 
+    			[ SYNSEM.LOCAL.CAT [ EC #ec, 
+                       		      IC #ic ],
+     			  NON-HEAD-DTR.SYNSEM.LOCAL.CAT [ EC #ec,
+                         		             IC #ic ]].
+This feature value is copied up the parse through a unary rule that was appended to head-subj-opt, head-opt-comp and the bare-np-rule. add the unify these values up the parse.
+
+	same-ec-unary-phrase := headed-phrase &
+  			[ SYNSEM.LOCAL.CAT [ EC #ec,
+                       		     IC #ic],
+    			  HEAD-DT.SYNSEM.LOCAL.CAT [ EC #ec,
+                         		            IC #ic] ].
+
+Additionally the following binary rule addendum let the feature percolate through the binary branches:
+
+
+
+	basic-head-comp-phrase :+ [ SYNSEM.LOCAL.CAT [ EC #ec, 
+        	                                       IC #ic ],
+                            HEAD-DTR.SYNSEM.LOCAL.CAT [EC #ec,
+                                                       IC #ic ]].
+
+	basic-head-subj-phrase :+ [  SYNSEM.LOCAL.CAT [ EC #ec, 
+                                               IC #ic ],
+                            HEAD-DTR.SYNSEM.LOCAL.CAT [EC #ec,
+                                                       IC #ic ]].
+
+	basic-head-opt-comp-phrase :+
+ 				[ SYNSEM [ L-PERIPH #periph,
+            				LOCAL.CAT [ EC #ec,
+                        			IC #ic ]],
+            			ARGS < [ SYNSEM [ L-PERIPH #periph, 
+                              		LOCAL.CAT [ EC #ec,
+                                      	    IC #ic  ] ] ] > ].
+
+The feature worked also in conjunction with the value definition for verbs. Verb lexemes had the feature defined as [IC -]:
+
+	trans-verb-lex:+ [SYNSEM.LOCAL.CAT [EC -,
+        	                            IC -]].
+	intrans-verb-lex: + [SYNSEM.LOCAL.CAT [EC -,
+        	                               IC - ]].
+
+So if the question clitic was not present in the clause (as we had in some of our wrong parses), the IC value of the of the verb predicate would percolate up, and not unify with the [IC +] requirement of the int-cl rule. This would not happen with stand-alone interrogative clauses, as the question clitic is by definition part of the whole clause. This was the main reason of the implementation of this clitic. The MC value, is untouched in this process, which guarantees also that the implementation of matrix yes-no-questions was not interfered by this phenomenon.
+
+Here the int-rule and the int-co-verb-lex again that instantiate the embedded interrogative clause:
+
+	int-cl := head-only-int-decl-clause & interrogative-clause &
+  		[ SYNSEM [ LOCAL.CAT [ VAL #val & [SUBJ< >, COMPS< >, SPR< >], MC bool, IC #ic],
+             		   NON-LOCAL.YNQ <! !> ],
+    		HEAD-DTR.SYNSEM [ LOCAL.CAT [ IC +, MC na, VAL #val, HEAD verb, IC #ic],
+                    	   NON-LOCAL.YNQ <! *top* !> ]].
+
+
+ 	int-cl-verb-lex:= cl-verb-lex &
+    			[SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL [ CAT [ IC +,
+                                                                    HEAD verb,
+					                              VAL [ COMPS < >, 
+                                                                    SUBJ < > ] ],
+				 CONT.HOOK.INDEX.SF ques ]]>].
+
+The verb lexical type will unify with the interrogative clause only if the interrogative clause inherited [IC +] from its parses, which happens then the question-clitics attaches correctly to the clause. 
+
+We checked a standard sentence in our implementation, using single noun arguments.
+
+#Ex.201: Embedding of interrogative clause
+Source: e
+Vetted: f
+Judgment: g
+Phenomena: emb-q
+aporandu ohechapa ju'i vakaA
+aporandu ohecha pa juHi vakaA
+a-porandu o-hecha=pa juHi vakaA
+A.1SG-ask A.3-see=COMPL frog cow
+'I ask if somebody sees the frog's cow'/ ' I ask if the frog's cow sees it' / 'I ask if the frog sees the cow' / 'I ask if the cow sees the frog'
+
+ We had around 10 parses, most due to our coordination rule and reading of noun phrases as independent noun predicates. Those readings were not in our interest. 
+ We detected that our implementation was able to generate declaration clauses at the top root, but not interrogative clauses, which is separate from the embedded clause, which worked well. The unification error showed that YNQ lists were not emptied by our int-cl rule. With further time, it is an improvement to happen, and potentially something we could check the next weeks. Nevertheless the basic functionality to generate this sentences with interrogative embedded clauses did succeed.
+
+As mentioned in the previous sections there were some limitations to this implementation, which were related to the size of word element in the  first position of the embedded clause. Potentially we should be able to able to increase this capability in the coming weeks, if time allows.
+
+
+2.2. Embedded Clauses (declarative)
+
+In Guarani, there are verb predicates that allow declarative sentences to be their complements. These verbs assert, confirm or share knowledge. One of those verbs is ‘to know’, which allows therefore an embedded declarative clause. The embedded clause has a similar construction as the yes-no-questions, but with a different marker. This marker, a complementizer =ha, is also in the second position of the declarative clause, but the first element of the declarative clause has to be the verb predicate of that clause. Therefore this marker doesn’t have the focal function as in the =pa/=piko marker of yes-no-questions.
+
+Here some examples with the use and misuse of such embedded declarative sentences:
+
+#Ex.148: Use embedded clause for declarative sentence
+Source: e
+Vetted: f
+Judgment: g
+Phenomena: {emb-d, wo}
+aikuua ouha
+aikuua oju ha
+a-ikuua o-ju=ha
+A.1SG-know A.3-come=COMPL
+'I know he comes'
+
+#Ex.149: Wrong marker for embedding of interrogative clause
+Source: e
+Vetted: f
+Judgment: u
+Phenomena: emb-q
+aporandu ouha
+aporandu oju ha
+a-porandu o-ju=ha
+A.1SG-ask A.3-go=COMPL
+*'I ask whether he comes'
+
+#Ex.150: Use embedded clause for interrogative sentence
+Source: e
+Vetted: f
+Judgment: g
+Phenomena: {emb-q, wo}
+aporandu oupa
+aporandu oju pa
+a-porandu o-ju=pa
+A.1SG-ask A.3-go=Q
+'I ask whether he comes'
+
+#Ex.198: Use embedded clause for declarative sentence
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {emb-d, wo}
+aikuua ohechaha ju'ipe
+aikuua ohecha ha juHi pe
+a-ikuua o-hecha=ha juHi=pe
+A.1SG-know A.3-go=COMPL juHi=ACC
+'I know he/she/it sees the frog'
+
+#Ex.199: Use embedded clause for declarative sentence
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {emb-d, wo}
+aikuua ohechaha ju'ipe
+aikuua ohecha ha juHi
+a-ikuua o-hecha=ha juHi
+A.1SG-know A.3-go=COMPL juHi
+'I know he/she/it sees the frog' / 'I know the frog sees it'
+
+
+For the implementation of this phenomenon, we had to create a verb-lexeme, that is a subtype to the previously mentioned super type cl-verb-lex:
+
+	decl-cl-verb-lex:= cl-verb-lex &
+    			[ SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL [ CAT [ EC +,
+                       		                                IC -,
+ 					                                HEAD verb,
+					                                VAL.COMPS < > ],
+			    				 CONT.HOOK.INDEX.SF prop ]]>].
+
+The main verb requires the clause to be exclusively embedding ([EC +]), not an interrogative clause ([IC-]), and it go be a sentence  (therefore the HEAD verb for the complement). The semantic is to be a embedded clause have to express a proposition ([SF prop]).
+
+The rule the license the embedded clause is the following:
+
+ 	decl-cl := head-only-int-decl-clause & declarative-clause & 
+  		[ SYNSEM.LOCAL.CAT [ VAL #val & [SUBJ< >, COMPS< >, SPR< >], MC bool, EC #ec, IC #ic],
+    		  HEAD-DTR.SYNSEM [ LOCAL.CAT [ MC na, VAL #val, HEAD verb, EC #ec, IC #ic],
+                     NON-LOCAL.YNQ 0-dlist ]].
+
+As mentioned in the previous section, we introduced a new feature [EC bool]. This feature checkes if a sentence is an exclusively embedding sentence. In order to unify with the requirements of the decl-co-verb-lex, [EC] has to be [EC +]. Similarly [IC -]. These value is introduced the the complementizer-clitic:
+
+	compl-clitic-lex := no-hcons-lex-item &
+ 			[ SYNSEM [ LOCAL [ CAT [ IC -, 
+                       			   EC +,
+                          VAL [ SPR < >, COMPS < >, SUBJ < >, SPEC < >],
+                          HEAD adj & [ MOD < [LOCAL.CAT.HEAD verb,
+                                              LIGHT +,
+                                              L-PERIPH +,
+                                              LOCAL intersective-mod ] > ]],
+                    CONT.RELS <! !> ]]].
+
+The values are copied into the parse by the head-ada-phrase rule, which was mentioned in the previous section about interrogative clauses. The clitic requires to have a second position, and being attached as a modifier to a verb word, or it will not unify. The mechanics are similar to the one employed with the interrogative clauses, just with he additional EC feature. By definition, verbs have a [EC -], so only the proper attachment with the complementizer clitic guarantees that the unification of the embedded clause with the main clause verb works.
+
+We experimented the parsing with single noun arguments.
+
+
+#Ex.202: Embedding of interrogative clause
+Source: e
+Vetted: f
+Judgment: g
+Phenomena: emb-d
+aikuua ohechaha ju'i vakaA
+aikuua ohecha ha juHi vakaA
+a-ikuua o-hecha=ha juHi vakaA
+A.1SG-know A.3-see=COMPL frog cow
+'I know that somebody sees the frog's cow' / ' I know that the frog's cow sees it' / 'I know that the frog sees the cow' / 'I know that the cow sees the frog'
+
+Ignoring the parses generated by the coordination rules, we were satisfied with  the results. This embedded declarative construction was also able to construct int-cl and decl-cl versions for each of the possible parses. 
+
+Nevertheless there are limitations. As mentioned before, the grammar is not able to handle constituents in the first position that are made of more than one word (which might include complex nouns made of nouns in juxtaposition, as well as case markings). This is something that could be addressed when time and workload allows it.
+
+
+3. Non-verbal predicates (NP, PP, AP)
+
+
+3.1 Adjective
+
+As mentioned in a previous lab (lab 4), PG has attributive and predicative use of adjectives. In predicative form, the adjective receives verbal inflection and the noun it “modifies” acts as its subject. Adjectives behave in this form as stative-intransitive-verbs, and the cross-markers refer to the subject exclusively using the O-group of markers (patient markers). The different use of attributive and predicative adjectives is illustrated in the following IGT examples.
+
+#Ex.136: Use of adjective as an attribute of the subject of a verb predicate
 Source: author
 Vetted: f
 Judgment: g
 Phenomena: {adj, wo}
-ahecha vakaA tuicha
-ahecha vakaA tuicha
-a-hecha vakaA tuicha
-A.1SG-see cow.ANIM big
-'I see the big cow'
+jagua ñarope ahendu
+jagua nNaro pe ahendu
+jagua nNaro=pe a-hendu
+dog.ANIM angry=ACC A.1SG-hear
+'I hear the angry dog'
 
-#Ex.134: Use of adjective as an attribute of the subject of verb predicate
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {adj, wo}
-mita᷉  reia'e oguata
-mitaN reiaHe oguata
-mitaN reiaHe o-guata
-child happy.NOM A.3-walk
-'The happy child walks'
-
-#Ex.152: Use of adverb after verb predicate
-Source: a (#a.8)
-Vetted: f
-Judgment: g
-Phenomena: {adv, wo}
-ha'e ojatapy tuicha
-haHe ojatapy tuicha
-haHe o-jatapy tuicha
-3SG.pron A.3-make.fire big
-'She made a fire in a big way' 
-
-#Ex.154: Use of manner adverb after verb predicate
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {adv, wo}
-aguata pya'e
-aguata pyaHe
-a-guata pyaHe
-1SG-walk quick
-'I walk quickly'
-
-Therefore it is ungrammatical to have adjectives or adverbs preceding the words they modify.
-
-#Ex.170: Attributive adjective before a noun is wrong position
+#Ex.137: Attributive adjective should not have predicate markings 
 Source: author
 Vetted: f
 Judgment: u
 Phenomena: adj
-tuicha vakaA ahecha
-tuicha vakaA ahecha
-tuicha vakaA a-hecha
-O.3-big cow.ANIM A.1SG-see 
-*'I see the big cow'
+jagua iñarope ahendu
+jagua inNaro pe ahendu
+jagua i-nNaro=pe a-hendu
+dog.ANIM O.3-angry=ACC A.1SG-hear
+*'I hear the angry dog'
 
-#Ex.155: Adverb in wrong position, should be after the verb predicate
-Source: author
-Vetted: f
-Judgment: u
-Phenomena: adv
-pya'e aguata
-pyaHe aguata
-pyaHe a-guata
-quickly 1SG-walk
-*'I walk quickly'
-
-As we appreciate from these examples, there is no agreement between noun and adjective. A sentence fragment like 'mitaN reiaHe', could mean in English 'the happy child', 'a happy child', 'the happy children' or even 'happy children'. There is no special inflection in Guarani to mark this difference. It seems that context and the discourse use of words determine  the correct semantics of a sentence with respect to those parameters, if relevant for Guarani speakers at all. Also we note that in sentences 169 and 152, the same word 'tuicha', meaning 'big', is used but as an attributive adjective in the first one, and as an adverb in the second sentence. Their overt form  is the same. Their location is the same, being directly after the word they modify in the word order. Therefore we will implement their use in the grammar in a similar way by taking a general rule that applies to 'adjectives' (as a common name for adverbs and adjective) to both nouns and verbs. This will be further explained in section III. 
-
-2. Possessives.
-
-As mentioned in the previous section, there are two constructions used to express possessiveness: a simple juxtaposition and the use of prefixes. Here some examples of those, as they are present in our testsuite (IGTs 99 and 101):
-
-#Ex.99: Noun Noun Possessives. Inanimate Possessor. Inanimate Alienable Possession.
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {poss, wo}
-ahecha yvyra raka
-ahecha yvyra raka
-a-hecha yvyra raka
-A.1SG-see tree  branch
-'I see tree branches'
-
-#Ex.101: Noun Noun Possessives. Human Possessor. Inanimate Alienable Possession.
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {poss, wo}
-ahecha mbo'ehára roAga
-ahecha mboHehaAra roAga
-a-hecha mboHehaAra roAga
-A.1SG-see professor   house
-'I see the professor's house'
-
-A reverse order of the arguments, while syntactically possible, is semantically constrained. The possessor should be able to possess the possessum. In our examples, branches do not possess trees, nor houses possess a professor (apart from the effort to having a mortgage to pay). This semantic constraint is not dealt with in our grammar, as it is dependent on the semantics of the specific situation. Therefore we assume in general that all nouns can take the role of possessor in our grammar (with the exception of personal pronouns and prefix possessive constructions mentioned below as stated in I.2). Ungrammatical therefore are examples like the following:
-
-#Ex.171: Pronouns cannot be part of possessive constructions
-Source: author
-Vetted: f
-Judgment: u
-Phenomena: poss
-ahecha ha'e yvyra
-ahecha haHe yvyra
-a-hecha haHe yvyra
-A.1SG-see A.3.pron tree
-*'I see his tree'
-
-#Ex.172: Pronouns cannot be part of possessive constructions
-Source: author
-Vetted: f
-Judgment: u
-Phenomena: poss
-ahecha yvyra ha'e
-ahecha yvyra haHe
-a-hecha haHe yvyra
-A.1SG-see tree A.3.pron
-*'I see his tree'
-
-The semantics of the above sentences cannot be reflected with a juxtapostion. The first sentence though, can be implemented with the other possessive construction that uses personal pronoun prefixes on the nouns. For example the following IGT's:
-
-#Ex.102: Affix-marked Possessives. 
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: poss
-ahecha iróga
-ahecha iroAga
-a-hecha i-roAga
-A.1SG-see O.3-roAga
-'I see her house'
-
-As nouns can be also predicates in a sentence and use the same kind of markings for their arguments, there are ambiguous sentences like the following:
-
-#Ex.140: Ambiguity between noun predict and possessive marker
+#Ex.138: Use of adjective as a predicate
 Source: b
 Vetted: f
 Judgment: g
 Phenomena: cop
-chesy oguata
-chesy oguata
-che-sy o-guata
-O.1SG-mother.ANIM A.3-walk
-'My mother walks' / 'I am a mother and she walks'
+jagua iñaro
+jagua inNaro
+jagua i-nNaro
+dog.ANIM O.3-angry
+'The dog is angry'
 
-In the first interpretation the noun is just a noun with a personal prefix followed by a verb predicate that uses that noun as its subject argument. In a second reading this is a asyndeton conjunction of two predicates. 
+The implementation followed creating extra lexical entries for the predicative adjectives as stative-intransitive verbs, letting them follow our already stablished grammar for their behavior. In difference to other verb predicates, the semantic predicates are marked as ‘_a_rel’ instead of ‘_v_rel’. Here an example of a lexical entry as used for the previous IGT examples: 
+
+	nNaro_1 := stative-intrans-verb-lex &
+  		[ STEM < "nNaro" >,
+    		SYNSEM.LKEYS.KEYREL.PRED "_angry_a_rel" ].
+
+Additive predicates work in our expected way. We have not had time to experiment the combinations that this phenomenon might have with other features, as our test suite is mostly tailored towards sentences that check single phenomena. Nevertheless we expect, that this and other rules might have to be adjusted to operate in conjunction.
 
 
-3. Definiteness and other aspects of discourse status.
+3.2 Noun
 
-Determiners precede the nouns they refer to. Here are two examples of the use of determiners in PG.
+Our original analysis of PG, suggested that noun predicates are present exclusively through the use of cross-markers, similar to the way cross-markers are used with stative-intransitive verbs:
 
-#Ex.1: Transitive verb agrees with 3Per subject. Singular determiners. Accusative case marking on the animate object.
+#Ex.139: Use of noun predicate
+Source: b
+Vetted: f
+Judgment: g
+Phenomena: cop
+chesy
+chesy
+che-sy
+O.1SG-mother.ANIM
+'I am a mother'/‘There is my mother’
+
+#Ex.142: NP Predicate, Possessive marking. Aspect marking (not currently handled by our grammar).
+Source: f
+Vetted: f
+Judgment: g
+Phenomena: cop
+hi'árama
+iaArama
+i-aAra-ma
+POSS.3-day-PERF
+'It is his/her day already' 
+
+These noun predicates take markings like subject markers and other aspect markers, especially as shown in IGT 142.There are also additional noun predication that can have other meanings like a semantic of ‘_have_rel’, which are not shown here. These noun predications are outside of scope for our current analysis and will not treated here.
+Nevertheless, IGT# 139 showed also the existence of an additional type of noun predication, with the semantics of ‘There is my mother. This suggests the existence of zero-copula noun predicates:
+
+#Ex.200: Nominal predicate. Contentful postposition modifier.
 Source: author
 Vetted: f
 Judgment: g
-Phenomena: {wo, agr, c}
-la ju'i ohecha la vakápe
-la juHi ohecha la vakaApe
-la juHi o-hecha la vakaA-pe
-the.SG frog.ANIM.NOM A.3-see the.SG cow.ANIM-ACC
-'The frog sees the cow'
+Phenomena: {cop, adp}
+jagua jaguandi
+jagua jagua ndi
+jagua jagua=ndi
+dog.PRED dog=with
+'There is a dog with a dog'
 
-#Ex.48: Dynamic intransitive agrees with 3PER subject. Plural determiner. SV word order.
+We implemented this kind of noun predicates with a new type of rule:
+
+n-bar-predicate-rule := unary-phrase & nocoord &
+  [ SYNSEM.LOCAL [ AGR #agr3,
+                   CAT [ MC na,
+                        HEAD verb & [MOD < >],
+                        VAL [ SPEC < >,
+                              SPR  < >,
+                              COMPS < >,
+           SUBJ < [ LOCAL [ CONT.HOOK.INDEX #arg1,
+                CAT [ HEAD noun,
+                      VAL.SPR < > ] ] ] > ] ]],
+    C-CONT [ HOOK [ LTOP #ltop,
+        INDEX #index,
+        XARG #arg1 ],
+       RELS <! arg12-ev-relation &
+       [ PRED "_be_v_id_rel",
+         LBL #ltop,
+         ARG0 #index,
+         ARG1 #arg1,
+         ARG2 #arg2 ],
+       quant-relation &
+       [ PRED "exist_q_rel",
+         ARG0 #arg2,
+         RSTR #harg ] !>,
+       HCONS <! qeq & [ HARG #harg, LARG #larg ] !> ],
+    ARGS < [ SYNSEM.LOCAL [ AGR #agr3,
+                            CAT [ HEAD noun & [POSS poss-or-eel],
+                            VAL.SPR cons ],
+          CONT.HOOK [ INDEX #arg2,
+          LTOP #larg ]]] > ].
+
+We see that this unary rule, that extends over noun phrases, adds the predication ‘of to be’. The rule was added to the rule.tdl file, in order to instantiate these predicates. The rules requires the argument to be a noun, but with a restriction [POSS poss-or-eell], which means that pronouns are not acceptable.
+Our implementation works satisfactorily for our goals here. It generates in all other kind of phenomena of our grammar additional sentence parses, as each individual noun could be also interpreted as a separate noun predicate, which combined with our sentential juxtaposition can multiply the number of interpretations. This result is allowed in this grammar.
+Something that we were not able to implement in this grammar, is to allow our noun predicates to have markers, like the cross-reference markers with other arguments, as well as possibly combinations with other aspect markers. We leave this for another time.
+
+
+3.3 Prepositions
+
+In Guarani, our analysis indicates that prepositional phrases work with conttentful appositions that add significant meaning to a sentence. 
+These appositions usually interact with different kind of predicates, some of them with full semantic content, so that the appositions work more as a modifier:
+
+#Ex.166: Contentful postpositions  
 Source: author
 Vetted: f
 Judgment: g
-Phenomena: {det, wo, agr}
-lo ju'i oguata
-lo juHi oguata
-lo juHi o-guata
-the.PL frog.ANIM.NOM A.3-walk
-'The frogs walk'
+Phenomena: adp
+oiju mombyrý-vi 
+oju mombyryA gui 
+o-ju mombyryA=gui
+3.ACT-come far=from
+'He/she comes from far(a far place)' 
 
-Nevertheless, not using these determiners just leaves the noun underspecified, with several possible translations in languages like English, where number and definiteness are still relevant.
+Similarly in the case of noun predicates, which we have analyzed as zero-copulas, the prepositional phrases act also as a modifier:
 
-#Ex.19: Dynamic intransitive verb agrees with 3rd subject. VS word order.
+#Ex.200: Nominal predicate. Contentful postposition modifier.
 Source: author
 Vetted: f
 Judgment: g
-Phenomena: wo
-oguata ju'i
-oguata juHi
-o-guata juHi
-A.3-Walk frog.ANIM.NOM
-'The frog walks' / 'A frog walks'/ 'The frogs walk' / 'Frogs walk'
+Phenomena: {cop, adp}
+jagua jaguandi
+jagua jagua ndi
+jagua jagua=ndi
+dog.PRED dog=with
+'There is a dog with a dog'
 
-Therefore when using a determiner ('lo' or 'la'), we have to restrict the cognitive status of the noun phrase it is involved in. This will be further discussed in section III.3.
+In other cases these appositions interact with raising verbs, which are not-fully semantically bleached. These are verbs with a similar meaning as ‘to-be-located’. 
 
-Apart from determiners, we have also pronouns in PG as a word category that points to some specifity in the arguments of a discourse. Here some examples of their use in our testsuite:
-
-#Ex.12: Dynamic intransitive verb agrees with 1SG subject. SV word order.
-Source: author
+#Ex.164: be+located raising verb. Contentful postpositions.  
+Source: b
 Vetted: f
 Judgment: g
-Phenomena: {agr, pn}
-che aguata
-che aguata
-che a-guata
-I.NOM A.1SG-walk
-'I walk'
-
-#Ex.173: Transitive verb two personal pronoun arguments.
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {agr, pn}
-che ahecha chupe
-che ahecha chupe
-che a-hecha chupe
-I.NOM A.1SG-see 0.3.pron.ACC
-'I see him'
-
-The cognitive status of such arguments should be represented according to the standards specified in our lab. This implementation is further explained in III.4.
-
-4. Argument optionality
-Argument optionality, understood as the free option of the overt presence or absence of noun phrases that act as the arguments of a predicate, is common in PG, as it is visible in several of our sentences in the testsuite:
-
-#Ex.57:  Dynamic intransitive verb agrees with 1SG subject marking. Subject dropped.
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: pro-d, agr
-ajeroky
-ajeroky
-a-jeroky
-A.1SG-dance
-'I dance'
-
-#Ex.61: Transitive verb. Completive aspect. Subject drop. Object drop.
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {agr, tam, pro-d}
-ahendupa
-ahendupa
-a-hendu-pa
-A.1SG-hear-COMPL
-'I have heard (you/it/her/him/them) all'
-
-#Ex.81: Transitive verb agrees with 1SG subject. Inanimate/nonhuman object drop.  Subject drop. 
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: pro-d
-ahecha
-ahecha
-a-hecha
-A.1SG-see
-'I see (you/him/her/it/them)'
-
-Currently our grammar captures in general the constraints imposed by the cross-reference markers of the predicate. In the sentence #57 the dropped subject argument is 1SG, the same for sentences 61 and 81. The dropped object of the transitive predicate in sentences 61 and 81 is underspecified, as a subject 1SG is the highest marker in the hierarchy, and therefore does not impose constraints on dropped objects. This is not to be confused with reflexive predicate arguments, which are handled different in PG (further to this point in section VI.4). The pernum is underspecified for sentences 61 and 81. On the other side in sentences that use any other markers would include constraints on the objects:
-
-#Ex.174: Dropped argument on a transitive verb in 2nd person subject.
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {agr}
-rehecha
-rehecha
-re-hecha
-A.2SG-see
-'You don't see (it/him/her/them)'
-
-Our current grammar imposes the constraint that the object of this transitive predicate be 3rd person. Similarly, portmanteau markers implement other constraints:
-
-#Ex.175: Dropped argument on a transitive verb marked with a portmanteau marker.
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {agr}
-pohecha
-pohecha
-po-hecha
-A.1SG_2SG-see
-'I see you(pl)'
-
-This sentence is has the pernum constraint marked in its arguments, and therefore is not ambiguous, even though the arguments are not overt as full NPs. The equivalent sentence with full NPs is:
-
-#Ex.176: Transitive verb marked with a marker and full pronoun arguments.
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {agr}
-che ahecha ndeve
-che ahecha ndeve
-che a-heach ndeve
-A.1.pron A.1SG_2SG-see 2.PL.pron.ACC
-'I see you(pl)'
-
-In the case of dropped pronouns arguments, their pernum reference works as expected, but the object cognitive status is still underspecified before the beginning of the lab. While the subject arguments remain 'in-foc' after being dropped, the same is not originally applied to the grammar for the object arguments. This is implemented as in III.4.
-
-5. Anything else.
---- Non-Possessor Nouns
-Common-nouns like 'wind' don't accepts a possessor in PG. As shown in these IGTs
-
-#Ex.108: Unmarked 'unpossessable' noun.
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: poss
-ahendu yvytu hata
-ahendu yvytu hata
-a-hendu yvytu hata
-A.1SG-hear wind.INAM strong
-'I hear the strong wind'
-
-#Ex.109: Ungrammatically possessed 'unpossessable' noun.
-Source: author
-Vetted: f
-Judgment: u
-Phenomena: poss
-ahendu avatity´ yvytu hata 
-ahendu avatityA yvytu hata 
-a-hendu avatityA yvytu hata
-A.1SG-hear cornfield wind.INAM strong
-*'I hear the cornfield's strong wind'
-
-This is similar to the constraint implemented for pronouns (which cannot be possessors nor possessums). As to be seen below in III.5, they could jointly be implemented.
-
--- No adjective modifiers for pronouns
-Additionally we implemented that attribute adjectives cannot be modifiers of pronouns. So while this sentence is grammatical:
-
-#Ex.134: Use of adjective as an attribute of the subject of verb predicate
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {adj, wo}
-mita᷉  reia'e oguata
-mitaN reiaHe oguata
-mitaN reiaHe o-guata
-child happy.NOM A.3-walk
-'The happy child walks'
-
-The following should not be grammatical:
-
-#Ex.177: Wrong use of adjective with a pronouns 
-Source: author
-Vetted: f
-Judgment: u
-Phenomena: adj
-ha'e reia'e oguata
-haHe reiaHe oguata
-haHe reiaHe o-guata
-3.SG.pron happy.NOM A.3-walk
-*'Happy him walks'
-
-The implementation is mentioned below in III.1.
-
--- Wrong parsing trees
-We had over- and undergeneration of some parses, due in part to the generous argument optionality built in our language, and its the free word order. This is not related to specific IGTs or their expressed ungrammaticality, but were rather related to the grammar implementation. Therefore further details in III.5. We used though the following sentences to be sure that the different ambiguous parsings were happening, which include the different SVO,SOV, VOS, VSO, OSV, OVS parses, as well as possessive juxtaposition of nouns:
-
-#Ex.3:  Transitive verb with  ambiguous subject and object.
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {wo, agr, c}
-ju'i ohecha tunich
-juHi ohecha tunich
-juHi o-hecha tunich
-frog.ANIM A.3-see stone.INAM
-'The frog sees the stone' / 'The stone sees the frog'
-
-#Ex.187:  Transitive verb with ambiguous subject/object, drop of object/subject due to possessive
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {wo, agr, c}
-ju'i tunich ohecha 
-juHi tunich ohecha
-juHi tunich o-hecha
-frog.ANIM stone.INAM A.3-see
-'The frog sees the stone'/'the stone sees the frog'/'The frog's stone sees something'/ 'something sees the frog's stone'
-
-#Ex.188:  Transitive verb, agrees with 3per subject. Inanimate object.
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {wo, agr, c}
-ohecha ju'i tunich
-ohecha juHi tunich
-o-hecha juHi tunich
-A.3-see frog.ANIM stone.INAM
-'The frog sees the stone'/'the stone sees the frog'/'The frog's stone sees something'/ 'something sees the frog's stone'
-
-
-
-III. A statement of how you implemented the phenomenon in terms of types you added/modified and particular tdl constraints. That is, the actual tdl snippets with prose description around them.
-
-NOTE: Unless otherwise specified, all tdl changes here were included in our paraguayan_guarani.tdl file.
-
-1. Adjectival and adverbial modifiers.
-
-As the syntactic behaviour of attributive adjectives and adverbs is the same in most aspects, we decided to create rules that would include both arguments at the same time .  We verified that the right entry is found in rules tdl, which reflects that attributive adjectives and adverbs follow the words they modify
-
-
-head-adj-int := head-adj-int-phrase.
-
-We changed the basic-intersective-adjective-lex which usually has a value 'ref-ind' for its XARG feature. This value refers to nouns. The more general 'event-or-ref-index' includes verbal and nominal elements, therefore more suitable for our purposes. We decided also to keep rules that were already instantiated for adjective as a general designation for adjectives and adverbs (just saving us some time). We added also the 'gug' reference in front of some rules, to express the exclusive use in our language. Therefore the adverb/adjective lex supertype looked as follows:
-
-adj-lex := gug-intersective-adjective-lex.
-gug-intersective-adjective-lex := basic-adjective-lex &
-  [ SYNSEM [ LOCAL.CONT.HOOK.XARG event-or-ref-index & #xarg,
-           LKEYS.KEYREL.ARG1 #xarg ] ].
-
-Additionally we had to make changes in the attr-adj-lex. It originally looked as follows:
-
-attr-adj-lex := adj-lex & intersective-mod-lex &
-  [ SYNSEM.LOCAL.CAT.HEAD.MOD < [ LOCAL.CAT [ HEAD noun,
-                                              VAL.SPR cons ] ] > ].
-
-In this form, it allowed only noun as possible element to be modified. This was changed to a disjunctive type +nv which included adverbs. Also VAL.SPR as a constraint was taken out, as verbs no longer have SPR values in this grammar.
-
-attr-adj-lex := adj-lex & intersective-mod-lex &
-  [ SYNSEM.LOCAL.CAT.HEAD.MOD < [ LOCAL.CAT [ HEAD +nv ] ] > ].
-
-Also the attributive-adj-lex had to be adjusted to avoid some undesirable parses. 
-
-attributive-adj-lex := attr-only-adj-lex &
-  [ SYNSEM.LOCAL.CAT [ POSTHEAD +,
-                       HEAD.MOD < [ LIGHT +,
-                                    MODIFIED notmod ] > ] ].
-
-As we wanted to secure that adverbs would not be able to attache to S, but just to VP, we included [LIGHT +] as a value of HEAD.MOD, while the bare-np would include a [LIGHT -] contraint:
-
-bare-np-phrase := basic-bare-np-phrase &
-  [ SYNSEM.LIGHT -,
-    C-CONT.RELS <! [ PRED "exist_q_rel" ] !> ].
-
-The additional constrain in the [HEAD.MOD<MODIFIED notmod>] of the attributive-adj-lex  was built in order to limit the use of adjectives with pronouns. As its counterpart, the constraint of [MODIFIED hasmod] was added to the pron-noun-lex, so pronouns would not unify under the attributive-adj-lex.
-
-pron-noun-lex := no-spr-noun-lex &
-      [SYNSEM [ MODIFIED hasmod,
-                LOCAL [CAT.HEAD.POSS -,
-                     CONT.HOOK.INDEX [COG-ST activ-or-more, SPECI +]]]].
-
-The other changes shown here for the pron-lex are related to sections below, but for completeness the whole IGT is presented here.
-
-
-2. Possessives
-
-The juxtaposition of nouns was implemented with the tdl snipped supplied in the lab. The following tdl was added at the end of our paraguayan_guarani.tdl file:
-
-poss-phrase := head-final &
-  [ SYNSEM.LOCAL.CAT [ HEAD #head & [POSS poss-or-ee],
-           VAL [ SPR < >,
-           COMPS < >,
-           SUBJ < > ] ],
-    C-CONT [ HOOK.INDEX #index,
-       RELS < ! arg12-ev-relation & [ PRED "poss_rel",
-             LBL #lbl,
-             ARG1 #index,
-             ARG2 #poss ],
-       quant-relation & [ PRED "exist_q_rel",
-              ARG0 #index,
-              RSTR #harg ] ! >,
-       HCONS < ! qeq & [ HARG #harg, LARG #lbl ] ! >,
-       ICONS < ! ! > ],
-    HEAD-DTR.SYNSEM.LOCAL [ CAT [ HEAD #head & [POSS poss-ee] & noun,
-          VAL.SPR < [ ] > ],
-          CONT.HOOK [ INDEX #index & [ COG-ST uniq+fam+act ],
-          LTOP #lbl ] ],
-    NON-HEAD-DTR.SYNSEM.LOCAL [ CAT [ HEAD noun & [POSS poss-or],
-              VAL.SPR < > ],
-        CONT.HOOK.INDEX #poss ] ].
-
-This tdl takes a NOM as its head-daughter (possessor) and an NP as non-head-daughter. It contributes also a quantifier (exist_q_rel) for the NOM adn the poss_rel via its C-CONT.RELS. The C-CONT.HOOK exposes the head -daughter's index. There were though an important change, a new feature for the type noun, the feature [POSS poss].
-
-noun:+ [POSS poss].
-
-poss := *top*.
-non-poss := poss.
-poss-or-ee := poss.
-poss-or := poss-or-ee.
-poss-ee := poss-or-ee.
-
-This feature should help us to make distinction between some nouns that can or not be possessor or possessums. This feature was used in the juxtaposition rule from above. So the head daughter has to have the quality of being a possessum and the non-head daughter of being a possessor. 
-The feature [POSS] has a additionally possible value [PSS non-poss]. This feature value helps us to not allow pronouns to go through the juxtaposition rule, as there would be no unification:
-
-pron-noun-lex := no-spr-noun-lex &
-      [SYNSEM [ MODIFIED hasmod,
-                LOCAL [CAT.HEAD.POSS non-poss,
-                     CONT.HOOK.INDEX [COG-ST activ-or-more, SPECI +]]]].
-
-This would allow our desired behaviour to constrain ungrammtical sentences that combine adjective and pronouns under 
-one NP.
-
-Similarly we wanted to guarantee that certain words cannot be possessum but possessor. This is especially true for our nouns like 'wind'. The feature [POSS] with its value [POSS poss-or] would allow for nouns just to be in the position  of possessor or just imply alone (because not in a possessive construction). Therefore we created a lex type for some common-nouns, that would allow this. As we currently have only one inanimate common noun in this category ('wind'), this is the only supertype we would look at, but if the lexicon is expanded, the rule would have to be adjusted to include also animate nouns. So the lex-rule is as follows:
-
-non-poss-com-noun-inam-lex := com-inam-noun-lex & 
-        [SYNSEM.LOCAL.CAT.HEAD.POSS poss-or].
-
-In the lexical entry of 'wind', we redefined its supertype (lexicon.tdl):
-
-yvytu := non-poss-com-noun-inam-lex &
-  [ STEM < "yvytu" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_wind_n_rel" ].
-
-Appart from the juxtaposition, we dealt also with personal pronoun prefixes and nouns ,as a second possessive construction in PG. For that purpose we had to create a new class positional of nouns, where possessive pronouns where possessive pronouns were encoded as affixes. The rule would inherit from one supertype 'infl-only-lex-rule'. The C-CONS.RELS and the C-CONT.HCONS of the rule had to be modeled on the possessive pronouns that are already existent in our lexicon, but dropping the exist-Q-rel aht goes with the possessum, and the associated qeq in the HCONS. C-CONS.ICONS had to be empty. The daughter had to be a common-noun-lex. The following lex-rule was created:
-
-poss-lex-rule-super := infl-add-only-lex-rule &
-  [SYNSEM.LKEYS.ALTKEYREL #altkeyrel,
-   DTR common-noun-lex & [ SYNSEM.LOCAL [ CONT.HOOK [  INDEX #index,  
-              LTOP #lbl  ] ,
-            CAT [ HEAD.POSS poss-or ,
-            VAL.SPR <[OPT +]> ] ]],   
-  C-CONT [ HOOK [INDEX #index, 
-            LTOP #lbl  ],
-    RELS <! arg12-ev-relation &
-          [ PRED "poss_rel",
-            LBL #lbl,
-            ARG1 #index,
-            ARG2 #arg2 ],
-          quant-relation &
-          [PRED "exist_q_rep",
-           ARG0 #arg2,
-           RSTR #harg ],
-          #altkeyrel & noun-relation &
-            [PRED "pron_rel",
-             LBL #lbl2,
-             ARG0 #arg2 & [ COG-ST activ-or-more,
-                SPECI + ] ] !>, 
-  HCONS <! qeq & [ HARG #harg, 
-       LARG #lbl2 ] !>,
-  ICONS <! !>] ].
-
-In order to avoid that words that undergo this prefix construction go again into a possessive construction as possessum, the mother has a [HEAD.POSS poss-or] value. This leads to the same situation we had before with nouns like 'wind' that cannot be possessed. 
-
-Subtypes had to constrain the PNG value of the pron_rel:
-
-1sg-poss-lex-rule := poss-lex-rule-super &
-  [ SYNSEM.LKEYS.ALTKEYREL.ARG0.PNG.PERNUM 1SG ].
-
-2sg-poss-lex-rule := poss-lex-rule-super &
-  [ SYNSEM.LKEYS.ALTKEYREL.ARG0.PNG.PERNUM 2SG ].
-
-3-poss-lex-rule := poss-lex-rule-super &
-  [ SYNSEM.LKEYS.ALTKEYREL.ARG0.PNG.PERNUM 3rd ].
-
-1pl-incl-poss-lex-rule := poss-lex-rule-super &
-  [ SYNSEM.LKEYS.ALTKEYREL.ARG0.PNG.PERNUM 1PL_incl ].
-
-1pl-excl-poss-lex-rule := poss-lex-rule-super &
-  [ SYNSEM.LKEYS.ALTKEYREL.ARG0.PNG.PERNUM 1PL_excl ].
-
-2PL-poss-lex-rule := poss-lex-rule-super &
-  [ SYNSEM.LKEYS.ALTKEYREL.ARG0.PNG.PERNUM 2PL ].
-
-Additionally some entries in the irules.tdl:
-
-2sg-poss-prefix :=
-%prefix (* nde)
-2sg-poss-lex-rule.
-
-3-poss-prefix :=
-%prefix (* i)
-3-poss-lex-rule.
-
-1pl-incl-poss-prefix :=
-%prefix (* nNande)
-1pl-incl-poss-lex-rule.
-
-1pl-excl-poss-prefix :=
-%prefix (* ore)
-1pl-excl-poss-lex-rule.
-
-2pl-poss-prefix :=
-%prefix (* pende)
-2pl-poss-lex-rule.
-
-3. Definiteness and other aspects of discourse status.
-
-As stated in I.3 and II.3 we target determiners and pronouns as the only elements in our current grammar that mark some reference to definitiveness. Following the recommendations and our current understanding of the grammar in PG, we included the following cognitive status to the supertype for determiners:
-
-determiner-lex := basic-determiner-lex & basic-zero-arg & non-mod-lex-item &
-  [ SYNSEM.LOCAL.CAT.VAL [ SPR < >,
-                           COMPS < >,
-                             SUBJ < >,
-         SPEC<[LOCAL.CONT.HOOK.INDEX.COG-ST uniq+fam+act]>]].
-
-As mentioned before, determiners are a syntactic element not original in the Tupi-Guaraní languages, but rather the result of exposure to Spanish. We assume the suggested value uniq+fam+act. For determiners we leave also the SPECI value underspecified. 
-
-In contrast to it, pronouns have a higher degree of specificity, therefore [SPECI +]. Otherwise we take the value 'activ-or-more' as the cognitive-status of pronouns, as equivalent to our understanding of what happens in PG according to our sources. Here the lexical entry for pronouns our tdl file for PG:
-
-pron-noun-lex := no-spr-noun-lex &
-      [SYNSEM [ MODIFIED hasmod,
-                LOCAL [CAT.HEAD.POSS -,
-                     CONT.HOOK.INDEX [COG-ST activ-or-more, SPECI +]]]].
-
-Additionally, the cognitive status value of dropped arguments had to be completed. This is discussed in the next section III.4
-
-4. Argument optionality
-
-Our current grammar provides already bookkeeping of relevant information about dropped arguments of predicates. The cross-markers of verb predicates impose constraints in pernum values of subject and nouns, that even in the case of dropped NP arguments in a sentences, are kept as information in AVM of the predicates, and therefore reflected in the MRS of those predicates.
-
-The grammar also seem to provide already for a cognitive status value for dropped subject arguments, which is also acceptabel for our current understanding of PG grammar, at [COG-ST in-foc].
-
-The grammar though doesn't provide for cognitive status value for the dropped object arguments of our transitive verbs. Therefore we made some changes in the transitive-verb-lex that would record that value.
-
-transitive-verb-lex := verb-lex & transitive-lex-item & completive-aspect-or-perfective-aspect-or-prospective-aspect-rule-dtr & future-aspect-rule-dtr & neg1-rule-dtr & neg2-rule-dtr &
-  [ SYNSEM.LOCAL.CAT.VAL.COMPS < #comps & [OPT-CS in-foc]>,
-    ARG-ST < [ LOCAL.CAT.HEAD +np ],
+Phenomena: {cop, adp}
+Oime kotýpe jaguandi
+oime koty pe jagua ndi
+o-ime koty=pe jagua=ndi
+3.ACT-be.located room=in dog=with
+'He/She is located in the room with the dog'
+
+For this kind of verbs we implemented a new type verb-lexeme, that would take the prepositional phrases as a complement:
+
+
+locative-verb-lex := gug-dyn-loc-verb & trans-first-arg-control-lex-item &
+  [ SYNSEM.LOCAL [ CAT.VAL [ SUBJ < #subj >,
+                             COMPS < #comps >,
+                             SPR < >,
+                             SPEC < >   ],
+                   CONT.HOOK.XARG #xarg ],
+    ARG-ST < #subj &
+             [ LOCAL [ CONT.HOOK.INDEX #xarg,
+                       CAT [ HEAD noun, 
+                             VAL [ SPR < >,
+                                   COMPS < > ],
+                             HEAD noun ] ] ],
              #comps &
-             [ LOCAL.CAT [ VAL [ SPR < >,
-                                 COMPS < > ],
-                           HEAD +np ] ] >,
-    INFLECTED.PERNUM-TRANS-FLAG - ].
+             [ 	OPT -,
+		LOCAL.CAT [ VAL [ COMPS < > ],
+                           HEAD adp & [CASE LOC] ] ] > ].
 
-This is reflected in the [OPT-CS infoc] value, which is taken in the basic-head-opt-compl-phrase rule as the cognitive value for dropped object parameters.
+This type takes the cross-markings of agents in dynamic verbs. Additionally is first argument is a noun phrase, and its second argument a contentfull adposition which identifies with the locative case.
 
+We added also the entry in the lexicon for our non-semantically bleached raising verb, which has a similar use like the Spanish verb ‘star’, close to ‘be+located’ in English:
 
-5. Anything else.
+ime := locative-verb-lex &
+  [ STEM < "ime" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_be+located_v_rel" ].
 
--- Non-possessor Nouns
-Explained above in III.2.
+Additionally, also the lexical entries for our contentful appositions:
 
--- No adjective modifiers for pronouns
-Implemented above in III.1.
+pe2 := contentful-adp-lex & 
+  [ STEM < "pe" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_in_p_rel" ].
 
--- Wrong parses
-We were having some overgeneration and parses that were not delivering the right parse.
-We needed a head-sub/sub-head rule to be able to apply low (in order to get OSV/VSO) and also high to get SOV/VOS. So we needed a constrain to be added so that if the head-subj/sub-head is aplying low, then the complement is not optional. So we created with the help of our instructor a type nonlist, that would say [OPT -]:
+gui := contentful-adp-lex & 
+  [ STEM < "gui" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_from_p_rel" ].
 
-nonolist := list.
-nonocons := nonolist & cons &
-  [ FIRST [ OPT - ],
-    REST  nonolist ].
-nononull := nonolist & null.
+ndi := contentful-adp-lex & 
+  [ STEM < "ndi" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_with_p_rel" ].
 
-We then constrained the COMPS value of head-daughter (or mother) of the head-sub/sub-head rules to be this nonlist:
+which are linked to our grammar through the contentful-adp-lex type:
 
-gug-head-subj-phrase := decl-head-subj-phrase &
-[ SYNSEM.LOCAL.CAT.VAL [COMPS nonolist] ].
+contentful-adp-lex := basic-int-mod-adposition-lex
+[ SYNSEM.LOCAL.CAT [ HEAD adp & [CASE LOC,
+                                 MOD <[ LOCAL.CAT[ MC na, 
+                                                   HEAD verb,
+                                                   VAL [SUBJ < >]],
+                                        L-PERIPH +] > ],
+                       VAL [ SPR < >,
+                             COMPS < #comps >,
+                             SPEC < >, 
+                             SUBJ < > ]  ],
+    ARG-ST < #comps & [ OPT -,
+                        LOCAL.CAT[ HEAD +np,
+                                   VAL [SPR < >] ] ] > ].
 
-head-subj-phrase := gug-head-subj-phrase & head-initial-head-nexus.
+This lexical type then unifies with other elements of a sentence forming prepositional phrases that are either modifiers (like in the first two IGTs shown here) as a contentful complement of locative verbs.
 
-subj-head-phrase := gug-head-subj-phrase & head-final-head-nexus.
-
-
-The first application of this new type had actually a 'unexpressed' element, which was also causing some ambiguous parsing not to occur (OSV was not happening, while SOV was parsing):
-
-nonolist := list.
-nonocons := nonolist & cons &
-  [ FIRST unexpressed & [ OPT - ],
-    REST  nonolist ].
-nononull := nonolist & null.
-
-Therefore the 'unexpressed' element was taken out in the final version, shown some lines above. 
-
-
-IV. If the analysis is not fully working, a description of the problems you are encountering.
-
-1. Adjectival and adverbial modifiers.
-Implementation is working according to the expectations of our analysis and data available.
-
-2. Possessives
-Implementation is working according to the expectations of our analysis and data available. We missed to be able to make the distinction between alienable and inalienable nouns for the possessive constructions. After creating the Feature [POSS poss] used in our implementation above, we feel that in a coming week we might be closer to reflect the possibility in our sentences if time allows.
-
-3. Definiteness and other aspects of discourse status.
-Implementation is working according to the expectations of our analysis and data available.
-
-4. Argument optionality
-Reflexives are not part of grammar, but nevertheless they slipped in the overgeneration of arguments that our transitive verbs can generate in some of the cross-marker combinations. Cross-markers on predicates do not limit parse reflexivity, but the grammar in PG has a distinctive way to mark the reflexive arguments and predicate with which they are related. As we are not dealing with reflexive predicates in this course, we will ignore the overgeneration, as this is in it self not a wrong behaviour of our predicate, but rather an underuse of proper markers that would make such a sentence complete.
-
-5. Anything else.
-Implementation is working according to the expectations of our analysis and data available.
+There are some aspects of our implementation that don’t reflect the full reality of prepositional predicates. They currently act as modifiers or complements of verbal and noun predicates. They can though also be complements of noun phrases that do not need to be predicative. This is not what our grammar does. This would require to change the MOD value of our locative adpositions. We leave this idea for a future intend, when time and workload allows for it.
 
 
-V. Statement of the current overage of the grammar over your testsuite (using number you can get from Analyze|Coverage and Analyze|Overgeneration in [incr tsdb()]) and a comparison between your baseline testsuite run and your final one for this lab (see Compare|Competence).
+4. Anything else.
+Guarani has ditransitive verbs, and there are several examples present in our test suite. It seems that its implementation is not planned during this course. Nevertheless we gathered some information about its possible implementation, which hopefully will be possible when the workload allows it.
+There is a ditransitive-verb-item, that needs to combine with the verb supertype, which allows us to build a ditransitive verb type. Our first attempt looks as follows:
 
---General Stats
+	ditransitive-verb-lex := verb-lex & ditransitive-lex-item & 
+                          completive-aspect-or-perfective-aspect-or-prospective-aspect-rule-dtr & 
+                          future-aspect-rule-dtr & neg1-rule-dtr & neg2-rule-dtr &
+  		[ SYNSEM.LOCAL.CAT.VAL.COMPS < #comps1 & [OPT-CS in-foc], #comps2 & [OPT-CS in-foc]>,
+    			ARG-ST <[LOCAL.CAT.HEAD +np],
+    			#comps1 & [LOCAL.CAT [VAL [SPR<>, COMPS<>],
+                          		HEAD [+np, CASE ACC]],
+                    	#comps2 & [LOCAL.CAT [ VAL [ SPR < >, COMPS < > ],
+                                      HEAD [+np, CASE DAT] ] ] >,
+    		  INFLECTED.PERNUM-TRANS-FLAG - ].
 
-Analyze | Coverage
-	Total Items: 194
-	Positive Items: 122 
-	Word String 0: 2.70
-	Lexical Items 0: 4.07
-	Distinct Analyses: 1.36
-	Total Results: 89
-	Overall Coverage: 73.0
+We recorded also the possible lexicon entries for our ditransitive verbs:
 
-Analyze | Overgeneration
-	Total Items: 194
-	Negative Items: 72
-	Word String 0: 2.89
-	Lexical Items 0: 4.12
-	Distinct Analyses: 1
-	Total Results: 1
-	Overall Coverage: 1.4
+		hechauka := ditransitive-lex-item &
+   			[STEM<"hechauka">,
+    	  		 SYNSEM.LKEYS.KEYREL.PRED "_show_v_rel"].
 
-Comparison ob baseline(gold) and final version of this lab
+ 		meHeN := ditransitive-lex-item &
+   			[STEM<"meHeN">,
+    		         SYNSEM.LKEYS.KEYREL.PRED "_give_v_rel"].
 
-	Baseline
-		lexical 0:  1.25
-		analyses 0: 1.26
-		in 0:       59.0
-		out 0:      2.8
+The ditransitive uses also the marker =pe for [CASE dat] arguments, but different to similar looking accusative marker, the dative marker is in those cases obligatory. This means that we will have to implement this as a different =pe.
 
-	New
-		lexical 0:  1.35
-		analyses 0: 1.36
-		in 0:       73.0
-		out 0:      1.4
 
-These numbers point to two results: First the coverage of the grammar increased from 59% to 73%, which makes sense as several phenomenon that were in the testsuite can finally being displayed. Second, the overgeneration decreased, from 2.8% to 1.4%. Our grammar was previously very precise due to the fact that we used relatively short sentences. We think that the major effect of this decrease is due to the elimination of wrong parses that the grammar was generating before the added some constraints to the head-subj/subj-head rule in combination with object-drop interpretation of some parses.
-
-When inspecting the comparison of ill-formed sentences, we found 4 sentences. Three of them were not previously parsing because of their missing lexicon, but still would not generate a parse, because they represented ungrammatical sentences. This is a positive  result. Then the fourth sentence (#177) was previously parsing under the older grammar, but not now. The sentence is ungrammatical, as it displays the wrong use of an adjective on a pronoun. Therefore this evolution in the results is also correct. 
-
-When inspecting the well-formed sentences, we had 32 sentences that had improvements. Five sentences that did not parse because lack of lexicon in a new grammatical feature (adjectival, adverbial constructions, prefix markings for possessives), were able to parse. 6 sentences double their number of parses because possessive juxtaposition was added to the grammar. 11 sentences got a parse for the first time, because we were able to add possessive prefixes to nouns. 3 sentences decreased their number of parses because we implemented a better use of head-sub/sub-head rules. 4 sentences increased their parses because the possessive juxtapostion of nouns works now. Two sentences increased their number of parses because of ambiguous readings the the sentential juxtaposition and the possessive prefixes allow.
-
-These results reflect our expectations in the changes we did in the grammar this week.
-
-VI. Describe briefly your test corpus, including: where you collected it, how many sentences it contains, and what format (transliterated, etc) it is in. The corpus was extracted from a thesis work from Judith Tonahauser: The Temporal Semantics of Noun Phrases: Evidence FROM Guarani. She presented an appendix with two stories told by a native speaker. We selected the story "A Bo, a Dog and a Frog", which was glossed and translated to English. We took the first 21 sentences of this story. Therefore all sentences are all continuously following one after the other. We formatted the senteces using the standard of our test suites. Here as an examples the first sentece in our corpus:
-
-#Sentence.1
-Source: a, attested
-Vetted: t
-Judgment: g
-Phenomena: corpus
-Oi᷉ndaje raka'e petei᷉ mita᷉ tyre'y᷉ ohayhuva mymbakuérape.
-oiNndaje    rakaHe peteiN  mitaN  tyreHyN ohayhuva    mymbakueArape
-o-iNndaje   rakaHe peteiN  mitaN  tyreHyN o-hayhu-va  mymba-kueAra pe
-A.3-be.say  PAST   one     child  orphan  A3-love-RC  wild.animal-PL ACC
-'There once was an orphan who loved animals.'
-
-Each sentence is numbered separately. The original source is indexed as 'a', but mentioned in the corpus file. All the sentences are attested and vetted by a native speaker. Therefore we assume them to be grammatical.
-
-The five sentences of the IGT represent: 	
-1.- the natural use in the original orthography of the language
-2.- the equivalent sentence after a morphological analysis and change of characters into our used ASCII 
-3.- the sentence separating relevant affixes from each word
-4.- the glosses and word-by-word translation of the sentence
-5.- the general English translation of the sentence.
-
-The glosses were revised to correspond to the glosses used in our grammar, and to reflect current standards used in the field.
+5. Statement of the current overage of the grammar over your testsuite (using number you can get from Analyze|Coverage and Analyze|Overgeneration in [incr tsdb()]) and a comparison between your baseline testsuite run and your final one for this lab (see Compare|Competence).
