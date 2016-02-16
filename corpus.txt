@@ -12,9 +12,9 @@ Vetted: t
 Judgment: g
 Phenomena: corpus
 Oi᷉ndaje raka'e petei᷉ mita᷉ tyre'y᷉ ohayhuva mymbakuérape.
-oiNndaje    rakaHe peteiN  mitaN  tyreHyN ohayhuva    mymbakueArape
-o-iNndaje   rakaHe peteiN  mitaN  tyreHyN o-hayhu-va  mymba-kueAra pe
-A.3-be.say  PAST   one     child  orphan  A3-love-RC  wild.animal-PL ACC
+oiNndaje    rakaHe peteiN  mitaN  tyreHyN ohayhuva    mymbakueAra pe
+o-iNndaje   rakaHe peteiN  mitaN  tyreHyN o-hayhu-va  mymba-kueAra=pe
+A.3-be.say  PAST   one     child  orphan  A3-love-RC  wild.animal-PL=ACC
 'There once was an orphan who loved animals.'
 
 #Sentence.2
@@ -34,8 +34,8 @@ Vetted: t
 Judgment: g
 Phenomena: corpus
 Petei᷉ jey he'i hymba jaguape:
-peteiN jey  oe      iymba          jaguape
-peteiN jey  o-e     i-ymba         jagua pe
+peteiN jey  oe      iymba          jagua pe
+peteiN jey  o-e     i-ymba         jagua=pe
 one    time A.3-say O.3-pet.animal dog DAT
 'One time, he said to his dog:'
 
@@ -67,10 +67,10 @@ Vetted: t
 Judgment: g
 Phenomena: corpus
 Og᷉uahevo y rembe'ype omboguejy imba'eyryrukuéra ha ojupi yvyra raka᷉me oma'ehagua᷉ mba'eichagua mymbapa otopata y kostare.
-ogNuahevo      y    rembeHype  omboguejy       imbaHeyryrukueAra    ha   ojupi    yvyra rakaNme    omaHehaguaN      mbaHeichagua   mymbapa       otopata     y     kostare
-o-gNuahe-vo    y    rembeHy=pe o-mbo-guejy     i-mbaHe-yryru-kueAra ha   o-jupi   yvyra rakaN-me   o-maHe-ha-guaN   mbaHe-icha-gua mymba-pa      o-topa-ta   y     kosta-re
+ogNuahevo y rembeHype  omboguejy  imbaHeyryrukueAra    ha   ojupi    yvyra rakaNme    omaHehaguaN      mbaHeichagua   mymbapa       otopata     y     kostare
+o-gNuahe-vo  y    rembeHy=pe o-mbo-guejy  i-mbaHe-yryru-kueAra ha   o-jupi   yvyra rakaN-me   o-maHe-ha-guaN   mbaHe-icha-gua mymba-pa      o-topa-ta   y     kosta-re
 A.3-arrive-AT water bank=LOC   A.3-CAUS-descend O.3-thing-bucket-PL    and  A.3-climb tree  branch-LOC A.3-look-NOM-PURP think-like-of  wild.animal-Q A.3-find-FUT water side-BY
-'When they arrived at the bank of a lake, the put down their things and climbed onto a branch to see which kinds of animals they would see at the bord of the water.'
+'When they arrived at the bank of a lake, they put down their things and climbed onto a branch to see which kinds of animals they would see at the side of the water.'
 
 #Sentence.7
 Source: a, attested
