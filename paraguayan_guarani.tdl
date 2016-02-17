@@ -911,7 +911,7 @@ mc-na-headed-phrase := headed-phrase &
 same-ec-unary-phrase := headed-phrase &
   [ SYNSEM.LOCAL.CAT [ EC #ec,
                        IC #ic],
-    HEAD-DT.SYNSEM.LOCAL.CAT [ EC #ec,
+    HEAD-DTR.SYNSEM.LOCAL.CAT [ EC #ec,
                                IC #ic] ].
 
 same-periph-unary-phrase := unary-phrase.
@@ -945,16 +945,15 @@ gug-head-opt-comp-phrase := basic-head-opt-comp-phrase & YNQ-contrains-phrase &
   			[ SYNSEM.LIGHT -].
 
 
-basic-head-comp-phrase :+ [ SYNSEM.LOCAL.CAT [ EC #ec, 
-                                               IC #ic ],
-                            HEAD-DTR.SYNSEM.LOCAL.CAT [EC #ec,
-                                                       IC #ic ]].
+;basic-head-comp-phrase :+ [ SYNSEM.LOCAL.CAT [ EC #ec, 
+;                                               IC #ic ],
+;                            HEAD-DTR.SYNSEM.LOCAL.CAT [EC #ec,
+;                                                       IC #ic ]].
 
-basic-head-subj-phrase :+ [  SYNSEM.LOCAL.CAT [ EC #ec, 
-                                               IC #ic ],
-                            HEAD-DTR.SYNSEM.LOCAL.CAT [EC #ec,
-                                                       IC #ic ]].
-
+;basic-head-subj-phrase :+ [ SYNSEM.LOCAL.CAT [ EC #ec, 
+;                                               IC #ic ],
+;                            HEAD-DTR.SYNSEM.LOCAL.CAT [EC #ec,
+;                                                       IC #ic ]].
 
 basic-head-opt-comp-phrase :+
  [ SYNSEM [ L-PERIPH #periph,
@@ -991,19 +990,34 @@ head-final-head-nexus := head-final &
 gug-head-subj-phrase := decl-head-subj-phrase &
         [ SYNSEM.LOCAL.CAT.VAL [COMPS nonolist] ].
 
-head-subj-phrase := gug-head-subj-phrase & head-initial-head-nexus.
+head-subj-phrase := gug-head-subj-phrase & head-initial-head-nexus &
+                    [ SYNSEM.LOCAL.CAT [ EC #ec, 
+                                         IC #ic ],
+                      HEAD-DTR.SYNSEM.LOCAL.CAT [EC #ec,
+                                                 IC #ic ]].
 
-subj-head-phrase := gug-head-subj-phrase & head-final-head-nexus.
 
+subj-head-phrase := gug-head-subj-phrase & head-final-head-nexus &
+                    [ SYNSEM.LOCAL.CAT [ EC #ec, 
+                                         IC #ic ],
+                      NON-HEAD-DTR.SYNSEM.LOCAL.CAT [EC #ec,
+                                                     IC #ic ]].
 
 ; The head of head-comp-phrase can't be: ['adp']
 
 head-comp-phrase := basic-head-1st-comp-phrase & head-initial-head-nexus &
-  [ SYNSEM.LOCAL.CAT.HEAD +nvjrcdmo].
+                   [ SYNSEM.LOCAL.CAT[ HEAD +nvjrcdmo, 
+                                       EC #ec,
+                                       IC #ic ], 
+                     HEAD-DTR.SYNSEM.LOCAL.CAT [EC #ec,
+                                                IC #ic ]].
    
 
-comp-head-phrase := basic-head-1st-comp-phrase & head-final-head-nexus. 
-
+comp-head-phrase := basic-head-1st-comp-phrase & head-final-head-nexus & 
+                   [ SYNSEM.LOCAL.CAT[ EC #ec,
+                                       IC #ic ], 
+                     NON-HEAD-DTR.SYNSEM.LOCAL.CAT [EC #ec,
+                                                IC #ic ]].
 
 head-comp-phrase-2 := basic-head-2nd-comp-phrase & head-initial-head-nexus.
 
