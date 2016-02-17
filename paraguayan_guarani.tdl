@@ -869,7 +869,7 @@ int-cl := head-only-int-decl-clause & interrogative-clause &
   [ SYNSEM [ LOCAL.CAT [ VAL #val & [SUBJ< >, COMPS< >, SPR< >], MC bool, IC #ic],
              NON-LOCAL.YNQ <! !> ],
     HEAD-DTR.SYNSEM [ LOCAL.CAT [ IC +, MC na, VAL #val, HEAD verb, IC #ic],
-                    NON-LOCAL.YNQ <! *top* !> ]].
+                    NON-LOCAL[YNQ <! *top* !>, QUE < !! > ]]].
 
 
 
@@ -1127,3 +1127,26 @@ s2-bottom-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
 s3-top-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
  			RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ,LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
 s3-bottom-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], NONCONJ-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
+
+;; WH phrasal rules
+
+basic-head-filler-phrase :+
+   [ ARGS < [ SYNSEM.LOCAL.COORD - ], [ SYNSEM.LOCAL.COORD - ] > ].
+
+wh-ques-phrase := basic-head-filler-phrase & interrogative-clause & 
+		  head-final &
+   [ SYNSEM.LOCAL.CAT [ MC bool,
+			VAL #val,
+			HEAD verb ],
+     HEAD-DTR.SYNSEM.LOCAL.CAT [ MC na,
+				 VAL #val & [ SUBJ < >,
+					      COMPS < > ] ],
+     NON-HEAD-DTR.SYNSEM.NON-LOCAL.QUE < ! ref-ind ! > ].
+			
+
+extracted-comp-phrase := basic-extracted-comp-phrase &
+  [ SYNSEM.LOCAL.CAT.HEAD verb ].
+
+extracted-subj-phrase := basic-extracted-subj-phrase &
+  [ SYNSEM.LOCAL.CAT.HEAD verb ].
+
