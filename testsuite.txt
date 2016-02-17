@@ -115,9 +115,9 @@ Source: author
 Vetted: f
 Judgment: g
 Phenomena: adp
-yvyra oime vatitýpe roAgape
-yvyra oime vatityA pe roAga pe
-yvyra o-ime vatityA=pe roAga=pe
+yvyra oime avatitýpe roAgape
+yvyra oime avatityA pe roAga pe
+yvyra o-ime avatityA=pe roAga=pe
 tree A.3-be+located cornfield=in house=in
 'The tree is located in the cornfield in (near) the house'
 
@@ -2235,4 +2235,37 @@ aikuua ohecha ha juHi vakaA
 a-ikuua o-hecha=ha juHi vakaA
 A.1SG-know A.3-see=COMPL frog cow
 'I know that somebody sees the frog's cow' / ' I know that the frog's cow sees it' / 'I know that the frog sees the cow' / 'I know that the cow sees the frog'
+
+#Ex.203: Negated intransitive verb.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: neg
+jagua ndojerokyi
+jagua ndojerokyi
+jagua nd-o-jeroky-i
+dog NEG-A.3-dance-NEG
+'The dog doesn’t dance'
+
+#Ex.204: Negated intransitive verb. Incomplete negation circumfix. Missing prefix.
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: neg
+jagua jerokyi
+jagua jerokyi
+jagua o-jeroky-i
+dog NEG-A.3-dance-NEG
+*'The dog doesn’t dance'
+
+#Ex.204: Negated intransitive verb. Incomplete negation circumfix. Missing sufffix.
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: neg
+jagua ndojeroky
+jagua ndojeroky
+jagua nd-o-jeroky
+dog NEG-A.3-dance-NEG
+*'The dog doesn’t dance'
 

@@ -1,5 +1,7 @@
 ;;; -*- Mode: TDL; Coding: utf-8 -*-
 
+scopal-mod := gug-scopal-mod-phrase.
+
 n-bar-predicate := n-bar-predicate-rule.
 
 int-cl := int-cl.
