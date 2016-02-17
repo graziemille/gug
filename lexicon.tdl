@@ -145,6 +145,18 @@ sy_1 := com-anim-human-noun-lex &
   [ STEM < "sy" >,
     SYNSEM.LKEYS.KEYREL.PRED "_mother_n_rel" ].
 
+;; WH pronouns
+
+mbaHeA := wh-pronoun-noun-lex &
+  [ STEM < "mbaHea" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_thing_n_rel" ].
+
+maAva := wh-pronoun-noun-lex &
+  [ STEM < "maAva" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_person_n_rel" ].
+
+
+
 ;;; Adjectives
 
 poraN_2 := attributive-adj-lex &
