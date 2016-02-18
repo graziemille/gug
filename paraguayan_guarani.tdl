@@ -813,10 +813,10 @@ pros-asp-lex-rule := prospective-aspect-lex-rule-super &
 ;;;;;;;;;;;;;;;;;;;
 
 gug-scopal-mod-phrase := basic-head-mod-phrase-simple & head-final & head-compositional &
-  [ SYNSEM.LOCAL.CAT.MC na,
-    HEAD-DTR.SYNSEM.LOCAL.CAT [ EC -, 
-                                IC -, 
-                                MC na,
+  [ SYNSEM.LOCAL.CAT [ MC na,
+                       EC -, 
+                       IC -],  
+    HEAD-DTR.SYNSEM.LOCAL.CAT [ MC na,
                                 HEAD verb & [MOD < >],
                                 VAL [ SPEC < >, 
                                       SPR < >, 
