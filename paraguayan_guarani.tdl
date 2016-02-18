@@ -576,7 +576,7 @@ poss-lex-rule-super := infl-add-only-lex-rule &
 			  ARG1 #index,
 			  ARG2 #arg2 ],
 			quant-relation &
-			[PRED "exist_q_rep",
+			[PRED "exist_q_rel",
 			 ARG0 #arg2,
 			 RSTR #harg ],
 			#altkeyrel & noun-relation &
