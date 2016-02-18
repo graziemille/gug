@@ -2,6 +2,10 @@
 
 wh-ques := wh-ques-phrase.
 
+ex-comp := extracted-comp-phrase.
+
+ex-subj := extracted-subj-phrase.
+
 n-bar-predicate := n-bar-predicate-rule.
 
 int-cl := int-cl.
