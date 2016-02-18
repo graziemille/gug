@@ -1,5 +1,7 @@
 ;;; -*- Mode: TDL; Coding: utf-8 -*-
 
+scopal-mod := gug-scopal-mod-phrase.
+
 wh-ques := wh-ques-phrase.
 
 ex-comp := extracted-comp-phrase.

@@ -173,12 +173,20 @@ cat :+ [EC bool, IC bool].
 
 ;;; Nouns
 
+
+;; proper noun subtype added as a subtype of common noun since many of the same rules as for non possible common nouns apply except for the fact that they are SPR < > and cannot 
+
 ;; subtype added to deal with nouns that cannot be possessed.
+non-poss-com-noun-lex :=  common-noun-lex & 
+ [SYNSEM.LOCAL.CAT.HEAD.POSS poss-or].
 
-non-poss-com-noun-inam-lex := com-inam-noun-lex & 
-        [SYNSEM.LOCAL.CAT.HEAD.POSS poss-or].
+;; category for wind
+non-poss-com-inam-noun-lex := non-poss-com-noun-lex & com-inam-noun-lex.
 
-noun-lex := basic-noun-lex & basic-one-arg & no-hcons-lex-item & non-mod-lex-item &
+;; category for proper-nouns
+proper-noun-lex := non-poss-com-noun-lex & no-spr-noun-lex & com-anim-noun-lex & named-relation.
+
+noun-lex := basic-noun-lex & basic-one-arg & no-hcons-lex-item & non-mod-lex-item & 
   [ SYNSEM.LOCAL.CAT [  EC -, 
                         IC -,
                         VAL [ SPR < #spr &
@@ -382,7 +390,6 @@ dynamic-intrans-verb-lex := gug-dyn-loc-verb & intrans-verb-lex & completive-asp
 
 ;;Adding clause complement verb lexemes
 
-
 cl-verb-lex:= gug-dyn-loc-verb &  clausal-second-arg-trans-lex-item &
     [SYNSEM.LOCAL.CAT.VAL.COMPS <#comps>,
      ARG-ST.REST.FIRST #comps].
@@ -401,6 +408,13 @@ decl-cl-verb-lex:= cl-verb-lex &
 					             VAL.COMPS < > ],
 					             CONT.HOOK.INDEX.SF prop ]]>].
 
+;;New verb features
+
+trans-verb-lex:+ [SYNSEM.LOCAL.CAT [EC -,
+                                    IC -]].
+                                    
+intrans-verb-lex: + [SYNSEM.LOCAL.CAT [EC -,
+                                       IC - ]].
 
 ;;; Adjectives
 
@@ -431,6 +445,17 @@ attr-only-adj-lex := attr-adj-lex &
                        VAL.SUBJ < > ] ].
 
 ;;; Others
+
+;;; Scopal-modifiers
+scopal-lex := scopal-mod-lex & norm-sem-lex-item &
+  [ SYNSEM.LOCAL.CAT [  HEAD adv,
+                        EC -, 
+                        IC -,
+                        VAL [ SPR <  >,
+                              COMPS < >,
+                              SUBJ < >,
+                              SPEC < > ]]].
+
 
 ;;; Case-marking adpositions
 ;;; Case marking adpositions are constrained not to
@@ -787,8 +812,32 @@ pros-asp-lex-rule := prospective-aspect-lex-rule-super &
 ;;; Phrasal Types
 ;;;;;;;;;;;;;;;;;;;
 
+gug-scopal-mod-phrase := basic-head-mod-phrase-simple & head-final & head-compositional &
+  [ SYNSEM.LOCAL.CAT.MC na,
+    HEAD-DTR.SYNSEM.LOCAL.CAT [ EC -, 
+                                IC -, 
+                                MC na,
+                                HEAD verb & [MOD < >],
+                                VAL [ SPEC < >, 
+                                      SPR < >, 
+                                      SUBJ < >, 
+                                      COMPS < >]],
+    NON-HEAD-DTR.SYNSEM.LOCAL [ CAT [ HEAD adv & [ MOD < [ LOCAL scopal-mod ] >],
+                                      VAL [SPR < >, SUBJ < >, COMPS < >]],
+                                      CONT.HOOK #hook ],
+    C-CONT [ HOOK #hook,
+       HCONS <! !>,
+       ICONS <! !> ] ].
+
+
 
 head-adj-int-phrase :+ [SYNSEM.LOCAL.CAT.MC na].
+
+head-adj-int-phrase :+ 
+    [ SYNSEM.LOCAL.CAT [ EC #ec, 
+                         IC #ic ],
+     NON-HEAD-DTR.SYNSEM.LOCAL.CAT [ EC #ec,
+                                      IC #ic ]].
 
 head-spec-phrase := basic-head-spec-phrase & head-final & 
   [ SYNSEM.LOCAL.CAT [ EC #ec,
@@ -853,6 +902,7 @@ basic-unary-int-decl-cl-phrase := phrase &
 					       LAST #scmiddle ],
 				       ICONS [ LIST #icfirst,
 					       LAST #icmiddle ] ] ] ] ] > ].
+
 unary-int-decl-cl-phrase := basic-unary-int-decl-cl-phrase &
   [ INFLECTED infl-satisfied,
     ARGS < [ INFLECTED infl-satisfied ] > ].
@@ -860,7 +910,6 @@ unary-int-decl-cl-phrase := basic-unary-int-decl-cl-phrase &
 head-only-int-decl-clause := unary-int-decl-cl-phrase & headed-phrase &
   [ HEAD-DTR #head,
     ARGS < #head > ].
-
 
 
 ;; ading int and decl clauses 
@@ -871,7 +920,6 @@ int-cl := head-only-int-decl-clause & interrogative-clause &
              NON-LOCAL.YNQ <! !> ],
     HEAD-DTR.SYNSEM [ LOCAL.CAT [ MC na, VAL #val, HEAD verb, IC +],
                     NON-LOCAL[YNQ <! *top* !>, QUE < !! > ]]].
-
 
 decl-cl := head-only-int-decl-clause & declarative-clause & 
   [ SYNSEM.LOCAL.CAT [ VAL #val & [SUBJ< >, COMPS< >, SPR< >], MC bool, EC #ec],
@@ -927,11 +975,6 @@ basic-head-opt-subj-phrase:+ YNQ-contrains-phrase &
      ARGS < [ SYNSEM.LOCAL.CAT [ EC #ec,
                                  IC #ic ] ]> ].
 
-head-adj-int-phrase :+ 
-    [ SYNSEM.LOCAL.CAT [ EC #ec, 
-                         IC #ic ],
-     NON-HEAD-DTR.SYNSEM.LOCAL.CAT [ EC #ec,
-                                      IC #ic ]].
 
 YNQ-contrains-phrase := same-periph-unary-phrase & same-ynq-unary-phrase & 
 			mc-na-headed-phrase & same-ec-unary-phrase.
@@ -963,10 +1006,7 @@ basic-head-opt-comp-phrase :+
                               LOCAL.CAT [ EC #ec,
                                           IC #ic  ] ] ] > ].
  
-trans-verb-lex:+ [SYNSEM.LOCAL.CAT [EC -,
-                                    IC -]].
-intrans-verb-lex: + [SYNSEM.LOCAL.CAT [EC -,
-                                       IC - ]].
+
 
 
  
@@ -981,8 +1021,6 @@ head-final-head-nexus := head-final &
   [ SYNSEM.ATTACH rmod ].
 
 ; constrains related to YNQ
-
-
 
 ;intermediate type added to force order of rule application between
 ;Basic-Head-OPT-COMP and any head-subj / subj-head rules
