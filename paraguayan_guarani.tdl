@@ -327,8 +327,8 @@ locative-verb-lex := gug-dyn-loc-verb & trans-first-arg-control-lex-item &
 verb-lex := basic-verb-lex & non-mod-lex-item &
   [ SYNSEM.LOCAL [ CAT [ MC na,
 			 VAL [ SPR < >,
-                             SPEC < >,
-                             SUBJ < #subj > ] ],
+			       SPEC < >,
+			       SUBJ < #subj > ] ],
                    CONT.HOOK.XARG #xarg ],
     ARG-ST.FIRST #subj &
                  [ LOCAL [ CAT.VAL [ SPR < >,
@@ -345,10 +345,10 @@ intransitive-verb-lex := intransitive-lex-item &
 transitive-verb-lex := verb-lex & transitive-lex-item & completive-aspect-or-perfective-aspect-or-prospective-aspect-rule-dtr & future-aspect-rule-dtr & neg1-rule-dtr & neg2-rule-dtr &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS < #comps & [OPT-CS in-foc]>,
     ARG-ST < [ LOCAL.CAT.HEAD +np ],
-             #comps &
+	       #comps &
              [ LOCAL.CAT [ VAL [ SPR < >,
                                  COMPS < > ],
-                           HEAD +np ] ] >,
+			   HEAD +np ] ] >,
     INFLECTED.PERNUM-TRANS-FLAG - ].
 
 ;;Attempt for ditransitive-verb-lex
@@ -397,16 +397,16 @@ cl-verb-lex:= gug-dyn-loc-verb &  clausal-second-arg-trans-lex-item &
 int-cl-verb-lex:= cl-verb-lex &
     [SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL [ CAT [ IC +,
                                                   HEAD verb,
-					                                        VAL [ COMPS < >, 
-                                                  SUBJ < > ] ],
-					                                  CONT.HOOK.INDEX.SF ques ]]>].
+						  VAL [ COMPS < >, 
+							SUBJ < > ] ],
+					    CONT.HOOK.INDEX.SF ques ]]>].
 
 decl-cl-verb-lex:= cl-verb-lex &
     [ SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL [ CAT [ EC +,
                                                    IC -,
- 					             HEAD verb,
-					             VAL.COMPS < > ],
-					             CONT.HOOK.INDEX.SF prop ]]>].
+						   HEAD verb,
+						   VAL.COMPS < > ],
+					     CONT.HOOK.INDEX.SF prop ]]>].
 
 ;;New verb features
 
@@ -475,17 +475,17 @@ case-marking-adp-lex :=  basic-one-arg & raise-sem-lex-item &
     ARG-ST < #comps &
              [ LOCAL.CAT [ VAL.SPR < >,
                            HEAD noun &
-                                [ CASE #case,
-                                  CASE-MARKED - ] ] ] > ].
+			     [ CASE #case,
+			       CASE-MARKED - ] ] ] > ].
 
 contentful-adp-lex := basic-int-mod-adposition-lex
   [ SYNSEM.LOCAL.CAT [  EC - , 
                         IC - ,
                         HEAD adp & [CASE LOC,
-                                 MOD <[ LOCAL.CAT[ MC na, 
-                                                   HEAD verb,
-                                                   VAL [SUBJ < >]],
-                                        L-PERIPH +] > ],
+				    MOD <[ LOCAL.CAT[ MC na, 
+						      HEAD verb,
+						      VAL [SUBJ < >]],
+					   L-PERIPH +] > ],
                        VAL [ SPR < >,
                              COMPS < #comps >,
                              SPEC < >, 
@@ -499,11 +499,14 @@ contentful-adp-lex := basic-int-mod-adposition-lex
 
 question-clitic-lex := no-hcons-lex-item &
  [ SYNSEM [ LOCAL [ CAT [ IC +, 
-                          VAL [ SPR < >, COMPS < >, SUBJ < >, SPEC < >],
+                          VAL [ SPR < >, 
+				COMPS < >, 
+				SUBJ < >, 
+				SPEC < >],
                           HEAD adj & [ MOD < [ LIGHT +,
                                                L-PERIPH +,
-				                                       LOCAL intersective-mod] > ]],
-                                               CONT.RELS <! !> ],
+					       LOCAL intersective-mod] > ]],
+		    CONT.RELS <! !> ],
             NON-LOCAL.YNQ <! *top* !>  ]].
 
 compl-clitic-lex := no-hcons-lex-item &
@@ -556,28 +559,28 @@ pred-noun-lex-rule-super := constant-lex-rule & neg1-rule-dtr & neg2-rule-dtr &
 poss-lex-rule-super := infl-add-only-lex-rule &
 	[SYNSEM.LKEYS.ALTKEYREL #altkeyrel,
 	DTR common-noun-lex & [ SYNSEM.LOCAL [ CONT.HOOK [  INDEX #index,  
-              LTOP #lbl  ] ,
-            CAT [ HEAD.POSS poss-or ,
-            VAL.SPR <[OPT +]> ] ]],  
-	C-CONT [ HOOK [INDEX #index, 
+							    LTOP #lbl  ] ,
+					       CAT [ HEAD.POSS poss-or ,
+						     VAL.SPR <[OPT +]> ] ]],  
+	 C-CONT [ HOOK [INDEX #index, 
             LTOP #lbl  ],
-  	RELS <! arg12-ev-relation &
-          [ PRED "poss_rel",
-            LBL #lbl,
-            ARG1 #index,
-            ARG2 #arg2 ],
-          quant-relation &
-          [PRED "exist_q_rep",
-           ARG0 #arg2,
-           RSTR #harg ],
-          #altkeyrel & noun-relation &
-            [PRED "pron_rel",
-             LBL #lbl2,
-             ARG0 #arg2 & [ COG-ST activ-or-more,
-                SPECI + ] ] !>, 
-  	HCONS <! qeq & [ HARG #harg, 
-       			LARG #lbl2 ] !>,
-  	ICONS <! !>] ].
+		  RELS <! arg12-ev-relation &
+			[ PRED "poss_rel",
+			  LBL #lbl,
+			  ARG1 #index,
+			  ARG2 #arg2 ],
+			quant-relation &
+			[PRED "exist_q_rep",
+			 ARG0 #arg2,
+			 RSTR #harg ],
+			#altkeyrel & noun-relation &
+			[PRED "pron_rel",
+			 LBL #lbl2,
+			 ARG0 #arg2 & [ COG-ST activ-or-more,
+					SPECI + ] ] !>, 
+		  HCONS <! qeq & [ HARG #harg, 
+				   LARG #lbl2 ] !>,
+		  ICONS <! !>] ].
 
 1sg-poss-lex-rule := poss-lex-rule-super &
   [ SYNSEM.LKEYS.ALTKEYREL.ARG0.PNG.PERNUM 1SG ].
@@ -855,24 +858,28 @@ n-bar-predicate-rule := unary-phrase & nocoord &
                           VAL [ SPEC < >,
                                 SPR  < >,
                                 COMPS < >,
-           SUBJ < > ] ]],
+				SUBJ <[ LOCAL [ CONT.HOOK.INDEX #arg1,
+					      CAT [ HEAD noun,
+						    VAL.SPR < > ] ] ] > ] ]],
     C-CONT [ HOOK [ LTOP #ltop,
-        INDEX #index],
-       RELS <! arg12-ev-relation &
-       [ PRED "_be_v_id_rel",
-         LBL #ltop,
-         ARG0 #index,
-         ARG2 #arg2 ],
-       quant-relation &
-       [ PRED "exist_q_rel",
-         ARG0 #arg2,
-         RSTR #harg ] !>,
-       HCONS <! qeq & [ HARG #harg, LARG #larg ] !> ],
+		    INDEX #index,
+		    XARG #arg1 ],
+	     RELS <! arg12-ev-relation &
+		   [ PRED "_be_v_id_rel",
+		     LBL #ltop,
+		     ARG0 #index,
+		     ARG1 #arg1,
+		     ARG2 #arg2 ],
+		   quant-relation &
+		   [ PRED "exist_q_rel",
+		     ARG0 #arg2,
+		     RSTR #harg ] !>,
+	     HCONS <! qeq & [ HARG #harg, LARG #larg ] !> ],
     ARGS < [ SYNSEM.LOCAL [ AGR #agr3,
-                            CAT [ HEAD noun & [POSS poss-or-ee],
-                                  VAL.SPR cons ],
-          CONT.HOOK [ INDEX #arg2,
-          LTOP #larg ]]] > ].
+			                      CAT [ HEAD noun & [POSS poss-or-ee],
+				                     VAL.SPR cons ],
+			    CONT.HOOK [ INDEX #arg2,
+					LTOP #larg ]]] > ].
 
 ;; Special rule for the unary distribution of L-PERIPH in int-cl and decl-cl
 
@@ -1005,8 +1012,6 @@ basic-head-opt-comp-phrase :+
             ARGS < [ SYNSEM [ L-PERIPH #periph, 
                               LOCAL.CAT [ EC #ec,
                                           IC #ic  ] ] ] > ].
- 
-
 
 
  
