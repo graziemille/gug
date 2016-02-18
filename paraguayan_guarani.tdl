@@ -173,12 +173,20 @@ cat :+ [EC bool, IC bool].
 
 ;;; Nouns
 
+
+;; proper noun subtype added as a subtype of common noun since many of the same rules as for non possible common nouns apply except for the fact that they are SPR < > and cannot 
+
 ;; subtype added to deal with nouns that cannot be possessed.
+non-poss-com-noun-lex :=  common-noun-lex & 
+ [SYNSEM.LOCAL.CAT.HEAD.POSS poss-or].
 
-non-poss-com-noun-inam-lex := com-inam-noun-lex & 
-        [SYNSEM.LOCAL.CAT.HEAD.POSS poss-or].
+;; category for wind
+non-poss-com-inam-noun-lex := non-poss-com-noun-lex & com-inam-noun-lex.
 
-noun-lex := basic-noun-lex & basic-one-arg & no-hcons-lex-item & non-mod-lex-item &
+;; category for proper-nouns
+proper-noun-lex := non-poss-com-noun-lex & no-spr-noun-lex & com-anim-noun-lex & named-relation.
+
+noun-lex := basic-noun-lex & basic-one-arg & no-hcons-lex-item & non-mod-lex-item & 
   [ SYNSEM.LOCAL.CAT [  EC -, 
                         IC -,
                         VAL [ SPR < #spr &
@@ -267,8 +275,6 @@ com-anim-human-noun-lex := com-anim-noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.GEND hum ].
 
 ;;; Verbs
-
-
 
 ;;New supertype replacing inheritance from verb-lex for both locative-verb-lex and dynamic-intransitive verb lex and ensuring that both these categories of verbs pass through the verb appropriate verb inflection rule
 
@@ -378,7 +384,8 @@ decl-cl-verb-lex:= cl-verb-lex &
 					                                         VAL.COMPS < > ],
 					                                   CONT.HOOK.INDEX.SF prop ]]>].
 
-;;New features
+;;New verb features
+
 trans-verb-lex:+ [SYNSEM.LOCAL.CAT [EC -,
                                     IC -]].
                                     
@@ -386,8 +393,6 @@ intrans-verb-lex: + [SYNSEM.LOCAL.CAT [EC -,
                                        IC - ]].
 
 ;;; Adjectives
-
-
 
 adj-lex := gug-intersective-adjective-lex.
 
@@ -785,7 +790,9 @@ pros-asp-lex-rule := prospective-aspect-lex-rule-super &
 
 gug-scopal-mod-phrase := basic-head-mod-phrase-simple & head-final & head-compositional &
   [ SYNSEM.LOCAL.CAT.MC na,
-    HEAD-DTR.SYNSEM.LOCAL.CAT [ MC na,
+    HEAD-DTR.SYNSEM.LOCAL.CAT [ EC -, 
+                                IC -, 
+                                MC na,
                                 HEAD verb & [MOD < >],
                                 VAL [ SPEC < >, 
                                       SPR < >, 

@@ -1,6 +1,10 @@
 ;;; -*- Mode: TDL; Coding: utf-8 -*-
 ;;; Nouns
 
+Juanchi := proper-noun-lex &
+  [ STEM < "Juanchi" >,
+    SYNSEM.LKEYS.KEYREL.CARG "Juanchi" ].
+
 juHi := com-anim-noun-lex &
   [ STEM < "juHi" >,
     SYNSEM.LKEYS.KEYREL.PRED "_frog_n_rel" ].
@@ -53,7 +57,7 @@ aAra := com-inam-noun-lex &
   [ STEM < "aAra" >,
     SYNSEM.LKEYS.KEYREL.PRED "_day_n_rel" ].
 
-yvytu := non-poss-com-noun-inam-lex &
+yvytu := non-poss-com-inam-noun-lex &
   [ STEM < "yvytu" >,
     SYNSEM.LKEYS.KEYREL.PRED "_wind_n_rel" ].
 

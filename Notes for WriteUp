@@ -36,7 +36,7 @@ Maximum edges exhausted, something is spinning
 
 
 gug-scopal-mod-phrase := basic-head-mod-phrase-simple & head-final &
-  [ NON-HEAD-DTR.SYNSEM.LOCAL [ CAT.HEAD.MOD < [ LOCAL scopal-mod ] >,
+  [ NON-HEAD-DTR.SYNSEM.LOCAL [ CAT.HEAD verb & [MOD < [ LOCAL scopal-mod ] >],
 								CONT.HOOK #hook ],
     C-CONT [ HOOK #hook,
 	     HCONS <! !>,
@@ -53,45 +53,27 @@ scopal-mod-phrase := basic-head-mod-phrase-simple &
 	     ICONS <! !> ] ].
 
 
+[ SYNSEM [ LOCAL [ CAT [ HEAD noun,
+	 	 	 VAL [ SPR < >,
+	 	 	 	 SUBJ < >,
+	 	 	 	 COMPS < >,
+	 	 	 	 SPEC < > ] ],
+	 	 CONT [ RELS <! [ LBL #larg,
+	 	 	 	 ARG0 #ind & ref-ind ],
+	 	 	 	 [ PRED "wh_q_rel",
+	 	 	 	 ARG0 #ind,
+	 	 	 	 RSTR #harg ] !>,
+	 	 	 HCONS <! [ HARG #harg,
+	 	 	 	 LARG #larg ] !> ] ],
+ NON-LOCAL.QUE <! #ind !> ] ].
 
-basic-head-mod-phrase-simple := head-mod-phrase & binary-headed-phrase &
-  [ SYNSEM [ LOCAL.CAT.MKG #mkg,
-             NON-LOCAL [ SLASH [ LIST #first,
-				 LAST #last ],
-			 REL 0-dlist ] ],
-    HEAD-DTR.SYNSEM 
-           [ LOCAL [ CAT [ HEAD #head,
-                           VAL #val,
-                           POSTHEAD #ph,
-			   MC #hmc,
-			   HC-LIGHT - ],
-		     CONT.HOOK #hdhook & [ ICONS-KEY.IARG1 #clause,
-                                           CLAUSE-KEY #clause ],  
-                     AGR #agr ],
-             NON-LOCAL #nonloc &
-                   [ SLASH [ LIST #middle,
-                             LAST #last ] ],
-			 LIGHT #light,
-			 MODIFIED #modif ],
-    NON-HEAD-DTR.SYNSEM 
-           [ LOCAL [ CAT [ HEAD [ MOD < [ LOCAL local & 
-                                              [ CAT [ HEAD #head,
-                                                      VAL #val,
-                                                      POSTHEAD #ph,
-                                                      MC #hmc ],
-                                                AGR #agr,
-                                                CONT.HOOK #hdhook ],
-                                          NON-LOCAL #nonloc,
-					  LIGHT #light,
-                                          MODIFIED #modif,
-					  OPT - ] > ],
-			   VAL [ COMPS olist, 
-				 SPR olist ], 
-                           MKG #mkg ],
-		     CONT.HOOK [ ICONS-KEY.IARG1 #clause,
-				 CLAUSE-KEY #clause ] ],
-             NON-LOCAL [ SLASH [ LIST #first,
-                                 LAST #middle ],
-                         QUE 0-dlist & [ LIST null ] ] ],
-    C-CONT [ RELS <! !>, ICONS <! !> ] ].
 
+
+
+[SYNSEM.LOCAL.CONT [ RELS <! [ LBL #larg,
+	 	 	 	 ARG0 #ind & ref-ind ],
+	 	 	 	 [ PRED "wh_q_rel",
+	 	 	 	 ARG0 #ind,
+	 	 	 	 RSTR #harg ] !>,
+	 	 	 HCONS <! [ HARG #harg,
+	 	 	 	 LARG #larg ] !> ] ].
