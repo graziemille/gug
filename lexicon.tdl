@@ -1,6 +1,10 @@
 ;;; -*- Mode: TDL; Coding: utf-8 -*-
 ;;; Nouns
 
+Juanchi := proper-noun-lex &
+  [ STEM < "Juanchi" >,
+    SYNSEM.LKEYS.KEYREL.CARG "Juanchi" ].
+
 juHi := com-anim-noun-lex &
   [ STEM < "juHi" >,
     SYNSEM.LKEYS.KEYREL.PRED "_frog_n_rel" ].
@@ -53,7 +57,7 @@ aAra := com-inam-noun-lex &
   [ STEM < "aAra" >,
     SYNSEM.LKEYS.KEYREL.PRED "_day_n_rel" ].
 
-yvytu := non-poss-com-noun-inam-lex &
+yvytu := non-poss-com-inam-noun-lex &
   [ STEM < "yvytu" >,
     SYNSEM.LKEYS.KEYREL.PRED "_wind_n_rel" ].
 
@@ -213,7 +217,7 @@ ndi := contentful-adp-lex &
   [ STEM < "ndi" >,
     SYNSEM.LKEYS.KEYREL.PRED "_with_p_rel" ].
 
-; Clitic for question marks
+;;; Clitic for question marks
 
 pa := question-clitic-lex   &
     [STEM <"pa">].
@@ -225,6 +229,10 @@ ha3: = compl-clitic-lex &
     [STEM<"ha">].
 
 ;;; Verbs
+
+e := trans-verb-lex &
+  [ STEM <"e">,
+    SYNSEM.LKEYS.KEYREL.PRED "_say_v_rel"]. 
 
 hecha := trans-verb-lex &
   [ STEM < "hecha" >,
@@ -345,3 +353,8 @@ ha2 := conj-lex &
   [ STEM < "ha" >,
     SYNSEM.LKEYS.KEYREL.PRED "_and_coord_rel",
     CFORM "2" ].
+
+;;; Scopal Modifiers
+ha4 := scopal-lex &
+   [ STEM < "ha" >,
+     SYNSEM.LKEYS.KEYREL.PRED "_and_c_rel"].
