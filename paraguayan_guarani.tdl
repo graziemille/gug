@@ -274,6 +274,30 @@ pron-nonagent-noun-lex := pron-noun-lex &
 com-anim-human-noun-lex := com-anim-noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.GEND hum ].
 
+
+;; Wh-pronoun lexeme
+; Changed PNG.PER to PNG.PERNUM
+
+wh-pronoun-noun-lex := norm-hook-lex-item & basic-icons-lex-item & 
+  [ SYNSEM [ LOCAL [ CAT [ IC +,
+ 			   HEAD noun,
+			   VAL [ SPR < >,
+				 SUBJ < >,
+				 COMPS < >,
+				 SPEC < > ] ],
+		     CONT [ HOOK.INDEX.PNG.PERNUM 3rd,
+	                    RELS < ! [ LBL #larg,
+				       ARG0 #ind & ref-ind ],
+				  [ PRED "wh_q_rel",
+				    ARG0 #ind,
+				    RSTR #harg ] ! >,
+			    HCONS < ! [ HARG #harg,
+				        LARG #larg ] ! > ] ],
+	     NON-LOCAL.QUE < ! #ind ! > ] ].
+
+
+
+
 ;;; Verbs
 
 ;;New supertype replacing inheritance from verb-lex for both locative-verb-lex and dynamic-intransitive verb lex and ensuring that both these categories of verbs pass through the verb appropriate verb inflection rule
@@ -380,9 +404,9 @@ int-cl-verb-lex:= cl-verb-lex &
 decl-cl-verb-lex:= cl-verb-lex &
     [ SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL [ CAT [ EC +,
                                                    IC -,
- 					                                         HEAD verb,
-					                                         VAL.COMPS < > ],
-					                                   CONT.HOOK.INDEX.SF prop ]]>].
+ 					             HEAD verb,
+					             VAL.COMPS < > ],
+					             CONT.HOOK.INDEX.SF prop ]]>].
 
 ;;New verb features
 
@@ -892,15 +916,14 @@ head-only-int-decl-clause := unary-int-decl-cl-phrase & headed-phrase &
 
 
 int-cl := head-only-int-decl-clause & interrogative-clause &
-  [ SYNSEM [ LOCAL.CAT [ VAL #val & [SUBJ< >, COMPS< >, SPR< >], MC bool, IC #ic],
+  [ SYNSEM [ LOCAL.CAT [ VAL #val & [SUBJ< >, COMPS< >, SPR< >], MC bool],
              NON-LOCAL.YNQ <! !> ],
-    HEAD-DTR.SYNSEM [ LOCAL.CAT [ IC +, MC na, VAL #val, HEAD verb, IC #ic],
-                    NON-LOCAL.YNQ <! *top* !> ]].
-
+    HEAD-DTR.SYNSEM [ LOCAL.CAT [ MC na, VAL #val, HEAD verb, IC +],
+                    NON-LOCAL[YNQ <! *top* !>, QUE < !! > ]]].
 
 decl-cl := head-only-int-decl-clause & declarative-clause & 
-  [ SYNSEM.LOCAL.CAT [ VAL #val & [SUBJ< >, COMPS< >, SPR< >], MC bool, EC #ec, IC #ic],
-    HEAD-DTR.SYNSEM [ LOCAL.CAT [ MC na, VAL #val, HEAD verb, EC #ec, IC #ic],
+  [ SYNSEM.LOCAL.CAT [ VAL #val & [SUBJ< >, COMPS< >, SPR< >], MC bool, EC #ec],
+    HEAD-DTR.SYNSEM [ LOCAL.CAT [ MC na, VAL #val, HEAD verb, EC #ec, IC -],
                      NON-LOCAL.YNQ 0-dlist ]].
 
 
@@ -936,7 +959,7 @@ mc-na-headed-phrase := headed-phrase &
 same-ec-unary-phrase := headed-phrase &
   [ SYNSEM.LOCAL.CAT [ EC #ec,
                        IC #ic],
-    HEAD-DT.SYNSEM.LOCAL.CAT [ EC #ec,
+    HEAD-DTR.SYNSEM.LOCAL.CAT [ EC #ec,
                                IC #ic] ].
 
 same-periph-unary-phrase := unary-phrase.
@@ -965,16 +988,15 @@ gug-head-opt-comp-phrase := basic-head-opt-comp-phrase & YNQ-contrains-phrase &
   			[ SYNSEM.LIGHT -].
 
 
-basic-head-comp-phrase :+ [ SYNSEM.LOCAL.CAT [ EC #ec, 
-                                               IC #ic ],
-                            HEAD-DTR.SYNSEM.LOCAL.CAT [EC #ec,
-                                                       IC #ic ]].
+;basic-head-comp-phrase :+ [ SYNSEM.LOCAL.CAT [ EC #ec, 
+;                                               IC #ic ],
+;                            HEAD-DTR.SYNSEM.LOCAL.CAT [EC #ec,
+;                                                       IC #ic ]].
 
-basic-head-subj-phrase :+ [  SYNSEM.LOCAL.CAT [ EC #ec, 
-                                               IC #ic ],
-                            HEAD-DTR.SYNSEM.LOCAL.CAT [EC #ec,
-                                                       IC #ic ]].
-
+;basic-head-subj-phrase :+ [ SYNSEM.LOCAL.CAT [ EC #ec, 
+;                                               IC #ic ],
+;                            HEAD-DTR.SYNSEM.LOCAL.CAT [EC #ec,
+;                                                       IC #ic ]].
 
 basic-head-opt-comp-phrase :+
  [ SYNSEM [ L-PERIPH #periph,
@@ -1006,19 +1028,34 @@ head-final-head-nexus := head-final &
 gug-head-subj-phrase := decl-head-subj-phrase &
         [ SYNSEM.LOCAL.CAT.VAL [COMPS nonolist] ].
 
-head-subj-phrase := gug-head-subj-phrase & head-initial-head-nexus.
+head-subj-phrase := gug-head-subj-phrase & head-initial-head-nexus &
+                    [ SYNSEM.LOCAL.CAT [ EC #ec, 
+                                         IC #ic ],
+                      HEAD-DTR.SYNSEM.LOCAL.CAT [EC #ec,
+                                                 IC #ic ]].
 
-subj-head-phrase := gug-head-subj-phrase & head-final-head-nexus.
 
+subj-head-phrase := gug-head-subj-phrase & head-final-head-nexus &
+                    [ SYNSEM.LOCAL.CAT [ EC #ec, 
+                                         IC #ic ],
+                      NON-HEAD-DTR.SYNSEM.LOCAL.CAT [EC #ec,
+                                                     IC #ic ]].
 
 ; The head of head-comp-phrase can't be: ['adp']
 
 head-comp-phrase := basic-head-1st-comp-phrase & head-initial-head-nexus &
-  [ SYNSEM.LOCAL.CAT.HEAD +nvjrcdmo].
+                   [ SYNSEM.LOCAL.CAT[ HEAD +nvjrcdmo, 
+                                       EC #ec,
+                                       IC #ic ], 
+                     HEAD-DTR.SYNSEM.LOCAL.CAT [EC #ec,
+                                                IC #ic ]].
    
 
-comp-head-phrase := basic-head-1st-comp-phrase & head-final-head-nexus. 
-
+comp-head-phrase := basic-head-1st-comp-phrase & head-final-head-nexus & 
+                   [ SYNSEM.LOCAL.CAT[ EC #ec,
+                                       IC #ic ], 
+                     NON-HEAD-DTR.SYNSEM.LOCAL.CAT [EC #ec,
+                                                IC #ic ]].
 
 head-comp-phrase-2 := basic-head-2nd-comp-phrase & head-initial-head-nexus.
 
@@ -1128,3 +1165,32 @@ s2-bottom-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
 s3-top-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
  			RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ,LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
 s3-bottom-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], NONCONJ-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
+
+;; WH phrasal rules
+
+basic-head-filler-phrase :+
+   [ ARGS < [ SYNSEM.LOCAL.COORD - ], [ SYNSEM.LOCAL.COORD - ] > ].
+
+wh-ques-phrase := basic-head-filler-phrase & interrogative-clause & 
+		  head-final &
+   [ SYNSEM.LOCAL.CAT [ IC +,
+			MC na,
+			VAL #val,
+			HEAD verb ],
+     HEAD-DTR.SYNSEM.LOCAL.CAT [  MC na,
+				 VAL #val & [ SUBJ < >,
+					      COMPS < > ] ],
+     NON-HEAD-DTR.SYNSEM [ LOCAL.CAT.IC +,
+ 			NON-LOCAL.QUE < ! ref-ind ! > ]].
+			
+extracted-comp-phrase := basic-extracted-comp-phrase &
+  [ SYNSEM.LOCAL.CAT[ MC na,
+ 		     HEAD verb],
+    HEAD-DTR.SYNSEM.LOCAL.CAT.VAL.SUBJ cons ].
+
+extracted-subj-phrase := basic-extracted-subj-phrase &
+  [ SYNSEM.LOCAL.CAT[ MC na,
+ 		      HEAD verb],
+    HEAD-DTR.SYNSEM.LOCAL.CAT.VAL.COMPS < > ].
+
+
