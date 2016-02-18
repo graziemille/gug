@@ -24,6 +24,6 @@ pa_gr := generator_rule &
   [ CONTEXT.RELS <! [ ARG0.SF ques ] !>,
     FLAGS.TRIGGER "pa" ].
 
-ha_gr := generator_rule &
+ha3_gr := generator_rule &
   [ CONTEXT.RELS <! [ ARG0.SF prop ] !>,
-    FLAGS.TRIGGER "ha" ].
+    FLAGS.TRIGGER "ha3" ].
