@@ -1,0 +1,239 @@
+Language: Paraguayan_Guarani
+Language code: gug
+Lines: orth translit translit-seg gloss translat
+Author: Lisa Tittle Caballero, Thor Wicke Monteverde
+Date: February 3, 2016
+Source a: Judith Tonhauser (2006). A Boy, a Dog and a Frog (Guaraní). In: The Temporal Semantics of Noun Phrases: Evidence from Guaraní. p.396-398
+
+
+#Sentence.1
+Source: a, attested
+Vetted: t
+Judgment: g
+Phenomena: corpus
+Oi᷉ndaje raka'e petei᷉ mita᷉ tyre'y᷉ ohayhuva mymbakuérape.
+oiNndaje    rakaHe peteiN  mitaN  tyreHyN ohayhuva    mymbakueAra pe
+o-iNndaje   rakaHe peteiN  mitaN  tyreHyN o-hayhu-va  mymba-kueAra=pe
+A.3-be.say  PAST   one     child  orphan  A3-love-RC  wild.animal-PL=ACC
+'There once was an orphan who loved animals.'
+
+#Sentence.2
+Source: a, attested
+Vetted: t
+Judgment: g
+Phenomena: corpus
+Ha'e héra Huanchi ha oguereko petei᷉ jagua hérava Piruli.
+haHe      ieAra     Juanchi  ha  oguereko  peteiN  jagua ieArava     Piruli
+haHe      i-eAra    Juanchi ha  o-guereko peteiN  jagua i-eAra-va   Piruli
+3.SG.pron O.3-name  Juan.DIM and A.3-have  one     dog   O.3-name-RC Piruli
+'His name was Juanito and he had a dog whose name was Piruli.'
+
+#Sentence.3
+Source: a, attested
+Vetted: t
+Judgment: g
+Phenomena: corpus
+Petei᷉ jey he'i hymba jaguape:
+peteiN jey  oe      iymba          jagua pe
+peteiN jey  o-e     i-ymba         jagua=pe
+one    time A.3-say O.3-pet.animal dog=DAT
+'One time, he said to his dog:'
+
+#Sentence.4
+Source: a, attested
+Vetted: t
+Judgment: g
+Phenomena: corpus
+"Jaha jaheka ñaneirura᷉".
+jaha          jaheka            nNandeiruraN
+ja-ha         ja-heka           nNande-iru-raN
+A.1pl.incl-go A.1pl.incl-search O.1pl.incl-friend-PROSP
+'Let's go and look for a friend for us.'
+
+#Sentence.5
+Source: a, attested
+Vetted: t
+Judgment: g
+Phenomena: corpus
+Ha ojeoi hikuái.
+ha  ojeoi      hikuaAi
+ha  o-je-oi    hikuaAi
+and A3-REFL-go 3.pl.pron
+'and they went.'
+
+#Sentence.6
+Source: a, attested
+Vetted: t
+Judgment: g
+Phenomena: corpus
+Og᷉uahevo y rembe'ype omboguejy imba'eyryrukuéra ha ojupi yvyra raka᷉me oma'ehagua᷉ mba'eichagua mymbapa otopata y kostare.
+ogNuahevo y rembeHype  omboguejy  imbaHeyryrukueAra    ha   ojupi    yvyra rakaNme    omaHehaguaN      mbaHeichagua   mymbapa       otopata     y     kostare
+o-gNuahe-vo  y    rembeHy=pe o-mbo-guejy  i-mbaHe-yryru-kueAra ha   o-jupi   yvyra rakaN-me   o-maHe-ha-guaN   mbaHe-icha-gua mymba-pa      o-topa-ta   y     kosta-re
+A.3-arrive-AT water bank=LOC   A.3-CAUS-descend O.3-thing-bucket-PL    and  A.3-climb tree  branch-LOC A.3-look-NOM-PURP think-like-of  wild.animal-Q A.3-find-FUT water side-BY
+'When they arrived at the bank of a lake, they put down their things and climbed onto a branch to see which kinds of animals they would see at the side of the water.'
+
+#Sentence.7
+Source: a, attested
+Vetted: t
+Judgment: g
+Phenomena: corpus
+Ohasávo upéi ohecha ju'ipe oguapy y mbytépe petei᷉ yrupe᷉ari.
+ohasaAvo   upeAi ohecha  juHipe   oguapy  y     mbyteApe   peteiN yrupeNari
+o-hasaA-vo upeAi o-hecha juHi pe  o-guapy y     mbyteA-pe  peteiN yrupeN-ari
+A.3-pass-AT then  A.3-see  frog ACC A.3-sit  water middle-LOC one    sieve-on
+'In passing he saw a frog sitting in the middle of the water on a water lily leaf.'
+
+#Sentence.8
+Source: a, attested
+Vetted: t
+Judgment: g
+Phenomena: corpus
+Vy'apope sarambipe oguejy hikuái Pirulo ijykere.
+vyHapope      sarambipe    oguejy     hikuaAi  Pirulo ijykere
+vyHa-po WAY   sarambi pe   o-guejy    hikuaAi  Pirulo ij-yke-re
+happy-very PE disorder LOC A.3-descend 3.pl.pron    Pirulo 3-side-BY
+'Happily, they stumbled down, Pirulo at his side.'
+
+#Sentence.9
+Source: a, attested
+Vetted: t
+Judgment: g
+Phenomena: corpus
+Upeichahaguinte ipysyry petei᷉ yvyra oñenorehe.
+upeichahaguinte         ipysyry  peteiN yvyra onNenorehe
+upe-icha-ha-gui-nte     i-pysyry peteiN yvyra o-nNeno-rehe
+that-like-NOM-FROM-only O.3-slip   one    tree  A.3-lie.down-WITH
+'Just like that, they stumbled over tree trunk.'
+
+#Sentence.10
+Source: a, attested
+Vetted: t
+Judgment: g
+Phenomena: corpus
+Ipoipaite pe ipopeguagui ha ho'a oti᷉vo ype.
+ipoipaite pe ipopeguagui ha hoHa otiNvo ype
+i-poi-pa-ite        pe   i-po-pe-gua-gui    ha  h-oHa   otiNvo         y=pe
+O.3-let.go-COMPL-very that O.3-hand-LOC-of-FROM and A.3-fall embarrassingly water=LOC
+'He let go all that he was holding in his hands and fell face first into the water.'
+
+#Sentence.11
+Source: a, attested
+Vetted: t
+Judgment: g
+Phenomena: corpus
+Ju'i tuicha o-ñe-mondy´i.
+juHi tuicha ojemondyAi
+juHi tuicha o-je-mondyAi
+frog big    A.3-REFL-scare
+'the frog was very scared.'
+
+#Sentence.12
+Source: a, attested
+Vetted: t
+Judgment: g
+Phenomena: corpus
+Ndoikuaai mba'epa la oikova.
+ndoikuaai mbaHepa la oikova
+nd-o-ikuaa-i    mba'e-pa la     o-iko-va
+NEG-A3-know-NEG thing-Q  the.SG A.3-pass-RC
+'He didn't know what was going on.'
+
+#Sentence.13
+Source: a, attested
+Vetted: t
+Judgment: g
+Phenomena: corpus
+Upéi iñaka ose᷉vo pe ygui Huanchi ju'i rovaiterehe omaña.
+upeAi inNaka  oseNvo      pe   ygui       Juanchi  juHi rovaiterehe    omanNa
+upeAi i-nNaka o-seN-vo    pe   y-gui      Juanchi juHi rova-ite-rehe  o-manNa
+then  O.3-head  A.3-leave-AT that water-FROM Juan.DIM frog face-very-WITH A3-look
+'Then, when Juanito's head resurfaced, he was looking directly at the frog.'
+
+#Sentence.14
+Source: a, attested
+Vetted: t
+Judgment: g
+Phenomena: corpus
+Ha he'i ipyapype:
+ha  heHi   ipyapype
+ha  heHi   i-pyapy=pe
+and A.3.say O.3-decision=ACC
+'And he said with decision:'
+ 
+#Sentence.15
+Source: a, attested
+Vetted: t
+Judgment: g
+Phenomena: corpus
+"Kóva ya chemba'ema".
+koAva   ya      chembaHema
+koA-va  ya      che-mba'e-ma
+this-RC already O.lsg-thing-COMPL
+'This is mine already.'
+
+#Sentence.16
+Source: a, attested
+Vetted: t
+Judgment: g
+Phenomena: corpus
+Ha   oñemoi᷉   ikuá cha᷉'ihagua᷉icha hese.
+ha   ojemoiN   ikuaA    chaNHihaguaNicha     hese
+ha   o-je-moiN i-kuaA   chaNHi-ha-guaN-icha  hese
+and  A.3-REFL-put O.3-finger bent-NOM-PURP-like   to.3
+'And he started to grab at the frog.'
+
+#Sentence.17
+Source: a, attested
+Vetted: t
+Judgment: g
+Phenomena: corpus
+Mamotapa ju'i mombyry opo chugui.
+mamotapa    juHi mombyry opo     chugui
+mamo-ta-pa  juHi mombyry o-po    chu-gui
+place-FUT-Q frog far     A.3-jump 3-GUI
+'but the frog jumped far away from him.'
+
+#Sentence.18
+Source: a, attested
+Vetted: t
+Judgment: g
+Phenomena: corpus
+Pirulo nogueroviai mba'eichapa Huanchi ndojurai ju'ipe.
+pirulo ndogueroviai       mbaHeichapa   Juanchi  ndojurai        juHipe
+pirulo nd-o-guerovia-i    mbaHe-icha-pa Juanchi nd-o-jura-i     juHi=pe
+Pirulo NEG-A.3-believe-NEG thing-like-Q  Juan.DIM NEG-A.3-grab-NEG frog=ACC
+'Pirulo couldn't believe how Juanito couldn't grab the frog.'
+
+#Sentence.19
+Source: a, attested
+Vetted: t
+Judgment: g
+Phenomena: corpus
+Ha upéi omaña henonde gotyo amoite yvyra neñoari ju'i opuka hesekuéra.
+ha upeAi omanNa  ienonde  gotyo   amoite     yvyra  nenNoari  juHi opuka   hesekueAra
+ha upeAi o-manNa i-enonde gotyo   amo-ite    yvyra  nenNo-ari juHi o-puka   hese-kueAra
+and then A.3-see O.3-front  towards there-very tree   lie-on    frog A3-laugh to.3-PL
+'And then Juan saw in front of him, right there on a tree trunk, the frog laughing about them.'
+
+#Sentence.20
+Source: a, attested
+Vetted: t
+Judgment: g
+Phenomena: corpus
+Ha he'i Huanchi:
+ha  oe   Juanchi
+ha  o-e  Juanchi
+and A.3-say Juan.DIM
+'And Juanito says:'
+
+#Sentence.21 
+Source: a, attested
+Vetted: t
+Judgment: g
+Phenomena: corpus
+"Nde piko repukata cherehe, nemba'e chapi᷉!"
+nde  piko  repukata         cherehe   ndembaHe   chapiN
+nde  piko  re-puka-ta       che-rehe  nde-mbaHe  chapiN
+2sg.pron Q  A.2sg-laugh-FUT O.lsg-REHE O.2sg-thing dull
+'You laugh about me, you little thing?!'
+
