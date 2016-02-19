@@ -1204,10 +1204,16 @@ wh-ques-phrase := gug-basic-head-filler-phrase & interrogative-clause &
 		  head-final &
    [ SYNSEM.LOCAL.CAT [ IC +,
 			MC na,
-			VAL #val,
+			VAL [SUBJ < >, 
+                             SPR #spr ,
+                             COMPS #comps, 
+                             SPEC #spec],
 			HEAD verb ],
      HEAD-DTR.SYNSEM.LOCAL.CAT [  MC na,
-				  VAL #val],
+				  VAL [SUBJ < >, 
+                                       SPR #spr ,
+                                       COMPS #comps, 
+                                       SPEC #spec]],
      NON-HEAD-DTR.SYNSEM [ LOCAL.CAT.IC +,
  			NON-LOCAL.QUE < ! ref-ind ! > ]].
 			
@@ -1219,7 +1225,7 @@ extracted-comp-phrase := basic-extracted-comp-phrase &
  		        HEAD verb]],
     HEAD-DTR.SYNSEM.LOCAL.CAT[ IC #ic,
                                EC #ec,
-                               VAL.SUBJ < > ]].
+                               VAL.SUBJ cons ]].
 
 
 extracted-subj-phrase := basic-extracted-subj-phrase &

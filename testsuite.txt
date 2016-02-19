@@ -2302,3 +2302,15 @@ maAva pa aikuua ohecha ha juHi pe
 maAva=pa a-ikuua o-hecha=ha juHi=pe
 who=Q 1SG-know 3-see frog=ACC
 ‘Who do I know sees the frog?’
+
+
+Ex. 209 Ambiguous long-distance dependency with WH-question
+Source: authors
+Vetted: f
+Judgment: g
+Phenomena: wh
+mávapa aikuua ohechaha ju’i?
+maAva pa aikuua ohecha ha juHi
+maAva=pa a-ikuua o-hecha=ha juHi
+who=Q 1SG-know 3-see frog
+‘Who do I know sees the frog?’ / 'Who do I know the frog sees?
