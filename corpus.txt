@@ -36,7 +36,7 @@ Phenomena: corpus
 Petei᷉ jey he'i hymba jaguape:
 peteiN jey  oe      iymba          jagua pe
 peteiN jey  o-e     i-ymba         jagua=pe
-one    time A.3-say O.3-pet.animal dog DAT
+one    time A.3-say O.3-pet.animal dog=DAT
 'One time, he said to his dog:'
 
 #Sentence.4
