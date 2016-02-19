@@ -2270,7 +2270,7 @@ dog NEG-A.3-dance-NEG
 *'The dog doesn’t dance'
 
 Ex. 206 WH-question with transitive verb 
-Source: d
+Source: authors
 Vetted: f
 Judgment: g
 Phenomena: wh
@@ -2293,7 +2293,7 @@ a-porandu maAva=pa o-hecha juHi=pe
 
 
 Ex. 208 Long-distance dependency with WH-question
-Source: d
+Source: authors
 Vetted: f
 Judgment: g
 Phenomena: wh
