@@ -387,6 +387,15 @@ stative-intrans-verb-lex := verb-lex & intrans-verb-lex & completive-aspect-or-p
 ;;inherits from verb lex via gug-dyn-loc-verb 
 dynamic-intrans-verb-lex := gug-dyn-loc-verb & intrans-verb-lex & completive-aspect-or-perfective-aspect-or-prospective-aspect-rule-dtr & future-aspect-rule-dtr & neg1-rule-dtr & neg2-rule-dtr.
 
+;;New verb features
+
+trans-verb-lex:+ [SYNSEM.LOCAL.CAT [EC -,
+                                    IC - ]].
+                                    
+intrans-verb-lex: + [SYNSEM.LOCAL.CAT [EC -,
+                                       IC -]].
+
+
 
 ;;Adding clause complement verb lexemes
 
@@ -395,26 +404,20 @@ cl-verb-lex:= gug-dyn-loc-verb &  clausal-second-arg-trans-lex-item &
      ARG-ST.REST.FIRST #comps].
 
 int-cl-verb-lex:= cl-verb-lex &
-    [SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL [ CAT [ IC +,
+    [SYNSEM.LOCAL.CAT [  IC - , 
+                         VAL.COMPS < [ LOCAL [ CAT [ IC +,
                                                   HEAD verb,
 						  VAL [ COMPS < >, 
 							SUBJ < > ] ],
-					    CONT.HOOK.INDEX.SF ques ]]>].
+					    CONT.HOOK.INDEX.SF ques ]]>]].
 
 decl-cl-verb-lex:= cl-verb-lex &
-    [ SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL [ CAT [ EC +,
+    [ SYNSEM.LOCAL.CAT[ IC -,
+                        VAL.COMPS < [ LOCAL [ CAT [ EC +,
                                                    IC -,
  					             HEAD verb,
 					             VAL.COMPS < > ],
-			             CONT.HOOK.INDEX.SF prop ]]>].
-
-;;New verb features
-
-trans-verb-lex:+ [SYNSEM.LOCAL.CAT [EC -,
-                                    IC - ]].
-                                    
-intrans-verb-lex: + [SYNSEM.LOCAL.CAT [EC -,
-                                       IC -]].
+			             CONT.HOOK.INDEX.SF prop ]]>]].
 
 ;;; Adjectives
 
@@ -478,7 +481,7 @@ case-marking-adp-lex :=  basic-one-arg & raise-sem-lex-item &
 			     [ CASE #case,
 			       CASE-MARKED - ] ] ] > ].
 
-contentful-adp-lex := basic-int-mod-adposition-lex
+contentful-adp-lex := basic-int-mod-adposition-lex & norm-zero-arg &
   [ SYNSEM.LOCAL.CAT [  EC - , 
                         IC - ,
                         HEAD adp & [CASE LOC,
@@ -522,7 +525,8 @@ compl-clitic-lex := no-hcons-lex-item &
                                               LOCAL intersective-mod ] > ]],
                     CONT.RELS <! !> ],
             NON-LOCAL[ SLASH <! !>,
-                       QUE <! !> ]]].
+                       QUE <! !>,
+		       YNQ <! !> ]]].
 
 
 ;;; Determiners
@@ -933,15 +937,15 @@ int-cl := head-only-int-decl-clause & interrogative-clause &
   [ SYNSEM [ LOCAL.CAT [ VAL #val & [SUBJ< >, COMPS< >, SPR< >], MC bool],
              NON-LOCAL[SLASH #sl, YNQ <! !> ]],
     HEAD-DTR.SYNSEM [ LOCAL.CAT [ MC na, VAL #val, HEAD verb, IC +],
-                    NON-LOCAL[SLASH #sl, YNQ <! *top* !>, QUE < !! > ]]].
+                    NON-LOCAL[SLASH #sl, YNQ <! *top* !>, QUE <! !> ]]].
 
 decl-cl := head-only-int-decl-clause & declarative-clause & 
   [ SYNSEM[ LOCAL [ CAT [ VAL #val & [SUBJ< >, COMPS< >, SPR< >], MC bool, EC #ec],
                    CONT.HOOK.INDEX.SF prop ],
             NON-LOCAL.SLASH #sl],
     HEAD-DTR.SYNSEM [ LOCAL.CAT [ MC na, VAL #val, HEAD verb, EC #ec, IC -],
+;                     NON-LOCAL[ SLASH #sl, YNQ <! !>]]].
                      NON-LOCAL[ SLASH #sl, YNQ 0-dlist ]]].
-
 
 s-coord-phrase :+
   [ SYNSEM.LOCAL.CAT [ MC bool, EC #ec, IC #ic],
@@ -1201,7 +1205,10 @@ extracted-comp-phrase := basic-extracted-comp-phrase &
 
 
 extracted-subj-phrase := basic-extracted-subj-phrase &
-  [ SYNSEM.LOCAL.CAT[ IC #ic,
+  [ C-CONT [ RELS <! !>,
+	     HCONS <! !>,
+	     ICONS <! !> ],
+    SYNSEM.LOCAL.CAT[ IC #ic,
                       EC #ec,
                       MC na,
  		      HEAD verb],
