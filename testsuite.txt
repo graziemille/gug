@@ -2208,11 +2208,11 @@ Source: author
 Vetted: f
 Judgment: g
 Phenomena: {cop, adp}
-jagua jaguandi
-jagua jagua ndi
-jagua jagua=ndi
-dog.PRED dog=with
-'There is a dog with a dog'
+chejagua cheiru
+chejagua cheiru
+che-jagua che-iru
+1SG.POSS-dog 1SG.POSS-friend
+'My dog is my friend'
 
 #Ex.201: Embedding of interrogative clause
 Source: e
@@ -2222,7 +2222,7 @@ Phenomena: emb-q
 aporandu ohechapa ju'i vakaA
 aporandu ohecha pa juHi vakaA
 a-porandu o-hecha=pa juHi vakaA
-A.1SG-ask A.3-see=COMPL frog cow
+A.1SG-ask A.3-see=Q frog cow
 'I ask if somebody sees the frog's cow'/ ' I ask if the frog's cow sees it' / 'I ask if the frog sees the cow' / 'I ask if the cow sees the frog'
 
 #Ex.202: Embedding of interrogative clause
@@ -2245,7 +2245,7 @@ jagua ndojerokyi
 jagua ndojerokyi
 jagua nd-o-jeroky-i
 dog NEG-A.3-dance-NEG
-'The dog doesn’t dance'
+'The dog doesn't dance'
 
 #Ex.204: Negated intransitive verb. Incomplete negation circumfix. Missing prefix.
 Source: author
@@ -2255,8 +2255,8 @@ Phenomena: neg
 jagua jerokyi
 jagua jerokyi
 jagua o-jeroky-i
-dog NEG-A.3-dance-NEG
-*'The dog doesn’t dance'
+dog A.3-dance-NEG
+*'The dog doesn't dance'
 
 #Ex.205: Negated intransitive verb. Incomplete negation circumfix. Missing sufffix.
 Source: author
@@ -2266,62 +2266,73 @@ Phenomena: neg
 jagua ndojeroky
 jagua ndojeroky
 jagua nd-o-jeroky
-dog NEG-A.3-dance-NEG
-*'The dog doesn’t dance'
+dog NEG-A.3-dance
+*'The dog doesn't dance'
 
-Ex. 206 WH-question with transitive verb 
+#Ex.206: be+located raising verb. Contentful postpositions.  Negation.
+Source: b
+Vetted: f
+Judgment: g
+Phenomena: {cop, adp}
+ndoimei kotýpe jaguandi
+ndoimei koty pe jagua ndi
+nd-o-ime-i koty=pe jagua=ndi
+NEG-3.ACT-be.located-NEG room=in dog=with
+'He/She is not located in the room with the dog'
+
+#Ex. 207 WH-question with transitive verb 
 Source: authors
 Vetted: f
 Judgment: g
 Phenomena: wh
-mávapa ohecha ju’ipe ?
+mávapa ohecha ju'ipe
 maAva pa ohecha juHi pe
 maAva=pa o-hecha juHi=pe
 who=Q  3-see frog=ACC
-‘Who sees the frog?’
+'Who sees the frog?'
 
-Ex. 207 Ambiguous WH-question with transitive verb 
+#Ex. 208 Ambiguous WH-question with transitive verb 
 Source: authors
 Vetted: f
 Judgment: g
 Phenomena: wh
-mávapa ohecha ju’i ?
+mávapa ohecha ju'i
 maAva pa ohecha juHi
 maAva=pa o-hecha juHi
 who=Q  3-see frog
-‘Who sees the frog?’ / 'Who does the frog see?'
+'Who sees the frog?' / 'Who does the frog see?'
 
-Ex. 208 WH question as an embedded clause 
+#Ex. 209 WH question as an embedded clause 
 Source: authors
 Vetted: f
 Judgment: g
 Phenomena: wh
-aporandu mávapa ohecha ju’ipe
+aporandu mávapa ohecha ju'ipe
 aporandu maAva pa ohecha juHi pe
 a-porandu maAva=pa o-hecha juHi=pe
 1SG-ask who=Q 3-see frog=ACC
-‘I ask who sees the frog’
+'I ask who sees the frog'
 
 
-Ex. 209 Long-distance dependency with WH-question
+#Ex. 210 Long-distance dependency with WH-question
 Source: authors
 Vetted: f
 Judgment: g
 Phenomena: wh
-mávapa aikuua ohechaha ju’ipe?
+mávapa aikuua ohechaha ju'ipe?
 maAva pa aikuua ohecha ha juHi pe
 maAva=pa a-ikuua o-hecha=ha juHi=pe
 who=Q 1SG-know 3-see=COMPL frog=ACC
-‘Who do I know sees the frog?’
+'Who do I know sees the frog?'
 
 
-Ex. 210 Ambiguous long-distance dependency with WH-question
+#Ex. 211 Ambiguous long-distance dependency with WH-question
 Source: authors
 Vetted: f
 Judgment: g
 Phenomena: wh
-mávapa aikuua ohechaha ju’i?
+mávapa aikuua ohechaha ju'i
 maAva pa aikuua ohecha ha juHi
 maAva=pa a-ikuua o-hecha=ha juHi
 who=Q 1SG-know 3-see=COMPL frog
-‘Who do I know sees the frog?’ / 'Who do I know does the frog see?
+'Who do I know sees the frog?' / 'Who do I know does the frog see?'
