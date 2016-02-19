@@ -23,9 +23,9 @@ Vetted: t
 Judgment: g
 Phenomena: corpus
 Ha'e héra Huanchi ha oguereko petei᷉ jagua hérava Piruli.
-haHe      ieAra     Huanchi  ha  oguereko  peteiN  jagua ieArava     Piruli
-haHe      i-eAra    Huan-chi ha  o-guereko peteiN  jagua i-eAra-va   Piruli
-3.SG.pron O.3-name  Juan-DIM and A.3-have  one     dog   O.3-name-RC Piruli
+haHe      ieAra     Juanchi  ha  oguereko  peteiN  jagua ieArava     Piruli
+haHe      i-eAra    Juanchi ha  o-guereko peteiN  jagua i-eAra-va   Piruli
+3.SG.pron O.3-name  Juan.DIM and A.3-have  one     dog   O.3-name-RC Piruli
 'His name was Juanito and he had a dog whose name was Piruli.'
 
 #Sentence.3
@@ -144,9 +144,9 @@ Vetted: t
 Judgment: g
 Phenomena: corpus
 Upéi iñaka ose᷉vo pe ygui Huanchi ju'i rovaiterehe omaña.
-upeAi inNaka  oseNvo      pe   ygui       Huanchi  juHi rovaiterehe    omanNa
-upeAi i-nNaka o-seN-vo    pe   y-gui      Huan-chi juHi rova-ite-rehe  o-manNa
-then  O.3-head  A.3-leave-AT that water-FROM Juan-DIM frog face-very-WITH A3-look
+upeAi inNaka  oseNvo      pe   ygui       Juanchi  juHi rovaiterehe    omanNa
+upeAi i-nNaka o-seN-vo    pe   y-gui      Juanchi juHi rova-ite-rehe  o-manNa
+then  O.3-head  A.3-leave-AT that water-FROM Juan.DIM frog face-very-WITH A3-look
 'Then, when Juanito's head resurfaced, he was looking directly at the frog.'
 
 #Sentence.14
@@ -198,10 +198,10 @@ Source: a, attested
 Vetted: t
 Judgment: g
 Phenomena: corpus
-Pirulo nogueroviai mba'eichapa Juanchi ndojurai ju'ipe.
+Pirulo nogueroviai mba'eichapa Huanchi ndojurai ju'ipe.
 pirulo ndogueroviai       mbaHeichapa   Juanchi  ndojurai        juHipe
-pirulo nd-o-guerovia-i    mbaHe-icha-pa Juan-chi nd-o-jura-i     juHi=pe
-Pirulo NEG-A.3-believe-NEG thing-like-Q  Juan-DIM NEG-A.3-grab-NEG frog=ACC
+pirulo nd-o-guerovia-i    mbaHe-icha-pa Juanchi nd-o-jura-i     juHi=pe
+Pirulo NEG-A.3-believe-NEG thing-like-Q  Juan.DIM NEG-A.3-grab-NEG frog=ACC
 'Pirulo couldn't believe how Juanito couldn't grab the frog.'
 
 #Sentence.19
@@ -220,10 +220,10 @@ Source: a, attested
 Vetted: t
 Judgment: g
 Phenomena: corpus
-Ha he'i Juan-chi:
-ha  oe     Juan-chi
-ha  o-e    Juan-chi
-and A.3-say Juan-DIM
+Ha he'i Huanchi:
+ha  oe   Juanchi
+ha  o-e  Juanchi
+and A.3-say Juan.DIM
 'And Juanito says:'
 
 #Sentence.21 
@@ -232,8 +232,8 @@ Vetted: t
 Judgment: g
 Phenomena: corpus
 "Nde piko repukata cherehe, nemba'e chapi᷉!"
-nde  piko  repukata       cherehe   ndembaHe   chapiN
-nde  piko  re-puka-ta     che-rehe  nde-mbaHe  chapiN
+nde  piko  repukata         cherehe   ndembaHe   chapiN
+nde  piko  re-puka-ta       che-rehe  nde-mbaHe  chapiN
 2sg.pron Q  A.2sg-laugh-FUT O.lsg-REHE O.2sg-thing dull
 'You laugh about me, you little thing?!'
 
