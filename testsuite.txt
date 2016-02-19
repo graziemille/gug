@@ -2167,7 +2167,7 @@ Phenomena: emb-q
 aporandu ohechapa ju'ipe
 aporandu ohecha pa juHi pe
 a-porandu o-hecha=pa juHi=pe
-A.1SG-ask A.3-see=Q frog=ACC
+A.1SG-know A.3-see=COMPL frog=ACC
 'I ask if somebody sees the frog'
 
 #Ex.197: Embedding of interrogative clause
@@ -2178,7 +2178,7 @@ Phenomena: emb-q
 aporandu ohechapa ju'i
 aporandu ohecha pa juHi
 a-porandu o-hecha=pa juHi
-A.1SG-ask A.3-see=Q frog
+A.1SG-know A.3-see=COMPL frog
 'I ask if somebody sees the frog' / 'I ask if the frog sees it'
 
 #Ex.198: Use embedded clause for declarative sentence
