@@ -401,19 +401,23 @@ cl-verb-lex:= gug-dyn-loc-verb &  clausal-second-arg-trans-lex-item &
 
 int-cl-verb-lex:= cl-verb-lex &
     [SYNSEM.LOCAL.CAT [  IC - , 
-                         VAL.COMPS < [ LOCAL [ CAT [ IC +,
+                         VAL[   SUBJ < [LOCAL.CAT.HEAD noun]>,
+                                SPR < >,
+ 				COMPS < [ LOCAL [ CAT [ IC +,
                                                   HEAD verb,
 						  VAL [ COMPS < >, 
 							SUBJ < > ] ],
-					    CONT.HOOK.INDEX.SF ques ]]>]].
+					    CONT.HOOK.INDEX.SF ques ]]>]]].
 
 decl-cl-verb-lex:= cl-verb-lex &
     [ SYNSEM.LOCAL.CAT[ IC -,
-                        VAL.COMPS < [ LOCAL [ CAT [ EC +,
+                        VAL[  SUBJ  < [LOCAL.CAT.HEAD noun]>,
+ 			      SPR < > ,
+                              COMPS < [ LOCAL [ CAT [ EC +,
                                                    IC -,
  					             HEAD verb,
 					             VAL.COMPS < > ],
-			             CONT.HOOK.INDEX.SF prop ]]>]].
+			             CONT.HOOK.INDEX.SF prop ]]>]]].
 
 ;;; Adjectives
 
