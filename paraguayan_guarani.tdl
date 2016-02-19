@@ -295,10 +295,6 @@ wh-pronoun-noun-lex := norm-hook-lex-item & basic-icons-lex-item &
 			    HCONS < ! [ HARG #harg,
 				        LARG #larg ] ! > ] ],
 	     NON-LOCAL.QUE < ! #ind ! > ] ].
-
-
-
-
 ;;; Verbs
 
 ;;New supertype replacing inheritance from verb-lex for both locative-verb-lex and dynamic-intransitive verb lex and ensuring that both these categories of verbs pass through the verb appropriate verb inflection rule
@@ -307,7 +303,7 @@ gug-dyn-loc-verb := verb-lex &
 [ INFLECTED.PERNUM-DYN-INTRANS-OR-PERNUM-TRANS-FLAG - ].
 
 ;; New verb type for attaching locative PP's
-locative-verb-lex := gug-dyn-loc-verb & trans-first-arg-control-lex-item &
+locative-verb-lex := gug-dyn-loc-verb & trans-first-arg-control-lex-item & completive-aspect-or-perfective-aspect-or-prospective-aspect-rule-dtr & future-aspect-rule-dtr & neg1-rule-dtr & neg2-rule-dtr &
   [ SYNSEM.LOCAL [ CAT.VAL [ SUBJ < #subj >,
                              COMPS < #comps >,
                              SPR < >,
@@ -324,7 +320,6 @@ locative-verb-lex := gug-dyn-loc-verb & trans-first-arg-control-lex-item &
                LOCAL.CAT [ VAL [ COMPS < > ],
                            HEAD adp & [CASE LOC] ] ] > ].
 
-
 verb-lex := basic-verb-lex & non-mod-lex-item &
   [ SYNSEM.LOCAL [ CAT [ MC na,
 			 VAL [ SPR < >,
@@ -339,7 +334,7 @@ verb-lex := basic-verb-lex & non-mod-lex-item &
                 PERNUM-DYN-INTRANS-OR-PERNUM-STAT-INTRANS-OR-PERNUM-TRANS-FLAG na-or-- ] ].
 
 ;;had to remove verb-lex from the path here, because the two intransitive verb subtypes need to inherit this seperately
-intransitive-verb-lex := intransitive-lex-item &
+intransitive-verb-lex :=  intransitive-lex-item &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS < >,
     ARG-ST.FIRST.LOCAL.CAT.HEAD +np ].
 
@@ -352,8 +347,8 @@ transitive-verb-lex := verb-lex & transitive-lex-item & completive-aspect-or-per
 			   HEAD +np ] ] >,
     INFLECTED.PERNUM-TRANS-FLAG - ].
 
-;;Attempt for ditransitive-verb-lex
 
+;;Attempt for ditransitive-verb-lex
 ;ditransitive-verb-lex := verb-lex & ditransitive-lex-item & completive-aspect-or-perfective-aspect-or-prospective-aspect-rule-dtr & future-aspect-rule-dtr & neg1-rule-dtr & neg2-rule-dtr &
 ;  [ SYNSEM.LOCAL.CAT.VAL.COMPS < #comps & [OPT-CS in-foc]>,
 ;    ARG-ST < [ LOCAL.CAT.HEAD +np ],
@@ -451,7 +446,7 @@ attr-only-adj-lex := attr-adj-lex &
 ;;; Others
 
 ;;; Scopal-modifiers
-scopal-lex := scopal-mod-lex & norm-sem-lex-item &
+scopal-lex := scopal-mod-lex & norm-sem-lex-item & norm-zero-arg &
   [ SYNSEM.LOCAL.CAT [  HEAD adv,
                         EC -, 
                         IC -,
@@ -819,22 +814,28 @@ pros-asp-lex-rule := prospective-aspect-lex-rule-super &
 ;;; Phrasal Types
 ;;;;;;;;;;;;;;;;;;;
 
-gug-scopal-mod-phrase := basic-head-mod-phrase-simple & head-final & head-compositional &
-  [ SYNSEM.LOCAL.CAT [ MC na,
+gug-scopal-mod-phrase := basic-head-mod-phrase-simple & head-final & 
+			 head-compositional &
+  [ SYNSEM [ LOCAL.CAT [ MC na,
                        EC -, 
-                       IC -],  
+                       IC -],
+	    NON-LOCAL [QUE <! !>, SLASH <! !>, YNQ <! !>]],
+  
     HEAD-DTR.SYNSEM.LOCAL.CAT [ MC na,
                                 HEAD verb & [MOD < >],
                                 VAL [ SPEC < >, 
                                       SPR < >, 
                                       SUBJ < >, 
                                       COMPS < >]],
-    NON-HEAD-DTR.SYNSEM.LOCAL [ CAT [ HEAD adv & [ MOD < [ LOCAL scopal-mod ] >],
-                                      VAL [SPR < >, SUBJ < >, COMPS < >]],
+    NON-HEAD-DTR.SYNSEM.LOCAL [ CAT [ HEAD adv & 
+					   [ MOD < [ LOCAL scopal-mod ] >],
+                                      VAL [SPR < >, 
+					   SUBJ < >, 
+					   COMPS < >]],
                                       CONT.HOOK #hook ],
     C-CONT [ HOOK #hook,
-       HCONS <! !>,
-       ICONS <! !> ] ].
+	     HCONS <! !>,
+	     ICONS <! !> ] ].
 
 
 
@@ -981,8 +982,8 @@ same-periph-unary-phrase := unary-phrase.
 
 
 same-ynq-unary-phrase := unary-phrase &
-  [ SYNSEM.NON-LOCAL.YNQ #ynq,
-    ARGS < [ SYNSEM.NON-LOCAL.YNQ #ynq ] > ].
+  [ SYNSEM.NON-LOCAL [YNQ #ynq, SLASH #slash, QUE #que],
+    ARGS < [ SYNSEM.NON-LOCAL [YNQ #ynq, SLASH #slash, QUE #que]] > ].
 
 basic-head-opt-subj-phrase:+ YNQ-contrains-phrase &
     [ SYNSEM.LOCAL.CAT [EC #ec,
