@@ -401,19 +401,23 @@ cl-verb-lex:= gug-dyn-loc-verb &  clausal-second-arg-trans-lex-item &
 
 int-cl-verb-lex:= cl-verb-lex &
     [SYNSEM.LOCAL.CAT [  IC - , 
-                         VAL.COMPS < [ LOCAL [ CAT [ IC +,
+                         VAL[   SUBJ < [LOCAL.CAT.HEAD noun]>,
+                                SPR < >,
+ 				COMPS < [ LOCAL [ CAT [ IC +,
                                                   HEAD verb,
 						  VAL [ COMPS < >, 
 							SUBJ < > ] ],
-					    CONT.HOOK.INDEX.SF ques ]]>]].
+					    CONT.HOOK.INDEX.SF ques ]]>]]].
 
 decl-cl-verb-lex:= cl-verb-lex &
     [ SYNSEM.LOCAL.CAT[ IC -,
-                        VAL.COMPS < [ LOCAL [ CAT [ EC +,
+                        VAL[  SUBJ  < [LOCAL.CAT.HEAD noun]>,
+ 			      SPR < > ,
+                              COMPS < [ LOCAL [ CAT [ EC +,
                                                    IC -,
  					             HEAD verb,
 					             VAL.COMPS < > ],
-			             CONT.HOOK.INDEX.SF prop ]]>]].
+			             CONT.HOOK.INDEX.SF prop ]]>]]].
 
 ;;; Adjectives
 
@@ -936,7 +940,7 @@ int-cl := head-only-int-decl-clause & interrogative-clause &
                     NON-LOCAL[SLASH #sl, YNQ <! *top* !>, QUE <! !> ]]].
 
 decl-cl := head-only-int-decl-clause & declarative-clause & 
-  [ SYNSEM[ LOCAL [ CAT [ VAL #val & [SUBJ< >, COMPS< >, SPR< >], MC bool, EC #ec],
+  [ SYNSEM[ LOCAL [ CAT [ VAL #val & [SUBJ< >, COMPS< >, SPR< >], MC bool, EC #ec, IC -],
                    CONT.HOOK.INDEX.SF prop ],
             NON-LOCAL.SLASH #sl],
     HEAD-DTR.SYNSEM [ LOCAL.CAT [ MC na, VAL #val, HEAD verb, EC #ec, IC -],
@@ -1200,10 +1204,16 @@ wh-ques-phrase := gug-basic-head-filler-phrase & interrogative-clause &
 		  head-final &
    [ SYNSEM.LOCAL.CAT [ IC +,
 			MC na,
-			VAL #val,
+			VAL [SUBJ < >, 
+                             SPR #spr ,
+                             COMPS #comps, 
+                             SPEC #spec],
 			HEAD verb ],
      HEAD-DTR.SYNSEM.LOCAL.CAT [  MC na,
-				  VAL #val],
+				  VAL [SUBJ < >, 
+                                       SPR #spr ,
+                                       COMPS #comps, 
+                                       SPEC #spec]],
      NON-HEAD-DTR.SYNSEM [ LOCAL.CAT.IC +,
  			NON-LOCAL.QUE < ! ref-ind ! > ]].
 			
@@ -1215,7 +1225,7 @@ extracted-comp-phrase := basic-extracted-comp-phrase &
  		        HEAD verb]],
     HEAD-DTR.SYNSEM.LOCAL.CAT[ IC #ic,
                                EC #ec,
-                               VAL.SUBJ < > ]].
+                               VAL.SUBJ cons ]].
 
 
 extracted-subj-phrase := basic-extracted-subj-phrase &

@@ -2177,8 +2177,8 @@ Judgment: g
 Phenomena: emb-q
 aporandu ohechapa ju'i
 aporandu ohecha pa juHi
-a-porandu o-hecha=pa juHi=pe
-A.1SG-know A.3-see=COMPL frog=ACC
+a-porandu o-hecha=pa juHi
+A.1SG-know A.3-see=COMPL frog
 'I ask if somebody sees the frog' / 'I ask if the frog sees it'
 
 #Ex.198: Use embedded clause for declarative sentence
@@ -2197,7 +2197,7 @@ Source: author
 Vetted: f
 Judgment: g
 Phenomena: {emb-d, wo}
-aikuua ohechaha ju'ipe
+aikuua ohechaha ju'i
 aikuua ohecha ha juHi
 a-ikuua o-hecha=ha juHi
 A.1SG-know A.3-go=COMPL juHi
@@ -2258,7 +2258,7 @@ jagua o-jeroky-i
 dog NEG-A.3-dance-NEG
 *'The dog doesn’t dance'
 
-#Ex.204: Negated intransitive verb. Incomplete negation circumfix. Missing sufffix.
+#Ex.205: Negated intransitive verb. Incomplete negation circumfix. Missing sufffix.
 Source: author
 Vetted: f
 Judgment: u
@@ -2269,3 +2269,59 @@ jagua nd-o-jeroky
 dog NEG-A.3-dance-NEG
 *'The dog doesn’t dance'
 
+Ex. 206 WH-question with transitive verb 
+Source: authors
+Vetted: f
+Judgment: g
+Phenomena: wh
+mávapa ohecha ju’ipe ?
+maAva pa ohecha juHi pe
+maAva=pa o-hecha juHi=pe
+who=Q  3-see frog=ACC
+‘Who sees the frog?’
+
+Ex. 207 Ambiguous WH-question with transitive verb 
+Source: authors
+Vetted: f
+Judgment: g
+Phenomena: wh
+mávapa ohecha ju’i ?
+maAva pa ohecha juHi
+maAva=pa o-hecha juHi
+who=Q  3-see frog
+‘Who sees the frog?’ / 'Who does the frog see?'
+
+Ex. 208 WH question as an embedded clause 
+Source: authors
+Vetted: f
+Judgment: g
+Phenomena: wh
+aporandu mávapa ohecha ju’ipe
+aporandu maAva pa ohecha juHi pe
+a-porandu maAva=pa o-hecha juHi=pe
+1SG-ask who=Q 3-see frog=ACC
+‘I ask who sees the frog’
+
+
+Ex. 209 Long-distance dependency with WH-question
+Source: authors
+Vetted: f
+Judgment: g
+Phenomena: wh
+mávapa aikuua ohechaha ju’ipe?
+maAva pa aikuua ohecha ha juHi pe
+maAva=pa a-ikuua o-hecha=ha juHi=pe
+who=Q 1SG-know 3-see frog=ACC
+‘Who do I know sees the frog?’
+
+
+Ex. 210 Ambiguous long-distance dependency with WH-question
+Source: authors
+Vetted: f
+Judgment: g
+Phenomena: wh
+mávapa aikuua ohechaha ju’i?
+maAva pa aikuua ohecha ha juHi
+maAva=pa a-ikuua o-hecha=ha juHi
+who=Q 1SG-know 3-see frog
+‘Who do I know sees the frog?’ / 'Who do I know does the frog see?
