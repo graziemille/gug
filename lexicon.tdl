@@ -25,6 +25,10 @@ aguara := com-anim-noun-lex &
   [ STEM < "aguara" >,
     SYNSEM.LKEYS.KEYREL.PRED "_fox_n_rel" ].
 
+iru := com-anim-noun-lex &
+  [ STEM < "iru" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_friend_n_rel" ].
+
 tunich := com-inam-noun-lex &
   [ STEM < "tunich" >,
     SYNSEM.LKEYS.KEYREL.PRED "_stone_n_rel" ].

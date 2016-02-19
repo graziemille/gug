@@ -186,7 +186,8 @@ non-poss-com-inam-noun-lex := non-poss-com-noun-lex & com-inam-noun-lex.
 ;; category for proper-nouns
 proper-noun-lex := non-poss-com-noun-lex & no-spr-noun-lex & com-anim-noun-lex & named-relation.
 
-noun-lex := basic-noun-lex & basic-one-arg & no-hcons-lex-item & non-mod-lex-item & 
+noun-lex := basic-noun-lex & basic-one-arg & no-hcons-lex-item & non-ynq-word &
+            non-mod-lex-item & norm-zero-arg &
   [ SYNSEM.LOCAL.CAT [  EC -, 
                         IC -,
                         VAL [ SPR < #spr &
@@ -207,7 +208,7 @@ no-spr-noun-lex := noun-lex &
 ; the specifier of nouns and SUBJ for the subject (specifier) of verbs.
 
 
-common-noun-lex := noun-lex &
+common-noun-lex := noun-lex & 
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3rd ].
 
 com-anim-noun-lex := common-noun-lex &
@@ -294,10 +295,6 @@ wh-pronoun-noun-lex := norm-hook-lex-item & basic-icons-lex-item &
 			    HCONS < ! [ HARG #harg,
 				        LARG #larg ] ! > ] ],
 	     NON-LOCAL.QUE < ! #ind ! > ] ].
-
-
-
-
 ;;; Verbs
 
 ;;New supertype replacing inheritance from verb-lex for both locative-verb-lex and dynamic-intransitive verb lex and ensuring that both these categories of verbs pass through the verb appropriate verb inflection rule
@@ -306,7 +303,7 @@ gug-dyn-loc-verb := verb-lex &
 [ INFLECTED.PERNUM-DYN-INTRANS-OR-PERNUM-TRANS-FLAG - ].
 
 ;; New verb type for attaching locative PP's
-locative-verb-lex := gug-dyn-loc-verb & trans-first-arg-control-lex-item &
+locative-verb-lex := gug-dyn-loc-verb & trans-first-arg-control-lex-item & completive-aspect-or-perfective-aspect-or-prospective-aspect-rule-dtr & future-aspect-rule-dtr & neg1-rule-dtr & neg2-rule-dtr &
   [ SYNSEM.LOCAL [ CAT.VAL [ SUBJ < #subj >,
                              COMPS < #comps >,
                              SPR < >,
@@ -323,7 +320,6 @@ locative-verb-lex := gug-dyn-loc-verb & trans-first-arg-control-lex-item &
                LOCAL.CAT [ VAL [ COMPS < > ],
                            HEAD adp & [CASE LOC] ] ] > ].
 
-
 verb-lex := basic-verb-lex & non-mod-lex-item &
   [ SYNSEM.LOCAL [ CAT [ MC na,
 			 VAL [ SPR < >,
@@ -338,7 +334,7 @@ verb-lex := basic-verb-lex & non-mod-lex-item &
                 PERNUM-DYN-INTRANS-OR-PERNUM-STAT-INTRANS-OR-PERNUM-TRANS-FLAG na-or-- ] ].
 
 ;;had to remove verb-lex from the path here, because the two intransitive verb subtypes need to inherit this seperately
-intransitive-verb-lex := intransitive-lex-item &
+intransitive-verb-lex :=  intransitive-lex-item &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS < >,
     ARG-ST.FIRST.LOCAL.CAT.HEAD +np ].
 
@@ -351,8 +347,8 @@ transitive-verb-lex := verb-lex & transitive-lex-item & completive-aspect-or-per
 			   HEAD +np ] ] >,
     INFLECTED.PERNUM-TRANS-FLAG - ].
 
-;;Attempt for ditransitive-verb-lex
 
+;;Attempt for ditransitive-verb-lex
 ;ditransitive-verb-lex := verb-lex & ditransitive-lex-item & completive-aspect-or-perfective-aspect-or-prospective-aspect-rule-dtr & future-aspect-rule-dtr & neg1-rule-dtr & neg2-rule-dtr &
 ;  [ SYNSEM.LOCAL.CAT.VAL.COMPS < #comps & [OPT-CS in-foc]>,
 ;    ARG-ST < [ LOCAL.CAT.HEAD +np ],
@@ -450,7 +446,7 @@ attr-only-adj-lex := attr-adj-lex &
 ;;; Others
 
 ;;; Scopal-modifiers
-scopal-lex := scopal-mod-lex & norm-sem-lex-item &
+scopal-lex := scopal-mod-lex & norm-sem-lex-item & norm-zero-arg &
   [ SYNSEM.LOCAL.CAT [  HEAD adv,
                         EC -, 
                         IC -,
@@ -556,13 +552,6 @@ neg1-rule-dtr := word-or-lexrule.
 neg2-rule-dtr := word-or-lexrule.
 
 ;;; Lexical rule types
-
-;;rule that takes in nouns and updates their PRED value so that they can take part in the n-bar-predicate rule
-
-pred-noun-lex-rule-super := constant-lex-rule & neg1-rule-dtr & neg2-rule-dtr & 
-  [SYNSEM.LOCAL.CAT.HEAD noun & [PRD +],
-   DTR common-noun-lex ].
-
 
 ;; The possessive lexical rule as possessive affixes to possessums
 ;; e.g., chesy, che-sy, "my mother"
@@ -825,22 +814,28 @@ pros-asp-lex-rule := prospective-aspect-lex-rule-super &
 ;;; Phrasal Types
 ;;;;;;;;;;;;;;;;;;;
 
-gug-scopal-mod-phrase := basic-head-mod-phrase-simple & head-final & head-compositional &
-  [ SYNSEM.LOCAL.CAT [ MC na,
+gug-scopal-mod-phrase := basic-head-mod-phrase-simple & head-final & 
+			 head-compositional &
+  [ SYNSEM [ LOCAL.CAT [ MC na,
                        EC -, 
-                       IC -],  
+                       IC -],
+	    NON-LOCAL [QUE <! !>, SLASH <! !>, YNQ <! !>]],
+  
     HEAD-DTR.SYNSEM.LOCAL.CAT [ MC na,
                                 HEAD verb & [MOD < >],
                                 VAL [ SPEC < >, 
                                       SPR < >, 
                                       SUBJ < >, 
                                       COMPS < >]],
-    NON-HEAD-DTR.SYNSEM.LOCAL [ CAT [ HEAD adv & [ MOD < [ LOCAL scopal-mod ] >],
-                                      VAL [SPR < >, SUBJ < >, COMPS < >]],
+    NON-HEAD-DTR.SYNSEM.LOCAL [ CAT [ HEAD adv & 
+					   [ MOD < [ LOCAL scopal-mod ] >],
+                                      VAL [SPR < >, 
+					   SUBJ < >, 
+					   COMPS < >]],
                                       CONT.HOOK #hook ],
     C-CONT [ HOOK #hook,
-       HCONS <! !>,
-       ICONS <! !> ] ].
+	     HCONS <! !>,
+	     ICONS <! !> ] ].
 
 
 
@@ -861,9 +856,12 @@ head-spec-phrase := basic-head-spec-phrase & head-final &
 
 
 ;; Allows us to generate NP predicates with no copula or morphology.
-n-bar-predicate-rule := unary-phrase & nocoord &
-  [ SYNSEM.LOCAL [ AGR #agr3,
-                   CAT [  EC -, IC -, MC na,
+n-bar-predicate-rule := YNQ-contrains-phrase & nocoord &
+  [ SYNSEM.NON-LOCAL [ SLASH <! !>, QUE <! !>, REL <! !> ], 
+    SYNSEM.LOCAL [ AGR #agr3,
+                   CAT [  EC -, 
+			  IC -, 
+			  MC na,
                           HEAD verb & [MOD < >],
                           VAL [ SPEC < >,
                                 SPR  < >,
@@ -886,8 +884,8 @@ n-bar-predicate-rule := unary-phrase & nocoord &
 		     RSTR #harg ] !>,
 	     HCONS <! qeq & [ HARG #harg, LARG #larg ] !> ],
     ARGS < [ SYNSEM.LOCAL [ AGR #agr3,
-			                      CAT [ HEAD noun & [POSS poss-or-ee],
-				                     VAL.SPR cons ],
+			    CAT [ HEAD noun & [POSS poss-or-ee],
+				  VAL.SPR cons ],
 			    CONT.HOOK [ INDEX #arg2,
 					LTOP #larg ]]] > ].
 
@@ -910,8 +908,7 @@ basic-unary-int-decl-cl-phrase := phrase &
 	     ICONS [ LIST #icmiddle,
 		     LAST #iclast ] ],
     ARGS < sign & [ STEM #stem,
-		    SYNSEM [
-			     LOCAL local &
+		    SYNSEM [ LOCAL local &
 			      [ CAT.MKG #mkg,
 				CONT [ RELS [ LIST #first,
 					      LAST #middle ],
@@ -985,8 +982,8 @@ same-periph-unary-phrase := unary-phrase.
 
 
 same-ynq-unary-phrase := unary-phrase &
-  [ SYNSEM.NON-LOCAL.YNQ #ynq,
-    ARGS < [ SYNSEM.NON-LOCAL.YNQ #ynq ] > ].
+  [ SYNSEM.NON-LOCAL [YNQ #ynq, SLASH #slash, QUE #que],
+    ARGS < [ SYNSEM.NON-LOCAL [YNQ #ynq, SLASH #slash, QUE #que]] > ].
 
 basic-head-opt-subj-phrase:+ YNQ-contrains-phrase &
     [ SYNSEM.LOCAL.CAT [EC #ec,
@@ -1177,18 +1174,36 @@ s3-bottom-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], NONCONJ-DTR.SYNSEM
 
 ;; WH phrasal rules
 
-basic-head-filler-phrase :+
+gug-basic-head-filler-phrase := binary-phrase & phrasal & head-compositional &
+  [ SYNSEM [ LOCAL [ CAT [ VAL [ COMPS < >,
+                                 SPR < > ],
+			   POSTHEAD + ] ],
+	     NON-LOCAL.SLASH 0-dlist ],
+    ARGS < [ SYNSEM [ LOCAL #slash & local &
+			    [ CAT.VAL [ SUBJ olist,
+					COMPS olist,
+					SPR olist ],
+			      CTXT.ACTIVATED + ],
+		      NON-LOCAL.SLASH 0-dlist ] ],
+     [ SYNSEM [ NON-LOCAL [ SLASH 1-dlist &
+          [ LIST [ FIRST #slash,
+             REST < > & #last ],
+            LAST #last ],
+          QUE 0-dlist,
+          REL 0-dlist ] ] ] > ].
+
+
+gug-basic-head-filler-phrase :+
    [ ARGS < [ SYNSEM.LOCAL.COORD - ], [ SYNSEM.LOCAL.COORD - ] > ].
 
-wh-ques-phrase := basic-head-filler-phrase & interrogative-clause & 
+wh-ques-phrase := gug-basic-head-filler-phrase & interrogative-clause & 
 		  head-final &
    [ SYNSEM.LOCAL.CAT [ IC +,
 			MC na,
 			VAL #val,
 			HEAD verb ],
      HEAD-DTR.SYNSEM.LOCAL.CAT [  MC na,
-				 VAL #val & [ SUBJ < >,
-					      COMPS < > ] ],
+				  VAL #val],
      NON-HEAD-DTR.SYNSEM [ LOCAL.CAT.IC +,
  			NON-LOCAL.QUE < ! ref-ind ! > ]].
 			
@@ -1200,7 +1215,7 @@ extracted-comp-phrase := basic-extracted-comp-phrase &
  		        HEAD verb]],
     HEAD-DTR.SYNSEM.LOCAL.CAT[ IC #ic,
                                EC #ec,
-                               VAL.SUBJ cons ]].
+                               VAL.SUBJ < > ]].
 
 
 extracted-subj-phrase := basic-extracted-subj-phrase &
