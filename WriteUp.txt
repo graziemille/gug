@@ -504,7 +504,7 @@ As well as non-ynq-word where appropriate.  For example in the two cases above a
  case-marking-adp-lex :=  basic-one-arg & raise-sem-lex-item & non-ynq-word &
 
 
-Two changes on the bare-np-phrase. We let it inherit from head-valence-phrase as an additional super type, so that the NON-LOCAL value is copied up. Constrained the element of the non-empty SPR list to be unexpressed.
+Two changes on the bare-np-phrase. We let it inherit from head-valence-phrase as an additional super type, so that the NON-LOCAL value is copied up, and constrained the element of the non-empty SPR list to be unexpressed.
 
 bare-np-phrase := basic-bare-np-phrase & YNQ-contrains-phrase & head-valence-phrase &
   [ SYNSEM.LIGHT -,
@@ -521,7 +521,7 @@ bottom-coord-phrase :+ [ SYNSEM.NON-LOCAL #nl,
    NONCONJ-DTR.SYNSEM.NON-LOCAL #nl ].	
 
 
-Finally to cut down on some spurious ambiguity (and overgeneration) we added some NON-LOCAL constraints to the question and complementizer clitics, as shown below:
+Finally to cut down on some spurious ambiguity (and overgeneration) we added some NON-LOCAL constraints to the question and complementizer clitics, as well as to rules like poss-phrase created in previous weeks, as shown below:
 
 question-clitic-lex := no-hcons-lex-item &
  [ SYNSEM [ LOCAL [ CAT [ IC +, 
@@ -550,6 +550,14 @@ compl-clitic-lex := no-hcons-lex-item &
             NON-LOCAL[ SLASH <! !>,
                        QUE <! !>,
 		       YNQ <! !> ]]].
+
+
+poss-phrase := head-final &
+  [ SYNSEM [ LOCAL.CAT [ HEAD #head & [POSS poss-or-ee],
+		       VAL [ SPR < >, 
+			     COMPS < >, 
+			     SUBJ < > ] ],
+	    NON-LOCAL.QUE <! !> ] ...
 
 
 4. Anything else.
