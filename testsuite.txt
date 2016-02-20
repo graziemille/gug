@@ -1200,27 +1200,27 @@ a-hendu yvytu hata
 A.1SG-hear wind.INAM strong
 'I hear the strong wind'
 
-#Ex.109: Ungrammatically possessed 'unpossessable' noun.
+#Ex.109: Grammatical readings under juxtaposition of noun predicates
 Source: author
 Vetted: f
-Judgment: u
+Judgment: g
 Phenomena: poss
 ahendu avatitý yvytu hata 
 ahendu avatityA yvytu hata 
 a-hendu avatityA yvytu hata
 A.1SG-hear cornfield wind.INAM strong
-'I hear the cornfield's strong wind'
+'I hear it, the cornfield is, the strong wind is'
 
-#Ex.110: Ungrammatically possessed 'unpossessable' pronoun.
+#Ex.110: Ungrammatically double ACC.
 Source: author
 Vetted: f
 Judgment: u
 Phenomena: pro-d
-vaká chupe
-vakaA chupe
-vakaA chupe
-cow it
-*'There is a cow's it'
+vakápe chupe
+vakaA pe chupe
+vakaA=pe chupe
+cow=ACC it.ACC
+*'To the cow to it'
 
 #Ex.111: Portmanteau marker for 12PL
 Source: author
@@ -1299,15 +1299,15 @@ o-hecha nNakyra vakaA=pe=pa
 O.3-see cricket.ANIM.NOM cow.ANIM=ACC=Q
 *'Did the cricket see the cow?
 
-#Ex.118: Yes-No question with question marker in wrong position, should be end suffix.
+#Ex.118: Wrong double accusative marker.
 Source: c
 Vetted: f
 Judgment: u
-Phenomena: q
-vakápape ohecha ñakyra? 
-vakaA pa pe ohecha nNakyra
-vakaA=pa=pe o-hecha nNakyra
-cow.ANIM=Q=ACC O.3-see cricket.ANIM.NOM
+Phenomena: case
+vakápape ohecha ñakyrape? 
+vakaA pa pe ohecha nNakyra pe
+vakaA=pa=pe o-hecha nNakyra=ACC
+cow.ANIM=Q=ACC O.3-see cricket.ANIM=ACC
 *'Was it the cricket, who saw the cow?'
 
 #Ex.119: Yes-No question with focus marker on verb predicate, wrong position of marker piko
@@ -1602,10 +1602,10 @@ Source: b
 Vetted: f
 Judgment: u
 Phenomena: crd
-ha nikiriri᷉i ndopytai
-ha ndikiririNi ndopytai
-ha nd-i-kiririN-i nd-o-pyta-i
-and NEG-O.3-be.quiet-NEG NEG-A.3-leave-NEG 
+nikiriri᷉i ndopytai ha
+ndikiririNi ndopytai ha
+nd-i-kiririN-i nd-o-pyta-i ha
+NEG-O.3-be.quiet-NEG NEG-A.3-leave-NEG and
 *'He/she is not quiet and does not leave'
 
 #Ex.146: Use of 'and' coordination with sentence constituents
@@ -1800,11 +1800,11 @@ fox.ANIM.NOM and dog.ANIM.NOM A.3-hide
 Source: author
 Vetted: f
 Judgment: u
-Phenomena: {crd, wo}
-ha aguara jagua okañy
-ha aguara jagua okanNy
-ha aguara jagua o-kanNy
-and fox.ANIM.NOM dog.ANIM.NOM A.3-hide
+Phenomena: crd
+aguara jagua okañy ha
+aguara jagua okanNy ha
+aguara jagua o-kanNy ha
+fox.ANIM.NOM dog.ANIM.NOM A.3-hide and
 *'the fox and the dog hid'
 
 #Ex.164: be+located raising verb. Contentful postpositions.  
@@ -1884,27 +1884,27 @@ tuicha vakaA a-hecha
 big cow.ANIM A.1SG-see 
 *'I see the big cow'
 
-#Ex.171: Pronouns cannot be part of possessive constructions
+#Ex.171: Wrong position of conjuntion ha
 Source: author
 Vetted: f
 Judgment: u
-Phenomena: poss
-ha'e jagua
-haHe jagua
-haHe jagua
-3SG.PRON.NOM dog
-*'There is his/her dog'
+Phenomena: crd
+ha'e jagua ha
+haHe jagua ha 
+haHe jagua ha
+3SG.PRON.NOM dog and
+*'He and the dog'
 
-#Ex.172: Pronouns cannot be part of possessive constructions
+#Ex.172: Wrong position of conjuntion ha
 Source: author
 Vetted: f
 Judgment: u
-Phenomena: poss
-ojeroky jagua ha'e
-jagua haHe
-jagua haHe
-dog 3SG.PRON.NOM
-*'There is a he that belongs to the dog'
+Phenomena: crd
+jagua ha'e ha
+jagua haHe ha
+jagua haHe ha
+dog 3SG.PRON.NOM and
+*'The dog and him'
 
 #Ex.173: Transitive verb two personal pronoun arguments.
 Source: author
@@ -2038,16 +2038,16 @@ a-jeroky bad
 A.1SG-see bad
 'I see poorly'
 
-#Ex.185:  Nouns that have passed through the possessive lexical rule should not be allowed to be the possessums of other nouns. 
+#Ex.185:  Noun predicates and its argument. 
 Source: author
 Vetted: f
-Judgment: u
-Phenomena: poss
+Judgment: g
+Phenomena: {adp,cop}
 jagua chesy
 jagua chesy
 dog che-sy
 dog 1SG.POS-mother
-*'There is a my mother of the dog'
+'The mother has a dog'
 
 #Ex.186: Unattested case of a noun that has passed through the possessive lexical rule acting as the possessor of another noun.  Judged grammatical for now but easy to change if need be. Ambiguous reading
 Source: author
