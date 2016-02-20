@@ -698,41 +698,236 @@ We are able to generate from our NP predicate examples, though as is to be expec
 Most of our other work fixing leaks and reducing spurious ambiguity is documented above with results outlined below.
 
 
+
 5. Statement of the current overage of the grammar over your testsuite (using number you can get from Analyze|Coverage and Analyze|Overgeneration in [incr tsdb()]) and a comparison between your baseline testsuite run and your final one for this lab (see Compare|Competence).
 
---General Stats
+—Corpus Stats
 
 Analyze | Coverage
-	Total Items: 202
-	Positive Items: 129 
-	Word String 0: 2.88
-	Lexical Items 0: 4.49
-	Distinct Analyses: 2.71
-	Total Results: 102
-	Overall Coverage: 79.1
+	Total Items: 21
+	Positive Items: 21
+	Word String 0: 6.14
+	Lexical Items 0: 6.00
+	Distinct Analyses: 3.00
+	Total Results: 1
+	Overall Coverage: 4.8
 
 Analyze | Overgeneration
-	Total Items: 202
-	Negative Items: 73
-	Word String 0: 2.95
-	Lexical Items 0: 4.49
-	Distinct Analyses: 3.71
-	Total Results: 7
-	Overall Coverage: 9.6
+	Total Items: 0
+	Negative Items: 0
+	Word String 0: 0
+	Lexical Items 0: 0
+	Distinct Analyses: 0 
+	Total Results: 0
+	Overall Coverage: 100
 
-Comparison of baseline(gold-lab5) and final version of this lab 
+Comparison of baseline(gold-lab6) and final version of this lab 
 (Compare | Competence)
 
 	Baseline
-		lexical 0:  1.33
-		analyses 0: 1.34
-		in 0:       66.7
-		out 0:      1.4
+		lexical 0:  .38
+		analyses 0: 0.0
+		in 0:       0.0
+		out 0:      100.0
 
 	New
+		lexical 0:  .53
+		analyses 0: 3.00
+		in 0:       4.8
+		out 0:      100.0
+
+We have achieved our goal of parsing one more sentence from our corpus this week:
+
+#Sentence.20
+Source: a, attested
+Vetted: t
+Judgment: g
+Phenomena: corpus
+Ha he'i Huanchi:
+ha  oe   Juanchi
+ha  o-e  Juanchi
+and A.3-say Juan.DIM
+'And Juanito says:'
+
+Which as noted earlier in the write-up is correctly parsing with three possible readings. 
+
+
+--TestSuite General Stats
+
+Analyze | Coverage
+	Total Items: 211
+	Positive Items: 138
+	Word String 0: 2.99
+	Lexical Items 0: 4.84
+	Distinct Analyses: 2.96
+	Total Results: 113
+	Overall Coverage: 81.9
+
+Analyze | Overgeneration
+	Total Items: 211
+	Negative Items: 73
+	Word String 0: 2.97
+	Lexical Items 0: 4.68
+	Distinct Analyses: 1.00
+	Total Results: 1
+	Overall Coverage: 1.4
+
+Comparison of baseline(gold-lab6) and final version of this lab 
+(Compare | Competence)
+
+	Baseline
 		lexical 0:  1.46
-		analyses 0: 2.77
-		in 0:       79.1
-		out 0:      9.6
+		analyses 0: 2.76
+		in 0:       76.8
+		out 0:      6.8
+
+	New
+		lexical 0:  1.52
+		analyses 0: 2.94
+		in 0:       81.9
+		out 0:      1.4
 
 
+General analysis
+
+We see an increase in coverage over our testsuite from 76.8 to 81.9.  A lot of that jump is in our analysis of longer sentences (i-length in [5-10|) where our performance jumped from 60.9 to 78.3.  The jump in shorter sentences was more modest from 80.0 to 82.6.  
+
+We also see an increase in the number of distinct analyses with our new grammar, but this is actually to be expected for two reasons.  First, fixing our n-bar-predicate rule resulted in a lot more legitimate ambiguity, and second, as noted above we are parsing a larger percentage of our long sentences which in Guarani tend to have larger numbers of legitimate parses.
+
+One example is 202, seen below, where we have 4 legitimate parses even without accounting for asyndenton coordination which interacts with the n-bar-predicate rule to produce 6 more. That said we were still able to constrain coordination a bit more and reduce the number of parses on that sentence by 2 even with the changes this week, from 12 to 10 total.
+
+#Ex.202: Embedding of interrogative clause
+Source: e
+Vetted: f
+Judgment: g
+Phenomena: emb-d
+aikuua ohechaha ju'i vakaA
+aikuua ohecha ha juHi vakaA
+a-ikuua o-hecha=ha juHi vakaA
+A.1SG-know A.3-see=COMPL frog cow
+'I know that somebody sees the frog's cow' / ' I know that the frog's cow sees it' / 'I know that the frog sees the cow' / 'I know that the cow sees the frog'
+
+Even short sentences can be multiply ambiguous, particularly when we have to NP’s next to each other as we see in 193.  Here we can have the frog seeing the cow, the cow seeing the frog, the frog’s cow being seen, or the frog’s cow seeing something.  For these types of sentences we generally saw an increase in parses from 8-10, with the 2 extra parses attributed to the aforementioned changes to our n-bar-predicate rule and the interaction between it and coordination.  
+
+#Ex.193 Transitive verb agrees with 3per subject. No marking on animate object. VSO word order. No determiners, underspecified number. Ambiguous.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: wo
+ohecha ju'i vaká
+ohecha juHi vakaA
+o-hecha juHi vakaA
+O.3-see frog.ANIM.NOM cow.ANIM
+'The frogs see the cows'
+
+In Ex. 162 the additional ambiguity is the result of new lexical ambiguity.  We have a new scopal-modifier with the form “ha” which is also the form of complementizer clitic AND the form used for conjunction.  The ambiguity between scopal modifier and conjunction leads to increase the readings from 4 to 8 but all the readings look reasonable. 
+
+#Ex.162: Use of 'and' coordination with nominal constituents
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {crd, wo}
+aguara ha jagua okañy
+aguara ha jagua okanNy
+aguara ha jagua o-kanNy
+fox.ANIM.NOM and dog.ANIM.NOM A.3-hide
+'the fox and the dog hid'
+
+As a further frame of reference we also compared our results to our grammar from this Thursday, after we had made some major changes but before we had managed to patch many of our leaks. Thursday’s grammar was showing 3.89 analyses on average with a 6.45 average for longer sentences, which were able to get down to 2.94 and 3.44 respectively.
+
+In particular 201 and 202, which you may remember as being the sentences with 17 and 20 parses respectively now have only 10 distinct analyses each, which as you can see from my breakdown of 202 above is actually a reasonable number for sentences of this length particularly when there are to NPs in a row.
+
+#Ex.201: Embedding of interrogative clause
+Source: e
+Vetted: f
+Judgment: g
+Phenomena: emb-q
+aporandu ohechapa ju'i vakaA
+aporandu ohecha pa juHi vakaA
+a-porandu o-hecha=pa juHi vakaA
+A.1SG-ask A.3-see=Q frog cow
+'I ask if somebody sees the frog's cow'/ ' I ask if the frog's cow sees it' / 'I ask if the frog sees the cow' / 'I ask if the cow sees the frog'
+
+#Ex.202: Embedding of interrogative clause
+Source: e
+Vetted: f
+Judgment: g
+Phenomena: emb-d
+aikuua ohechaha ju'i vakaA
+aikuua ohecha ha juHi vakaA
+a-ikuua o-hecha=ha juHi vakaA
+A.1SG-know A.3-see=COMPL frog cow
+'I know that somebody sees the frog's cow' / ' I know that the frog's cow sees it' / 'I know that the frog sees the cow' / 'I know that the cow sees the frog'
+
+Adding some additional constraints to our head-adj-int rule reduced the parses on sentences like 22 and 26 by about half, from 9 to 5 in the first case and from 13 to 6 in the second. Furthermore the parses that remain look legitimate.
+
+#Ex.22 Transitive verb agrees with 3per subject. Accusative marking on animate object. SVO word order. No determiners, underspecified number.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {wo, agr, c}
+ju'i ohecha vakápe
+juHi ohecha vakaA pe
+juHi o-hecha vakaA=pe
+frog.ANIM.NOM O,3-see cow.ANIM=ACC
+'The frogs sees the cows'
+
+#Ex.26: Transitive verb agrees with 3per subject. Accusative marking on animate object. VSO word order. No determiners, underspecified number.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {wo, agr, c}
+ohecha ju'i vakápe
+ohecha juHi vakaA pe
+o-hecha juHi vakaA=pe
+A.3-see frog.ANIM.NOM cow.ANIM=ACC
+'The frog sees the cow'
+
+
+Our ill-formed sentence is the same example as in previous weeks were we have not yet encoded that “hand” has to have a possessor or possessive marking, and cannot occur with a  determiner like la/lo. That should be easy to handle with what we have in place so we will likely get to that next week. We are also hoping to tackle ditransitives for next week which should reduce our number of errors significantly.  
+
+
+——Details 
+
+—Intersection between readings and MRS
+
+When we look at the intersection between readings and differences in MRS we see some really interesting changes that further complicate the results above.  There are many examples (over 15) where there are no readings in common. This is even true many distinct analyses available for both weeks. For example sentence 202 which we looked at above had 12 parses last week and has 10 this week, but NONE of those readings overlap. 
+
+Our simple go-to sentence ‘juhi ohecha tunich’ has the two traditional readings in common with last week, “the frog sees the stone” and the “the stone sees the frog”  but the semantics for all of our coordinated results are different which shows the effect of not loosing our semantics, which was happening because non-local information was not getting passed up through our coordination rules. 
+
+#Ex.3:  Transitive verb. 3Per subject verb agreement. Inanimate object.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {wo, agr, c}
+ju'i ohecha tunich
+juHi ohecha tunich
+juHi o-hecha tunich
+frog.ANIM A.3-see stone.INAM
+'The frog sees the stone' / 'The stone sees the frog' 
+
+Sentence 186 went from 4 to 6 readings, with 0 in common. 5 of those parses involve coordination, so the lack of overlap is expected given the problem outlined above, but it also tells me we weren’t getting the semantics right for the target reading of “my mother’s dog walks” either.    
+
+#Ex.186: Possessive affixation combined with possessive phrase rule. 
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: poss
+chesy jagua oguata
+chesy jagua oguata
+che-sy jagua o-guata
+1SG.POS-mother dog A.3-walk
+'My mother's dog walks' 
+
+Finally we can see the effects of the corrected n-bar-predicate rule in the semantics #195, which had one reading for both grammars but with different semantics:
+
+#Ex.195: NP predicate, possessive marking
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: cop
+hi'ára
+iaAra
+i-aAra
+POSS.3-day
+'It is his/her day' 
