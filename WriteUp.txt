@@ -320,9 +320,7 @@ o-ju maAva=pa
 A.3-come who=Q 
 *'Who is coming?'
 
-
-Additionally WH words can refer to any argument of a predicate, and WH words are sentence-initial, occupying the first position in a sentence/clause, regardless of whether the sentence/clause as a whole includes any embedded clauses. Because of this we hypothesize that long-distance dependencies are possible. We could not find relevant data in any of our grammar references, but we have assumed this to be the case for the purposes of our grammar. Which means we count the following sentences as grammatical: 
-
+WH questions can appear also in interrogative clauses, where the main clause verb naturally takes that complement, like illustrated in the following IGT:
 
 Ex. 207 WH question as an embedded clause 
 Source: authors
@@ -335,6 +333,7 @@ a-porandu maAva=pa o-hecha juHi=pe
 1SG-ask who=Q 3-see frog=ACC
 ‘I ask who sees the frog’
 
+Additionally WH words can refer to any argument of a predicate, and WH words are sentence-initial, occupying the first position in a sentence/clause, regardless of whether the sentence/clause as a whole includes any embedded clauses. Because of this we hypothesize that long-distance dependencies are possible. We could not find relevant data in any of our grammar references, but we have assumed this to be the case for the purposes of our grammar. Which means we count the following sentence as grammatical: 
 
 Ex. 208 Long-distance dependency with WH-question
 Source: d
@@ -468,19 +467,15 @@ root := phrase &
                                   HEAD +vj]],
            NON-LOCAL non-local-none ]].
 
-Updated the value of the following for Guarani
+Followed the value of the following for Guarani
 
 non-local :+ [ YNQ 0-1-dlist ].
 norm-zero-arg :+ [ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
-basic-one-arg :+ [ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
-basic-two-arg :+ [ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
-basic-three-arg :+ [ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
-intersective-mod-lex :+ [ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
 
 And identified the following type for an empty YNQ-list:
 
 non-ynq-word := lex-item &
-  [ SYNSEM.NON-LOCAL.YNQ 0-dlist 
+  [ SYNSEM.NON-LOCAL.YNQ 0-dlist ]
 
 And added norm-zero-arg in the following places
 
@@ -492,16 +487,59 @@ determiner-lex := basic-determiner-lex & norm-zero-arg & non-mod-lex-item &
 
   basic-adverb-lex :+ norm-zero-arg.
 
-  scopal-lex := scopal-mod-lex & norm-sem-lex-item & norm-zero-arg & non-ynq-word & …
+scopal-lex := scopal-mod-lex & norm-sem-lex-item & norm-zero-arg & non-ynq-word &
+  [ SYNSEM.LOCAL.CAT [  HEAD adv,
+                        EC -, 
+                        IC -,
+                        VAL [ SPR < >,
+                              COMPS < >,
+                              SUBJ < >,
+                              SPEC < > ]]].
 
-  contentful-adp-lex := basic-int-mod-adposition-lex & norm-zero-arg & non-ynq-word 
+contentful-adp-lex := basic-int-mod-adposition-lex & norm-zero-arg &
+  [ SYNSEM.LOCAL.CAT [  EC - , 
+                        IC - ,
+                        HEAD adp & [CASE LOC,
+				    MOD <[ LOCAL.CAT[ MC na, 
+						      HEAD verb,
+						      VAL [SUBJ < >]],
+					   L-PERIPH +] > ],
+                       VAL [ SPR < >,
+                             COMPS < #comps >,
+                             SPEC < >, 
+                             SUBJ < > ]  ],
+    ARG-ST < #comps & [ OPT -,
+                        LOCAL.CAT[ HEAD +np,
+                                   VAL [SPR < >] ] ] > ].
 
 As well as non-ynq-word where appropriate.  For example in the two cases above as well as the following
 
- noun-lex := basic-noun-lex & basic-one-arg & no-hcons-lex-item & non-ynq-word &
-            non-mod-lex-item &
+noun-lex := basic-noun-lex & basic-one-arg & no-hcons-lex-item & non-ynq-word &
+            non-mod-lex-item & norm-zero-arg &
+  [ SYNSEM.LOCAL.CAT [  EC -, 
+                        IC -,
+                        VAL [ SPR < #spr &
+                                    [ LOCAL.CAT.HEAD det ] >,
+                              COMPS < >,
+                              SUBJ < >,
+                              SPEC < > ]],
+    ARG-ST < #spr > ].
 
- case-marking-adp-lex :=  basic-one-arg & raise-sem-lex-item & non-ynq-word &
+case-marking-adp-lex :=  basic-one-arg & raise-sem-lex-item & non-ynq-word &
+  [ SYNSEM.LOCAL.CAT [  EC - , 
+                        IC - , 
+                        HEAD adp &
+                            [ CASE #case,
+                               MOD < > ],
+			VAL [ SPR < >,
+			      SUBJ < >,
+			      COMPS < #comps >,
+			      SPEC < > ] ],
+    ARG-ST < #comps &
+             [ LOCAL.CAT [ VAL.SPR < >,
+                           HEAD noun &
+			     [ CASE #case,
+			       CASE-MARKED - ] ] ] > ].
 
 
 Two changes on the bare-np-phrase. We let it inherit from head-valence-phrase as an additional super type, so that the NON-LOCAL value is copied up. Constrained the element of the non-empty SPR list to be unexpressed.
@@ -622,10 +660,38 @@ We also learned through testing that n-bar-predicate rule was too unconstrained 
 
 n-bar-predicate-rule := YNQ-contrains-phrase & nocoord &
   [ SYNSEM.NON-LOCAL [ SLASH <! !>, 
-		       QUE <! !> ], 
-    SYNSEM.LOCAL [ CAT [  EC -, 
+		       QUE <! !>, 
+		       REL <! !> ], 
+    SYNSEM.LOCAL [ AGR #agr3,
+                   CAT [  EC -, 
 			  IC -, 
-			  MC na,  ...
+			  MC na,
+                          HEAD verb & [MOD < >],
+                          VAL [ SPEC < >,
+                                SPR  < >,
+                                COMPS < >,
+				SUBJ <[ LOCAL [ CONT.HOOK.INDEX #arg1,
+					      CAT [ HEAD noun,
+						    VAL.SPR < > ] ] ] > ] ]],
+    C-CONT [ HOOK [ LTOP #ltop,
+		    INDEX #index,
+		    XARG #arg1 ],
+	     RELS <! arg12-ev-relation &
+		   [ PRED "_be_v_id_rel",
+		     LBL #ltop,
+		     ARG0 #index,
+		     ARG1 #arg1,
+		     ARG2 #arg2 ],
+		   quant-relation &
+		   [ PRED "exist_q_rel",
+		     ARG0 #arg2,
+		     RSTR #harg ] !>,
+	     HCONS <! qeq & [ HARG #harg, LARG #larg ] !> ],
+    ARGS < [ SYNSEM.LOCAL [ AGR #agr3,
+			    CAT [ HEAD noun & [POSS poss-or-ee],
+				  VAL.SPR cons ],
+			    CONT.HOOK [ INDEX #arg2,
+					LTOP #larg ]]] > ].
 
 We are able to generate from our NP predicate examples, though as is to be expected we see fewer results.  Only for the “iaAra” example, “iaAra,” and two for the “chejagua cheiru” example, “chejagua cheiru” and “cheiru chejagua.” 
 
