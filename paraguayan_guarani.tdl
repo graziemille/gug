@@ -1132,10 +1132,11 @@ s3-bottom-coord-rule := unary-bottom-coord-rule & s-bottom-coord-phrase &
 ;means something like the equivalent of "the dog's cat"
 
 poss-phrase := head-final &
-  [ SYNSEM.LOCAL.CAT [ HEAD #head & [POSS poss-or-ee],
+  [ SYNSEM [ LOCAL.CAT [ HEAD #head & [POSS poss-or-ee],
 		       VAL [ SPR < >, 
 			     COMPS < >, 
 			     SUBJ < > ] ],
+	    NON-LOCAL.QUE <! !> ] ,
     C-CONT [ HOOK.INDEX #index,
 	     RELS <! arg12-ev-relation & [ PRED "poss_rel",
 					    LBL #lbl,
