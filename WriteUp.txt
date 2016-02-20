@@ -3,649 +3,285 @@
 # AUTHOR: Thor Wicke Monteverde
 # PARTNER: Lisa Tittle Caballero
 
+1. Negation
 
+PG has two constructions for sentential negation. Both involve a circumfix around the predicate of a sentence. The first sentential negation is undefined for aspect and is represented as  “nde-…-i.”  Ex.90 & Ex.203 are examples of Guarani sentences with grammatical negation of this type.
 
-1. Matrix yes-no questions 
-
-Guarani uses second position focus markers for matrix yes-no questions, of which there are two. The question clitics =pa or =piko can come after any element in the sentence and make it the focus of a matrix yes/no question. Syntactically both particles behave in the same way, and although there might be some disagreement about the semantics implied by each of them, as explained previously in Lab 4, the difference is irrelevant for our purpose. Following the analysis of our Prof. Bruno Estigarribia, we are treating both particles the same. 
-
-There is also a mismatch between how the two question particles are generally written.  =piko has two syllables and because of some writing conventions requiring affixes to be monosyllabic, it is usually realized as separate word.  =pa has only one syllable and is therefore often glossed as an affix attaching to the preceding word, though it is also sometimes written as a stand alone word.  Based on their shared behavior as outlined above we treat both particles as clitics. 
-
-Here some example IGT showing the use and misuse of these particles.
-
-#Ex.121: Yes-No question with focus marker on verb predicate, and use of marker piko
-Source: c
+#Ex.90: Negated transitive verb. Subject drop. Object Drop.
+Source: author
 Vetted: f
 Judgment: g
-Phenomena: {q, wo}
-ohecha piko ñakyra  vakápe? 
-ohecha piko nNakyra vakaA pe
-o-hecha piko nNakyra vakaA=pe
-O.3-see Q cricket.ANIM.NOM cow.ANIM=ACC
-'Did the cricket see the cow?
+Phenomena: {neg, pro-d}
+ndahechai
+ndahechai
+nde-a-hecha-i
+NEG-A.1SG-see-NEG
+'I don't see it'
 
-#Ex.122: Yes-No question with focus marker on verb predicate, and use of marker pa
-Source: c
+#Ex.203: Negated intransitive verb.
+Source: author
+Vetted: f
+Judgment: g	
+Phenomena: neg
+jagua ndojerokyi
+jagua ndojerokyi
+jagua nd-o-jeroky-i
+dog NEG-A.3-dance-NEG
+'The dog doesn't dance'
+
+The second kind of sentential negation, represented as “nd- -moHaNi” is for utterances where future aspect is intended. Our aspect marker is glossed as FUT here to distinguish it from prospective aspect (“about to”) which we also have implemented in our grammar.  FUT is not a reference to tense and the example in #94 could mean either “I am not going to see it” or “I wasn’t going to see it.” 
+
+#Ex.94: Negated transitive verb. Future-aspect negation. Subject drop. Object Drop.
+Source: author
 Vetted: f
 Judgment: g
-Phenomena: {q, wo}
-ohechapa ñakyra vakápe?
-ohecha pa nNakyra vakaA pe
-o-hecha=pa nNakyra vakaA=pe
-O.3-see=Q cricket.ANIM.NOM cow.ANIM=ACC
-'Did the cricket see the cow?'
+Phenomena: neg
+ndahechamoHaNi
+ndahechamoHaNi
+nde-a-hecha-moHaNi
+NEG-A.1SG-see-FUT.NEG
+'I am not going to see it' / 'I wasn’t going to see it'
 
-#Ex.116: Yes-No question with question marker in wrong position, grammatical but parses as conjoined separate phrases since pa is constrained to be in second position.
-Source: c
-Vetted: f
-Judgment: g
-Phenomena: q
-ohecha ñakyrapa vakápe? 
-ohecha nNakyra pa vakaA pe
-o-hecha nNakyra=pa vakaA=pe
-O.3-see cricket.ANIM.NOM=Q cow.ANIM=ACC
-'Did the cricket see the cow?
+Both the prefix and suffix are required for negation to be grammatical, so the examples below are all ungrammatical and do not parse.
 
-#Ex.117: Yes-No question with question marker in wrong position, should be second position.
-Source: c
+#Ex.96: Incomplete future negation marking. Missing prefix. 
+Source: author
 Vetted: f
 Judgment: u
-Phenomena: q
-ohecha ñakyra vakápepa? 
-ohecha nNakyra vakaA pe pa
-o-hecha nNakyra vakaA=pe=pa
-O.3-see cricket.ANIM.NOM cow.ANIM=ACC=Q
-*'Did the cricket see the cow?
+Phenomena: neg
+okýmo'a᷉i
+okyAmoHaNi
+o-kyA-moHaNi
+A.3-rain-FUT.NEG
+*'It isn’t/wasn’t going to rain'
 
-Because of our nominal predicates and asyndenton conjunction there are now parses for some of our original ungrammatical strings.  We have reanalyzed the ones that parse with a valid sentence as grammatical with the new reading, but left as ungrammatical the ones like 117 that parse because of something we still need to fix in our grammar.
+#Ex.204: Negated intransitive verb. Incomplete negation circumfix. Missing prefix.
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: neg
+jagua ojerokyi
+jagua ojerokyi
+jagua o-jeroky-i
+dog A.3-dance-NEG
+*'The dog doesn't dance'
 
-Guarani has free word order, but in the constructions of matrix yes-no questions, there is a requirement to put the question clitics in the second position. This means that different sentence elements can be positioned in the first position spot, giving them a special focus consideration. 
+#Ex.92: Incomplete negation marking. Missing suffix.
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: neg
+ndahecha
+ndahecha
+nde-a-hecha
+NEG-A.1SG-see
+*'I don't see it'
 
-Here some examples that illustrate this sentence:
+We implemented this phenomenon several weeks ago using the customization system, by choosing “simple” negation, and “Inflectional negation.”  To make sure that we got the full circumfix for our grammatical examples we created two position classes. NEG1 and NEG2. NEG1 attaches the prefix nde- and adds negation semantics.  NEG2 attaches either the -i or the -moHaNi suffix.   The -i suffix adds no additional semantic information.  The -moHaNi suffix adds future aspect.  The position classes are optional in general, but require one another if they do fire, so we can get negated and non-negated sentences, but we don’t get parses for sentences with only a prefix or only a suffix.
 
-#Ex.122: Yes-No question with focus marker on verb predicate, and use of marker pa
-Source: c
+The .tdl changes this week were limited to making locative-verb-lex inherit from the daughters of our inflectional rules for negation and aspect as seen below:
+
+locative-verb-lex := gug-dyn-loc-verb & trans-first-arg-control-lex-item & completive-aspect-or-perfective-aspect-or-prospective-aspect-rule-dtr & future-aspect-rule-dtr & neg1-rule-dtr & neg2-rule-dtr &
+
+So we can now get a parse for examples like #206
+
+#Ex.206: be+located raising verb. Contentful postpositions.  Negation.
+Source: b
 Vetted: f
 Judgment: g
-Phenomena: {q, wo}
-ohechapa ñakyra vakápe?
-ohecha pa nNakyra vakaA pe
-o-hecha=pa nNakyra vakaA=pe
-O.3-see=Q cricket.ANIM.NOM cow.ANIM=ACC
-'Did the cricket see the cow?'
+Phenomena: {cop, adp}
+ndoimei kotýpe jaguandi
+ndoimei koty pe jagua ndi
+nd-o-ime-i koty=pe jagua=ndi
+NEG-3.ACT-be.located-NEG room=in dog=with
+'He/She is not located in the room with the dog'
 
-#Ex.123: Yes-No question with focus marker on subject
-Source: c
-Vetted: f
+We are able to generate from our grammatical examples and our generation results show that we have effectively captured the aspect difference between “nd- -i” and “nd- -moHaNi” since generating from examples with the former gives us possibilities for all aspects, and generating from examples with the latter gives us only possibilities with future aspect.
+
+
+2. One Sentence Fromm Test Corpus
+
+The sentence we chose for this week is #20
+
+#Sentence.20
+Source: a, attested
+Vetted: t
 Judgment: g
-Phenomena: {q, wo}
-ñakyrapa ohecha vakápe?
-nNakyra pa ohecha vakaA pe
-nNakyra=pa o-hecha vakaA=pe
-cricket.ANIM.NOM=Q O.3-see cow.ANIM=ACC
-'Was it the cricket, who saw the cow?'
+Phenomena: corpus
+Ha he'i Huanchi:
+ha  oe   Juanchi
+ha  o-e  Juanchi
+and A.3-say Juan.DIM
+'And Juanito says:'
 
-#Ex.124: Yes-No question with focus marker on verb object
-Source: c
-Vetted: f
-Judgment: g
-Phenomena: {q, wo}
-vakápepa ohecha ñakyra?
-vakaA pe pa ohecha nNakyra
-vakaA=pe=pa o-hecha nNakyra
-cow.ANIM=ACC=Q O.3-see cricket.ANIM.NOM
-'Is it the cow, that the cricket saw?’
+As we discussed on GoPost, implementing this sentence required three key steps:  1. implementing “and” as a left-attaching scopal modifier, 2. Adding a new version of “say” to our grammar, and 3. implementing proper names. I discuss each of the three steps separately below:
 
-Currently in our grammar, IGTs 122 and 123 will parse, but not IGT #124.  The accusative marker =pe is taking middle position between first position noun and question marker =pa, therefore the second position not available for the clitic. This was not implemented in our grammar. 
+— Scopal Modifier
 
-The implementation of this phenomena involved several changes in our grammar.
+The scopal modifier “ha” was defined with the following PG.tdl 
 
-As the marker for YN matrix questions in Guarani requires to be in the second position. It was important to identify a feature, that would able to mark the position of the words at the extreme left of the sentence. The feature [L-PERIPH bool] was used for that purpose. The feature is passed already through the binary and unary phrase rules of the grammar between mother and (left-side) daughter, and marks for binary rules the right-side daughter as negative. This feature did not have to be implemented by ourselves.
+;;; Scopal-modifiers
+scopal-lex := scopal-mod-lex & norm-sem-lex-item & norm-zero-arg & non-ynq-word &
+  [ SYNSEM.LOCAL.CAT [  HEAD adv,
+                        EC -, 
+                        IC -,
+                        VAL [ SPR < >,
+                              COMPS < >,
+                              SUBJ < >,
+                              SPEC < > ]]].
 
-For the head-mod-phrase-simple and  we needed an addendum:
+scopal-mod-lex is inherited from matrix.tdl, but was not very constrained:
 
-	basic-head-mod-phrase-simple :+ 
-   		[ SYNSEM.LOCAL.CAT.MC #mc,  
-     		  NON-HEAD-DTR.SYNSEM.LOCAL.CAT [ HEAD.MOD < [ L-PERIPH #periph ] >,
+scopal-mod-lex := lex-item &
+  [ SYNSEM [ LOCAL [ CAT.HEAD.MOD < [ LOCAL scopal-mod &
+					    [ CONT.HOOK.LTOP #larg ]] >,
+		     CONT.HCONS <! qeq & 
+				 [ HARG #harg,
+				   LARG #larg ] !> ],
+	     LKEYS.KEYREL.ARG1 #harg ]].
+
+We added inheritance from norm-sem-lex-item, norm-zero-arg, and non-ynq-word to make sure our semantics where appropriately defined for this lexical type.  We also specified that the type as [HEAD adv] so we could easily constrain its behavior separately from our other modifiers which are currently all [HEAD adj] even when they modify verbs.  
+This type is also [EC -] because it is not required to appear in an embedded clause (like complementizer “ha”) and [IC -] because it is not required to appear in an interrogative clause (like “piko” or “pa”).   Finally the VAL features for SPR/COMPS/SUBJ/SPEC were all defined as empty.
+
+;;; Scopal Modifiers
+ha4 := scopal-lex &
+   [ STEM < "ha" >,
+     SYNSEM.LKEYS.KEYREL.PRED "_and_c_rel"].
+
+
+The new type was instantiated in our lexicon with the entry above. The _and_c_rel predication is based of a similar example in the ERG (thanks for finding that for us).
+
+We also implemented a gug-scopal-mod-phrase rule in PG.tdl, which inherits from the basic-head-mod-phrase-simple found in Matrix.tdl. To the original implementation of basic-head-mod-phrase-simple we added an identification between the MC (main clause) values of the mother and non-head-dtr (the modifier), as well as an identification between the L-PERIPH value of the HEAD-DTR and the NON-HEAD-DTR.  This was done by adding the following lines to PG.tdl.
+
+basic-head-mod-phrase-simple :+ 
+   [ SYNSEM.LOCAL.CAT.MC #mc,  
+     NON-HEAD-DTR.SYNSEM.LOCAL.CAT [ HEAD.MOD < [ L-PERIPH #periph ] >,
 				     MC #mc ],
-     		  HEAD-DTR.SYNSEM.L-PERIPH #periph ].
-
-
-We decided to implement the question markers (=pa/=piko) as adj clitics, and created a especial lexical type for it:
-
-       question-clitic-lex := no-hcons-lex-item &
-  			[ SYNSEM [ LOCAL [ CAT [ IC +, 
-                                           VAL [ SPR < >, 
-						 COMPS < >, 
-						 SUBJ < >, 
-						 SPEC < >],
-                                           HEAD	 adj & 
-						[ MOD < [ LIGHT +,
-							L-PERIPH +,
-				                       	LOCAL intersective-mod] > ]],
-                                          CONT.RELS <! !> ],
-                                 NON-LOCAL.YNQ <! *top* !>  ]].
-
-The clitic is allowed only to have a modifier, which has to be [LIGHT +, LOCAL intersective-mod]. The MOD is not of a particular word category, so that any sentence component can be focal point of a yes-no-question. The MOD element has also to have [L-PERIPH +], which allows the clitic to be in second positions. Additionally we implemented the feature IC (for interrogative clause), which as explained in the next section, allows it to combine with main clause verbs to form embedded interrogative clauses. 
-
-We added two clitics to the lexicon:
-
-	pa := question-clitic-lex   &
-    		[STEM <"pa">].
-
-	piko:= question-clitic-lex &
-    		[STEM<"piko">].
-
-To address the semantics of these sentences that required to identify to a feature value of [SF ques], a feature YNQ was created, that would register the presence of a question clitic in a non-local feature, which is accumulated from the daughters. 
-
-	non-local:= [YNQ 0-1-dlist]
-
-It was not enough to put a non-empty YNQ value in the clitic, but other words have to have an empty YNQ value. This is done with this:
-
-	non-ynq-word := lex-item &
-  			[ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
-	basic-zero-arg :+ [ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
-	basic-one-arg :+ [ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
-	basic-two-arg :+ [ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
-	basic-three-arg :+ [ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
-	intersective-mod-lex :+ [ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
-
-
-We constrained binary phrases to gather up YNQ from both daughters, for which we put an addendum to the basic-binary-phrase:
-
-	basic-binary-phrase:+
-	 [ SYNSEM [ L-PERIPH #periph,
-                    NON-LOCAL.YNQ [ LIST #list, 
-				    LAST #last ] ],
-	   ARGS < [ SYNSEM [ L-PERIPH #periph,
-                    	     NON-LOCAL.YNQ [ LIST #list, 
-					     LAST #middle ] ] ],
-        	  [ SYNSEM [ L-PERIPH -,
-               		      NON-LOCAL.YNQ [ LIST #middle, 
-					      LAST #last ] ] ] > ].
-
-We constrained some unary phrases (bare-np, opt-subj, and opt-subj) to copy up these YNQ list, by adding this phrase rule :
-
-	same-ynq-unary-phrase := unary-phrase &
-  		[ SYNSEM.NON-LOCAL.YNQ #ynq,
-    		  ARGS < [ SYNSEM.NON-LOCAL.YNQ #ynq ] > ].
-
-
-Also the root symbol was constrained to require an empty YNQ value:
-
-	root := phrase &
-  		[ SYNSEM [ LOCAL [ COORD -, 
-				   CAT [ HEAD +vj,
-					 VAL [  SUBJ < >, 
-					 	COMPS < > ],
-                                   	 MC +,
-				   	 EC-]],
-           		   NON-LOCAL.YNQ 0-dlist ]].
-
-Then we created a non-branching rule (int-cl) which empties the YNQ list and returns [L-PERIPH] to be underspecified, so that clitics can appear in embedded clauses. 
-
-	int-cl := head-only-int-decl-clause & interrogative-clause &
-  		[ SYNSEM [ LOCAL.CAT [  VAL #val & [ SUBJ< >, 
-						    COMPS< >, 
-						    SPR< >], 
-					MC bool, 
-					IC +],
-             		   NON-LOCAL.YNQ <! !> ],
-    		  HEAD-DTR.SYNSEM [ LOCAL.CAT [ IC +, 
-						MC na, 
-						VAL #val, 
-						HEAD verb],
-                    	   	    NON-LOCAL.YNQ <! *top* !> ]].
-
-
-This rule has a MC bool value, that allows it to unify with the root. Also it empties the YNQ list, which is also required by the root. The rest of the nodes below it have [MC na], so that the compatibility is guaranteed. It collects the IC boolean value for embedded interrogative clauses from the daughter (further below for this).
-
-This rule was included in rules.tdl so that the YN question could be link to the root and generate a parses according to their specified rules.:
-
-	int-cl:= int-cl.
-
-To constrain other headed phrases to produce [MC na] mothers and daughters, this rule was included:
-
-	mc-na-headed-phrase := headed-phrase &
-  		[ SYNSEM.LOCAL.CAT.MC na,
-    		  HEAD-DTR.SYNSEM.LOCAL.CAT.MC na ].
-
-There is a new super type head-only-int-decl-clause. This supertype was constructed based on a supertype that was only existent in the matrix.tdl file (therefore untouchable).The original supertype head-only (actually its supertype basic-unary-phrase) restricted the passing of the [L-PERIPH] feature in a strict way through the unary rules (among other things). In the case of an embedded sentence, head-only would have not allowed a ‘second position’ clitic inside the sentence in the presence of a main clause verb that pushed the positions of the embedded words further down in the hierarchy. While other rules where allowed to unify with head-only, int-cl (and decl-cl) inherited from head-only-int-decl-clause, which involved these changes:
-
-	basic-unary-int-decl-cl-phrase := phrase &
-  	      [ STEM #stem,
-    		SYNSEM [ LOCAL [ CAT.MKG #mkg,
-		     		 CONT [ RELS [  LIST #first,
-					   	LAST #last ],
-			    	 	HCONS [ LIST #scfirst,
-					 	LAST #sclast ],
-			    		ICONS [ LIST #icfirst,
-					    	LAST #iclast ] ] ] ],
-    				C-CONT [ RELS [ LIST #middle,
-				    		LAST #last ],
-	     				HCONS [ LIST #scmiddle,
-		     				LAST #sclast ],
-	     				ICONS [ LIST #icmiddle,
-			     			LAST #iclast ] ],
-    		ARGS < sign & [ STEM #stem,
-			    	SYNSEM [ LOCAL  local &
-			      			[ CAT.MKG #mkg,
-						  CONT [ RELS [ LIST #first,
-					      			LAST #middle ],
-				       			HCONS [ LIST #scfirst,
-					       		LAST #scmiddle ],
-				       			ICONS [ LIST #icfirst,
-					       		LAST #icmiddle ] ] ] ] ] > ].
-
-	unary-int-decl-cl-phrase := basic-unary-int-decl-cl-phrase &
-  		[ INFLECTED infl-satisfied,
-    		  ARGS < [ INFLECTED infl-satisfied ] > ].
-
-	head-only-int-decl-clause := unary-int-decl-cl-phrase & headed-phrase &
-  		[ HEAD-DTR #head,
-    		  ARGS < #head > ].
-
-
-To avoid ambiguity the following restriction was added:
-		
-		bare-np-phrase:+ [SYNSEM.LIGHT -]
-
-	s-coord-phrase :+
-  	[ SYNSEM.LOCAL.CAT [ MC bool, 
-			     EC #ec, 
-                             IC #ic],
-    	  LCOORD-DTR.SYNSEM.LOCAL.CAT [ MC bool, 
-					EC #ec,  
-					IC #ic],
-     	  RCOORD-DTR.SYNSEM.LOCAL.CAT [ MC bool, 
-					EC #ec,  
-					IC #ic]].
-
- 	s-bottom-coord-phrase :+
-   	[ SYNSEM.LOCAL.CAT [ MC bool, 
-			     EC #ec, 
-			     IC #ic ],
-         NONCONJ-DTR.SYNSEM.LOCAL.CAT [ MC bool, 
-					EC #ec, 
-					IC #ic ] ].
-
-We were able to implement the analysis with single-word NP (without case marks) and VP arguments for the predicate, as well as dropped arguments. We were not able to implement the analysis when the first word in a yes-no-question sentence was a multi-word NP or marked with an apposition that was modeled as a clitic (e.g. the accusative marker =pe). The clitics and the multi-word NPs would move the question clitics out of the 2nd position, which our grammar was not able to recognize at this time.  
-
-Here are some thoughts for a possible solution: The appositions and other nouns would have to copy the [L-PERIPH] value of its first left argument argument, either lexical rule, or other rules.
-
-Also something not implemented in this section, was the focal aspect of question markers. A yes-no-question in Guarani involves also the focus of a sentence constituent. This kind of structural information are out of focus and are not dealt with further here. 
-
-
-2. Embedded Clauses (interrogative and declarative)
-
-Guarani uses suffixes for embedded clauses.  Like many languages it distinguishes between declarative and interrogative embedded clauses.
-
-
-2.1. Embedded Clauses (interrogative)
-
-I. A descriptive statement of the facts of your language. 
-
-There are certain verbs is Guarani that take questions as complements. These are verbs that inquire something or express doubts. We found that the Guarani verb ‘ask’ allows this kind of construction. 
-
-The embedded interrogative clause follows the same patters as the matrix yes-no questions, and therefore we can build over the work of using the second position question markers inside of the interrogative clause to distinguish a first position element, which is in focus for the question.
-
-Also, the free word order might allow for sentences, where the embedded clause is embedded
-in different parts of the sentence, although we could attest in our test suite only sentences where the embedded sentence was after the main clause. We allow free word order as this is consistent with the situation in other transitive verbs of this language.
-
-Here some example of an embedded interrogative sentence:
-
-
-#Ex.150: Use embedded clause for interrogative sentence
-Source: e
-Vetted: f
-Judgment: g
-Phenomena: {emb-q, wo}
-aporandu oupa
-aporandu oju pa
-a-porandu o-ju=pa
-A.1SG-ask A.3-go=Q
-'I ask whether he comes'
-
-#Ex.149: Wrong marker for embedding of interrogative clause
-Source: e
-Vetted: f
-Judgment: u
-Phenomena: emb-q
-aporandu ouha
-aporandu ojuha
-a-porandu o-ju-ha
-A.1SG-ask A.3-go-COMP
-*'I ask whether he comes'
-
-
-#Ex.196: NP predicate, possessive marking
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: emb-q
-aporandu ohechapa ju'ipe
-aporandu ohecha pa juHi pe
-a-porandu o-hecha=pa juHi=pe
-A.1SG-know A.3-see=COMPL frog=ACC
-'I ask if somebody sees the frog'
-
-#Ex.197: Embedding of interrogative clause
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: emb-q
-aporandu ohechapa ju'i
-aporandu ohecha pa juHi
-a-porandu o-hecha=pa juHi=pe
-A.1SG-know A.3-see=COMPL frog=ACC
-'I ask if somebody sees the frog' / 'I ask if the frog sees it'
-
-
-The implementation built over the implementation of previous matrix yes-no questions, which are the embedded complements.
-
-For that purpose we created a super type, that we would use for interrogative clause complement verbs and declarative clause complement verbs, and let that type be inherited by the lexical entry (e.g. int-cl-verb-lex is the type for ’ask’):
-
-	cl-verb-lex:= gug-dyn-loc-verb &  clausal-second-arg-trans-lex-item &
-    		[SYNSEM.LOCAL.CAT.VAL.COMPS <#comps>,
-     		 ARG-ST.REST.FIRST #comps].
-
- 	int-cl-verb-lex:= cl-verb-lex &
-    		[SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL [ CAT [ IC +,
-                                                              HEAD verb,
-					                      VAL [ COMPS < >, 
-                                                                    SUBJ < > ] ],
-				 			CONT.HOOK.INDEX.SF ques ]]>].
-
-The complement clause had to be a verb, with [SF ques] value, as this is a question clause. Additionally, the complement needs to have [IC +] which is a boolean value we introduced to keep track of presence or absence of the question-clitic element.
-
-		cat :+ [EC bool, IC bool].
-
-
-This feature helps us to define an embedded clause as an interrogative clause. The other feature [EC bool] was employed for the declarative clause implementation, which is explained further in the next section.
-
-Here the question clitic as it was implemented:
-
-    question-clitic-lex := no-hcons-lex-item &
-	[ SYNSEM [ LOCAL [ CAT [IC +, 
-				HEAD adj & [ MOD < [ LIGHT +,
-						      L-PERIPH +,
-				                      LOCAL intersective-mod] > ],
-				VAL [ SPR < >, 
-				      COMPS < >, 
+     HEAD-DTR.SYNSEM.L-PERIPH #periph ].
+
+Our gug-scopal-mod-phrase inherits from head-final so we get the correct left-attaching behavior from our modifiers, and from head-compositional so the syntactic head daughter is correctly identified as the semantic head.  The output of our rule is MC na so that it is required to through decl-cl before unifying with the root. For now (until we have evidence to the contrary from our source data) we have set the values of EC and IC to negative so this phrase does not appear in embedded or interrogative clauses, and its QUE, SLASH, and YNQ features are all set to empty.  
+
+gug-scopal-mod-phrase := basic-head-mod-phrase-simple & head-final & 
+			 head-compositional &
+  [ SYNSEM [ LOCAL.CAT [ MC na,                       
+			 EC -,                        
+			 IC -],
+	     NON-LOCAL [ QUE <! !>, 
+			 SLASH <! !>, 
+			 YNQ <! !> ]],
+    HEAD-DTR.SYNSEM.LOCAL.CAT [ MC na,
+                                HEAD verb & [MOD < >],
+                                VAL [ SPEC < >, 
+                                      SPR < >, 
                                       SUBJ < >, 
-                                      SPEC < > ]],
-                           CONT.RELS <! !> ],
-                   NON-LOCAL.YNQ <! *top* !>  ]].
+                                      COMPS < > ]],
+    NON-HEAD-DTR.SYNSEM.LOCAL [ CAT [ HEAD adv & 
+					   [ MOD < [ LOCAL scopal-mod ] >],
+                                      VAL [SPEC < >,
+					   SPR < >, 
+					   SUBJ < >, 
+					   COMPS < > ]],
+                                      CONT.HOOK #hook ],
+    C-CONT [ HOOK #hook,
+	     HCONS <! !>,
+	     ICONS <! !> ] ]. 
 
-The head-adj-phrase that fires when the clitic attaches copies that value up in the parse tree.
+Additionally, the rule requires a fully satisfied head daughter that is [MC na] and [MOD < >].  It’s non-head daughter has empty valence features and should be HEAD adv (which at this point only our scopal modifiers are). Its MOD value requires modify a constituent with a [LOCAL scopal-mod] value, and its CONT.HOOK value is identified with the C-CONT.HOOK of the rule itself.   
 
-	head-adj-int-phrase :+ 
-    	      [ SYNSEM.LOCAL.CAT [ EC #ec, 
-                    		   IC #ic ],
-     		NON-HEAD-DTR.SYNSEM.LOCAL.CAT [ EC #ec,
-                         		        IC #ic ]].
+This was a particularly satisfying rule to work with since we were able to take it from spinning, to hundreds of parses to just the ones we want. 
 
-This feature value is also copied up the parse through a unary rule that was appended to head-subj-opt, head-opt-comp and the bare-np-rule. 
+— Adding Say
 
-	same-ec-unary-phrase := headed-phrase &
-  		[ SYNSEM.LOCAL.CAT [ EC #ec,
-                       		     IC #ic],
-    		  HEAD-DT.SYNSEM.LOCAL.CAT [ EC #ec,
-                         		     IC #ic ] ].
+We followed your suggestion and implemented say as a transitive verb, so that in our corpus example we get semantics similar to “Juanchi says it.”  This was implemented straightforwardly by adding the following entry to our lexicon:
 
-Additionally the following binary rule addendum let the feature percolate through the binary branches:
-
-
-	basic-head-comp-phrase :+ [ SYNSEM.LOCAL.CAT [ EC #ec, 
-        	                                       IC #ic ],
-                            	    HEAD-DTR.SYNSEM.LOCAL.CAT [ EC #ec,
-                                                       		IC #ic ]].
-
-	basic-head-subj-phrase :+ [  SYNSEM.LOCAL.CAT [ EC #ec, 
-                                               		IC #ic ],
-                            	     HEAD-DTR.SYNSEM.LOCAL.CAT [EC #ec,
-                                                       		IC #ic ]].
-
-	basic-head-opt-comp-phrase :+
- 				[ SYNSEM [ L-PERIPH #periph,
-            				   LOCAL.CAT [ EC #ec,
-                        			       IC #ic ]],
-            			  ARGS < [ SYNSEM [ L-PERIPH #periph, 
-                              			    LOCAL.CAT [ EC #ec,
-                                      	    			IC #ic  ] ] ] > ].
-
-The feature worked also in conjunction with the value definition for verbs. Verb lexemes had the feature defined as [IC -]:
-
-	trans-verb-lex:+ [SYNSEM.LOCAL.CAT [EC -,
-        	                            IC -]].
-	intrans-verb-lex: + [SYNSEM.LOCAL.CAT [EC -,
-        	                               IC - ]].
-
-So if the question clitic was not present in the clause (as we had in some of our wrong parses), the IC value of the of the verb predicate would percolate up, and not unify with the [IC +] requirement of the int-cl rule. This would not happen with stand-alone interrogative clauses, as the question clitic is by definition part of the whole clause. This was the main reason of the implementation of this clitic. We had initially thought of trying to leverage the MC value, but found it better to leave it untouched, because even though the phenomena is not the same because unlike =ha, =pa does appear in matrix-clause-questions, and so it would be wrong to say it was restricted to embedded clauses.
-
-Here are the int-rule and the int-co-verb-lex again that instantiate the embedded interrogative clause:
-
-	int-cl := head-only-int-decl-clause & interrogative-clause &
-  		[ SYNSEM [ LOCAL.CAT [ VAL #val & [ SUBJ< >, 
-						    COMPS< >, 
-						    SPR< >], 
-					MC bool, 
-					IC +],
-             		   NON-LOCAL.YNQ <! !> ],
-    		HEAD-DTR.SYNSEM [ LOCAL.CAT [ IC +, 
-					      MC na,
-					      HEAD verb,
-					      VAL #val],
-                    	   NON-LOCAL.YNQ <! *top* !> ]].
+e := trans-verb-lex &
+  [ STEM <"e">,
+    SYNSEM.LKEYS.KEYREL.PRED "_say_v_rel"]. 
 
 
- 	int-cl-verb-lex:= cl-verb-lex &
-    		[SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL [ CAT [ IC +,
-                                                              HEAD verb,
-					                      VAL [ COMPS < >, 
-                                                                    SUBJ < > ] ],
-				 			CONT.HOOK.INDEX.SF ques ]]>].
+- Implementing Proper Nouns
 
-The verb lexical type will unify with the interrogative clause only if the interrogative clause inherited [IC +] from its parses, which happens then the question-clitics attaches correctly to the clause. 
+Although our source glossed the name “Juanchi” as “Juan” + diminutive “chi,”  with your permission we have (gratefully) opted to treat this as a name equivalent to the Spanish name “Juanito” which is constructed in a similar fashion.  This meant that we just needed to add a lexical type for proper nouns which we did by adding the following to PG.tdl,
 
-We checked a standard sentence in our implementation, using single noun arguments.
+;; category for proper-nouns
+proper-noun-lex := non-poss-com-noun-lex & no-spr-noun-lex & com-anim-noun-lex & named-relation.
 
-#Ex.201: Embedding of interrogative clause
-Source: e
-Vetted: f
-Judgment: g
-Phenomena: emb-q
-aporandu ohechapa ju'i vakaA
-aporandu ohecha pa juHi vakaA
-a-porandu o-hecha=pa juHi vakaA
-A.1SG-ask A.3-see=COMPL frog cow
-'I ask if somebody sees the frog's cow'/ ' I ask if the frog's cow sees it' / 'I ask if the frog sees the cow' / 'I ask if the cow sees the frog'
+The non-poss-com-noun-lex type was newly redefined in this grammar, as shown below so that it could be inherited independently by our inanimate non-possessable common nouns like “wind” and our proper nouns which (for now) are defined as animate.  Because non-poss-com-noun-lex inherits from common-noun-lex we didn’t have to add any additional constraints to it’s IC/EC values or it’s NON-LOCAL features like QUE and YNQ since those are already inherited from common-noun-lex.
 
- We had around 10 parses, most due to our coordination rule and reading of noun phrases as independent noun predicates. Those readings were not in our area of interest. 
+non-poss-com-noun-lex :=  common-noun-lex & 
+ [SYNSEM.LOCAL.CAT.HEAD.POSS poss-or]. 
 
-We detected that our implementation was able to generate declaration clauses at the top root, but not interrogative clauses, which is separate from the embedded clause, which worked well. The unification error showed that YNQ lists were not emptied by our int-cl rule. With further time, it is an improvement to happen, and potentially something we could check the next weeks. Nevertheless the basic functionality to generate sentences with interrogative embedded clauses did succeed.
+no-spr-noun-lex := noun-lex &
+  [ SYNSEM.LOCAL.CAT.VAL.SPR < [ OPT + ] > ].
 
-As mentioned in the previous sections there were some limitations to this implementation, which were related to the number of words that occupy the first position of the embedded clause (e.g., our =pe examples above). Potentially we should be able to able to increase this capability in the coming weeks, if time allows.
+com-anim-noun-lex := common-noun-lex &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.GEND anim ].
 
+named-relation := noun-relation &
+  [ PRED named_rel,
+    CARG string ].
 
-2.2. Embedded Clauses (declarative)
+no-spr-noun-lex was a type already present in our grammar. We inherited from it here to keep our proper nouns from appearing with specifiers, and com-anim-noun-lex adds the animate gender information. Finally, I was very happy to find the named-relation type in Matrix.tdl when hunting around for information about CARG.  Having proper-noun-lex inherit from this type sets the main PRED value of our proper nouns to “named_rel” and defines a CARG which we can then have our individual lexical entries constrain.  The lexical entry for Juanchi that we added to lexicon.tdl is as follows:
 
-In Guarani, there are verb predicates that allow declarative sentences to be their complements. These verbs assert, confirm or share knowledge. One of those verbs is ‘to know’, which allows an embedded declarative clause. The embedded clause has a similar construction as the one we saw in yes-no-questions, but with a different marker. This marker, a complementizer =ha, is also in the second position of the declarative clause, but the first element of the declarative clause has to be the verb predicate of that clause. Therefore this marker doesn’t have the same focal function as the =pa/=piko marker of yes-no-questions.
+Juanchi := proper-noun-lex &
+  [ STEM < "Juanchi" >,
+    SYNSEM.LKEYS.KEYREL.CARG "Juanchi" ].
 
-Here some examples with the use and misuse of such embedded declarative sentences:
+— End state
+Our sentence parses with the semantics we want 
 
-#Ex.148: Use embedded clause for declarative sentence
-Source: e
-Vetted: f
-Judgment: g
-Phenomena: {emb-d, wo}
-aikuua ouha
-aikuua oju ha
-a-ikuua o-ju=ha
-A.1SG-know A.3-come=COMPL
-'I know he comes'
-
-#Ex.149: Declarative clitic cannot bet used with interrogative main-clause verb
-Source: e
-Vetted: f
-Judgment: u
-Phenomena: emb-q
-aporandu ouha
-aporandu oju ha
-a-porandu o-ju=ha
-A.1SG-ask A.3-go=COMPL
-*'I ask whether he comes'
+3. Wh-Questions
 
 
-#Ex.198: Use embedded clause for declarative sentence
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {emb-d, wo}
-aikuua ohechaha ju'ipe
-aikuua ohecha ha juHi pe
-a-ikuua o-hecha=ha juHi=pe
-A.1SG-know A.3-go=COMPL juHi=ACC
-'I know he/she/it sees the frog'
-
-#Ex.199: Use embedded clause for declarative sentence
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {emb-d, wo}
-aikuua ohechaha ju'ipe
-aikuua ohecha ha juHi
-a-ikuua o-hecha=ha juHi
-A.1SG-know A.3-go=COMPL juHi
-'I know he/she/it sees the frog' / 'I know the frog sees it'
 
 
-For the implementation of this phenomenon, we had to create a verb-lexeme, that is a subtype to the previously mentioned super type cl-verb-lex:
-
-	decl-cl-verb-lex:= cl-verb-lex &
-    		[ SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL [ CAT [ EC +,
-                       		                               IC -,
- 					                       HEAD verb,
-					                       VAL.COMPS < > ],
-			    				 CONT.HOOK.INDEX.SF prop ]]>].
-
-The main verb requires the clause to be exclusively embedding ([EC +]), not an interrogative clause ([IC-]), and for its complement to be HEAD verb. The semantics requires for the embedded clause complement to express a proposition ([SF prop]).
-
-The rule that licenses the embedded clause is the following:
-
- 	decl-cl := head-only-int-decl-clause & declarative-clause & 
-  		[ SYNSEM.LOCAL.CAT [ VAL #val & [ SUBJ< >, 
-						  COMPS< >, 
-						  SPR< >], 
-				     MC bool, 
-				     EC #ec, 
-				     IC #ic],
-    		  HEAD-DTR.SYNSEM [ LOCAL.CAT [ MC na, 
-						HEAD verb, 										VAL #val, 
-						EC #ec, 
-						IC #ic],
-                     		    NON-LOCAL.YNQ 0-dlist ]].
-
-As mentioned in the previous section, we introduced a new feature [EC bool]. This feature checks for when =ha has attached to a VP, ensuring that that VP can now only appear in an embedded clause. In order to unify with the requirements of the decl-co-verb-lex, [EC] has to be [EC +]. Similarly because this is not an interrogative clause, it is specified as [IC -]. 
-
-	compl-clitic-lex := no-hcons-lex-item &
- 			[ SYNSEM [ LOCAL [ CAT [ IC -, 
-	                       			 EC +,
-						 HEAD adj & 
-						    [ MOD < [ LOCAL.CAT.HEAD verb,
-                                             		      LIGHT +,
-                                              		      L-PERIPH +,
-                                              		     LOCAL intersective-mod ] >],        
-						  VAL [ SPR < >, 
-					               COMPS < >, 
-						       SUBJ < >, 
-						       SPEC < >]],
-                    			   CONT.RELS <! !> ]]].
-
-The values are copied into the parse by the head-ada-phrase rule, which was mentioned in the previous section about interrogative clauses. The clitic is requires to be in a second position and attach as a modifier to a verb word, or it will not unify. The mechanics are similar to the one employed with the interrogative clauses, just with the use in this case of the EC feature instead. By definition, verbs have a [EC -], so only the proper attachment with the complementizer clitic allows unification of the embedded clause with the clause embedding verb.
-
-We experimented the parsing with single noun arguments.
 
 
-#Ex.202: Embedding of interrogative clause
-Source: e
-Vetted: f
-Judgment: g
-Phenomena: emb-d
-aikuua ohechaha ju'i vakaA
-aikuua ohecha ha juHi vakaA
-a-ikuua o-hecha=ha juHi vakaA
-A.1SG-know A.3-see=COMPL frog cow
-'I know that somebody sees the frog's cow' / ' I know that the frog's cow sees it' / 'I know that the frog sees the cow' / 'I know that the cow sees the frog'
-
-Ignoring the parses generated by the coordination rules, we were satisfied with the results. This embedded declarative construction was also able to construct int-cl and decl-cl versions for each of the possible parses. 
-
-Nevertheless there are limitations. As mentioned before, the grammar is not able to handle constituents in the first position that are made of more than one word (which might include complex nouns made of nouns in juxtaposition, as well as case markings). This is something that could be addressed when time and workload allows it.
 
 
-3. Non-verbal predicates (NP, PP, AP)
+
+4. Anything else.
+
+This week we also fixed the semantics on our NP predicates.  Our MRSs from last week were broken and did not introduce a _be_v_id_rel between the NP predicate and its subject and in fact we didn’t allow for subjects at all.  This week we updated our n-bar-predicate rule to fix this, so now we have the following in PG.tdl:
 
 
-3.1 Adjective
-
-As mentioned in a previous lab (lab 4), PG has attributive and predicative use of adjectives. In predicative form, the adjective receives verbal inflection. Adjectives behave in the same way as stative-intransitive-verbs, and the cross-markers refer to the subject exclusively using the O-group of markers (patient markers). The different use of attributive and predicative adjectives is illustrated in the following IGT examples.
-
-#Ex.136: Use of adjective as an attribute of the subject of a verb predicate
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {adj, wo}
-jagua ñarope ahendu
-jagua nNaro pe ahendu
-jagua nNaro=pe a-hendu
-dog.ANIM angry=ACC A.1SG-hear
-'I hear the angry dog'
-
-#Ex.137: Attributive adjective should not have predicate markings 
-Source: author
-Vetted: f
-Judgment: u
-Phenomena: adj
-jagua iñarope ahendu
-jagua inNaro pe ahendu
-jagua i-nNaro=pe a-hendu
-dog.ANIM O.3-angry=ACC A.1SG-hear
-*'I hear the angry dog'
-
-#Ex.138: Use of adjective as a predicate
-Source: b
-Vetted: f
-Judgment: g
-Phenomena: cop
-jagua iñaro
-jagua inNaro
-jagua i-nNaro
-dog.ANIM O.3-angry
-'The dog is angry'
-
-We have continued to treat predicative adjectives as indistinguishable from stative-intransitive verbs, and this implementation was already accomplished in previous labs. It involved creating extra homophonous lexical entries for attributive adjectives and stative-intransitive verbs (our predicative adjectives).  One important change we did make this week was to change the semantic predication of these verbs to ‘_a_rel’ instead of the ‘_v_rel’ that other verb predicates mark. Here an example of a lexical entry used in the previous IGT examples: 
-
-	nNaro_1 := stative-intrans-verb-lex &
-  		[ STEM < "nNaro" >,
-    		SYNSEM.LKEYS.KEYREL.PRED "_angry_a_rel" ].
-
-Adjective predicates work in our expected way, since we have had them implemented now for a week and have tested them thoroughly.
+n-bar-predicate-rule := YNQ-contrains-phrase & nocoord &
+  [ SYNSEM.NON-LOCAL [ SLASH <! !>, 
+		       QUE <! !>], 
+    SYNSEM.LOCAL [ AGR #agr3,
+                   CAT [  EC -, 
+			  IC -, 
+			  MC na,
+                          HEAD verb & [MOD < >],
+                          VAL [ SPEC < >,
+                                SPR  < >,
+                                COMPS < >,
+				SUBJ <[ LOCAL [ CONT.HOOK.INDEX #arg1,
+					      CAT [ HEAD noun,
+						    VAL.SPR < > ] ] ] > ] ]],
+    C-CONT [ HOOK [ LTOP #ltop,
+		    INDEX #index,
+		    XARG #arg1 ],
+	     RELS <! arg12-ev-relation &
+		   [ PRED "_be_v_id_rel",
+		     LBL #ltop,
+		     ARG0 #index,
+		     ARG1 #arg1,
+		     ARG2 #arg2 ],
+		   quant-relation &
+		   [ PRED "exist_q_rel",
+		     ARG0 #arg2,
+		     RSTR #harg ] !>,
+	     HCONS <! qeq & [ HARG #harg, LARG #larg ] !> ],
+    ARGS < [ SYNSEM.LOCAL [ AGR #agr3,
+			    CAT [ HEAD noun & [POSS poss-or-ee],
+				  VAL.SPR cons ],
+			    CONT.HOOK [ INDEX #arg2,
+					LTOP #larg ]]] > ].
 
 
-3.2 Noun
+Our new rule appropriately introduces an exist_q_relation predication with a quant-relation that gives its RESTR value scope over the LTOP of the rule’s only argument. It also introduces a _be_v_id_rel predication whose ARG0 is identified with the HOOK.INDEX value of the C-CONT, whose ARG1 is identified to CONT.HOOK.INDEX value of the mother’s SUBJ, and whose ARG2 is identified with the CONT.HOOK.INDEX value of the daughter, so that we now get the appropriate semantics for examples like 195 and 200 below.
 
-Our original analysis of PG, suggested that noun predicates presented exclusively through the use of cross-markers, similar to the way cross-markers are used with stative-intransitive verbs.  This was done on the basis of examples below which we originally misread (based on faulty IGT from our sources!). 
-
-#Ex.139: Use of noun predicate
-Source: b
-Vetted: f
-Judgment: g
-Phenomena: cop
-chesy
-chesy
-che-sy
-O.1SG-mother.ANIM
-'I am a mother'/‘There is my mother’
 
 #Ex.195: NP predicate, possessive marking
 Source: author
@@ -658,274 +294,30 @@ i-aAra
 POSS.3-day
 'It is his/her day' 
 
-Nevertheless when we did more digging we realized that what we were mistaking as verb marking was actually the combination of tense markers and possessive marking, which is has the exact same form as our O-verb markers, but of course different semantics.
-
-Our adjusted interpretations show the existence of an additional type of noun predication, with the semantics of ‘There is my mother. This suggests the existence of zero-copula noun predicates.  This was further confirmed when we found examples without possessive markers still functioning as predicates, and we see an example of this in IGT #200. 
-
-#Ex.200: Nominal predicate. Contentful postposition modifier.
+#Ex.200: NP predicate. Possessive affixes
 Source: author
 Vetted: f
 Judgment: g
-Phenomena: {cop, adp}
-jagua jaguandi
-jagua jagua ndi
-jagua jagua=ndi
-dog.PRED dog=with
-'There is a dog with a dog'
+Phenomena: {cop, poss}
+chejagua cheiru
+chejagua cheiru
+che-jagua che-iru
+1SG.POSS-dog 1SG.POSS-friend
+'My dog is my friend'
 
-We implemented this kind of noun predicates with a new type of rule, added to our PG.tdl file and also rules.tdl.  This rule takes noun phrases, changes their head value to verb and adds two semantic predications, “exist_q_rel,” and “_be_v_id_rel.”
 
-n-bar-predicate-rule := unary-phrase & nocoord &
-  [ SYNSEM.LOCAL [ AGR #agr3,
-                   CAT [  EC -, 
+We also learned through testing that n-bar-predicate rule was too unconstrained and leading to a lot of spurious ambiguity so we added constraints on it’s SLASH, QUE, EC, IC, and MC features as seen below. 
+
+n-bar-predicate-rule := YNQ-contrains-phrase & nocoord &
+  [ SYNSEM.NON-LOCAL [ SLASH <! !>, 
+		       QUE <! !> ], 
+    SYNSEM.LOCAL [ CAT [  EC -, 
 			  IC -, 
-			  MC na,
-                          HEAD verb & [MOD < >],
-                          VAL [ SPEC < >,
-                                SPR  < >,
-                                COMPS < >,
-           	   		SUBJ < > ] ]],
-    		   C-CONT [ HOOK [ LTOP #ltop,
-        			   INDEX #index],
-       				   RELS <!  arg12-ev-relation &
-					  [ PRED "_be_v_id_rel",
-         			     	    LBL #ltop,
-         				    ARG0 #index,
-         				    ARG2 #arg2 ],
-       					    quant-relation &
-       				         [ PRED "exist_q_rel",
-         				   ARG0 #arg2,
-         				   RSTR #harg ] !>,
-       		   		   HCONS <! qeq & [ HARG #harg, LARG #larg ] !> ],
-    ARGS < [ SYNSEM.LOCAL [ AGR #agr3,
-                            CAT [ HEAD noun & [POSS poss-or-ee],
-                                  VAL.SPR cons ],
-          		    CONT.HOOK [ INDEX #arg2,
-          				LTOP #larg ]]] > ].
+			  MC na,  ...
 
-
-We used the base in the lab for implementation, but modified it extensively after experimentation. Adding all the new feature that we need for embedding clauses and constraining the mod, spec, spr, comps and subj values all to be empty, since we do not what our verb predicates in Guarani to combine with any arguments. We also do not want pronouns to take part in this rule, and we implemented this (somewhat quickly) with the one feature that easily distinguishes between our pronouns and other nouns, POSS, which we introduced last lab.  The rules requires the argument to be a noun, but with a restriction [POSS poss-or-eell], which means that pronouns are not acceptable.
-
-
-Our implementation works satisfactorily for our goals here. It generates in all other kind of phenomena of our grammar additional sentence parses, as each individual noun could be also interpreted as a separate noun predicate, which combined with our sentential juxtaposition can multiply the number of interpretations. This result is allowed in this grammar.
-
-Something that we were not able to implement in this grammar, is to allow our noun predicates to have markers like aspect marking which we see in IGT 142, or the additional meaning of “I am a mother” for IGT 139. We leave this for another time.
-
-#Ex.142: NP Predicate, Possessive marking. Aspect marking (not currently handled by our grammar).
-Source: f
-Vetted: f
-Judgment: g
-Phenomena: cop
-hi'árama
-iaArama
-i-aAra-ma
-POSS.3-day-PERF
-
-'It is his/her day already' 
-#Ex.139: Use of noun predicate
-Source: b
-Vetted: f
-Judgment: g
-Phenomena: cop
-chesy
-chesy
-che-sy
-O.1SG-mother.ANIM
-'I am a mother'/‘There is my mother’
-
-
-3.3 Prepositions
-
-In Guarani, our analysis indicates that prepositional phrases work with contentful appositions that add significant meaning to a sentence. 
-These appositions usually interact with predicates with full semantic content acting (and unifying) as a modifier:
-
-#Ex.166: Contentful postpositions  
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: adp
-oiju mombyrý-vi 
-oju mombyryA gui 
-o-ju mombyryA=gui
-3.ACT-come far=from
-'He/she comes from far(a far place)' 
-
-
-#Ex.200: Nominal predicate. Contentful postposition modifier.
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {cop, adp}
-jagua jaguandi
-jagua jagua ndi
-jagua jagua=ndi
-dog.PRED dog=with
-'There is a dog with a dog'
-
-#Ex.165: Contentful postpositions  
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: adp
-Ojeroky kotýpe jaguandi
-ojeroky koty pe jagua ndi
-o-jeroky koty=pe jagua=ndi
-3.ACT-dance room=in dog=with
-'He/She dances in the room with the dog'
-
-In other cases these appositions interact with raising verbs, which are not-fully semantically bleached. These are verbs with a similar meaning as ‘to-be-located’. 
-
-#Ex.164: be+located raising verb. Contentful postpositions.  
-Source: b
-Vetted: f
-Judgment: g
-Phenomena: {cop, adp}
-Oime kotýpe jaguandi
-oime koty pe jagua ndi
-o-ime koty=pe jagua=ndi
-3.ACT-be.located room=in dog=with
-'He/She is located in the room with the dog'
-
-For this kind of verbs we implemented a new type verb-lexeme, that would take the prepositional phrases as a complement:
-
-
-locative-verb-lex := gug-dyn-loc-verb & trans-first-arg-control-lex-item &
-  [ SYNSEM.LOCAL [ CAT.VAL [ SUBJ < #subj >,
-                             COMPS < #comps >,
-                             SPR < >,
-                             SPEC < >   ],
-                   CONT.HOOK.XARG #xarg ],
-    ARG-ST < #subj &
-             [ LOCAL [ CONT.HOOK.INDEX #xarg,
-                       CAT [ HEAD noun, 
-                             VAL [ SPR < >,
-                                   COMPS < > ],
-                             HEAD noun ] ] ],
-             #comps &
-             [ 	OPT -,
-		LOCAL.CAT [ VAL [ COMPS < > ],
-                           HEAD adp & [CASE LOC] ] ] > ].
-
-This type instantiates the type gug-dyn-loc-verb, which is inherited by our dynamic stative verbs and also are clausal embedding verbs so that all of these verb classes can appropriates implement the lexical rules for affixation already in place.
-
-gug-dyn-loc-verb := verb-lex & 
-[ INFLECTED.PERNUM-DYN-INTRANS-OR-PERNUM-TRANS-FLAG - ].
-
-All other verb types inherit from verb-lex directly, since they go through separate inflectional rules.  This type of verb cannot undergo complement drop, and is required take a complement that is HEAD dap and, to prevent it from unifying with our case-marking adpositions, HEAD LOC. 
-
-
-We added also the entry in the lexicon for our non-semantically bleached raising verb, which has a similar use like the Spanish verb ‘star’, close to ‘be+located’ in English:
-
-ime := locative-verb-lex &
-  [ STEM < "ime" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_be+located_v_rel" ].
-
-Additionally, also the lexical entries for our contentful appositions:
-
-pe2 := contentful-adp-lex & 
-  [ STEM < "pe" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_in_p_rel" ].
-
-gui := contentful-adp-lex & 
-  [ STEM < "gui" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_from_p_rel" ].
-
-ndi := contentful-adp-lex & 
-  [ STEM < "ndi" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_with_p_rel" ].
-
-which are linked to our grammar through the contentful-adp-lex type:
-
-contentful-adp-lex := basic-int-mod-adposition-lex
-[ SYNSEM.LOCAL.CAT [ HEAD adp & [CASE LOC,
-                                 MOD <[ LOCAL.CAT[ MC na, 
-                                                   HEAD verb,
-                                                   VAL [SUBJ < >]],
-                                        L-PERIPH +] > ],
-                       VAL [ SPR < >,
-                             COMPS < #comps >,
-                             SPEC < >, 
-                             SUBJ < > ]  ],
-    ARG-ST < #comps & [ OPT -,
-                        LOCAL.CAT[ HEAD +np,
-                                   VAL [SPR < >] ] ] > ].
-
-This lexical type then unifies with other elements of a sentence forming prepositional phrases that are either modifiers (like in the first two IGTs shown here), or complements of locative verbs like IGT 10 below and 164 above.
-
-There are some aspects of our implementation that don’t reflect the full reality of prepositional predicates. They currently act as modifiers or complements of verbal and noun predicates, which does not allow us to represent the full spectrum of possible ambiguity in sentences like 
-
-#Ex.8: Multiple contentful postpositions as modifiers. 
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: adp
-ajeroky avatitýpe lo nNakyrandi
-ajeroky avatityA pe lo nNakyra ndi
-a-jeroky avatityA=pe lo nNakyra=ndi
-1SG.3-dance cornfield=in+near the.PL crickets=with
-'I dance in the cornfield with the crickets'
-
-#Ex.10: be+located raising verb. PP argument and PP modifier.
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: adp
-yvyra oime vatitýpe roAgape
-yvyra oime vatityA pe roAga pe
-yvyra o-ime vatityA=pe roAga=pe
-tree A.3-be+located cornfield=in house=in
-'The tree is located in the cornfield in (near) the house'
-
-
-This would require to change the MOD value of our locative adpositions. We leave this idea for a future intend, when time and workload allows for it.
-
-
-4. Anything else.
-Guarani has ditransitive verbs, and there are several examples present in our test suite. It seems that its implementation is not planned during this course. Nevertheless we gathered some information about its possible implementation, which hopefully will be possible when the workload allows it.
-There is a ditransitive-verb-item, that needs to combine with the verb supertype, which allows us to build a ditransitive verb type. Our first attempt looks as follows:
-
-	ditransitive-verb-lex := verb-lex & ditransitive-lex-item & 
-                          completive-aspect-or-perfective-aspect-or-prospective-aspect-rule-dtr & 
-                          future-aspect-rule-dtr & neg1-rule-dtr & neg2-rule-dtr &
-  		[ SYNSEM.LOCAL.CAT.VAL.COMPS < #comps1 & [OPT-CS in-foc], #comps2 & [OPT-CS in-foc]>,
-    			ARG-ST <[LOCAL.CAT.HEAD +np],
-    			#comps1 & [LOCAL.CAT [VAL [SPR<>, COMPS<>],
-                          		HEAD [+np, CASE ACC]],
-                    	#comps2 & [LOCAL.CAT [ VAL [ SPR < >, COMPS < > ],
-                                      HEAD [+np, CASE DAT] ] ] >,
-    		  INFLECTED.PERNUM-TRANS-FLAG - ].
-
-We recorded also the possible lexicon entries for our ditransitive verbs:
-
-		hechauka := ditransitive-lex-item &
-   			[STEM<"hechauka">,
-    	  		 SYNSEM.LKEYS.KEYREL.PRED "_show_v_rel"].
-
- 		meHeN := ditransitive-lex-item &
-   			[STEM<"meHeN">,
-    		         SYNSEM.LKEYS.KEYREL.PRED "_give_v_rel"].
-
-The ditransitive uses also the marker =pe for [CASE dat] arguments, but different to similar looking accusative marker, the dative marker is in those cases obligatory. This means that we will have to implement this as a different =pe.
-
-
-Testsuite:
-Adding NP predicates “broke” many of our negative examples again, but I think we did a pretty good job of re-writing things with NP predicates, and using pronouns like #18 below so that no coordination rules could apply.
-
-#Ex.18: Dynamic intransitive has 3SG subject but 1SG marking
-Source: author
-Vetted: f
-Judgment: u
-Phenomena: agr
-ha'e aguata
-haHe aguata
-haHe a-guata
-3.SG.PRON.NOM A.1SG-walk
-*'He/she walks'
-
+Most of our other work fixing leaks and reducing spurious ambiguity is documented above with results outlined below.
 
 5. Statement of the current overage of the grammar over your testsuite (using number you can get from Analyze|Coverage and Analyze|Overgeneration in [incr tsdb()]) and a comparison between your baseline testsuite run and your final one for this lab (see Compare|Competence).
-
-
 
 --General Stats
 
@@ -962,143 +354,4 @@ Comparison of baseline(gold-lab5) and final version of this lab
 		in 0:       79.1
 		out 0:      9.6
 
-The comparison between the baseline and this week’s grammar show that we were able to increase the coverage from 66.7% to 79.1%. This is an obvious result as we were able to deal with some grammar phenomena in our testsuite which were not solved with our previous grammar. On the other side we see that we have a significant increase in the overgeneration from 1.4% to 9.6%. The explanation for these results in our test suite are discussed in further detail in the next lines. 
-We found nine illformed sentences:
-
-#9: This sentence illustrates the wrong use of a PP as a modifier, as the PP is placed at the beginning of the sentence, although its MOD element should be to the left. The sentence could not parse before, because the appositions were not specified in the lexicon of our grammar. Now the grammar can read it and confirms it is ungrammatical.
-
-#Ex.9: Wrong order for PP moodifier. 
-Source: author
-Vetted: f
-Judgment: u
-Phenomena: adp
-lo nNakyrandi ajeroky avatitýpe
-lo nNakyra ndi ajeroky avatityA pe
-lo nNakyra=ndi a-jeroky avatityA=pe
-the.PL crickets=with 1SG.3-dance cornfield=in
-*'I dance in the cornfield with the crickets'
-
-
-#109: This sentence was thought to be ungrammatical as it illustrates a possessive construction with a possessum that cannot be possessed (wind). As we implemented noun predicates this week (especially zero-copula), the grammar is generating in alternative parses each noun as a separate noun predicate, which conjoins other nouns in a juxtaposition of individual predicates. This combination allows for the amount of generation found here. This phenomenon is often present in this week’s results, and we might find it at different places, specially when there is a use of several common nouns in a sentence. 
-
-#Ex.109: Ungrammatically possessed 'unpossessable' noun.
-Source: author
-Vetted: f
-Judgment: u
-Phenomena: poss
-ahendu avatitý yvytu hata 
-ahendu avatityA yvytu hata 
-a-hendu avatityA yvytu hata
-A.1SG-hear cornfield wind.INAM strong
-'I hear the cornfield's strong wind'
-
-
-#116/117/120: These sentences represent the wrong use of the question clitic, which should be placed in second position. The sentences were not processed previously, because yes-no-questions and its clitics did not exist in the grammar. The grammar is able to offer us other readings which were unexpected. Several of the new parses are the result of the same phenomenon previously described.
-
-#Ex.116: Yes-No question with question marker in wrong position, should be second position.
-Source: c
-Vetted: f
-Judgment: u
-Phenomena: q
-ohecha ñakyrapa vakápe? 
-ohecha nNakyra pa vakaA pe
-o-hecha nNakyra=pa vakaA=pe
-O.3-see cricket.ANIM.NOM=Q cow.ANIM=ACC
-*'Did the cricket see the cow?
-
-#Ex.117: Yes-No question with question marker in wrong position, should be second position.
-Source: c
-Vetted: f
-Judgment: u
-Phenomena: q
-ohecha ñakyra vakápepa? 
-ohecha nNakyra vakaA pe pa
-o-hecha nNakyra vakaA=pe=pa
-O.3-see cricket.ANIM.NOM cow.ANIM=ACC=Q
-*'Did the cricket see the cow?
-
-#Ex.120: Yes-No question with focus marker on verb predicate, and use of marker piko
-Source: c
-Vetted: f
-Judgment: u
-Phenomena: {q, wo}
-ohecha ñakyra  vakápe piko? 
-ohecha nNakyra vakaA pe piko
-o-hecha nNakyra vakaA=pe piko
-O.3-see cricket.ANIM.NOM cow.ANIM=ACC Q
-*'Did the cricket see the cow?
-
-
-#118: This sentence was also previously not read by our grammar, because it belongs to the group of yes-no-questions. The grammar confirm it is now ungrammatical, as the accusative marker =pe should be postponed inside the NP and not after the question clitic.
-
-#Ex.118: Yes-No question with question marker in wrong position, should be end suffix.
-Source: c
-Vetted: f
-Judgment: u
-Phenomena: q
-vakápape ohecha ñakyra? 
-vakaA pa pe ohecha nNakyra
-vakaA=pa=pe o-hecha nNakyra
-cow.ANIM=Q=ACC O.3-see cricket.ANIM.NOM
-*'Was it the cricket, who saw the cow?'
-
-#119: This sentence was previously not read by the grammar as it has the question clitic =piko, not present in the lexicon of lab5. Now that the lexicon and the yes-no-question phenomenon is understood by the grammar and confirmed as ungrammatical.
-
-#Ex.119: Yes-No question with focus marker on verb predicate, wrong position of marker piko
-Source: c
-Vetted: f
-Judgment: u
-Phenomena: {q, wo}
-piko ohecha ñakyra  vakápe? 
-piko ohecha nNakyra vakaA pe
-piko o-hecha nNakyra vakaA=pe
-Q O.3-see cricket.ANIM.NOM cow.ANIM=ACC
-*'Did the cricket see the cow?
-
-
-#152: This sentence demonstrates the wrong use of an adverb, which should be positioned after the predicates it modifies. The adverb is shown here at the end of the sentence, and our understanding was that this is ungrammatical. We see here again the generation of parses through coordination of bare-np predicates. Nevertheless, we take the verdict of our parses, and as we are suspicious of the use of an adverb in such a way, start thinking about what we can do better next time. 
-
-#Ex.152: Adverb should come directly after the verb predicate with no intervening words.
-Source: b
-Vetted: f
-Judgment: u
-Phenomena: adv
-jagua osuHu vakaApe vai
-jagua osuHu vakaA pe vai
-jagua o-suHu vakaA=pe vai
-dog A.3-bite cow.ANIM=ACC bad
-*'the dog bit the cow in an ugly way' 
-
-#185: In the previous grammar, this sentence represented the wrong use of possessives in a juxtaposition of individual nouns. Especially, a noun with a possessor (chesy - ‘my mother’) cannot be possessed again. This week’s grammar implementation though counts both nouns(dog and mother) as independent bare-np nouns with their own predication. Therefore grammatical from that perspective.
-
-#Ex.185:  Nouns that have passed through the possessive lexical rule should not be allowed to be the possessums of other nouns. 
-Source: author
-Vetted: f
-Judgment: u
-Phenomena: poss
-jagua chesy
-jagua chesy
-dog che-sy
-dog 1SG.POS-mother
-*'There is a my mother of the dog'
-
-
-As for the changes in the wellformed sentences, we detect similar trends. There are 62 sentences that show some changes in the parses:
-14 of those are sentences that represent lexicon and phenomena not previously illustrated in our grammar. While some of those sentences got just one new parse, several other had a broader ambiguity in their parses. In an extreme example, a sentence which was simply not parsing (because the phenomenon was not properly illustrated in the grammar) generated now 12 different parses. This sentence (#202) has some ambiguity embedded because the verb arguments do not show their accusative or nominative cases, and also because two consecutive nouns can be interpreted as a complex noun (possessive). Additionally, the main clauses can be declarative or interrogative in their expression. Nevertheless, the phenomenon of bare-np and juxtaposition of predicates visits us here as well, and generates some additional parses.   
-
-#Ex.202: Embedding of interrogative clause
-Source: e
-Vetted: f
-Judgment: g
-Phenomena: emb-d
-aikuua ohechaha ju'i vakaA
-aikuua ohecha ha juHi vakaA
-a-ikuua o-hecha=ha juHi vakaA
-A.1SG-know A.3-see=COMPL frog cow
-'I know that somebody sees the frog's cow' / ' I know that the frog's cow sees it' / 'I know that the frog sees the cow' / 'I know that the cow sees the frog'
-
-
-All the other sentences had an increase of their total amount of parses. The number of parses doubles, or even quadruples in some cases. This correlates strongly with the number of nouns present in the sentence. 
-
-As the juxtaposition rule and bare-np creation seem to be natural occurrences in PG, we respect the results offered here, although have some doubts that the same parses exist in such an exuberance in the natural use of PG.  We think that this generation of additional parses makes our analysis of other parses more opaque. During analysis we tended to comment out the coordination rules in order to find parses more strongly related to our phenomena or even the ‘wrong’ parses. While pragmatically there could be situations that could make use of the different interpretations offered by the coordination rules, we think that we should limit the scope of how they must be reviewed in detail, as they are mostly based on simple phenomena.
 
