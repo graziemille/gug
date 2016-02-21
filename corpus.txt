@@ -47,7 +47,7 @@ Phenomena: corpus
 "Jaha jaheka ñaneirura᷉".
 jaha          jaheka            nNandeiruraN
 ja-ha         ja-heka           nNande-iru-raN
-A.1pl.incl-go A.1pl.incl-search O.1pl.incl-friend-PROSP
+A.1PL.INCL-go A.1PL.INCL-search O.1PL.INCL-friend-PROSP
 'Let's go and look for a friend for us.'
 
 #Sentence.5
