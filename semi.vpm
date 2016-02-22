@@ -37,7 +37,7 @@ COG-ST : COG-ST
   * <> *
 
 
-PNG.PERNUM : PNG.PERNUM
+PNG.PERNUM : PERNUM
   3PL <> 3PL
   2PL <> 2PL
   1PL_excl <> 1PL_excl
@@ -53,16 +53,16 @@ PNG.PERNUM : PNG.PERNUM
   SG <> SG
   * <> *
 
-PNG.GEND : PNG.GEND
+PNG.GEND : GEND
   hum <> hum
   inam <> inam
   anim <> anim
   * <> *
 
-E.TENSE : E.TENSE
+E.TENSE : TENSE
   * <> *
 
-E.ASPECT : E.ASPECT
+E.ASPECT : ASPECT
   future-perfective <> future-perfective
   perfective <> perfective
   future-completive <> future-completive
@@ -72,6 +72,8 @@ E.ASPECT : E.ASPECT
   future <> future
   prospective <> prospective
   * <> *
+  * >> no-aspect
+  no-aspect << [e]
 
 E.MOOD : E.MOOD
   * <> *
