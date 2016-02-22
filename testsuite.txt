@@ -1571,7 +1571,7 @@ Phenomena: cop
 hi'árama
 iaArama
 i-aAra-ma
-POSS.3-day-PERF
+3.POSS-day-PERF
 'It is his/her day already' 
 
 
@@ -2156,7 +2156,7 @@ Phenomena: cop
 hi'ára
 iaAra
 i-aAra
-POSS.3-day
+3.POSS-day
 'It is his/her day' 
 
 #Ex.196: NP predicate, possessive marking
