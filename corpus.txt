@@ -47,7 +47,7 @@ Phenomena: corpus
 "Jaha jaheka ñaneirura᷉".
 jaha          jaheka            nNandeiruraN
 ja-ha         ja-heka           nNande-iru-raN
-A.1PL.INCL-go A.1PL.INCL-search O.1PL.INCL-friend-would.be
+A.1PL.INCL-go A.1PL.INCL-search.for 1PL.INCL.POSS-friend-would.be
 'Let's go and look for a friend for us.'
 
 #Sentence.5
@@ -56,8 +56,8 @@ Vetted: t
 Judgment: g
 Phenomena: corpus
 Ha ojeoi hikuái.
-ha  ojeoi      hikuaAi
-ha  o-je-oi    hikuaAi
+ha  ojeha      hikuaAi
+ha  o-je-ha    hikuaAi
 and A3-REFL-go 3.PL.PRON
 'and they went.'
 
@@ -254,8 +254,8 @@ Vetted: t
 Judgment: g
 Phenomena: corpus
 "Nde rehota chupe amóguio lado ha che a-ha-ta chu-pe koa otro lado"
-Nde rehota chupe amó gui lado ha che ahota chupe koa otro lado
-Nde re-ho-ta chupe amó=gui lado ha che a-ho-ta chupe koa otro lado
+Nde rehata chupe amó gui lado ha che ahota chupe koa otro lado
+Nde re-ha-ta chupe amó=gui lado ha che a-ho-ta chupe koa otro lado
 2SG.PRON A2.SG-go-FUT 3SG.PRON there=from side and 1SG.PRON A.1SG-go-FUT other side
 'YOU will go to him from over there and, me, I'll go by the other side'
 

@@ -5,6 +5,10 @@ Juanchi := proper-noun-lex &
   [ STEM < "Juanchi" >,
     SYNSEM.LKEYS.KEYREL.CARG "Juanchi" ].
 
+Pirulo := proper-noun-lex &
+  [ STEM < "Pirulo" >,
+    SYNSEM.LKEYS.KEYREL.CARG "Pirulo" ].
+
 juHi := com-anim-noun-lex &
   [ STEM < "juHi" >,
     SYNSEM.LKEYS.KEYREL.PRED "_frog_n_rel" ].
@@ -206,7 +210,7 @@ acc%2C%20DAT-marker := case-marking-adp-lex &
     SYNSEM.LOCAL [ CONT [ HOOK [ ICONS-KEY.IARG1 #clause,
                                  CLAUSE-KEY #clause ],
                           ICONS <!  !> ],
-                   CAT.HEAD [ CASE ACC,
+                   CAT.HEAD [ CASE acc,
                               CASE-MARKED + ] ] ].
 ;; Contentful adpostion
 pe2 := contentful-adp-lex & 
@@ -317,6 +321,10 @@ po_2 := dynamic-intrans-verb-lex &
 kanNy := dynamic-intrans-verb-lex &
   [ STEM < "kanNy" >,
     SYNSEM.LKEYS.KEYREL.PRED "_hide_v_rel" ].
+
+ha := dynamic-intrans-verb-lex &
+  [ STEM < "ha" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_go_v_rel" ].
 
 ju := dynamic-intrans-verb-lex &
   [ STEM < "ju" >,

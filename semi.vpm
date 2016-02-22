@@ -38,19 +38,21 @@ COG-ST : COG-ST
 
 
 PNG.PERNUM : PERNUM
-  3PL <> 3PL
-  2PL <> 2PL
-  1PL_excl <> 1PL_excl
-  1PL_incl <> 1PL_incl
-  1PL <> 1PL
-  3SG <> 3SG
-  2SG <> 2SG
-  1SG <> 1SG
-  3rd <> 3rd
-  2nd <> 2nd
+  3pl <> 3pl
+  2pl <> 2pl
+  1pl_excl <> 1pl_excl
+  1pl_incl <> 1pl_incl
+  1pl <> 1pl
+  3sg <> 3sg
+  2sg <> 2sg
+  1sg <> 1sg
   1st <> 1st
-  PL <> PL
-  SG <> SG
+  2nd <> 2nd
+  3rd >> 3sg
+  3rd << 3rd
+  pl <> pl
+  sg <> sg
+  * >> sg
   * <> *
 
 PNG.GEND : GEND
@@ -71,9 +73,8 @@ E.ASPECT : ASPECT
   future-perfective <> future-perfective
   future <> future
   prospective <> prospective
-  * <> *
   * >> no-aspect
   no-aspect << [e]
 
-E.MOOD : E.MOOD
+E.MOOD : MOOD
   * <> *
