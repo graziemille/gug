@@ -78,11 +78,12 @@ head-mod-phrase :+ [ SYNSEM.ATTACH #attach,
 ;;; Case
 
 case := *top*.
-NOM := case.  ; NOM
-non-NOM := case.
-DAT := non-NOM.
-ACC := non-NOM.
-LOC := non-NOM.
+nom := non-acc. ; nom
+non-nom := case.
+non-acc := case.
+dat := non-nom & non-acc.
+acc := non-nom.
+loc := non-nom & non-acc.
 
 ;;; Pernum
 
@@ -226,11 +227,11 @@ pron-noun-lex := no-spr-noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3pl ].
 
 pron-nom-noun-lex := pron-noun-lex &
-  [ SYNSEM.LOCAL.CAT.HEAD [ CASE NOM,
+  [ SYNSEM.LOCAL.CAT.HEAD [ CASE nom,
                             CASE-MARKED + ] ].
 
 pron-nonagent-noun-lex := pron-noun-lex &
-  [ SYNSEM.LOCAL.CAT.HEAD [ CASE non-NOM,
+  [ SYNSEM.LOCAL.CAT.HEAD [ CASE non-nom,
                             CASE-MARKED + ] ].
 
 1sg-pron-nonag-noun-lex := pron-nonagent-noun-lex &
@@ -306,7 +307,7 @@ locative-verb-lex := gug-dyn-loc-verb & trans-first-arg-control-lex-item & compl
              #comps &
              [ OPT -,
                LOCAL.CAT [ VAL [ COMPS < > ],
-                           HEAD adp & [CASE LOC] ] ] > ].
+                           HEAD adp & [CASE loc] ] ] > ].
 
 verb-lex := basic-verb-lex & non-mod-lex-item &
   [ SYNSEM.LOCAL [ CAT [ MC na,
@@ -347,22 +348,22 @@ transitive-verb-lex := verb-lex & transitive-lex-item & completive-aspect-or-per
 ;    INFLECTED.PERNUM-TRANS-FLAG - ].
 
 
-NOM-intransitive-verb-lex := intransitive-verb-lex &
+nom-intransitive-verb-lex := intransitive-verb-lex &
   [ ARG-ST.FIRST.LOCAL.CAT.HEAD noun &
-                                [ CASE NOM ],
+                                [ CASE nom ],
     SYNSEM.LOCAL.CAT.VAL.SUBJ < [ LOCAL.CAT.HEAD.CASE-MARKED + ] > ].
 
-NOM-ACC-transitive-verb-lex := transitive-verb-lex &
+nom-acc-transitive-verb-lex := transitive-verb-lex &
   [ ARG-ST < [ LOCAL.CAT.HEAD noun &
-                              [ CASE NOM ] ],
+                              [ CASE nom ] ],
              [ LOCAL.CAT.HEAD +np &
-                              [ CASE ACC ] ] >,
+                              [ CASE acc ] ] >,
     SYNSEM.LOCAL.CAT.VAL [ SUBJ < [ LOCAL.CAT.HEAD.CASE-MARKED + ] >,
                            COMPS < [ LOCAL.CAT.HEAD.CASE-MARKED + ] > ] ].
 
-trans-verb-lex := NOM-ACC-transitive-verb-lex.
+trans-verb-lex := nom-acc-transitive-verb-lex.
 
-intrans-verb-lex := NOM-intransitive-verb-lex.
+intrans-verb-lex := nom-intransitive-verb-lex.
 
 ;;has to inherit from verb-lex directly
 stative-intrans-verb-lex := verb-lex & intrans-verb-lex & completive-aspect-or-perfective-aspect-or-prospective-aspect-rule-dtr & future-aspect-rule-dtr & neg1-rule-dtr & neg2-rule-dtr &
@@ -471,9 +472,9 @@ case-marking-adp-lex :=  basic-one-arg & raise-sem-lex-item & non-ynq-word &
 contentful-adp-lex := basic-int-mod-adposition-lex & norm-zero-arg &
   [ SYNSEM.LOCAL.CAT [  EC - , 
                         IC - ,
-                        HEAD adp & [CASE LOC,
+                        HEAD adp & [CASE loc,
 				    MOD <[ LOCAL.CAT[ MC na, 
-						      HEAD verb,
+                  HEAD verb,
 						      VAL [SUBJ < >]],
 					   L-PERIPH +] > ],
                        VAL [ SPR < >,
@@ -481,7 +482,7 @@ contentful-adp-lex := basic-int-mod-adposition-lex & norm-zero-arg &
                              SPEC < >, 
                              SUBJ < > ]  ],
     ARG-ST < #comps & [ OPT -,
-                        LOCAL.CAT[ HEAD +np,
+                        LOCAL.CAT[ HEAD +np & [CASE nom],
                                    VAL [SPR < >] ] ] > ].
 
 ; Lexical type for question marks
@@ -861,7 +862,7 @@ head-spec-phrase := basic-head-spec-phrase & head-final &
 
 
 ;; Allows us to generate NP predicates with no copula or morphology.
-n-bar-predicate-rule := YNQ-contrains-phrase & nocoord &
+n-bar-predicate-rule := YNQ-constrained-phrase & nocoord &
   [ SYNSEM.NON-LOCAL [ SLASH <! !>, 
 		       QUE <! !>, 
 		       REL <! !> ], 
@@ -990,14 +991,14 @@ same-ynq-unary-phrase := unary-phrase &
   [ SYNSEM.NON-LOCAL [YNQ #ynq, SLASH #slash, QUE #que],
     ARGS < [ SYNSEM.NON-LOCAL [YNQ #ynq, SLASH #slash, QUE #que]] > ].
 
-basic-head-opt-subj-phrase:+ YNQ-contrains-phrase &
+basic-head-opt-subj-phrase:+ YNQ-constrained-phrase &
     [ SYNSEM.LOCAL.CAT [EC #ec,
                         IC #ic  ],
      ARGS < [ SYNSEM.LOCAL.CAT [ EC #ec,
                                  IC #ic ] ]> ].
 
 ;;Combines constraints so they can be easily added to new phrase types.
-YNQ-contrains-phrase := same-periph-unary-phrase & same-ynq-unary-phrase & 
+YNQ-constrained-phrase := same-periph-unary-phrase & same-ynq-unary-phrase & 
 			mc-na-headed-phrase & same-ec-unary-phrase.
 
 ;;Changing the lightness value of basic-head-opt-comp so that we don't
@@ -1005,7 +1006,7 @@ YNQ-contrains-phrase := same-periph-unary-phrase & same-ynq-unary-phrase &
 ;;dropped subjects
 ;;adding constrains related to YNQ
 
-gug-head-opt-comp-phrase := basic-head-opt-comp-phrase & YNQ-contrains-phrase &
+gug-head-opt-comp-phrase := basic-head-opt-comp-phrase & YNQ-constrained-phrase &
  [ SYNSEM.LIGHT -].
 
 
@@ -1073,7 +1074,7 @@ comp-head-phrase-2 := basic-head-2nd-comp-phrase & head-final-head-nexus.
 ; introduced to match the semantic effect of bare NPs in your language.
 ; adding constrains related to YNQ
 
-bare-np-phrase := basic-bare-np-phrase & YNQ-contrains-phrase & head-valence-phrase &
+bare-np-phrase := basic-bare-np-phrase & YNQ-constrained-phrase & head-valence-phrase &
   [ SYNSEM.LIGHT -,
     HEAD-DTR.SYNSEM.LOCAL.CAT.VAL.SPR < unexpressed >, 
     C-CONT.RELS <! [ PRED "exist_q_rel" ] !> ].
