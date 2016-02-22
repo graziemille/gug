@@ -322,6 +322,10 @@ kanNy := dynamic-intrans-verb-lex &
   [ STEM < "kanNy" >,
     SYNSEM.LKEYS.KEYREL.PRED "_hide_v_rel" ].
 
+ha := dynamic-intrans-verb-lex &
+  [ STEM < "ha" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_go_v_rel" ].
+
 ju := dynamic-intrans-verb-lex &
   [ STEM < "ju" >,
     SYNSEM.LKEYS.KEYREL.PRED "_come_v_rel" ].
