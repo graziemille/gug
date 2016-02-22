@@ -32,7 +32,7 @@ infl-satisfied :+ [ PERNUM-STAT-INTRANS-FLAG na-or-+,
     PERNUM-TRANS-FLAG na-or-+ ].
 
 png :+ [ PERNUM pernum,
-    GEND gender ].
+	 GEND gender ].
 
 ;trying to reduce redundancy caused by multiple attachment sites and head-subj/subj-head. Additional modifications made to head-subj subj-head below
 
@@ -120,8 +120,7 @@ prospective := aspect.
 future-completive := future & completive.
 future-perfective := future & perfective.
 
-;;; POSS Feature to distinguish nouns can can have a possessor or not in possessive constructions
-;;; through the juxtaposition rule
+;;; POSS Feature to distinguish nouns can can have a possessor or not in possessive constructions through the juxtaposition rule
 
 noun:+ [POSS poss].
 poss := *top*.
@@ -133,9 +132,7 @@ poss-ee := poss-or-ee.
 ; Add Feature for semantics of YNQ
 
 non-local :+ [ YNQ 0-1-dlist ].
-
-non-ynq-word := lex-item &
-  [ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
+non-ynq-word := lex-item & [ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
 norm-zero-arg :+ [ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
 basic-one-arg :+ [ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
 basic-two-arg :+ [ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
@@ -280,8 +277,18 @@ wh-pronoun-noun-lex := norm-hook-lex-item & basic-icons-lex-item &
 	     NON-LOCAL.QUE < ! #ind ! > ] ].
 
 ;; Adv
-
 basic-adverb-lex :+ norm-zero-arg.
+
+; Scopal-modifiers
+scopal-lex := scopal-mod-lex & norm-sem-lex-item & norm-zero-arg & 
+	      non-ynq-word &
+  [ SYNSEM.LOCAL.CAT [  HEAD adv,
+                        EC -, 
+                        IC -,
+                        VAL [ SPR < >,
+                              COMPS < >,
+                              SUBJ < >,
+                              SPEC < > ]]].
 
 ;;; Verbs
 
@@ -290,8 +297,7 @@ basic-adverb-lex :+ norm-zero-arg.
 gug-dyn-loc-verb := verb-lex & 
   [ INFLECTED.PERNUM-DYN-INTRANS-OR-PERNUM-TRANS-FLAG - ].
 
-;; New verb type for attaching locative PP's
-
+;; New raising verb type to use with locative PP's
 locative-verb-lex := gug-dyn-loc-verb & trans-first-arg-control-lex-item & completive-aspect-or-perfective-aspect-or-prospective-aspect-rule-dtr & future-aspect-rule-dtr & neg1-rule-dtr & neg2-rule-dtr &
   [ SYNSEM.LOCAL [ CAT.VAL [ SUBJ < #subj >,
                              COMPS < #comps >,
@@ -304,7 +310,7 @@ locative-verb-lex := gug-dyn-loc-verb & trans-first-arg-control-lex-item & compl
                              VAL [ SPR < >,
                                    COMPS < > ],
                              HEAD noun ] ] ],
-             #comps &
+	     #comps &
              [ OPT -,
                LOCAL.CAT [ VAL [ COMPS < > ],
                            HEAD adp & [CASE loc] ] ] > ].
@@ -331,9 +337,9 @@ transitive-verb-lex := verb-lex & transitive-lex-item & completive-aspect-or-per
   [ SYNSEM.LOCAL.CAT.VAL.COMPS < #comps & [OPT-CS in-foc]>,
     ARG-ST < [ LOCAL.CAT.HEAD +np ],
 	       #comps &
-             [ LOCAL.CAT [ VAL [ SPR < >,
-                                 COMPS < > ],
-			   HEAD +np ] ] >,
+             [ LOCAL.CAT [ HEAD +np,
+			   VAL [ SPR < >,
+                                 COMPS < > ] ] ] >,
     INFLECTED.PERNUM-TRANS-FLAG - ].
 
 
@@ -373,7 +379,6 @@ stative-intrans-verb-lex := verb-lex & intrans-verb-lex & completive-aspect-or-p
 dynamic-intrans-verb-lex := gug-dyn-loc-verb & intrans-verb-lex & completive-aspect-or-perfective-aspect-or-prospective-aspect-rule-dtr & future-aspect-rule-dtr & neg1-rule-dtr & neg2-rule-dtr.
 
 ;;New verb features
-
 trans-verb-lex:+ [SYNSEM.LOCAL.CAT [EC -,
                                     IC - ]].
                                     
@@ -382,29 +387,28 @@ intrans-verb-lex: + [SYNSEM.LOCAL.CAT [EC -,
 
 
 ;;Adding clause complement verb lexemes
-
 cl-verb-lex:= gug-dyn-loc-verb &  clausal-second-arg-trans-lex-item &
     [SYNSEM.LOCAL.CAT.VAL.COMPS <#comps>,
      ARG-ST.REST.FIRST #comps].
 
 int-cl-verb-lex:= cl-verb-lex &
-    [SYNSEM.LOCAL.CAT [  IC - , 
-                         VAL [  SUBJ < [LOCAL.CAT.HEAD noun]>,
-                                SPR < >,
- 				COMPS < [ LOCAL [ CAT [ IC +,
-							HEAD verb,
-							VAL [ COMPS < >, 
-							      SUBJ < > ] ],
-						  CONT.HOOK.INDEX.SF ques ]]>]]].
+  [ SYNSEM.LOCAL.CAT [ IC - , 
+		       VAL [ SUBJ < [LOCAL.CAT.HEAD noun]>,
+			     SPR < >,
+			     COMPS < [ LOCAL [ CAT [ IC +,
+						     HEAD verb,
+						     VAL [ COMPS < >, 
+							   SUBJ < > ]],
+					       CONT.HOOK.INDEX.SF ques ]]>]]].
 
 decl-cl-verb-lex:= cl-verb-lex &
-    [ SYNSEM.LOCAL.CAT[ IC -,
-                        VAL [ SUBJ  < [LOCAL.CAT.HEAD noun]>,
- 			      SPR < > ,
-                              COMPS < [ LOCAL [ CAT [ EC +,
-						      IC -,
-						      HEAD verb,
-						      VAL.COMPS < > ],
+  [ SYNSEM.LOCAL.CAT [ IC -,
+		       VAL [ SUBJ  < [LOCAL.CAT.HEAD noun]>,
+			     SPR < > ,
+			     COMPS < [ LOCAL [ CAT [ EC +,
+						     IC -,
+						     HEAD verb,
+						     VAL.COMPS < > ],
 						CONT.HOOK.INDEX.SF prop-or-ques ]]>]]].
 
 ;;; Adjectives
@@ -415,13 +419,7 @@ gug-intersective-adjective-lex := basic-adjective-lex &
   [ SYNSEM [ LOCAL.CONT.HOOK.XARG event-or-ref-index & #xarg,
            LKEYS.KEYREL.ARG1 #xarg ] ].
 
-attributive-adj-lex := attr-only-adj-lex &
-  [ SYNSEM.LOCAL.CAT [ POSTHEAD +,
-                       HEAD.MOD < [ LIGHT +,
-                                    MODIFIED notmod ] > ] ].
-
 ; Basic attributive adjective definition
-
 ;Commented out to test what happens when HEAD noun restriction is removed
 ;attr-adj-lex := adj-lex & intersective-mod-lex &
 ;  [ SYNSEM.LOCAL.CAT.HEAD.MOD < [ LOCAL.CAT [ HEAD noun,
@@ -435,18 +433,13 @@ attr-only-adj-lex := attr-adj-lex &
   [ SYNSEM.LOCAL.CAT [ HEAD.PRD -,
                        VAL.SUBJ < > ] ].
 
+;;This is the type we point to in the lexicon
+attributive-adj-lex := attr-only-adj-lex &
+  [ SYNSEM.LOCAL.CAT [ POSTHEAD +,
+                       HEAD.MOD < [ LIGHT +,
+                                    MODIFIED notmod ] > ] ].
+
 ;;; Others
-
-;;; Scopal-modifiers
-scopal-lex := scopal-mod-lex & norm-sem-lex-item & norm-zero-arg & non-ynq-word &
-  [ SYNSEM.LOCAL.CAT [  HEAD adv,
-                        EC -, 
-                        IC -,
-                        VAL [ SPR < >,
-                              COMPS < >,
-                              SUBJ < >,
-                              SPEC < > ]]].
-
 
 ;;; Case-marking adpositions
 ;;; Case marking adpositions are constrained not to
@@ -897,6 +890,36 @@ n-bar-predicate-rule := YNQ-constrained-phrase & nocoord &
 			    CONT.HOOK [ INDEX #arg2,
 					LTOP #larg ]]] > ].
 
+
+;;; Possessives
+;This snipped should add juxtaposition possessives e.g., where "dog cat"
+;means something like the equivalent of "the dog's cat"
+
+poss-phrase := head-final &
+  [ SYNSEM [ LOCAL.CAT [ HEAD #head & [POSS poss-or-ee],
+		       VAL [ SPR < >, 
+			     COMPS < >, 
+			     SUBJ < > ] ],
+	    NON-LOCAL.QUE <! !> ] ,
+    C-CONT [ HOOK.INDEX #index,
+	     RELS <! arg12-ev-relation & [ PRED "poss_rel",
+					    LBL #lbl,
+					    ARG1 #index,
+					    ARG2 #poss ],
+		    quant-relation & [ PRED "exist_q_rel",
+				       ARG0 #index,
+				       RSTR #harg ] !>,
+	     HCONS <! qeq & [ HARG #harg, LARG #lbl ] !>,
+	     ICONS <! !> ],
+    HEAD-DTR.SYNSEM.LOCAL [ CAT [ HEAD #head & [POSS poss-ee] & noun,
+				  VAL.SPR < [ ] > ],
+			    CONT.HOOK [ INDEX #index & [ COG-ST uniq+fam+act ],
+					LTOP #lbl ] ],
+    NON-HEAD-DTR.SYNSEM.LOCAL [ CAT [ HEAD noun & [POSS poss-or],
+				      VAL.SPR < > ],
+				CONT.HOOK.INDEX #poss ] ].
+
+
 ;; Special rule for the unary distribution of L-PERIPH in int-cl and decl-cl
 basic-unary-int-decl-cl-phrase := phrase &
   [ STEM #stem,
@@ -931,7 +954,6 @@ unary-int-decl-cl-phrase := basic-unary-int-decl-cl-phrase &
 head-only-int-decl-clause := unary-int-decl-cl-phrase & headed-phrase &
   [ HEAD-DTR #head,
     ARGS < #head > ].
-
 
 ;; ading int and decl clauses 
 int-cl := head-only-int-decl-clause & interrogative-clause &
@@ -1042,7 +1064,6 @@ head-subj-phrase := gug-head-subj-phrase & head-initial-head-nexus &
    HEAD-DTR.SYNSEM.LOCAL.CAT [ EC #ec,
 			       IC #ic ]].
 
-
 subj-head-phrase := gug-head-subj-phrase & head-final-head-nexus &
  [ SYNSEM.LOCAL.CAT [ EC #ec, 
 		      IC #ic ],
@@ -1050,7 +1071,6 @@ subj-head-phrase := gug-head-subj-phrase & head-final-head-nexus &
 				  IC #ic ]].
 
 ; The head of head-comp-phrase can't be: ['adp']
-
 head-comp-phrase := basic-head-1st-comp-phrase & head-initial-head-nexus &
  [ SYNSEM.LOCAL.CAT [ HEAD +nvjrcdmo, 
 		      EC #ec,
@@ -1079,120 +1099,10 @@ bare-np-phrase := basic-bare-np-phrase & YNQ-constrained-phrase & head-valence-p
     HEAD-DTR.SYNSEM.LOCAL.CAT.VAL.SPR < unexpressed >, 
     C-CONT.RELS <! [ PRED "exist_q_rel" ] !> ].
 
+
 ;;;;;;;;;;;;;;;;;;
-;;; Coordination
+;;; WH QUESTIONS
 ;;;;;;;;;;;;;;;;;;
-
-;;; Coordination Strategy 2
-
-
-np2-top-coord-rule := basic-np-top-coord-rule & monopoly-top-coord-rule &
-  [ SYNSEM.LOCAL.COORD-STRAT "2" ].
-
-np2-mid-coord-rule := basic-np-mid-coord-rule & monopoly-mid-coord-rule &
-  [ SYNSEM.LOCAL.COORD-STRAT "2" ].
-
-np2-bottom-coord-rule := conj-first-bottom-coord-rule & np-bottom-coord-phrase &
-  [ SYNSEM.LOCAL.COORD-STRAT "2" ].
-
-;;; Coordination Strategy 2
-
-vp2-top-coord-rule := basic-vp-top-coord-rule & monopoly-top-coord-rule &
-  [ SYNSEM.LOCAL.COORD-STRAT "2" ].
-
-vp2-mid-coord-rule := basic-vp-mid-coord-rule & monopoly-mid-coord-rule &
-  [ SYNSEM.LOCAL.COORD-STRAT "2" ].
-
-vp2-bottom-coord-rule := conj-first-bottom-coord-rule & vp-bottom-coord-phrase &
-  [ SYNSEM.LOCAL.COORD-STRAT "2" ].
-
-;;; Coordination Strategy 2
-
-s2-top-coord-rule := basic-s-top-coord-rule & monopoly-top-coord-rule &
-  [ SYNSEM.LOCAL.COORD-STRAT "2" ].
-
-s2-mid-coord-rule := basic-s-mid-coord-rule & monopoly-mid-coord-rule &
-  [ SYNSEM.LOCAL.COORD-STRAT "2" ].
-
-s2-bottom-coord-rule := conj-first-bottom-coord-rule & s-bottom-coord-phrase &
-  [ SYNSEM.LOCAL.COORD-STRAT "2" ].
-
-;;; Coordination Strategy 3
-
-s3-top-coord-rule := basic-s-top-coord-rule & apoly-top-coord-rule &
-  [ SYNSEM[ LIGHT -,
-            LOCAL.COORD-STRAT "3" ],
-   RCOORD-DTR.SYNSEM.LIGHT -,
-   LCOORD-DTR.SYNSEM.LIGHT -].
-
-s3-bottom-coord-rule := unary-bottom-coord-rule & s-bottom-coord-phrase &
-  [ SYNSEM.LOCAL [ COORD-STRAT "3",
-                   COORD-REL.PRED "_and_coord_rel" ] ].
-
-;;; Possessives
-;This snipped should add juxtaposition possessives e.g., where "dog cat"
-;means something like the equivalent of "the dog's cat"
-
-poss-phrase := head-final &
-  [ SYNSEM [ LOCAL.CAT [ HEAD #head & [POSS poss-or-ee],
-		       VAL [ SPR < >, 
-			     COMPS < >, 
-			     SUBJ < > ] ],
-	    NON-LOCAL.QUE <! !> ] ,
-    C-CONT [ HOOK.INDEX #index,
-	     RELS <! arg12-ev-relation & [ PRED "poss_rel",
-					    LBL #lbl,
-					    ARG1 #index,
-					    ARG2 #poss ],
-		    quant-relation & [ PRED "exist_q_rel",
-				       ARG0 #index,
-				       RSTR #harg ] !>,
-	     HCONS <! qeq & [ HARG #harg, LARG #lbl ] !>,
-	     ICONS <! !> ],
-    HEAD-DTR.SYNSEM.LOCAL [ CAT [ HEAD #head & [POSS poss-ee] & noun,
-				  VAL.SPR < [ ] > ],
-			    CONT.HOOK [ INDEX #index & [ COG-ST uniq+fam+act ],
-					LTOP #lbl ] ],
-    NON-HEAD-DTR.SYNSEM.LOCAL [ CAT [ HEAD noun & [POSS poss-or],
-				      VAL.SPR < > ],
-				CONT.HOOK.INDEX #poss ] ].
-
-np2-top-coord-rule :+ [ SYNSEM.LOCAL.CAT[ EC #ec, IC #ic], 
- 			RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
-			LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
-np2-mid-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
- 			RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
-			LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
-np2-bottom-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
-			   NONCONJ-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
-vp2-top-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
-			RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
-			LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
-vp2-mid-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
- 			RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
-			LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
-vp2-bottom-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
-			   NONCONJ-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
-s2-top-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
- 			RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
-		       LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
-s2-mid-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
-		       RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
-		       LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
-s2-bottom-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
-			  NONCONJ-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
-s3-top-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
-		       RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
-		       LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
-s3-bottom-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
-			  NONCONJ-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
-
-topormid-coord-phrase :+ [ SYNSEM.NON-LOCAL #nl,
-			   LCOORD-DTR.SYNSEM.NON-LOCAL #nl,
-			   RCOORD-DTR.SYNSEM.NON-LOCAL #nl ].
-			  
-bottom-coord-phrase :+ [ SYNSEM.NON-LOCAL #nl,
-			 NONCONJ-DTR.SYNSEM.NON-LOCAL #nl ].
 
 ;; WH phrasal rules
 gug-basic-head-filler-phrase := binary-phrase & phrasal & head-compositional &
@@ -1254,6 +1164,94 @@ extracted-subj-phrase := basic-extracted-subj-phrase &
     HEAD-DTR.SYNSEM.LOCAL.CAT[ IC #ic,
                                EC #ec,
                                VAL.COMPS < > ]].
+
+
+;;;;;;;;;;;;;;;;;;
+;;; Coordination
+;;;;;;;;;;;;;;;;;;
+
+;;; Coordination Strategy 2
+
+np2-top-coord-rule := basic-np-top-coord-rule & monopoly-top-coord-rule &
+  [ SYNSEM.LOCAL.COORD-STRAT "2" ].
+
+np2-mid-coord-rule := basic-np-mid-coord-rule & monopoly-mid-coord-rule &
+  [ SYNSEM.LOCAL.COORD-STRAT "2" ].
+
+np2-bottom-coord-rule := conj-first-bottom-coord-rule & np-bottom-coord-phrase &
+  [ SYNSEM.LOCAL.COORD-STRAT "2" ].
+
+;;; Coordination Strategy 2
+
+vp2-top-coord-rule := basic-vp-top-coord-rule & monopoly-top-coord-rule &
+  [ SYNSEM.LOCAL.COORD-STRAT "2" ].
+
+vp2-mid-coord-rule := basic-vp-mid-coord-rule & monopoly-mid-coord-rule &
+  [ SYNSEM.LOCAL.COORD-STRAT "2" ].
+
+vp2-bottom-coord-rule := conj-first-bottom-coord-rule & vp-bottom-coord-phrase &
+  [ SYNSEM.LOCAL.COORD-STRAT "2" ].
+
+;;; Coordination Strategy 2
+
+s2-top-coord-rule := basic-s-top-coord-rule & monopoly-top-coord-rule &
+  [ SYNSEM.LOCAL.COORD-STRAT "2" ].
+
+s2-mid-coord-rule := basic-s-mid-coord-rule & monopoly-mid-coord-rule &
+  [ SYNSEM.LOCAL.COORD-STRAT "2" ].
+
+s2-bottom-coord-rule := conj-first-bottom-coord-rule & s-bottom-coord-phrase &
+  [ SYNSEM.LOCAL.COORD-STRAT "2" ].
+
+;;; Coordination Strategy 3
+
+s3-top-coord-rule := basic-s-top-coord-rule & apoly-top-coord-rule &
+  [ SYNSEM[ LIGHT -,
+            LOCAL.COORD-STRAT "3" ],
+   RCOORD-DTR.SYNSEM.LIGHT -,
+   LCOORD-DTR.SYNSEM.LIGHT -].
+
+s3-bottom-coord-rule := unary-bottom-coord-rule & s-bottom-coord-phrase &
+  [ SYNSEM.LOCAL [ COORD-STRAT "3",
+                   COORD-REL.PRED "_and_coord_rel" ] ].
+
+np2-top-coord-rule :+ [ SYNSEM.LOCAL.CAT[ EC #ec, IC #ic], 
+ 			RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
+			LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
+np2-mid-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
+ 			RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
+			LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
+np2-bottom-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
+			   NONCONJ-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
+vp2-top-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
+			RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
+			LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
+vp2-mid-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
+ 			RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
+			LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
+vp2-bottom-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
+			   NONCONJ-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
+s2-top-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
+ 			RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
+		       LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
+s2-mid-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
+		       RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
+		       LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
+s2-bottom-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
+			  NONCONJ-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
+s3-top-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
+		       RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
+		       LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
+s3-bottom-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
+			  NONCONJ-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
+
+topormid-coord-phrase :+ [ SYNSEM.NON-LOCAL #nl,
+			   LCOORD-DTR.SYNSEM.NON-LOCAL #nl,
+			   RCOORD-DTR.SYNSEM.NON-LOCAL #nl ].
+			  
+bottom-coord-phrase :+ [ SYNSEM.NON-LOCAL #nl,
+			 NONCONJ-DTR.SYNSEM.NON-LOCAL #nl ].
+
 
 
 	
