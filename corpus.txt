@@ -25,7 +25,7 @@ Phenomena: corpus
 Ha'e héra Huanchi ha oguereko petei᷉ jagua hérava Piruli.
 haHe      ieAra     Juanchi  ha  oguereko  peteiN  jagua ieArava     Piruli
 haHe      i-eAra    Juanchi ha  o-guereko peteiN  jagua i-eAra-va   Piruli
-3.SG.pron O.3-name  Juan.DIM and A.3-have  one     dog   O.3-name-RC Piruli
+3.SG.pron 3.POSS-name  Juan.DIM and A.3-have  one     dog   O.3-name-RC Piruli
 'His name was Juanito and he had a dog whose name was Piruli.'
 
 #Sentence.3
@@ -34,9 +34,9 @@ Vetted: t
 Judgment: g
 Phenomena: corpus
 Petei᷉ jey he'i hymba jaguape:
-peteiN jey  oe      iymba          jagua pe
-peteiN jey  o-e     i-ymba         jagua=pe
-one    time A.3-say O.3-pet.animal dog=DAT
+peteiN jey  oeHi      iymba          jagua pe
+peteiN jey  o-eHi    i-ymba         jagua=pe
+one    time A.3-say 3.POSS-pet.animal dog=DAT
 'One time, he said to his dog:'
 
 #Sentence.4
@@ -47,7 +47,7 @@ Phenomena: corpus
 "Jaha jaheka ñaneirura᷉".
 jaha          jaheka            nNandeiruraN
 ja-ha         ja-heka           nNande-iru-raN
-A.1pl.incl-go A.1pl.incl-search O.1pl.incl-friend-PROSP
+A.1PL.INCL-go A.1PL.INCL-search O.1PL.INCL-friend-PROSP
 'Let's go and look for a friend for us.'
 
 #Sentence.5
@@ -124,7 +124,7 @@ Phenomena: corpus
 Ju'i tuicha o-ñe-mondy´i.
 juHi tuicha ojemondyAi
 juHi tuicha o-je-mondyAi
-frog big    A.3-REFL-scare
+frog big    A.3-PASS-scare
 'the frog was very scared.'
 
 #Sentence.12
@@ -155,9 +155,9 @@ Vetted: t
 Judgment: g
 Phenomena: corpus
 Ha he'i ipyapype:
-ha  heHi   ipyapype
-ha  heHi   i-pyapy=pe
-and A.3.say O.3-decision=ACC
+ha  oeHi   ipyapype
+ha  o-eHi   i-pyapy=pe
+and A.3-say 3.POSS-decision=with
 'And he said with decision:'
  
 #Sentence.15
@@ -221,8 +221,8 @@ Vetted: t
 Judgment: g
 Phenomena: corpus
 Ha he'i Huanchi:
-ha  oe   Juanchi
-ha  o-e  Juanchi
+ha  oeHi   Juanchi
+ha  o-eHi  Juanchi
 and A.3-say Juan.DIM
 'And Juanito says:'
 
