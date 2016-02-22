@@ -87,17 +87,17 @@ LOC := non-NOM.
 ;;; Pernum
 
 pernum := *top*.
-SG := pernum.
-PL := pernum.
+sg := pernum.
+pl := pernum.
 1st := pernum.
-1SG := 1st & SG.
-2SG := 2nd & SG.
-3SG := 3rd & SG.
-1PL := 1st & PL.
-1PL_incl := 1PL.
-1PL_excl := 1PL.
-2PL := 2nd & PL.
-3PL := 3rd & PL.
+1sg := 1st & sg.
+2sg := 2nd & sg.
+3sg := 3rd & sg.
+1pl := 1st & pl.
+1pl_incl := 1pl.
+1pl_excl := 1pl.
+2pl := 2nd & pl.
+3pl := 3rd & pl.
 non-1st := pernum.
 3rd := non-1st.
 2nd := non-1st.
@@ -111,6 +111,7 @@ hum := anim.
 
 ;;; Aspect
 
+no-aspect := aspect.
 perfective := aspect.
 completive := aspect.
 future := aspect.
@@ -204,25 +205,25 @@ pron-noun-lex := no-spr-noun-lex &
                      CONT.HOOK.INDEX [COG-ST activ-or-more, SPECI +]]]].
 
 1sg-pron-nom-noun-lex := pron-nom-noun-lex &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1SG ].
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1sg ].
 
 2sg-pron-nom-noun-lex := pron-nom-noun-lex &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2SG ].
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2sg ].
 
 3sg-pron-nom-noun-lex := pron-nom-noun-lex &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3SG ].
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3sg ].
 
 1pl-incl-pron-nom-noun-lex := pron-nom-noun-lex &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1PL_incl ].
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1pl_incl ].
 
 1pl-excl-pron-nom-noun-lex := pron-nom-noun-lex &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1PL_excl ].
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1pl_excl ].
 
 2pl-pron-nom-noun-lex := pron-nom-noun-lex &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2PL ].
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2pl ].
 
 3pl-pron-nom-noun-lex := pron-nom-noun-lex &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3PL ].
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3pl ].
 
 pron-nom-noun-lex := pron-noun-lex &
   [ SYNSEM.LOCAL.CAT.HEAD [ CASE NOM,
@@ -233,25 +234,25 @@ pron-nonagent-noun-lex := pron-noun-lex &
                             CASE-MARKED + ] ].
 
 1sg-pron-nonag-noun-lex := pron-nonagent-noun-lex &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1SG ].
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1sg ].
 
 2sg-pron-nonag-noun-lex := pron-nonagent-noun-lex &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2SG ].
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2sg ].
 
 3sg-pron-nonag-noun-lex := pron-nonagent-noun-lex &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3SG ].
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3sg ].
 
 1pl-incl-pron-nonag-noun-lex := pron-nonagent-noun-lex &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1PL_incl ].
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1pl_incl ].
 
 1pl-excl-pron-nonag-noun-lex := pron-nonagent-noun-lex &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1PL_excl ].
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1pl_excl ].
 
 2pl-pron-nonag-noun-lex := pron-nonagent-noun-lex &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2PL ].
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2pl ].
 
 3pl-pron-nonag-noun-lex := pron-nonagent-noun-lex &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3PL ].
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3pl ].
 
 com-anim-human-noun-lex := com-anim-noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.GEND hum ].
@@ -528,10 +529,10 @@ determiner-lex := basic-determiner-lex & norm-zero-arg & non-mod-lex-item &
          SPEC<[LOCAL.CONT.HOOK.INDEX.COG-ST uniq+fam+act]>]].
 
 def-sg-determiner-lex := determiner-lex & no-icons-lex-item &
-  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM SG ].
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM sg ].
 
 def-pl-determiner-lex := determiner-lex & no-icons-lex-item &
-  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM PL ].
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM pl ].
 
 ;;;;;;;;;;;;;;;;;;;
 ;;; Lexical Rules
@@ -575,22 +576,22 @@ poss-lex-rule-super := infl-add-only-lex-rule &
 	    ICONS <! !>] ].
 
 1sg-poss-lex-rule := poss-lex-rule-super &
-  [ SYNSEM.LKEYS.ALTKEYREL.ARG0.PNG.PERNUM 1SG ].
+  [ SYNSEM.LKEYS.ALTKEYREL.ARG0.PNG.PERNUM 1sg ].
 
 2sg-poss-lex-rule := poss-lex-rule-super &
-  [ SYNSEM.LKEYS.ALTKEYREL.ARG0.PNG.PERNUM 2SG ].
+  [ SYNSEM.LKEYS.ALTKEYREL.ARG0.PNG.PERNUM 2sg ].
 
 3-poss-lex-rule := poss-lex-rule-super &
   [ SYNSEM.LKEYS.ALTKEYREL.ARG0.PNG.PERNUM 3rd ].
 
 1pl-incl-poss-lex-rule := poss-lex-rule-super &
-  [ SYNSEM.LKEYS.ALTKEYREL.ARG0.PNG.PERNUM 1PL_incl ].
+  [ SYNSEM.LKEYS.ALTKEYREL.ARG0.PNG.PERNUM 1pl_incl ].
 
 1pl-excl-poss-lex-rule := poss-lex-rule-super &
-  [ SYNSEM.LKEYS.ALTKEYREL.ARG0.PNG.PERNUM 1PL_excl ].
+  [ SYNSEM.LKEYS.ALTKEYREL.ARG0.PNG.PERNUM 1pl_excl ].
 
-2PL-poss-lex-rule := poss-lex-rule-super &
-  [ SYNSEM.LKEYS.ALTKEYREL.ARG0.PNG.PERNUM 2PL ].
+2pl-poss-lex-rule := poss-lex-rule-super &
+  [ SYNSEM.LKEYS.ALTKEYREL.ARG0.PNG.PERNUM 2pl ].
 
 pernum-trans-lex-rule-super := add-only-no-ccont-rule & completive-aspect-or-perfective-aspect-or-prospective-aspect-rule-dtr & future-aspect-rule-dtr & infl-lex-rule & neg1-rule-dtr & neg2-rule-dtr &
   [ INFLECTED [ PERNUM-DYN-INTRANS-OR-PERNUM-TRANS-FLAG +,
@@ -605,26 +606,26 @@ pernum-trans-lex-rule-super := add-only-no-ccont-rule & completive-aspect-or-per
                       NEG2-FLAG #neg2 ] ] ].
 
 1sg-a-lex-rule := pernum-trans-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1SG ].
+  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1sg ].
 
 1sg-a-2sg-o-lex-rule := pernum-trans-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1SG,
-                           COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2SG ] ].
+  [ SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1sg,
+                           COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2sg ] ].
 
 1sg-a-2pl-o-lex-rule := pernum-trans-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1SG,
-                           COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2PL ] ].
+  [ SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1sg,
+                           COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2pl ] ].
 
 1sg-o-23-a-lex-rule := pernum-trans-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL [ COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1SG,
+  [ SYNSEM.LOCAL.CAT.VAL [ COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1sg,
                            SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM non-1st ] ].
 
 2sg-a-3-o-lex-rule := pernum-trans-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2SG,
+  [ SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2sg,
                            COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3rd ] ].
 
 2sg-o-3-a-lex-rule := pernum-trans-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2SG,
+  [ SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2sg,
                            COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3rd ] ].
 
 3-a-3-o-lex-rule := pernum-trans-lex-rule-super &
@@ -632,25 +633,25 @@ pernum-trans-lex-rule-super := add-only-no-ccont-rule & completive-aspect-or-per
                            COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3rd ] ].
 
 1pl-incl-a-lex-rule := pernum-trans-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1PL_incl ].
+  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1pl_incl ].
 
 1pl-excl-a-lex-rule := pernum-trans-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1PL_excl ].
+  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1pl_excl ].
 
 1pl-incl-o-23-a-lex-rule := pernum-trans-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL [ COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1PL_incl,
+  [ SYNSEM.LOCAL.CAT.VAL [ COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1pl_incl,
                            SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM non-1st ] ].
 
 1pl-excl-o-23-a-lex-rule := pernum-trans-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL [ COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1PL_excl,
+  [ SYNSEM.LOCAL.CAT.VAL [ COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1pl_excl,
                            SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM non-1st ] ].
 
 2pl-a-3-o-lex-rule := pernum-trans-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2PL,
+  [ SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2pl,
                            COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3rd ] ].
 
 2pl-o-3-a-lex-rule := pernum-trans-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL [ COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2PL,
+  [ SYNSEM.LOCAL.CAT.VAL [ COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2pl,
                            SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3rd ] ].
 
 neg1-lex-rule-super := cont-change-only-lex-rule & infl-lex-rule & neg2-rule-dtr &
@@ -746,22 +747,22 @@ pernum-dyn-intrans-lex-rule-super := add-only-no-ccont-rule & completive-aspect-
                       PERNUM-TRANS-FLAG #pernum-trans ] ] ].
 
 1sg-dyn-intr-lex-rule := pernum-dyn-intrans-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1SG ].
+  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1sg ].
 
 2sg-dyn-intr-lex-rule := pernum-dyn-intrans-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2SG ].
+  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2sg ].
 
 3-dyn-intr-lex-rule := pernum-dyn-intrans-lex-rule-super &
   [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3rd ].
 
 1pl-incl-dyn-intr-lex-rule := pernum-dyn-intrans-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1PL_incl ].
+  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1pl_incl ].
 
 1pl-excl-dyn-intr-lex-rule := pernum-dyn-intrans-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1PL_excl ].
+  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1pl_excl ].
 
 2pl-dyn-intr-lex-rule := pernum-dyn-intrans-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2PL ].
+  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2pl ].
 
 pernum-stat-intrans-lex-rule-super := add-only-no-ccont-rule & completive-aspect-or-perfective-aspect-or-prospective-aspect-rule-dtr & future-aspect-rule-dtr & infl-lex-rule & neg1-rule-dtr & neg2-rule-dtr &
   [ INFLECTED [ PERNUM-STAT-INTRANS-FLAG +,
@@ -777,22 +778,22 @@ pernum-stat-intrans-lex-rule-super := add-only-no-ccont-rule & completive-aspect
                       PERNUM-TRANS-FLAG #pernum-trans ] ] ].
 
 1sg-stat-intr-lex-rule := pernum-stat-intrans-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1SG ].
+  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1sg ].
 
 2sg-stat-intr-lex-rule := pernum-stat-intrans-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2SG ].
+  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2sg ].
 
 3-stat-intr-lex-rule := pernum-stat-intrans-lex-rule-super &
   [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3rd ].
 
 1pl-incl-stat-intr-lex-rule := pernum-stat-intrans-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1PL_incl ].
+  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1pl_incl ].
 
 1pl-excl-stat-intr-lex-rule := pernum-stat-intrans-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1PL_excl ].
+  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1pl_excl ].
 
 2pl-stat-intr-lex-rule := pernum-stat-intrans-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2PL ].
+  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2pl ].
 
 prospective-aspect-lex-rule-super := add-only-no-ccont-rule & infl-lex-rule & neg1-rule-dtr & neg2-rule-dtr &
   [ INFLECTED #infl,
