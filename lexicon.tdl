@@ -29,6 +29,10 @@ aguara := com-anim-noun-lex &
   [ STEM < "aguara" >,
     SYNSEM.LKEYS.KEYREL.PRED "_fox_n_rel" ].
 
+mbarakaja := com-anim-noun-lex &
+  [ STEM < "mbarakaja" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_cat_n_rel" ].
+
 iru := com-anim-noun-lex &
   [ STEM < "iru" >,
     SYNSEM.LKEYS.KEYREL.PRED "_friend_n_rel" ].
@@ -36,6 +40,14 @@ iru := com-anim-noun-lex &
 tunich := com-inam-noun-lex &
   [ STEM < "tunich" >,
     SYNSEM.LKEYS.KEYREL.PRED "_stone_n_rel" ].
+
+mbaHyru := com-inam-noun-lex &
+  [ STEM < "mbaHyru" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_car_n_rel" ].
+
+yvyraty := com-inam-noun-lex &
+  [ STEM < "yvyraty" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_park_n_rel" ].
 
 po_1 := com-inam-noun-lex &
   [ STEM < "po" >,
@@ -235,7 +247,7 @@ ndi := contentful-adp-lex &
   [ STEM < "ndi" >,
     SYNSEM.LKEYS.KEYREL.PRED "_with_p_rel" ].
 
-;;; Clitic for question marks
+;;; Clitic for question and complementizer marks
 
 pa := question-clitic-lex   &
     [STEM <"pa">].
@@ -276,6 +288,10 @@ jahoHi := trans-verb-lex &
   [ STEM < "jahoHi" >,
     SYNSEM.LKEYS.KEYREL.PRED "_cover_v_rel" ].
 
+munNa := trans-verb-lex &
+  [ STEM < "munNa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_chase_v_rel" ].
+
 kaigue := stative-intrans-verb-lex &
   [ STEM < "kaigue" >,
     SYNSEM.LKEYS.KEYREL.PRED "_lazy_a_rel" ].
@@ -299,6 +315,14 @@ aguiN := stative-intrans-verb-lex &
 kiririN := stative-intrans-verb-lex &
   [ STEM < "kiririN" >,
     SYNSEM.LKEYS.KEYREL.PRED "_quiet_a_rel" ].
+
+vareHa := stative-intrans-verb-lex &
+  [ STEM < "vareHa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_hungry_a_rel" ].
+
+karu := dynamic-intrans-verb-lex &
+  [ STEM < "karu" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_eat_v_rel" ].
 
 ike := dynamic-intrans-verb-lex &
   [ STEM < "ike" >,
@@ -364,6 +388,9 @@ ikuua := decl-cl-verb-lex &
    [STEM<"ikuua">,
     SYNSEM.LKEYS.KEYREL.PRED "_know_v_rel"].
 
+imoHaA := decl-cl-verb-lex &
+   [STEM<"imoHaA">,
+    SYNSEM.LKEYS.KEYREL.PRED "_think_v_rel"].
 
 ;;; Determiners
 
