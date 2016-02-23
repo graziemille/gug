@@ -189,7 +189,8 @@ no-spr-noun-lex := noun-lex &
 
 
 common-noun-lex := noun-lex & 
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3rd ].
+  [ SYNSEM.LOCAL[ CAT.HEAD.CASE non-dat,
+                  CONT.HOOK.INDEX.PNG.PERNUM 3rd ]].
 
 com-anim-noun-lex := common-noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.GEND anim ].
@@ -472,16 +473,14 @@ attributive-adj-lex := attr-only-adj-lex &
 case-marking-adp-lex :=  basic-one-arg & raise-sem-lex-item &
   [ SYNSEM.LOCAL.CAT [  EC - , 
                         IC - , 
-                        HEAD adp &
-                            [ MOD < > ],
+                        HEAD adp & MOD < > ,
                        VAL [ SPR < >,
                              SUBJ < >,
                              COMPS < #comps >,
                              SPEC < > ] ],
     ARG-ST < #comps &
              [ LOCAL.CAT [ VAL.SPR < >,
-                           HEAD noun &
-             [ CASE-MARKED - ] ] ] > ].
+                           HEAD noun & CASE-MARKED -  ] ] > ].
 
 contentful-adp-lex := basic-int-mod-adposition-lex & norm-zero-arg &
   [ SYNSEM.LOCAL.CAT [  EC - , 
