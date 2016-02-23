@@ -349,8 +349,7 @@ transitive-verb-lex := gug-trans-ditrans-verb & transitive-lex-item & completive
 	       #comps &
              [ LOCAL.CAT [ HEAD +np,
 			   VAL [ SPR < >,
-                                 COMPS < > ] ] ] >,
-    INFLECTED.PERNUM-TRANS-FLAG - ].
+                                 COMPS < > ] ] ] >].
 
 
 ditransitive-verb-lex := gug-trans-ditrans-verb & ditransitive-lex-item &
@@ -473,14 +472,14 @@ attributive-adj-lex := attr-only-adj-lex &
 case-marking-adp-lex :=  basic-one-arg & raise-sem-lex-item &
   [ SYNSEM.LOCAL.CAT [  EC - , 
                         IC - , 
-                        HEAD adp & MOD < > ,
+                        HEAD adp & [MOD < >] ,
                        VAL [ SPR < >,
                              SUBJ < >,
                              COMPS < #comps >,
                              SPEC < > ] ],
     ARG-ST < #comps &
              [ LOCAL.CAT [ VAL.SPR < >,
-                           HEAD noun & CASE-MARKED -  ] ] > ].
+                           HEAD noun & [CASE-MARKED - ] ] ] > ].
 
 contentful-adp-lex := basic-int-mod-adposition-lex & norm-zero-arg &
   [ SYNSEM.LOCAL.CAT [  EC - , 
@@ -614,7 +613,7 @@ pernum-trans-ditrans-lex-rule-super := add-only-no-ccont-rule & completive-aspec
                 NEG1-FLAG #neg1,
                 PERNUM-STAT-INTRANS-FLAG #pernum-stat-intrans,
                 NEG2-FLAG #neg2 ],
-    DTR gug-trans-ditrans-verb-lex &
+    DTR gug-trans-ditrans-verb &
         [ INFLECTED [ NEG1-FLAG #neg1,
                       PERNUM-STAT-INTRANS-FLAG #pernum-stat-intrans,
                       NEG2-FLAG #neg2 ] ] ].
@@ -634,7 +633,7 @@ pernum-trans-ditrans-lex-rule-super := add-only-no-ccont-rule & completive-aspec
   [ SYNSEM.LOCAL.CAT.VAL [ COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1sg,
                            SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM non-1st ] ].
 
-2sg-a-3-o-lex-rule := ppernum-trans-ditrans-lex-rule-super &
+2sg-a-3-o-lex-rule := pernum-trans-ditrans-lex-rule-super &
   [ SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2sg,
                            COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3rd ] ].
 
@@ -642,7 +641,7 @@ pernum-trans-ditrans-lex-rule-super := add-only-no-ccont-rule & completive-aspec
   [ SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2sg,
                            COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3rd ] ].
 
-3-a-3-o-lex-rule := ppernum-trans-ditrans-lex-rule-super &
+3-a-3-o-lex-rule := pernum-trans-ditrans-lex-rule-super &
   [ SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3rd,
                            COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3rd ] ].
 
@@ -1128,7 +1127,7 @@ comp-head-phrase-2 := basic-head-2nd-comp-phrase & head-final-head-nexus &
 ; introduced to match the semantic effect of bare NPs in your language.
 ; adding constrains related to YNQ
 
-bare-np-phrase := basic-bare-np-phrase & YNQ-contrains-phrase & head-valence-phrase &
+bare-np-phrase := basic-bare-np-phrase & YNQ-constrained-phrase & head-valence-phrase &
   [ SYNSEM[  LOCAL.CAT.HEAD.CASE case,
              LIGHT -],
     HEAD-DTR.SYNSEM.LOCAL.CAT.VAL.SPR < unexpressed >, 
