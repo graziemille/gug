@@ -1,20 +1,31 @@
 ;;; -*- Mode: TDL; Coding: utf-8 -*-
 ;;; Semantically Empty Lexical Entries
 
-acc%2C%20DAT-marker_gr_1 := arg0e_gtr &
+acc-marker_gr_1 := arg0e_gtr &
   [ CONTEXT.RELS <! [ ARG1 individual & #i ] !>,
     FLAGS [ SUBSUME < #i >,
-            TRIGGER "acc%2C%20DAT-marker" ] ].
+            TRIGGER "acc-marker" ] ].
 
-acc%2C%20DAT-marker_gr_2 := arg0e_gtr &
+acc-marker_gr_2 := arg0e_gtr &
   [ CONTEXT.RELS <! [ ARG2 individual & #i ] !>,
     FLAGS [ SUBSUME < #i >,
-            TRIGGER "acc%2C%20DAT-marker" ] ].
+            TRIGGER "acc-marker" ] ].
 
-acc%2C%20DAT-marker_gr_3 := arg0e_gtr &
+
+dat-marker_gr_1 := arg0e_gtr &
+  [ CONTEXT.RELS <! [ ARG1 individual & #i ] !>,
+    FLAGS [ SUBSUME < #i >,
+            TRIGGER "dat-marker" ] ].
+
+dat-marker_gr_2 := arg0e_gtr &
+  [ CONTEXT.RELS <! [ ARG2 individual & #i ] !>,
+    FLAGS [ SUBSUME < #i >,
+            TRIGGER "dat-marker" ] ].
+
+dat-marker_gr_3 := arg0e_gtr &
   [ CONTEXT.RELS <! [ ARG3 individual & #i ] !>,
     FLAGS [ SUBSUME < #i >,
-            TRIGGER "acc%2C%20DAT-marker" ] ].
+            TRIGGER "dat-marker" ] ].
 
 piko_gr := generator_rule &
   [ CONTEXT.RELS <! [ ARG0.SF ques ] !>,

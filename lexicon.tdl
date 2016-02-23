@@ -205,13 +205,23 @@ pyaHe := attributive-adj-lex &
 
 ;;; Case-marking adpositions
 
-acc%2C%20DAT-marker := case-marking-adp-lex &
+acc-marker := case-marking-adp-lex &
   [ STEM < "pe" >,
     SYNSEM.LOCAL [ CONT [ HOOK [ ICONS-KEY.IARG1 #clause,
                                  CLAUSE-KEY #clause ],
                           ICONS <!  !> ],
-                   CAT.HEAD [ CASE acc,
+                   CAT.HEAD [ CASE ACC,
                               CASE-MARKED + ] ] ].
+
+dat-marker := case-marking-adp-lex &
+  [ STEM < "pe" >,
+    SYNSEM.LOCAL [ CONT [ HOOK [ ICONS-KEY.IARG1 #clause,
+                                 CLAUSE-KEY #clause ],
+                          ICONS <!  !> ],
+                   CAT.HEAD [ CASE DAT,
+                              CASE-MARKED + ] ] ].
+
+
 ;; Contentful adpostion
 pe2 := contentful-adp-lex & 
   [ STEM < "pe" >,
@@ -237,10 +247,6 @@ ha3: = compl-clitic-lex &
     [STEM<"ha">].
 
 ;;; Verbs
-
-e := trans-verb-lex &
-  [ STEM <"e">,
-    SYNSEM.LKEYS.KEYREL.PRED "_say_v_rel"]. 
 
 hecha := trans-verb-lex &
   [ STEM < "hecha" >,
@@ -334,13 +340,17 @@ ime := locative-verb-lex &
   [ STEM < "ime" >,
     SYNSEM.LKEYS.KEYREL.PRED "_be+located_v_rel" ].
 
-;hechauka := ditransitive-lex-item &
-;   [STEM<"hechauka">,
-;    SYNSEM.LKEYS.KEYREL.PRED "_show_v_rel"].
+hechauka := ditrans-verb-lex &
+   [STEM<"hechauka">,
+    SYNSEM.LKEYS.KEYREL.PRED "_show_v_rel"].
 
-;meHeN := ditransitive-lex-item &
-;   [STEM<"meHeN">,
-;    SYNSEM.LKEYS.KEYREL.PRED "_give_v_rel"].
+meHeN := ditrans-verb-lex &
+   [STEM<"meHeN">,
+    SYNSEM.LKEYS.KEYREL.PRED "_give_v_rel"].
+
+eHi := ditrans-verb-lex &
+  [ STEM <"eHi">,
+    SYNSEM.LKEYS.KEYREL.PRED "_say_v_rel"]. 
 
 porandu := int-cl-verb-lex &
    [STEM<"porandu">,
