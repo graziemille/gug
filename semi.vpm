@@ -14,13 +14,14 @@ SPECI : SPECI
 SF : SF
   prop <> prop
   ques <> ques
-  prop-or-ques >> prop-or-ques
+  prop-or-ques <> prop-or-ques
   prop << prop-or-ques
   comm <> comm
   * <> *
 
 COG-ST : COG-ST
-  type-id <> type-id
+  type-id >> type-id
+  cog-st << type-id
   uniq-id <> uniq-id
   familiar <> familiar
   activated <> activated
@@ -35,35 +36,43 @@ COG-ST : COG-ST
   uniq-or-more <> uniq-or-more
   activ-or-less <> activ-or-less
   * <> *
+  
 
 
-PNG.PERNUM : PERNUM
-  3pl <> 3pl
-  2pl <> 2pl
-  1pl_excl <> 1pl_excl
-  1pl_incl <> 1pl_incl
-  1pl <> 1pl
-  3sg <> 3sg
-  2sg <> 2sg
-  1sg <> 1sg
-  1st <> 1st
-  2nd <> 2nd
-  3rd >> 3sg
-  3rd << 3rd
-  pl <> pl
-  sg <> sg
-  * >> sg
-  * <> *
+PNG.PERNUM : PER NUM
+  
+  1sg <> first sg
+  2sg <> second sg
+  3sg <> third sg
+  1pl <> first pl
+  1pl_incl <> first_incl pl
+  1pl_excl <> first_excl pl
+  2pl <> second pl
+  1st <> first !
+  1st << first *
+  2nd <> second !
+  2nd << second *
+  3rd <> third !
+  3rd << third *
+  3pl >> third pl
+  sg <> ! sg
+  sg << * sg
+  pl <> ! pl
+  pl << * pl
+  *  <> ! !
 
 PNG.GEND : GEND
   hum <> hum
   inam <> inam
   anim <> anim
+  * << !
   * <> *
+   
 
 E.TENSE : TENSE
-  * <> *
-
+  * << [e]
+  * >> tense
+ 
 E.ASPECT : ASPECT
   future-perfective <> future-perfective
   perfective <> perfective
@@ -77,4 +86,5 @@ E.ASPECT : ASPECT
   no-aspect << [e]
 
 E.MOOD : MOOD
-  * <> *
+  * >> mood
+  mood << [e]

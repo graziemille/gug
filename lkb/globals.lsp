@@ -142,3 +142,5 @@
 ; output all complete generated results
 ; (setf *bypass-equality-check* t)
 
+;MT addition
+(setf *translate-grid* '(:gug :eng :shu))
