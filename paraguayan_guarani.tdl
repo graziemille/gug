@@ -77,13 +77,13 @@ head-mod-phrase :+ [ SYNSEM.ATTACH #attach,
 
 ;;; Case
 
-case := *top*.
-nom := non-acc. ; nom
+case := *top*. 
 non-nom := case.
-non-acc := case.
-dat := non-nom & non-acc.
-acc := non-nom.
-loc := non-nom & non-acc.
+non-dat := case.
+nom := non-dat.
+dat := non-nom.
+acc := non-nom & non-dat.
+loc := non-nom & non-dat.
 
 ;;; Pernum
 
