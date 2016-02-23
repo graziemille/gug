@@ -294,6 +294,10 @@ kiririN := stative-intrans-verb-lex &
   [ STEM < "kiririN" >,
     SYNSEM.LKEYS.KEYREL.PRED "_quiet_a_rel" ].
 
+ike := dynamic-intrans-verb-lex &
+  [ STEM < "ike" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_sleep_v_rel" ].
+
 guata := dynamic-intrans-verb-lex &
   [ STEM < "guata" >,
     SYNSEM.LKEYS.KEYREL.PRED "_walk_v_rel" ].
