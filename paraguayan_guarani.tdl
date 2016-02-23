@@ -1131,8 +1131,9 @@ comp-head-phrase-2 := basic-head-2nd-comp-phrase & head-final-head-nexus &
 ; introduced to match the semantic effect of bare NPs in your language.
 ; adding constrains related to YNQ
 
-bare-np-phrase := basic-bare-np-phrase & YNQ-constrained-phrase & head-valence-phrase &
-  [ SYNSEM.LIGHT -,
+bare-np-phrase := basic-bare-np-phrase & YNQ-contrains-phrase & head-valence-phrase &
+  [ SYNSEM[  LOCAL.CAT.HEAD.CASE case,
+             LIGHT -],
     HEAD-DTR.SYNSEM.LOCAL.CAT.VAL.SPR < unexpressed >, 
     C-CONT.RELS <! [ PRED "exist_q_rel" ] !> ].
 
