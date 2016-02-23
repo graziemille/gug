@@ -1200,27 +1200,27 @@ a-hendu yvytu hata
 A.1SG-hear wind.INAM strong
 'I hear the strong wind'
 
-#Ex.109: Ungrammatically possessed 'unpossessable' noun.
+#Ex.109: Grammatical readings under juxtaposition of noun predicates
 Source: author
 Vetted: f
-Judgment: u
+Judgment: g
 Phenomena: poss
 ahendu avatitý yvytu hata 
 ahendu avatityA yvytu hata 
 a-hendu avatityA yvytu hata
 A.1SG-hear cornfield wind.INAM strong
-'I hear the cornfield's strong wind'
+'I hear it, the cornfield is, the strong wind is'
 
-#Ex.110: Ungrammatically possessed 'unpossessable' pronoun.
+#Ex.110: Ungrammatically double ACC.
 Source: author
 Vetted: f
 Judgment: u
 Phenomena: pro-d
-vaká chupe
-vakaA chupe
-vakaA chupe
-cow it
-*'There is a cow's it'
+vakápe chupe
+vakaA pe chupe
+vakaA=pe chupe
+cow=ACC it.ACC
+*'To the cow to it'
 
 #Ex.111: Portmanteau marker for 12PL
 Source: author
@@ -1299,15 +1299,15 @@ o-hecha nNakyra vakaA=pe=pa
 O.3-see cricket.ANIM.NOM cow.ANIM=ACC=Q
 *'Did the cricket see the cow?
 
-#Ex.118: Yes-No question with question marker in wrong position, should be end suffix.
+#Ex.118: Wrong double accusative marker.
 Source: c
 Vetted: f
 Judgment: u
-Phenomena: q
-vakápape ohecha ñakyra? 
-vakaA pa pe ohecha nNakyra
-vakaA=pa=pe o-hecha nNakyra
-cow.ANIM=Q=ACC O.3-see cricket.ANIM.NOM
+Phenomena: case
+vakápape ohecha ñakyrape? 
+vakaA pa pe ohecha nNakyra pe
+vakaA=pa=pe o-hecha nNakyra=ACC
+cow.ANIM=Q=ACC O.3-see cricket.ANIM=ACC
 *'Was it the cricket, who saw the cow?'
 
 #Ex.119: Yes-No question with focus marker on verb predicate, wrong position of marker piko
@@ -1571,7 +1571,7 @@ Phenomena: cop
 hi'árama
 iaArama
 i-aAra-ma
-POSS.3-day-PERF
+3.POSS-day-PERF
 'It is his/her day already' 
 
 
@@ -1602,10 +1602,10 @@ Source: b
 Vetted: f
 Judgment: u
 Phenomena: crd
-ha nikiriri᷉i ndopytai
-ha ndikiririNi ndopytai
-ha nd-i-kiririN-i nd-o-pyta-i
-and NEG-O.3-be.quiet-NEG NEG-A.3-leave-NEG 
+nikiriri᷉i ndopytai ha
+ndikiririNi ndopytai ha
+nd-i-kiririN-i nd-o-pyta-i ha
+NEG-O.3-be.quiet-NEG NEG-A.3-leave-NEG and
 *'He/she is not quiet and does not leave'
 
 #Ex.146: Use of 'and' coordination with sentence constituents
@@ -1800,11 +1800,11 @@ fox.ANIM.NOM and dog.ANIM.NOM A.3-hide
 Source: author
 Vetted: f
 Judgment: u
-Phenomena: {crd, wo}
-ha aguara jagua okañy
-ha aguara jagua okanNy
-ha aguara jagua o-kanNy
-and fox.ANIM.NOM dog.ANIM.NOM A.3-hide
+Phenomena: crd
+aguara jagua okañy ha
+aguara jagua okanNy ha
+aguara jagua o-kanNy ha
+fox.ANIM.NOM dog.ANIM.NOM A.3-hide and
 *'the fox and the dog hid'
 
 #Ex.164: be+located raising verb. Contentful postpositions.  
@@ -1884,27 +1884,27 @@ tuicha vakaA a-hecha
 big cow.ANIM A.1SG-see 
 *'I see the big cow'
 
-#Ex.171: Pronouns cannot be part of possessive constructions
+#Ex.171: Wrong position of conjuntion ha
 Source: author
 Vetted: f
 Judgment: u
-Phenomena: poss
-ha'e jagua
-haHe jagua
-haHe jagua
-3SG.PRON.NOM dog
-*'There is his/her dog'
+Phenomena: crd
+ha'e jagua ha
+haHe jagua ha 
+haHe jagua ha
+3SG.PRON.NOM dog and
+*'He and the dog'
 
-#Ex.172: Pronouns cannot be part of possessive constructions
+#Ex.172: Wrong position of conjuntion ha
 Source: author
 Vetted: f
 Judgment: u
-Phenomena: poss
-ojeroky jagua ha'e
-jagua haHe
-jagua haHe
-dog 3SG.PRON.NOM
-*'There is a he that belongs to the dog'
+Phenomena: crd
+jagua ha'e ha
+jagua haHe ha
+jagua haHe ha
+dog 3SG.PRON.NOM and
+*'The dog and him'
 
 #Ex.173: Transitive verb two personal pronoun arguments.
 Source: author
@@ -2038,16 +2038,16 @@ a-jeroky bad
 A.1SG-see bad
 'I see poorly'
 
-#Ex.185:  Nouns that have passed through the possessive lexical rule should not be allowed to be the possessums of other nouns. 
+#Ex.185:  Noun predicates and its argument. 
 Source: author
 Vetted: f
-Judgment: u
-Phenomena: poss
+Judgment: g
+Phenomena: {adp,cop}
 jagua chesy
 jagua chesy
 dog che-sy
 dog 1SG.POS-mother
-*'There is a my mother of the dog'
+'The mother has a dog'
 
 #Ex.186: Unattested case of a noun that has passed through the possessive lexical rule acting as the possessor of another noun.  Judged grammatical for now but easy to change if need be. Ambiguous reading
 Source: author
@@ -2156,7 +2156,7 @@ Phenomena: cop
 hi'ára
 iaAra
 i-aAra
-POSS.3-day
+3.POSS-day
 'It is his/her day' 
 
 #Ex.196: NP predicate, possessive marking
@@ -2167,7 +2167,7 @@ Phenomena: emb-q
 aporandu ohechapa ju'ipe
 aporandu ohecha pa juHi pe
 a-porandu o-hecha=pa juHi=pe
-A.1SG-know A.3-see=COMPL frog=ACC
+A.1SG-ask A.3-see=Q frog=ACC
 'I ask if somebody sees the frog'
 
 #Ex.197: Embedding of interrogative clause
@@ -2178,7 +2178,7 @@ Phenomena: emb-q
 aporandu ohechapa ju'i
 aporandu ohecha pa juHi
 a-porandu o-hecha=pa juHi
-A.1SG-know A.3-see=COMPL frog
+A.1SG-ask A.3-see=Q frog
 'I ask if somebody sees the frog' / 'I ask if the frog sees it'
 
 #Ex.198: Use embedded clause for declarative sentence
@@ -2208,11 +2208,11 @@ Source: author
 Vetted: f
 Judgment: g
 Phenomena: {cop, adp}
-jagua jaguandi
-jagua jagua ndi
-jagua jagua=ndi
-dog.PRED dog=with
-'There is a dog with a dog'
+chejagua cheiru
+chejagua cheiru
+che-jagua che-iru
+1SG.POSS-dog 1SG.POSS-friend
+'My dog is my friend'
 
 #Ex.201: Embedding of interrogative clause
 Source: e
@@ -2222,7 +2222,7 @@ Phenomena: emb-q
 aporandu ohechapa ju'i vakaA
 aporandu ohecha pa juHi vakaA
 a-porandu o-hecha=pa juHi vakaA
-A.1SG-ask A.3-see=COMPL frog cow
+A.1SG-ask A.3-see=Q frog cow
 'I ask if somebody sees the frog's cow'/ ' I ask if the frog's cow sees it' / 'I ask if the frog sees the cow' / 'I ask if the cow sees the frog'
 
 #Ex.202: Embedding of interrogative clause
@@ -2245,7 +2245,7 @@ jagua ndojerokyi
 jagua ndojerokyi
 jagua nd-o-jeroky-i
 dog NEG-A.3-dance-NEG
-'The dog doesn’t dance'
+'The dog doesn't dance'
 
 #Ex.204: Negated intransitive verb. Incomplete negation circumfix. Missing prefix.
 Source: author
@@ -2255,8 +2255,8 @@ Phenomena: neg
 jagua jerokyi
 jagua jerokyi
 jagua o-jeroky-i
-dog NEG-A.3-dance-NEG
-*'The dog doesn’t dance'
+dog A.3-dance-NEG
+*'The dog doesn't dance'
 
 #Ex.205: Negated intransitive verb. Incomplete negation circumfix. Missing sufffix.
 Source: author
@@ -2266,62 +2266,73 @@ Phenomena: neg
 jagua ndojeroky
 jagua ndojeroky
 jagua nd-o-jeroky
-dog NEG-A.3-dance-NEG
-*'The dog doesn’t dance'
+dog NEG-A.3-dance
+*'The dog doesn't dance'
 
-Ex. 206 WH-question with transitive verb 
+#Ex.206: be+located raising verb. Contentful postpositions.  Negation.
+Source: b
+Vetted: f
+Judgment: g
+Phenomena: {cop, adp}
+ndoimei kotýpe jaguandi
+ndoimei koty pe jagua ndi
+nd-o-ime-i koty=pe jagua=ndi
+NEG-3.ACT-be.located-NEG room=in dog=with
+'He/She is not located in the room with the dog'
+
+#Ex. 207 WH-question with transitive verb 
 Source: authors
 Vetted: f
 Judgment: g
 Phenomena: wh
-mávapa ohecha ju’ipe ?
+mávapa ohecha ju'ipe
 maAva pa ohecha juHi pe
 maAva=pa o-hecha juHi=pe
 who=Q  3-see frog=ACC
-‘Who sees the frog?’
+'Who sees the frog?'
 
-Ex. 207 Ambiguous WH-question with transitive verb 
+#Ex. 208 Ambiguous WH-question with transitive verb 
 Source: authors
 Vetted: f
 Judgment: g
 Phenomena: wh
-mávapa ohecha ju’i ?
+mávapa ohecha ju'i
 maAva pa ohecha juHi
 maAva=pa o-hecha juHi
 who=Q  3-see frog
-‘Who sees the frog?’ / 'Who does the frog see?'
+'Who sees the frog?' / 'Who does the frog see?'
 
-Ex. 208 WH question as an embedded clause 
+#Ex. 209 WH question as an embedded clause 
 Source: authors
 Vetted: f
 Judgment: g
 Phenomena: wh
-aporandu mávapa ohecha ju’ipe
+aporandu mávapa ohecha ju'ipe
 aporandu maAva pa ohecha juHi pe
 a-porandu maAva=pa o-hecha juHi=pe
 1SG-ask who=Q 3-see frog=ACC
-‘I ask who sees the frog’
+'I ask who sees the frog'
 
 
-Ex. 209 Long-distance dependency with WH-question
+#Ex. 210 Long-distance dependency with WH-question
 Source: authors
 Vetted: f
 Judgment: g
 Phenomena: wh
-mávapa aikuua ohechaha ju’ipe?
+mávapa aikuua ohechaha ju'ipe?
 maAva pa aikuua ohecha ha juHi pe
 maAva=pa a-ikuua o-hecha=ha juHi=pe
-who=Q 1SG-know 3-see frog=ACC
-‘Who do I know sees the frog?’
+who=Q 1SG-know 3-see=COMPL frog=ACC
+'Who do I know sees the frog?'
 
 
-Ex. 210 Ambiguous long-distance dependency with WH-question
+#Ex. 211 Ambiguous long-distance dependency with WH-question
 Source: authors
 Vetted: f
 Judgment: g
 Phenomena: wh
-mávapa aikuua ohechaha ju’i?
+mávapa aikuua ohechaha ju'i
 maAva pa aikuua ohecha ha juHi
 maAva=pa a-ikuua o-hecha=ha juHi
-who=Q 1SG-know 3-see frog
-‘Who do I know sees the frog?’ / 'Who do I know does the frog see?
+who=Q 1SG-know 3-see=COMPL frog
+'Who do I know sees the frog?' / 'Who do I know does the frog see?'
