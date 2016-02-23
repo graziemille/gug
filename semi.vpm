@@ -38,9 +38,7 @@ COG-ST : COG-ST
   * <> *
   
 
-
 PNG.PERNUM : PER NUM
-  
   1sg <> first sg
   2sg <> second sg
   3sg <> third sg
@@ -48,30 +46,32 @@ PNG.PERNUM : PER NUM
   1pl_incl <> first_incl pl
   1pl_excl <> first_excl pl
   2pl <> second pl
+  3pl <> third pl
   1st <> first !
   1st << first *
   2nd <> second !
   2nd << second *
   3rd <> third !
   3rd << third *
-  3pl >> third pl
   sg <> ! sg
   sg << * sg
   pl <> ! pl
   pl << * pl
-  *  <> ! !
+  * >> ! !
+  ! << * *
 
 PNG.GEND : GEND
   hum <> hum
   inam <> inam
   anim <> anim
+  * << [p]
   * << !
   * <> *
    
-
 E.TENSE : TENSE
-  * << [e]
-  * >> tense
+  ! << [e]
+  [e] >> !
+  * <> *
  
 E.ASPECT : ASPECT
   future-perfective <> future-perfective
