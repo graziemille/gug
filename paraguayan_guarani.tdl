@@ -469,21 +469,19 @@ attributive-adj-lex := attr-only-adj-lex &
 ;;; be modifiers.
 
 
-case-marking-adp-lex :=  basic-one-arg & raise-sem-lex-item & non-ynq-word &
+case-marking-adp-lex :=  basic-one-arg & raise-sem-lex-item &
   [ SYNSEM.LOCAL.CAT [  EC - , 
                         IC - , 
                         HEAD adp &
-                            [ CASE #case,
-                               MOD < > ],
-			VAL [ SPR < >,
-			      SUBJ < >,
-			      COMPS < #comps >,
-			      SPEC < > ] ],
+                            [ MOD < > ],
+                       VAL [ SPR < >,
+                             SUBJ < >,
+                             COMPS < #comps >,
+                             SPEC < > ] ],
     ARG-ST < #comps &
              [ LOCAL.CAT [ VAL.SPR < >,
                            HEAD noun &
-			     [ CASE #case,
-			       CASE-MARKED - ] ] ] > ].
+             [ CASE-MARKED - ] ] ] > ].
 
 contentful-adp-lex := basic-int-mod-adposition-lex & norm-zero-arg &
   [ SYNSEM.LOCAL.CAT [  EC - , 
