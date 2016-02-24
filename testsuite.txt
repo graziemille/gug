@@ -1286,7 +1286,7 @@ ohecha ñakyrapa vakápe?
 ohecha nNakyra pa vakaA pe
 o-hecha nNakyra=pa vakaA=pe
 O.3-see cricket.ANIM.NOM=Q cow.ANIM=ACC
-*'Did the cricket see the cow?
+*'Did the cricket see the cow?'
 
 #Ex.117: Yes-No question with question marker in wrong position, should be second position.
 Source: c
@@ -1382,7 +1382,7 @@ Vetted: f
 Judgment: g
 Phenomena: {wh, wo}
 mba'é piko rejapo ?
-mbaHeA piko rejapo ?
+mbaHeA piko rejapo
 mbaHeA=piko re-japo
 what=Q A.2SG-do
 'What do you do?'
@@ -1393,7 +1393,7 @@ Vetted: f
 Judgment: g
 Phenomena: {wh, wo}
 mba'épa rejapo ?
-mbaHeA pa rejapo ?
+mbaHeA pa rejapo
 mbaHeA=pa re-japo
 what=Q A.2SG-do
 'What do you do?'
@@ -1404,7 +1404,7 @@ Vetted: f
 Judgment: g
 Phenomena: {wh, wo}
 mba'é rejapo ?
-mbaHeA rejapo ?
+mbaHeA rejapo
 mbaHeA re-japo
 what A.2SG-do
 'What do you do?'
@@ -1415,7 +1415,7 @@ Vetted: f
 Judgment: u
 Phenomena: wh
 rejapo mba'é?
-rejapo mbaHeA?
+rejapo mbaHeA
 re-japo mbaHeA 
 A.2SG-do what
 *'What do you do?'
