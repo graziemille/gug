@@ -857,13 +857,12 @@ gug-scopal-mod-phrase := basic-head-mod-phrase-simple & head-final &
 	     ICONS <! !> ] ].
 
 
-head-adj-int-phrase :+ [SYNSEM.LOCAL.CAT.MC na].
-
 head-adj-int-phrase :+ 
-    [ SYNSEM.LOCAL.CAT [ EC #ec, 
+    [ SYNSEM.LOCAL.CAT [ MC na,
+                         EC #ec, 
                          IC #ic ],
      NON-HEAD-DTR.SYNSEM.LOCAL.CAT [ EC #ec,
-                                      IC #ic ]].
+                                     IC #ic ]].
 
 head-spec-phrase := basic-head-spec-phrase & head-final & 
   [ SYNSEM.LOCAL.CAT [ EC #ec,
