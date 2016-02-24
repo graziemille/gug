@@ -638,8 +638,8 @@ pernum-trans-ditrans-lex-rule-super := add-only-no-ccont-rule & completive-aspec
                            COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3rd ] ].
 
 2sg-o-3-a-lex-rule := pernum-trans-ditrans-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2sg,
-                           COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3rd ] ].
+  [ SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3rd,
+                           COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2sg ] ].
 
 3-a-3-o-lex-rule := pernum-trans-ditrans-lex-rule-super &
   [ SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3rd,
