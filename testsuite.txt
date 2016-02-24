@@ -2454,7 +2454,7 @@ Judgment: g
 Phenomena: corpus
 mbarakaja omuña jagua ha oike
 mbarakaja omunNa jagua ha oike
-mbarakaja omunNa jagua ha o-ike
+mbarakaja o-munNa jagua ha o-ike
 cat A.3-chase dog and A.3-sleep
 'Cats chase dogs and sleep.'
 
