@@ -2441,9 +2441,9 @@ Source: authors
 Vetted: f
 Judgment: g
 Phenomena: corpus
-jagua omuña mba’urype mbarakaja omuña jaguape
-jagua omunNa mbaHury pe mbarakaja omunNa jagua pe
-jagua o-munNa mbaHury=pe mbarakaja o-munNa jagua=pe
+jagua omuña mba’yrupe mbarakaja omuña jaguape
+jagua omunNa mbaHyru pe mbarakaja omunNa jagua pe
+jagua o-munNa mbaHyru=pe mbarakaja o-munNa jagua=pe
 dog A.3-chase car=ACC cat A.3-chase dog=ACC
 ‘Dogs chase cars and cats chase dogs.’
 
