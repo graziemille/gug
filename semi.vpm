@@ -12,17 +12,16 @@ SPECI : SPECI
   * <> *
 
 SF : SF
+  prop-or-ques >> prop 
+  prop << prop-or-ques
   prop <> prop
   ques <> ques
-  prop-or-ques >> prop-or-ques 
-  prop << prop-or-ques
   comm <> comm
   prop-or-ques << [e]
   * <> *
 
 COG-ST : COG-ST
-  type-id >> type-id
-  cog-st << type-id
+  type-id <> type-id
   uniq-id <> uniq-id
   familiar <> familiar
   activated <> activated
@@ -36,6 +35,7 @@ COG-ST : COG-ST
   fam-or-less <> fam-or-less
   uniq-or-more <> uniq-or-more
   activ-or-less <> activ-or-less
+  * >> type-id
   * <> *
   
 
