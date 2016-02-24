@@ -244,7 +244,7 @@ Judgment: g
 Phenomena: corpus
 Ha he'i Pirulo-pe
 Ha oeHi Pirulo pe 
-Ha oeHi Pirulo=pe 
+Ha o-eHi Pirulo=pe 
 and A.3-say Pirulo=DAT
 'and he said to Pirulo'
 
@@ -256,7 +256,7 @@ Phenomena: corpus
 "Nde rehota chupe amóguio lado ha che a-ha-ta chu-pe koa otro lado"
 Nde rehata chupe amó gui lado ha che ahota chupe koa otro lado
 Nde re-ha-ta chupe amó=gui lado ha che a-ho-ta chupe koa otro lado
-2SG.PRON A2.SG-go-FUT 3SG.PRON there=from side and 1SG.PRON A.1SG-go-FUT other side
+2SG.PRON A2.SG-go-FUT 3SG.PRON.DAT there=from side and 1SG.PRON A.1SG-go-FUT 3SG.PRON.DAT this other side
 'YOU will go to him from over there and, me, I'll go by the other side'
 
 
