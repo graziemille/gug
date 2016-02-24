@@ -141,7 +141,7 @@ scopal-mod-lex := lex-item &
 	     LKEYS.KEYREL.ARG1 #harg ]].
 
 We added inheritance from norm-sem-lex-item, norm-zero-arg, and non-ynq-word to make sure our semantics where appropriately defined for this lexical type.  We also specified that the type as [HEAD adv] so we could easily constrain its behavior separately from our other modifiers which are currently all [HEAD adj] even when they modify verbs.  
-This type is also [EC -] because it is not required to appear in an embedded clause (like complementizer “ha”) and [IC -] because it is not required to appear in an interrogative clause (like “piko” or “pa”).   Finally the VAL features for SPR/COMPS/SUBJ/SPEC were all defined as empty.
+This type is also [EC -] because it should not appear in an embedded clause and [IC -] because it is not required to appear in an interrogative clause (like “piko” or “pa”).   Finally the VAL features for SPR/COMPS/SUBJ/SPEC were all defined as empty.
 
 ;;; Scopal Modifiers
 ha4 := scopal-lex &
