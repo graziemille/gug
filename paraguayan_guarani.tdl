@@ -535,7 +535,7 @@ compl-clitic-lex := no-hcons-lex-item &
 ;;; Determiners
 ;;; SPEC is non-empty, and already specified by basic-determiner-lex.
 
-determiner-lex := basic-determiner-lex & norm-zero-arg & non-mod-lex-item &
+determiner-lex := basic-determiner-lex & norm-zero-arg & non-mod-lex-item & norm-sem-lex-item &
   [ SYNSEM.LOCAL.CAT.VAL [ SPR < >,
                            COMPS < >,
                              SUBJ < >,
