@@ -475,7 +475,7 @@ case-marking-adp-lex :=  basic-one-arg & raise-sem-lex-item &
                         HEAD adp & [MOD < >] ,
                        VAL [ SPR < >,
                              SUBJ < >,
-                             COMPS < #comps >,
+                             COMPS < #comps & [NON-LOCAL.YNQ <! !>] >,
                              SPEC < > ] ],
     ARG-ST < #comps &
              [ LOCAL.CAT [ VAL.SPR < >,
@@ -497,7 +497,7 @@ contentful-adp-lex := basic-int-mod-adposition-lex & norm-zero-arg &
                         LOCAL.CAT[ HEAD +np & [CASE nom],
                                    VAL [SPR < >] ] ] > ].
 
-; Lexical type for question marks
+; Lexical type for question markers
 ; adding non-empty YNQ value
 
 question-clitic-lex := no-hcons-lex-item &
