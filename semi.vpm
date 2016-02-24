@@ -12,10 +12,10 @@ SPECI : SPECI
   * <> *
 
 SF : SF
-  prop-or-ques >> prop 
-  prop << prop-or-ques
   prop <> prop
   ques <> ques
+  prop-or-ques >> prop 
+  prop << prop-or-ques
   comm <> comm
   prop-or-ques << [e]
   * <> *
