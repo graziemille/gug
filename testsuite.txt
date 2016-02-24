@@ -2499,7 +2499,7 @@ Judgment: g
 Phenomena: corpus
 lo jagua ivare’a
 lo jagua ivareHa
-lo jagua ivareHa
+lo jagua i-vareHa
 the.PL dog O.3-hungry
 ‘The dogs are hungry.’
 
