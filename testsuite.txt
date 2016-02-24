@@ -1286,7 +1286,7 @@ ohecha ñakyrapa vakápe?
 ohecha nNakyra pa vakaA pe
 o-hecha nNakyra=pa vakaA=pe
 O.3-see cricket.ANIM.NOM=Q cow.ANIM=ACC
-*'Did the cricket see the cow?
+*'Did the cricket see the cow?'
 
 #Ex.117: Yes-No question with question marker in wrong position, should be second position.
 Source: c
@@ -1382,7 +1382,7 @@ Vetted: f
 Judgment: g
 Phenomena: {wh, wo}
 mba'é piko rejapo ?
-mbaHeA piko rejapo ?
+mbaHeA piko rejapo
 mbaHeA=piko re-japo
 what=Q A.2SG-do
 'What do you do?'
@@ -1393,7 +1393,7 @@ Vetted: f
 Judgment: g
 Phenomena: {wh, wo}
 mba'épa rejapo ?
-mbaHeA pa rejapo ?
+mbaHeA pa rejapo
 mbaHeA=pa re-japo
 what=Q A.2SG-do
 'What do you do?'
@@ -1404,7 +1404,7 @@ Vetted: f
 Judgment: g
 Phenomena: {wh, wo}
 mba'é rejapo ?
-mbaHeA rejapo ?
+mbaHeA rejapo
 mbaHeA re-japo
 what A.2SG-do
 'What do you do?'
@@ -1415,7 +1415,7 @@ Vetted: f
 Judgment: u
 Phenomena: wh
 rejapo mba'é?
-rejapo mbaHeA?
+rejapo mbaHeA
 re-japo mbaHeA 
 A.2SG-do what
 *'What do you do?'
@@ -2441,9 +2441,9 @@ Source: authors
 Vetted: f
 Judgment: g
 Phenomena: corpus
-jagua omuña mba’urype mbarakaja omuña jaguape
-jagua omunNa mbaHury pe mbarakaja omunNa jagua pe
-jagua o-munNa mbaHury=pe mbarakaja o-munNa jagua=pe
+jagua omuña mba’yrupe mbarakaja omuña jaguape
+jagua omunNa mbaHyru pe mbarakaja omunNa jagua pe
+jagua o-munNa mbaHyru=pe mbarakaja o-munNa jagua=pe
 dog A.3-chase car=ACC cat A.3-chase dog=ACC
 ‘Dogs chase cars and cats chase dogs.’
 
@@ -2499,7 +2499,7 @@ Judgment: g
 Phenomena: corpus
 lo jagua ivare’a
 lo jagua ivareHa
-lo jagua ivareHa
+lo jagua i-vareHa
 the.PL dog O.3-hungry
 ‘The dogs are hungry.’
 
