@@ -113,7 +113,7 @@
 113@author@@@1@agr@peeN pohecha@@@@0@2@You.PL.NOM 12.PL-see*'You see me@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 114@author@@@1@agr,pro-d@peeN chehecha@@@@1@2@You.PL.NOM O.1SG-see'You see me'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 115@author@@@1@agr@peeN pehecha cheve@@@@0@3@You.PL A.2PL-see me.ACC*'You see me'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-116@c@@@1@q@ohecha nNakyra pa vakaA pe@@@@0@5@O.3-see cricket.ANIM.NOM=Q cow.ANIM=ACC*'Did the cricket see the cow?@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+116@c@@@1@q@ohecha nNakyra pa vakaA pe@@@@0@5@O.3-see cricket.ANIM.NOM=Q cow.ANIM=ACC*'Did the cricket see the cow?'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 117@c@@@1@q@ohecha nNakyra vakaA pe pa@@@@0@5@O.3-see cricket.ANIM.NOM cow.ANIM=ACC=Q*'Did the cricket see the cow?@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 118@c@@@1@c@vakaA pa pe ohecha nNakyra pe@@@@0@6@cow.ANIM=Q=ACC O.3-see cricket.ANIM=ACC*'Was it the cricket, who saw the cow?'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 119@c@@@1@q,wo@piko ohecha nNakyra vakaA pe@@@@0@5@Q O.3-see cricket.ANIM.NOM cow.ANIM=ACC*'Did the cricket see the cow?@lisa tittle caballero, thor wicke monteverde@january 14, 2016
@@ -122,10 +122,10 @@
 122@c@@@1@q,wo@ohecha pa nNakyra vakaA pe@@@@1@5@O.3-see=Q cricket.ANIM.NOM cow.ANIM=ACC'Did the cricket see the cow?'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 123@c@@@1@q,wo@nNakyra pa ohecha vakaA pe@@@@1@5@cricket.ANIM.NOM=Q O.3-see cow.ANIM=ACC'Was it the cricket, who saw the cow?'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 124@c@@@1@q,wo@vakaA pe pa ohecha nNakyra@@@@1@5@cow.ANIM=ACC=Q O.3-see cricket.ANIM.NOM'Is it the cow, that the cricket?'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-125@d@@@1@wh,wo@mbaHeA piko rejapo ?@@@@1@4@what=Q A.2SG-do'What do you do?'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-126@d@@@1@wh,wo@mbaHeA pa rejapo ?@@@@1@4@what=Q A.2SG-do'What do you do?'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-127@d@@@1@wh,wo@mbaHeA rejapo ?@@@@1@3@what A.2SG-do'What do you do?'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-128@d@@@1@wh@rejapo mbaHeA?@@@@0@2@A.2SG-do what*'What do you do?'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+125@d@@@1@wh,wo@mbaHeA piko rejapo@@@@1@3@what=Q A.2SG-do'What do you do?'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+126@d@@@1@wh,wo@mbaHeA pa rejapo@@@@1@3@what=Q A.2SG-do'What do you do?'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+127@d@@@1@wh,wo@mbaHeA rejapo@@@@1@2@what A.2SG-do'What do you do?'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+128@d@@@1@wh@rejapo mbaHeA@@@@0@2@A.2SG-do what*'What do you do?'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 129@d@@@1@wh@oju maAva pa@@@@0@3@A.3-come who=Q*'Who is coming?'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 130@d@@@1@wh,wo@maAva pa oju@@@@1@3@who=Q A.3-come'Who is coming?'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 131@author@@@1@adj,wo@ahecha vakaA tuicha pe@@@@1@4@A.1SG-see cow.ANIM big=ACC'I see the big cow'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
@@ -139,7 +139,7 @@
 139@b@@@1@cop@chesy@@@@1@1@O.1SG-mother.ANIM'I am a mother'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 140@b@@@1@cop@chesy oguata@@@@1@2@O.1SG-mother.ANIM A.3-walk'My mother walks/I am a mother and she walks'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 141@author@@@1@cop@ore oreaguiN@@@@1@2@1PL.EXCL.PRON.NOM O.1PL.EXCL-near'We are near'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-142@f@@@1@cop@iaArama@@@@1@1@POSS.3-day-PERF'It is his/her day already'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+142@f@@@1@cop@iaArama@@@@1@1@3.POSS-day-PERF'It is his/her day already'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 143@b@@@1@crd,neg,wo@ndikiririNi ha ndopytai@@@@1@3@NEG-O.3-be.quiet-NEG and NEG-A.3-leave-NEG'He/she is not quiet and does not leave'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 144@b@@@1@crd@ndikiririNi ndopytai ha@@@@0@3@NEG-O.3-be.quiet-NEG NEG-A.3-leave-NEG and*'He/she is not quiet and does not leave'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 145@b@@@1@crd@ndikiririNi ndopytai ha@@@@0@3@NEG-O.3-be.quiet-NEG NEG-A.3-leave-NEG and*'He/she is not quiet and does not leave'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
@@ -192,7 +192,7 @@
 192@author@@@1@wo@vakaA ohecha juHi@@@@1@3@cow.ANIM O.3-see frog.ANIM.NOM'The frogs see the cows'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 193@author@@@1@wo@ohecha juHi vakaA@@@@1@3@O.3-see frog.ANIM.NOM cow.ANIM'The frogs see the cows'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 194@author@@@1@wo@ohecha juHi vakaA@@@@1@3@O.3-see frog.ANIM.NOM cow.ANIM'The frog sees the cow'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-195@author@@@1@cop@iaAra@@@@1@1@POSS.3-day'It is his/her day'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+195@author@@@1@cop@iaAra@@@@1@1@3.POSS-day'It is his/her day'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 196@author@@@1@emb-q@aporandu ohecha pa juHi pe@@@@1@5@A.1SG-ask A.3-see=Q frog=ACC'I ask if somebody sees the frog'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 197@author@@@1@emb-q@aporandu ohecha pa juHi@@@@1@4@A.1SG-ask A.3-see=Q frog'I ask if somebody sees the frog' / 'I ask if the frog sees it'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 198@author@@@1@emb-d,wo@aikuua ohecha ha juHi pe@@@@1@5@A.1SG-know A.3-go=COMPL juHi=ACC'I know he/she/it sees the frog'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
@@ -209,3 +209,27 @@
 209@authors@@@1@wh@aporandu maAva pa ohecha juHi pe@@@@1@6@1SG-ask who=Q 3-see frog=ACC'I ask who sees the frog'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 210@authors@@@1@wh@maAva pa aikuua ohecha ha juHi pe@@@@1@7@who=Q 1SG-know 3-see=COMPL frog=ACC'Who do I know sees the frog?'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 211@authors@@@1@wh@maAva pa aikuua ohecha ha juHi@@@@1@6@who=Q 1SG-know 3-see=COMPL frog'Who do I know sees the frog?' / 'Who do I know does the frog see?'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+212@authors@@@1@corpus@jagua oike@@@@1@2@dog A.3-sleep'Dogs sleep'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+213@authors@@@1@corpus@jagua omunNa mbaHyru pe@@@@1@4@dog A.3-chase car=ACC'A dog chases a car'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+214@authors@@@1@corpus@Che amunNa ndeve@@@@1@3@1SG.PRON A.1SG-chase you.2g.ACC'I chase you.'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+215@authors@@@1@corpus@jagua okaru@@@@1@2@dog A.3-eat'Dogs eat.'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+216@authors@@@1@corpus@lo jagua omunNa mbaHyru pe@@@@1@5@the.PL dog A.3-chase car=ACC'The dogs chase cars.'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+217@authors@@@1@corpus@lo jagua ndomunNai mbaHyru pe@@@@1@5@the.PL dog NEG-A.3-chase-NEG car=ACC'The dogs don't chase cars.'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+218@authors@@@1@corpus@aimoHaA reikuua ha omunNa ha jagua mbaHyru pe@@@@1@8@A.1SG-think A.2SG-know=COMPL A.3-chase=COMPL dog car=ACC'I think that you know that dogs chase cars.'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+219@authors@@@1@corpus@aporandu reikuua pa omunNa ha jagua mbaHyru pe@@@@1@8@A.1SG-ask A.2SG-know=Q A.3-chase=COMPL dog car=ACC'I ask whether you know that dogs chase cars.'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+220@authors@@@1@corpus@mbarakaja ha jagua omunNa mbaHyru pe@@@@1@6@cat and dog A.3-chase car=ACC'Cats and dogs chase cars.'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+221@authors@@@1@corpus@jagua omunNa mbaHyru pe mbarakaja omunNa jagua pe@@@@1@8@dog A.3-chase car=ACC cat A.3-chase dog=ACC'Dogs chase cars and cats chase dogs.'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+222@authors@@@1@corpus@mbarakaja omunNa jagua ha oike@@@@1@5@cat A.3-chase dog and A.3-sleep'Cats chase dogs and sleep.'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+223@authors@@@1@corpus@mbarakaja pa omunNa jagua pe@@@@1@5@cat=Q A.3-chase dog=ACC'Do cats chase dogs?'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+224@authors@@@1@corpus@jagua ivareHa ha okaru@@@@1@4@dog  O.3-hungry and A.3-eat'Hungry dogs eat.'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+225@authors@@@1@corpus@jagua okaru pyaHe@@@@1@3@dog A.3-eat quick'Dogs eat quickly.'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+226@authors@@@1@corpus@lo jagua ivareHa@@@@1@3@the.PL dog O.3-hungry'The dogs are hungry.'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+227@authors@@@1@corpus@lo jagua oime yvyraty pe@@@@1@5@the.PL dog A.3-be.located park=in'The dogs are in the park.'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+228@authors@@@1@corpus@jagua mbarakaja@@@@1@2@dog cat'The dogs are the cats.'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+229@authors@@@1@corpus@maAva pa oike@@@@1@3@who=Q A.3-sleepWho sleeps?@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+230@authors@@@1@corpus@mbaHeA pa lo jagua omunNa@@@@1@5@what=Q the.PL dog A.3-chase'What do the dogs chase?'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+231@authors@@@1@corpus@mbaHeA pa reimoHaA lo jagua omunNa@@@@1@6@what=Q A.2SG-think the.PL dog A.3-chase'What do you think the dogs chase?'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+232@authors@@@1@corpus@maAva pa oporandu mbaHeA lo jagua omunNa@@@@1@7@who=Q A.3-ask what the.PL dog A.3-chase'Who asked what the dogs chase?'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+233@authors@@@1@corpus@aporandu mbaHeA lo jagua omunNa@@@@1@5@A.1SG-ask what the.PL dog A.3-chase'I asked what the dogs chased.'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+234@authors@@@1@corpus@jagua mbaHyru oike@@@@1@3@dog   car     A.3-sleep'The dog's car sleeps.'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+235@authors@@@1@corpus@chejagua oike@@@@1@2@1SG.POSS-dog A.3-sleep'My dogs sleep.'@lisa tittle caballero, thor wicke monteverde@january 14, 2016

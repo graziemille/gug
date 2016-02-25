@@ -2337,7 +2337,7 @@ maAva=pa a-ikuua o-hecha=ha juHi
 who=Q 1SG-know 3-see=COMPL frog
 'Who do I know sees the frog?' / 'Who do I know does the frog see?'
 
-#Ex.212: MT corpus sentence for ‘Dogs sleep’
+#Ex.212: MT corpus sentence for 'Dogs sleep'
 Source: authors
 Vetted: f
 Judgment: g
@@ -2346,20 +2346,20 @@ jagua oike
 jagua oike
 jagua o-ike
 dog A.3-sleep
-’Dogs sleep’
+'Dogs sleep'
 
-#Ex.213: MT corpus sentence for ‘Dogs chase cars.’
+#Ex.213: MT corpus sentence for 'Dogs chase cars.'
 Source: authors
 Vetted: f
 Judgment: g
 Phenomena: corpus
-jagua omuña mba’yrupe
+jagua omuña mba'yrupe
 jagua omunNa mbaHyru pe
 jagua o-munNa mbaHyru=pe
 dog A.3-chase car=ACC
-’A dog chases a car’
+'A dog chases a car'
 
-#Ex.214: MT corpus sentence for ‘I chase you.’
+#Ex.214: MT corpus sentence for 'I chase you.'
 Source: authors
 Vetted: f
 Judgment: g
@@ -2368,9 +2368,9 @@ Che amuña ndeve
 Che amunNa ndeve
 Che a-munNa ndeve
 1SG.PRON A.1SG-chase you.2g.ACC
-‘I chase you.’
+'I chase you.'
 
-#Ex.215: MT corpus sentence for ‘Dogs eat.’
+#Ex.215: MT corpus sentence for 'Dogs eat.'
 Source: authors
 Vetted: f
 Judgment: g
@@ -2379,64 +2379,64 @@ jagua okaru
 jagua okaru
 jagua o-karu
 dog A.3-eat
-‘Dogs eat.’
+'Dogs eat.'
 
-#Ex.216: MT corpus sentence for ‘The dogs chase cars.’
+#Ex.216: MT corpus sentence for 'The dogs chase cars.'
 Source: authors
 Vetted: f
 Judgment: g
 Phenomena: corpus
-lo jagua omuña mba’yrupe
+lo jagua omuña mba'yrupe
 lo jagua omunNa mbaHyru pe
 lo jagua o-munNa mbaHyru=pe
 the.PL dog A.3-chase car=ACC
-‘The dogs chase cars.’ 
+'The dogs chase cars.' 
 
-#Ex.217: MT corpus sentence for ‘The dogs don't chase cars.’
+#Ex.217: MT corpus sentence for 'The dogs don't chase cars.'
 Source: authors
 Vetted: f
 Judgment: g
 Phenomena: corpus
-lo jagua ndomuñai mba’yrupe
+lo jagua ndomuñai mba'yrupe
 lo jagua ndomunNai mbaHyru pe
 lo jagua nd-o-munNa-i mbaHyru=pe
 the.PL dog NEG-A.3-chase-NEG car=ACC
-‘The dogs don't chase cars.’
+'The dogs don't chase cars.'
 
-#Ex.218: MT corpus sentence for ‘I think that you know that dogs chase cars.’
+#Ex.218: MT corpus sentence for 'I think that you know that dogs chase cars.'
 Source: authors
 Vetted: f
 Judgment: g
 Phenomena: corpus
-aimo’á reikuuaha omuñaha jagua mba’yrupe
+aimo’á reikuuaha omuñaha jagua mba'yrupe
 aimoHaA reikuua ha omunNa ha jagua mbaHyru pe
 a-imoHaA re-ikuua=ha o-munNa=ha jagua mbaHyru=pe
 A.1SG-think A.2SG-know=COMPL A.3-chase=COMPL dog car=ACC 
-‘I think that you know that dogs chase cars.’
+'I think that you know that dogs chase cars.'
 
-#Ex.219: MT corpus sentence for ‘I ask whether you know that dogs chase cars.’
+#Ex.219: MT corpus sentence for 'I ask whether you know that dogs chase cars.'
 Source: authors
 Vetted: f
 Judgment: g
 Phenomena: corpus
-aporandu reikuuapa omuñaha jagua mba’yrupe
+aporandu reikuuapa omuñaha jagua mba'yrupe
 aporandu reikuua pa omunNa ha jagua mbaHyru pe
 a-porandu re-ikuua=pa o-munNa=ha jagua mbaHyru=pe
 A.1SG-ask A.2SG-know=Q A.3-chase=COMPL dog car=ACC
-‘I ask whether you know that dogs chase cars.’
+'I ask whether you know that dogs chase cars.'
 
-#Ex.220: MT corpus sentence for ‘Cats and dogs chase cars.’
+#Ex.220: MT corpus sentence for 'Cats and dogs chase cars.'
 Source: authors
 Vetted: f
 Judgment: g
 Phenomena: corpus
-mbarakaja ha jagua omuña mba’yrupe
+mbarakaja ha jagua omuña mba'yrupe
 mbarakaja ha jagua omunNa mbaHyru pe
 mbarakaja ha jagua o-munNa mbaHyru=pe
 cat and dog A.3-chase car=ACC
-‘Cats and dogs chase cars.’
+'Cats and dogs chase cars.'
 
-#Ex.221: MT corpus sentence for ‘Dogs chase cars and cats chase dogs.’
+#Ex.221: MT corpus sentence for 'Dogs chase cars and cats chase dogs.'
 Source: authors
 Vetted: f
 Judgment: g
@@ -2445,20 +2445,20 @@ jagua omuña mba’yrupe mbarakaja omuña jaguape
 jagua omunNa mbaHyru pe mbarakaja omunNa jagua pe
 jagua o-munNa mbaHyru=pe mbarakaja o-munNa jagua=pe
 dog A.3-chase car=ACC cat A.3-chase dog=ACC
-‘Dogs chase cars and cats chase dogs.’
+'Dogs chase cars and cats chase dogs.'
 
-#Ex.222: MT corpus sentence for ‘Cats chase dogs and sleep.’
+#Ex.222: MT corpus sentence for 'Cats chase dogs and sleep.'
 Source: authors
 Vetted: f
 Judgment: g
 Phenomena: corpus
 mbarakaja omuña jagua ha oike
 mbarakaja omunNa jagua ha oike
-mbarakaja omunNa jagua ha o-ike
+mbarakaja o-munNa jagua ha o-ike
 cat A.3-chase dog and A.3-sleep
-‘Cats chase dogs and sleep.’
+'Cats chase dogs and sleep.'
 
-#Ex.223: MT corpus sentence for ‘Do cats chase dogs?’
+#Ex.223: MT corpus sentence for 'Do cats chase dogs?'
 Source: authors
 Vetted: f
 Judgment: g
@@ -2467,43 +2467,43 @@ mbarakajapa omuña jaguape ?
 mbarakaja pa omunNa jagua pe
 mbarakaja=pa o-munNa jagua=pe
 cat=Q A.3-chase dog=ACC
-‘Do cats chase dogs?’
+'Do cats chase dogs?'
 
-#Ex.224: MT corpus sentence for ‘Hungry dogs eat.’
+#Ex.224: MT corpus sentence for 'Hungry dogs eat.'
 Source: authors
 Vetted: f
 Judgment: g
 Phenomena: corpus
-jagua ivare’a ha okaru
+jagua ivare'a ha okaru
 jagua ivareHa ha okaru
 jagua i-vareHa ha o-karu
 dog  O.3-hungry and A.3-eat 
-‘Hungry dogs eat.’
+'Hungry dogs eat.'
 
-#Ex.225: MT corpus sentence for ‘Dogs eat quickly.’
+#Ex.225: MT corpus sentence for 'Dogs eat quickly.'
 Source: authors
 Vetted: f
 Judgment: g
 Phenomena: corpus
-jagua okaru pya’e
+jagua okaru pya'e
 jagua okaru pyaHe
 jagua o-karu pyaHe
 dog A.3-eat quick
-‘Dogs eat quickly.’
+'Dogs eat quickly.'
 
 
-#Ex.226: MT corpus sentence for ‘The dogs are hungry.’
+#Ex.226: MT corpus sentence for 'The dogs are hungry.'
 Source: authors
 Vetted: f
 Judgment: g
 Phenomena: corpus
-lo jagua ivare’a
+lo jagua ivare'a
 lo jagua ivareHa
 lo jagua i-vareHa
 the.PL dog O.3-hungry
-‘The dogs are hungry.’
+'The dogs are hungry.'
 
-#Ex.227: MT corpus sentence for ‘The dogs are in the park.’
+#Ex.227: MT corpus sentence for 'The dogs are in the park.'
 Source: authors
 Vetted: f
 Judgment: g
@@ -2512,9 +2512,9 @@ lo jagua oime yvyratyapyteApe
 lo jagua oime yvyraty apyteApe
 lo jagua o-ime yvyraty=apyteApe
 the.PL dog A.3-be.located park=in
-‘The dogs are in the park.’
+'The dogs are in the park.'
 
-#Ex.228: MT corpus sentence for ‘The dogs are the cats.’
+#Ex.228: MT corpus sentence for 'The dogs are the cats.'
 Source: authors
 Vetted: f
 Judgment: g
@@ -2523,9 +2523,9 @@ jagua mbarakaja
 jagua mbarakaja
 jagua mbarakaja
 dog cat
-‘The dogs are the cats.’
+'The dogs are the cats.'
 
-#Ex.229: MT corpus sentence for ‘Who sleeps?’
+#Ex.229: MT corpus sentence for 'Who sleeps?'
 Source: authors
 Vetted: f
 Judgment: g
@@ -2536,62 +2536,62 @@ maAva=pa o-ike
 who=Q A.3-sleep
 Who sleeps?
 
-#Ex.230: MT corpus sentence for ‘What do the dogs chase?’
+#Ex.230: MT corpus sentence for 'What do the dogs chase?'
 Source: authors
 Vetted: f
 Judgment: g
 Phenomena: corpus
-mba’épa lo jagua omuña ?
+mba'épa lo jagua omuña ?
 mbaHeA pa lo jagua omunNa
 mbaHeA=pa lo jagua o-munNa
 what=Q the.PL dog A.3-chase
-‘What do the dogs chase?’
+'What do the dogs chase?'
 
-#Ex.231: MT corpus sentence for ‘What do you think the dogs chase?’
+#Ex.231: MT corpus sentence for 'What do you think the dogs chase?'
 Source: authors
 Vetted: f
 Judgment: g
 Phenomena: corpus
-mba’épa reimo’á lo jagua omuña ?
+mba'épa reimo'á lo jagua omuña ?
 mbaHeA pa reimoHaA lo jagua omunNa
 mbaHeA=pa re-imoHaA lo jagua o-munNa
 what=Q A.2SG-think the.PL dog A.3-chase
-What do you think the dogs chase?
+'What do you think the dogs chase?'
 
-#Ex.232: MT corpus sentence for ‘Who asked what the dogs chase?’
+#Ex.232: MT corpus sentence for 'Who asked what the dogs chase?'
 Source: authors
 Vetted: f
 Judgment: g
 Phenomena: corpus
-mávapa oporandu mba’é lo jagua omuña ?
+mávapa oporandu mba'é lo jagua omuña ?
 maAva pa oporandu mbaHeA lo jagua omunNa
 maAva=pa o-porandu mbaHeA lo jagua o-munNa
 who=Q A.3-ask what the.PL dog A.3-chase
-Who asked what the dogs chase?
+'Who asked what the dogs chase?'
 
-#Ex.233: MT corpus sentence for ‘I asked what the dogs chased.’
+#Ex.233: MT corpus sentence for 'I asked what the dogs chased.'
 Source: authors
 Vetted: f
 Judgment: g
 Phenomena: corpus
-aporandu mba’é lo jagua omuña ?
+aporandu mba'é lo jagua omuña ?
 aporandu mbaHeA lo jagua omunNa 
 a-porandu mbaHeA lo jagua o-munNa 
 A.1SG-ask what the.PL dog A.3-chase
-‘I asked what the dogs chased.’
+'I asked what the dogs chased.'
 
-#Ex.234: MT corpus sentence for ‘The dog's car sleeps.’
+#Ex.234: MT corpus sentence for 'The dog's car sleeps.'
 Source: authors
 Vetted: f
 Judgment: g
 Phenomena: corpus
-jagua mba’yru oike
+jagua mba'yru oike
 jagua mbaHyru oike
 jagua mbaHyru o-ike
 dog   car     A.3-sleep
-‘The dog's car sleeps.’
+'The dog's car sleeps.'
 
-#Ex.235: MT corpus sentence for ‘My dogs sleep.’
+#Ex.235: MT corpus sentence for 'My dogs sleep.'
 Source: authors
 Vetted: f
 Judgment: g
@@ -2600,4 +2600,4 @@ chejagua oike
 chejagua oike
 che-jagua o-ike
 1SG.POSS-dog A.3-sleep
-‘My dogs sleep.’
+'My dogs sleep.'
