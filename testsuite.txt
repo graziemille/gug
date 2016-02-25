@@ -115,9 +115,9 @@ Source: author
 Vetted: f
 Judgment: g
 Phenomena: adp
-yvyra oime avatitýpe roAgape
-yvyra oime avatityA pe roAga pe
-yvyra o-ime avatityA=pe roAga=pe
+yvyra oime avatitýapyteApe roAgambyteApe
+yvyra oime avatityA apyteApe roAga mbyteApe
+yvyra o-ime avatityA=apyteApe roAga=mbyteApe
 tree A.3-be+located cornfield=in house=in
 'The tree is located in the cornfield in (near) the house'
 
@@ -1812,9 +1812,9 @@ Source: b
 Vetted: f
 Judgment: g
 Phenomena: {cop, adp}
-Oime kotýpe jaguandi
-oime koty pe jagua ndi
-o-ime koty=pe jagua=ndi
+Oime kotýmbyteApe jaguandi
+oime koty mbyteApe jagua ndi
+o-ime koty=mbyteApe jagua=ndi
 3.ACT-be.located room=in dog=with
 'He/She is located in the room with the dog'
 
@@ -1823,9 +1823,9 @@ Source: author
 Vetted: f
 Judgment: g
 Phenomena: adp
-Ojeroky kotýpe jaguandi
-ojeroky koty pe jagua ndi
-o-jeroky koty=pe jagua=ndi
+Ojeroky kotýmbyteApe jaguandi
+ojeroky koty mbyteApe jagua ndi
+o-jeroky koty=mbyteApe jagua=ndi
 3.ACT-dance room=in dog=with
 'He/She dances in the room with the dog'
 
@@ -2274,9 +2274,9 @@ Source: b
 Vetted: f
 Judgment: g
 Phenomena: {cop, adp}
-ndoimei kotýpe jaguandi
-ndoimei koty pe jagua ndi
-nd-o-ime-i koty=pe jagua=ndi
+ndoimei kotýmbyteApe jaguandi
+ndoimei koty mbyteApe jagua ndi
+nd-o-ime-i koty=mbyteApe jagua=ndi
 NEG-3.ACT-be.located-NEG room=in dog=with
 'He/She is not located in the room with the dog'
 
@@ -2508,9 +2508,9 @@ Source: authors
 Vetted: f
 Judgment: g
 Phenomena: corpus
-lo jagua oime yvyratype
-lo jagua oime yvyraty pe
-lo jagua o-ime yvyraty=pe
+lo jagua oime yvyratyapyteApe
+lo jagua oime yvyraty apyteApe
+lo jagua o-ime yvyraty=apyteApe
 the.PL dog A.3-be.located park=in
 ‘The dogs are in the park.’
 
