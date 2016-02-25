@@ -1106,7 +1106,7 @@ head-comp-phrase-2 := basic-head-2nd-comp-phrase & head-initial-head-nexus  &
  [ SYNSEM.LOCAL.CAT [ HEAD +nvjrcdmo, 
           EC #ec,
           IC #ic,
-          VAL.COMPS.FIRST.SYNSEM.OPT - ], 
+         VAL.COMPS.FIRST.OPT - ], 
    HEAD-DTR.SYNSEM.LOCAL.CAT [ EC #ec,
              IC #ic ]].
 
@@ -1116,7 +1116,7 @@ comp-head-phrase-2 := basic-head-2nd-comp-phrase & head-final-head-nexus &
  [ SYNSEM.LOCAL.CAT [ HEAD +nvjrcdmo, 
           EC #ec,
           IC #ic,
-          VAL.COMPS.FIRST.SYNSEM.OPT - ],  
+          VAL.COMPS.FIRST.OPT - ],  
    NON-HEAD-DTR.SYNSEM.LOCAL.CAT [ EC #ec,
              IC #ic ]].
 
