@@ -93,10 +93,10 @@ Source: author
 Vetted: f
 Judgment: g
 Phenomena: adp
-ajeroky avatitýpe lo nNakyrandi
-ajeroky avatityA pe lo nNakyra ndi
-a-jeroky avatityA=pe lo nNakyra=ndi
-1SG.3-dance cornfield=in+near the.PL crickets=with
+ajeroky avatitýapyteApe lo nNakyrandi
+ajeroky avatityA apyteApe lo nNakyra ndi
+a-jeroky avatityA=apyteApe lo nNakyra=ndi
+1SG.3-dance cornfield=in the.PL crickets=with
 'I dance in the cornfield with the crickets'
 
 #Ex.9: Wrong order for PP moodifier. 
@@ -104,9 +104,9 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: adp
-lo nNakyrandi ajeroky avatitýpe
-lo nNakyra ndi ajeroky avatityA pe
-lo nNakyra=ndi a-jeroky avatityA=pe
+lo nNakyrandi ajeroky avatitýapyteApe
+lo nNakyra ndi ajeroky avatityA apyteApe
+lo nNakyra=ndi a-jeroky avatityA=apyteApe
 the.PL crickets=with 1SG.3-dance cornfield=in
 *'I dance in the cornfield with the crickets'
 
@@ -115,11 +115,11 @@ Source: author
 Vetted: f
 Judgment: g
 Phenomena: adp
-yvyra oime avatitýapyteApe roAgambyteApe
-yvyra oime avatityA apyteApe roAga mbyteApe
-yvyra o-ime avatityA=apyteApe roAga=mbyteApe
-tree A.3-be+located cornfield=in house=in
-'The tree is located in the cornfield in (near) the house'
+jagua oime avatitýapyteApe yvyrandi
+jagua oime avatityA apyteApe yvyra ndi
+jagua o-ime avatityA=apyteApe yvyra=ndi
+dog A.3-be+located cornfield=in yvyra=with
+'The dog is located in the cornfield with the tree'
 
 #Ex.11: Transitive verb with two accusative arguments.
 Source: author
@@ -567,10 +567,10 @@ Source: author
 Vetted: f
 Judgment: g
 Phenomena: {wo, agr, pn}
-nde rehechauka tunich cheve 
-nde rehechauka tunich cheve 
-nde re-hecha-uka tunich cheve 
-You.SG.NOM A.2SG-see-CAUS stone.INAM me.DAT
+cheve nde rehechauka tunich 
+cheve nde rehechauka tunich 
+cheve nde re-hecha-uka tunich 
+1SG.PRON.DAT 2SG.PRON.NOM A.2SG-see-CAUS stone.INAM 
 'You show me the stone'
 
 #Ex.52: Indirect object marked with nominative pronoun instead of dative pronoun.
@@ -578,10 +578,10 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: agr
-nde rehechauka tunich che
-nde rehechauka tunich che
-nde re-hecha-uka tunich che
-You.SG.NOM A.2SG-see-CAUS stone.INAM. I.NOM
+che nde rehechauka tunich 
+che nde rehechauka tunich
+che nde re-hecha-uka tunich
+1SG.PRON.NOM You.SG.NOM A.2SG-see-CAUS stone.INAM
 *'You show me the stone'
 
 #Ex.53: Ditransitive verb has 2SG agreement by 3SG subject.
@@ -875,11 +875,11 @@ Source: author
 Vetted: f
 Judgment: g
 Phenomena: {agr, pro-d}
-Achechauka ndeve kuehe
-Achechauka ndeve kuehe
-A-hecha-uka ndeve kuehe
-A.1SG-see-CAUS 2SG.DAT yesterday
-'I showed it to you yesterday'
+Achechauka ndeve
+Ahechauka ndeve
+A-hecha-uka ndeve
+A.1SG-see-CAUS 2SG.DAT
+'I show it to you'
 
 #Ex.80: Transitive verb agrees with 1SG subject. Human object shown with accusative pronoun and cannot be dropped.  Subject drop. 
 Source: author
@@ -1139,9 +1139,9 @@ Source: author
 Vetted: f
 Judgment: u
 Phenomena: poss
-ahecha rogape mbo'ehára
-ahecha roga pe mboHehaAra
-a-hecha roga=pe mboHehaAra
+ahecha rógape mbo'ehára
+ahecha roAga pe mboHehaAra
+a-hecha roAga=pe mboHehaAra
 A.1SG-see house=ACC professor.ANIM
 *'I see the professor's house'
 
@@ -1691,8 +1691,8 @@ Vetted: f
 Judgment: g
 Phenomena: {adv, wo}
 hase᷉ vai la ñakyra
-haseN vai la nNakyra
-h-aseN vai la nNakyra
+iaseN vai la nNakyra
+i-aseN vai la nNakyra
 O.3-cry bad the cricket.ANIM.NOM
 'the cricket cried in an ugly way' 
 
@@ -1702,8 +1702,8 @@ Vetted: f
 Judgment: u
 Phenomena: adv
 vai hase᷉ la ñakyra
-vai haseN la nNakyra
-vai h-aseN la nNakyra
+vai iaseN la nNakyra
+vai i-aseN la nNakyra
 bad O.3-cry the cricket.ANIM.NOM
 *'the cricket cried in an ugly way' 
 
@@ -1815,8 +1815,8 @@ Phenomena: {cop, adp}
 Oime kotýmbyteApe jaguandi
 oime koty mbyteApe jagua ndi
 o-ime koty=mbyteApe jagua=ndi
-3.ACT-be.located room=in dog=with
-'He/She is located in the room with the dog'
+3.ACT-be.located room=inside dog=with
+'He/She is located inside the room with the dog'
 
 #Ex.165: Contentful postpositions  
 Source: author
@@ -1826,8 +1826,8 @@ Phenomena: adp
 Ojeroky kotýmbyteApe jaguandi
 ojeroky koty mbyteApe jagua ndi
 o-jeroky koty=mbyteApe jagua=ndi
-3.ACT-dance room=in dog=with
-'He/She dances in the room with the dog'
+3.ACT-dance room=inside dog=with
+'He/She dances inside the room with the dog'
 
 #Ex.166: Contentful postpositions  
 Source: author
@@ -2277,7 +2277,7 @@ Phenomena: {cop, adp}
 ndoimei kotýmbyteApe jaguandi
 ndoimei koty mbyteApe jagua ndi
 nd-o-ime-i koty=mbyteApe jagua=ndi
-NEG-3.ACT-be.located-NEG room=in dog=with
+NEG-3.ACT-be.located-NEG room=inside dog=with
 'He/She is not located in the room with the dog'
 
 #Ex. 207 WH-question with transitive verb 
@@ -2335,4 +2335,4 @@ mávapa aikuua ohechaha ju'i
 maAva pa aikuua ohecha ha juHi
 maAva=pa a-ikuua o-hecha=ha juHi
 who=Q 1SG-know 3-see=COMPL frog
-'Who do I know sees the frog?' / 'Who do I know does the frog see?'
+'Who do I know sees the frog?' / 'Who do I know that the frog sees?'

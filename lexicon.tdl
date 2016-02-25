@@ -49,7 +49,7 @@ yvyraty := com-inam-noun-lex &
   [ STEM < "yvyraty" >,
     SYNSEM.LKEYS.KEYREL.PRED "_park_n_rel" ].
 
-po_1 := com-inam-noun-lex &
+po_1 := poss-only-com-noun-lex &
   [ STEM < "po" >,
     SYNSEM.LKEYS.KEYREL.PRED "_hand_n_rel" ].
 
@@ -296,6 +296,10 @@ jahoHi := trans-verb-lex &
 munNa := trans-verb-lex &
   [ STEM < "munNa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_chase_v_rel" ].
+
+aseN := stative-intrans-verb-lex &
+  [ STEM < "aseN" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_cry_v_rel" ].
 
 kaigue := stative-intrans-verb-lex &
   [ STEM < "kaigue" >,
