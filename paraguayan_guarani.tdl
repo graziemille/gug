@@ -17,14 +17,16 @@
 +np :+ [ CASE case,
          CASE-MARKED bool].
 
-inflected :+ [ PERNUM-STAT-INTRANS-FLAG luk,
+inflected :+ [ POSS-FLAG luk,
+    PERNUM-STAT-INTRANS-FLAG luk,
     NEG1-FLAG luk,
     PERNUM-DYN-INTRANS-OR-PERNUM-TRANS-FLAG luk,
     NEG2-FLAG luk,
     PERNUM-DYN-INTRANS-OR-PERNUM-STAT-INTRANS-OR-PERNUM-TRANS-FLAG luk,
     PERNUM-TRANS-FLAG luk ].
 
-infl-satisfied :+ [ PERNUM-STAT-INTRANS-FLAG na-or-+,
+infl-satisfied :+ [ POSS-FLAG na-or-+,
+    PERNUM-STAT-INTRANS-FLAG na-or-+,
     NEG1-FLAG na-or-+,
     PERNUM-DYN-INTRANS-OR-PERNUM-TRANS-FLAG na-or-+,
     NEG2-FLAG na-or-+,
@@ -160,7 +162,11 @@ non-mod-lex-item := lex-item &
 non-poss-com-noun-lex :=  common-noun-lex & 
  [SYNSEM.LOCAL.CAT.HEAD.POSS poss-or].
 
-;; category for wind
+;; category for words like hand
+poss-only-com-noun-lex := common-noun-lex & 
+[INFLECTED.POSS-FLAG -].
+
+;; category for words like wind
 non-poss-com-inam-noun-lex := non-poss-com-noun-lex & com-inam-noun-lex.
 
 ;; category for proper-nouns
@@ -563,7 +569,8 @@ neg2-rule-dtr := word-or-lexrule.
 ;; The possessive lexical rule as possessive affixes to possessums
 ;; e.g., chesy, che-sy, "my mother"
 poss-lex-rule-super := infl-add-only-lex-rule &
- [ SYNSEM.LKEYS.ALTKEYREL #altkeyrel,
+ [ INFLECTED [POSS-FLAG +],
+   SYNSEM.LKEYS.ALTKEYREL #altkeyrel,
    DTR common-noun-lex & [ SYNSEM.LOCAL [ CONT.HOOK [  INDEX #index,  
 						       LTOP #lbl  ] ,
 					  CAT [ HEAD.POSS poss-or ,
