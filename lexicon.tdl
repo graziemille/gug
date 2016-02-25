@@ -235,9 +235,14 @@ dat-marker := case-marking-adp-lex &
 
 
 ;; Contentful adpostion
-pe2 := contentful-adp-lex & 
-  [ STEM < "pe" >,
+
+apyteApe := contentful-adp-lex & 
+  [ STEM < "apyteApe" >,
     SYNSEM.LKEYS.KEYREL.PRED "_in_p_rel" ].
+
+mbyteApe := contentful-adp-lex & 
+  [ STEM < "mbyteApe" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_inside_p_rel" ].
 
 gui := contentful-adp-lex & 
   [ STEM < "gui" >,
