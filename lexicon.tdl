@@ -297,6 +297,10 @@ munNa := trans-verb-lex &
   [ STEM < "munNa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_chase_v_rel" ].
 
+aseN := stative-intrans-verb-lex &
+  [ STEM < "aseN" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_cry_v_rel" ].
+
 kaigue := stative-intrans-verb-lex &
   [ STEM < "kaigue" >,
     SYNSEM.LKEYS.KEYREL.PRED "_lazy_a_rel" ].

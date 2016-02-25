@@ -76,7 +76,7 @@
 76@author@@@1@pro-d@mboHehaAra chehechauka temimboHe pe@@@@1@4@mboHehaAra.NOM O.1SG-see-CAUS temimboHe=DAT'The professor showed me to the student'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 77@author@@@1@pn,agr@mboHehaAra ohechauka cheve temimboHe pe@@@@1@5@mboHehaAra A.3-see-CAUS 1SG.DAT temimboHe=ACC'The professor showed the student to me'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 78@author@@@1@pro-d,agr@Rehechauka cheve temimboHe pe@@@@1@4@A.2SG-see-CAUSE 1SG.DAT temimboHe=ACC'You showed the student to me'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-79@author@@@1@agr,pro-d@Achechauka ndeve kuehe@@@@1@3@A.1SG-see-CAUS 2SG.DAT yesterday'I showed it to you yesterday'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+79@author@@@1@agr,pro-d@Ahechauka ndeve@@@@1@2@A.1SG-see-CAUS 2SG.DAT'I show it to you'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 80@author@@@1@pro-d@ahecha chupe@@@@1@2@A.1SG-see 3SG.ANIM.ACC'I see him'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 81@author@@@1@pro-d@ahecha@@@@1@1@A.1SG-see'I see it'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 82@author@@@1@agr@chekaigue@@@@1@1@O.1SG-be.lazy'I am lazy'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
@@ -100,7 +100,7 @@
 100@author@@@1@c@raka pe yvyra@@@@0@3@branch=ACC tree*'There are tree's branches'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 101@author@@@1@poss,wo@ahecha mboHehaAra roAga@@@@1@3@A.1SG-see professor   house'I see the professor's house'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 102@author@@@1@poss@ahecha iroAga@@@@1@2@A.1SG-see O.3-roAga'I see his/her house'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-103@author@@@1@poss@ahecha roga pe mboHehaAra@@@@0@4@A.1SG-see house=ACC professor.ANIM*'I see the professor's house'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+103@author@@@1@poss@ahecha roAga pe mboHehaAra@@@@0@4@A.1SG-see house=ACC professor.ANIM*'I see the professor's house'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 104@author@@@1@poss@ahunga chepo@@@@1@2@A.1SG-hurt 0.1SG-hand.INAM'I hurt my hands'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 105@author@@@1@poss@ahunga lo po@@@@0@3@A.1SG-hurt the.PL hand.INAM*'I hurt the hands'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 106@author@@@1@poss@ohecha la ajaka@@@@1@3@A.3-see the.SG basket.INAM'I see the basket'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
@@ -150,8 +150,8 @@
 150@e@@@1@emb-q,wo@aporandu oju pa@@@@1@3@A.1SG-ask A.3-go=Q'I ask whether he comes'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 151@b@@@1@adv@jagua osuHu vai vakaA pe@@@@1@5@dog A.3-bite bad cow.ANIM=ACC'the dog bit the cow in an ugly way'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 152@b@@@1@adv@jagua osuHu vakaA pe vai@@@@0@5@dog A.3-bite cow.ANIM=ACC bad*'the dog bit the cow in an ugly way'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-153@a (#b.30)@@@1@adv,wo@haseN vai la nNakyra@@@@1@4@O.3-cry bad the cricket.ANIM.NOM'the cricket cried in an ugly way'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
-154@b@@@1@adv@vai haseN la nNakyra@@@@0@4@bad O.3-cry the cricket.ANIM.NOM*'the cricket cried in an ugly way'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+153@a (#b.30)@@@1@adv,wo@iaseN vai la nNakyra@@@@1@4@O.3-cry bad the cricket.ANIM.NOM'the cricket cried in an ugly way'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
+154@b@@@1@adv@vai iaseN la nNakyra@@@@0@4@bad O.3-cry the cricket.ANIM.NOM*'the cricket cried in an ugly way'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 155@a (#a.8)@@@1@adv,wo@haHe ojatapy tuicha@@@@1@3@3SG.PRON.NOM A.3-make.fire big'She made a fire in a big way'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 156@a (#a.8)@@@1@adv@haHe ojatapy ituicha@@@@0@3@3SG.PRON.NOM A.3-make.fire O.3-big*'He/she made a fire in a big way'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
 157@author@@@1@adv,wo@aguata pyaHe@@@@1@2@1SG-walk quick'I walk quickly'@lisa tittle caballero, thor wicke monteverde@january 14, 2016
