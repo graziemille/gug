@@ -49,7 +49,7 @@ yvyraty := com-inam-noun-lex &
   [ STEM < "yvyraty" >,
     SYNSEM.LKEYS.KEYREL.PRED "_park_n_rel" ].
 
-po_1 := com-inam-noun-lex &
+po_1 := poss-only-com-noun-lex &
   [ STEM < "po" >,
     SYNSEM.LKEYS.KEYREL.PRED "_hand_n_rel" ].
 
