@@ -140,7 +140,7 @@ Phenomena: {agr, pn}
 che aguata
 che aguata
 che a-guata
-I.NOM A.1SG-walk
+1.SG.PRON.NOM A.1SG-walk
 'I walk'
 
 #Ex.13: Dynamic intransitive has 1SG subject marking meant for stative intransitives
@@ -151,7 +151,7 @@ Phenomena: agr
 che cheguata
 che cheguata
 che che-guata
-I.NOM O.1SG-walk
+1.SG.PRON.NOM O.1SG-walk
 (*)'I walk'
 
 #Ex.14:  Dynamic intransitive verb agrees with 1SG subject. VS word order.
@@ -162,7 +162,7 @@ Phenomena: {wo, agr, pn}
 aguata che
 aguata che
 a-guata che
-A.1SG-walk I.NOM 
+A.1SG-walk 1.SG.PRON.NOM 
 'I walk'
 
 #Ex.15: Dynamic intransitive has 1SG subject marking meant for stative intransitives
@@ -173,7 +173,7 @@ Phenomena: agr
 cheguata che
 cheguata che
 che-guata che
-O.1SG-walk I.NOM 
+O.1SG-walk 1.SG.PRON.NOM 
 (*)'I walk'
 
 #Ex.16: Dynamic intransitive verb agrees with 3SG subject. SV word order.
@@ -228,7 +228,7 @@ Phenomena: agr
 aguata nde
 aguata nde
 a-guata nde
-A.1SG-walk 2.SG.PRON
+A.1SG-walk 2.SG.PRON.NOM
 *'you walk'
 
 #Ex.21: Transitive verb agrees with 3per subject. Accusative marking on animate object. SOV word order. No determiners, underspecified number.
@@ -317,7 +317,7 @@ Phenomena: {wo, agr, pn}
 nde reguata
 nde reguata
 nde re-guata
-You.SG.NOM A.2SG-walk
+2.SG.PRON.NOM A.2SG-walk
 'You walk'
 
 #Ex.29: Dynamic intransitive missing verb agreement with 2SG subject.
@@ -328,7 +328,7 @@ Phenomena: agr
 nde guata
 nde guata
 nde guata
-You.SG.NOM walk
+2.SG.PRON.NOM walk
 *'You walk'
 
 #Ex.30: Dynamic intransitive verb agrees with 2PL subject. SV word order.
@@ -339,7 +339,7 @@ Phenomena: {wo, agr,pn}
 peeN peguata
 peeN peguata
 peeN pe-guata
-You.PL.NOM A.2PL-walk
+2.PL.PRON.NOM A.2PL-walk
 'You walk'
 
 #Ex.31: Dynamic intransitive verb has agreement marker of stative intransitive verb. 2SG subject. 
@@ -350,7 +350,7 @@ Phenomena: agr
 nde ndeguata
 nde ndeguata
 nde nde-guata
-You.2SG.NOM O.2SG-walk
+2.SG.PRON.NOM O.2SG-walk
 *'You walk'
 
 #Ex.32: Dynamic intransitive verb agrees with 3SG subject. SV word order.
@@ -361,7 +361,7 @@ Phenomena: {wo, agr, pn}
 ha'e oguata
 haHe oguata
 haHe o-guata
-She.NOM A.3-walk
+3.SG.PRON.NOM A.3-walk
 'She walks'
 
 #Ex.33: Dynamic intransitive verb has agreement marker of stative intransitive verb. 3SG subject. 
@@ -372,7 +372,7 @@ Phenomena: agr
 ha'e iguata
 haHe iguata
 haHe i-guata
-She.NOM 03.-walk
+3.SG.PRON.NOM 03.-walk
 *'He/She walks'
 
 #Ex.34: Dynamic intransitive verb has agreement marker of stative intransitive verb. 1PL.INCL subject.
@@ -383,7 +383,7 @@ Phenomena: agr
 ñande ñandeguata
 nNande nNandeguata
 nNande nNande-guata
-We.INCL 0.1PL.INCL-walk
+1.PL.INCL.PRON.NOM 0.1PL.INCL-walk
 *'We walk'
 
 #Ex.35: Dynamic intransitive verb has 1PL.EXCL agreement marker, but 1PL.INCL subject.
@@ -394,7 +394,7 @@ Phenomena: agr
 ñande roguata
 nNande roguata
 nNande ro-guata
-We.INCL A.1PL.EXCL-walk
+1.PL.INCL.PRON.NOM A.1PL.EXCL-walk
 *'We walk'
 
 #Ex.36: Dynamic intransitive verb has agreement marker of stative intransitive verb. 1PL.EXCL subject.
@@ -405,7 +405,7 @@ Phenomena: agr
 ore oreguata
 ore oreguata
 ore ore-guata
-We.EXCL O.1PL.EXCL-walk
+1.PL.EXCL.PRON.NOM O.1PL.EXCL-walk
 *'We walk'
 
 #Ex.37: Dynamic intransitive verb has agreement marker of stative intransitive verb. 2PL subject.
@@ -416,7 +416,7 @@ Phenomena: agr
 pee˜ pendeguata
 peeN pendeguata
 peeN pende-guata
-You.PL.NOM O.2PL-walk
+2.PL.PRON.NOM O.2PL-walk
 *'You walk'
 
 #Ex.38: Dynamic intransitive verb agrees with 3PL subject. SV word order.
@@ -427,7 +427,7 @@ Phenomena: {wo, agr, pn}
 ha'ekuéra oguata
 haHekueAra oguata
 haHe-kueAra o-guata
-He-PL A.3-walk
+3.PRON.NOM-PL A.3-walk
 'They walk'
 
 #Ex.39: Dynamic intransitive verb has agreement marker of stative intransitive verb. 3PL subject.
@@ -438,7 +438,7 @@ Phenomena: agr
 ha'ekuéra iguata
 haHekueAra iguata
 haHe-kueAra i-guata
-He-PL O.3-walk
+3.PRON.NOM-PL O.3-walk
 *'They walk'
 
 #Ex.40: Dynamic intransitive verb has 2SG agreement marker, but 3SG subject.
@@ -449,7 +449,7 @@ Phenomena: agr
 ha'e reguata
 haHe reguata
 haHe re-guata
-He.SG A.2SG-walk
+3.SG.PRON.NOM A.2SG-walk
 *'They walk'
 
 #Ex.41: Ditransitive verb agrees with 3SG object. Inanimate direct object. Animate indirect object with dative marking.
@@ -548,7 +548,7 @@ Phenomena: pn
 che jaguata
 che jaguata
 che ja-guata
-I.NOM A.1PL.INCL-walk
+1.SG.PRON.NOM A.1PL.INCL-walk
 *'I walk'
 
 #Ex.50: Dynamic intransitive agrees with 2SG subject. Inanimate direct object. Indirect object marked with 1SG dative pronoun. S.V.IO.DO order
@@ -559,7 +559,7 @@ Phenomena: {wo, agr, pn}
 nde rehechauka cheve tunich
 nde rehechauka cheve tunich
 nde re-hecha-uka cheve tunich
-You.SG.NOM A.2SG-see-CAUS me.DAT stone.INAM
+2.SG.PRON.NOM A.2SG-see-CAUS 1.SG.PRON.DAT stone.INAM
 'You show me the stone'
 
 #Ex.51: Dynamic intransitive agrees with 2SG subject. Inanimate direct object. Indirect object marked with 1SG dative pronoun. S.V.DO.IO order
@@ -570,7 +570,7 @@ Phenomena: {wo, agr, pn}
 cheve nde rehechauka tunich 
 cheve nde rehechauka tunich 
 cheve nde re-hecha-uka tunich 
-1SG.PRON.DAT 2SG.PRON.NOM A.2SG-see-CAUS stone.INAM 
+1.SG.PRON.DAT 2.SG.PRON.NOM A.2SG-see-CAUS stone.INAM 
 'You show me the stone'
 
 #Ex.52: Indirect object marked with nominative pronoun instead of dative pronoun.
@@ -581,7 +581,7 @@ Phenomena: agr
 che nde rehechauka tunich 
 che nde rehechauka tunich
 che nde re-hecha-uka tunich
-1SG.PRON.NOM You.SG.NOM A.2SG-see-CAUS stone.INAM
+1.SG.PRON.NOM 2.SG.PRON.NOM A.2SG-see-CAUS stone.INAM
 *'You show me the stone'
 
 #Ex.53: Ditransitive verb has 2SG agreement by 3SG subject.
@@ -592,7 +592,7 @@ Phenomena: pn
 ha'e rehechauka tunich cheve
 haHe rehechauka tunich cheve
 haHe re-hecha-uka tunich cheve
-He.NOM A.2SG-see-CAUS stone.INAM me.DAT
+3.SG.PRON.NOM A.2SG-see-CAUS stone.INAM 1.SG.PRON.DAT
 *'He show me the stone'
 
 #Ex.54: Dynamic intransitive agrees with 2SG subject. Inanimate direct object. Indirect object marked with 1SG dative pronoun. Subject drop.
@@ -603,7 +603,7 @@ Phenomena: {wo, agr, pn}
 rehechauka tunich cheve
 rehechauka tunich cheve
 re-hecha-uka tunich cheve
-A.2SG-see-CAUS stone.INAM me.DAT
+A.2SG-see-CAUS stone.INAM 1.SG.PRON.DAT
 'You show me the stone'
 
 #Ex.55: Determiner following rather than preceding the noun
@@ -669,7 +669,7 @@ Phenomena: {agr, tam}
 ohechata chupe la imbo'ehára
 ohechata chupe la imboHehaAra
 o-hecha-ta   chupe   la  i-mboHehaAra
-A.3-see-FUT  3SG.ACC the.SG  O.3-profesor.NOM
+A.3-see-FUT  3.SG.PRON.ACC the.SG  O.3-profesor.NOM
 *'The professor will see him/her'
 
 #Ex.61: Transitive verb. Completive aspect. Subject drop. Object drop.
@@ -768,7 +768,7 @@ Phenomena: {agr, pn, pro-d}
 rome'e᷉ chupe
 romeHeN chupe
 ro-meHeN chupe
-12.SG-give 3SG.DAT
+12.SG-give 3.SG.PRON.DAT
 'I gave you to him'
 
 #Ex.70:  Ditransitive agrees with 2SG subject. Indirect object marked with 1SG dative pronoun. Object drop prohibited because of human object.
@@ -779,7 +779,7 @@ Phenomena: {pro-d, agr, pn, c}
 reme'e᷉ cheve mbo'ehárape
 remeHeN cheve mboHehaAra pe
 re-meHeN cheve mboHehaAra=pe
-A.2SG-give 1SG.DAT professor.ANIM=ACC
+A.2SG-give 1.SG.PRON.DAT professor.ANIM=ACC
 'You gave the professor to me'
 
 #Ex.71: Transitive verb agrees with 2SG subject. Animate object with accusative marking. Subject drop. 
@@ -856,7 +856,7 @@ Phenomena: {pn, agr}
 mbo'ehára ohechauka cheve temimbo'epe
 mboHehaAra ohechauka cheve temimboHe pe
 mboHehaAra o-hecha-uka cheve temimboHe=pe
-mboHehaAra A.3-see-CAUS 1SG.DAT temimboHe=ACC
+mboHehaAra A.3-see-CAUS 1.SG.PRON.DAT temimboHe=ACC
 'The professor showed the student to me'
 
 #Ex.78: Ditransitive verb correctly agrees with 2SG subject, rather than 3SG object. Indirect object shown with 1SG dative pronoun.
@@ -867,7 +867,7 @@ Phenomena: {pro-d, agr}
 Rehechauka cheve temimbo'epe
 Rehechauka cheve temimboHe pe
 Re-hecha-uka cheve temimboHe=pe
-A.2SG-see-CAUSE 1SG.DAT temimboHe=ACC
+A.2SG-see-CAUSE 1.SG.PRON.DAT temimboHe=ACC
 'You showed the student to me'
 
 #Ex.79: Ditransitive verb correctly agrees with 1SG subject, rather than 3SG object. Indirect object shown with 2SG dative pronoun.
@@ -878,8 +878,8 @@ Phenomena: {agr, pro-d}
 Achechauka ndeve
 Ahechauka ndeve
 A-hecha-uka ndeve
-A.1SG-see-CAUS 2SG.DAT
-'I show it to you'
+A.1SG-see-CAUS 2.SG.PRON.DAT
+'I show it to you' / 'I show you to it'
 
 #Ex.80: Transitive verb agrees with 1SG subject. Human object shown with accusative pronoun and cannot be dropped.  Subject drop. 
 Source: author
@@ -889,8 +889,8 @@ Phenomena: pro-d
 ahecha chupe
 ahecha chupe
 a-hecha chupe
-A.1SG-see 3SG.ANIM.ACC
-'I see him'
+A.1SG-see 3.SG.PRON.ACC
+'I see him/her'
 
 #Ex.81: Transitive verb agrees with 1SG subject. Inanimate/nonhuman object drop.  Subject drop. 
 Source: author
@@ -1219,7 +1219,7 @@ Phenomena: pro-d
 vakápe chupe
 vakaA pe chupe
 vakaA=pe chupe
-cow=ACC it.ACC
+cow=ACC 3.SG.PRON.ACC
 *'To the cow to it'
 
 #Ex.111: Portmanteau marker for 12PL
@@ -1230,7 +1230,7 @@ Phenomena: {agr, pn, pro-d}
 pome'e᷉  chupe
 pomeHeN chupe
 po-meHeN chupe
-12.PL-give 3SG.DAT
+12.PL-give 3.SG.PRON.DAT
 'I gave you to him' (meaning you plural)
 
 #Ex.112: Portmanteau marker incorrectly used with 2SG subject.
@@ -1241,7 +1241,7 @@ Phenomena: agr
 nde rohecha
 nde rohecha
 nde ro-hecha
-You.SG.NOM 12.SG-see
+2.SG.PRON.NOM 12.SG-see
 *'You see me' 
 
 #Ex.113: Portmanteau marker incorrectly used with 2PL subject.
@@ -1252,7 +1252,7 @@ Phenomena: agr
 pee˜ pohecha
 peeN pohecha
 peeN po-hecha
-You.PL.NOM 12.PL-see
+2.PL.PRON.NOM 12.PL-see
 *'You see me
 
 #Ex.114: Transitive verb correctly agrees with 1SG object rather that 2PL subject.  Object drop. 
@@ -1263,7 +1263,7 @@ Phenomena: {agr, pro-d}
 pee˜ chehecha
 peeN chehecha
 peeN che-hecha
-You.PL.NOM O.1SG-see
+2.PL.PRON.NOM O.1SG-see
 'You see me'
 
 #Ex.115: Transitive verb incorrectly agrees with 2PL subject rather that 1SG object.
@@ -1274,7 +1274,7 @@ Phenomena: agr
 pee˜ pehecha cheve
 peeN pehecha cheve
 peeN pe-hecha me.ACC
-You.PL A.2PL-see me.ACC 
+2.PL.PRON.NOM A.2PL-see 1.SG.PRON.ACC 
 *'You see me'
 
 #Ex.116: Yes-No question with question marker in wrong position, should be second position.
@@ -1914,8 +1914,8 @@ Phenomena: {agr, pn}
 che ahecha chupe
 che ahecha chupe
 che a-hecha chupe
-I.NOM A.1SG-see 3.PRON.ACC
-'I see him'
+1.SG.PRON.NOM A.1SG-see 3.SG.PRON.ACC
+'I see him/her'
 
 #Ex.174: Dropped argument on a transitive verb in 2nd person subject.
 Source: author
