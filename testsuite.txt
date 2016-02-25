@@ -345,7 +345,7 @@ You.PL.NOM A.2PL-walk
 #Ex.31: Dynamic intransitive verb has agreement marker of stative intransitive verb. 2SG subject. 
 Source: author
 Vetted: f
-Judgment: g
+Judgment: u
 Phenomena: agr
 nde ndeguata
 nde ndeguata
@@ -389,7 +389,7 @@ We.INCL 0.1PL.INCL-walk
 #Ex.35: Dynamic intransitive verb has 1PL.EXCL agreement marker, but 1PL.INCL subject.
 Source: author
 Vetted: f
-Judgment: g
+Judgment: u
 Phenomena: agr
 ñande roguata
 nNande roguata
@@ -661,16 +661,16 @@ a-jeroky-ta
 A.1SG-dance-FUT
 'I will dance'
 
-#Ex.60: Prospective intention indicated with future aspect.
+#Ex.60: Prospective intention indicated with future aspect. Incorrect use of possessive with determiner.
 Source: author
 Vetted: f
-Judgment: g
+Judgment: u
 Phenomena: {agr, tam}
 ohechata chupe la imbo'ehára
 ohechata chupe la imboHehaAra
 o-hecha-ta   chupe   la  i-mboHehaAra
-A.3-see-FUT  3SG.ACC the.SG  O.3SG-profesor.NOM
-'The professor will see him/her'
+A.3-see-FUT  3SG.ACC the.SG  O.3-profesor.NOM
+*'The professor will see him/her'
 
 #Ex.61: Transitive verb. Completive aspect. Subject drop. Object drop.
 Source: author
@@ -1134,15 +1134,15 @@ a-hecha i-roAga
 A.1SG-see O.3-roAga
 'I see his/her house'
 
-#Ex.103: Noun Noun Possessives. wrong order of possessor
+#Ex.103: Noun Noun Possessives. wrong order of possessor, wrong use of acc marker.
 Source: author
 Vetted: f
 Judgment: u
 Phenomena: poss
-ahecha rógape mbo'ehára
-ahecha roAga pe mboHehaAra
-a-hecha roAga=pe mboHehaAra
-A.1SG-see house=ACC professor.ANIM
+ahecha rógape mbo'ehárape
+ahecha roAga pe mboHehaAra pe
+a-hecha roAga=pe mboHehaAra=pe
+A.1SG-see house=ACC professor.ANIM=ACC
 *'I see the professor's house'
 
 #Ex.104: Affix-marked Possessive. Human Possessor. Inanimate Inalienable Possession. Subject Drop.
@@ -1365,7 +1365,7 @@ nNakyra=pa o-hecha vakaA=pe
 cricket.ANIM.NOM=Q O.3-see cow.ANIM=ACC
 'Was it the cricket, who saw the cow?'
 
-#Ex.124: Yes-No question with focus marker on verb object
+#Ex.124: Yes-No question with focus marker on verb object (not currently handled by the grammar)
 Source: c
 Vetted: f
 Judgment: g
