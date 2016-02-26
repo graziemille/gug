@@ -345,7 +345,7 @@ intransitive-verb-lex :=  intransitive-lex-item &
 ;; same cross-marking patterns 
 
 gug-trans-ditrans-verb := verb-lex &
-  [ INFLECTED.PERNUM-DYN-INTRANS-OR-PERNUM-TRANS-FLAG - ].
+  [ INFLECTED.PERNUM-TRANS-FLAG - ].
 
 
 
@@ -893,7 +893,7 @@ n-bar-predicate-rule := YNQ-constrained-phrase & nocoord &
                                 SPR  < >,
                                 COMPS < >,
 				SUBJ <[ LOCAL [ CONT.HOOK.INDEX #arg1,
-					      CAT [ HEAD noun,
+					      CAT [ HEAD noun & [CASE nom],
 						    VAL.SPR < > ] ] ] > ] ]],
     C-CONT [ HOOK [ LTOP #ltop,
 		    INDEX #index,

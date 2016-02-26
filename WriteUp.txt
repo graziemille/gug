@@ -3,105 +3,11 @@
 # AUTHOR: Lisa Tittle Caballero
 # PARTNER: Thor Wicke Monteverde
 
-1. Negation
-
-PG has two constructions for sentential negation. Both involve a circumfix around the predicate of a sentence. The first sentential negation is undefined for aspect and is represented as  “nde-…-i.”  Ex.90 & Ex.203 are examples of Guarani sentences with grammatical negation of this type.
-
-#Ex.90: Negated transitive verb. Subject drop. Object Drop.
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {neg, pro-d}
-ndahechai
-ndahechai
-nde-a-hecha-i
-NEG-A.1SG-see-NEG
-'I don't see it'
-
-#Ex.203: Negated intransitive verb.
-Source: author
-Vetted: f
-Judgment: g	
-Phenomena: neg
-jagua ndojerokyi
-jagua ndojerokyi
-jagua nd-o-jeroky-i
-dog NEG-A.3-dance-NEG
-'The dog doesn't dance'
-
-The second kind of sentential negation, represented as “nd- -moHaNi” is for utterances where future aspect is intended. Our aspect marker is glossed as FUT here to distinguish it from prospective aspect (“about to”) which we also have implemented in our grammar.  FUT is not a reference to tense and the example in #94 could mean either “I am not going to see it” or “I wasn’t going to see it.” 
-
-#Ex.94: Negated transitive verb. Future-aspect negation. Subject drop. Object Drop.
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: neg
-ndahechamoHaNi
-ndahechamoHaNi
-nde-a-hecha-moHaNi
-NEG-A.1SG-see-FUT.NEG
-'I am not going to see it' / 'I wasn’t going to see it'
-
-Both the prefix and suffix are required for negation to be grammatical, so the examples below are all ungrammatical and do not parse.
-
-#Ex.96: Incomplete future negation marking. Missing prefix. 
-Source: author
-Vetted: f
-Judgment: u
-Phenomena: neg
-okýmo'a᷉i
-okyAmoHaNi
-o-kyA-moHaNi
-A.3-rain-FUT.NEG
-*'It isn’t/wasn’t going to rain'
-
-#Ex.204: Negated intransitive verb. Incomplete negation circumfix. Missing prefix.
-Source: author
-Vetted: f
-Judgment: u
-Phenomena: neg
-jagua ojerokyi
-jagua ojerokyi
-jagua o-jeroky-i
-dog A.3-dance-NEG
-*'The dog doesn't dance'
-
-#Ex.92: Incomplete negation marking. Missing suffix.
-Source: author
-Vetted: f
-Judgment: u
-Phenomena: neg
-ndahecha
-ndahecha
-nde-a-hecha
-NEG-A.1SG-see
-*'I don't see it'
-
-We implemented this phenomenon several weeks ago using the customization system, by choosing “simple” negation, and “Inflectional negation.”  To make sure that we got the full circumfix for our grammatical examples we created two position classes. NEG1 and NEG2. NEG1 attaches the prefix nde- and adds negation semantics.  NEG2 attaches either the -i or the -moHaNi suffix.   The -i suffix adds no additional semantic information.  The -moHaNi suffix adds future aspect.  The position classes are optional in general, but require one another if they do fire, so we can get negated and non-negated sentences, but we don’t get parses for sentences with only a prefix or only a suffix.
-
-The .tdl changes this week were limited to making locative-verb-lex inherit from the daughters of our inflectional rules for negation and aspect as seen below:
-
-locative-verb-lex := gug-dyn-loc-verb & trans-first-arg-control-lex-item & completive-aspect-or-perfective-aspect-or-prospective-aspect-rule-dtr & future-aspect-rule-dtr & neg1-rule-dtr & neg2-rule-dtr &
-
-So we can now get a parse for examples like #206
-
-#Ex.206: be+located raising verb. Contentful postpositions.  Negation.
-Source: b
-Vetted: f
-Judgment: g
-Phenomena: {cop, adp}
-ndoimei kotýpe jaguandi
-ndoimei koty pe jagua ndi
-nd-o-ime-i koty=pe jagua=ndi
-NEG-3.ACT-be.located-NEG room=in dog=with
-'He/She is not located in the room with the dog'
-
-We are able to generate from our grammatical examples and our generation results show that we have effectively captured the aspect difference between “nd- -i” and “nd- -moHaNi” since generating from examples with the former gives us possibilities for all aspects, and generating from examples with the latter gives us only possibilities with future aspect.
 
 
-2. One Sentence Fromm Test Corpus
+1. One Sentence Fromm Test Corpus
 
-The sentence we chose for this week is #20
+Last week we were able to parse sentence #20
 
 #Sentence.20
 Source: a, attested
@@ -109,593 +15,318 @@ Vetted: t
 Judgment: g
 Phenomena: corpus
 Ha he'i Huanchi:
-ha  oe   Juanchi
-ha  o-e  Juanchi
+ha  oeHi   Juanchi
+ha  o-eHi  Juanchi
 and A.3-say Juan.DIM
 'And Juanito says:'
 
-As we discussed on GoPost, implementing this sentence required three key steps:  1. implementing “and” as a left-attaching scopal modifier, 2. Adding a new version of “say” to our grammar, and 3. implementing proper names. I discuss each of the three steps separately below:
 
-— ‘SCOPAL MODIFIER’
+This week we decided to build on that work by parsing sentence #22
 
-The scopal modifier “ha” was defined with the following PG.tdl 
-
-;;; Scopal-modifiers
-scopal-lex := scopal-mod-lex & norm-sem-lex-item & norm-zero-arg & non-ynq-word &
-  [ SYNSEM.LOCAL.CAT [  HEAD adv,
-                        EC -, 
-                        IC -,
-                        VAL [ SPR < >,
-                              COMPS < >,
-                              SUBJ < >,
-                              SPEC < > ]]].
-
-scopal-mod-lex is inherited from matrix.tdl, but was not very constrained:
-
-scopal-mod-lex := lex-item &
-  [ SYNSEM [ LOCAL [ CAT.HEAD.MOD < [ LOCAL scopal-mod &
-					    [ CONT.HOOK.LTOP #larg ]] >,
-		     CONT.HCONS <! qeq & 
-				 [ HARG #harg,
-				   LARG #larg ] !> ],
-	     LKEYS.KEYREL.ARG1 #harg ]].
-
-We added inheritance from norm-sem-lex-item, norm-zero-arg, and non-ynq-word to make sure our semantics where appropriately defined for this lexical type.  We also specified that the type as [HEAD adv] so we could easily constrain its behavior separately from our other modifiers which are currently all [HEAD adj] even when they modify verbs.  
-This type is also [EC -] because it should not appear in an embedded clause and [IC -] because it is not required to appear in an interrogative clause (like “piko” or “pa”).   Finally the VAL features for SPR/COMPS/SUBJ/SPEC were all defined as empty.
-
-;;; Scopal Modifiers
-ha4 := scopal-lex &
-   [ STEM < "ha" >,
-     SYNSEM.LKEYS.KEYREL.PRED "_and_c_rel"].
+#Sentence.22
+Source: a, attested
+Vetted: t
+Judgment: g
+Phenomena: corpus
+Ha he'i Pirulo-pe
+Ha oeHi Pirulo pe 
+Ha o-eHi Pirulo=pe 
+and A.3-say Pirulo=DAT
+'and he said to Pirulo'
 
 
-The new type was instantiated in our lexicon with the entry above. The _and_c_rel predication is based of a similar example in the ERG (thanks for finding that for us).
-
-We also implemented a gug-scopal-mod-phrase rule in PG.tdl, which inherits from the basic-head-mod-phrase-simple found in Matrix.tdl. To the original implementation of basic-head-mod-phrase-simple we added an identification between the MC (main clause) values of the mother and non-head-dtr (the modifier), as well as an identification between the L-PERIPH value of the HEAD-DTR and the NON-HEAD-DTR.  This was done by adding the following lines to PG.tdl.
-
-basic-head-mod-phrase-simple :+ 
-   [ SYNSEM.LOCAL.CAT.MC #mc,  
-     NON-HEAD-DTR.SYNSEM.LOCAL.CAT [ HEAD.MOD < [ L-PERIPH #periph ] >,
-				     MC #mc ],
-     HEAD-DTR.SYNSEM.L-PERIPH #periph ].
-
-Our gug-scopal-mod-phrase inherits from head-final so we get the correct left-attaching behavior from our modifiers, and from head-compositional so the syntactic head daughter is correctly identified as the semantic head.  The output of our rule is MC na so that it is required to through decl-cl before unifying with the root. For now (until we have evidence to the contrary from our source data) we have set the values of EC and IC to negative so this phrase does not appear in embedded or interrogative clauses, and its QUE, SLASH, and YNQ features are all set to empty.  
-
-gug-scopal-mod-phrase := basic-head-mod-phrase-simple & head-final & 
-			 head-compositional &
-  [ SYNSEM [ LOCAL.CAT [ MC na,                       
-			 EC -,                        
-			 IC -],
-	     NON-LOCAL [ QUE <! !>, 
-			 SLASH <! !>, 
-			 YNQ <! !> ]],
-    HEAD-DTR.SYNSEM.LOCAL.CAT [ MC na,
-                                HEAD verb & [MOD < >],
-                                VAL [ SPEC < >, 
-                                      SPR < >, 
-                                      SUBJ < >, 
-                                      COMPS < > ]],
-    NON-HEAD-DTR.SYNSEM.LOCAL [ CAT [ HEAD adv & 
-					   [ MOD < [ LOCAL scopal-mod ] >],
-                                      VAL [SPEC < >,
-					   SPR < >, 
-					   SUBJ < >, 
-					   COMPS < > ]],
-                                      CONT.HOOK #hook ],
-    C-CONT [ HOOK #hook,
-	     HCONS <! !>,
-	     ICONS <! !> ] ]. 
-
-Additionally, the rule requires a fully satisfied head daughter that is [MC na] and [MOD < >].  It’s non-head daughter has empty valence features and should be HEAD adv (which at this point only our scopal modifiers are). Its MOD value requires modify a constituent with a [LOCAL scopal-mod] value, and its CONT.HOOK value is identified with the C-CONT.HOOK of the rule itself.   The final rule was added to rules.tdl as follows:
-
-scopal-mod := gug-scopal-mod-phrase.
-
-This was a particularly satisfying rule to work with since we were able to take it from spinning, to hundreds of parses to just the ones we want. 
-
-— ADDING ‘SAY’
-
-We followed your suggestion and implemented say as a transitive verb, so that in our corpus example we get semantics similar to “Juanchi says it.”  This was implemented straightforwardly by adding the following entry to our lexicon:
-
-e := trans-verb-lex &
-  [ STEM <"e">,
-    SYNSEM.LKEYS.KEYREL.PRED "_say_v_rel"]. 
+As we discussed on GoPost, implementing this sentence involved required us to: 
+1. Implement ditransitives (finally!), including defining the new type and making sure appropriate inflection applied, 2. changing our implementation of case-marking adpositions so that we have separate entries for accusative and dative version of the postposition PE, only one of which is optional. 3. Making the appropriate changes to the lexicon.
 
 
-- ‘IMPLEMENTING PROPER NOUNS’
 
-Although our source glossed the name “Juanchi” as “Juan” + diminutive “chi,”  with your permission we have (gratefully) opted to treat this as a name equivalent to the Spanish name “Juanito” which is constructed in a similar fashion.  This meant that we just needed to add a lexical type for proper nouns which we did by adding the following to PG.tdl,
+- DITRANSITIVES
 
-;; category for proper-nouns
-proper-noun-lex := non-poss-com-noun-lex & no-spr-noun-lex & com-anim-noun-lex & named-relation.
 
-The non-poss-com-noun-lex type was newly redefined in this grammar, as shown below so that it could be inherited independently by our inanimate non-possessable common nouns like “wind” and our proper nouns which (for now) are defined as animate.  Because non-poss-com-noun-lex inherits from common-noun-lex we didn’t have to add any additional constraints to it’s IC/EC values or it’s NON-LOCAL features like QUE and YNQ since those are already inherited from common-noun-lex.
 
-non-poss-com-noun-lex :=  common-noun-lex & 
- [SYNSEM.LOCAL.CAT.HEAD.POSS poss-or]. 
 
-no-spr-noun-lex := noun-lex &
-  [ SYNSEM.LOCAL.CAT.VAL.SPR < [ OPT + ] > ].
+—— INFLECTION
+Even though they have three arguments, ditransitive verb predicates (DVPs) in PG are inflected with the same prefixes as our transitive verbs. The prefixes, which our authors refer to as co-referential markers, can co-reference either the subject or the direct object (DO) of a verb.  Subjects and DOs are co-referenced with different sets of markers, which (following the conventions in our reference grammars) we refer to as A-markers and O-markers respectively.  Whether a verb receives A- or O- marking depends on its arguments’ positions in a person hierarchy. First person arguments outrank second person arguments which outrank third person arguments. If both arguments have the same person designation an A-marker is used. This gives us patterns like those below:
 
-com-anim-noun-lex := common-noun-lex &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.GEND anim ].
 
-named-relation := noun-relation &
-  [ PRED named_rel,
-    CARG string ].
+#Ex.70: Transitive verb with 3PER object agrees with 1SG subject. Subject drop. 
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {pro-d, agr, pn}
+ahecha vakápe
+ahecha vakaA pe
+a-hecha vakaA=pe
+A.1SG-see cow.ANIM=ACC
+‘I see the cow'
 
-no-spr-noun-lex was a type already present in our grammar. We inherited from it here to keep our proper nouns from appearing with specifiers, and com-anim-noun-lex adds the animate gender information. Finally, I was very happy to find the named-relation type in Matrix.tdl when hunting around for information about CARG.  Having proper-noun-lex inherit from this type sets the main PRED value of our proper nouns to “named_rel” and defines a CARG which we can then have our individual lexical entries constrain.  The lexical entry for Juanchi that we added to lexicon.tdl is as follows:
+#Ex.71: Transitive verb with 3PER object agrees with 2SG subject. Subject drop. 
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {pro-d, agr, pn}
+rehecha vakápe
+rehecha vakaA pe
+re-hecha vakaA=pe
+A.2SG-see cow.ANIM=ACC
+‘You see the cow'
 
-Juanchi := proper-noun-lex &
-  [ STEM < "Juanchi" >,
-    SYNSEM.LKEYS.KEYREL.CARG "Juanchi" ].
+#Ex.72: Transitive verb agrees with 3PER object agrees with 3PER subject. Subject drop. 
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {pro-d, agr, pn}
+ohecha vakápe
+ohecha vakaA pe
+o-hecha vakaA=pe
+A.3-see cow.ANIM=ACC
+'He sees the cow'
+
+#Ex.73: Transitive verb with 3PER subject agrees with 1SG object.  Object drop.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: agr
+chehecha vaká
+chehecha vakaA
+che-hecha vakaA
+O.1SG-see cow.ANIM
+'The cow sees me'
+
+#Ex.74: Transitive verb with 3PER subject agrees with 2SG object. Object drop.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: agr
+ndehecha vaká
+ndehecha vakaA
+nde-hecha vakaA
+O.2SG-see cow.ANIM
+'The cow sees you'
+
+#Ex.4: Ungrammatical verb agreement with 3per object rather 3per subject.
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: agr
+ju'i ihecha tunich
+juHi ihecha tunich
+juHi i-hecha tunich
+frog.ANIM O.3-see stone.INAM
+*'The frog sees the stone'
+
+The person-ranking of an indirect object (IO) does not affect co-reference marking on the verb, which we can see in Ex.50, where we have a 1st person IO, but the verb agrees with the 2nd person subject because the DO is 3rd person.
+
+#Ex.50: Ditransitive agrees with 2SG subject. Indirect object marked with 1SG dative pronoun. S.V.IO.DO order
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {wo, agr, pn}
+nde rehechauka cheve tunich
+nde rehechauka cheve tunich
+nde re-hecha-uka cheve tunich
+2.SG.PRON.NOM A.2SG-see-CAUS 1.SG.PRON.DAT stone.INAM
+'You show me the stone'
+
+To capture this parallel behavior between transitive and intransitive verbs and make use of the inflectional rules already present in our grammar, we defined a supertype for transitive and intransitive verbs: 
+
+gug-trans-ditrans-verb := verb-lex &
+  [ INFLECTED.PERNUM-TRANS-FLAG - ].
+
+The supertype inherits from verb-lex and adds a flag feature requiring verbs of this type to go through our pernum-trans-ditrans-lex-rule, to be considered fully inflected: 
+
+pernum-trans-ditrans-lex-rule-super := add-only-no-ccont-rule & completive-aspect-or-perfective-aspect-or-prospective-aspect-rule-dtr & future-aspect-rule-dtr & infl-lex-rule & neg1-rule-dtr & neg2-rule-dtr &
+  [ INFLECTED [ PERNUM-DYN-INTRANS-OR-PERNUM-TRANS-FLAG +,
+                PERNUM-TRANS-FLAG +,
+                PERNUM-DYN-INTRANS-OR-PERNUM-STAT-INTRANS-OR-PERNUM-TRANS-FLAG +,
+                NEG1-FLAG #neg1,
+                PERNUM-STAT-INTRANS-FLAG #pernum-stat-intrans,
+                NEG2-FLAG #neg2 ],
+    DTR gug-trans-ditrans-verb &
+        [ INFLECTED [ NEG1-FLAG #neg1,
+                      PERNUM-STAT-INTRANS-FLAG #pernum-stat-intrans,
+                      NEG2-FLAG #neg2 ] ] ].
+
+The linguistic facts of the language outlined above are captured by the individual lexical rule types of this position class which specify subject and object PERNUM values for each type.  For rule types with 1st person subjects there is no need to constrain PERNUM on the object since 1st person subjects will always outrank their objects.
+
+1sg-a-lex-rule := pernum-trans-ditrans-lex-rule-super &
+  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1sg ].
+
+1sg-a-2sg-o-lex-rule := pernum-trans-ditrans-lex-rule-super &
+  [ SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1sg,
+                           COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2sg ] ].
+
+1sg-a-2pl-o-lex-rule := pernum-trans-ditrans-lex-rule-super &
+  [ SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1sg,
+                           COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2pl ] ].
+
+1sg-o-23-a-lex-rule := pernum-trans-ditrans-lex-rule-super &
+  [ SYNSEM.LOCAL.CAT.VAL [ COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1sg,
+                           SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM non-1st ] ].
+
+2sg-a-3-o-lex-rule := pernum-trans-ditrans-lex-rule-super &
+  [ SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2sg,
+                           COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3rd ] ].
+
+2sg-o-3-a-lex-rule := pernum-trans-ditrans-lex-rule-super &
+  [ SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3rd,
+                           COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2sg ] ].
+
+3-a-3-o-lex-rule := pernum-trans-ditrans-lex-rule-super &
+  [ SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3rd,
+                           COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3rd ] ].
+
+1pl-incl-a-lex-rule := pernum-trans-ditrans-lex-rule-super &
+  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1pl_incl ].
+
+1pl-excl-a-lex-rule := pernum-trans-ditrans-lex-rule-super &
+  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1pl_excl ].
+
+1pl-incl-o-23-a-lex-rule := pernum-trans-ditrans-lex-rule-super &
+  [ SYNSEM.LOCAL.CAT.VAL [ COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1pl_incl,
+                           SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM non-1st ] ].
+
+1pl-excl-o-23-a-lex-rule := pernum-trans-ditrans-lex-rule-super &
+  [ SYNSEM.LOCAL.CAT.VAL [ COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1pl_excl,
+                           SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM non-1st ] ].
+
+2pl-a-3-o-lex-rule := pernum-trans-ditrans-lex-rule-super &
+  [ SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2pl,
+                           COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3rd ] ].
+
+2pl-o-3-a-lex-rule := pernum-trans-ditrans-lex-rule-super &
+  [ SYNSEM.LOCAL.CAT.VAL [ COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2pl,
+                           SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3rd ] ].
+
+These individual lexical rule types are instantiated in irules.tdl as follows:
+
+1sg-a-prefix :=
+%prefix (* a)
+1sg-a-lex-rule.
+
+1sg-a-2sg-o-prefix :=
+%prefix (* ro)
+1sg-a-2sg-o-lex-rule.
+
+1sg-a-2pl-o-prefix :=
+%prefix (* po)
+1sg-a-2pl-o-lex-rule.
+
+1sg-o-23-a-prefix :=
+%prefix (* che)
+1sg-o-23-a-lex-rule.
+
+2sg-a-3-o-prefix :=
+%prefix (* re)
+2sg-a-3-o-lex-rule.
+
+2sg-o-3-a-prefix :=
+%prefix (* nde)
+2sg-o-3-a-lex-rule.
+
+3-a-3-o-prefix :=
+%prefix (* o)
+3-a-3-o-lex-rule.
+
+1pl-incl-a-prefix :=
+%prefix (* ja)
+1pl-incl-a-lex-rule.
+
+1pl-excl-a-prefix :=
+%prefix (* ro)
+1pl-excl-a-lex-rule.
+
+1pl-incl-o-23-a-prefix :=
+%prefix (* nNande)
+1pl-incl-o-23-a-lex-rule.
+
+1pl-excl-o-23-a-prefix :=
+%prefix (* ore)
+1pl-excl-o-23-a-lex-rule.
+
+2pl-a-3-o-prefix :=
+%prefix (* pe)
+2pl-a-3-o-lex-rule.
+
+2pl-o-3-a-prefix :=
+%prefix (* pende)
+2pl-o-3-a-lex-rule.
+
+
+— CASE-MARKING ADPOSITIONS
+The indirect objects of DVPs are marked with an obligatory dative marker. These arguments can take the form of either a dative pronoun or an NP combined with the case-marking postposition ’pe.’  
+
+
+
+
+
+
+
+
+
+
+
+
+— CHANGES TO THE LEXICON
+
+Since we defined proper nouns last week, adding Pirulo was simple.  We just added the following new entry to lexicon.tdl:
+
+	Pirulo := proper-noun-lex &	
+	  [ STEM < “Pirulo” >,
+	    SYNSEM.LKEYS.KEYREL.CARG “Pirulo” ].
+
+Which inherits from our proper-noun-lex defined in PG.tdl:
+
+	proper-noun-lex := non-poss-com-noun-lex & no-spr-noun-lex & com-anim-noun-lex & 
+			   named-relation.
+
+We also up dated our entry for eHi so that instead of instantiating trans-verb-lex, it instantiates ditrans-verb-lex:
+
+	eHi := ditrans-verb-lex &
+	  [ STEM <"eHi">,
+	    SYNSEM.LKEYS.KEYREL.PRED "_say_v_rel"]. 
+
+
 
 — END STATE
-Our sentence parses with the semantics we want, as well as with two additional parses. One of the parses results from the ambiguity of the phrase “oe Juanchi” which could also mean “Juanchi was said” which we may in the future want to eliminate, since it’s my intuition that it’s a little semantically weird to have a named entity be the object of the verb say, but I will ask about that on goPost first. The third parse is the result of the application of asyndeton coordination and the n-bar-predicate rule so we get “And someone said something and something is Juanchi”  which is strange, but technically correct.  We can generate from all three parse though generating from the coordination example shows that we still have to do a little more constraining in our coordination rules with respect to our interrogative clitics “pa” and “piko”   
+  
+Our new sentence now parses with our target semantics. We also get one additional parse, with the meaning “He said Pirulo to someone,” because the accusative marker is also written as ‘pe,’ and in our free word order language, this makes #22 ambiguous.  
 
-3. Wh-Questions
-
-Wh-questions Guarani employs the question words mbaHeA, “what” and maAva, “who.” There are some similarities between Matrix Yes-No Questions and Matrix Wh-Questions in Guarani.  As we can see in Ex. 125, 126, and 130, 296 questions about who and what can both be formed using the second position clitics =piko and =pa.  
-
-#Ex.125: Wh question for 'what' object, with piko question clitic
-Source: d
-Vetted: f
+#Sentence.22
+Source: a, attested
+Vetted: t
 Judgment: g
-Phenomena: {wh, wo}
-mba'é piko rejapo ?
-mbaHeA piko rejapo
-mbaHeA=piko re-japo
-what=Q A.2SG-do
-'What do you do?'
+Phenomena: corpus
+Ha he'i Pirulo-pe
+Ha oeHi Pirulo pe 
+Ha o-eHi Pirulo=pe 
+and A.3-say Pirulo=DAT
+'and he said to Pirulo'
 
-#Ex.126: Wh question for 'what' object, with pa question clitic
-Source: d
-Vetted: f
+We are able to generate from both of our parses. When we generate from the tree where =pe is identified as an accusative marker we get four parses: both Verb/Argument orders, each with a pe-marked and non-pe-marked option.  When we generate from the tree where =pe is identified as a dative marker, we correctly get only two parses: ‘ha Pirulo pe oeHi,’ and ‘ha oeHi Pirulo pe.’  
+
+
+
+4. More improvements to the grammar
+
+—UPDATES FROM LAST WEEK
+
+We are now defining ‘-eHi’ as a ditransitive verb in the lexicon, but because dative marking is obligatory for indirect objects, Juanchi can only be the subject or direct object of the predicate in 20—which is the same ambiguity we saw last week when ‘-eHi’ was instantiated as a transitive verb. 
+
+#Sentence.20
+Source: a, attested
+Vetted: t
 Judgment: g
-Phenomena: {wh, wo}
-mba'épa rejapo ?
-mbaHeA pa rejapo
-mbaHeA=pa re-japo
-what=Q A.2SG-do
-'What do you do?'
+Phenomena: corpus
+Ha he'i Huanchi:
+ha  oeHi   Juanchi
+ha  o-eHi  Juanchi
+and A.3-say Juan.DIM
+'And Juanito says:'
 
-#Ex.130: Wh question for 'who,' with pa question clitic
-Source: d
-Vetted: f
-Judgment: g
-Phenomena: {wh, wo}
-mávapa ou ?
-maAva pa oju
-maAva=pa o-ju
-who=Q A.3-come
-'Who is coming?'
+Also, last week when we generated from these parses we got a lot of sentences.  Some of this generation was well-formed and due to the fact that we had not specified a default for underspecified aspect values. But generating from our coordinated examples also generated a lot of options with ‘pa’ and ‘piko,’ e.g. ‘ha oeHi ha Juanchi piko.’ With changes made to semi.vpm and our coordination rules (described below) we have managed to get some really well behaved generation. 
 
-Ex. 206 WH-question with transitive verb 
-Source: d
-Vetted: f
-Judgment: g
-Phenomena: wh
-mávapa ohecha ju’ipe ?
-maAva pa ohecha juHi pe
-maAva=pa o-hecha juHi=pe
-who=Q  3-see frog=ACC
-‘Who sees the frog?’
 
-
-However Wh-questions can also appear without a particle at all as seen in example 127 which has an unmarked question word followed by a verb, mbaHeA re-japo, “what do you do.” 
-
-#Ex.127: Wh question for 'what' object, without any clitic
-Source: d
-Vetted: f
-Judgment: g
-Phenomena: {wh, wo}
-mba'é rejapo ?
-mbaHeA rejapo
-mbaHeA re-japo
-what A.2SG-do
-'What do you do?'
-
-
-As with the Yes-No examples, when there is a question particle present, it must immediately follow the  question word, which itself must be sentence initial, so examples 128 and 129 below are both ungrammatical.
-
-
-#Ex.128: Wh question for 'what' object, wrong order, should be at the front
-Source: d
-Vetted: f
-Judgment: u
-Phenomena: wh
-rejapo mba'é ?
-rejapo mbaHeA
-re-japo mbaHeA 
-A.2SG-do what
-*'What do you do?'
-
-#Ex.129: Wh question for 'who,' with question clitic in wrong position.
-Source: d
-Vetted: f
-Judgment: u
-Phenomena: wh
-ou mávapa ?
-oju maAva pa
-o-ju maAva=pa
-A.3-come who=Q 
-*'Who is coming?'
-
-WH questions can appear also in interrogative clauses, where the main clause verb naturally takes that complement, like illustrated in the following IGT:
-
-Ex. 207 WH question as an embedded clause 
-Source: authors
-Vetted: f
-Judgment: g
-Phenomena: wh
-aporandu mávapa ohecha ju’ipe
-aporandu maAva pa ohecha juHi pe
-a-porandu maAva=pa o-hecha juHi=pe
-1SG-ask who=Q 3-see frog=ACC
-‘I ask who sees the frog’
-
-Additionally WH words can refer to any argument of a predicate, and WH words are sentence-initial, occupying the first position in a sentence/clause, regardless of whether the sentence/clause as a whole includes any embedded clauses. Because of this we hypothesize that long-distance dependencies are possible. We could not find relevant data in any of our grammar references, but we have assumed this to be the case for the purposes of our grammar. Which means we count the following sentence as grammatical: 
-
-Ex. 208 Long-distance dependency with WH-question
-Source: d
-Vetted: f
-Judgment: g
-Phenomena: wh
-mávapa aikuua ohechaha ju’ipe?
-maAva pa aikuua ohecha ha juHi pe
-maAva=pa a-ikuua o-hecha=ha juHi=pe
-who=Q 1SG-know 3-see frog=ACC
-‘Who do I know sees the frog?’
-
-
-To implement this we first defined our wh-pronoun-lex as follows:
-
-wh-pronoun-noun-lex := norm-hook-lex-item & basic-icons-lex-item & 
-  [ SYNSEM [ LOCAL [ CAT [ IC +,
- 			   HEAD noun,
-			   VAL [ SPR < >,
-				 SUBJ < >,
-				 COMPS < >,
-				 SPEC < > ] ],
-		     CONT [ HOOK.INDEX.PNG.PERNUM 3rd,
-	                    RELS < ! [ LBL #larg,
-				       ARG0 #ind & ref-ind ],
-				  [ PRED "wh_q_rel",
-				    ARG0 #ind,
-				    RSTR #harg ] ! >,
-			    HCONS < ! [ HARG #harg,
-				        LARG #larg ] ! > ] ],
-	     NON-LOCAL.QUE < ! #ind ! > ] ].
-
-We had to change the PNG feature to PERNUM 3rd, since our language uses PERNUM.  We also added IC +, so that clauses with these words are appropriately identified as clauses with questions in them and can unify with rules that require an IC + daughter like our int-cl phrase rule.  
-
-We then added these two entries to the lexicon:
-
-
-mbaHeA := wh-pronoun-noun-lex &
-  [ STEM < "mbaHea" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_thing_n_rel" ].
-
-maAva := wh-pronoun-noun-lex &
-  [ STEM < "maAva" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_person_n_rel" ].
-
-
-Next we worked on instantiating rules for wh-ques-phrase, extracted-comp and extracted subject phrase.  We have specified that our wh-ques-phrase is MC na, which means that it cannot unify directly with the root, it has to pass through int-cl first.  Because it is [IC +] it cannot unify with decl-cl which requires its daughter to be [IC -], which is the behavior we want.   
-
-
-wh-ques-phrase := gug-basic-head-filler-phrase & interrogative-clause & 
-		  head-final &
-   [ SYNSEM.LOCAL.CAT [ IC +,
-			MC na,
-			VAL [SUBJ < >, 
-                             SPR #spr ,
-                             COMPS #comps, 
-                             SPEC #spec],
-			HEAD verb ],
-     HEAD-DTR.SYNSEM.LOCAL.CAT [  MC na,
-				  VAL [SUBJ < >, 
-                                       SPR #spr ,
-                                       COMPS #comps, 
-                                       SPEC #spec]],
-     NON-HEAD-DTR.SYNSEM [ LOCAL.CAT.IC +,
-			   NON-LOCAL.QUE < ! ref-ind ! > ]].
-
-
-
-Our wh-ques-phrase inherits from interrogative-clause in Matrix.tdl (which constrains its SYNSEM.LOCAL.CONT.HOOK.INDEX.SF value to be ques, and defines C-CONT RELS,HCONS,ICONS as empty.  It originally inherited from basic-head-filler-phrase, which inherits from basic-filler-phrase.  But basic-filler-phrase has a [ SYNSEM [ LOCAL.CAT [ VAL.COMPS olist ], constraint on its second argument, which doesn’t work for Guarani.  So we created a new type for our grammar which includes all of the information that would have been inherited from basic-head-filler-phrase, without that constraint. 
-
-gug-basic-head-filler-phrase := binary-phrase & phrasal & head-compositional &
-  [ SYNSEM [ LOCAL [ CAT [ VAL [ COMPS < >,
-                                 SPR < > ],
-			   POSTHEAD + ] ],
-	     NON-LOCAL.SLASH 0-dlist ],
-    ARGS < [ SYNSEM [ LOCAL #slash & local &
-			    [ CAT.VAL [ SUBJ olist,
-					COMPS olist,
-					SPR olist ],
-			      CTXT.ACTIVATED + ],
-		      NON-LOCAL.SLASH 0-dlist ] ],
-     [ SYNSEM [ NON-LOCAL [ SLASH 1-dlist &
-				  [ LIST [ FIRST #slash,
-					   REST < > & #last ],
-				    LAST #last ],
-			    QUE 0-dlist,
-			    REL 0-dlist ] ] ] > ].
-
-
-We also had to make a few changes to extracted-comp-phrase and extracted-subj-phrase adding identities so that they pass up our IC and EC features, and making sure they are MC na so that they cannot unify with the root without passing through either int-cl or decl-cl.  
-
-extracted-comp-phrase := basic-extracted-comp-phrase &
-  [ SYNSEM [LIGHT -,
-	    LOCAL.CAT[  IC #ic,
-                        EC #ec,
-			MC na,
- 		        HEAD verb]],
-    HEAD-DTR.SYNSEM.LOCAL.CAT[ IC #ic,
-                               EC #ec,
-                               VAL.SUBJ cons ]].
-
-
-extracted-subj-phrase := basic-extracted-subj-phrase &
-  [ C-CONT [ RELS <! !>,
-	     HCONS <! !>,
-	     ICONS <! !> ],
-    SYNSEM.LOCAL.CAT[ IC #ic,
-                      EC #ec,
-                      MC na,
- 		      HEAD verb],
-    HEAD-DTR.SYNSEM.LOCAL.CAT[ IC #ic,
-                               EC #ec,
-                               VAL.COMPS < > ]].
-
-
-Extracted-comp-phrase initially restricted its head daughter to have an empty SUBJ value, but for Guarani we actually want [VAL.SUBJ cons ], when we changed that we recovered some of our missing parses. And finally, extracted-subj-phrase was problematically underconstrained with respect to its RELS, HCONS, and ICONS values, which we discovered in class.  Adding  [ C-CONT [ RELS <! !>, HCONS <! !>, ICONS <! !> ], helped us recover some of our missing semantics.
-
-— Generation
-
-We are able to generate from our examples, though it’s through this process that we identified a LOT of leaks related to adding our extraction rules, because a lot of things were underconstrained with respect to their NON.LOCAL SLASH, QUE and YNQ features. 
-Finding and fixing those leaks was a large portion of work we did this week, and the changes outlined in the next section. 
-
-— Ancillary changes related to addition of extraction rules.
-
-Constrained the value of NON-LOCAL of the root symbol to non-local-none:
-
-root := phrase &
-  [ SYNSEM[LOCAL [ COORD -, CAT [ VAL [ SUBJ < >, COMPS < > ],
-                                  MC +,
-				  EC -,
-                                  HEAD +vj]],
-           NON-LOCAL non-local-none ]].
-
-Followed the value of the following for Guarani
-
-non-local :+ [ YNQ 0-1-dlist ].
-norm-zero-arg :+ [ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
-
-And identified the following type for an empty YNQ-list:
-
-non-ynq-word := lex-item &
-  [ SYNSEM.NON-LOCAL.YNQ 0-dlist ]
-
-And added norm-zero-arg in the following places
-
-determiner-lex := basic-determiner-lex & norm-zero-arg & non-mod-lex-item &
-  [ SYNSEM.LOCAL.CAT.VAL [ SPR < >,
-                           COMPS < >,
-                             SUBJ < >,
-         SPEC<[LOCAL.CONT.HOOK.INDEX.COG-ST uniq+fam+act]>]].
-
-  basic-adverb-lex :+ norm-zero-arg.
-
-scopal-lex := scopal-mod-lex & norm-sem-lex-item & norm-zero-arg & non-ynq-word &
-  [ SYNSEM.LOCAL.CAT [  HEAD adv,
-                        EC -, 
-                        IC -,
-                        VAL [ SPR < >,
-                              COMPS < >,
-                              SUBJ < >,
-                              SPEC < > ]]].
-
-contentful-adp-lex := basic-int-mod-adposition-lex & norm-zero-arg &
-  [ SYNSEM.LOCAL.CAT [  EC - , 
-                        IC - ,
-                        HEAD adp & [CASE LOC,
-				    MOD <[ LOCAL.CAT[ MC na, 
-						      HEAD verb,
-						      VAL [SUBJ < >]],
-					   L-PERIPH +] > ],
-                       VAL [ SPR < >,
-                             COMPS < #comps >,
-                             SPEC < >, 
-                             SUBJ < > ]  ],
-    ARG-ST < #comps & [ OPT -,
-                        LOCAL.CAT[ HEAD +np,
-                                   VAL [SPR < >] ] ] > ].
-
-As well as non-ynq-word where appropriate.  For example in the two cases above as well as the following
-
-noun-lex := basic-noun-lex & basic-one-arg & no-hcons-lex-item & non-ynq-word &
-            non-mod-lex-item & norm-zero-arg &
-  [ SYNSEM.LOCAL.CAT [  EC -, 
-                        IC -,
-                        VAL [ SPR < #spr &
-                                    [ LOCAL.CAT.HEAD det ] >,
-                              COMPS < >,
-                              SUBJ < >,
-                              SPEC < > ]],
-    ARG-ST < #spr > ].
-
-case-marking-adp-lex :=  basic-one-arg & raise-sem-lex-item & non-ynq-word &
-  [ SYNSEM.LOCAL.CAT [  EC - , 
-                        IC - , 
-                        HEAD adp &
-                            [ CASE #case,
-                               MOD < > ],
-			VAL [ SPR < >,
-			      SUBJ < >,
-			      COMPS < #comps >,
-			      SPEC < > ] ],
-    ARG-ST < #comps &
-             [ LOCAL.CAT [ VAL.SPR < >,
-                           HEAD noun &
-			     [ CASE #case,
-			       CASE-MARKED - ] ] ] > ].
-
-
-Two changes on the bare-np-phrase. We let it inherit from head-valence-phrase as an additional super type, so that the NON-LOCAL value is copied up. Constrained the element of the non-empty SPR list to be unexpressed.
-
-bare-np-phrase := basic-bare-np-phrase & YNQ-contrains-phrase & head-valence-phrase &
-  [ SYNSEM.LIGHT -,
-    HEAD-DTR.SYNSEM.LOCAL.CAT.VAL.SPR < unexpressed >, 
-    C-CONT.RELS <! [ PRED "exist_q_rel" ] !> ].
-
-We also modified our coordination rules so that non-local values were passed up
-
-topormid-coord-phrase :+ [ SYNSEM.NON-LOCAL #nl,
-   LCOORD-DTR.SYNSEM.NON-LOCAL #nl,
-   RCOORD-DTR.SYNSEM.NON-LOCAL #nl ].
-			  
-bottom-coord-phrase :+ [ SYNSEM.NON-LOCAL #nl,
-   NONCONJ-DTR.SYNSEM.NON-LOCAL #nl ].	
-
-
-Finally to cut down on some spurious ambiguity (and overgeneration) we added some NON-LOCAL constraints to the question and complementizer clitics, as shown below:
-
-question-clitic-lex := no-hcons-lex-item &
- [ SYNSEM [ LOCAL [ CAT [ IC +, 
-                          VAL [ SPR < >, 
-				COMPS < >, 
-				SUBJ < >, 
-				SPEC < >],
-                          HEAD adj & [ MOD < [ LIGHT +,
-                                               L-PERIPH +,
-				               LOCAL intersective-mod] > ]],
-                          CONT.RELS <! !> ],
-            NON-LOCAL[ SLASH <! !>,
-                       QUE <! !>,
-                       YNQ <! *top* !>  ]]].
-
-
-compl-clitic-lex := no-hcons-lex-item &
- [ SYNSEM [ LOCAL [ CAT [ IC -, 
-                          EC +,
-                          VAL [ SPR < >, COMPS < >, SUBJ < >, SPEC < >],
-                          HEAD adj & [ MOD < [LOCAL.CAT.HEAD verb,
-                                              LIGHT +,
-                                              L-PERIPH +,
-                                              LOCAL intersective-mod ] > ]],
-                    CONT.RELS <! !> ],
-            NON-LOCAL[ SLASH <! !>,
-                       QUE <! !>,
-		       YNQ <! !> ]]].
-
-
-4. Anything else.
-
-This week we also fixed the semantics on our NP predicates.  Our MRSs from last week were broken and did not introduce a _be_v_id_rel between the NP predicate and its subject and in fact we didn’t allow for subjects at all.  This week we updated our n-bar-predicate rule to fix this, so now we have the following in PG.tdl:
-
-
-n-bar-predicate-rule := YNQ-contrains-phrase & nocoord &
-  [ SYNSEM.NON-LOCAL [ SLASH <! !>, 
-		       QUE <! !>], 
-    SYNSEM.LOCAL [ AGR #agr3,
-                   CAT [  EC -, 
-			  IC -, 
-			  MC na,
-                          HEAD verb & [MOD < >],
-                          VAL [ SPEC < >,
-                                SPR  < >,
-                                COMPS < >,
-				SUBJ <[ LOCAL [ CONT.HOOK.INDEX #arg1,
-					      CAT [ HEAD noun,
-						    VAL.SPR < > ] ] ] > ] ]],
-    C-CONT [ HOOK [ LTOP #ltop,
-		    INDEX #index,
-		    XARG #arg1 ],
-	     RELS <! arg12-ev-relation &
-		   [ PRED "_be_v_id_rel",
-		     LBL #ltop,
-		     ARG0 #index,
-		     ARG1 #arg1,
-		     ARG2 #arg2 ],
-		   quant-relation &
-		   [ PRED "exist_q_rel",
-		     ARG0 #arg2,
-		     RSTR #harg ] !>,
-	     HCONS <! qeq & [ HARG #harg, LARG #larg ] !> ],
-    ARGS < [ SYNSEM.LOCAL [ AGR #agr3,
-			    CAT [ HEAD noun & [POSS poss-or-ee],
-				  VAL.SPR cons ],
-			    CONT.HOOK [ INDEX #arg2,
-					LTOP #larg ]]] > ].
-
-
-Our new rule appropriately introduces an exist_q_relation predication with a quant-relation that gives its RESTR value scope over the LTOP of the rule’s only argument. It also introduces a _be_v_id_rel predication whose ARG0 is identified with the HOOK.INDEX value of the C-CONT, whose ARG1 is identified to CONT.HOOK.INDEX value of the mother’s SUBJ, and whose ARG2 is identified with the CONT.HOOK.INDEX value of the daughter, so that we now get the appropriate semantics for examples like 195 and 200 below.
-
-
-#Ex.195: NP predicate, possessive marking
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: cop
-hi'ára
-iaAra
-i-aAra
-POSS.3-day
-'It is his/her day' 
-
-#Ex.200: NP predicate. Possessive affixes
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {cop, poss}
-chejagua cheiru
-chejagua cheiru
-che-jagua che-iru
-1SG.POSS-dog 1SG.POSS-friend
-'My dog is my friend'
-
-
-We also learned through testing that n-bar-predicate rule was too unconstrained and leading to a lot of spurious ambiguity so we added constraints on it’s SLASH, QUE, EC, IC, and MC features as seen below. 
-
-n-bar-predicate-rule := YNQ-contrains-phrase & nocoord &
-  [ SYNSEM.NON-LOCAL [ SLASH <! !>, 
-		       QUE <! !>, 
-		       REL <! !> ], 
-    SYNSEM.LOCAL [ AGR #agr3,
-                   CAT [  EC -, 
-			  IC -, 
-			  MC na,
-                          HEAD verb & [MOD < >],
-                          VAL [ SPEC < >,
-                                SPR  < >,
-                                COMPS < >,
-				SUBJ <[ LOCAL [ CONT.HOOK.INDEX #arg1,
-					      CAT [ HEAD noun,
-						    VAL.SPR < > ] ] ] > ] ]],
-    C-CONT [ HOOK [ LTOP #ltop,
-		    INDEX #index,
-		    XARG #arg1 ],
-	     RELS <! arg12-ev-relation &
-		   [ PRED "_be_v_id_rel",
-		     LBL #ltop,
-		     ARG0 #index,
-		     ARG1 #arg1,
-		     ARG2 #arg2 ],
-		   quant-relation &
-		   [ PRED "exist_q_rel",
-		     ARG0 #arg2,
-		     RSTR #harg ] !>,
-	     HCONS <! qeq & [ HARG #harg, LARG #larg ] !> ],
-    ARGS < [ SYNSEM.LOCAL [ AGR #agr3,
-			    CAT [ HEAD noun & [POSS poss-or-ee],
-				  VAL.SPR cons ],
-			    CONT.HOOK [ INDEX #arg2,
-					LTOP #larg ]]] > ].
-
-We are able to generate from our NP predicate examples, though as is to be expected we see fewer results.  Only for the “iaAra” example, “iaAra,” and two for the “chejagua cheiru” example, “chejagua cheiru” and “cheiru chejagua.” 
-
-Most of our other work fixing leaks and reducing spurious ambiguity is documented above with results outlined below.
 
 
 
