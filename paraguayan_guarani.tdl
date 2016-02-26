@@ -274,14 +274,14 @@ wh-pronoun-noun-lex := norm-hook-lex-item & basic-icons-lex-item &
 				 COMPS < >,
 				 SPEC < > ] ],
 		     CONT [ HOOK.INDEX.PNG.PERNUM 3rd,
-	                    RELS < ! [ LBL #larg,
+	                    RELS <! [ LBL #larg,
 				       ARG0 #ind & ref-ind ],
 				  [ PRED "wh_q_rel",
 				    ARG0 #ind,
-				    RSTR #harg ] ! >,
-			    HCONS < ! [ HARG #harg,
-				        LARG #larg ] ! > ] ],
-	     NON-LOCAL.QUE < ! #ind ! > ] ].
+				    RSTR #harg ] !>,
+			    HCONS <! [ HARG #harg,
+				        LARG #larg ] !> ] ],
+	     NON-LOCAL.QUE <! #ind !> ] ].
 
 ;; Adv
 basic-adverb-lex :+ norm-zero-arg.
@@ -1173,7 +1173,7 @@ wh-ques-phrase := gug-basic-head-filler-phrase & interrogative-clause &
                                        COMPS #comps, 
                                        SPEC #spec]],
      NON-HEAD-DTR.SYNSEM [ LOCAL.CAT.IC +,
-			   NON-LOCAL.QUE < ! ref-ind ! > ]].
+			   NON-LOCAL.QUE <! ref-ind !> ]].
 			
 extracted-comp-phrase := basic-extracted-comp-phrase &
   [ SYNSEM [LIGHT -,

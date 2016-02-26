@@ -257,10 +257,10 @@ ndi := contentful-adp-lex &
 pa := question-clitic-lex   &
     [STEM <"pa">].
 
-piko:= question-clitic-lex &
+piko := question-clitic-lex &
     [STEM<"piko">].
 
-ha3: = compl-clitic-lex &
+ha3 := compl-clitic-lex &
     [STEM<"ha">].
 
 ;;; Verbs
