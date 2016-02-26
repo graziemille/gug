@@ -3,105 +3,11 @@
 # AUTHOR: Lisa Tittle Caballero
 # PARTNER: Thor Wicke Monteverde
 
-1. Negation
-
-PG has two constructions for sentential negation. Both involve a circumfix around the predicate of a sentence. The first sentential negation is undefined for aspect and is represented as  “nde-…-i.”  Ex.90 & Ex.203 are examples of Guarani sentences with grammatical negation of this type.
-
-#Ex.90: Negated transitive verb. Subject drop. Object Drop.
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {neg, pro-d}
-ndahechai
-ndahechai
-nde-a-hecha-i
-NEG-A.1SG-see-NEG
-'I don't see it'
-
-#Ex.203: Negated intransitive verb.
-Source: author
-Vetted: f
-Judgment: g	
-Phenomena: neg
-jagua ndojerokyi
-jagua ndojerokyi
-jagua nd-o-jeroky-i
-dog NEG-A.3-dance-NEG
-'The dog doesn't dance'
-
-The second kind of sentential negation, represented as “nd- -moHaNi” is for utterances where future aspect is intended. Our aspect marker is glossed as FUT here to distinguish it from prospective aspect (“about to”) which we also have implemented in our grammar.  FUT is not a reference to tense and the example in #94 could mean either “I am not going to see it” or “I wasn’t going to see it.” 
-
-#Ex.94: Negated transitive verb. Future-aspect negation. Subject drop. Object Drop.
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: neg
-ndahechamoHaNi
-ndahechamoHaNi
-nde-a-hecha-moHaNi
-NEG-A.1SG-see-FUT.NEG
-'I am not going to see it' / 'I wasn’t going to see it'
-
-Both the prefix and suffix are required for negation to be grammatical, so the examples below are all ungrammatical and do not parse.
-
-#Ex.96: Incomplete future negation marking. Missing prefix. 
-Source: author
-Vetted: f
-Judgment: u
-Phenomena: neg
-okýmo'a᷉i
-okyAmoHaNi
-o-kyA-moHaNi
-A.3-rain-FUT.NEG
-*'It isn’t/wasn’t going to rain'
-
-#Ex.204: Negated intransitive verb. Incomplete negation circumfix. Missing prefix.
-Source: author
-Vetted: f
-Judgment: u
-Phenomena: neg
-jagua ojerokyi
-jagua ojerokyi
-jagua o-jeroky-i
-dog A.3-dance-NEG
-*'The dog doesn't dance'
-
-#Ex.92: Incomplete negation marking. Missing suffix.
-Source: author
-Vetted: f
-Judgment: u
-Phenomena: neg
-ndahecha
-ndahecha
-nde-a-hecha
-NEG-A.1SG-see
-*'I don't see it'
-
-We implemented this phenomenon several weeks ago using the customization system, by choosing “simple” negation, and “Inflectional negation.”  To make sure that we got the full circumfix for our grammatical examples we created two position classes. NEG1 and NEG2. NEG1 attaches the prefix nde- and adds negation semantics.  NEG2 attaches either the -i or the -moHaNi suffix.   The -i suffix adds no additional semantic information.  The -moHaNi suffix adds future aspect.  The position classes are optional in general, but require one another if they do fire, so we can get negated and non-negated sentences, but we don’t get parses for sentences with only a prefix or only a suffix.
-
-The .tdl changes this week were limited to making locative-verb-lex inherit from the daughters of our inflectional rules for negation and aspect as seen below:
-
-locative-verb-lex := gug-dyn-loc-verb & trans-first-arg-control-lex-item & completive-aspect-or-perfective-aspect-or-prospective-aspect-rule-dtr & future-aspect-rule-dtr & neg1-rule-dtr & neg2-rule-dtr &
-
-So we can now get a parse for examples like #206
-
-#Ex.206: be+located raising verb. Contentful postpositions.  Negation.
-Source: b
-Vetted: f
-Judgment: g
-Phenomena: {cop, adp}
-ndoimei kotýpe jaguandi
-ndoimei koty pe jagua ndi
-nd-o-ime-i koty=pe jagua=ndi
-NEG-3.ACT-be.located-NEG room=in dog=with
-'He/She is not located in the room with the dog'
-
-We are able to generate from our grammatical examples and our generation results show that we have effectively captured the aspect difference between “nd- -i” and “nd- -moHaNi” since generating from examples with the former gives us possibilities for all aspects, and generating from examples with the latter gives us only possibilities with future aspect.
 
 
-2. One Sentence Fromm Test Corpus
+1. One Sentence Fromm Test Corpus
 
-The sentence we chose for this week is #20
+Last week we were able to parse sentence #20
 
 #Sentence.20
 Source: a, attested
@@ -109,128 +15,118 @@ Vetted: t
 Judgment: g
 Phenomena: corpus
 Ha he'i Huanchi:
-ha  oe   Juanchi
-ha  o-e  Juanchi
+ha  oeHi   Juanchi
+ha  o-eHi  Juanchi
 and A.3-say Juan.DIM
 'And Juanito says:'
 
-As we discussed on GoPost, implementing this sentence required three key steps:  1. implementing “and” as a left-attaching scopal modifier, 2. Adding a new version of “say” to our grammar, and 3. implementing proper names. I discuss each of the three steps separately below:
 
-— ‘SCOPAL MODIFIER’
+This week we decided to build on that work by parsing sentence #22
 
-The scopal modifier “ha” was defined with the following PG.tdl 
-
-;;; Scopal-modifiers
-scopal-lex := scopal-mod-lex & norm-sem-lex-item & norm-zero-arg & non-ynq-word &
-  [ SYNSEM.LOCAL.CAT [  HEAD adv,
-                        EC -, 
-                        IC -,
-                        VAL [ SPR < >,
-                              COMPS < >,
-                              SUBJ < >,
-                              SPEC < > ]]].
-
-scopal-mod-lex is inherited from matrix.tdl, but was not very constrained:
-
-scopal-mod-lex := lex-item &
-  [ SYNSEM [ LOCAL [ CAT.HEAD.MOD < [ LOCAL scopal-mod &
-					    [ CONT.HOOK.LTOP #larg ]] >,
-		     CONT.HCONS <! qeq & 
-				 [ HARG #harg,
-				   LARG #larg ] !> ],
-	     LKEYS.KEYREL.ARG1 #harg ]].
-
-We added inheritance from norm-sem-lex-item, norm-zero-arg, and non-ynq-word to make sure our semantics where appropriately defined for this lexical type.  We also specified that the type as [HEAD adv] so we could easily constrain its behavior separately from our other modifiers which are currently all [HEAD adj] even when they modify verbs.  
-This type is also [EC -] because it should not appear in an embedded clause and [IC -] because it is not required to appear in an interrogative clause (like “piko” or “pa”).   Finally the VAL features for SPR/COMPS/SUBJ/SPEC were all defined as empty.
-
-;;; Scopal Modifiers
-ha4 := scopal-lex &
-   [ STEM < "ha" >,
-     SYNSEM.LKEYS.KEYREL.PRED "_and_c_rel"].
+#Sentence.22
+Source: a, attested
+Vetted: t
+Judgment: g
+Phenomena: corpus
+Ha he'i Pirulo-pe
+Ha oeHi Pirulo pe 
+Ha o-eHi Pirulo=pe 
+and A.3-say Pirulo=DAT
+'and he said to Pirulo'
 
 
-The new type was instantiated in our lexicon with the entry above. The _and_c_rel predication is based of a similar example in the ERG (thanks for finding that for us).
-
-We also implemented a gug-scopal-mod-phrase rule in PG.tdl, which inherits from the basic-head-mod-phrase-simple found in Matrix.tdl. To the original implementation of basic-head-mod-phrase-simple we added an identification between the MC (main clause) values of the mother and non-head-dtr (the modifier), as well as an identification between the L-PERIPH value of the HEAD-DTR and the NON-HEAD-DTR.  This was done by adding the following lines to PG.tdl.
-
-basic-head-mod-phrase-simple :+ 
-   [ SYNSEM.LOCAL.CAT.MC #mc,  
-     NON-HEAD-DTR.SYNSEM.LOCAL.CAT [ HEAD.MOD < [ L-PERIPH #periph ] >,
-				     MC #mc ],
-     HEAD-DTR.SYNSEM.L-PERIPH #periph ].
-
-Our gug-scopal-mod-phrase inherits from head-final so we get the correct left-attaching behavior from our modifiers, and from head-compositional so the syntactic head daughter is correctly identified as the semantic head.  The output of our rule is MC na so that it is required to through decl-cl before unifying with the root. For now (until we have evidence to the contrary from our source data) we have set the values of EC and IC to negative so this phrase does not appear in embedded or interrogative clauses, and its QUE, SLASH, and YNQ features are all set to empty.  
-
-gug-scopal-mod-phrase := basic-head-mod-phrase-simple & head-final & 
-			 head-compositional &
-  [ SYNSEM [ LOCAL.CAT [ MC na,                       
-			 EC -,                        
-			 IC -],
-	     NON-LOCAL [ QUE <! !>, 
-			 SLASH <! !>, 
-			 YNQ <! !> ]],
-    HEAD-DTR.SYNSEM.LOCAL.CAT [ MC na,
-                                HEAD verb & [MOD < >],
-                                VAL [ SPEC < >, 
-                                      SPR < >, 
-                                      SUBJ < >, 
-                                      COMPS < > ]],
-    NON-HEAD-DTR.SYNSEM.LOCAL [ CAT [ HEAD adv & 
-					   [ MOD < [ LOCAL scopal-mod ] >],
-                                      VAL [SPEC < >,
-					   SPR < >, 
-					   SUBJ < >, 
-					   COMPS < > ]],
-                                      CONT.HOOK #hook ],
-    C-CONT [ HOOK #hook,
-	     HCONS <! !>,
-	     ICONS <! !> ] ]. 
-
-Additionally, the rule requires a fully satisfied head daughter that is [MC na] and [MOD < >].  It’s non-head daughter has empty valence features and should be HEAD adv (which at this point only our scopal modifiers are). Its MOD value requires modify a constituent with a [LOCAL scopal-mod] value, and its CONT.HOOK value is identified with the C-CONT.HOOK of the rule itself.   The final rule was added to rules.tdl as follows:
-
-scopal-mod := gug-scopal-mod-phrase.
-
-This was a particularly satisfying rule to work with since we were able to take it from spinning, to hundreds of parses to just the ones we want. 
-
-— ADDING ‘SAY’
-
-We followed your suggestion and implemented say as a transitive verb, so that in our corpus example we get semantics similar to “Juanchi says it.”  This was implemented straightforwardly by adding the following entry to our lexicon:
-
-e := trans-verb-lex &
-  [ STEM <"e">,
-    SYNSEM.LKEYS.KEYREL.PRED "_say_v_rel"]. 
+As we discussed on GoPost, implementing this sentence involved required us to: 
+1. Implement ditransitives (finally!), including defining the new type and making sure appropriate inflection applied, 2. changing our implementation of case-marking adpositions so that we have separate entries for accusative and dative version of the postposition PE, only one of which is optional. 3. Making the appropriate changes to the lexicon.
 
 
-- ‘IMPLEMENTING PROPER NOUNS’
 
-Although our source glossed the name “Juanchi” as “Juan” + diminutive “chi,”  with your permission we have (gratefully) opted to treat this as a name equivalent to the Spanish name “Juanito” which is constructed in a similar fashion.  This meant that we just needed to add a lexical type for proper nouns which we did by adding the following to PG.tdl,
+- IMPLEMENTING DITRANSITIVES
 
-;; category for proper-nouns
-proper-noun-lex := non-poss-com-noun-lex & no-spr-noun-lex & com-anim-noun-lex & named-relation.
+Ditransitive verb predicates (DVPs) in PG use cross-referential prefixes identical to those we see on transitive verbs. 
 
-The non-poss-com-noun-lex type was newly redefined in this grammar, as shown below so that it could be inherited independently by our inanimate non-possessable common nouns like “wind” and our proper nouns which (for now) are defined as animate.  Because non-poss-com-noun-lex inherits from common-noun-lex we didn’t have to add any additional constraints to it’s IC/EC values or it’s NON-LOCAL features like QUE and YNQ since those are already inherited from common-noun-lex.
 
-non-poss-com-noun-lex :=  common-noun-lex & 
- [SYNSEM.LOCAL.CAT.HEAD.POSS poss-or]. 
 
-no-spr-noun-lex := noun-lex &
-  [ SYNSEM.LOCAL.CAT.VAL.SPR < [ OPT + ] > ].
 
-com-anim-noun-lex := common-noun-lex &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.GEND anim ].
 
-named-relation := noun-relation &
-  [ PRED named_rel,
-    CARG string ].
 
-no-spr-noun-lex was a type already present in our grammar. We inherited from it here to keep our proper nouns from appearing with specifiers, and com-anim-noun-lex adds the animate gender information. Finally, I was very happy to find the named-relation type in Matrix.tdl when hunting around for information about CARG.  Having proper-noun-lex inherit from this type sets the main PRED value of our proper nouns to “named_rel” and defines a CARG which we can then have our individual lexical entries constrain.  The lexical entry for Juanchi that we added to lexicon.tdl is as follows:
 
-Juanchi := proper-noun-lex &
-  [ STEM < "Juanchi" >,
-    SYNSEM.LKEYS.KEYREL.CARG "Juanchi" ].
+— ARGUMENT OPTIONALITY
+
+Both argument optionality and free word order are possible.
+
+
+
+
+
+— CASE-MARKING ADPOSITIONS
+The indirect objects of DVPs are marked with an obligatory dative marker. These arguments can take the form of either a dative pronoun or an NP combined with the case-marking postposition ’pe.’  
+
+
+
+
+
+
+
+
+
+
+
+
+— CHANGES TO THE LEXICON
+
+Since we defined proper nouns last week, adding Pirulo was simple.  We just added the following new entry to lexicon.tdl:
+
+	Pirulo := proper-noun-lex &	
+	  [ STEM < “Pirulo” >,
+	    SYNSEM.LKEYS.KEYREL.CARG “Pirulo” ].
+
+Which inherits from our proper-noun-lex defined in PG.tdl:
+
+	proper-noun-lex := non-poss-com-noun-lex & no-spr-noun-lex & com-anim-noun-lex & 
+			   named-relation.
+
+We also up dated our entry for eHi so that instead of instantiating trans-verb-lex, it instantiates ditrans-verb-lex:
+
+	eHi := ditrans-verb-lex &
+	  [ STEM <"eHi">,
+	    SYNSEM.LKEYS.KEYREL.PRED "_say_v_rel"]. 
+
 
 — END STATE
-Our sentence parses with the semantics we want, as well as with two additional parses. One of the parses results from the ambiguity of the phrase “oe Juanchi” which could also mean “Juanchi was said” which we may in the future want to eliminate, since it’s my intuition that it’s a little semantically weird to have a named entity be the object of the verb say, but I will ask about that on goPost first. The third parse is the result of the application of asyndeton coordination and the n-bar-predicate rule so we get “And someone said something and something is Juanchi”  which is strange, but technically correct.  We can generate from all three parse though generating from the coordination example shows that we still have to do a little more constraining in our coordination rules with respect to our interrogative clitics “pa” and “piko”   
+  
+Our new sentence now parses with our target semantics. We also get one additional parse, with the meaning “He said Pirulo to someone,” because the accusative marker is also written as ‘pe,’ and in our free word order language, this makes #22 ambiguous.  
+
+#Sentence.22
+Source: a, attested
+Vetted: t
+Judgment: g
+Phenomena: corpus
+Ha he'i Pirulo-pe
+Ha oeHi Pirulo pe 
+Ha o-eHi Pirulo=pe 
+and A.3-say Pirulo=DAT
+'and he said to Pirulo'
+
+We are able to generate from both of our parses. When we generate from the tree where =pe is identified as an accusative marker we get four parses: both Verb/Argument orders, each with a pe-marked and non-pe-marked option.  When we generate from the tree where =pe is identified as a dative marker, we correctly get only two parses: ‘ha Pirulo pe oeHi,’ and ‘ha oeHi Pirulo pe.’  
+
+
+—UPDATES FROM LAST WEEK
+
+Even though we are now defining ‘-eHi’ as a ditransitive verb in the lexicon, our sentence from last week still parses with the same MRS representations and same number of parses as last week—4 including to examples with coordination. Because dative marking is obligatory for indirect objects, Juanchi can only be the subject or direct object of the predicate in 20—which is the same ambiguity we saw last week when ‘-eHi’ was instantiated as a transitive verb.
+
+#Sentence.20
+Source: a, attested
+Vetted: t
+Judgment: g
+Phenomena: corpus
+Ha he'i Huanchi:
+ha  oeHi   Juanchi
+ha  o-eHi  Juanchi
+and A.3-say Juan.DIM
+'And Juanito says:'
+
+Last week when we generated from these parses we got a lot of sentences.  
+
 
 3. Wh-Questions
 
