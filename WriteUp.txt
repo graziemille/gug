@@ -671,15 +671,75 @@ PNG.GEND : GEND
   * << !
   * <> *
 
-But following the comments in class, I just deleted the section entirely and MT still works.
+But following the comments in class, I just deleted the section entirely and that works just as well :)
 
 
 3. First MT
 
-Machine translation is working! 
+Machine translation is working! Our first sentence was ‘Dogs sleep’  which we used to help guide all of the semi.vpm changes outlined above.  We now get two parses in the target language: ‘jagua oike’ and ‘oike jagua.’ 
+
+-ADDITIONAL WORK
+Because we had extra time this week, we translated all of the MT sentences into Guarani and added the relevant vocabulary to our lexicon.  More on that next week, but it allowed us to play with translating more sentences.  I thought it would be fun to try: 
+“I ask whether you know that dogs chase cars.”  Which led me to a mismatch in the way we had defined the PRED values for our pronouns, which was originally _pron_n_rel.  I changed the predications to match what was in the English grammar so now we have the following in our lexicon:
+
+che := 1sg-pron-nom-noun-lex &
+  [ STEM < "che" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+nde := 2sg-pron-nom-noun-lex &
+  [ STEM < "nde" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+haHe := 3sg-pron-nom-noun-lex &
+  [ STEM < "haHe" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+nNande := 1pl-incl-pron-nom-noun-lex &
+  [ STEM < "nNande" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+ore := 1pl-excl-pron-nom-noun-lex &
+  [ STEM < "ore" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+peeN := 2pl-pron-nom-noun-lex &
+  [ STEM < "peeN" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+haHekueAra := 3pl-pron-nom-noun-lex &
+  [ STEM < "haHekueAra" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+cheve := 1sg-pron-nonag-noun-lex &
+  [ STEM < "cheve" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+ndeve := 2sg-pron-nonag-noun-lex &
+  [ STEM < "ndeve" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+chupe := 3sg-pron-nonag-noun-lex &
+  [ STEM < "chupe" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+nNandeve := 1pl-incl-pron-nonag-noun-lex &
+  [ STEM < "nNandeve" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+oreve := 1pl-excl-pron-nonag-noun-lex &
+  [ STEM < "oreve" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+pendeve := 2pl-pron-nonag-noun-lex &
+  [ STEM < "pendeve" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+chupekueAra := 3pl-pron-nonag-noun-lex &
+  [ STEM < "chupekueAra" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
 
-
+Also the sentence works, which is exciting! But, with a LOT of parses in the source language, which is less exciting.  On the one hand this isn’t surprising given free word order and how long the sentence is, but we will need to do some work next week to see if we can constrain the parses further.
 
 
 4. More improvements to the grammar
