@@ -20,7 +20,6 @@ ha  o-eHi  Juanchi
 and A.3-say Juan.DIM
 'And Juanito says:'
 
-
 This week we decided to build on that work by parsing sentence #22
 
 #Sentence.22
@@ -39,11 +38,7 @@ As we discussed on GoPost, implementing this sentence involved required us to:
 1. Implement ditransitives (finally!), including defining the new type and making sure appropriate inflection applied, 2. changing our implementation of case-marking adpositions so that we have separate entries for accusative and dative version of the postposition PE, only one of which is optional. 3. Making the appropriate changes to the lexicon.
 
 
-
 - DITRANSITIVES
-
-
-
 
 —— INFLECTION
 Even though they have three arguments, ditransitive verb predicates (DVPs) in PG are inflected with the same prefixes as our transitive verbs. The prefixes, which our authors refer to as co-referential markers, can co-reference either the subject or the direct object (DO) of a verb.  Subjects and DOs are co-referenced with different sets of markers, which (following the conventions in our reference grammars) we refer to as A-markers and O-markers respectively.  Whether a verb receives A- or O- marking depends on its arguments’ positions in a person hierarchy. First person arguments outrank second person arguments which outrank third person arguments. If both arguments have the same person designation an A-marker is used. This gives us patterns like those below:
@@ -128,12 +123,37 @@ nde re-hecha-uka cheve tunich
 2.SG.PRON.NOM A.2SG-see-CAUS 1.SG.PRON.DAT stone.INAM
 'You show me the stone'
 
-To capture this parallel behavior between transitive and intransitive verbs and make use of the inflectional rules already present in our grammar, we defined a supertype for transitive and intransitive verbs: 
+#Ex.51: Dynamic intransitive agrees with 2SG subject. Indirect object marked with 1SG dative pronoun.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {wo, agr, pn}
+nde rehechauka cheve
+nde rehechauka cheve 
+nde re-hecha-uka cheve 
+2.SG.PRON.NOM A.2SG-see-CAUS 1.SG.PRON.DAT 
+'You show it to me'
+
+Also if we remove the direct object as in #51 we only get one parse, even though the pronoun cheve is underspecified between dative and accusative case.  This is because if cheve were an accusative pronoun and the direct object of the verb, the coreference marker would be che- not re-. 
+
+To capture the parallel behavior between transitive and intransitive verbs and make use of the inflectional rules already present in our grammar, we defined a new supertype for transitive and intransitive verbs.  
 
 gug-trans-ditrans-verb := verb-lex &
   [ INFLECTED.PERNUM-TRANS-FLAG - ].
 
-The supertype inherits from verb-lex and adds a flag feature requiring verbs of this type to go through our pernum-trans-ditrans-lex-rule, to be considered fully inflected: 
+We then created a new ditransitive-verb-lex which inherits from this category (discussed in detail later) and updated our trans-verb-lex to inherit from this new type: 
+
+ transitive-verb-lex := gug-trans-ditrans-verb & transitive-lex-item &
+   completive-aspect-or-perfective-aspect-or-prospective-aspect-rule-dtr &
+   future-aspect-rule-dtr & neg1-rule-dtr & neg2-rule-dtr &
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS < #comps & [OPT-CS in-foc]>,
+    ARG-ST < [ LOCAL.CAT.HEAD +np ],
+	       #comps &
+             [ LOCAL.CAT [ VAL [ SPR < >,
+                                 COMPS < > ],
+			   HEAD +np ] ] > ]. 
+
+The new supertype inherits from verb-lex and adds a flag feature requiring verbs of this type to go through the pernum-trans-ditrans-lex-rule outlined below to be considered fully inflected: 
 
 pernum-trans-ditrans-lex-rule-super := add-only-no-ccont-rule & completive-aspect-or-perfective-aspect-or-prospective-aspect-rule-dtr & future-aspect-rule-dtr & infl-lex-rule & neg1-rule-dtr & neg2-rule-dtr &
   [ INFLECTED [ PERNUM-DYN-INTRANS-OR-PERNUM-TRANS-FLAG +,
@@ -253,21 +273,242 @@ These individual lexical rule types are instantiated in irules.tdl as follows:
 2pl-o-3-a-lex-rule.
 
 
+—— Lexical Type
+The new lexical type for ditransitives was modeled after the way definition of transitive verbs was produced by the customization system. This model has incorporates some redundancy, but we opted against removing it and instead defined our types as counterparts to the transitive examples shown below:
+
+
+transitive-verb-lex := gug-trans-ditrans-verb & transitive-lex-item & completive-aspect-or-perfective-aspect-or-prospective-aspect-rule-dtr & future-aspect-rule-dtr & neg1-rule-dtr & neg2-rule-dtr &
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS < #comps & [OPT-CS in-foc]>,
+    ARG-ST < [ LOCAL.CAT.HEAD +np ],
+	       #comps &
+             [ LOCAL.CAT [ HEAD +np,
+			   VAL [ SPR < >,
+                                 COMPS < > ] ] ] >].
+
+nom-acc-transitive-verb-lex := transitive-verb-lex &
+  [ ARG-ST < [ LOCAL.CAT.HEAD noun &
+                              [ CASE nom ] ],
+             [ LOCAL.CAT.HEAD +np &
+                              [ CASE acc ] ] >,
+    SYNSEM.LOCAL.CAT.VAL [ SUBJ < [ LOCAL.CAT.HEAD.CASE-MARKED + ] >,
+                           COMPS < [ LOCAL.CAT.HEAD.CASE-MARKED + ] > ] ].
+
+
+trans-verb-lex := nom-acc-transitive-verb-lex.
+
+
+Following that model we have also outlined three types in an inheritance chain: ditransitive-verb-lex is inherited by nom-acc-dat-ditransitive-verb-lex, which is inherited by ditrans-verb-lex.
+
+The first type, ditransitive-verb-lex inherits from our gug-trans-ditrans-verb supertype and ditransitive-lex-item in matrix.tdl:
+
+ditransitive-verb-lex := gug-trans-ditrans-verb & ditransitive-lex-item & completive-aspect-or-perfective-aspect-or-prospective-aspect-rule-dtr & future-aspect-rule-dtr & neg1-rule-dtr & neg2-rule-dtr &
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS < #comps1 & [OPT-CS in-foc], #comps2 & [OPT-CS in-foc] >,
+    ARG-ST < [ LOCAL.CAT.HEAD +np ],
+             #comps1 & [ LOCAL.CAT [ VAL [ SPR < >, COMPS < > ],
+                                     HEAD +np  ] ],
+             #comps2 & [ LOCAL.CAT [ VAL [ SPR < >, COMPS < > ],
+                                     HEAD +np  ] ] > ].
+
+ditransitive-lex-item := basic-three-arg-no-hcons & basic-icons-lex-item &
+   [ ARG-ST < [ LOCAL.CONT.HOOK [ INDEX ref-ind & #ind1,
+				  ICONS-KEY.IARG1 #clause ] ],
+	      [ LOCAL.CONT.HOOK [ INDEX ref-ind & #ind2,
+				  ICONS-KEY.IARG1 #clause ] ],
+	      [ LOCAL.CONT.HOOK [ INDEX ref-ind & #ind3,
+				  ICONS-KEY.IARG1 #clause ] ] >,
+     SYNSEM [ LKEYS.KEYREL [ ARG1 #ind1,
+			     ARG2 #ind2,
+			     ARG3 #ind3 ],
+	      LOCAL.CONT.HOOK.CLAUSE-KEY #clause ] ].
+
+ditrans-lex-item specifies the length of our type’s ARG list and ensures that we end up with the right semantics. We also inherit from the daughter types of our negation and aspect rules so that verbs of this type can be inflected for aspect and negation. In the body of the rule we specify the length of the type’s COMPS list, and identify those arguments with the last two elements on the ARG list.  Dropped arguments are constrained to be in-foc, all arguments are constrained to be [HEAD +np] (again following the model provided by the customization system), and the elements on the COMPS list are constrained to have empty VAL.COMPS & VAL.SPR values.
+
+Our next type nom-acc-dat-ditransitive-verb-lex inherits from ditransitive-verb-lex and adds information about case.
+
+nom-acc-dat-ditransitive-verb-lex := ditransitive-verb-lex &
+  [ ARG-ST < [ LOCAL.CAT.HEAD noun &
+                              [ CASE nom ] ],
+             [ LOCAL.CAT.HEAD +np &
+                              [ CASE acc ] ],
+             [ LOCAL.CAT.HEAD +np &
+                              [ CASE dat ] ] >,
+    SYNSEM.LOCAL.CAT.VAL [ SUBJ < [ LOCAL.CAT.HEAD.CASE-MARKED + ] >,
+                           COMPS < [ LOCAL.CAT.HEAD.CASE-MARKED + ],
+                                   [ LOCAL.CAT.HEAD.CASE-MARKED + ] > ] ].
+
+The first argument is constrained to be [CASE nom], the second [CASE acc], the third [CASE DAT].  All the elements on the VAL.SUBJ and VAL.COMPS lists are constrained to be [LOCAL.CAT.HEAD.CASE-MARKED +].  The last two elements on the ARG list are still [HEAD +np] but the first argument is further constrained to be [HEAD noun]. 
+
+Finally ditrans-verb-lex inherits from nom-acc-dat-ditransitive-verb-lex  and is instantiated in the lexicon with the following entries
+
+ditrans-verb-lex := nom-acc-dat-ditransitive-verb-lex.
+
+hechauka := ditrans-verb-lex &
+   [STEM<"hechauka">,
+    SYNSEM.LKEYS.KEYREL.PRED "_show_v_rel"].
+
+meHeN := ditrans-verb-lex &
+   [STEM<"meHeN">,
+    SYNSEM.LKEYS.KEYREL.PRED "_give_v_rel"].
+
+eHi := ditrans-verb-lex &
+  [ STEM <"eHi">,
+    SYNSEM.LKEYS.KEYREL.PRED "_say_v_rel"]. 
+
+—— Phrasal Type
+
+As ditransitive verbs have two COMPS elements, we added a second head-comp/comp-head rule to connect those complements to the head predicate. Because of the free word order in PG, we have head-comp and comp-head versions:
+
+
+head-comp-phrase-2 := basic-head-2nd-comp-phrase & head-initial-head-nexus  &
+ [ SYNSEM.LOCAL.CAT [ HEAD +nvjrcdmo, 
+          	      EC #ec,
+          	      IC #ic,
+                      VAL.COMPS.FIRST.OPT - ], 
+   HEAD-DTR.SYNSEM.LOCAL.CAT [ EC #ec,
+                               IC #ic ]].
+
+comp-head-phrase-2 := basic-head-2nd-comp-phrase & head-final-head-nexus &
+   [ SYNSEM.LOCAL.CAT [	HEAD +nvjrcdmo, 
+        		EC #ec,
+          		IC #ic,
+                      VAL.COMPS.FIRST.OPT - ],  
+   NON-HEAD-DTR.SYNSEM.LOCAL.CAT [ EC #ec,
+             			   IC #ic ]].
+
+They were already defined in our grammar with the following:
+
+head-comp-phrase-2 := basic-head-2nd-comp-phrase & head-initial-head-nexus.
+
+comp-head-phrase-2 := basic-head-2nd-comp-phrase & head-final-head-nexus.
+
+And in rules.tdl with:
+
+head-comp-2 := head-comp-phrase-2.
+
+comp-head-2 := comp-head-phrase-2.
+
+We expanded them to include and copy up the same features as our first head-comp/comp-head rules. Also, when we first tested the rules we observed that our indirect complement could attach as the first or the second complement when the direct object was dropped, leading to spurious double parses with the same MRS values. We fixed this by adding the constraint [VAL.COMPS.FIRST.OPT -].
+
+So now an unambiguous sentence like #51 parses correctly with just one parse:
+
+#Ex.51: Dynamic intransitive agrees with 2SG subject. Indirect object marked with 1SG dative pronoun.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {wo, agr, pn}
+nde rehechauka cheve
+nde rehechauka cheve 
+nde re-hecha-uka cheve 
+2.SG.PRON.NOM A.2SG-see-CAUS 1.SG.PRON.DAT 
+'You show it to me'
+
+
 — CASE-MARKING ADPOSITIONS
-The indirect objects of DVPs are marked with an obligatory dative marker. These arguments can take the form of either a dative pronoun or an NP combined with the case-marking postposition ’pe.’  
+The indirect objects of DVPs are marked with an obligatory dative marker. These arguments can take the form of either a dative pronoun or an NP combined with the case-marking postposition ’pe.’  Because the accusative case-marking adposition shares the same form.  so these were originally instantiated in the lexicon with a single entry that was underspecified between dative and accusative case.   However, the accusative case markers are optional and the dative markers are not, which necessitated creating separate entries instead.  We added the following to lexicon.tdl:
+
+acc-marker := case-marking-adp-lex &
+  [ STEM < "pe" >,
+    SYNSEM.LOCAL [ CONT [ HOOK [ ICONS-KEY.IARG1 #clause,
+                                 CLAUSE-KEY #clause ],
+                          ICONS <!  !> ],
+                   CAT.HEAD [ CASE ACC,
+                              CASE-MARKED + ] ] ].
+
+dat-marker := case-marking-adp-lex &
+  [ STEM < "pe" >,
+    SYNSEM.LOCAL [ CONT [ HOOK [ ICONS-KEY.IARG1 #clause,
+                                 CLAUSE-KEY #clause ],
+                          ICONS <!  !> ],
+                   CAT.HEAD [ CASE DAT,
+                              CASE-MARKED + ] ] ].
 
 
+And, because these entries are semantically empty, updated trigger.mtr with the following:
+
+acc-marker_gr_1 := arg0e_gtr &
+  [ CONTEXT.RELS <! [ ARG1 individual & #i ] !>,
+    FLAGS [ SUBSUME < #i >,
+            TRIGGER "acc-marker" ] ].
+
+acc-marker_gr_2 := arg0e_gtr &
+  [ CONTEXT.RELS <! [ ARG2 individual & #i ] !>,
+    FLAGS [ SUBSUME < #i >,
+            TRIGGER "acc-marker" ] ].
 
 
+dat-marker_gr_1 := arg0e_gtr &
+  [ CONTEXT.RELS <! [ ARG1 individual & #i ] !>,
+    FLAGS [ SUBSUME < #i >,
+            TRIGGER "dat-marker" ] ].
+
+dat-marker_gr_2 := arg0e_gtr &
+  [ CONTEXT.RELS <! [ ARG2 individual & #i ] !>,
+    FLAGS [ SUBSUME < #i >,
+            TRIGGER "dat-marker" ] ].
+
+dat-marker_gr_3 := arg0e_gtr &
+  [ CONTEXT.RELS <! [ ARG3 individual & #i ] !>,
+    FLAGS [ SUBSUME < #i >,
+            TRIGGER "dat-marker" ] ].
 
 
+As the dative 'pe' is obligatory, but the accusative 'pe' optional, nouns were generally
+classified as having CASE non-dat. If a verb predicate needs a dative argument, this is handled through unification with the case marker 'pe' dative, which no longer identifies its case with that of its complement.  To implement this the case hierarchy was changed to include the type non-dat:
+
+case := *top*. 
+non-nom := case.
+non-dat := case.
+nom := non-dat.
+dat := non-nom.
+acc := non-nom & non-dat.
+loc := non-nom & non-dat.
+
+common-noun-lex was constrained to [CASE non-dat], and case-marking-adp-lex was updated so that there is no longer an identification between its case and the case of the noun complement it unifies with (which by default would be non-dat). 
+
+common-noun-lex := noun-lex & 
+  [ SYNSEM.LOCAL[ CAT.HEAD.CASE non-dat,
+                  CONT.HOOK.INDEX.PNG.PERNUM 3rd ]].
 
 
+case-marking-adp-lex :=  basic-one-arg & raise-sem-lex-item &
+  [ SYNSEM.LOCAL.CAT [  EC - , 
+                        IC - , 
+                        HEAD adp &
+                            [ MOD < > ],
+                       VAL [ SPR < >,
+                             SUBJ < >,
+                             COMPS < #comps >,
+                             SPEC < > ] ],
+    ARG-ST < #comps &
+             [ LOCAL.CAT [ VAL.SPR < >,
+                           HEAD noun &
+              		   [ CASE-MARKED - ] ] ] > ].
+ 
+CASE-MARKED is defined as a property of +np head-types with the following in PG.tdl
+
++np :+ [ CASE case,
+         CASE-MARKED bool].
+
+The [CASE-MARKED -] restriction on the complement of our case-marking-adp-lex prevents unification with pronoun complements, which are constrained in the following way:
+
+pron-nom-noun-lex := pron-noun-lex &
+  [ SYNSEM.LOCAL.CAT.HEAD [ CASE nom,
+                            CASE-MARKED + ] ].
+
+pron-nonagent-noun-lex := pron-noun-lex &
+  [ SYNSEM.LOCAL.CAT.HEAD [ CASE non-nom,
+                            CASE-MARKED + ] ]. 
+
+bare-np-phrase inherits from basic-bare-np-phrase which inherits from head-only in matrix.tdl which has the following identification between it’s HEAD-DTR and ARGS:
+
+head-only := unary-phrase & headed-phrase &
+  [ HEAD-DTR #head,
+    ARGS < #head > ].
+
+So we didn’t have to do any additional work to allow for arguments that have gone through the bare-np-rule.
 
 
-
-
-— CHANGES TO THE LEXICON
+— ADDITIONAL CHANGES TO THE LEXICON
 
 Since we defined proper nouns last week, adding Pirulo was simple.  We just added the following new entry to lexicon.tdl:
 
@@ -280,12 +521,11 @@ Which inherits from our proper-noun-lex defined in PG.tdl:
 	proper-noun-lex := non-poss-com-noun-lex & no-spr-noun-lex & com-anim-noun-lex & 
 			   named-relation.
 
-We also up dated our entry for eHi so that instead of instantiating trans-verb-lex, it instantiates ditrans-verb-lex:
+Also, as alluded to above, we updated our entry for eHi so that instead of instantiating trans-verb-lex, it instantiates ditrans-verb-lex:
 
 	eHi := ditrans-verb-lex &
 	  [ STEM <"eHi">,
 	    SYNSEM.LKEYS.KEYREL.PRED "_say_v_rel"]. 
-
 
 
 — END STATE
@@ -305,6 +545,201 @@ and A.3-say Pirulo=DAT
 
 We are able to generate from both of our parses. When we generate from the tree where =pe is identified as an accusative marker we get four parses: both Verb/Argument orders, each with a pe-marked and non-pe-marked option.  When we generate from the tree where =pe is identified as a dative marker, we correctly get only two parses: ‘ha Pirulo pe oeHi,’ and ‘ha oeHi Pirulo pe.’  
 
+
+2. Changes to semi.vpm
+
+— SF
+
+SF : SF
+  prop <> prop
+  ques <> ques
+  prop-or-ques >> prop-or-ques 
+  prop << prop-or-ques
+  comm <> comm
+  prop-or-ques << [e]
+  * <> *
+
+Initially or semi.vpm had the following line ‘prop-or-ques <> prop-or-ques’ which led us to get question variants of sentences without overt question marking, so the English sentence “Dogs sleep” generated Guarani sentences like “oike piko jagua”  All of the sentences with question particles were well formed and correspond to sentences like "Was it sleep, that the dogs did?"  and "Was it the dogs that slept?"   But we decided it would be better require sentences to be overtly marked as questions in a source language to get overt marks of questions in our language.  We did this by replacing the initial equivalency with a line ‘prop << prop-or-ques’ changing incoming prop-or-ques values to prop, and the line ‘prop-or-ques >> prop-or-ques’ which preserves the prop-or-ques value going out. We also added the line  ‘prop-or-ques << [e]’ assigning incoming event types with unlisted or undefined SF values the default value of prop-or-ques.   We did not assign a default SF to underspecified event types in Guarani, because we have set up our grammar to require all well-formed sentence to have non-under-specified SF value (more on this later.). 
+
+- COG-ST
+
+COG-ST : COG-ST
+  type-id <> type-id
+  uniq-id <> uniq-id
+  familiar <> familiar
+  activated <> activated
+  in-foc <> in-foc
+  activ+fam <> activ+fam
+  uniq+fam <> uniq+fam
+  activ-or-more <> activ-or-more
+  uniq-or-less <> uniq-or-less
+  uniq+fam+act <> uniq+fam+act
+  fam-or-more <> fam-or-more
+  fam-or-less <> fam-or-less
+  uniq-or-more <> uniq-or-more
+  activ-or-less <> activ-or-less
+  * >> type-id
+  * <> *
+
+Our grammars were very clear that cog-st values for common nouns are underspecified in Guarani, but to cut down generation, which, in a free word order language can already be pretty robust, we decided to add the line  * >> type-id.  This cuts down our generation from sentence like “jagua oguata,” “(the)dogs walk” from 4 to 2. We feel doing this is helpful, since, as it is, a sentence like our old standby “juHi ohecha vakaA” with the MRS the corresponding to “the frog sees the cow” still generates 12 parses, all well-formed.
+We left the catch all ‘* <> *’ line at the end to allow underspecified or other COG-ST to remain underspecified in Guarani.
+
+
+—PERNUM
+
+Guarani uses a PERNUM feature which, using the DELPHIN wiki for guidance, I mapped out to PER and NUM features in the following way. 
+
+PNG.PERNUM : PER NUM
+  1sg <> first sg
+  2sg <> second sg
+  3sg <> third sg
+  1pl <> first pl
+  1pl_incl <> first_incl pl
+  1pl_excl <> first_excl pl
+  2pl <> second pl
+  3pl <> third pl
+  1st <> first !
+  1st << first *
+  2nd <> second !
+  2nd << second *
+  3rd <> third !
+  3rd << third *
+  sg <> ! sg
+  sg << * sg
+  pl <> ! pl
+  pl << * pl
+  * >> ! !
+  ! << * *
+
+
+I also took this opportunity to fix the our naming of PERNUM types grammar-internally.  We had been using capitalized names, but that is now fixed both the here and in all the relevant places in our grammar.  Side note: We had a similar capitalization issue with our CASE types, which we also fixed in grammar-internally this week, but is of course not relevant to semi.vpm.
+
+—TENSE
+
+E.TENSE : TENSE
+  ! << [e]
+  [e] >> !
+  * <> *
+
+Since tense is not relevant to Guarani, semi.vpm now explicitly states that we ignore all tense information coming in and output no tense information.  I left the catch-all at the end, though it is technically no longer necessary. 
+
+—ASPECT
+
+As set out in the lab instructions, I defined no-aspect in PG.tdl:
+
+;;; Aspect
+
+no-aspect := aspect.
+perfective := aspect.
+completive := aspect.
+future := aspect.
+prospective := aspect.
+future-completive := future & completive.
+future-perfective := future & perfective.
+
+I used ‘* >> no-aspect’ and ‘no-aspect << [e],’  to set default value for events with underspecified aspect to be no-aspect and assign that same value to events from a source language that have either underspecified aspect or an aspect that is not in our current inventory.
+
+E.ASPECT : ASPECT
+  future-perfective <> future-perfective
+  perfective <> perfective
+  future-completive <> future-completive
+  completive <> completive
+  future-completive <> future-completive
+  future-perfective <> future-perfective
+  future <> future
+  prospective <> prospective
+  * >> no-aspect
+  no-aspect << [e] 
+
+—MOOD
+
+E.MOOD : MOOD
+  * >> mood
+  mood << [e]
+
+Mood is also not relevant for our current grammar. In this instance I copied the notations used in semi.vpm for the English grammar we are working with this week.  Rather than using the same notation I used to deal with tense. 
+
+- GENDER
+
+I initially dealt with gender mismatches with the following.
+
+PNG.GEND : GEND
+  hum <> hum
+  inam <> inam
+  anim <> anim
+  * << [p]
+  * << !
+  * <> *
+
+But following the comments in class, I just deleted the section entirely and that works just as well :)
+
+
+3. First MT
+
+Machine translation is working! Our first sentence was ‘Dogs sleep’  which we used to help guide all of the semi.vpm changes outlined above.  We now get two parses in the target language: ‘jagua oike’ and ‘oike jagua.’ 
+
+-ADDITIONAL WORK
+Because we had extra time this week, we translated all of the MT sentences into Guarani and added the relevant vocabulary to our lexicon.  More on that next week, but it allowed us to play with translating more sentences.  I thought it would be fun to try: 
+“I ask whether you know that dogs chase cars.”  Which led me to a mismatch in the way we had defined the PRED values for our pronouns, which was originally _pron_n_rel.  I changed the predications to match what was in the English grammar so now we have the following in our lexicon:
+
+che := 1sg-pron-nom-noun-lex &
+  [ STEM < "che" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+nde := 2sg-pron-nom-noun-lex &
+  [ STEM < "nde" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+haHe := 3sg-pron-nom-noun-lex &
+  [ STEM < "haHe" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+nNande := 1pl-incl-pron-nom-noun-lex &
+  [ STEM < "nNande" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+ore := 1pl-excl-pron-nom-noun-lex &
+  [ STEM < "ore" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+peeN := 2pl-pron-nom-noun-lex &
+  [ STEM < "peeN" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+haHekueAra := 3pl-pron-nom-noun-lex &
+  [ STEM < "haHekueAra" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+cheve := 1sg-pron-nonag-noun-lex &
+  [ STEM < "cheve" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+ndeve := 2sg-pron-nonag-noun-lex &
+  [ STEM < "ndeve" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+chupe := 3sg-pron-nonag-noun-lex &
+  [ STEM < "chupe" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+nNandeve := 1pl-incl-pron-nonag-noun-lex &
+  [ STEM < "nNandeve" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+oreve := 1pl-excl-pron-nonag-noun-lex &
+  [ STEM < "oreve" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+pendeve := 2pl-pron-nonag-noun-lex &
+  [ STEM < "pendeve" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+chupekueAra := 3pl-pron-nonag-noun-lex &
+  [ STEM < "chupekueAra" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+
+Also the sentence works, which is exciting! But, with a LOT of parses in the source language, which is less exciting.  On the one hand this isn’t surprising given free word order and how long the sentence is, but we will need to do some work next week to see if we can constrain the parses further.
 
 
 4. More improvements to the grammar
