@@ -1,8 +1,7 @@
-# 567 LAB7
+# 567 LAB8
 # LANGUAGE: gug / Paraguayan Guaraní
 # AUTHOR: Lisa Tittle Caballero
 # PARTNER: Thor Wicke Monteverde
-
 
 
 1. One Sentence Fromm Test Corpus
@@ -679,8 +678,31 @@ But following the comments in class, I just deleted the section entirely and tha
 Machine translation is working! Our first sentence was ‘Dogs sleep’  which we used to help guide all of the semi.vpm changes outlined above.  We now get two parses in the target language: ‘jagua oike’ and ‘oike jagua.’ 
 
 -ADDITIONAL WORK
-Because we had extra time this week, we translated all of the MT sentences into Guarani and added the relevant vocabulary to our lexicon.  More on that next week, but it allowed us to play with translating more sentences.  I thought it would be fun to try: 
-“I ask whether you know that dogs chase cars.”  Which led me to a mismatch in the way we had defined the PRED values for our pronouns, which was originally _pron_n_rel.  I changed the predications to match what was in the English grammar so now we have the following in our lexicon:
+Because we had extra time this week, we translated all of the MT sentences into Guarani and added the relevant vocabulary to our lexicon.  More on that next week, but it allowed us to play with translating more sentences.  
+
+Attempt #2:
+
+We tried: 
+“Who sleeps” 
+
+Which worked beautifully with the three parses we expect!!!
+“maAva piko oike,”  “maAva pa oike,” and “maAva oike”
+
+
+Attempt #3:
+
+We also tried:
+“Do dogs chase cats” 
+
+Which works but gives us all the possible constituents in first position, and we may or may not want to say that we want a Guarani result equivalent to the English, “Do DOGS chase cats?” —> i.e., “Is it dogs that chase cats?”
+  
+
+Attempt #4:
+
+Then I got (perhaps too) bold thought it would be fun to try: 
+“I ask whether you know that dogs chase cars.”  
+
+Which pointed me to a mismatch in the way we had defined the PRED values for our pronouns, which was originally _pron_n_rel.  I changed the predications to match what was in the English grammar so now we have the following in our lexicon:
 
 che := 1sg-pron-nom-noun-lex &
   [ STEM < "che" >,
@@ -739,12 +761,12 @@ chupekueAra := 3pl-pron-nonag-noun-lex &
     SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
 
-Also the sentence works, which is exciting! But, with a LOT of parses in the source language, which is less exciting.  On the one hand this isn’t surprising given free word order and how long the sentence is, but we will need to do some work next week to see if we can constrain the parses further.
+And now the sentence works, which is exciting! But, with a LOT of parses in the source language, which is less exciting.  Of course, this isn’t surprising given free word order and how long the sentence is. Plus one of the sources of this large number of parses is that ask is defined in English as as having three semantic arguments, “I ask someone something” so Guarani is producing paraphrases with pronouns for ALL of the possible PERNUM values, which, of course are optionally present or absent. I suspect constraining this will be the work of a transfer rule (?) but I’ll have to wait and see.
 
 
 4. More improvements to the grammar
 
-—UPDATES FROM LAST WEEK
+—OVERGENERATION
 
 We are now defining ‘-eHi’ as a ditransitive verb in the lexicon, but because dative marking is obligatory for indirect objects, Juanchi can only be the subject or direct object of the predicate in 20—which is the same ambiguity we saw last week when ‘-eHi’ was instantiated as a transitive verb. 
 
@@ -759,8 +781,7 @@ ha  o-eHi  Juanchi
 and A.3-say Juan.DIM
 'And Juanito says:'
 
-Also, last week when we generated from these parses we got a lot of sentences.  Some of this generation was well-formed and due to the fact that we had not specified a default for underspecified aspect values. But generating from our coordinated examples also generated a lot of options with ‘pa’ and ‘piko,’ e.g. ‘ha oeHi ha Juanchi piko.’ With changes made to semi.vpm and our coordination rules (described below) we have managed to get some really well behaved generation. 
-
+Also, last week when we generated from these parses we got a lot of sentences.  Some of this generation was well-formed and due to the fact that we had not specified a default for underspecified aspect values.  With the changes to semi.vpm that problem was fixed. However, when generating from parses that used coordination we were also seeing a lot of options with ‘pa’ and ‘piko,’ e.g. ‘ha oeHi ha Juanchi piko.’   After som
 
 
 
@@ -791,18 +812,31 @@ Comparison of baseline(gold-lab6) and final version of this lab
 (Compare | Competence)
 
 	Baseline
-		lexical 0:  .38
-		analyses 0: 0.0
-		in 0:       0.0
+		lexical 0:  .70
+		analyses 0: 3.0
+		in 0:       4.3
 		out 0:      100.0
 
 	New
-		lexical 0:  .53
+		lexical 0:  .80
 		analyses 0: 3.00
-		in 0:       4.8
+		in 0:       8.7
 		out 0:      100.0
 
-We have achieved our goal of parsing one more sentence from our corpus this week:
+We didn’t ‘lose’ our sentence from last week with the grammar changes we made, and have also achieved our goal of parsing one more sentence from our corpus this week.
+
+#Sentence.22
+Source: a, attested
+Vetted: t
+Judgment: g
+Phenomena: corpus
+Ha he'i Pirulo-pe
+Ha oeHi Pirulo pe 
+Ha o-eHi Pirulo=pe 
+and A.3-say Pirulo=DAT
+'and he said to Pirulo'
+
+Which as noted earlier in the write-up is correctly parsing with two possible readings. the one place where we are arguably performing worse is in the one additional parse of Sentence #20.
 
 #Sentence.20
 Source: a, attested
@@ -810,190 +844,250 @@ Vetted: t
 Judgment: g
 Phenomena: corpus
 Ha he'i Huanchi:
-ha  oe   Juanchi
-ha  o-e  Juanchi
+ha  oeHi   Juanchi
+ha  o-eHi  Juanchi
 and A.3-say Juan.DIM
 'And Juanito says:'
 
-Which as noted earlier in the write-up is correctly parsing with three possible readings. 
-
+Previously this was parsing with three parses.  The two which reflect subject/object ambiguity, and one coordinated phrase where ha was attaching to the S “oeHi” and then being coordinated with the predicate Juanchi.  Because of our changes to the coordination rule this scopal modifier is now allowed to attach to the coordinated phrase “oeHi Juanchi.”   The resulting MRSs ARE subtly different, but I’m not sure if we want both possibilities. If time allows, we probably still want to look into constraining this a bit more next week.
+  
 
 --TestSuite General Stats
 
 Analyze | Coverage
 	Total Items: 211
-	Positive Items: 138
-	Word String 0: 2.99
-	Lexical Items 0: 4.84
-	Distinct Analyses: 2.96
-	Total Results: 113
-	Overall Coverage: 81.9
+	Positive Items: 135
+	Word String 0: 2.96
+	Lexical Items 0: 4.91	
+	Distinct Analyses: 2.61
+	Total Results: 131
+	Overall Coverage: 97
 
 Analyze | Overgeneration
 	Total Items: 211
-	Negative Items: 73
+	Negative Items: 76
 	Word String 0: 2.97
-	Lexical Items 0: 4.68
-	Distinct Analyses: 1.00
-	Total Results: 1
-	Overall Coverage: 1.4
+	Lexical Items 0: 4.87
+	Distinct Analyses: 0.00
+	Total Results: 0
+	Overall Coverage: 0.0
 
 Comparison of baseline(gold-lab6) and final version of this lab 
 (Compare | Competence)
 
 	Baseline
-		lexical 0:  1.46
-		analyses 0: 2.76
-		in 0:       76.8
-		out 0:      6.8
+		lexical 0:  1.45
+		analyses 0: 2.62
+		in 0:       85.9
+		out 0:      1.3
 
 	New
-		lexical 0:  1.52
-		analyses 0: 2.94
-		in 0:       81.9
-		out 0:      1.4
+		lexical 0:  1.60
+		analyses 0: 2.61
+		in 0:       97.0
+		out 0:      0.0
 
 
-General analysis
+General analysis:
 
-We see an increase in coverage over our testsuite from 76.8 to 81.9.  A lot of that jump is in our analysis of longer sentences (i-length in [5-10|) where our performance jumped from 60.9 to 78.3.  The jump in shorter sentences was more modest from 80.0 to 82.6.  
+Now that we finally implemented our ditransitive verbs we saw a huge jump in coverage, from 85.9 to 97.0.  When we look at longer sentences (i-length in [5…10]), the difference is even more dramatic—-our coverage goes from 78.3 to 95.7.  In our overgeneration results we see the effect of finally identify ‘hand’ as a word that requires a possessor so that we are no longer seeing #105 as one of our ill-formed sentences, but #104 still parses with the correct semantics
 
-We also see an increase in the number of distinct analyses with our new grammar, but this is actually to be expected for two reasons.  First, fixing our n-bar-predicate rule resulted in a lot more legitimate ambiguity, and second, as noted above we are parsing a larger percentage of our long sentences which in Guarani tend to have larger numbers of legitimate parses.
-
-One example is 202, seen below, where we have 4 legitimate parses even without accounting for asyndenton coordination which interacts with the n-bar-predicate rule to produce 6 more. That said we were still able to constrain coordination a bit more and reduce the number of parses on that sentence by 2 even with the changes this week, from 12 to 10 total.
-
-#Ex.202: Embedding of interrogative clause
-Source: e
-Vetted: f
-Judgment: g
-Phenomena: emb-d
-aikuua ohechaha ju'i vakaA
-aikuua ohecha ha juHi vakaA
-a-ikuua o-hecha=ha juHi vakaA
-A.1SG-know A.3-see=COMPL frog cow
-'I know that somebody sees the frog's cow' / ' I know that the frog's cow sees it' / 'I know that the frog sees the cow' / 'I know that the cow sees the frog'
-
-Even short sentences can be multiply ambiguous, particularly when we have to NP’s next to each other as we see in 193.  Here we can have the frog seeing the cow, the cow seeing the frog, the frog’s cow being seen, or the frog’s cow seeing something.  For these types of sentences we generally saw an increase in parses from 8-10, with the 2 extra parses attributed to the aforementioned changes to our n-bar-predicate rule and the interaction between it and coordination.  
-
-#Ex.193 Transitive verb agrees with 3per subject. No marking on animate object. VSO word order. No determiners, underspecified number. Ambiguous.
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: wo
-ohecha ju'i vaká
-ohecha juHi vakaA
-o-hecha juHi vakaA
-O.3-see frog.ANIM.NOM cow.ANIM
-'The frogs see the cows'
-
-In Ex. 162 the additional ambiguity is the result of new lexical ambiguity.  We have a new scopal-modifier with the form “ha” which is also the form of complementizer clitic AND the form used for conjunction.  The ambiguity between scopal modifier and conjunction leads to increase the readings from 4 to 8 but all the readings look reasonable. 
-
-#Ex.162: Use of 'and' coordination with nominal constituents
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {crd, wo}
-aguara ha jagua okañy
-aguara ha jagua okanNy
-aguara ha jagua o-kanNy
-fox.ANIM.NOM and dog.ANIM.NOM A.3-hide
-'the fox and the dog hid'
-
-As a further frame of reference we also compared our results to our grammar from this Thursday, after we had made some major changes but before we had managed to patch many of our leaks. Thursday’s grammar was showing 3.89 analyses on average with a 6.45 average for longer sentences, which were able to get down to 2.94 and 3.44 respectively.
-
-In particular 201 and 202, which you may remember as being the sentences with 17 and 20 parses respectively now have only 10 distinct analyses each, which as you can see from my breakdown of 202 above is actually a reasonable number for sentences of this length particularly when there are to NPs in a row.
-
-#Ex.201: Embedding of interrogative clause
-Source: e
-Vetted: f
-Judgment: g
-Phenomena: emb-q
-aporandu ohechapa ju'i vakaA
-aporandu ohecha pa juHi vakaA
-a-porandu o-hecha=pa juHi vakaA
-A.1SG-ask A.3-see=Q frog cow
-'I ask if somebody sees the frog's cow'/ ' I ask if the frog's cow sees it' / 'I ask if the frog sees the cow' / 'I ask if the cow sees the frog'
-
-#Ex.202: Embedding of interrogative clause
-Source: e
-Vetted: f
-Judgment: g
-Phenomena: emb-d
-aikuua ohechaha ju'i vakaA
-aikuua ohecha ha juHi vakaA
-a-ikuua o-hecha=ha juHi vakaA
-A.1SG-know A.3-see=COMPL frog cow
-'I know that somebody sees the frog's cow' / ' I know that the frog's cow sees it' / 'I know that the frog sees the cow' / 'I know that the cow sees the frog'
-
-Adding some additional constraints to our head-adj-int rule reduced the parses on sentences like 22 and 26 by about half, from 9 to 5 in the first case and from 13 to 6 in the second. Furthermore the parses that remain look legitimate.
-
-#Ex.22 Transitive verb agrees with 3per subject. Accusative marking on animate object. SVO word order. No determiners, underspecified number.
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {wo, agr, c}
-ju'i ohecha vakápe
-juHi ohecha vakaA pe
-juHi o-hecha vakaA=pe
-frog.ANIM.NOM O,3-see cow.ANIM=ACC
-'The frogs sees the cows'
-
-#Ex.26: Transitive verb agrees with 3per subject. Accusative marking on animate object. VSO word order. No determiners, underspecified number.
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {wo, agr, c}
-ohecha ju'i vakápe
-ohecha juHi vakaA pe
-o-hecha juHi vakaA=pe
-A.3-see frog.ANIM.NOM cow.ANIM=ACC
-'The frog sees the cow'
-
-
-Our ill-formed sentence is the same example as in previous weeks were we have not yet encoded that “hand” has to have a possessor or possessive marking, and cannot occur with a  determiner like la/lo. That should be easy to handle with what we have in place so we will likely get to that next week. We are also hoping to tackle ditransitives for next week which should reduce our number of errors significantly.  
-
-
-——Details 
-
-—Intersection between readings and MRS
-
-When we look at the intersection between readings and differences in MRS we see some really interesting changes that further complicate the results above.  There are many examples (over 15) where there are no readings in common. This is even true many distinct analyses available for both weeks. For example sentence 202 which we looked at above had 12 parses last week and has 10 this week, but NONE of those readings overlap. 
-
-Our simple go-to sentence ‘juhi ohecha tunich’ has the two traditional readings in common with last week, “the frog sees the stone” and the “the stone sees the frog”  but the semantics for all of our coordinated results are different which shows the effect of not loosing our semantics, which was happening because non-local information was not getting passed up through our coordination rules. 
-
-#Ex.3:  Transitive verb. 3Per subject verb agreement. Inanimate object.
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {wo, agr, c}
-ju'i ohecha tunich
-juHi ohecha tunich
-juHi o-hecha tunich
-frog.ANIM A.3-see stone.INAM
-'The frog sees the stone' / 'The stone sees the frog' 
-
-Sentence 186 went from 4 to 6 readings, with 0 in common. 5 of those parses involve coordination, so the lack of overlap is expected given the problem outlined above, but it also tells me we weren’t getting the semantics right for the target reading of “my mother’s dog walks” either.    
-
-#Ex.186: Possessive affixation combined with possessive phrase rule. 
+#Ex.104: Affix-marked Possessive. Human Possessor. Inanimate Inalienable Possession. Subject Drop.
 Source: author
 Vetted: f
 Judgment: g
 Phenomena: poss
-chesy jagua oguata
-chesy jagua oguata
-che-sy jagua o-guata
-1SG.POS-mother dog A.3-walk
-'My mother's dog walks' 
+ahunga chepo
+ahunga chepo
+a-hunga che-po
+A.1SG-hurt 0.1SG-hand.INAM
+'I hurt my hands'
 
-Finally we can see the effects of the corrected n-bar-predicate rule in the semantics #195, which had one reading for both grammars but with different semantics:
+#Ex.105: Inalianable possession cannot have a non-possessive determiner, requires a possessor.
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: poss
+ahunga lo po
+ahunga lo po
+a-hunga lo po
+A.1SG-hurt the.PL hand.INAM
+*'I hurt the hands'
 
-#Ex.195: NP predicate, possessive marking
+When look at our errors, there are some errors we expect, resulting from the grammar (correctly) not recognizing verb forms with incorrect or incomplete negation markers.  The other two errors are the result of our only still-standing to do item from the beginning of the quarter. While we have combined aspect working as we can see in 
+
+#Ex.63: Transitive verb. Completive aspect. Future aspect. Subject drop. Object drop.
 Source: author
 Vetted: f
 Judgment: g
-Phenomena: cop
-hi'ára
-iaAra
-i-aAra
-POSS.3-day
-'It is his/her day' 
+Phenomena: {agr, tam, pro-d}
+ahendupata
+ahendupata
+a-hendu-pa-ta
+A.1SG-hear-COMPL-FUT
+'I will have heard it all'
+
+
+#Ex.66: Transitive verb. Perfective aspect. Future aspect. Subject drop. Object drop.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {agr, tam, pro-d}
+ahendumata
+ahendumata
+a-hendu-ma-ta
+A.1SG-hear-PERF-FUT
+'I will have heard it already'
+
+We have still not implemented free word-ordering in aspect markers, so #64 and #67 still do not parse. 
+
+#Ex.64: Transitive verb. Future aspect. Completive aspect. Subject drop. Object drop.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {agr, tam, pro-d}
+ahendutapa
+ahendutapa
+a-hendu-ta-pa
+A.1SG-hear-FUT-COMPL
+'I will have heard it all'
+
+#Ex.67: Transitive verb. Future aspect. Perfective aspect. Subject drop. Object drop.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {agr, tam, pro-d}
+ahendutama
+ahendutama
+a-hendu-ta-ma
+A.1SG-hear-FUT-PERF
+'I will have heard it already'
+
+I know next week is focused on machine translation, but if the fix isn’t to complicated it would be nice to try it. I think it would be very satisfying to see those last two sentences parsing, and now that we have set a default aspect value we won’t have to worry that the change will result in lots of new generation.
+
+Compare - Readings 
+Here we see the effect of our added ditransitive verbs and we are now getting correct parses for all of the following (and many more). 
+
+#Ex.41: Ditransitive verb agrees with 3SG object. Inanimate direct object. Animate indirect object with dative marking.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {wo, agr, c}
+ju'i ohechauka tunich vakápe
+juHi ohechauka tunich vakaA pe
+juHi o-hecha-uka tunich vakaA=pe
+frog.ANIM.NOM A.3-gsee-CAUS stone.INAM.SG cow.ANIM=ACC
+'The frog shows the stone to the cow'
+
+#Ex.43: Ditransitive verb agrees with 3SG object. Overt accusative marking and dative marking.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: agr
+ju'i ohechauka vakápe tunichpe
+juHi ohechauka vakaA pe tunich pe
+juHi o-hecha-uka vakaA=pe tunich=pe
+frog.ANIM.NOM A.3-see-CAUS cow.ANIM=ACC stone.INAM=DAT
+'The frog shows the cow to the stones'
+
+#Ex.54: Dynamic intransitive agrees with 2SG subject. Inanimate direct object. Indirect object marked with 1SG dative pronoun. Subject drop.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {wo, agr, pn}
+rehechauka tunich cheve
+rehechauka tunich cheve
+re-hecha-uka tunich cheve
+A.2SG-see-CAUS stone.INAM 1.SG.PRON.DAT
+'You show me the stone'
+
+#Ex.69: Ditransitive. Human subject and human object. 12.SG Portmanteau marking on verb.  Subject drop. Object drop. 
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {agr, pn, pro-d}
+rome'e᷉ chupe
+romeHeN chupe
+ro-meHeN chupe
+12.SG-give 3.SG.PRON.DAT
+'I gave you to him'
+
+#Ex.70:  Ditransitive agrees with 2SG subject. Indirect object marked with 1SG dative pronoun. Object drop prohibited because of human object.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {pro-d, agr, pn, c}
+reme'e᷉ cheve mbo'ehárape
+remeHeN cheve mboHehaAra pe
+re-meHeN cheve mboHehaAra=pe
+A.2SG-give 1.SG.PRON.DAT professor.ANIM=ACC
+'You gave the professor to me'
+
+#Ex.111: Portmanteau marker for 12PL
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {agr, pn, pro-d}
+pome'e᷉  chupe
+pomeHeN chupe
+po-meHeN chupe
+12.PL-give 3.SG.PRON.DAT
+'I gave you to him' (meaning you plural)
+
+Of course examples with the word ‘give’ are a little pragmatically weird, but they ARE syntactically correct and they are modeled off of an example close to #111 in our source grammars (the original sentence had some additional aspectual information).  
+
+We also see that our ungrammatical ditransitive examples have gone from producing and error, to correctly not parsing. For example #52 and #53 below:
+
+#Ex.52: Indirect object marked with nominative pronoun instead of dative pronoun.
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: agr
+che nde rehechauka tunich 
+che nde rehechauka tunich
+che nde re-hecha-uka tunich
+1.SG.PRON.NOM 2.SG.PRON.NOM A.2SG-see-CAUS stone.INAM
+*'You show me the stone'
+
+#Ex.53: Ditransitive verb has 2SG agreement but 3SG subject.
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: pn
+ha'e rehechauka tunich cheve
+haHe rehechauka tunich cheve
+haHe re-hecha-uka tunich cheve
+3.SG.PRON.NOM A.2SG-see-CAUS stone.INAM 1.SG.PRON.DAT
+*'He showed me the stone'
+
+
+COMPARE - READING/MRS
+
+When we originally saw this test we were seeing universal disagreement in MRS values between this week and last week because of differences to semi.vpm.  However, after adding a baseline with an updated .vpm file we can see the effects of the change to our SF values of our coordinated clauses.   In fact, with the exception of ditransitives and the other sentences that previously produced errors, scrolling through the list is quick way of identifying how many of the parses for each sentence are the result of coordination.  I was pleased how quickly I was able to identify sentence #109 and #160.
+
+#Ex.109: Shows non-possessable noun. The only grammatical readings involve coordination of noun predicates
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: poss
+ahendu avatitý yvytu hata 
+ahendu avatityA yvytu hata 
+a-hendu avatityA yvytu hata
+A.1SG-hear cornfield wind.INAM strong
+'I hear it, it is the cornfield, it is the strong wind'
+
+#Ex.160: asyndenton coordination with subject drop
+Source: b
+Vetted: f
+Judgment: g
+Phenomena: {crd, wo}
+aguara opo okañy
+aguara opo okanNy
+aguara o-po o-kanNy
+fox.ANIM.NOM A.3-jump A.3-hide
+'the fox jumped and (he) hid'
+
+Both of which I thought might contain errors because of the lack of overlap, but thanks to our notes, I quickly saw they were not expected to have any parses that didn’t involve coordination.
+
+
+
