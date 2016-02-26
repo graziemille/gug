@@ -60,14 +60,6 @@ PNG.PERNUM : PER NUM
   pl << * pl
   * >> ! !
   ! << * *
-
-PNG.GEND : GEND
-  hum <> hum
-  inam <> inam
-  anim <> anim
-  * << [p]
-  * << !
-  * <> *
    
 E.TENSE : TENSE
   ! << [e]
