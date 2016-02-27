@@ -766,10 +766,10 @@ And now the sentence works, which is exciting! But, with a LOT of parses in the 
 
 4. More improvements to the grammar
 
+
 —OVERGENERATION
 
-We are now defining ‘-eHi’ as a ditransitive verb in the lexicon, but because dative marking is obligatory for indirect objects, Juanchi can only be the subject or direct object of the predicate in 20—which is the same ambiguity we saw last week when ‘-eHi’ was instantiated as a transitive verb. 
-
+——Spurious piko/pa
 #Sentence.20
 Source: a, attested
 Vetted: t
@@ -781,9 +781,159 @@ ha  o-eHi  Juanchi
 and A.3-say Juan.DIM
 'And Juanito says:'
 
-Also, last week when we generated from these parses we got a lot of sentences.  Some of this generation was well-formed and due to the fact that we had not specified a default for underspecified aspect values.  With the changes to semi.vpm that problem was fixed. However, when generating from parses that used coordination we were also seeing a lot of options with ‘pa’ and ‘piko,’ e.g. ‘ha oeHi ha Juanchi piko.’   After som
+Last week when we generated from the parses from our corpus example we got a lot of sentences.  Some of this generation was well-formed and due to the fact that we had not specified a default for underspecified aspect values.  With the changes to semi.vpm that problem was fixed. However, when generating from parses that used coordination we were also seeing a lot of options with ‘pa’ and ‘piko,’ e.g. ‘ha oeHi ha Juanchi piko,’ not only in this example but in other examples.  When I looked closely at our coordinated phrases, I noticed that they were underspecified for SF, and this was leading to a lot of over-generation when they “fired” so to speak.  There were a lot of ways to potentially fix this, but in my investigations I also noticed that our coordinated phrases were the only phrases allowed to unify with the root, without first passing through and int-cl or decl-cl, and I thought for the purposes of uniformity it would be better to make that a requirement for our coordinated phrases as well.  This fix was accomplished by changing making sure our s-coord phrase was designated as [MC na].
 
+s-coord-phrase :+
+  [ SYNSEM.LOCAL.CAT [ MC na, EC #ec, IC #ic],
+    LCOORD-DTR.SYNSEM.LOCAL.CAT [ MC bool, EC #ec,  IC #ic],
+    RCOORD-DTR.SYNSEM.LOCAL.CAT [ MC bool, EC #ec,  IC #ic]].
 
+Now our coordination phrases are required to pass through either int-cl or decl-cl before unifying with the root, in keeping with the way we are treating all other phrases in the grammar, and because of this none of our well-formed sentences has an underspecified SF value. 
+
+Once I implemented that change, we are not getting any parses with piko and pa, but we were getting some spurious parses with complementizer “ha” appearing in a non-embedded clause, and this led me to discover that our EC and IC information, after being carefully passed up, was being ignored by the gug-scopal-mod-phrase I added last week.  So I added the constraint that the head daughter of this phrase be both [EC -] and [IC -], and that fixed the problem.   Now when we generate from our coordinated sentences we see only the two parses we expect, with and with out the coordination word, which (of course) is also spelled ‘ha.’
+
+gug-scopal-mod-phrase := basic-head-mod-phrase-simple & head-final & 
+			 head-compositional &
+  [ SYNSEM [ LOCAL.CAT [ MC na,                       
+			 EC -,                        
+			 IC -],
+	     NON-LOCAL [ QUE <! !>, 
+			 SLASH <! !>, 
+			 YNQ <! !> ]],
+    HEAD-DTR.SYNSEM.LOCAL.CAT [ MC na,
+                                IC -,
+                                EC -,
+                                HEAD verb & [MOD < >],
+                                VAL [ SPEC < >, 
+                                      SPR < >, 
+                                      SUBJ < >, 
+                                      COMPS < > ]],
+    NON-HEAD-DTR.SYNSEM.LOCAL [ CAT [ HEAD adv & 
+					   [ MOD < [ LOCAL scopal-mod ] >],
+                                      VAL [SPR < >, 
+					   SUBJ < >, 
+					   COMPS < > ]],
+                                      CONT.HOOK #hook ],
+    C-CONT [ HOOK #hook,
+	     HCONS <! !>,
+	     ICONS <! !> ] ].
+
+Since we were already specifying [EC -] and [IC -] on the phrase itself, I will do a little more experimenting next week to see if wouldn’t be better to just identify those values between the rule and the head daughter.  For now I’m satisfied that this works and we haven’t lost any parses we wanted to keep. 
+
+—— spurious ‘piko pe’ and ‘piko pa’ parses
+
+As you noted last week generating from sentences like #125 resulted in spurious parses where =pe was attaching after =piko or =pa to create sentences like “mbaHeA piko pe rejapo”
+
+#Ex.125: Wh question for 'what' object, with piko question clitic
+Source: d
+Vetted: f
+Judgment: g
+Phenomena: {wh, wo}
+mba'é piko rejapo ?
+mbaHeA piko rejapo
+mbaHeA=piko re-japo
+what=Q A.2SG-do
+'What do you do?'
+
+Thanks to the information provided by the parse tree from the spurious generated sentences, this turned out to be a relatively straightforward fix.  I just added a constraint to the COMPS of case-marking-adp-lex requiring its complement to be an empty YNQ dif-list.  
+
+case-marking-adp-lex :=  basic-one-arg & raise-sem-lex-item &
+  [ SYNSEM.LOCAL.CAT [  EC - , 
+                        IC - , 
+                        HEAD adp & [MOD < >] ,
+                       VAL [ SPR < >,
+                             SUBJ < >,
+                             COMPS < #comps & [NON-LOCAL.YNQ <! !>] >,
+                             SPEC < > ] ],
+    ARG-ST < #comps &
+             [ LOCAL.CAT [ VAL.SPR < >,
+                           HEAD noun & [CASE-MARKED - ] ] ] > ].
+
+Now generating from #125 gets the four well-formed parses we expect. The one identical to the original sentence as well as: ‘mbaHeA pa rejapo,’ ‘mbaHeA pe rejapo’ ‘mbaHeA rejapo.’
+  
+
+—NOUNS REQUIRING A POSSESSOR
+The last fix we accomplished this week was to deal with our perpetually ill-formed sentence #105. Guarani forbids inalianable possessions from occurring without possessive marking.  Somewhat disturbingly this is true even if you are saying something like “I had liver for dinner.” This means that while #104 is grammatical, #105 is not, but we had not implemented a way to block it from parsing until this week. 
+
+#Ex.104: Affix-marked Possessive. Human Possessor. Inanimate Inalienable Possession. Subject Drop.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: poss
+ahunga chepo
+ahunga chepo
+a-hunga che-po
+A.1SG-hurt 0.1SG-hand.INAM
+'I hurt my hands'
+
+#Ex.105: Inalianable possession cannot have a non-possessive determiner, requires a possessor.
+Source: author
+Vetted: f
+Judgment: u
+Phenomena: poss
+ahunga lo po
+ahunga lo po
+a-hunga lo po
+A.1SG-hurt the.PL hand.INAM
+*'I hurt the hands'
+
+I implemented that this week by defining a new FLAG and a new lexical-type.   
+First I added a flag POSS-FLAG to inflected and infl-satisfied in PG.tdl
+
+inflected :+ [ POSS-FLAG luk,
+    PERNUM-STAT-INTRANS-FLAG luk,
+    NEG1-FLAG luk,
+    PERNUM-DYN-INTRANS-OR-PERNUM-TRANS-FLAG luk,
+    NEG2-FLAG luk,
+    PERNUM-DYN-INTRANS-OR-PERNUM-STAT-INTRANS-OR-PERNUM-TRANS-FLAG luk,
+    PERNUM-TRANS-FLAG luk ].
+
+infl-satisfied :+ [ POSS-FLAG na-or-+,
+    PERNUM-STAT-INTRANS-FLAG na-or-+,
+    NEG1-FLAG na-or-+,
+    PERNUM-DYN-INTRANS-OR-PERNUM-TRANS-FLAG na-or-+,
+    NEG2-FLAG na-or-+,
+    PERNUM-DYN-INTRANS-OR-PERNUM-STAT-INTRANS-OR-PERNUM-TRANS-FLAG na-or-+,
+    PERNUM-TRANS-FLAG na-or-+ ].
+
+Then I created a new lexical type inheriting from common-noun-lex with a [INFLECTED.POSS-FLAG -], value.
+
+;; category for words like hand
+poss-only-com-noun-lex := common-noun-lex & 
+[INFLECTED.POSS-FLAG -].
+
+Then I updated poss-lex-rule-super to include [ INFLECTED [POSS-FLAG +]. 
+
+;; The possessive lexical rule as possessive affixes to possessums
+;; e.g., chesy, che-sy, "my mother"
+poss-lex-rule-super := infl-add-only-lex-rule &
+ [ INFLECTED [POSS-FLAG +],
+   SYNSEM.LKEYS.ALTKEYREL #altkeyrel,
+   DTR common-noun-lex & [ SYNSEM.LOCAL [ CONT.HOOK [  INDEX #index,  
+						       LTOP #lbl  ] ,
+					  CAT [ HEAD.POSS poss-or ,
+						VAL.SPR <[OPT +]> ] ]],  
+   C-CONT [ HOOK [INDEX #index, 
+		  LTOP #lbl  ],
+	    RELS <! arg12-ev-relation &
+		  [ PRED "poss_rel",
+		    LBL #lbl,
+		    ARG1 #index,
+		    ARG2 #arg2 ],
+		  quant-relation &
+		  [ PRED "exist_q_rel",
+		    ARG0 #arg2, 			 
+		    RSTR #harg ],			
+		  #altkeyrel & noun-relation &			
+		  [PRED "pron_rel",			 
+		   LBL #lbl2,			 
+		   ARG0 #arg2 & [ COG-ST activ-or-more,			       
+				  SPECI + ] ] !>,		  
+	    HCONS <! qeq & [ HARG #harg, 				   
+			     LARG #lbl2 ] !>,		  
+	    ICONS <! !>] ].
+
+This combination of changes forces inalianable nouns like ‘hand’ to go through a poss-lex-rule before they can “play in the syntax,” and we finally have the results we want for #104 and #105. 
 
 
 5. Statement of the current overage of the grammar over your testsuite (using number you can get from Analyze|Coverage and Analyze|Overgeneration in [incr tsdb()]) and a comparison between your baseline testsuite run and your final one for this lab (see Compare|Competence).
