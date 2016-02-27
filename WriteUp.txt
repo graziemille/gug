@@ -1040,7 +1040,10 @@ Comparison of baseline(gold-lab7) and final version of this lab
 
 General analysis:
 
-Now that we finally implemented our ditransitive verbs we saw a huge jump in coverage, from 85.9 to 97.0.  When we look at longer sentences (i-length in [5…10]), the difference is even more dramatic—-our coverage goes from 78.3 to 95.7.  In our overgeneration results we see the effect of finally identify ‘hand’ as a word that requires a possessor so that we are no longer seeing #105 as one of our ill-formed sentences, but #104 still parses with the correct semantics
+Now that we finally implemented our ditransitive verbs we saw a huge jump in coverage, from 85.9 to 97.0.  When we look at longer sentences (i-length in [5…10]), the difference is even more dramatic—-our coverage goes from 78.3 to 95.7. 
+
+In our overgeneration results we see that we no longer have any ill-formed sentences (Yay!) the result of finally getting #105 to NOT parse for the right reasons (e.g., while still making sure #104 parsed).  This was done with the POSS-FLAG fix outlined above. 
+
 
 #Ex.104: Affix-marked Possessive. Human Possessor. Inanimate Inalienable Possession. Subject Drop.
 Source: author
@@ -1115,7 +1118,11 @@ A.1SG-hear-FUT-PERF
 
 We know next week is focused on machine translation, but if the fix isn’t to complicated it would be nice to try it. We think it would be very satisfying to see those last two sentences parsing, and now that we have set a default aspect value we won’t have to worry that the change will result in lots of new generation.
 
-Compare - Readings 
+
+Comparisons: 
+
+
+Compare - Wellformed/Readings/Detail
 Here we see the effect of our added ditransitive verbs and we are now getting correct parses for all of the following (and many more). 
 
 #Ex.41: Ditransitive verb agrees with 3SG object. Inanimate direct object. Animate indirect object with dative marking.
@@ -1186,7 +1193,10 @@ po-meHeN chupe
 
 Of course examples with the word ‘give’ are a little pragmatically weird, but they ARE syntactically correct and they are modeled off of an example close to #111 in our source grammars (the original sentence had some additional aspectual information).  
 
-We also see that our ungrammatical ditransitive examples have gone from producing and error, to correctly not parsing. For example #52 and #53 below:
+
+Compare - Illformed/Readings/Detail
+Here we focus in on our 5 ungrammatical examples have gone from producing and error, to correctly not parsing. Mostly from our new ditransitive verbs #52, #53 below.
+
 
 #Ex.52: Indirect object marked with nominative pronoun instead of dative pronoun.
 Source: author
@@ -1210,6 +1220,7 @@ haHe re-hecha-uka tunich cheve
 3.SG.PRON.NOM A.2SG-see-CAUS stone.INAM 1.SG.PRON.DAT
 *'He showed me the stone'
 
+This is also another place where we see #105  (the hand example) correctly going from parsing to no longer parsing.
 
 COMPARE - READING/MRS
 
