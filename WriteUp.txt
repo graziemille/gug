@@ -135,7 +135,7 @@ nde re-hecha-uka cheve
 
 Also if we remove the direct object as in #51 we only get one parse, even though the pronoun cheve is underspecified between dative and accusative case.  This is because if cheve were an accusative pronoun and the direct object of the verb, the coreference marker would be che- not re-. 
 
-To capture the parallel behavior between transitive and intransitive verbs and make use of the inflectional rules already present in our grammar, we defined a new supertype for transitive and intransitive verbs.  
+To capture the parallel behavior between transitive and ditransitive verbs and make use of the inflectional rules already present in our grammar, we defined a new supertype for transitive and ditransitive verbs.  
 
 gug-trans-ditrans-verb := verb-lex &
   [ INFLECTED.PERNUM-TRANS-FLAG - ].
@@ -403,7 +403,7 @@ nde re-hecha-uka cheve
 
 
 — CASE-MARKING ADPOSITIONS
-The indirect objects of DVPs are marked with an obligatory dative marker. These arguments can take the form of either a dative pronoun or an NP combined with the case-marking postposition ’pe.’  Because the accusative case-marking adposition shares the same form.  so these were originally instantiated in the lexicon with a single entry that was underspecified between dative and accusative case.   However, the accusative case markers are optional and the dative markers are not, which necessitated creating separate entries instead.  We added the following to lexicon.tdl:
+The indirect objects of DVPs are marked with an obligatory dative marker. These arguments can take the form of either a dative pronoun or an NP combined with the case-marking postposition ’pe.’  Because the accusative case-marking adposition shares the same form as the dative, these were originally instantiated in the lexicon with a single entry that was underspecified between dative and accusative case.   However, the accusative case markers are optional and the dative markers are not, which necessitated creating separate entries instead.  We added the following to lexicon.tdl:
 
 acc-marker := case-marking-adp-lex &
   [ STEM < "pe" >,
@@ -611,7 +611,7 @@ PNG.PERNUM : PER NUM
   ! << * *
 
 
-I also took this opportunity to fix the our naming of PERNUM types grammar-internally.  We had been using capitalized names, but that is now fixed both the here and in all the relevant places in our grammar.  Side note: We had a similar capitalization issue with our CASE types, which we also fixed in grammar-internally this week, but is of course not relevant to semi.vpm.
+We also took this opportunity to fix the our naming of PERNUM types grammar-internally.  We had been using capitalized names, but that is now fixed both the here and in all the relevant places in our grammar.  Side note: We had a similar capitalization issue with our CASE types, which we also fixed in grammar-internally this week, but is of course not relevant to semi.vpm.
 
 —TENSE
 
@@ -699,10 +699,10 @@ Which works but gives us all the possible constituents in first position, and we
 
 Attempt #4:
 
-Then I got (perhaps too) bold thought it would be fun to try: 
+Then we got (perhaps too) bold thought it would be fun to try: 
 “I ask whether you know that dogs chase cars.”  
 
-Which pointed me to a mismatch in the way we had defined the PRED values for our pronouns, which was originally _pron_n_rel.  I changed the predications to match what was in the English grammar so now we have the following in our lexicon:
+Which pointed us to a mismatch in the way we had defined the PRED values for our pronouns, which was originally _pron_n_rel.  We changed the predications to match what was in the English grammar so now we have the following in our lexicon:
 
 che := 1sg-pron-nom-noun-lex &
   [ STEM < "che" >,
@@ -761,7 +761,7 @@ chupekueAra := 3pl-pron-nonag-noun-lex &
     SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
 
-And now the sentence works, which is exciting! But, with a LOT of parses in the source language, which is less exciting.  Of course, this isn’t surprising given free word order and how long the sentence is. Plus one of the sources of this large number of parses is that ask is defined in English as as having three semantic arguments, “I ask someone something” so Guarani is producing paraphrases with pronouns for ALL of the possible PERNUM values, which, of course are optionally present or absent. I suspect constraining this will be the work of a transfer rule (?) but I’ll have to wait and see.
+And now the sentence works, which is exciting! But, with a LOT of parses in the source language, which is less exciting.  Of course, this isn’t surprising given free word order and how long the sentence is. Plus one of the sources of this large number of parses is that ask is defined in English as as having three semantic arguments, “I ask someone something” so Guarani is producing paraphrases with pronouns for ALL of the possible PERNUM values, which, of course are optionally present or absent. We suspect constraining this will be the work of a transfer rule (?) but we’ll have to wait and see.
 
 
 4. More improvements to the grammar
@@ -781,7 +781,7 @@ ha  o-eHi  Juanchi
 and A.3-say Juan.DIM
 'And Juanito says:'
 
-Last week when we generated from the parses from our corpus example we got a lot of sentences.  Some of this generation was well-formed and due to the fact that we had not specified a default for underspecified aspect values.  With the changes to semi.vpm that problem was fixed. However, when generating from parses that used coordination we were also seeing a lot of options with ‘pa’ and ‘piko,’ e.g. ‘ha oeHi ha Juanchi piko,’ not only in this example but in other examples.  When I looked closely at our coordinated phrases, I noticed that they were underspecified for SF, and this was leading to a lot of over-generation when they “fired” so to speak.  There were a lot of ways to potentially fix this, but in my investigations I also noticed that our coordinated phrases were the only phrases allowed to unify with the root, without first passing through and int-cl or decl-cl, and I thought for the purposes of uniformity it would be better to make that a requirement for our coordinated phrases as well.  This fix was accomplished by changing making sure our s-coord phrase was designated as [MC na].
+Last week when we generated from the parses from our corpus example we got a lot of sentences.  Some of this generation was well-formed and due to the fact that we had not specified a default for underspecified aspect values.  With the changes to semi.vpm that problem was fixed. However, when generating from parses that used coordination we were also seeing a lot of options with ‘pa’ and ‘piko,’ e.g. ‘ha oeHi ha Juanchi piko,’ not only in this example but in other examples.  When we looked closely at our coordinated phrases, we noticed that they were underspecified for SF, and this was leading to a lot of over-generation when they “fired” so to speak.  There were a lot of ways to potentially fix this, but in our investigations we also noticed that our coordinated phrases were the only phrases allowed to unify with the root, without first passing through and int-cl or decl-cl, and we thought for the purposes of uniformity it would be better to make that a requirement for our coordinated phrases as well.  This fix was accomplished by changing making sure our s-coord phrase was designated as [MC na].
 
 s-coord-phrase :+
   [ SYNSEM.LOCAL.CAT [ MC na, EC #ec, IC #ic],
@@ -790,7 +790,7 @@ s-coord-phrase :+
 
 Now our coordination phrases are required to pass through either int-cl or decl-cl before unifying with the root, in keeping with the way we are treating all other phrases in the grammar, and because of this none of our well-formed sentences has an underspecified SF value. 
 
-Once I implemented that change, we are not getting any parses with piko and pa, but we were getting some spurious parses with complementizer “ha” appearing in a non-embedded clause, and this led me to discover that our EC and IC information, after being carefully passed up, was being ignored by the gug-scopal-mod-phrase I added last week.  So I added the constraint that the head daughter of this phrase be both [EC -] and [IC -], and that fixed the problem.   Now when we generate from our coordinated sentences we see only the two parses we expect, with and with out the coordination word, which (of course) is also spelled ‘ha.’
+Once we implemented that change, we are not getting any parses with piko and pa, but we were getting some spurious parses with complementizer “ha” appearing in a non-embedded clause, and this led us to discover that our EC and IC information, after being carefully passed up, was being ignored by the gug-scopal-mod-phrase we added last week.  So we added the constraint that the head daughter of this phrase be both [EC -] and [IC -], and that fixed the problem.   Now when we generate from our coordinated sentences we see only the two parses we expect, with and with out the coordination word, which (of course) is also spelled ‘ha.’
 
 gug-scopal-mod-phrase := basic-head-mod-phrase-simple & head-final & 
 			 head-compositional &
@@ -818,7 +818,7 @@ gug-scopal-mod-phrase := basic-head-mod-phrase-simple & head-final &
 	     HCONS <! !>,
 	     ICONS <! !> ] ].
 
-Since we were already specifying [EC -] and [IC -] on the phrase itself, I will do a little more experimenting next week to see if wouldn’t be better to just identify those values between the rule and the head daughter.  For now I’m satisfied that this works and we haven’t lost any parses we wanted to keep. 
+Since we were already specifying [EC -] and [IC -] on the phrase itself, we will do a little more experimenting next week to see if wouldn’t be better to just identify those values between the rule and the head daughter.  For now we are satisfied that this works and we haven’t lost any parses we wanted to keep. 
 
 —— spurious ‘piko pe’ and ‘piko pa’ parses
 
@@ -835,7 +835,7 @@ mbaHeA=piko re-japo
 what=Q A.2SG-do
 'What do you do?'
 
-Thanks to the information provided by the parse tree from the spurious generated sentences, this turned out to be a relatively straightforward fix.  I just added a constraint to the COMPS of case-marking-adp-lex requiring its complement to be an empty YNQ dif-list.  
+Thanks to the information provided by the parse tree from the spurious generated sentences, this turned out to be a relatively straightforward fix.  We just added a constraint to the COMPS of case-marking-adp-lex requiring its complement to be an empty YNQ dif-list.  
 
 case-marking-adp-lex :=  basic-one-arg & raise-sem-lex-item &
   [ SYNSEM.LOCAL.CAT [  EC - , 
@@ -877,8 +877,8 @@ a-hunga lo po
 A.1SG-hurt the.PL hand.INAM
 *'I hurt the hands'
 
-I implemented that this week by defining a new FLAG and a new lexical-type.   
-First I added a flag POSS-FLAG to inflected and infl-satisfied in PG.tdl
+We implemented that this week by defining a new FLAG and a new lexical-type.   
+First we added a flag POSS-FLAG to inflected and infl-satisfied in PG.tdl
 
 inflected :+ [ POSS-FLAG luk,
     PERNUM-STAT-INTRANS-FLAG luk,
@@ -896,13 +896,13 @@ infl-satisfied :+ [ POSS-FLAG na-or-+,
     PERNUM-DYN-INTRANS-OR-PERNUM-STAT-INTRANS-OR-PERNUM-TRANS-FLAG na-or-+,
     PERNUM-TRANS-FLAG na-or-+ ].
 
-Then I created a new lexical type inheriting from common-noun-lex with a [INFLECTED.POSS-FLAG -], value.
+Then we created a new lexical type inheriting from common-noun-lex with a [INFLECTED.POSS-FLAG -], value.
 
 ;; category for words like hand
 poss-only-com-noun-lex := common-noun-lex & 
 [INFLECTED.POSS-FLAG -].
 
-Then I updated poss-lex-rule-super to include [ INFLECTED [POSS-FLAG +]. 
+Then we updated poss-lex-rule-super to include [ INFLECTED [POSS-FLAG +]. 
 
 ;; The possessive lexical rule as possessive affixes to possessums
 ;; e.g., chesy, che-sy, "my mother"
@@ -958,7 +958,7 @@ Analyze | Overgeneration
 	Total Results: 0
 	Overall Coverage: 100
 
-Comparison of baseline(gold-lab6) and final version of this lab 
+Comparison of baseline(gold-lab7) and final version of this lab 
 (Compare | Competence)
 
 	Baseline
@@ -1022,7 +1022,7 @@ Analyze | Overgeneration
 	Total Results: 0
 	Overall Coverage: 0.0
 
-Comparison of baseline(gold-lab6) and final version of this lab 
+Comparison of baseline(gold-lab7) and final version of this lab 
 (Compare | Competence)
 
 	Baseline
@@ -1113,7 +1113,7 @@ a-hendu-ta-ma
 A.1SG-hear-FUT-PERF
 'I will have heard it already'
 
-I know next week is focused on machine translation, but if the fix isn’t to complicated it would be nice to try it. I think it would be very satisfying to see those last two sentences parsing, and now that we have set a default aspect value we won’t have to worry that the change will result in lots of new generation.
+We know next week is focused on machine translation, but if the fix isn’t to complicated it would be nice to try it. We think it would be very satisfying to see those last two sentences parsing, and now that we have set a default aspect value we won’t have to worry that the change will result in lots of new generation.
 
 Compare - Readings 
 Here we see the effect of our added ditransitive verbs and we are now getting correct parses for all of the following (and many more). 
@@ -1213,7 +1213,7 @@ haHe re-hecha-uka tunich cheve
 
 COMPARE - READING/MRS
 
-When we originally saw this test we were seeing universal disagreement in MRS values between this week and last week because of differences to semi.vpm.  However, after adding a baseline with an updated .vpm file we can see the effects of the change to our SF values of our coordinated clauses.   In fact, with the exception of ditransitives and the other sentences that previously produced errors, scrolling through the list is quick way of identifying how many of the parses for each sentence are the result of coordination.  I was pleased how quickly I was able to identify sentence #109 and #160.
+When we originally saw this test we were seeing universal disagreement in MRS values between this week and last week because of differences to semi.vpm.  However, after adding a baseline with an updated .vpm file we can see the effects of the change to our SF values of our coordinated clauses.   In fact, with the exception of ditransitives and the other sentences that previously produced errors, scrolling through the list is quick way of identifying how many of the parses for each sentence are the result of coordination.  We were pleased how quickly we were able to identify sentence #109 and #160.
 
 #Ex.109: Shows non-possessable noun. The only grammatical readings involve coordination of noun predicates
 Source: author
@@ -1237,7 +1237,7 @@ aguara o-po o-kanNy
 fox.ANIM.NOM A.3-jump A.3-hide
 'the fox jumped and (he) hid'
 
-Both of which I thought might contain errors because of the lack of overlap, but thanks to our notes, I quickly saw they were not expected to have any parses that didn’t involve coordination.
+Both of which we thought might contain errors because of the lack of overlap, but thanks to our notes, we quickly saw they were not expected to have any parses that didn’t involve coordination.
 
 
 
