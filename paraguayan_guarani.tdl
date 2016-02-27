@@ -848,6 +848,8 @@ gug-scopal-mod-phrase := basic-head-mod-phrase-simple & head-final &
 			 SLASH <! !>, 
 			 YNQ <! !> ]],
     HEAD-DTR.SYNSEM.LOCAL.CAT [ MC na,
+                                IC -,
+                                EC -,
                                 HEAD verb & [MOD < >],
                                 VAL [ SPEC < >, 
                                       SPR < >, 
