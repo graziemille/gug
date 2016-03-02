@@ -990,7 +990,7 @@ head-only-int-decl-clause := unary-int-decl-cl-phrase & headed-phrase &
 int-cl := head-only-int-decl-clause & interrogative-clause &
   [ SYNSEM [ LOCAL.CAT [ VAL #val & [SUBJ< >, COMPS< >, SPR< >], MC bool],
              NON-LOCAL[SLASH #sl, YNQ <! !> ]],
-    HEAD-DTR.SYNSEM [ LOCAL.CAT [ MC na, VAL #val, HEAD verb, IC +],
+    HEAD-DTR.SYNSEM [ LOCAL.CAT [ MC na, VAL #val, HEAD verb],
                     NON-LOCAL[SLASH #sl, YNQ <! *top* !>, QUE <! !> ]]].
 
 decl-cl := head-only-int-decl-clause & declarative-clause & 
@@ -1105,7 +1105,7 @@ head-comp-phrase := basic-head-1st-comp-phrase & head-initial-head-nexus &
 comp-head-phrase := basic-head-1st-comp-phrase & head-final-head-nexus & 
  [ SYNSEM.LOCAL.CAT [ EC #ec,
 		      IC #ic ], 
-   NON-HEAD-DTR.SYNSEM.LOCAL.CAT [EC #ec,
+   HEAD-DTR.SYNSEM.LOCAL.CAT [EC #ec,
 				  IC #ic ]].
 
 head-comp-phrase-2 := basic-head-2nd-comp-phrase & head-initial-head-nexus  &
