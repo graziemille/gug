@@ -1,3 +1,4 @@
 pro-drop := pronoun-delete-mtr.
 eat-intrans := eat-intrans-mtr.
-locative := locative-mrs-transfer-rule.
+locative := locative-mtr.
+quick := quick-mtr.
