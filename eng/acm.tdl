@@ -248,4 +248,41 @@ think-mtr := monotonic_mtr &
 	   HCONS <! [ HARG #harg,
 		     LARG #larg ] !> ]].
 
+unlocative-mrs-transfer-rule := monotonic_mtr &
+[ INPUT [ RELS <! [ PRED "_in_p_rel",
+		    LBL #lbl,
+		    ARG0 #arg0,
+		    ARG1 #arg1,
+		    ARG2 #arg2 ] !>,
+	  HCONS <! !> ],
+ OUTPUT [ RELS <! [ PRED "_in_p_rel",
+		    LBL #larg,
+		    ARG1 #arg1,
+		    ARG2 #arg2 ],
+		[ PRED "_be+located_v_rel",
+		  LBL #lbl,
+		  ARG0 #arg0,
+		  ARG1 #arg1,
+		  ARG2 #harg ] !>,
+	  HCONS <! [ HARG #harg,
+		     LARG #larg ] !> ] ].
 
+locative-mrs-transfer-rule := monotonic_omtr &
+[ INPUT [ RELS <! [ PRED "_in_p_rel",
+		    LBL #lbl,
+		    ARG0 #arg0,
+		    ARG1 #arg1,
+		    ARG2 #arg2 ] !>,
+	  HCONS <! !> ],
+  FILTER [ RELS <! [ PRED "_be+located_v_rel" ] !> ],
+  OUTPUT [ RELS <! [ PRED "_in_p_rel",
+		     LBL #larg,
+		     ARG1 #arg1,
+		     ARG2 #arg2 ],
+		 [ PRED "_be+located_v_rel",
+		   LBL #lbl,
+		   ARG0 #arg0,
+		   ARG1 #arg1,
+		   ARG2 #harg ] !>,
+	   HCONS <! [ HARG #harg,
+		      LARG #larg ] !> ] ].
