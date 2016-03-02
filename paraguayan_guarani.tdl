@@ -1216,9 +1216,12 @@ s-bottom-coord-phrase :+
 
 np2-top-coord-rule := basic-np-top-coord-rule & monopoly-top-coord-rule &
   [ SYNSEM.LOCAL [ COORD-STRAT "2",
-		   CAT[ EC #ec, IC #ic]], 
-     RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
+		   CAT[ EC #ec, IC #ic],
+                   CONT.HOOK.INDEX.PNG.PERNUM #pernum ],
+     RCOORD-DTR.SYNSEM.LOCAL[ CAT [ EC #ec, IC #ic],
+                              CONT.HOOK.INDEX.PNG.PERNUM #pernum],
      LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
+
 
 np2-mid-coord-rule := basic-np-mid-coord-rule & monopoly-mid-coord-rule &
   [ SYNSEM.LOCAL [ COORD-STRAT "2",
