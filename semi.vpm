@@ -75,7 +75,7 @@ E.ASPECT : ASPECT
   future-perfective <> future-perfective
   future <> future
   prospective <> prospective
-  [e] >> no-aspect
+  * >> no-aspect
   no-aspect << [e]
 
 ;E.MOOD : MOOD

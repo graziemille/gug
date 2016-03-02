@@ -1229,7 +1229,8 @@ np2-bottom-coord-rule := conj-first-bottom-coord-rule & np-bottom-coord-phrase &
 ;;; Coordination Strategy 2
 
 vp2-top-coord-rule := basic-vp-top-coord-rule & monopoly-top-coord-rule &
-  [ SYNSEM.LOCAL.COORD-STRAT "2" ].
+  [ SYNSEM.LOCAL [CAT.MC na, 
+		  COORD-STRAT "2" ] ].
 
 vp2-mid-coord-rule := basic-vp-mid-coord-rule & monopoly-mid-coord-rule &
   [ SYNSEM.LOCAL.COORD-STRAT "2" ].
