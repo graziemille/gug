@@ -1239,7 +1239,7 @@ np2-bottom-coord-rule := conj-first-bottom-coord-rule & np-bottom-coord-phrase &
 
 vp2-top-coord-rule := basic-vp-top-coord-rule & monopoly-top-coord-rule &
   [ SYNSEM.LOCAL [ COORD-STRAT "2",
-		   CAT[ EC #ec, IC #ic]], 
+		   CAT[ MC na, EC #ec, IC #ic]], 
      RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
      LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
 
