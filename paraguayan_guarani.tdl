@@ -432,15 +432,16 @@ int-cl-verb-lex:= cl-verb-lex &
 					       CONT.HOOK.INDEX.SF ques ]]>]]].
 
 decl-cl-verb-lex:= cl-verb-lex &
-  [ SYNSEM.LOCAL.CAT [ IC -,
-		       VAL [ SUBJ  < [LOCAL.CAT.HEAD noun & [CASE nom]]>,
-			     SPR < > ,
-			     COMPS < [ LOCAL [ CAT [ MC +,
- 						     EC +,
-						     IC -,
-						     HEAD verb,
-						     VAL.COMPS < > ],
-						CONT.HOOK.INDEX.SF prop-or-ques ]]>]]].
+  [ SYNSEM [ LOCAL.CAT [ EC -,
+			 IC -,
+			 VAL [ SUBJ  < [LOCAL.CAT.HEAD noun & [CASE nom]]>,
+			       SPR < > ,
+			       COMPS < [ LOCAL [ CAT [ MC +,
+						       EC +,
+						       IC -,
+						       HEAD verb,
+						       VAL.COMPS < > ],
+						 CONT.HOOK.INDEX.SF prop-or-ques ]]>]]]].
 
 ;;; Adjectives
 
@@ -994,12 +995,15 @@ int-cl := head-only-int-decl-clause & interrogative-clause &
                     NON-LOCAL[SLASH #sl, YNQ <! *top* !>, QUE <! !> ]]].
 
 decl-cl := head-only-int-decl-clause & declarative-clause & 
-  [ SYNSEM[ LOCAL [ CAT [ VAL #val & [SUBJ< >, COMPS< >, SPR< >], MC bool, EC #ec, IC -],
-                   CONT.HOOK.INDEX.SF prop-or-ques ],
-            NON-LOCAL.SLASH #sl],
+  [ SYNSEM [ LOCAL [ CAT [ VAL #val & [ SUBJ < >, 
+					COMPS < >, 
+					SPR < >], 
+			   MC bool, 
+			   EC #ec],
+		     CONT.HOOK.INDEX.SF prop-or-ques ],
+	     NON-LOCAL [SLASH #sl, YNQ 0-dlist ] ],
     HEAD-DTR.SYNSEM [ LOCAL.CAT [ MC na, VAL #val, HEAD verb, EC #ec, IC -],
-;                     NON-LOCAL[ SLASH #sl, YNQ <! !>]]].
-                     NON-LOCAL[ SLASH #sl, YNQ 0-dlist ]]].
+		      NON-LOCAL [ SLASH #sl, YNQ 0-dlist ]]].
 
 
 
