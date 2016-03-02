@@ -422,9 +422,10 @@ cl-verb-lex:= gug-dyn-loc-verb &  clausal-second-arg-trans-lex-item &
 
 int-cl-verb-lex:= cl-verb-lex &
   [ SYNSEM.LOCAL.CAT [ IC - , 
-		       VAL [ SUBJ < [LOCAL.CAT.HEAD noun]>,
+		       VAL [ SUBJ < [LOCAL.CAT.HEAD noun & [CASE nom]]>,
 			     SPR < >,
-			     COMPS < [ LOCAL [ CAT [ IC +,
+			     COMPS < [ LOCAL [ CAT [ MC +,
+ 						     IC +,
 						     HEAD verb,
 						     VAL [ COMPS < >, 
 							   SUBJ < > ]],
@@ -432,9 +433,10 @@ int-cl-verb-lex:= cl-verb-lex &
 
 decl-cl-verb-lex:= cl-verb-lex &
   [ SYNSEM.LOCAL.CAT [ IC -,
-		       VAL [ SUBJ  < [LOCAL.CAT.HEAD noun]>,
+		       VAL [ SUBJ  < [LOCAL.CAT.HEAD noun & [CASE nom]]>,
 			     SPR < > ,
-			     COMPS < [ LOCAL [ CAT [ EC +,
+			     COMPS < [ LOCAL [ CAT [ MC +,
+ 						     EC +,
 						     IC -,
 						     HEAD verb,
 						     VAL.COMPS < > ],
