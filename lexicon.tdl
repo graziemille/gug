@@ -203,6 +203,10 @@ nNaro_2 := attributive-adj-lex &
   [ STEM < "nNaro" >,
     SYNSEM.LKEYS.KEYREL.PRED "_angry_a_rel" ].
 
+vareHa := attributive-adj-lex &
+  [ STEM < "vareHa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_hungry_a_rel" ].
+
 hata := attributive-adj-lex &
   [ STEM < "hata" >,
     SYNSEM.LKEYS.KEYREL.PRED "_strong_a_rel" ].
@@ -296,6 +300,10 @@ jahoHi := trans-verb-lex &
 munNa := trans-verb-lex &
   [ STEM < "munNa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_chase_v_rel" ].
+
+Hu := trans-verb-lex &
+  [ STEM < "Hu" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_eat_v_rel" ].
 
 aseN := stative-intrans-verb-lex &
   [ STEM < "aseN" >,
