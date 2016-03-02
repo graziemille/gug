@@ -301,10 +301,6 @@ munNa := trans-verb-lex &
   [ STEM < "munNa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_chase_v_rel" ].
 
-Hu := trans-verb-lex &
-  [ STEM < "Hu" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_eat_v_rel" ].
-
 aseN := stative-intrans-verb-lex &
   [ STEM < "aseN" >,
     SYNSEM.LKEYS.KEYREL.PRED "_cry_v_rel" ].
