@@ -1213,8 +1213,9 @@ s-coord-phrase :+
     RCOORD-DTR.SYNSEM.LOCAL.CAT [ MC bool, EC #ec,  IC #ic]].
 
 s-bottom-coord-phrase :+
-  [ SYNSEM.LOCAL.CAT[ MC bool, EC #ec, IC #ic ],
-    NONCONJ-DTR.SYNSEM.LOCAL.CAT [ MC bool, EC #ec, IC #ic ] ].
+  [ SYNSEM.LOCAL.CAT [ MC bool, EC #ec, IC #ic ],
+    NONCONJ-DTR.SYNSEM [ NON-LOCAL.SLASH 0-dlist, 
+			 LOCAL.CAT [ MC bool, EC #ec, IC #ic ] ] ].
 
 ;;; Coordination Strategy 2
 
@@ -1241,7 +1242,7 @@ np2-bottom-coord-rule := conj-first-bottom-coord-rule & np-bottom-coord-phrase &
 
 vp2-top-coord-rule := basic-vp-top-coord-rule & monopoly-top-coord-rule &
   [ SYNSEM.LOCAL [ COORD-STRAT "2",
-		   CAT[ EC #ec, IC #ic]], 
+		   CAT[ MC na, EC #ec, IC #ic]], 
      RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
      LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
 
