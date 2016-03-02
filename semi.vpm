@@ -8,8 +8,8 @@ non_event      <> p
 *              >> u
 semarg         << u
 
-SPECI : SPECI
-  * <> *
+;SPECI : SPECI
+;  * <> *
 
 SF : SF
   prop <> prop
