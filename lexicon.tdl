@@ -203,7 +203,7 @@ nNaro_2 := attributive-adj-lex &
   [ STEM < "nNaro" >,
     SYNSEM.LKEYS.KEYREL.PRED "_angry_a_rel" ].
 
-vareHa := attributive-adj-lex &
+vareHa_2 := attributive-adj-lex &
   [ STEM < "vareHa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_hungry_a_rel" ].
 
