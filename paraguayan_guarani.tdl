@@ -1130,8 +1130,7 @@ comp-head-phrase-2 := basic-head-2nd-comp-phrase & head-final-head-nexus &
 ; adding constrains related to YNQ
 
 bare-np-phrase := basic-bare-np-phrase & YNQ-constrained-phrase & head-valence-phrase &
-  [ SYNSEM[  LOCAL.CAT.HEAD.CASE case,
-             LIGHT -],
+  [ SYNSEM.LIGHT -,
     HEAD-DTR.SYNSEM.LOCAL.CAT.VAL.SPR < unexpressed >, 
     C-CONT.RELS <! [ PRED "exist_q_rel" ] !> ].
 
@@ -1218,78 +1217,78 @@ s-bottom-coord-phrase :+
 ;;; Coordination Strategy 2
 
 np2-top-coord-rule := basic-np-top-coord-rule & monopoly-top-coord-rule &
-  [ SYNSEM.LOCAL.COORD-STRAT "2" ].
+  [ SYNSEM.LOCAL [ COORD-STRAT "2",
+		   CAT[ EC #ec, IC #ic],
+                   CONT.HOOK.INDEX.PNG.PERNUM #pernum ],
+     RCOORD-DTR.SYNSEM.LOCAL[ CAT [ EC #ec, IC #ic],
+                              CONT.HOOK.INDEX.PNG.PERNUM #pernum],
+     LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
+
 
 np2-mid-coord-rule := basic-np-mid-coord-rule & monopoly-mid-coord-rule &
-  [ SYNSEM.LOCAL.COORD-STRAT "2" ].
+  [ SYNSEM.LOCAL [ COORD-STRAT "2",
+		   CAT[ EC #ec, IC #ic]], 
+     RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
+     LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
+
 
 np2-bottom-coord-rule := conj-first-bottom-coord-rule & np-bottom-coord-phrase &
-  [ SYNSEM.LOCAL.COORD-STRAT "2" ].
-
-;;; Coordination Strategy 2
+  [ SYNSEM.LOCAL [ COORD-STRAT "2",
+		   CAT[ EC #ec, IC #ic]], 
+    NONCONJ-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
 
 vp2-top-coord-rule := basic-vp-top-coord-rule & monopoly-top-coord-rule &
-  [ SYNSEM.LOCAL [CAT.MC na, 
-		  COORD-STRAT "2" ] ].
+  [ SYNSEM.LOCAL [ COORD-STRAT "2",
+		   CAT[ MC na, EC #ec, IC #ic]], 
+     RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
+     LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
 
 vp2-mid-coord-rule := basic-vp-mid-coord-rule & monopoly-mid-coord-rule &
-  [ SYNSEM.LOCAL.COORD-STRAT "2" ].
+  [ SYNSEM.LOCAL [ COORD-STRAT "2",
+		   CAT[ EC #ec, IC #ic]], 
+     RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
+     LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
 
 vp2-bottom-coord-rule := conj-first-bottom-coord-rule & vp-bottom-coord-phrase &
-  [ SYNSEM.LOCAL.COORD-STRAT "2" ].
-
-;;; Coordination Strategy 2
+  [ SYNSEM.LOCAL [ COORD-STRAT "2",
+		   CAT[ EC #ec, IC #ic]], 
+    NONCONJ-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
 
 s2-top-coord-rule := basic-s-top-coord-rule & monopoly-top-coord-rule &
-  [ SYNSEM.LOCAL.COORD-STRAT "2" ].
+  [ SYNSEM.LOCAL [ COORD-STRAT "2",
+		   CAT[ EC #ec, IC #ic]], 
+     RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
+     LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
 
 s2-mid-coord-rule := basic-s-mid-coord-rule & monopoly-mid-coord-rule &
-  [ SYNSEM.LOCAL.COORD-STRAT "2" ].
+  [ SYNSEM.LOCAL [ COORD-STRAT "2",
+		   CAT[ EC #ec, IC #ic]], 
+     RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
+     LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
 
 s2-bottom-coord-rule := conj-first-bottom-coord-rule & s-bottom-coord-phrase &
-  [ SYNSEM.LOCAL.COORD-STRAT "2" ].
+  [ SYNSEM.LOCAL [ COORD-STRAT "2",
+		   CAT[ EC #ec, IC #ic] ], 
+    NONCONJ-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
 
 ;;; Coordination Strategy 3
 
 s3-top-coord-rule := basic-s-top-coord-rule & apoly-top-coord-rule &
   [ SYNSEM[ LIGHT -,
-            LOCAL.COORD-STRAT "3" ],
-   RCOORD-DTR.SYNSEM.LIGHT -,
-   LCOORD-DTR.SYNSEM.LIGHT -].
+            LOCAL[ COORD-STRAT "3",
+                   CAT [ EC #ec, IC #ic]]],
+    RCOORD-DTR.SYNSEM[ LIGHT -,
+                       LOCAL.CAT [ EC #ec, IC #ic] ],
+    LCOORD-DTR.SYNSEM[ LIGHT -,
+                       LOCAL.CAT [ EC #ec, IC #ic] ] ].
+
 
 s3-bottom-coord-rule := unary-bottom-coord-rule & s-bottom-coord-phrase &
   [ SYNSEM.LOCAL [ COORD-STRAT "3",
-                   COORD-REL.PRED "_and_coord_rel" ] ].
+                   COORD-REL.PRED "_and_coord_rel",
+                   CAT [ EC #ec, IC #ic] ] ,
+    NONCONJ-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic]   ].
 
-np2-top-coord-rule :+ [ SYNSEM.LOCAL.CAT[ EC #ec, IC #ic], 
- 			RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
-			LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
-np2-mid-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
- 			RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
-			LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
-np2-bottom-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
-			   NONCONJ-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
-vp2-top-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
-			RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
-			LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
-vp2-mid-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
- 			RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
-			LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
-vp2-bottom-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
-			   NONCONJ-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
-s2-top-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
- 			RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
-		       LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
-s2-mid-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
-		       RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
-		       LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
-s2-bottom-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
-			  NONCONJ-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
-s3-top-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
-		       RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
-		       LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
-s3-bottom-coord-rule :+ [ SYNSEM.LOCAL.CAT [ EC #ec, IC #ic], 
-			  NONCONJ-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
 
 topormid-coord-phrase :+ [ SYNSEM.NON-LOCAL #nl, 
 			   LCOORD-DTR.SYNSEM.NON-LOCAL #nl,
