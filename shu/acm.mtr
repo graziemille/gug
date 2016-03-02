@@ -1,1 +1,4 @@
-;pro-ins2 := pro-insert-arg2-mtr.
+pro-drop := pronoun-delete-mtr.
+eat-intrans := eat-intrans-mtr.
+locative := locative-mtr.
+quick := quick-mtr.

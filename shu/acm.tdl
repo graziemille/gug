@@ -71,6 +71,7 @@ pronoun-delete-mtr := monotonic_omtr &
 	    HCONS <! !> ]].
 
 
+
 ; MWEs
 
 make-harm-mtr := monotonic_omtr &
@@ -234,4 +235,44 @@ think-mtr := monotonic_mtr &
 	   HCONS <! [ HARG #harg,
 		     LARG #larg ] !> ]].
 
+eat-intrans-mtr := monotonic_omtr &
+[ INPUT [ RELS <! [ PRED "_eat_v_rel",
+		    LBL #lbl,
+		    ARG0 #arg0,
+		    ARG1 #arg1,
+		    ARG2 #arg2 & [ COG-ST type-id ] ] !> ],
+  FILTER [ RELS <! [ ARG0 #arg2 ] !> ],
+  OUTPUT [ RELS <! [ PRED "_eat_v_rel",
+		     LBL #lbl,
+		     ARG0 #arg0,
+		     ARG1 #arg1 ] !> ]].
 
+locative-mtr := monotonic_omtr &
+[ INPUT [ RELS <! [ PRED "_in_p_rel",
+		    LBL #lbl,
+		    ARG0 #arg0,
+		    ARG1 #arg1,
+		    ARG2 #arg2 ] !>,
+	  HCONS <! !> ],
+  FILTER [ RELS <! [ PRED "_be+located_v_rel" ] !> ],
+  OUTPUT [ RELS <! [ PRED "_in_p_rel",
+		     LBL #larg,
+		     ARG1 #arg1,
+		     ARG2 #arg2 ],
+		 [ PRED "_be+located_v_rel",
+		   LBL #lbl,
+		   ARG0 #arg0,
+		   ARG1 #arg1,
+		   ARG2 #harg ] !>,
+	   HCONS <! [ HARG #harg,
+		      LARG #larg ] !> ] ].
+
+quick-mtr := monotonic_omtr &
+[ INPUT [ RELS <! [ PRED "_quickly_a_rel",
+		   LBL #lbl,
+		   ARG0 #arg0,
+		   ARG1 #arg1 ] !> ],
+  OUTPUT [ RELS <! [ PRED "_quick_a_rel",
+		    LBL #lbl,
+		    ARG0 #arg0,
+		    ARG1 #arg1] !>]].
