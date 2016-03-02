@@ -17,7 +17,7 @@ SF : SF
   prop-or-ques >> prop-or-ques 
   prop << prop-or-ques
   comm <> comm
-  prop-or-ques << [e]
+  prop << [e]
   * <> *
 
 COG-ST : COG-ST
@@ -61,10 +61,10 @@ PNG.PERNUM : PER NUM
   * >> ! !
   ! << * *
    
-E.TENSE : TENSE
-  ! << [e]
-  [e] >> !
-  * <> *
+;E.TENSE : TENSE
+;  ! << [e]
+;  [e] >> !
+;  * <> *
  
 E.ASPECT : ASPECT
   future-perfective <> future-perfective
@@ -78,6 +78,6 @@ E.ASPECT : ASPECT
   * >> no-aspect
   no-aspect << [e]
 
-E.MOOD : MOOD
-  * >> mood
-  mood << [e]
+;E.MOOD : MOOD
+;  * >> mood
+;  mood << [e]
