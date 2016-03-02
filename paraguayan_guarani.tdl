@@ -1211,8 +1211,9 @@ s-coord-phrase :+
     RCOORD-DTR.SYNSEM.LOCAL.CAT [ MC bool, EC #ec,  IC #ic]].
 
 s-bottom-coord-phrase :+
-  [ SYNSEM.LOCAL.CAT[ MC bool, EC #ec, IC #ic ],
-    NONCONJ-DTR.SYNSEM.LOCAL.CAT [ MC bool, EC #ec, IC #ic ] ].
+  [ SYNSEM.LOCAL.CAT [ MC bool, EC #ec, IC #ic ],
+    NONCONJ-DTR.SYNSEM [ NON-LOCAL.SLASH 0-dlist, 
+			 LOCAL.CAT [ MC bool, EC #ec, IC #ic ] ] ].
 
 ;;; Coordination Strategy 2
 
