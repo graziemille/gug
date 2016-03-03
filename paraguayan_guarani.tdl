@@ -289,7 +289,7 @@ basic-adverb-lex :+ norm-zero-arg.
 ; Scopal-modifiers
 scopal-lex := scopal-mod-lex & norm-sem-lex-item & norm-zero-arg & 
 	      non-ynq-word &
-  [ SYNSEM.LOCAL.CAT [  HEAD adv,
+  [ SYNSEM.LOCAL.CAT [  HEAD adv & [ MOD  < [ LOCAL.CAT [ MC + ] ] > ],
                         EC -, 
                         IC -,
                         VAL [ SPR < >,
@@ -471,6 +471,13 @@ attributive-adj-lex := attr-only-adj-lex &
                                     MODIFIED notmod ] > ] ].
 
 ;;; Others
+
+;;CONJ 
+;; The default value given in matrix.tdl is not defined enough for our purposes
+
+gug-conj-lex := conj-lex &
+[ SYNSEM [ LOCAL.CAT [IC -, EC -],
+           NON-LOCAL [SLASH <! !>, YNQ <! !>, QUE <! !>]]].
 
 ;;; Case-marking adpositions
 ;;; Case marking adpositions are constrained not to
@@ -853,10 +860,10 @@ gug-scopal-mod-phrase := basic-head-mod-phrase-simple & head-final &
 	     NON-LOCAL [ QUE <! !>, 
 			 SLASH <! !>, 
 			 YNQ <! !> ]],
-    HEAD-DTR.SYNSEM.LOCAL.CAT [ MC na,
+    HEAD-DTR.SYNSEM.LOCAL.CAT [ MC +,
                                 IC -,
                                 EC -,
-                                HEAD verb & [MOD < >],
+                                HEAD verb & [ MOD < > ],
                                 VAL [ SPEC < >, 
                                       SPR < >, 
                                       SUBJ < >, 

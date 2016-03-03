@@ -415,7 +415,7 @@ lo := def-pl-determiner-lex &
   [ STEM < "lo" >,
     SYNSEM.LKEYS.KEYREL.PRED "exist_q_rel"].
 
-ha2 := conj-lex &
+ha2 := gug-conj-lex &
   [ STEM < "ha" >,
     SYNSEM.LKEYS.KEYREL.PRED "_and_coord_rel",
     CFORM "2" ].
