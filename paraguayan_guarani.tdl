@@ -414,7 +414,6 @@ trans-verb-lex:+ [SYNSEM.LOCAL.CAT [EC -,
 intrans-verb-lex: + [SYNSEM.LOCAL.CAT [EC -,
                                        IC -]].
 
-
 ;;Adding clause complement verb lexemes
 cl-verb-lex:= gug-dyn-loc-verb &  clausal-second-arg-trans-lex-item &
     [SYNSEM.LOCAL.CAT.VAL.COMPS <#comps>,
@@ -547,10 +546,12 @@ compl-clitic-lex := no-hcons-lex-item &
 ;;; SPEC is non-empty, and already specified by basic-determiner-lex.
 
 determiner-lex := basic-determiner-lex & norm-zero-arg & non-mod-lex-item & norm-sem-lex-item &
-  [ SYNSEM.LOCAL.CAT.VAL [ SPR < >,
+  [ SYNSEM.LOCAL.CAT[ EC -,
+                      IC -,
+                      VAL [ SPR < >,
                            COMPS < >,
                              SUBJ < >,
-         SPEC<[LOCAL.CONT.HOOK.INDEX.COG-ST uniq+fam+act]>]].
+         SPEC<[LOCAL.CONT.HOOK.INDEX.COG-ST uniq+fam+act]>]]].
 
 def-sg-determiner-lex := determiner-lex & no-icons-lex-item &
   [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM sg ].
@@ -881,7 +882,7 @@ head-adj-int-phrase :+
 head-spec-phrase := basic-head-spec-phrase & head-final & 
   [ SYNSEM.LOCAL.CAT [ EC #ec,
                        IC #ic], 
-    ARG-STR.FIRST.LOCAL.CAT [ EC #ec,
+    HEAD-DTR.SYNSEM.LOCAL.CAT [ EC #ec,
                               IC #ic ],
     NON-HEAD-DTR.SYNSEM.OPT - ].
 
