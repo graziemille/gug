@@ -192,7 +192,7 @@ eat-ini-mtr := monotonic_mtr &
   FLAGS [ EQUAL < #arg2 > ]].
 
 
-eat-intrans-mtr := monotonic_omtr &
+eat-intrans-mtr := monotonic_mtr &
 [ INPUT [ RELS <! [ PRED "_eat_v_rel",
 		    LBL #lbl,
 		    ARG0 #arg0,
@@ -249,7 +249,7 @@ think-mtr := monotonic_mtr &
 		     LARG #larg ] !> ]].
 
 
-locative-mtr := monotonic_omtr &
+locative-mtr := monotonic_mtr &
 [ INPUT [ RELS <! [ PRED "_in_p_rel",
 		    LBL #lbl,
 		    ARG0 #arg0,
@@ -269,7 +269,7 @@ locative-mtr := monotonic_omtr &
 	   HCONS <! [ HARG #harg,
 		      LARG #larg ] !> ] ].
 
-quick-mtr := monotonic_omtr &
+quick-mtr := monotonic_mtr &
 [ INPUT [ RELS <! [ PRED "_quickly_a_rel",
 		   LBL #lbl,
 		   ARG0 #arg0,
