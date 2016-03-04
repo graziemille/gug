@@ -1241,7 +1241,7 @@ gug-basic-s-mid-coord-rule := gug-s-coord-phrase &
        HCONS <! !> ]].
 
 
-;;Inherited by all coordination phrases
+;;Inherited by all sentential coordination phrases
 s-coord-phrase :+
   [ SYNSEM.LOCAL.CAT [ MC na, EC #ec, IC #ic],
     LCOORD-DTR.SYNSEM.LOCAL [ CONT.HOOK.INDEX.SF #sf,
@@ -1249,12 +1249,21 @@ s-coord-phrase :+
     RCOORD-DTR.SYNSEM.LOCAL [ CONT.HOOK.INDEX.SF #sf,
                               CAT [ ScM -, MC bool, EC #ec,  IC #ic] ]].
 
+
+s-coord-phrase :+ [ SYNSEM.NON-LOCAL #nl, 
+         LCOORD-DTR.SYNSEM.NON-LOCAL #nl,
+         RCOORD-DTR.SYNSEM.NON-LOCAL #nl ].
+        
+
 s-bottom-coord-phrase :+
   [ SYNSEM.LOCAL [ CONT.HOOK.INDEX.SF #sf,
                    CAT [ MC bool, EC #ec, IC #ic ] ],
     NONCONJ-DTR.SYNSEM [ NON-LOCAL [ SLASH 0-dlist], 
 			                   LOCAL [ CONT.HOOK.INDEX.SF #sf,
                                  CAT [ ScM -, MC bool, EC #ec, IC #ic ] ] ] ].
+
+s-bottom-coord-phrase :+ [ SYNSEM.NON-LOCAL #nl,
+       NONCONJ-DTR.SYNSEM.NON-LOCAL #nl ].
 
 
 ;;; Coordination Strategy 3 - s-coordination
