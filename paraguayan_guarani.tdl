@@ -144,6 +144,8 @@ intersective-mod-lex :+ [ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
 ; Features for embedded clauses (declarative and interrogative)
 cat :+ [EC bool, IC bool].
 
+; Features for scopal-mod (reducing overgeneration)
+cat :+ [ScM bool].
 
 ;;;;;;;;;;;;;;;;;;;
 ;;; Lexical Types
@@ -290,6 +292,7 @@ basic-adverb-lex :+ norm-zero-arg.
 scopal-lex := scopal-mod-lex & norm-sem-lex-item & norm-zero-arg & 
 	      non-ynq-word &
   [ SYNSEM.LOCAL.CAT [  HEAD adv & [ MOD  < [ LOCAL.CAT [ MC + ] ] > ],
+                        ScM +,
                         EC -, 
                         IC -,
                         VAL [ SPR < >,
@@ -440,7 +443,7 @@ decl-cl-verb-lex:= cl-verb-lex &
 						       IC -,
 						       HEAD verb,
 						       VAL.COMPS < > ],
-						 CONT.HOOK.INDEX.SF prop-or-ques ]]>]]]].
+						 CONT.HOOK.INDEX.SF prop ]]>]]]].
 
 ;;; Adjectives
 
@@ -854,7 +857,8 @@ basic-head-mod-phrase-simple :+
 
 gug-scopal-mod-phrase := basic-head-mod-phrase-simple & head-final & 
 			 head-compositional &
-  [ SYNSEM [ LOCAL.CAT [ MC na,                       
+  [ SYNSEM [ LOCAL.CAT [ ScM +,
+        MC na,                       
 			 EC -,                        
 			 IC -],
 	     NON-LOCAL [ QUE <! !>, 
@@ -997,21 +1001,22 @@ head-only-int-decl-clause := unary-int-decl-cl-phrase & headed-phrase &
 
 ;; ading int and decl clauses 
 int-cl := head-only-int-decl-clause & interrogative-clause &
-  [ SYNSEM [ LOCAL.CAT [ VAL #val & [SUBJ< >, COMPS< >, SPR< >], MC bool],
+  [ SYNSEM [ LOCAL.CAT [ VAL #val & [SUBJ< >, COMPS< >, SPR< >], MC bool, ScM #scope],
              NON-LOCAL[SLASH #sl, YNQ <! !> ]],
-    HEAD-DTR.SYNSEM [ LOCAL.CAT [ MC na, VAL #val, HEAD verb],
+    HEAD-DTR.SYNSEM [ LOCAL.CAT [ ScM #scope, MC na, VAL #val, HEAD verb],
                     NON-LOCAL[SLASH #sl, YNQ <! *top* !>, QUE <! !> ]]].
 
 decl-cl := head-only-int-decl-clause & declarative-clause & 
   [ SYNSEM [ LOCAL [ CAT [ VAL #val & [ SUBJ < >, 
 					COMPS < >, 
 					SPR < >], 
-			   MC bool, 
+			   ScM #scope,
+         MC bool, 
 			   IC -, 
          EC #ec],
-		     CONT.HOOK.INDEX.SF prop-or-ques ],
+		     CONT.HOOK.INDEX.SF prop ],
 	     NON-LOCAL [SLASH #sl, YNQ 0-dlist ] ],
-    HEAD-DTR.SYNSEM [ LOCAL.CAT [ MC na, VAL #val, HEAD verb, EC #ec, IC -],
+    HEAD-DTR.SYNSEM [ LOCAL.CAT [ ScM #scope, MC na, VAL #val, HEAD verb, EC #ec, IC -],
 		      NON-LOCAL [ SLASH #sl, YNQ 0-dlist ]]].
 
 
@@ -1220,75 +1225,48 @@ extracted-subj-phrase := basic-extracted-subj-phrase &
 ;;; Coordination
 ;;;;;;;;;;;;;;;;;;
 
+gug-s-coord-phrase := event-coord-phrase &
+  [ SYNSEM.LOCAL.CAT.VAL.SUBJ < >,
+    SYNSEM.LOCAL.CAT.HEAD verb,
+    LCOORD-DTR.SYNSEM.LOCAL.CAT.HEAD verb,
+    RCOORD-DTR.SYNSEM.LOCAL.CAT.HEAD verb ].
+
+gug-basic-s-top-coord-rule := gug-s-coord-phrase &
+  [ C-CONT [ RELS <! !>,
+       HCONS <! !> ]].
+
+gug-basic-s-mid-coord-rule := gug-s-coord-phrase &
+  [ SYNSEM.LOCAL.COORD-REL #crel,
+    C-CONT [ RELS <! #crel !>,
+       HCONS <! !> ]].
+
+
+;;Inherited by all sentential coordination phrases
 s-coord-phrase :+
   [ SYNSEM.LOCAL.CAT [ MC na, EC #ec, IC #ic],
-    LCOORD-DTR.SYNSEM.LOCAL.CAT [ MC bool, EC #ec,  IC #ic],
-    RCOORD-DTR.SYNSEM.LOCAL.CAT [ MC bool, EC #ec,  IC #ic]].
+    LCOORD-DTR.SYNSEM.LOCAL [ CONT.HOOK.INDEX.SF #sf,
+                              CAT [ ScM -, MC bool, EC #ec,  IC #ic] ],
+    RCOORD-DTR.SYNSEM.LOCAL [ CONT.HOOK.INDEX.SF #sf,
+                              CAT [ ScM -, MC bool, EC #ec,  IC #ic] ]].
+
+
+s-coord-phrase :+ [ SYNSEM.NON-LOCAL #nl, 
+         LCOORD-DTR.SYNSEM.NON-LOCAL #nl,
+         RCOORD-DTR.SYNSEM.NON-LOCAL #nl ].
+        
 
 s-bottom-coord-phrase :+
-  [ SYNSEM.LOCAL.CAT [ MC bool, EC #ec, IC #ic ],
-    NONCONJ-DTR.SYNSEM [ NON-LOCAL.SLASH 0-dlist, 
-			 LOCAL.CAT [ MC bool, EC #ec, IC #ic ] ] ].
+  [ SYNSEM.LOCAL [ CONT.HOOK.INDEX.SF #sf,
+                   CAT [ MC bool, EC #ec, IC #ic ] ],
+    NONCONJ-DTR.SYNSEM [ NON-LOCAL [ SLASH 0-dlist], 
+			                   LOCAL [ CONT.HOOK.INDEX.SF #sf,
+                                 CAT [ ScM -, MC bool, EC #ec, IC #ic ] ] ] ].
 
-;;; Coordination Strategy 2
-
-np2-top-coord-rule := basic-np-top-coord-rule & monopoly-top-coord-rule &
-  [ SYNSEM.LOCAL [ COORD-STRAT "2",
-		   CAT[ EC #ec, IC #ic],
-                   CONT.HOOK.INDEX.PNG.PERNUM #pernum ],
-     RCOORD-DTR.SYNSEM.LOCAL[ CAT [ EC #ec, IC #ic],
-                              CONT.HOOK.INDEX.PNG.PERNUM #pernum],
-     LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
+s-bottom-coord-phrase :+ [ SYNSEM.NON-LOCAL #nl,
+       NONCONJ-DTR.SYNSEM.NON-LOCAL #nl ].
 
 
-np2-mid-coord-rule := basic-np-mid-coord-rule & monopoly-mid-coord-rule &
-  [ SYNSEM.LOCAL [ COORD-STRAT "2",
-		   CAT[ EC #ec, IC #ic]], 
-     RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
-     LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
-
-
-np2-bottom-coord-rule := conj-first-bottom-coord-rule & np-bottom-coord-phrase &
-  [ SYNSEM.LOCAL [ COORD-STRAT "2",
-		   CAT[ EC #ec, IC #ic]], 
-    NONCONJ-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
-
-vp2-top-coord-rule := basic-vp-top-coord-rule & monopoly-top-coord-rule &
-  [ SYNSEM.LOCAL [ COORD-STRAT "2",
-		   CAT[ MC na, EC #ec, IC #ic]], 
-     RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
-     LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
-
-vp2-mid-coord-rule := basic-vp-mid-coord-rule & monopoly-mid-coord-rule &
-  [ SYNSEM.LOCAL [ COORD-STRAT "2",
-		   CAT[ EC #ec, IC #ic]], 
-     RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
-     LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
-
-vp2-bottom-coord-rule := conj-first-bottom-coord-rule & vp-bottom-coord-phrase &
-  [ SYNSEM.LOCAL [ COORD-STRAT "2",
-		   CAT[ EC #ec, IC #ic]], 
-    NONCONJ-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
-
-s2-top-coord-rule := basic-s-top-coord-rule & monopoly-top-coord-rule &
-  [ SYNSEM.LOCAL [ COORD-STRAT "2",
-		   CAT[ EC #ec, IC #ic]], 
-     RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
-     LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
-
-s2-mid-coord-rule := basic-s-mid-coord-rule & monopoly-mid-coord-rule &
-  [ SYNSEM.LOCAL [ COORD-STRAT "2",
-		   CAT[ EC #ec, IC #ic]], 
-     RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
-     LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
-
-s2-bottom-coord-rule := conj-first-bottom-coord-rule & s-bottom-coord-phrase &
-  [ SYNSEM.LOCAL [ COORD-STRAT "2",
-		   CAT[ EC #ec, IC #ic] ], 
-    NONCONJ-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
-
-;;; Coordination Strategy 3
-
+;;; Coordination Strategy 3 - s-coordination
 s3-top-coord-rule := basic-s-top-coord-rule & apoly-top-coord-rule &
   [ SYNSEM[ LIGHT -,
             LOCAL[ COORD-STRAT "3",
@@ -1298,7 +1276,6 @@ s3-top-coord-rule := basic-s-top-coord-rule & apoly-top-coord-rule &
     LCOORD-DTR.SYNSEM[ LIGHT -,
                        LOCAL.CAT [ EC #ec, IC #ic] ] ].
 
-
 s3-bottom-coord-rule := unary-bottom-coord-rule & s-bottom-coord-phrase &
   [ SYNSEM.LOCAL [ COORD-STRAT "3",
                    COORD-REL.PRED "_and_coord_rel",
@@ -1306,11 +1283,73 @@ s3-bottom-coord-rule := unary-bottom-coord-rule & s-bottom-coord-phrase &
     NONCONJ-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic]   ].
 
 
+;; Inhereted by Strategy 2 
 topormid-coord-phrase :+ [ SYNSEM.NON-LOCAL #nl, 
-			   LCOORD-DTR.SYNSEM.NON-LOCAL #nl,
-			   RCOORD-DTR.SYNSEM.NON-LOCAL #nl ].
-			  
+         LCOORD-DTR.SYNSEM.NON-LOCAL #nl,
+         RCOORD-DTR.SYNSEM.NON-LOCAL #nl ].
+        
 bottom-coord-phrase :+ [ SYNSEM.NON-LOCAL #nl,
-			 NONCONJ-DTR.SYNSEM.NON-LOCAL #nl ].
+       NONCONJ-DTR.SYNSEM.NON-LOCAL #nl ].
+
+
+;;Coordination Strategy 2 - S coordination
+
+s2-top-coord-rule := basic-s-top-coord-rule & monopoly-top-coord-rule &
+  [ SYNSEM.LOCAL [ COORD-STRAT "2",
+       CAT[ EC #ec, IC #ic]], 
+     RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
+     LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
+
+s2-mid-coord-rule := basic-s-mid-coord-rule & monopoly-mid-coord-rule &
+  [ SYNSEM.LOCAL [ COORD-STRAT "2",
+       CAT[ EC #ec, IC #ic]], 
+     RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
+     LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
+
+s2-bottom-coord-rule := conj-first-bottom-coord-rule & s-bottom-coord-phrase &
+  [ SYNSEM.LOCAL [ COORD-STRAT "2",
+       CAT[ EC #ec, IC #ic] ], 
+    NONCONJ-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
+
+;; Coordination Strategy 2 - VP coordination
+
+vp2-top-coord-rule := basic-vp-top-coord-rule & monopoly-top-coord-rule &
+  [ SYNSEM.LOCAL [ COORD-STRAT "2",
+       CAT[ MC na, EC #ec, IC #ic]], 
+     RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
+     LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
+
+vp2-mid-coord-rule := basic-vp-mid-coord-rule & monopoly-mid-coord-rule &
+  [ SYNSEM.LOCAL [ COORD-STRAT "2",
+       CAT[ EC #ec, IC #ic]], 
+     RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
+     LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
+
+vp2-bottom-coord-rule := conj-first-bottom-coord-rule & vp-bottom-coord-phrase &
+  [ SYNSEM.LOCAL [ COORD-STRAT "2",
+       CAT[ EC #ec, IC #ic]], 
+    NONCONJ-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
+
+;;; Coordination Strategy 2 - NP coordination
+
+np2-top-coord-rule := basic-np-top-coord-rule & monopoly-top-coord-rule &
+  [ SYNSEM.LOCAL [ COORD-STRAT "2",
+       CAT[ EC #ec, IC #ic],
+                   CONT.HOOK.INDEX.PNG.PERNUM #pernum ],
+     RCOORD-DTR.SYNSEM.LOCAL[ CAT [ EC #ec, IC #ic],
+                              CONT.HOOK.INDEX.PNG.PERNUM #pernum],
+     LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
+
+np2-mid-coord-rule := basic-np-mid-coord-rule & monopoly-mid-coord-rule &
+  [ SYNSEM.LOCAL [ COORD-STRAT "2",
+       CAT[ EC #ec, IC #ic]], 
+     RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
+     LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
+
+np2-bottom-coord-rule := conj-first-bottom-coord-rule & np-bottom-coord-phrase &
+  [ SYNSEM.LOCAL [ COORD-STRAT "2",
+       CAT[ EC #ec, IC #ic]], 
+    NONCONJ-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
+
 
 	
