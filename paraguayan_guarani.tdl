@@ -1033,7 +1033,8 @@ decl-cl := head-only-int-decl-clause & declarative-clause &
 			   IC -, 
 			   EC #ec],
 		     CONT.HOOK.INDEX.SF prop ],
-	     NON-LOCAL [SLASH #sl, YNQ 0-dlist ] ],
+	     NON-LOCAL [ SLASH #sl, 
+			 YNQ 0-dlist ] ],
     HEAD-DTR.SYNSEM [ LOCAL.CAT [ ScM #scope, 
 				  MC na, 
 				  VAL #val, 
@@ -1075,14 +1076,18 @@ same-periph-unary-phrase := unary-phrase.
 
 ;;constraining unary phrases to pass up YNQ, SLASH & QUE values
 same-ynq-unary-phrase := unary-phrase &
-  [ SYNSEM.NON-LOCAL [YNQ #ynq, SLASH #slash, QUE #que],
-    ARGS < [ SYNSEM.NON-LOCAL [YNQ #ynq, SLASH #slash, QUE #que]] > ].
+  [ SYNSEM.NON-LOCAL [ YNQ #ynq, 
+		       SLASH #slash, 
+		       QUE #que],
+    ARGS < [ SYNSEM.NON-LOCAL [ YNQ #ynq, 
+				SLASH #slash, 
+				QUE #que ] ] > ].
 
 basic-head-opt-subj-phrase:+ YNQ-constrained-phrase &
-    [ SYNSEM.LOCAL.CAT [EC #ec,
-                        IC #ic  ],
-     ARGS < [ SYNSEM.LOCAL.CAT [ EC #ec,
-                                 IC #ic ] ]> ].
+    [ SYNSEM.LOCAL.CAT [ EC #ec,
+                         IC #ic  ],
+      ARGS < [ SYNSEM.LOCAL.CAT [ EC #ec,
+				  IC #ic ] ]> ].
 
 ;;Combines constraints so they can be easily added to new phrase types.
 YNQ-constrained-phrase := same-periph-unary-phrase & same-ynq-unary-phrase & 
@@ -1096,7 +1101,6 @@ YNQ-constrained-phrase := same-periph-unary-phrase & same-ynq-unary-phrase &
 gug-head-opt-comp-phrase := basic-head-opt-comp-phrase & YNQ-constrained-phrase &
  [ SYNSEM.LIGHT -].
 
-
 basic-head-opt-comp-phrase :+
  [ SYNSEM [ L-PERIPH #periph,
             LOCAL.CAT [ EC #ec,
@@ -1105,7 +1109,7 @@ basic-head-opt-comp-phrase :+
                               LOCAL.CAT [ EC #ec,
                                           IC #ic  ] ] ] > ].
  
-;Constraint on MC used to be part of matrix.tdl
+;;Constraint on MC used to be part of matrix.tdl
 ;;it applies to all wo implementations, except for v2
 
 head-initial-head-nexus := head-initial &
@@ -1121,7 +1125,7 @@ head-final-head-nexus := head-final &
 ;Basic-Head-OPT-COMP and any head-subj / subj-head rules
 
 gug-head-subj-phrase := decl-head-subj-phrase &
- [ SYNSEM.LOCAL.CAT.VAL [COMPS nonolist] ].
+ [ SYNSEM.LOCAL.CAT.VAL [ COMPS nonolist ] ].
 
 head-subj-phrase := gug-head-subj-phrase & head-initial-head-nexus &
  [ SYNSEM.LOCAL.CAT [ EC #ec, 
@@ -1148,25 +1152,25 @@ comp-head-phrase := basic-head-1st-comp-phrase & head-final-head-nexus &
  [ SYNSEM.LOCAL.CAT [ EC #ec,
 		      IC #ic ], 
    HEAD-DTR.SYNSEM.LOCAL.CAT [EC #ec,
-				  IC #ic ]].
+			      IC #ic ]].
 
 head-comp-phrase-2 := basic-head-2nd-comp-phrase & head-initial-head-nexus  &
  [ SYNSEM.LOCAL.CAT [ HEAD +nvjrcdmo, 
-          EC #ec,
-          IC #ic,
-         VAL.COMPS.FIRST.OPT - ], 
+		      EC #ec,
+		      IC #ic,
+		      VAL.COMPS.FIRST.OPT - ], 
    HEAD-DTR.SYNSEM.LOCAL.CAT [ EC #ec,
-             IC #ic ]].
+			       IC #ic ]].
 
 
 
 comp-head-phrase-2 := basic-head-2nd-comp-phrase & head-final-head-nexus &
  [ SYNSEM.LOCAL.CAT [ HEAD +nvjrcdmo, 
-          EC #ec,
-          IC #ic,
-          VAL.COMPS.FIRST.OPT - ],  
+		      EC #ec,
+		      IC #ic,
+		      VAL.COMPS.FIRST.OPT - ],  
    NON-HEAD-DTR.SYNSEM.LOCAL.CAT [ EC #ec,
-             IC #ic ]].
+				   IC #ic ]].
 
 
 ; Bare NP phrase.  Consider modifying the PRED value of the quantifier relation
@@ -1223,14 +1227,14 @@ wh-ques-phrase := gug-basic-head-filler-phrase & interrogative-clause &
 			   NON-LOCAL.QUE <! ref-ind !> ]].
 			
 extracted-comp-phrase := basic-extracted-comp-phrase &
-  [ SYNSEM [LIGHT -,
-	    LOCAL.CAT[  IC #ic,
-                        EC #ec,
-			MC na,
- 		        HEAD verb]],
-    HEAD-DTR.SYNSEM.LOCAL.CAT[ IC #ic,
-                               EC #ec,
-                               VAL.SUBJ cons ]].
+  [ SYNSEM [ LIGHT -,
+	     LOCAL.CAT[  IC #ic,
+			 EC #ec,
+			 MC na,
+			 HEAD verb]],
+    HEAD-DTR.SYNSEM.LOCAL.CAT [ IC #ic,
+				EC #ec,
+				VAL.SUBJ cons ] ].
 
 extracted-subj-phrase := basic-extracted-subj-phrase &
   [ C-CONT [ RELS <! !>,
