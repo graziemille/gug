@@ -18,7 +18,8 @@ SF : SF
   prop << prop-or-ques
   comm <> comm
   prop << [e]
-  * <> *
+  [e] >> prop
+;  * <> *
 
 COG-ST : COG-ST
   type-id <> type-id
@@ -36,7 +37,7 @@ COG-ST : COG-ST
   uniq-or-more <> uniq-or-more
   activ-or-less <> activ-or-less
   * >> type-id
-  * <> *
+;  * <> *
   
 
 PNG.PERNUM : PER NUM
