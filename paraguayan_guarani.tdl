@@ -79,7 +79,7 @@ head-mod-phrase :+ [ SYNSEM.ATTACH #attach,
 
 ;;; Case
 
-;Upad
+;Updated Lab 8
 case := *top*. 
 non-nom := case.
 non-dat := case.
@@ -135,7 +135,7 @@ poss-ee := poss-or-ee.
 ; Add Feature for semantics of YNQ
 
 non-local :+ [ YNQ 0-1-dlist ].
-non-ynq-word := lex-item & [ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
+non-ynq-word := lex-item  & [ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
 norm-zero-arg :+ [ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
 basic-one-arg :+ [ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
 basic-two-arg :+ [ SYNSEM.NON-LOCAL.YNQ 0-dlist ].
@@ -292,7 +292,8 @@ basic-adverb-lex :+ norm-zero-arg.
 ; Scopal-modifiers
 scopal-lex := scopal-mod-lex & norm-sem-lex-item & norm-zero-arg & 
 	      non-ynq-word &
-  [ SYNSEM.LOCAL.CAT [  HEAD adv & [ MOD  < [ LOCAL.CAT [ MC + ] ] > ],
+  [ SYNSEM.LOCAL.CAT [  HEAD adv & [ MOD  < [ LOCAL.CAT [ HEAD verb,
+							  MC + ] ] > ],
                         ScM +,
                         EC -, 
                         IC -,
@@ -860,7 +861,7 @@ basic-head-mod-phrase-simple :+
 gug-scopal-mod-phrase := basic-head-mod-phrase-simple & head-final & 
 			 head-compositional &
   [ SYNSEM [ LOCAL.CAT [ ScM +,
-        MC na,                       
+			 MC na,                       
 			 EC -,                        
 			 IC -],
 	     NON-LOCAL [ QUE <! !>, 
@@ -1003,23 +1004,43 @@ head-only-int-decl-clause := unary-int-decl-cl-phrase & headed-phrase &
 
 ;; ading int and decl clauses 
 int-cl := head-only-int-decl-clause & interrogative-clause &
-  [ SYNSEM [ LOCAL.CAT [ VAL #val & [SUBJ< >, COMPS< >, SPR< >], MC bool, ScM #scope],
-             NON-LOCAL[SLASH #sl, YNQ <! !> ]],
-    HEAD-DTR.SYNSEM [ LOCAL.CAT [ ScM #scope, MC na, VAL #val, HEAD verb],
-                    NON-LOCAL[SLASH #sl, YNQ <! *top* !>, QUE <! !> ]]].
+  [ SYNSEM [ LOCAL.CAT [ HEAD.MOD < >,
+			 VAL #val & [ SPEC < >,
+				      SUBJ < >, 
+				      COMPS < >, 
+				      SPR < > ], 
+			 MC bool,
+			 ScM #scope],
+	     NON-LOCAL [ SLASH #sl, 
+			 YNQ <! !> ]],
+    HEAD-DTR.SYNSEM [ LOCAL.CAT [ ScM #scope, 
+				  MC na, 
+				  VAL #val, 
+				  HEAD verb ],
+		      NON-LOCAL [ SLASH #sl, 
+				  YNQ <! *top* !>, 
+				  QUE <! !> ]]].
 
 decl-cl := head-only-int-decl-clause & declarative-clause & 
-  [ SYNSEM [ LOCAL [ CAT [ VAL #val & [ SUBJ < >, 
+  [ SYNSEM [ LOCAL [ CAT [ HEAD.MOD < >,
+			   VAL #val & [ SPEC  < >,
+					SUBJ < >, 
 					COMPS < >, 
 					SPR < >], 
 			   ScM #scope,
-         MC bool, 
+			   MC bool, 
 			   IC -, 
-         EC #ec],
+			   EC #ec],
 		     CONT.HOOK.INDEX.SF prop ],
 	     NON-LOCAL [SLASH #sl, YNQ 0-dlist ] ],
-    HEAD-DTR.SYNSEM [ LOCAL.CAT [ ScM #scope, MC na, VAL #val, HEAD verb, EC #ec, IC -],
-		      NON-LOCAL [ SLASH #sl, YNQ 0-dlist ]]].
+    HEAD-DTR.SYNSEM [ LOCAL.CAT [ ScM #scope, 
+				  MC na, 
+				  VAL #val, 
+				  HEAD verb, 
+				  EC #ec, IC -],
+		      NON-LOCAL [ SLASH #sl, 
+				  YNQ 0-dlist,
+				  QUE <! !> ]]].
 
 
 
