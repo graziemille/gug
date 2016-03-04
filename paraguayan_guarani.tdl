@@ -17,6 +17,7 @@
 +np :+ [ CASE case,
          CASE-MARKED bool].
 
+;POSS-FLAG added for inalienable possessions
 inflected :+ [ POSS-FLAG luk,
     PERNUM-STAT-INTRANS-FLAG luk,
     NEG1-FLAG luk,
@@ -25,6 +26,7 @@ inflected :+ [ POSS-FLAG luk,
     PERNUM-DYN-INTRANS-OR-PERNUM-STAT-INTRANS-OR-PERNUM-TRANS-FLAG luk,
     PERNUM-TRANS-FLAG luk ].
 
+;Updated with POSS-FLAG information.
 infl-satisfied :+ [ POSS-FLAG na-or-+,
     PERNUM-STAT-INTRANS-FLAG na-or-+,
     NEG1-FLAG na-or-+,
@@ -35,8 +37,6 @@ infl-satisfied :+ [ POSS-FLAG na-or-+,
 
 png :+ [ PERNUM pernum,
 	 GEND gender ].
-
-;trying to reduce redundancy caused by multiple attachment sites and head-subj/subj-head. Additional modifications made to head-subj subj-head below
 
 nonolist := list.
 nonocons := nonolist & cons &
@@ -79,6 +79,7 @@ head-mod-phrase :+ [ SYNSEM.ATTACH #attach,
 
 ;;; Case
 
+;Upad
 case := *top*. 
 non-nom := case.
 non-dat := case.
@@ -526,7 +527,8 @@ question-clitic-lex := no-hcons-lex-item &
 				COMPS < >, 
 				SUBJ < >, 
 				SPEC < >],
-                          HEAD adj & [ MOD < [ LIGHT +,
+                          HEAD adj & [ MOD < [ LOCAL.CAT.HEAD +nv,
+                                               LIGHT +,
                                                L-PERIPH +,
 				               LOCAL intersective-mod] > ]],
 		    CONT.RELS <! !> ],
@@ -1322,8 +1324,8 @@ vp2-top-coord-rule := basic-vp-top-coord-rule & monopoly-top-coord-rule &
 vp2-mid-coord-rule := basic-vp-mid-coord-rule & monopoly-mid-coord-rule &
   [ SYNSEM.LOCAL [ COORD-STRAT "2",
        CAT[ EC #ec, IC #ic]], 
-     RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
-     LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
+     RCOORD-DTR.SYNSEM.LOCAL [ CAT [ EC #ec, IC #ic]],
+     LCOORD-DTR.SYNSEM.LOCAL [ CAT [ EC #ec, IC #ic] ]].
 
 vp2-bottom-coord-rule := conj-first-bottom-coord-rule & vp-bottom-coord-phrase &
   [ SYNSEM.LOCAL [ COORD-STRAT "2",
