@@ -961,7 +961,7 @@ poss-phrase := head-final &
 	     HCONS <! qeq & [ HARG #harg, LARG #lbl ] !>,
 	     ICONS <! !> ],
     HEAD-DTR.SYNSEM.LOCAL [ CAT [ HEAD #head & [POSS poss-ee] & noun,
-				  VAL.SPR < [ ] > ],
+				  VAL.SPR cons ],
 			    CONT.HOOK [ INDEX #index & [ COG-ST uniq+fam+act ],
 					LTOP #lbl ] ],
     NON-HEAD-DTR.SYNSEM.LOCAL [ CAT [ HEAD noun & [POSS poss-or],
