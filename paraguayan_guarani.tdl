@@ -970,8 +970,7 @@ poss-phrase := head-final &
 ;; Special rule for the unary distribution of L-PERIPH in int-cl and decl-cl
 basic-unary-int-decl-cl-phrase := phrase &
   [ STEM #stem,
-    SYNSEM [
-	     LOCAL [ CAT.MKG #mkg,
+    SYNSEM [ LOCAL [ CAT.MKG #mkg,
 		     CONT [ RELS [ LIST #first,
 				   LAST #last ],
 			    HCONS [ LIST #scfirst,
@@ -1026,7 +1025,7 @@ decl-cl := head-only-int-decl-clause & declarative-clause &
 			   VAL #val & [ SPEC  < >,
 					SUBJ < >, 
 					COMPS < >, 
-					SPR < >], 
+					SPR < > ], 
 			   ScM #scope,
 			   MC bool, 
 			   IC -, 
@@ -1248,45 +1247,37 @@ extracted-subj-phrase := basic-extracted-subj-phrase &
 ;;; Coordination
 ;;;;;;;;;;;;;;;;;;
 
-gug-s-coord-phrase := event-coord-phrase &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ < >,
-    SYNSEM.LOCAL.CAT.HEAD verb,
-    LCOORD-DTR.SYNSEM.LOCAL.CAT.HEAD verb,
-    RCOORD-DTR.SYNSEM.LOCAL.CAT.HEAD verb ].
-
-gug-basic-s-top-coord-rule := gug-s-coord-phrase &
-  [ C-CONT [ RELS <! !>,
-       HCONS <! !> ]].
-
-gug-basic-s-mid-coord-rule := gug-s-coord-phrase &
-  [ SYNSEM.LOCAL.COORD-REL #crel,
-    C-CONT [ RELS <! #crel !>,
-       HCONS <! !> ]].
+;;Parallel to s-coord-phrase in matrix.tdl
+;;Not implemented but keeping this here for notes to quickly track that
+;;what matrix.tdl means by s-coord-phrase matches what we want
+;gug-s-coord-phrase := event-coord-phrase &
+;  [ SYNSEM.LOCAL.CAT.VAL.SUBJ < >,
+;    SYNSEM.LOCAL.CAT.HEAD verb,
+;    LCOORD-DTR.SYNSEM.LOCAL.CAT.HEAD verb,
+;    RCOORD-DTR.SYNSEM.LOCAL.CAT.HEAD verb ].
 
 
 ;;Inherited by all sentential coordination phrases
 s-coord-phrase :+
-  [ SYNSEM.LOCAL.CAT [ MC na, EC #ec, IC #ic],
-    LCOORD-DTR.SYNSEM.LOCAL [ CONT.HOOK.INDEX.SF #sf,
-                              CAT [ ScM -, MC bool, EC #ec,  IC #ic] ],
-    RCOORD-DTR.SYNSEM.LOCAL [ CONT.HOOK.INDEX.SF #sf,
-                              CAT [ ScM -, MC bool, EC #ec,  IC #ic] ]].
-
-
-s-coord-phrase :+ [ SYNSEM.NON-LOCAL #nl, 
-         LCOORD-DTR.SYNSEM.NON-LOCAL #nl,
-         RCOORD-DTR.SYNSEM.NON-LOCAL #nl ].
+  [ SYNSEM [ NON-LOCAL #nl,
+	     LOCAL [ CONT.HOOK.INDEX.SF #sf,
+		     CAT [ MC na, EC #ec, IC #ic ] ] ],
+    LCOORD-DTR.SYNSEM [ NON-LOCAL #nl & [SLASH 0-dlist],
+			LOCAL [ CONT.HOOK.INDEX.SF #sf,
+				CAT [ ScM -, MC +, EC #ec,  IC #ic] ] ],
+    RCOORD-DTR.SYNSEM [ NON-LOCAL #nl & [SLASH 0-dlist],
+			LOCAL [ CONT.HOOK.INDEX.SF #sf,
+				CAT [ ScM -, MC bool, EC #ec,  IC #ic] ] ] ].
         
 
 s-bottom-coord-phrase :+
-  [ SYNSEM.LOCAL [ CONT.HOOK.INDEX.SF #sf,
-                   CAT [ MC bool, EC #ec, IC #ic ] ],
-    NONCONJ-DTR.SYNSEM [ NON-LOCAL [ SLASH 0-dlist], 
-			                   LOCAL [ CONT.HOOK.INDEX.SF #sf,
-                                 CAT [ ScM -, MC bool, EC #ec, IC #ic ] ] ] ].
+  [ SYNSEM [ NON-LOCAL #nl,
+	     LOCAL [ CONT.HOOK.INDEX.SF #sf,
+                   CAT [ MC bool, EC #ec, IC #ic ] ] ],
+    NONCONJ-DTR.SYNSEM [ NON-LOCAL #nl & [ SLASH 0-dlist], 
+			 LOCAL [ CONT.HOOK.INDEX.SF #sf,
+				 CAT [ ScM -, MC bool, EC #ec, IC #ic ] ] ] ].
 
-s-bottom-coord-phrase :+ [ SYNSEM.NON-LOCAL #nl,
-       NONCONJ-DTR.SYNSEM.NON-LOCAL #nl ].
 
 
 ;;; Coordination Strategy 3 - s-coordination
