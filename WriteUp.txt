@@ -5,20 +5,23 @@
 
 
 1. Include your iso.txt file with your translations of the MMT sentences.
-We included a gug.txt file in our gug grammar folder. Additionaly we greated a separeted tsdb suite that included all MMT sentences in IGT format.
-We added also the English and Chadian Arabic grammars as changed and used in this lab in their respective eng- and shu- folders which are placed inside our gug folder file.
+
+We included a gug.txt file in our gug grammar folder. Additionally we created a separate tsdb suite that included all MMT sentences in IGT format.
+
+We also added the English and Chadian Arabic grammars we changed and used in this lab. They are placed inside our gug folder file in their respective eng and shu folders. 
 
 2. Describe any clean up you did to your grammar.
 
 -- Changes in semi.vpm
-As noted in office hours, the values for SPECI, TENSE and MOOD are not relevant for PG. therefore they were commented out in the semi.vpm file.
+As noted in feedback from lab8 and office hours, the values for SPECI, TENSE and MOOD are not relevant for PG. therefore they were commented out in the semi.vpm file.
 
--- max edge number
-We had to work this week with some string realizations that used several thousand edges for their calculation. We increased as a default teh max-edge-number to 10000, in the globals.lsp file under the lkb folder.
+-- Changes in globals.lsp - max edge number
+We had to work this week with some string realizations that used several thousand edges for their calculation. We increased as the default max-edge-number to 10000, in the globals.lsp file under the lkb folder.
 
--- New lexicon
-We added followign entries to the lexicon in order to generate the necessary MMT strings.
-For the English adjective 'hungry' we have two entries, as a stative intransitive verb, as well as an attributive adjective. Our original online dictionary, suggested the it was only an intransitive verb, which made us wonder how to realize an MMT sentence ('The hungry dog eats'). Further reasearch into other resources helped us to find out that it was possible to use it as an attributive adjective. This is a common pattern in PG. Many adjectives are also present as stative intransitive verbs, as a way to create AP predicates.
+-- Changes in lexicon.tdl 
+We added following entries to the lexicon in order to generate the necessary MMT strings.
+For the English adjective 'hungry' we have two entries, one as a stative intransitive verb and one as an attributive adjective. 
+
 
 vareHa := stative-intrans-verb-lex &
   [ STEM < "vareHa" >,
@@ -52,8 +55,36 @@ imoHaA := decl-cl-verb-lex &
    [STEM<"imoHaA">,
     SYNSEM.LKEYS.KEYREL.PRED "_think_v_rel"].
 
+One interesting anecdote here about working with sources it that the online dictionary we use only gave us the stative-intransitive verb version, which made us wonder how to realize an MMT sentence ('The hungry dog eats'). But it seemed strange to us that ‘hungry’ would act so differently from all other adjectives in Guarani, and further research helped us find that hungry DOES exist as an attributive adjective in Guaraní.  It seems that we weren’t getting it from our on-line dictionary, because it only has options to translate into Guaraní from Spanish and German, both languages which say “I have hunger” instead of “I am hungry”! 
+
+
 -- Sentential coordination rules
-We added constraints specifying that our coordination phrases identify the rule's #sf value with that of its daughter/s, and for top-or-mid cases, require through identification that both daughters share a SF value.  This significantly cut down on edges.
+
+——SF & Coordination
+We added additional constraints around to our coordination with respect to both SLASH and SF.  We updated our decl-cl rules so that they now specify that they are [SF prop] instead of [SF prop-or-ques] as we had originally designated them. 
+
+decl-cl := head-only-int-decl-clause & declarative-clause & 
+  [ SYNSEM [ LOCAL [ CAT [ HEAD.MOD < >,
+         VAL #val & [ SPEC  < >,
+          SUBJ < >, 
+          COMPS < >, 
+          SPR < > ], 
+         ScM #scope,
+         MC bool, 
+         IC -, 
+         EC #ec],
+         CONT.HOOK.INDEX.SF prop ],
+       NON-LOCAL [SLASH #sl, YNQ 0-dlist ] ],
+    HEAD-DTR.SYNSEM [ LOCAL.CAT [ ScM #scope, 
+          MC na, 
+          VAL #val, 
+          HEAD verb, 
+          EC #ec, IC -],
+          NON-LOCAL [ SLASH #sl, 
+          YNQ 0-dlist,
+          QUE <! !> ]]].
+
+We then added constraints specifying that our coordination phrases identify the rule's #sf value with that of its daughter/s. For top-or-mid cases we also constrain both daughters share a SF value.  This significantly cut down on edges.
 
 ;;Inherited by all sentential coordination phrases
 s-coord-phrase :+
@@ -75,11 +106,12 @@ s-bottom-coord-phrase :+
        LOCAL [ CONT.HOOK.INDEX.SF #sf,
          CAT [ ScM -, MC bool, EC #ec, IC #ic ] ] ] ].
 
+——SLASH  & Coordination
 
-We also added an additional constraint after a Thursday class suggestion, requiring the daughters of our coordination rules to have an empty SLASH value, which also cut down on edges. This is present now in the rule above.
+We also added an additional constraint after a Thursday class suggestion requiring the daughters of our coordination rules to have an empty SLASH value, which also cut down on edges. This is present now in the s-coord-phrase and s-bottom-coord-phrase rules above.
 
 --- Removal of Mid-Coord
-One of our major works this week was looking at coordination rules. We began to realize that because Guarani has asyndenton sentential coordination, the mid-coord rule for our Strategy 2 coordination (with ha) was effectively redundant. We could get the same semantics with asyndenton coordination of T-coord phrases. 
+One of our major works this week was looking at coordination rules. We began to realize that because Guarani has asyndenton sentential coordination, the mid-coord rule for our Strategy 2 coordination (with ha) was effectively redundant. We could get the same semantics with asyndenton coordination of T-coordinated phrases. 
 
 s2-mid-coord-rule := basic-s-mid-coord-rule & monopoly-mid-coord-rule &
   [ SYNSEM.LOCAL [ COORD-STRAT "2",
@@ -87,17 +119,17 @@ s2-mid-coord-rule := basic-s-mid-coord-rule & monopoly-mid-coord-rule &
      RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
      LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
 
-With the permission of the instructor, we have opted NOT to implement mid-coordination for sentences in our grammar.  We fixed this by commented out the rule in rules.tdl:
+With the permission of the instructor, we have opted NOT to implement mid-coordination for sentences in our grammar.  We fixed this by commenting out the rule in rules.tdl:
 
 ;s2-mid-coord := s2-mid-coord-rule.
 
-This allowed us to loose some spurious ambiguiuty, effectively reducing the edges generation by over 1000 in sentences that use s2 coordination like 
+This allowed us to loose some spurious ambiguity and to reduce the edges used in parsing  by over 1000 for sentences that use s2 coordination like:
 
 "jagua omunNa mbaHyru pe ha mbarakaja omunNa jagua pe"
          Dogs chase cars and cats chase dogs
 
 -- NP Coordination rules
-We realized that in some of the string realizations, in which two nouns were combined in coordination, the attaching verb predicate had several different subject markers, related to PERNUM 1pl-incl, 1pl-excl, 2pl, 3er. This overgeneration, was due to an underspecification in the PER value of the NP top node of NP coordinated structures. In English, to have a NUM plural is enough, but languages like PG require the specification of the PER value of those plural nouns. Also, as it was reported, this feature is being curently worked out by another graduate student, and it is planed to be add it in the future to the customization system. After consultation with the instructor, we implemented a temporary fix, which does not represent a final solution, but let us go over the requirements of this week's lab. We made this adjustement in the NP top coordination rule.
+We realized that in some of the string realizations, in which two nouns were combined in coordination, the attaching verb predicate was showing up with subject markers corresponding to PERNUM 1pl-incl, 1pl-excl, 2pl, 3per. This overgeneration was due to an underspecification in the PERNUM value of the NP top node of NP coordinated structures. Languages like PG require PERNUM to be fully specified to get the correct markers on the verb.  After consultation with the instructor, we implemented a temporary fix, which does not represent a final solution, but let us go over the requirements of this week's lab. We made this adjustment in the NP top coordination rule.
 
 np2-top-coord-rule := basic-np-top-coord-rule & monopoly-top-coord-rule &
   [ SYNSEM.LOCAL [ COORD-STRAT "2",
@@ -107,10 +139,11 @@ np2-top-coord-rule := basic-np-top-coord-rule & monopoly-top-coord-rule &
                               CONT.HOOK.INDEX.PNG.PERNUM #pernum],
      LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
 
-The rule identifies the PERNUM value of the parent node, with one of the daughter's PERNUM value.
+The rule identifies the PERNUM value of the parent node, with one of the daughter's PERNUM value. Since this feature is being currently worked out by another graduate student, we are sure that their solution will be more elegant, but we were satisfied with our temporary fix for the current lab.
+
 
 -- VP coordination rule
-We had this week to work with a verb coordination rule. In order to avoid unnecessary edges, we limited the way some coordinatio rules can unify with the root. Here the vp2 top rule includes now a constrain [MC na] for that purpose. 
+One of the sentences this week required the use of out verb coordination rule, which showed us some ways it was underspecified. In order to avoid unnecessary edges and make it its behavior uniform with our other rules, we constrained the way rules generated by vp-coordination unify with the root, by including an [MC na] constraint on the vp2-top-coord-rule.
 
  vp2-top-coord-rule := basic-vp-top-coord-rule & monopoly-top-coord-rule &
   [ SYNSEM.LOCAL [CAT.MC na, 
@@ -142,13 +175,13 @@ o-ime koty=mbyteApe jagua=ndi
 3.ACT-be.located room=inside dog=with
 'He/She is located inside the room with the dog'
 
-Through a conversation on goPost we discovered that the problem was that our contentful-adps were not identifying their ARG1 with their XARG. Also our instructor pointed out that since our raising verb identifies the XARG of the complement with the subject's index if that XARG does not point to anything it breaks the chain of identies.  
+Through a conversation on goPost we discovered that the problem was that our contentful-adps were not identifying their ARG1 with their XARG. Also our instructor pointed out that since our raising verb identifies the XARG of the complement with the subject's index if that XARG does not point to anything it breaks the chain of identities.  We added the link as shown below:
 
 contentful-adp-lex := basic-int-mod-adposition-lex & norm-zero-arg &
   [ SYNSEM.LOCAL [ CONT [HOOK.XARG #arg,
        RELS <![arg1 #arg]!> ],
-       CAT [  EC - , 
-        IC - ,
+       CAT [ EC - , 
+             IC - ,
         HEAD adp & 
            [ CASE loc,
              MOD <[ LOCAL.CAT [HEAD verb,
@@ -162,32 +195,52 @@ contentful-adp-lex := basic-int-mod-adposition-lex & norm-zero-arg &
                         LOCAL.CAT [ HEAD +np & [CASE nom],
             VAL [SPR < >] ] ] > ].
 
-This fixed the MRS on our end and, which ,together with implementeation of the transfer rule for be+located, allowed us to get the appropriate translations from sentences like "The dogs are in the park." 
+This fixed the MRS on our end and, which, together with implementation of the transfer rule for be+located (described in a later section), allowed us to get the appropriate translations from sentences like "The dogs are in the park." 
 
-Further testing after that change made us realize that our PP predicates when attaching as modifiers were attaching too high, and that we needed to constrain our contentful-adp-lex to only modify verby things that are [SUBJ cons] but [COMPS < >]. We experimented with the sentence "juHi ohecha jagua ndi" - "the frog saw something with the dog" / "something saw the frog with the dog" to make sure we still got both of those parses and we do. As mentioned in an earlier lab, we could easily modify our contentful adp's to allow them to also modify nouny constituents, by changing their MOD constraint from [HEAD verb] to [HEAD +nv] but, as you brought up in your feedback, we aren't sure that this is motivated for Guarani, so we have left it as is.
+—— Additional changes to contentful-adp-lex 
+Further testing after the change described above showed us that our PP predicates when attaching as modifiers were attaching too high and that we needed to constrain our contentful-adp-lex to only modify verby things that are [SUBJ cons] but [COMPS < >]. We experimented with the sentence "juHi ohecha jagua ndi" - "the frog saw something with the dog" / "something saw the frog with the dog" to make sure we still got both of those parses with this new constraint.  Fortunately we do, so we felt comfortable implementing those changes (repeated here for ease of reading:
+
+contentful-adp-lex := basic-int-mod-adposition-lex & norm-zero-arg &
+  [ SYNSEM.LOCAL [ CONT [HOOK.XARG #arg,
+       RELS <![arg1 #arg]!> ],
+       CAT [ EC - , 
+             IC - ,
+        HEAD adp & 
+           [ CASE loc,
+             MOD <[ LOCAL.CAT [HEAD verb,
+             VAL [ COMPS < >, 
+                   SUBJ cons ] ] ] > ],
+        VAL [ SPR < >,
+        COMPS < #comps >,
+        SPEC < >, 
+        SUBJ < > ] ] ],
+    ARG-ST < #comps & [ OPT -,
+                        LOCAL.CAT [ HEAD +np & [CASE nom],
+            VAL [SPR < >] ] ] > ].
+
+As mentioned in an earlier lab, we could easily modify our contentful adp's to allow them to also modify nouny constituents by changing their MOD constraint from [HEAD verb] to [HEAD +nv]. But, as you brought up in your feedback, we aren't sure that this is motivated for Guarani, so we have left the constraint as is.
 
 -- Changes to Question-Clitic MOD
-As pointed by our instructor, our question-clitics had MOD values that were not constrained enough, so we added a [LOCAL.CAT.HEAD +nv] constraint to the MOD value, so that it doesn't try to apply with anything that isn't nouny or verby.
+As pointed by our instructor, our question-clitics had MOD values that were not constrained enough, so we added a [LOCAL.CAT.HEAD +nv] constraint to the MOD value, so that it doesn't try to apply to elements that aren’t nouny or verby.
 
 question-clitic-lex := no-hcons-lex-item &
  [ SYNSEM [ LOCAL [ CAT [ IC +, 
                           VAL [ SPR < >, 
-        COMPS < >, 
-        SUBJ < >, 
-        SPEC < >],
-                          HEAD adj & [ MOD < [ LOCAL.CAT.HEAD +nv,
+        			COMPS < >, 
+        			SUBJ < >, 
+        			SPEC < >],
+                          HEAD adj & [ MOD < [ LOCAL [intersective-mod & [CAT.HEAD +nv]],
                                                LIGHT +,
-                                               L-PERIPH +,
-                       LOCAL intersective-mod] > ]],
-        CONT.RELS <! !> ],
-            NON-LOCAL[ REL <! !>,
-           SLASH <! !>,
-                       QUE <! !>,
-                       YNQ <! *top* !>  ]]].
+                                               L-PERIPH +] > ]],
+        	    CONT.RELS <! !> ],
+            NON-LOCAL[ 	REL <! !>,
+           		SLASH <! !>,
+                       	QUE <! !>,
+                       	YNQ <! *top* !>  ]]].
 
 
--- Comp-head rule and EC/IC feature
-We adjusted the transmission of the EC/IC values through the comp-head-phrase rule, coming now from the head-dtr instead of the non-head-dtr. The motivation for this change, is many of the generated strings with embedded sentences of this week, had unexpected word orders, we had not experimented with before. That increased the use of the comp-head rule in embedding VP, where in the past we had used only the head-comp rule. Before we where only concerned on passing these two values 'from the left', without having an extended testing over different word order combinations (which for embedding sentences includes more sentences that we anticipated). So the new comp-head rule looks as follows: 
+-- Comp-head Rule and EC/IC feature
+We adjusted the transmission of the EC/IC values through the comp-head-phrase rule so that they are passed up from the HEAD-DTR instead of the NON-HEAD-DTR.  Many of the string realizations we saw when we did MMT this week had word orders that we had not experimented with before. Initially because of our second-position constraints we had been concerned with only getting these values 'from the left,’ which lead to some bad strings and the realization that we needed our comp-head-phrase rule to actually get those values from its head daughter. So the new comp-head rule looks as follows: 
 
   comp-head-phrase := basic-head-1st-comp-phrase & head-final-head-nexus & 
    [ SYNSEM.LOCAL.CAT [ EC #ec,
@@ -196,8 +249,9 @@ We adjusted the transmission of the EC/IC values through the comp-head-phrase ru
             IC #ic ]].
 
 -- Undefined EC/IC feature values in determiners
-We were getting some strings realized this week, because our the EC/IC values were undefined in determiners, and a wrongly defined head-spec-phrase rule was pushing those undefined bools into unification with the requirements for embedded clauses. This resulted in embedded clauses that should not be one, because the respective clitics (complementizer of question clitic) were missing.
-Therefore we fixed that by securing that the head-spec-phrase rule copies those values from the head daugher, which had already by EC -, IC - (all nouns, and verbs other than decl-cl-verb-lex and int-cl-verbl-lex have those default values).
+We were getting some strings realized this week, because our the EC/IC values were undefined in determiners and a wrongly defined head-spec-phrase rule was pushing those undefined bools into unification with the requirements for embedded clauses. This resulted in clauses that were (incorrectly) specified as either [EC +] or [IC +] even though the required clitics (complementizer or question) were missing.
+
+We fixed this by ensuring that that the head-spec-phrase rule copies those values from is nouny head daughter, which was already specified as [EC -, IC -]—-all nouns, and verbs other than decl-cl-verb-lex and int-cl-verbl-lex have those default values.
 
   head-spec-phrase := basic-head-spec-phrase & head-final & 
     [ SYNSEM.LOCAL.CAT [ EC #ec,
@@ -206,7 +260,7 @@ Therefore we fixed that by securing that the head-spec-phrase rule copies those 
                                 IC #ic ],
       NON-HEAD-DTR.SYNSEM.OPT - ].
 
-Additionally, as a precausion, we included the negative default values for the determiner, so that in unexpected parses, they would not be responsably for a wrong behaviour.
+Additionally, we added the negative default values to our determiners, as shown below:
 
   determiner-lex := basic-determiner-lex & norm-zero-arg & 
                     non-mod-lex-item & norm-sem-lex-item &
@@ -218,38 +272,36 @@ Additionally, as a precausion, we included the negative default values for the d
            SPEC<[LOCAL.CONT.HOOK.INDEX.COG-ST uniq+fam+act]>]]].
 
 
--- Adjustements int-cl-verb-lex and decl-cl-verb-lex
-We observed that the verb lexemes to which question or declarative clauses attach were not attaching to nominative subjects in some of the string generations we experienced this week. Therefore we added the case restriction to the subject of this verb types. Additionaly, be added the [MC +] constrain in the comps elements, so that they could accepts a clause that has passed through the int-cl or decl-cl respectively. So we had these final entries for these verb lexemes:
+-- Changes to int-cl-verb-lex and decl-cl-verb-lex
+We observed through MMT this week that our clausal verbs were not requiring their subjects to be nominative, resulting in some incorrect string realizations when we translated from English. Therefore we added the case restriction to the subject of these verb types. Additionally we eliminated some spurious parses by added an [MC +] constraint to the first (only) element on their COMPS so that they only accept a clause that has passed through the int-cl or decl-cl respectively.  So we had these final entries for these verb lexemes:
 
 int-cl-verb-lex:= cl-verb-lex &
-  [ SYNSEM.LOCAL.CAT [ IC - , 
-           VAL [ SUBJ < [LOCAL.CAT.HEAD noun & [CASE nom]]>,
-           SPR < >,
-           COMPS < [ LOCAL [ CAT [ MC +,
-                 IC +,
-                 HEAD verb,
-                 VAL [ COMPS < >, 
-                 SUBJ < > ]],
-                 CONT.HOOK.INDEX.SF ques ]]>]]].
+  [ SYNSEM.LOCAL.CAT [  IC - , 
+           		VAL [   SUBJ < [LOCAL.CAT.HEAD noun & [CASE nom]]>,
+           			SPR < >,
+           		COMPS < [ LOCAL [ CAT [ MC +,
+                 				IC +,
+                 				HEAD verb,
+                 				VAL [ COMPS < >, 
+                 				      SUBJ < > ] ],
+                 			  CONT.HOOK.INDEX.SF ques ]]>]]].
 
 decl-cl-verb-lex:= cl-verb-lex &
   [ SYNSEM [ LOCAL.CAT [ EC -,
-       IC -,
-       VAL [ SUBJ  < [LOCAL.CAT.HEAD noun & [CASE nom]]>,
-             SPR < > ,
-             COMPS < [ LOCAL [ CAT [ MC +,
-                   EC +,
-                   IC -,
-                   HEAD verb,
-                   VAL.COMPS < > ],
-             CONT.HOOK.INDEX.SF prop-or-ques ]]>]]]].
+       			 IC -,
+       			 VAL [ 	SUBJ  < [LOCAL.CAT.HEAD noun & [CASE nom]]>,
+             		 	SPR < > ,
+             			COMPS < [ LOCAL [ CAT [ MC +,
+                   					EC +,
+                   					IC -,
+                   					HEAD verb,
+                   					VAL.COMPS < > ],
+             				       CONT.HOOK.INDEX.SF prop-or-ques ]]>]]]].
 
 
--- Scopal modifier changes
-Even though the focus of the week was MT, we also did a lot of work to try to reduce edges in our coordinated phrases, both to improve the performance of our grammar and to make it easier to debug what we needed to.  
+-- Changes to Scopal Modifier
 
-Scopal Modifier Changes
-Our scopal modifier is derived from our conjuction "ha" and they are homographs, so when we were testing parsing sentences with the conjuction "ha" we were getting some interference from the scopal modifier, which led us to finally decide to constrain its behaviour further.
+Even though the focus of the week was MT, we also did a lot of work to try to reduce edges in our coordinated phrases, both to improve the performance of our grammar and to make it easier to debug what we needed to. Our scopal modifier is derived from our conjuction "ha" and they are homographs, so when we were testing parsing sentences with the conjuction "ha" we were getting some interference from the scopal modifier, which led us to finally decide to constrain its behavior further.
 
 #Sentence.20
 Source: a, attested
@@ -262,14 +314,14 @@ ha  o-eHi  Juanchi
 and A.3-say Juan.DIM
 'And Juanito says:'
 
-There are three parses that we want for #20. The two which reflect subject/object ambiguity, and one where "ha" attaches to the coordinated phrase that means something like "Someone says something at it is Juanchi."  We were intially getting on additional phrase where ha was attaching low to the S “oeHi” and then being coordinated with the predicate Juanchi. This high/low attachment ambiguity only created one additional parse here, but with longer sentences the problem grew quickly.  
+There are three parses that we want for #20. The two which reflect subject/object ambiguity, and one where "ha" attaches to the coordinated phrase that means something like "Someone says something at it is Juanchi."  We were initially getting an additional phrase where “ha” was attaching low to the S “oeHi” and then being coordinated with the predicate Juanchi. This high/low attachment ambiguity only created one additional parse here but with longer sentences the problem grew quickly.  
 
 Following a suggestion in office hours we decided to fix this by implementing a new cat feature:
 
 ; Features for scopal-mod (reducing overgeneration)
 cat :+ [ScM bool].
 
-The definition for scopal-modifiers is given below. From last week it already constrains them to modify only elements that are [HEAD verb] and [MC +], which in our grammar is restricted to int-cl and decl-cl.  Because our scopal-mod is already constrained to apply only to an int-cl or decl-cl, only those two phrases, our coordination rules, and our scopal mod-rule needed to specify values for ScM to get the result we wanted. 
+The definition for scopal-modifiers is given below. From last week it already constrains them to modify only elements that are [HEAD verb] and [MC +], which in our grammar identifies only int-cl and decl-cl.  Because of this constraint only our int-cl and decl-cl phrase rules, our coordination rules, and our scopal mod-rule needed to specify values for ScM to get the result we wanted. 
 
 ; Scopal-modifiers
 scopal-lex := scopal-mod-lex & norm-sem-lex-item & norm-zero-arg & 
@@ -284,17 +336,17 @@ scopal-lex := scopal-mod-lex & norm-sem-lex-item & norm-zero-arg &
                               SPEC < > ]]].
 
 
-Our gug-scopal-mod-phrase now specifies that it adds the value [ScM +].  In principle we could constrain this further if we needed to in the future, but in our current grammar this is enough because scopal-modifiers are the only elements defined as adverbs in our grammar and our already rule constrains its daughter to be [HEAD adv].
+Our gug-scopal-mod-phrase now specifies that it adds the value [ScM +].  In principle we could constrain this further if we needed to in the future, but in our current grammar this is enough because scopal-modifiers are the only elements defined as adverbs in our grammar and our rule already constrains its daughter to be [HEAD adv].
 
 gug-scopal-mod-phrase := basic-head-mod-phrase-simple & head-final & 
        head-compositional &
   [ SYNSEM [ LOCAL.CAT [ ScM +,
-       MC na,                       
-       EC -,                        
-       IC -],
-       NON-LOCAL [ QUE <! !>, 
-       SLASH <! !>, 
-       YNQ <! !> ]],
+      			 MC na,                       
+       			 EC -,                        
+       			 IC -],
+       	     NON-LOCAL [ QUE <! !>, 
+       			 SLASH <! !>, 
+       			 YNQ <! !> ]],
     HEAD-DTR.SYNSEM.LOCAL.CAT [ MC +,
                                 IC -,
                                 EC -,
@@ -304,62 +356,52 @@ gug-scopal-mod-phrase := basic-head-mod-phrase-simple & head-final &
                                       SUBJ < >, 
                                       COMPS < > ]],
     NON-HEAD-DTR.SYNSEM.LOCAL [ CAT [ HEAD adv & 
-             [ MOD < [ LOCAL scopal-mod ] >],
+             				 [ MOD < [ LOCAL scopal-mod ] >],
                                       VAL [SPR < >, 
-             SUBJ < >, 
-             COMPS < > ]],
-                                      CONT.HOOK #hook ],
+             				   SUBJ < >, 
+             				   COMPS < > ]],
+                                CONT.HOOK #hook ],
     C-CONT [ HOOK #hook,
-       HCONS <! !>,
-       ICONS <! !> ] ].
+       	     HCONS <! !>,
+       	     ICONS <! !> ] ].
 
 
-Our int-cl and decl-cl rules now pass up ScM information, identifying their ScM value with their head (only) daughter's ScM value.  One bonus feature of implementing this change is that we finally (after looking so many times and not seeing!) noticed that both types had some unconstrained MOD values, so we made sure to constrain that, which also helped. Though we made the changes sequentially, testing them seperately to make sure that BOTH changes got us a pay off.  
-We had some additional changes to our int-cl and decl-cl rules.
-We noticed that some of our embedded sentences were generating interrogative clauses where there weren't any. We realized that our interrogative clause phrase rule (int-cl), had still missing some constraints that would cut that behavior. We added the requirement of an empty QUE list, and eliminated IC + and left it undefined, so it still unifies with the int-cl-verb-lex.
+Our int-cl and decl-cl rules now pass up ScM information, identifying their ScM value with their head (only) daughter's ScM value.  One bonus feature of implementing this change is that we finally (after looking so many times and not seeing!) noticed that both types had some unconstrained MOD values, so we made sure to constrain that, which also helped. We made sure to test the changes separately to confirm that BOTH changes made a difference.
 
+Finally we made sure to specify that our sentential coordination rules require their daughters to be ScM -, so they cannot coordinate decl or int clauses to which a scopal modifier has already attached. 
 
-int-cl := head-only-int-decl-clause & interrogative-clause &
-  [ SYNSEM [ LOCAL.CAT [ HEAD.MOD < >,
-       VAL #val & [ SPEC < >,
-              SUBJ < >, 
-              COMPS < >, 
-              SPR < > ], 
-       MC bool,
-       ScM #scope],
-       NON-LOCAL [ SLASH #sl, 
-       YNQ <! !> ]],
-    HEAD-DTR.SYNSEM [ LOCAL.CAT [ ScM #scope, 
-          MC na, 
-          VAL #val, 
-          HEAD verb ],
-          NON-LOCAL [ SLASH #sl, 
-          YNQ <! *top* !>, 
-          QUE <! !> ]]].
+;;Inherited by all sentential coordination phrases
+s-coord-phrase :+
+  [ SYNSEM [ NON-LOCAL #nl,
+       LOCAL.CAT [ MC na, EC #ec, IC #ic ] ],
+    LCOORD-DTR.SYNSEM [ NON-LOCAL #nl,
+      LOCAL [ CONT.HOOK.INDEX.SF #sf,
+        CAT [ ScM -, MC +, EC #ec,  IC #ic] ] ],
+    RCOORD-DTR.SYNSEM [ NON-LOCAL #nl,
+      LOCAL [ CONT.HOOK.INDEX.SF #sf,
+        CAT [ ScM -, MC bool, EC #ec,  IC #ic] ] ] ].
+        
 
-At the same time the declarative clause pharse rule was being generated in conjuntions with the interrogative clause verb lexeme (e.g. 'to ask'). Therefore we added to its IC feature the negative value.
-We added additional constraints around to our coordination with respect to both SLASH and SF.  Following your in-class suggestion, the SF changes started by updating our decl-cl rules so that they now specify that they are [SF prop] instead of [SF prop-or-ques] as we had originally designated them. 
+s-bottom-coord-phrase :+
+  [ SYNSEM [ NON-LOCAL #nl,
+       LOCAL [ CONT.HOOK.INDEX.SF #sf,
+                   CAT [ MC bool, EC #ec, IC #ic ] ] ],
+    NONCONJ-DTR.SYNSEM [ NON-LOCAL #nl & [ SLASH 0-dlist], 
+       LOCAL [ CONT.HOOK.INDEX.SF #sf,
+         CAT [ ScM -, MC bool, EC #ec, IC #ic ] ] ] ].
 
-decl-cl := head-only-int-decl-clause & declarative-clause & 
-  [ SYNSEM [ LOCAL [ CAT [ HEAD.MOD < >,
-         VAL #val & [ SPEC  < >,
-          SUBJ < >, 
-          COMPS < >, 
-          SPR < > ], 
-         ScM #scope,
-         MC bool, 
-         IC -, 
-         EC #ec],
-         CONT.HOOK.INDEX.SF prop ],
-       NON-LOCAL [SLASH #sl, YNQ 0-dlist ] ],
-    HEAD-DTR.SYNSEM [ LOCAL.CAT [ ScM #scope, 
-          MC na, 
-          VAL #val, 
-          HEAD verb, 
-          EC #ec, IC -],
-          NON-LOCAL [ SLASH #sl, 
-          YNQ 0-dlist,
-          QUE <! !> ]]].
+Payoff:  Now #20 has only the three parses that we want and we reduced a lot of the noise when we were debugging sentences with ha in them
+
+#Sentence.20
+Source: a, attested
+Vetted: t
+Judgment: g
+Phenomena: corpus
+Ha he'i Huanchi:
+ha  oeHi   Juanchi
+ha  o-eHi  Juanchi
+and A.3-say Juan.DIM
+'And Juanito says:'
 
 Finally in order for this to have any pay off we made sure to specify that our sentential coordination rules require their daughters to be ScM -, so they cannot coordinate decl or int clauses to which a scopal modifier has already attached. 
 
