@@ -119,7 +119,7 @@ s2-mid-coord-rule := basic-s-mid-coord-rule & monopoly-mid-coord-rule &
      RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
      LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
 
-With the permission of the instructor, we have opted NOT to implement mid-coordination for sentences in our grammar.  We fixed this by commenting out the rule in rules.tdl:
+With the permission of the professor, we have opted NOT to implement mid-coordination for sentences in our grammar.  We fixed this by commenting out the rule in rules.tdl:
 
 ;s2-mid-coord := s2-mid-coord-rule.
 
@@ -129,7 +129,7 @@ This allowed us to loose some spurious ambiguity and to reduce the edges used in
          Dogs chase cars and cats chase dogs
 
 -- NP Coordination rules
-We realized that in some of the string realizations, in which two nouns were combined in coordination, the attaching verb predicate was showing up with subject markers corresponding to PERNUM 1pl-incl, 1pl-excl, 2pl, 3per. This overgeneration was due to an underspecification in the PERNUM value of the NP top node of NP coordinated structures. Languages like PG require PERNUM to be fully specified to get the correct markers on the verb.  After consultation with the instructor, we implemented a temporary fix, which does not represent a final solution, but let us go over the requirements of this week's lab. We made this adjustment in the NP top coordination rule.
+We realized that in some of the string realizations, in which two nouns were combined in coordination, the attaching verb predicate was showing up with subject markers corresponding to PERNUM 1pl-incl, 1pl-excl, 2pl, 3per. This overgeneration was due to an underspecification in the PERNUM value of the NP top node of NP coordinated structures. Languages like PG require PERNUM to be fully specified to get the correct markers on the verb.  After consultation with the professor, we implemented a temporary fix, which does not represent a final solution, but let us go over the requirements of this week's lab. We made this adjustment in the NP top coordination rule.
 
 np2-top-coord-rule := basic-np-top-coord-rule & monopoly-top-coord-rule &
   [ SYNSEM.LOCAL [ COORD-STRAT "2",
@@ -175,7 +175,7 @@ o-ime koty=mbyteApe jagua=ndi
 3.ACT-be.located room=inside dog=with
 'He/She is located inside the room with the dog'
 
-Through a conversation on goPost we discovered that the problem was that our contentful-adps were not identifying their ARG1 with their XARG. Also our instructor pointed out that since our raising verb identifies the XARG of the complement with the subject's index if that XARG does not point to anything it breaks the chain of identities.  We added the link as shown below:
+Through a conversation on goPost we discovered that the problem was that our contentful-adps were not identifying their ARG1 with their XARG. Also our professor pointed out that since our raising verb identifies the XARG of the complement with the subject's index if that XARG does not point to anything it breaks the chain of identities.  We added the link as shown below:
 
 contentful-adp-lex := basic-int-mod-adposition-lex & norm-zero-arg &
   [ SYNSEM.LOCAL [ CONT [HOOK.XARG #arg,
@@ -221,7 +221,7 @@ contentful-adp-lex := basic-int-mod-adposition-lex & norm-zero-arg &
 As mentioned in an earlier lab, we could easily modify our contentful adp's to allow them to also modify nouny constituents by changing their MOD constraint from [HEAD verb] to [HEAD +nv]. But, as you brought up in your feedback, we aren't sure that this is motivated for Guarani, so we have left the constraint as is.
 
 -- Changes to Question-Clitic MOD
-As pointed by our instructor, our question-clitics had MOD values that were not constrained enough, so we added a [LOCAL.CAT.HEAD +nv] constraint to the MOD value, so that it doesn't try to apply to elements that aren’t nouny or verby.
+As pointed by our professor, our question-clitics had MOD values that were not constrained enough, so we added a [LOCAL.CAT.HEAD +nv] constraint to the MOD value, so that it doesn't try to apply to elements that aren’t nouny or verby.
 
 question-clitic-lex := no-hcons-lex-item &
  [ SYNSEM [ LOCAL [ CAT [ IC +, 
@@ -465,8 +465,8 @@ This rules says that an input that contains a predicate pronoun in the RELS list
 
 For the purpose of the translation of some of the MMT sentences in this week's lab, we added three additional transfer rules. 
 
--- Transitive predicae 'eat' with unspecified dropped argument
-The sentence #4 ("Dogs eat") uses in English and Chadian Arabic a transitive verb 'eat', that attaches a [COG-ST type-id] to its dropped argument. PG has a different interpretation. If an argument is dropped in a transitive verb, it is generally assumed to be relevant in the situation context where the uterance is used. Therefore it is [COG-ST in-foc]. Therefore the transitive verb in PG is not the optimal for such a translation. As PG has also an intransitive verb for eat, which has a different form, we assume that its function is similar to the transitive verb in English/Chadian Arabic with dropped complement. Therefore we decide to implement a transfer rule that link the predication of a transitive verb 'eat' in the input, with the predication of an intransitve 'eat' in the output. We implemented the following transfer rule in acm.tdl in the English and Chadian Arabic grammars:
+-- Transitive predicate 'eat' with unspecified dropped argument
+The sentence #4 ("Dogs eat") uses in English and Chadian Arabic a transitive verb 'eat', that attaches a [COG-ST type-id] to its dropped argument. PG has a different interpretation. If an argument is dropped in a transitive verb, it is generally assumed to be relevant in the situation context where the utterance is used. Therefore it is [COG-ST in-foc]. Therefore the transitive verb in PG is not the optimal choice for translation here. PG also has an intransitive verb for eat, which has a different form, which we understand to have a similar meaning as the transitive verb in English/Chadian Arabic with a dropped complement. Therefore we decided to implement a transfer rule that links the predication of a transitive verb 'eat' in the input, with the predication of an intransitve 'eat' in the output. We implemented the following transfer rule in acm.tdl in the English and Chadian Arabic grammars:
 
   eat-intrans-mtr := monotonic_mtr &
   [ INPUT [ RELS <! [ PRED "_eat_v_rel",
@@ -480,13 +480,14 @@ The sentence #4 ("Dogs eat") uses in English and Chadian Arabic a transitive ver
            ARG0 #arg0,
            ARG1 #arg1 ] !> ]].
 
-This transfer rule changes the predication of a transitive verb 'eat', therefore with three arguments, where the complement has the feature value [COG-ST type-id], into the predication of an intranstiv verb for 'eat' with only two arguments (the index value of the predication and the subject). This transfer rule is not optional.
-This rule was implemented in acm.mtr with the following entry:
+This rule,  written by our professor during Tuesday’s class, changes the predication of a transitive verb 'eat', therefore with three arguments, where the complement has the feature value [COG-ST type-id], into the predication of an intranstive verb for 'eat' with only two arguments (the index value of the predication and the subject). This transfer rule is not optional for our grammar.
+
+This rule was instantiated in acm.mtr with the following entry:
 
   eat-intrans := eat-intrans-mtr
 
 -- Locative verb with prepositional predicate
-In sentences like MMT # 16 ('The dogs are in the park'), English uses a copula verb with no semantic content to attach a PP predicate to its subject argument. Chadian Arabic seems to attach directly the subject argument to the PP predicate. PG has a different strategy. As explained in a previous lab, PG uses a raising verb that introduces a predicate '_be+located', which has a contentful PP predicate as its complement argument. Therefore we need a transfer rule, that in the case of languages that use semantically empty 'verb' or not verb at all, together with the PP predication, would introduce the 'be+located' predication needed in PG. We implemented therefore following rule in the acm.tdl file of English and Chadian Arabic grammars:
+In sentences like MMT # 16 ('The dogs are in the park') English uses a copula verb with no semantic content to attach a PP predicate to its subject argument. Chadian Arabic seems to directly link the subject to the PP predicate. PG has a different strategy. As explained in a previous lab, PG uses a raising verb that introduces a predicate '_be+located', which has a contentful PP predicate as its complement argument. Therefore we need a transfer rule that, in the case of languages that use a semantically empty 'verb' or no verb at all with PP predicates, would introduce the 'be+located' predication needed in PG. We implemented therefore following rule in the acm.tdl file of English and Chadian Arabic grammars. This rule was adapted from the rule given on Tuesday’s lecture slides—we added the FILTER line:
 
   locative-mtr := monotonic_mtr &
   [ INPUT [ RELS <! [ PRED "_in_p_rel",
@@ -508,14 +509,13 @@ In sentences like MMT # 16 ('The dogs are in the park'), English uses a copula v
        HCONS <! [ HARG #harg,
             LARG #larg ] !> ] ].   
 
-This transfer rule is not optional. This included following entry in the file acm.mtr of both the English and Chadian Arabic grammars:
+This transfer rule is not optional.  It is instantiated in acm.mtr for both the English and Chadian Arabic grammars with the following:
 
   locative := locative-mtr.
 
 
 -- Adverb 'quickly' to adjective 'quick'
-In PG, adverbs and adjectives work functionally the same with no difference in their form. Therefore, as explained in a previous lab, we implemented both as one class of words, as adjectives.
-When dealing with other languages that make the distinction of adverbs and adjectives, we need to change the predication, if the form has a relevant difference. This is the case in MMT sentence #14, which uses the adverb quickly, which has a predication '_quickly_a_rel' in the English and Chadian Arabic sentence. The corresponding entry in PG is '_quick_a_rel', so we needed a transfer rule, that transforms the PRED value. We implemented in acm.tdl of English and Chadian Arabic:
+In PG, our adjectives also function as adverbs with no difference in their form. Therefore, as explained in a previous lab, we implemented adjectives/adverbs as one class of words, as adjectives. To deal with English and Chadian Arabic this week, which distinguishes between adverbs and adjectives in the form of their PRED values, we had to write a transfer rule. This is the case in MMT sentence #14, which uses the adverb “quickly,” which has a predication '_quickly_a_rel' in the English and Chadian Arabic sentence. The corresponding entry in PG is '_quick_a_rel', so we needed a transfer rule, that transforms the PRED value. We added the following to the acm.tdl of English and Chadian Arabic:
 
   quick-mtr := monotonic_mtr &
   [ INPUT [ RELS <! [ PRED "_quickly_a_rel",
@@ -526,7 +526,8 @@ When dealing with other languages that make the distinction of adverbs and adjec
          LBL #lbl,
          ARG0 #arg0,
          ARG1 #arg1] !>]]. 
-The input takes a RELS element with [PRED "_quickly_a_rel"] and produces in the output [PRED "_quick_a_rel"], without changes the rest of the elements entry. This transfer rule is not optional. This was then implemented in the acm.mtr file of both English and Chadian Arabic grammars:
+
+The input takes a RELS element with [PRED "_quickly_a_rel"] and produces in the output a [PRED "_quick_a_rel"] with the same LBL, ARG0, and ARG1 as the original predication, which is not copied over. This transfer rule is not optional. This was then implemented in the acm.mtr file of both English and Chadian Arabic grammars:
 
   quick := quick-mtr.
 
@@ -535,305 +536,339 @@ The input takes a RELS element with [PRED "_quickly_a_rel"] and produces in the 
 
 ". . . combinatorics, a sort of glorified dice-throwing . . ." Roberb Kanigel
 
-The choices we have made for PG based on the reference grammars available to us make our grammar relatively generous for the realization of different strings, even when based on a single semantic interpretation, as represented through the MRS. The main factors that contribute to this flexibility are the free word order, the optionality of overt predicate arguments, the optionality of certain adpositions like accusative markers, question/complementizer clitics or even the optional use of the sentential conjunction clitic. We will see how some of these factors worked independently or together to realize multiple strings in our translations.
+The choices we have made for PG based on the reference grammars available to us make our grammar relatively generous for the realization of different strings, even when based on a single semantic interpretation, as represented through the MRS. The main factors that contribute to this flexibility are the free word order, the optionality of overt arguments, the optionality of certain adpositions like accusative markers, question/complementizer clitics or even the optional use of the sentential conjunction “ha”.  These factors worked independently or together to realize multiple strings in our translations.
 
 We were able to generate strings in PG for all of the presented English and Chadian Arabic sentences. In all of our generated strings, we have more than one realization, so we explain in detail how the numbers come up.
 
 We introduce each sentence with the English (eng), Chadian Arabic (shu) and a representative PG sentence (gug), as well a description of the realized strings in an English to PG (eng2gug) and a Chadian Arabic to PG (shu2gug) translation.
 
-
-MMT sentence # 1
+—-MMT sentence # 1
 eng: dogs sleep
 shu: kalib-PL y-unuum-u 
 gug: jagua oike
      dogs   A3.sleep
-EXPLANATION:
+
+Explanation:
 This sentence is translated satisfactorily in eng2gug and shu2gug. In both translations, there are each 2 strings realized, which correspond to the two word orders of the constituents (VP NP and NP VP), as PG is a free word-order language.
 
-MMT sentence # 2
+—-MMT sentence # 2
 eng: dogs chase cars
 shu: kalib-PL y-itaarid-u watiir-PL
 gug: jagua omunNa    mbaHyru pe
      dogs   A3.chase cars    acc
-EXPLANATION:
-The translation into gug from both eng and shu generates each 12 different string sentences. 
-Each of these 12 string groups is generated through these factors:
+
+Explanation:
+The translation into gug from both eng and shu generates each 12 different string sentences. Each of these 12 string groups is generated through these factors:
 There are three 3 constituents (NP V NP), which can appear in 6 different orders.
 The 'car' object argument can optionally have the accusative =pe clitic.
 Therefore the one transfer output generate 12 possible parses (6*2) (each for eng2gug/shu2gug)
 
-MMT sentence # 3
+—-MMT sentence # 3
 eng: I chase you 
 shu: ana n-itaarid-0-k
 gug: romunNa
      A1sg.O2sg.chase
-EXPLANATION:
+
+Explanation:
 The translation into PG worked differently depending on the start language. English has an ambiguity in the NUM value of the pronoun 'you', which can be singular or plural. Chadian Arabic on the other side had just a 'singular you' in its sentence. This distinction generates different strings for eng2gug and shu2gug.
 In the case of eng, we obtained 38 translation realizations. We have four transfer outputs applying depending on the optionality of pronoun drop, with results 2+4+8+24 = 38 strings.
-2 strings were the individual verb predicates with portmanteau clitics and without overt pronouns were realized, with marker ro- for 1sg subject/2sg object, or marker po- for 1sg subject/2pl object. 
-4 additional realized strings with the subject pronoun ('che', 1sg pronoun), present in two different positions for each of the two differently marked predicates.
-8 additional realized strings, if the object pronouns ('ndeve', 2sg pronoun, or 'pendeve', 2pl pronoun) are allowed. Here a new predicate is allowed by the subsumption rules, AMUNNA (for 'I chase'). We discuss in section 5 the possible reason why it doesn't not show in the previous transfer outputs. The predicate AMUNNA ('I chase') has no restriction on the object therefore it combines with both singular and plural pronouns. The predicates with portmanteau markers though can combine only with the respective pronouns. So ro- (1sg subject/2sg object) can only combine with the 2sg pronoun, and po- (1sg subject/2sg object) only with the 2pl pronoun. These four pronoun-predicate combination in two different word orders, allows then for 8 realized strings.
-24 additional realized strings, when both subject and object pronouns are overt. With three constituents we have 6 possible word orders, which given the 4 possible predicate/pronoun combinations, allows for 24 strings.
-In the case of shu2gug, the Chadian Arabic used only a 'you' pronoun with [NUM sg] value, although only marked in the verb. There are only two transfer outputs applying with a total of 3 realizations (1+ 2), because there is no overt object pronoun in the original sentence.
-1 realization for a predicate without overt pronouns. This is the verb predicate with the portmanteau marker ro- for subject 1sg and object 2sg. 
-2 realizations with the overt pronoun 'I'. The two realizations are just the demonstrations of free word order of NP and VP.
 
-MMT sentence # 4
+— 2 strings were the individual verb predicates with portmanteau clitics and without overt pronouns were realized, with marker ro- for 1sg subject/2sg object, or marker po- for 1sg subject/2pl object. 
+
+— 4 additional realized strings with the subject pronoun ('che', 1sg pronoun), present in two different positions for each of the two differently marked predicates.
+
+— 8 additional realized strings, if the object pronouns ('ndeve', 2sg pronoun, or 'pendeve', 2pl pronoun) are allowed. Here a new predicate is allowed by the subsumption rules, AMUNNA (for 'I chase'). We discuss in section 6 the possible reason why it doesn't not show in the previous transfer outputs. The predicate AMUNNA ('I chase') has no restriction on the object therefore it combines with both singular and plural pronouns. The predicates with portmanteau markers though can combine only with the respective pronouns. So ro- (1sg subject/2sg object) can only combine with the 2sg pronoun, and po- (1sg subject/2sg object) only with the 2pl pronoun. These four pronoun-predicate combination in two different word orders, allows then for 8 realized strings.
+
+— 24 additional realized strings, when both subject and object pronouns are overt. With three constituents we have 6 possible word orders, which given the 4 possible predicate/pronoun combinations, allows for 24 strings.
+
+In the case of shu2gug, the Chadian Arabic used only a 'you' pronoun with [NUM sg] value, although only marked in the verb. There are only two transfer outputs applying with a total of 3 realizations (1+ 2), because there is no overt object pronoun in the original sentence.
+
+— 1 realization for a predicate without overt pronouns. This is the verb predicate with the portmanteau marker ro- for subject 1sg and object 2sg. 
+
+— 2 realizations with the overt pronoun 'I'. The two realizations are just the demonstrations of free word order of NP and VP.
+
+—-MMT sentence # 4
 eng: dogs eat
 shu: kalib-PL y-aakul-u
 gug: jagua okaru
      dogs  A3.eat
-EXPLANATION:
+
+Explanation:
 Both eng2gug and shu2gug generated each 2 sentence strings in PG. They correspond to the 2 words in free word order.
 
-MMT sentence # 5
+—-MMT sentence # 5
 eng: the dogs chase cars
 shu: al-kalib-PL y-itaarid-u watiir-PL
 gug: lo     jagua omunNa   mbaHyru pe
      DET.pl dogs  A3.chase cars    acc
-EXPLANATION:
-Both eng2gug and shu2gug generate each a set of 24 realized strings in PG. 
-The 3 constituents have 6 possible word orders. Additionally, the definite article ('the dogs') is optional, therefore 2 possibilities. Then, the accussative adposition clitic =pe is optional, therefore 2 possibilities.
-That makes for 24 realized strings (6 * 2 * 2).
 
-MMT sentence # 6
+Explanation:
+Both eng2gug and shu2gug generate each a set of 24 realized strings in PG. 
+The 3 constituents have 6 possible word orders. Additionally, the definite article ('the dogs') is optional, therefore 2 possibilities. Then, the accusative adposition clitic =pe is optional, therefore 2 possibilities. That makes for 24 realized strings (6 * 2 * 2).
+
+—-MMT sentence # 6
 eng: the dogs don't chase cars
 shu: al-kalib-PL ma y-itaarid-u watiir-PL
 gug: lo     jagua ndomunNai         mbaHyru pe
      DET.pl dogs  neg.A3.chase.neg  cars    acc
-EXPLANATION:
-Both eng2gug and shu2gug generate each a set of 24 realized strings in PG. This is parallel the same as in sentence #5, because the negation happens as adpositions attached to the predicates, therefore the predicate remains a unit.
-Similarily, 3 constituents have 6 possible word orders, the definite article ('the dogs') is optional, therefore 2 possibilities. Then, the accussative adposition clitic =pe is optional, therefore 2 possibilities. That is a total of 24 realized strings (6*2*2).
 
-MMT sentence # 7
+Explanation:
+Both eng2gug and shu2gug generate each a set of 24 realized strings in PG. This is parallel the same as in sentence #5, because the negation happens as adpositions attached to the predicates, therefore the predicate remains a unit.
+Similarly, 3 constituents have 6 possible word orders, the definite article ('the dogs') is optional, therefore 2 possibilities. Then, the accusative adposition clitic =pe is optional, therefore 2 possibilities. That is a total of 24 realized strings (6*2*2).
+
+—-MMT sentence # 7
 eng: I think that you know that dogs chase cars 
 shu: ana n-ahsib-0 kadar inta t-a'arif-0 kadar kalib-PL y-itaarid-u watiir-PL 
 gug: aimoHaA     reikuua    ha    omunNa ha      jagua mbaHyru pe
      A1sg.think  A2sg.know  COMPL A3.chase COMPL dogs  cars    acc
-EXPLANATION:
-There are different numbers of realized strings for eng2gug and shu2gug due to the difference of number of the 'you' pronoun, which in English is ambiguous between singular and plural, while only being singular in the Chadian Arabic sentence.
-For eng2gug we have four different transfer outputs applying depending on the number of overt pronouns (16+32+48+96 = 192 realizations):
-16 realized strings for sentence without overt pronouns. 2 times for the singular/plural 'you', 2 times for the optional accusative clitic =pe, 2 times for the free word order of the most internal embedded sentence, and 2 times for the word order of the outside embedding main clause. Therefore 2*2*2*2 = 16 realizations.
-32 realized strings if we add only the overt pronouns for 'you', singular and plural. Because that adds 2 times the word order for the middle embedded clause, that doubles the previous count of 16 to 32 realizations.
-48 realized strings, if we add only the overt pronoun for 'I' in the main clause sentence. 3 constituents in the main clause allow for 6 word order. Additionally 2 times for the optional accussative clitic =pe, 2 times for 'you' singular and plural, and 2 times for the word order of the internal embedded clause. Therefore 6*2*2*2=48 strings.
-96 realized strings when all overt pronouns are allowed. This is the same as the previous 48 realized strings time 2 for the free word order of the middle embedded sentence between the pronoun 'you' and its VP. 
-For shu2gug, the number of realized strings is just the half of what is shown for eng2gug, because Chadian Arabic uses just the singular 'you', which is interpreted not only in the pronoun used in Guarani, but also in the marker of the middle embedding predicate verb.
-Therefore we have here in equivalent form 8 + 16 + 24 + 48 = 96 realized strings.
 
-MMT sentence # 8
+Explanation:
+There are different numbers of realized strings for eng2gug and shu2gug due to thedifference of number of the 'you' pronoun, which in English is ambiguous between singular and plural, while only being singular in the Chadian Arabic sentence.
+
+For eng2gug we have four different transfer outputs applying depending on the number of overt pronouns (16+32+48+96 = 192 realizations):
+
+— 16 realized strings for sentence without overt pronouns. Times 2 for the singular/plural 'you', Times 2 for the optional accusative clitic =pe, Times 2 for the free word order of the most internal embedded sentence, and Times 2 for the word order of the outside embedding main clause. Therefore 2*2*2*2 = 16 realizations.
+
+— 32 realized strings if we add only the overt pronouns for 'you', singular and plural. Because that adds Times 2 the word order for the middle embedded clause, that doubles the previous count of 16 to 32 realizations.
+
+— 48 realized strings, if we add only the overt pronoun for 'I' in the main clause sentence. 3 constituents in the main clause allow for 6 word order. Additionally Times 2 for the optional accussative clitic =pe, Times 2 for 'you' singular and plural, and Times 2 for the word order of the internal embedded clause. Therefore 6*2*2*2=48 strings. 
+
+— 96 realized strings when all overt pronouns are allowed. This is the same as the previous 48 realized strings multiplied by 2 due to the free word order of the middle embedded sentence between the pronoun 'you' and its VP. 
+
+For shu2gug, the number of realized strings is just the half of what is shown for eng2gug, because Chadian Arabic uses just the singular 'you', which can be translated unambiguously  in the pronoun used in Guarani as well as in the marker of the middle embedding predicate verb. Therefore we have all of the same categories outlined above with half the counts in each equivalent to 8 + 16 + 24 + 48 = 96 realized strings.
+
+—-MMT sentence # 8
 eng: I ask whether you know that dogs chase cars
 shu: ana n-as'al-0 kan inta t-a'arif-0 kadar kalib-PL y-itaarid-u watiir-PL
 gug: aporandu reikuua   pa omunNa   ha    jagua mbaHyru pe
      A1sg.ask A2sg.know Q  A3.chase COMPL dogs  cars    acc
-EXPLANATION:
+
+Explanation:
 There are different number of realized strings for eng2gug and shu2gug, due to the difference of number of the 'you' pronoun, which in English is ambiguous between singular and plural, while only being singular in Chadian Arabic.
 There are 4 transfer outputs that generate strings in eng2gug, with a total of 640 parses (32+96+128+384).
-32 realized strings without any overt pronouns. 2 possibilitis for 'you' singular/plural. 2 possibilites for the question clitics =pa/=piko. 2 possibilities for the word order in the main clause. 2 possibilities for the optional use of the accusative clitic =pe. 2 possibilites for the word order of the internal embedded clause. That is 2*2*2*2*2 = 32.
-96 realized strings when only the overt pronoun 'I' is used. As the 3 word group at the level of the main clause can have 6 word orders, the calculation is the same as in the previous group of 32 realized strings, but instead of just 2 possible word order for the main clause, now 6. 6*2*2*2*2 = 96
-128 realized strings with only the overt pronoun 'you' in singular/plural in the middle embedded clause. The external main cluase has still 2 word order. The middle embedded clause though, with 3 elements, has 4 possible combination as a front element, as one of the elements that is not the internal embedded clause has to be at the front of this clause with the question clitic =pa/=piko, those are one of the two 'you's or the corresponding verb predicates. Then 2 possible combinations for the rest of that middle embedded clause. Then 2 possible question clitics. 2 possibilites because of the optional use of the accussative clitics, and two possiblities in the word order of the most internal embedded clause: 2*4*2*2*2*2 = 128.
-384  realized strings when all overt pronouns are used. 6 word orders at the main cluase level. 4 possible front word for the middle embedded clause, 2 possible question clitics =pa/=piko, and 2 possible order for the rest of word groups in the middle embedded clause. 2 times for the optional use of accusative markers, and two times for the word order of the most internal embedded clause. That makes 6*4*2*2*2*2 = 384 realizations.
+
+— 32 realized strings without any overt pronouns. 2 possibilities for 'you' singular/plural. 2 possibilities for the choice of question clitic =pa/=piko. 2 possibilities for the word order in the main clause. 2 possibilities for the optional use of the accusative clitic =pe. 2 possibilities for the word order of the internal embedded clause. That is 2*2*2*2*2 = 32.
+
+— 96 realized strings when only the overt pronoun 'I' is used. As the 3 constituents at the level of the main clause can have 6 word orders, the calculation is the same as in the previous group of 32 realized strings, but instead of just 2 possible word order for the main clause, now 6. 6*2*2*2*2 = 96
+
+— 128 realized strings with only the overt pronoun 'you' in singular/plural in the middle embedded clause. The external main clause has still 2 word order. The middle embedded clause though, with 3 elements, has 4 possible combination as a front element, as one of the elements that is not the internal embedded clause has to be at the front of this clause with the question clitic =pa/=piko, those are one of the two 'you's or the corresponding verb predicates. Then 2 possible combinations for the rest of that middle embedded clause. Then 2 possible question clitics. 2 possibilities because of the optional use of the accusative clitic, and two possibilities in the word order of the most internal embedded clause: 2*4*2*2*2*2 = 128.
+
+— 384 realized strings when all overt pronouns are used. 6 word orders at the main clause level. 4 possible front word for the middle embedded clause, 2 possible question clitics =pa/=piko, and 2 possible order for the rest of constituents in the middle embedded clause. Times 2 for the optional use of accusative markers, and two times for the word order of the most internal embedded clause. That makes 6*4*2*2*2*2 = 384 realizations.
+
 For shu2gug, the realized strings are just cut in half, because the 'you' pronoun is singular. Therefore we have 16+48+64+192 =  320 realized strings.
 
-MMT sentence # 9
+—-MMT sentence # 9
 eng: cats and dogs chase cars
 shu: biss-PL wa kalib-PL y-itaarid-u watiir-PL
 gug: mbarakaja ha   jagua omunNa   mbaHyru pe
      cats      CONJ dogs  A3.chase cars    acc
-EXPLANATION:
-For eng2gug and shu2gug, we get 12 string realizations in PG. These realizations, coming in a single transfer output, are composed of:
-6 word orders of the 3 word groups.
-2 times the optional use of the accusative clitic marker =pe.
-Therefore 6*2 = 12 realized strings.
 
-MMT sentence # 10
+Explanation:
+For eng2gug and shu2gug, we get 12 string realizations in PG. This number of string realizations comes from the following factors: 6 word orders of the 3 constituents. Times 2 the optional use of the accusative clitic marker =pe. Therefore 6*2 = 12 realized strings.
+
+—-MMT sentence # 10
 eng: Dogs chase cars and cats chase dogs
 shu: kalib-PL y-itaarid-u watiir-PL wa biss-PL y-itaarid-u kalib-PL
 gug: jagua omunNa   mbaHyru pe  mbarakaja omunNa   jagua pe
      dogs  A3.chase cars    acc cats      A3.chase dogs  acc
-EXPLANATION:
-For eng2gug and shu2gug, by using a single transfer output, we get 270 realized strings in PG. Nevertheless, we have noticed that there are some strings missing in the realizations, as they should be 288.
-These are two sentences, separated optionally by the conj clitic ha. Therefore 2 times.
-Each sentence is composed of three words, that can combine into 6 different word orders.
-The accussative clitic can be use optionally in each sentence direct object argument.
-Therefore: 2 * 6 *2 *6* 2 = 288.
-In section 5 we discuss our findings when trying to find the missing string realizations.
 
-MMT sentence # 11
+Explanation:
+For eng2gug and shu2gug, by using a single transfer output, we get 270 realized strings in PG. Nevertheless, we have noticed that there are some strings missing in the realizations, as they should be 288. These are two sentences, separated optionally by the conjunction “ha.” Therefore our calculations are multiplied by 2. Each sentence is composed of three words, that can combine into 6 different word orders. The accusative clitic can be use optionally with each sentences direct object argument. Therefore: 2 * 6 *2 * 6* 2 = 288.
+In section 6 we discuss our findings when trying to find the missing string realizations.
+
+—-MMT sentence # 11
 eng: Cats chase dogs and sleep
 shu: biss-PL y-itaarid-u kalib-PL wa naam-o
 gug: mbarakaja omunNa   jagua ha   oike
      cats      A3.chase dogs  CONJ A3.sleep
-EXPLANATION:
-For eng2gug and shu2gug we get the same 8 string realizations in PG. They come together from the combination of the following factors:  
+
+Explanation:
+For eng2gug and shu2gug we get the same 8 string realizations in PG. They come from the combination of the following factors:  
 There are two word order for the constituents inside the transitive VP (V, NP and NP,V).
 The optional use of the transitive clitic =pe on the noun 'dog'.
 The free word order of the main clause cat/VP.
 Therefore 2*2*2  = 8 string realizations.
 
-MMT sentence # 12
+—-MMT sentence # 12
 eng: Do cats chase dogs ?
 shu: biss-PL y-itaarid-u kalib-PL walla
 gug: mbarakaja pa omunNa   jagua pe
      cats      Q  A3.chase dogs  acc
-EXPLANATION:
-For eng2gug and shu2gug we get the same 20 string realizations in our PG grammar. There are 6 word order for the three word constituents (subject, object, verb predicate) in the sentence. 2 times for each of the question clitics =pa/=piko. Then for the VOS, VSO, SVO, SOV word orders, 2 times, as the object can take optionally the =pe accussative clitic. In our grammar, we were not able to implement the =pe clitic in the yes/no question clause, when the direct object is at the front of the sentence, therefore this last part doesn't happen for OSV and OVS word order.
+
+Explanation:
+For eng2gug and shu2gug we get the same 20 string realizations in our PG grammar. There are 6 word orders for the three constituents (subject, object, verb predicate) in the sentence. Times 2 for each of the question clitics =pa/=piko. Then for each of the VOS, VSO, SVO, SOV word orders, multiplied times two again as the object can take optionally the =pe accusative clitic. As discussed in previous labs, we were not able to implement the =pe clitic in the yes/no question clause when the direct object is at the front of the sentence, therefore this last part doesn't happen for OSV and OVS word order.
 Therefore (6*2) + (4*2) = 20 realized strings.  
 
-MMT sentence # 13
+—-MMT sentence # 13
 eng: Hungry dogs eat
 shu: kalib-PL jii'aan-PL y-aakul-u
 gug: jagua vareHa okaru
      dogs  hungry A3.eat
-EXPLANATION:
-For eng2gug and shu2gug we get the same 2 string realizations in PG. As the adjectives come in our grammar after the noun they modifiy forming an NP, there are only two word order possible (NP + VP, VP + NP). 
-Therefore 2 string realizations.
 
-MMT sentence # 14
+Explanation:
+For eng2gug and shu2gug we get the same 2 string realizations in PG. As the adjectives come in our grammar after the noun they modify forming an NP, there are only two word orders possible (NP + VP, VP + NP). Therefore 2 string realizations.
+
+—-MMT sentence # 14
 eng: Dogs eat quickly
 shu: kalib-PL y-aakul-u ajala
 gug: jagua okaru  pyaHe
      dogs  A3.eat quick
-EXPLANATION:
-For eng2gug and shu2gug we get the same 2 string realizations in PG. Adverbs function the same way as adjectives in PG. They follow their modifee, in this case the verb predicate, forming a VP. Therefore there are only two word order possible: (NP + VP, VP + NP). 
-Therefore 2 string realizations.
 
-MMT sentence # 15
+Explanation:
+For eng2gug and shu2gug we get the same 2 string realizations in PG. Adverbs function the same way as adjectives in PG. They follow the word they modify, in this case the verb predicate, forming a VP. Therefore there are only two word order possible: (NP + VP, VP + NP). Therefore 2 string realizations.
+
+—-MMT sentence # 15
 eng: The dogs are hungry
 shu: al-kalib-PL jii'aan-PL
 gug: lo     jagua ivareHa
      DET.pl dogs  O3.hungry
-EXPLANATION:
-For eng2gug and shu2gug we get the same 4 string realizations in PG. The factors influencing these different realizations are:
-2 times for the optional use of a determiner in front of the noun.
-2 times for the free word order of the constituents: NP + AP, AP + NP
-Therefore 2*2 = 4 string realizations.
 
-MMT sentence # 16
+Explanation:
+For eng2gug and shu2gug we get the same 4 string realizations in PG. The factors influencing these different realizations are:
+Times 2 for the optional use of a determiner in front of the noun.
+Times 2 for the free word order of the constituents: NP + AP, AP + NP
+Therefore 2 * 2 = 4 string realizations.
+
+—-MMT sentence # 16
 eng: The dogs are in the park
 shu: al-kalib-PL fi al-naga'a
 gug: lo     jagua oime           yvyraty apyteApe
      DET.PL dogs  A3.be+located  park    in
-EXPLANATION:
+
+Explanation:
 For eng2gug and shu2gug we get the same 24 string realizations in PG.
-2 times for the optional use of a determiner in front of the noun 'dog'.
-2 times for the optional use of a determiner in front of the noun 'park'.
-6 times for the free word order of the constituents: NP, V, PP
+Times 2 for the optional use of a determiner in front of the noun 'dog'.
+Times 2 for the optional use of a determiner in front of the noun 'park'.
+Times 6 for the free word order of the constituents: NP, V, PP
 Therefore 6*2*2 = 24 string realizations.
 
-MMT sentence # 17
+—-MMT sentence # 17
 eng: The dogs are the cats
 shu: al-kalib-PL al-biss-PL
 gug: jagua mbarakaja
      dogs  cats.PRED
-EXPLANATION:
+
+Explanation:
 For eng2gug and shu2gug we get the same 4 string realizations in PG. This sentence uses a zero copula construction where the second noun 'cat' is a noun predicate that takes 'the dog' as an argument.
-2 times for the optional use of a determiner in front of the noun 'dog'.
-2 times for the free word order of the constituents: NP, VP.
+Times 2 for the optional use of a determiner in front of the noun 'dog'.
+Times 2 for the free word order of the constituents: NP, VP.
 Therefore 2*2 = 4 string realizations.
 
-MMT sentence # 18
+—-MMT sentence # 18
 eng: Who sleeps ?
 shu: yaatu y-unuum-0
 gug: maAva pa oike
      who   Q  A3.sleep
-EXPLANATION:
-For eng2gug and shu2gug we get the same 3 string realizations in PG. The three strings come because of the optional use of the =pa/=piko or none question marker after the wh-pronoun at the front of the question.
-Therefore 3 string realizations.
+
+Explanation:
+For eng2gug and shu2gug we get the same 3 string realizations in PG. The three strings come because of the choice between  =pa/=piko or no question marker after the wh-pronoun at the front of the question. Therefore 3 string realizations.
 
 
-MMT sentence # 19
+—-MMT sentence # 19
 eng: What do the dogs chase ?
 shu: al-kalib-PL y-itaarid-u chunu
 gug: mbaHeA pa lo     jagua omunNa
      what   Q  DET.pl dogs  A3.chase
-EXPLANATION:
+
+Explanation:
 For eng2gug and shu2gug we get the same 12 string realizations in PG. The factors influencing this number of realizations is:
-2 times for the optional use of a determiner in front of the noun 'dog'.
-3 times for the optional use of the question clitic =pa/=piko.
-2 times for the free word order of the constituents inside of the question clause: NP, V
+Times 2 for the optional use of a determiner in front of the noun 'dog'.
+Times 3 for the optional use of the question clitic =pa/=piko.
+Times 2 for the free word order of the constituents inside of the question clause: NP, V
 Therefore 3*2*2 = 12 string realizations.
 
-MMT sentence # 20
+—-MMT sentence # 20
 eng: What do you think the dogs chase ?
 shu: inta t-ahsib-0 kadar al-kalib-PL y-itaarid-u chunu
 gug: mbaHeA pa reimoHaA    omunNa   ha    lo     jagua 
      what   Q  A2sg.think  A3.chase COMPL DET.pl dogs
-EXPLANATION:
-As English is ambiguous in the number of the pronoun 'you', singular or plural, there is a distinction in the number of strings generated by the eng2gug and the shu2gug translations.
-For the eng2gug, we have two generating transfer outputs: 24 + 72 = 96 string realizations.
-24 realized strings for realizations without overt pronouns: 3 times for the optional use of question clitics =pa/=piko, 2 times for the 'you' singular or plural marker on the question verb predicate, 2 times for the optional use of determiner for the noun 'dog', and 2 times for word order inside of embedded clause. Therefor 3*2*2*2 = 24 strings.
-96 realized strings for realizations with overt pronoun 'you', for singular and plural. With thee constituents inside of the question sentence (apart from the wh-pronoun), we have 6 possible word orders instead of just two, therefore counting the other elements as in the previous transfer output rule we have 3*2*2*6 = 96 string.
-For the shu2eng, the numbers are just half, as 'you' is only singular in the Chadian Arabic sentence. Therefore using  in a similar way the calculations as in the eng2shu transfers, we have 12 + 36 = 48 realizations.
 
-MMT sentence # 21
+Explanation:
+As English is ambiguous in the number of the pronoun 'you', singular or plural, there is a difference in the number of strings generated by the eng2gug and the shu2gug translations.
+For the eng2gug, we have two generating transfer outputs: 24 + 72 = 96 string realizations.
+
+— 24 realized strings for realizations without overt pronouns: Times 3 for the optional use of question clitics =pa/=piko, times 2 for the 'you' singular or plural marker on the question verb predicate, times 2 for the optional use of determiner for the noun 'dog', and times 2 for word order inside of embedded clause. Therefor 3*2*2*2 = 24 strings.
+
+— 96 realized strings for realizations with overt pronoun 'you', for singular and plural. With thee constituents inside of the question sentence (apart from the wh-pronoun), we have 6 possible word orders instead of just two, therefore counting the other elements as in the previous transfer output rule we have 3*2*2*6 = 96 string.
+
+For the shu2eng, the numbers are just half, as 'you' is only singular in the Chadian Arabic sentence. Therefore taking into account the rest of the factors used in eng2shu transfers, we have 12 + 36 = 48 realizations.
+
+—-MMT sentence # 21
 eng: Who asked what the dogs chase ?
 shu: yaatu sa'al-0 al-kalib-PL y-itaarid-u chunu
 gug: maAva pa oporandu mbaHeA lo     jagua omunNa
      who   Q  A3.ask   what   DET.pl dogs  A3.chase
-EXPLANATION:
-For eng2gug and shu2gug we get the same 72 string realizations in PG. These are the factos involved in the generation of theses strings in a single transfer output:
-3 times for the optional use of the question clitic =pa/=piko for 'who'.
-3 times for the optional use of the question clitic =pa/=piko for 'what'.
-2 times for the free word order of the embedded question (VP, Clause).
-2 times for the optional use of a determiner in front of the noun 'dog'.
-2 times for the free word order of the constituents inside the embedded question (dog/chase).
+
+Explanation:
+For eng2gug and shu2gug we get the same 72 string realizations in PG. These are the factors involved in the generation of theses strings in a single transfer output:
+Times 3 for the optional use of the question clitic =pa/=piko for 'who'.
+Times 3 for the optional use of the question clitic =pa/=piko for 'what'.
+Times 2 for the free word order of the embedded question (VP, Clause).
+Times 2 for the optional use of a determiner in front of the noun 'dog'.
+Times 2 for the free word order of the constituents inside the embedded question (dog/chase). 
 Therefore 3*3*2*2*2 = 72 string realizations.
 
-MMT sentence # 22
+—-MMT sentence # 22
 eng: I asked what the dogs chased
 shu: ana sa'al-t al-kalib-PL taarad-o chunu
 gug: aporandu mbaHeA lo     jagua omunNa 
      A1sg.ask what   DET.pl dogs  A3.chase
-EXPLANATION:
-For eng2gug and shu2gug we get the same 96 string realizations in PG, generated in two transfer ouputs, one for 24 strings, and the other for 72 strings.
-24 string realization without the overt pronoun 'I':
-2 times for the free word order WH-pronoun/Clause.
-3 times for the optional use of the question clitics =pa/=piko for 'what'.
-2 times for the optional use of a determiner in front of the noun 'dog'.
-2 times for the free word order of the constituents of the question sentence (dog/chase).
-Therefore 2*3*2*2 = 24 realizations.
-72 string realization with overt pronoun 'I'. As the overt pronoun increases the possible word order of the main clause with 3 constituents (WH-pronoun, pronoun, clause) to 6 orders, we use the same calculations as before, including the change for the word order. Therefore 6*3*2*2 = 72 strings.
 
-MMT sentence # 23
+Explanation:
+For eng2gug and shu2gug we get the same 96 string realizations in PG, generated in two transfer outputs, one with 24 strings, and the other with 72 strings.
+
+— 24 string realization without the overt pronoun 'I':
+Times 2 for the free word order WH-pronoun/Clause.
+Times 3 for the optional use of the question clitics =pa/=piko for 'what'.
+Times 2 for the optional use of a determiner in front of the noun 'dog'.
+Times 2 for the free word order of the constituents of the question sentence (dog/chase).
+Therefore 2*3*2*2 = 24 realizations.
+
+— 72 string realization with overt pronoun 'I'. As the overt pronoun increases the possible word order of the main clause with 3 constituents (WH-pronoun, pronoun, clause) to 6 orders, we use the same calculations as before, including the change for the word order. Therefore 6*3*2*2 = 72 strings.
+
+—-MMT sentence # 23
 eng: The dog's car sleeps
 gug: jagua    mbaHyru oike
      dog,POSS car     A3.sleeps
-EXPLANATION:
-For eng2gug and shu2gug we get the same 4 string realizations in PG. As two nouns in a possessive construction have to come in a specific order, they are fixed as a constituent. Therefore the above sentence has only two constituents to consider when looking at the number of possible free word order, which are then only two. 
-Additionally, 2 times for the optional use of the determiner for the noun 'dog'.
-Therefore 2*2 = 4 realizations.
 
-MMT sentence # 24
+Explanation:
+For eng2gug and shu2gug we get the same 4 string realizations in PG. As two nouns in a possessive construction have to come in a specific order, they are fixed as a constituent. Therefore the above sentence has only two constituents to consider when looking at the number of possible free word order, which are then only two. Additionally, we multiply by 2 for the optional use of the determiner for the noun 'dog'. Therefore 2*2 = 4 realizations.
+
+—-MMT sentence # 24
 eng: My dogs sleep
 gug: chejagua      oike
      1sg.POSS.dogs A3.sleep
-EXPLANATION: 
-For eng2gug and shu2gug we get the same 2 string realizations in PG. Possessive pronouns occurr in PG as adpositions attached before the corresponding noun. Therefore the two realization here just demonstrate the two different positions of NP and VP. 
+
+Explanation: 
+For eng2gug and shu2gug we get the same 2 string realizations in PG. Possessive pronouns occur in PG as prefixes attached to the possessum. Therefore the two realization here just demonstrate the two different positions of NP and VP. 
 
 
-5.If you don't have full coverage, describe why not.
+6.If you don't have full coverage, describe why not.
 
 There are two sentence that in our analysis did not produce all the parses that we would have expected:
 
-MMT sentence # 3
+—-MMT sentence # 3
 eng: I chase you 
 shu: ana n-itaarid-0-k
 gug: romunNa
+
 DISCUSSION:
-According to our understanding of PG grammar, there are some strings that are missing splitted between two of the transfer outputs used in this translation.
-The transfer output that produces predicates without any overt pronoun, generates predicative verbs marked only with the portmanteau markers ro- (subject 1sg, object 2sg) and/or po- (subject 1sg, object 2pl). We are missing the predicative verb AMUNNA ('I chase'), which is only marked for the subject, but underspecified for the object (and therefore can be second or third person in the given context). The same situation happens in the second transfer output that introduces the subject pronoun (che, 'I'), as it generates strings with predicates that include only the pormanteau marker, but again we don't see AMUNNA ('I chase'). In this second transfer output, due to the free-word order, there would be two possible strings. That makes for 3 missing strings in each eng2gug and shu2gug translations.
-As discussed in class, this seems to be related with the subsumption rules, which check the constrains of realized strings based on the eng2gug requirements, but also in the other direction, gug2eng. This behavious seems to be a default in our grammar, and therefore at this stage we just document it.
+According to our understanding of PG grammar, there are some strings that are missing.
+The transfer output that produces predicates without any overt pronoun generates predicative verbs marked only with the portmanteau markers ro- (subject 1sg, object 2sg) and/or po- (subject 1sg, object 2pl). We are missing the predicative verb AMUNNA ('I chase'), which is only marked for the subject, but underspecified for the object (and therefore can be second or third person in the given context). The same situation happens in the second transfer output that introduces the subject pronoun (che, 'I'), as it generates strings with predicates that include only the pormanteau marker, but again we don't see AMUNNA ('I chase'). In this second transfer output, due to the free-word order, there would be two possible strings. That makes for 3 missing strings in each eng2gug and shu2gug translations.
+
+As discussed in class, this seems to be related with the subsumption rules, which check to  make sure realized strings constrain specificity similarly to the input sentence, and therefore at this stage we just document it.
 
 
-MMT sentence # 10
+—-MMT sentence # 10
 eng: Dogs chase cars and cats chase dogs
 shu: kalib-PL y-itaarid-u watiir-PL wa biss-PL y-itaarid-u kalib-PL
 gug: jagua omunNa   mbaHyru pe  mbarakaja omunNa   jagua pe
      dogs  A3.chase cars    acc cats      A3.chase dogs  acc
 
-Both eng2gug and shu2gug generated each a total of 270 PG strings in a single transfer output. Nevertheless in a close inspection of the output, we realized that 18 strings were not generated. We expected a total of 288 realizations (12*12*2, as each individual sentence of the coordination can have 12 different realizations, and because the conjuntion is optional).
-We tried different options to find the reason of this underperfomance. 
-First we tried to identify some pattern of constituents in the missing parses. According to the combinatorics of different patterns, each possible string realization in the first sentence (from which there were twelve), should have 12 possible string realizations of the second sentence (we ignored the conjunct 'ha', as it was irrelevant for the distinction). There were three first sentences which combined with specific three second sentences would only produce the 9 different patterns (which doubled to the missing 18 considering the optional conjuntion) Using constituent labels, these are the patterns we found unavailabe:
+Both eng2gug and shu2gug generated each a total of 270 PG strings in a single transfer output. Nevertheless upon a close inspection of the output, we realized that 18 strings were not generated. We expected a total of 288 realizations (12*12*2, as each individual sentence of the coordination can have 12 different realizations, and because overt conjunction is optional).
+
+We tried different options to find the reason for this underperformance. 
+First we tried to identify some pattern of constituents in the missing parses. According to the combinatorics of different patterns, each possible string realization in the first sentence (from which there were twelve), should have 12 possible string realizations of the second sentence (we ignored the conjunct 'ha', as it was irrelevant for the distinction). There were three first sentences which combined with specific three second sentences would only produce the 9 different patterns (which doubled to the missing 18 considering the optional conjunction) Using constituent labels, these are the patterns we found unavailable:
 
 NP V NP=ACC (CONJ) NP V NP=ACC
 NP V NP=ACC (CONJ) NP NP=ACC V
@@ -845,6 +880,176 @@ NP=ACC NP V (CONJ) NP V NP=ACC
 NP=ACC NP V (CONJ) NP NP=ACC V
 NP=ACC NP V (CONJ) NP=ACC NP V
 
-We took several of the missing string sentences and confirmed that the parses, which corresponded to the MRS we were missing, were being generated in a monolingual context. Also RELS and HCONS liste were not broken. The MRS of those missing parses looked also identical to the MRS of the generated realized strings in the eng2gug and shu2gug.
-Also when translating from gug2eng, using othe correspondng string and MRS, we would find our original English sentece in one of the resulting realizations. We were not able to find for now the reason of thos missing parses.
-After consultation with the instructor, we decided to document our findings.
+We took several of the missing string sentences and confirmed that the strings which were missing, could be parsed and generated in a monolingual context. We also checked and verified that the RELS and HCONS lists were not broken. The MRS of those missing parses looked also identical to the MRS of the generated realized strings in the eng2gug and shu2gug. Also when translating from gug2eng, using one of these missing strings (with the correct MRS), we were able to get the original English sentence as one of the resulting realizations. 
+
+In sum, despited extensive investigation and experimentation we were not able to uncover the reason for those missing parses. After consultation with the professor, we decided to just document our process here.
+
+7. Final Notes
+
+We provide this week with a short analysis of our normal testsuite, comparing last weeks baseline grammar with this weeks final grammar version. 
+Additionally, we have added the MMT sentences as a separate corpus, for which we have provided also the two grammar comparison.
+
+--TestSuite General Stats
+
+Analyze | Coverage
+	Total Items: 211
+	Positive Items: 135
+	Word String 0: 2.96
+	Lexical Items 0: 4.91	
+	Distinct Analyses: 2.50
+	Total Results: 131
+	Overall Coverage: 97
+
+Analyze | Overgeneration
+	Total Items: 211
+	Negative Items: 76
+	Word String 0: 2.97
+	Lexical Items 0: 4.87
+	Distinct Analyses: 0.00
+	Total Results: 0
+	Overall Coverage: 0.0
+
+Comparison of baseline(gold-lab7) and final version of this lab 
+(Compare | Competence)
+
+	Baseline
+		lexical 0:  1.60
+		analyses 0: 2.61
+		in 0:       97.0
+		out 0:      0.0
+
+	New
+		lexical 0:  1.60
+		analyses 0: 2.50
+		in 0:       97.0
+		out 0:      0.0
+
+
+General analysis:
+Looking at the general statistics, we appreciate that there has been no change in the coverage. Also the number of ill-formed sentences has not changed, and it is still zero. Additionally, we already see that the average number of analysis has been reduced. This points to a reduction of the number of parses, for which we did some clean-up work during this week. 
+Looking at the changes in the well-formed sentences, we see that they have a reduced amount of readings (less coordination sentences), which explains also the reduction in one of the above statistics.
+
+When looking into detail at the comparison of the number of reading the number of active edges between last weeks grammar and this weeks last version (COMPARE|INTERSECTION readings & aedges), we see some less readings in the following sentences, due to the reduced number of redundant coordination sentences, as well as wrongly instatiated interrogative and declarative clauses:
+
+#Ex.123: Yes-No question with focus marker on subject
+Source: c
+Vetted: f
+Judgment: g
+Phenomena: {q, wo}
+ñakyrapa ohecha vakápe?
+nNakyra pa ohecha vakaA pe
+nNakyra=pa o-hecha vakaA=pe
+cricket.ANIM.NOM=Q O.3-see cow.ANIM=ACC
+'Was it the cricket, who saw the cow?'
+
+#Ex.146: Use of 'and' coordination with sentence constituents
+Source: b
+Vetted: f
+Judgment: g
+Phenomena: {crd, wo}
+aguara opo ha okañy
+aguara opo ha okanNy
+aguara o-po ha o-kanNy
+fox.ANIM.NOM A.3-jump and A.3-hide
+'the fox jumped and hid'
+
+#Ex.162: Use of 'and' coordination with nominal constituents
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: {crd, wo}
+aguara ha jagua okañy
+aguara ha jagua okanNy
+aguara ha jagua o-kanNy
+fox.ANIM.NOM and dog.ANIM.NOM A.3-hide
+'the fox and the dog hid'
+
+#Ex. 208 Ambiguous WH-question with transitive verb 
+Source: authors
+Vetted: f
+Judgment: g
+Phenomena: wh
+mávapa ohecha ju'i
+maAva pa ohecha juHi
+maAva=pa o-hecha juHi
+who=Q  3-see frog
+'Who sees the frog?' / 'Who does the frog see?'
+
+#Ex. 211 Ambiguous long-distance dependency with WH-question
+Source: authors
+Vetted: f
+Judgment: g
+Phenomena: wh
+mávapa aikuua ohechaha ju'i
+maAva pa aikuua ohecha ha juHi
+maAva=pa a-ikuua o-hecha=ha juHi
+who=Q 1SG-know 3-see=COMPL frog
+'Who do I know sees the frog?' / 'Who do I know that the frog sees?'
+
+The biggest effect in our eyes is the number reduction in active edges in allmost all parses. This has also been detected by us through the faster performance of the lkb system when parsing different sentences.
+
+-- MMT Corpus in Guarani
+
+We included in the testsuite files also a baseline of the mmt sentences in Guarani on the grammar from lab 8 compared to our latest grammar version.
+We see similar effects here. The following sentences have less readings:
+
+#Ex.9: MT corpus sentence for 'Cats and dogs chase cars.'
+Source: authors
+Vetted: f
+Judgment: g
+Phenomena: corpus
+mbarakaja ha jagua omuña mba'yrupe
+mbarakaja ha jagua omunNa mbaHyru pe
+mbarakaja ha  jagua o-munNa   mbaHyru=pe
+cat       and dog   A.3-chase car=ACC
+'Cats and dogs chase cars.'
+
+#Ex.11: MT corpus sentence for 'Cats chase dogs and sleep.'
+Source: authors
+Vetted: f
+Judgment: g
+Phenomena: corpus
+mbarakaja omuña jagua ha oike
+mbarakaja omunNa jagua ha oike
+mbarakaja o-munNa    jagua ha  o-ike
+cat       A.3-chase dog   and A.3-sleep
+'Cats chase dogs and sleep.'
+
+#Ex.12: MT corpus sentence for 'Do cats chase dogs?'
+Source: authors
+Vetted: f
+Judgment: g
+Phenomena: corpus
+mbarakajapa omuña jaguape ?
+mbarakaja pa omunNa jagua pe
+mbarakaja=pa o-munNa   jagua=pe
+cat=Q        A.3-chase dog=ACC
+'Do cats chase dogs?'
+
+#Ex.21: MT corpus sentence for 'Who asked what the dogs chase?'
+Source: authors
+Vetted: f
+Judgment: g
+Phenomena: corpus
+mávapa oporandu mba'é lo jagua omuña ?
+maAva pa oporandu mbaHeA lo jagua omunNa
+maAva=pa o-porandu mbaHeA lo     jagua o-munNa
+who=Q    A.3-ask   what   DET.PL dog   A.3-chase
+Who asked what the dogs chase?
+
+#Ex.22: MT corpus sentence for 'I asked what the dogs chased.'
+Source: authors
+Vetted: f
+Judgment: g
+Phenomena: corpus
+aporandu mba'é lo jagua omuña ?
+aporandu mbaHeA lo jagua omunNa 
+a-porandu mbaHeA lo     jagua o-munNa 
+A.1SG-ask what   DET.PL dog   A.3-chase
+'I asked what the dogs chased.'
+
+The improvements in the first three sentences represent the less number of coordinated readings but also the elimination of wrongly instantiated interrogation and declarative clause phrase rules. This last effect explains also the slight reduction of parses for the last two question sentences. As mentioned before, the reduction of active edges is present in almost all parses, in some even with a significant reduction (especially for embedded and longer question sentences, as well as long sentences with several noun phrases). This result gives us some satisfaction after the hard work of this week.
+
+
+
+THE END... (to be continued)
