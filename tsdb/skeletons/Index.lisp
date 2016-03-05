@@ -20,7 +20,7 @@
 ;;;
 
 (((:path . "testSuite") (:content . "Testsuite - last updated Lab 8"))
-	((:path . "mmtCorpus") (:content . "Guarani sentence for MMT Lab 9"))
+	((:path . "mmtCorpus") (:content . "Guarani sentences for MMT Lab 9"))
 	((:path . "testCorpus") (:content . "Test Corpus - last updated Lab 8")))
 
  
