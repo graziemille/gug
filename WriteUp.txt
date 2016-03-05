@@ -1,992 +1,389 @@
-# 567 LAB8
+# 567 LAB9
 # LANGUAGE: gug / Paraguayan Guaraní
-# AUTHOR: Lisa Tittle Caballero
-# PARTNER: Thor Wicke Monteverde
+# AUTHOR: Thor Wicke Monteverde
+# PARTNER: Lisa Tittle Caballero
 
 
-1. One Sentence Fromm Test Corpus
+1. Include your iso.txt file with your translations of the MMT sentences.
+We included a gug.txt file in our gug grammar folder. Additionaly we greated a separeted tsdb suite that included all MMT sentences in IGT format.
+We added also the English and Chadian Arabic grammars as changed and used in this lab in their respective eng- and shu- folders which are placed inside our gug folder file.
 
-Last week we were able to parse sentence #20
+2. Describe any clean up you did to your grammar.
 
-#Sentence.20
-Source: a, attested
-Vetted: t
-Judgment: g
-Phenomena: corpus
-Ha he'i Huanchi:
-ha  oeHi   Juanchi
-ha  o-eHi  Juanchi
-and A.3-say Juan.DIM
-'And Juanito says:'
+-- Changes in semi.vpm
+As noted in office hours, the values for SPECI, TENSE and MOOD are not relevant for PG. therefore they were commented out in the semi.vpm file.
 
-This week we decided to build on that work by parsing sentence #22
+-- max edge number
+We had to work this week with some string realizations that used several thousand edges for their calculation. We increased as a default teh max-edge-number to 10000, in the globals.lsp file under the lkb folder.
 
-#Sentence.22
-Source: a, attested
-Vetted: t
-Judgment: g
-Phenomena: corpus
-Ha he'i Pirulo-pe
-Ha oeHi Pirulo pe 
-Ha o-eHi Pirulo=pe 
-and A.3-say Pirulo=DAT
-'and he said to Pirulo'
+-- New lexicon
+We added followign entries to the lexicon in order to generate the necessary MMT strings.
+For the English adjective 'hungry' we have two entries, as a stative intransitive verb, as well as an attributive adjective. Our original online dictionary, suggested the it was only an intransitive verb, which made us wonder how to realize an MMT sentence ('The hungry dog eats'). Further reasearch into other resources helped us to find out that it was possible to use it as an attributive adjective. This is a common pattern in PG. Many adjectives are also present as stative intransitive verbs, as a way to create AP predicates.
 
+vareHa := stative-intrans-verb-lex &
+  [ STEM < "vareHa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_hungry_a_rel" ].
 
-As we discussed on GoPost, implementing this sentence involved required us to: 
-1. Implement ditransitives (finally!), including defining the new type and making sure appropriate inflection applied, 2. changing our implementation of case-marking adpositions so that we have separate entries for accusative and dative version of the postposition PE, only one of which is optional. 3. Making the appropriate changes to the lexicon.
+vareHa_2 := attributive-adj-lex &
+  [ STEM < "vareHa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_hungry_a_rel" ].    
 
+mbarakaja := com-anim-noun-lex &
+  [ STEM < "mbarakaja" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_cat_n_rel" ].
 
-- DITRANSITIVES
+mbaHyru := com-inam-noun-lex &
+  [ STEM < "mbaHyru" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_car_n_rel" ].
 
-—— INFLECTION
-Even though they have three arguments, ditransitive verb predicates (DVPs) in PG are inflected with the same prefixes as our transitive verbs. The prefixes, which our authors refer to as co-referential markers, can co-reference either the subject or the direct object (DO) of a verb.  Subjects and DOs are co-referenced with different sets of markers, which (following the conventions in our reference grammars) we refer to as A-markers and O-markers respectively.  Whether a verb receives A- or O- marking depends on its arguments’ positions in a person hierarchy. First person arguments outrank second person arguments which outrank third person arguments. If both arguments have the same person designation an A-marker is used. This gives us patterns like those below:
+yvyraty := com-inam-noun-lex &
+  [ STEM < "yvyraty" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_park_n_rel" ].
 
+munNa := trans-verb-lex &
+  [ STEM < "munNa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_chase_v_rel" ].
 
-#Ex.70: Transitive verb with 3PER object agrees with 1SG subject. Subject drop. 
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {pro-d, agr, pn}
-ahecha vakápe
-ahecha vakaA pe
-a-hecha vakaA=pe
-A.1SG-see cow.ANIM=ACC
-‘I see the cow'
+karu := dynamic-intrans-verb-lex &
+  [ STEM < "karu" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_eat_v_rel" ].
 
-#Ex.71: Transitive verb with 3PER object agrees with 2SG subject. Subject drop. 
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {pro-d, agr, pn}
-rehecha vakápe
-rehecha vakaA pe
-re-hecha vakaA=pe
-A.2SG-see cow.ANIM=ACC
-‘You see the cow'
+imoHaA := decl-cl-verb-lex &
+   [STEM<"imoHaA">,
+    SYNSEM.LKEYS.KEYREL.PRED "_think_v_rel"].
 
-#Ex.72: Transitive verb agrees with 3PER object agrees with 3PER subject. Subject drop. 
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {pro-d, agr, pn}
-ohecha vakápe
-ohecha vakaA pe
-o-hecha vakaA=pe
-A.3-see cow.ANIM=ACC
-'He sees the cow'
+-- Sentential coordination rules
+We added constraints specifying that our coordination phrases identify the rule's #sf value with that of its daughter/s, and for top-or-mid cases, require through identification that both daughters share a SF value.  This significantly cut down on edges.
 
-#Ex.73: Transitive verb with 3PER subject agrees with 1SG object.  Object drop.
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: agr
-chehecha vaká
-chehecha vakaA
-che-hecha vakaA
-O.1SG-see cow.ANIM
-'The cow sees me'
-
-#Ex.74: Transitive verb with 3PER subject agrees with 2SG object. Object drop.
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: agr
-ndehecha vaká
-ndehecha vakaA
-nde-hecha vakaA
-O.2SG-see cow.ANIM
-'The cow sees you'
-
-#Ex.4: Ungrammatical verb agreement with 3per object rather 3per subject.
-Source: author
-Vetted: f
-Judgment: u
-Phenomena: agr
-ju'i ihecha tunich
-juHi ihecha tunich
-juHi i-hecha tunich
-frog.ANIM O.3-see stone.INAM
-*'The frog sees the stone'
-
-The person-ranking of an indirect object (IO) does not affect co-reference marking on the verb, which we can see in Ex.50, where we have a 1st person IO, but the verb agrees with the 2nd person subject because the DO is 3rd person.
-
-#Ex.50: Ditransitive agrees with 2SG subject. Indirect object marked with 1SG dative pronoun. S.V.IO.DO order
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {wo, agr, pn}
-nde rehechauka cheve tunich
-nde rehechauka cheve tunich
-nde re-hecha-uka cheve tunich
-2.SG.PRON.NOM A.2SG-see-CAUS 1.SG.PRON.DAT stone.INAM
-'You show me the stone'
-
-#Ex.51: Dynamic intransitive agrees with 2SG subject. Indirect object marked with 1SG dative pronoun.
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {wo, agr, pn}
-nde rehechauka cheve
-nde rehechauka cheve 
-nde re-hecha-uka cheve 
-2.SG.PRON.NOM A.2SG-see-CAUS 1.SG.PRON.DAT 
-'You show it to me'
-
-Also if we remove the direct object as in #51 we only get one parse, even though the pronoun cheve is underspecified between dative and accusative case.  This is because if cheve were an accusative pronoun and the direct object of the verb, the coreference marker would be che- not re-. 
-
-To capture the parallel behavior between transitive and ditransitive verbs and make use of the inflectional rules already present in our grammar, we defined a new supertype for transitive and ditransitive verbs.  
-
-gug-trans-ditrans-verb := verb-lex &
-  [ INFLECTED.PERNUM-TRANS-FLAG - ].
-
-We then created a new ditransitive-verb-lex which inherits from this category (discussed in detail later) and updated our trans-verb-lex to inherit from this new type: 
-
- transitive-verb-lex := gug-trans-ditrans-verb & transitive-lex-item &
-   completive-aspect-or-perfective-aspect-or-prospective-aspect-rule-dtr &
-   future-aspect-rule-dtr & neg1-rule-dtr & neg2-rule-dtr &
-  [ SYNSEM.LOCAL.CAT.VAL.COMPS < #comps & [OPT-CS in-foc]>,
-    ARG-ST < [ LOCAL.CAT.HEAD +np ],
-	       #comps &
-             [ LOCAL.CAT [ VAL [ SPR < >,
-                                 COMPS < > ],
-			   HEAD +np ] ] > ]. 
-
-The new supertype inherits from verb-lex and adds a flag feature requiring verbs of this type to go through the pernum-trans-ditrans-lex-rule outlined below to be considered fully inflected: 
-
-pernum-trans-ditrans-lex-rule-super := add-only-no-ccont-rule & completive-aspect-or-perfective-aspect-or-prospective-aspect-rule-dtr & future-aspect-rule-dtr & infl-lex-rule & neg1-rule-dtr & neg2-rule-dtr &
-  [ INFLECTED [ PERNUM-DYN-INTRANS-OR-PERNUM-TRANS-FLAG +,
-                PERNUM-TRANS-FLAG +,
-                PERNUM-DYN-INTRANS-OR-PERNUM-STAT-INTRANS-OR-PERNUM-TRANS-FLAG +,
-                NEG1-FLAG #neg1,
-                PERNUM-STAT-INTRANS-FLAG #pernum-stat-intrans,
-                NEG2-FLAG #neg2 ],
-    DTR gug-trans-ditrans-verb &
-        [ INFLECTED [ NEG1-FLAG #neg1,
-                      PERNUM-STAT-INTRANS-FLAG #pernum-stat-intrans,
-                      NEG2-FLAG #neg2 ] ] ].
-
-The linguistic facts of the language outlined above are captured by the individual lexical rule types of this position class which specify subject and object PERNUM values for each type.  For rule types with 1st person subjects there is no need to constrain PERNUM on the object since 1st person subjects will always outrank their objects.
-
-1sg-a-lex-rule := pernum-trans-ditrans-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1sg ].
-
-1sg-a-2sg-o-lex-rule := pernum-trans-ditrans-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1sg,
-                           COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2sg ] ].
-
-1sg-a-2pl-o-lex-rule := pernum-trans-ditrans-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1sg,
-                           COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2pl ] ].
-
-1sg-o-23-a-lex-rule := pernum-trans-ditrans-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL [ COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1sg,
-                           SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM non-1st ] ].
-
-2sg-a-3-o-lex-rule := pernum-trans-ditrans-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2sg,
-                           COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3rd ] ].
-
-2sg-o-3-a-lex-rule := pernum-trans-ditrans-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3rd,
-                           COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2sg ] ].
-
-3-a-3-o-lex-rule := pernum-trans-ditrans-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3rd,
-                           COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3rd ] ].
-
-1pl-incl-a-lex-rule := pernum-trans-ditrans-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1pl_incl ].
-
-1pl-excl-a-lex-rule := pernum-trans-ditrans-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1pl_excl ].
-
-1pl-incl-o-23-a-lex-rule := pernum-trans-ditrans-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL [ COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1pl_incl,
-                           SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM non-1st ] ].
-
-1pl-excl-o-23-a-lex-rule := pernum-trans-ditrans-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL [ COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1pl_excl,
-                           SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM non-1st ] ].
-
-2pl-a-3-o-lex-rule := pernum-trans-ditrans-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2pl,
-                           COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3rd ] ].
-
-2pl-o-3-a-lex-rule := pernum-trans-ditrans-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL [ COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2pl,
-                           SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3rd ] ].
-
-These individual lexical rule types are instantiated in irules.tdl as follows:
-
-1sg-a-prefix :=
-%prefix (* a)
-1sg-a-lex-rule.
-
-1sg-a-2sg-o-prefix :=
-%prefix (* ro)
-1sg-a-2sg-o-lex-rule.
-
-1sg-a-2pl-o-prefix :=
-%prefix (* po)
-1sg-a-2pl-o-lex-rule.
-
-1sg-o-23-a-prefix :=
-%prefix (* che)
-1sg-o-23-a-lex-rule.
-
-2sg-a-3-o-prefix :=
-%prefix (* re)
-2sg-a-3-o-lex-rule.
-
-2sg-o-3-a-prefix :=
-%prefix (* nde)
-2sg-o-3-a-lex-rule.
-
-3-a-3-o-prefix :=
-%prefix (* o)
-3-a-3-o-lex-rule.
-
-1pl-incl-a-prefix :=
-%prefix (* ja)
-1pl-incl-a-lex-rule.
-
-1pl-excl-a-prefix :=
-%prefix (* ro)
-1pl-excl-a-lex-rule.
-
-1pl-incl-o-23-a-prefix :=
-%prefix (* nNande)
-1pl-incl-o-23-a-lex-rule.
-
-1pl-excl-o-23-a-prefix :=
-%prefix (* ore)
-1pl-excl-o-23-a-lex-rule.
-
-2pl-a-3-o-prefix :=
-%prefix (* pe)
-2pl-a-3-o-lex-rule.
-
-2pl-o-3-a-prefix :=
-%prefix (* pende)
-2pl-o-3-a-lex-rule.
-
-
-—— Lexical Type
-The new lexical type for ditransitives was modeled after the way definition of transitive verbs was produced by the customization system. This model has incorporates some redundancy, but we opted against removing it and instead defined our types as counterparts to the transitive examples shown below:
-
-
-transitive-verb-lex := gug-trans-ditrans-verb & transitive-lex-item & completive-aspect-or-perfective-aspect-or-prospective-aspect-rule-dtr & future-aspect-rule-dtr & neg1-rule-dtr & neg2-rule-dtr &
-  [ SYNSEM.LOCAL.CAT.VAL.COMPS < #comps & [OPT-CS in-foc]>,
-    ARG-ST < [ LOCAL.CAT.HEAD +np ],
-	       #comps &
-             [ LOCAL.CAT [ HEAD +np,
-			   VAL [ SPR < >,
-                                 COMPS < > ] ] ] >].
-
-nom-acc-transitive-verb-lex := transitive-verb-lex &
-  [ ARG-ST < [ LOCAL.CAT.HEAD noun &
-                              [ CASE nom ] ],
-             [ LOCAL.CAT.HEAD +np &
-                              [ CASE acc ] ] >,
-    SYNSEM.LOCAL.CAT.VAL [ SUBJ < [ LOCAL.CAT.HEAD.CASE-MARKED + ] >,
-                           COMPS < [ LOCAL.CAT.HEAD.CASE-MARKED + ] > ] ].
-
-
-trans-verb-lex := nom-acc-transitive-verb-lex.
-
-
-Following that model we have also outlined three types in an inheritance chain: ditransitive-verb-lex is inherited by nom-acc-dat-ditransitive-verb-lex, which is inherited by ditrans-verb-lex.
-
-The first type, ditransitive-verb-lex inherits from our gug-trans-ditrans-verb supertype and ditransitive-lex-item in matrix.tdl:
-
-ditransitive-verb-lex := gug-trans-ditrans-verb & ditransitive-lex-item & completive-aspect-or-perfective-aspect-or-prospective-aspect-rule-dtr & future-aspect-rule-dtr & neg1-rule-dtr & neg2-rule-dtr &
-  [ SYNSEM.LOCAL.CAT.VAL.COMPS < #comps1 & [OPT-CS in-foc], #comps2 & [OPT-CS in-foc] >,
-    ARG-ST < [ LOCAL.CAT.HEAD +np ],
-             #comps1 & [ LOCAL.CAT [ VAL [ SPR < >, COMPS < > ],
-                                     HEAD +np  ] ],
-             #comps2 & [ LOCAL.CAT [ VAL [ SPR < >, COMPS < > ],
-                                     HEAD +np  ] ] > ].
-
-ditransitive-lex-item := basic-three-arg-no-hcons & basic-icons-lex-item &
-   [ ARG-ST < [ LOCAL.CONT.HOOK [ INDEX ref-ind & #ind1,
-				  ICONS-KEY.IARG1 #clause ] ],
-	      [ LOCAL.CONT.HOOK [ INDEX ref-ind & #ind2,
-				  ICONS-KEY.IARG1 #clause ] ],
-	      [ LOCAL.CONT.HOOK [ INDEX ref-ind & #ind3,
-				  ICONS-KEY.IARG1 #clause ] ] >,
-     SYNSEM [ LKEYS.KEYREL [ ARG1 #ind1,
-			     ARG2 #ind2,
-			     ARG3 #ind3 ],
-	      LOCAL.CONT.HOOK.CLAUSE-KEY #clause ] ].
-
-ditrans-lex-item specifies the length of our type’s ARG list and ensures that we end up with the right semantics. We also inherit from the daughter types of our negation and aspect rules so that verbs of this type can be inflected for aspect and negation. In the body of the rule we specify the length of the type’s COMPS list, and identify those arguments with the last two elements on the ARG list.  Dropped arguments are constrained to be in-foc, all arguments are constrained to be [HEAD +np] (again following the model provided by the customization system), and the elements on the COMPS list are constrained to have empty VAL.COMPS & VAL.SPR values.
-
-Our next type nom-acc-dat-ditransitive-verb-lex inherits from ditransitive-verb-lex and adds information about case.
-
-nom-acc-dat-ditransitive-verb-lex := ditransitive-verb-lex &
-  [ ARG-ST < [ LOCAL.CAT.HEAD noun &
-                              [ CASE nom ] ],
-             [ LOCAL.CAT.HEAD +np &
-                              [ CASE acc ] ],
-             [ LOCAL.CAT.HEAD +np &
-                              [ CASE dat ] ] >,
-    SYNSEM.LOCAL.CAT.VAL [ SUBJ < [ LOCAL.CAT.HEAD.CASE-MARKED + ] >,
-                           COMPS < [ LOCAL.CAT.HEAD.CASE-MARKED + ],
-                                   [ LOCAL.CAT.HEAD.CASE-MARKED + ] > ] ].
-
-The first argument is constrained to be [CASE nom], the second [CASE acc], the third [CASE DAT].  All the elements on the VAL.SUBJ and VAL.COMPS lists are constrained to be [LOCAL.CAT.HEAD.CASE-MARKED +].  The last two elements on the ARG list are still [HEAD +np] but the first argument is further constrained to be [HEAD noun]. 
-
-Finally ditrans-verb-lex inherits from nom-acc-dat-ditransitive-verb-lex  and is instantiated in the lexicon with the following entries
-
-ditrans-verb-lex := nom-acc-dat-ditransitive-verb-lex.
-
-hechauka := ditrans-verb-lex &
-   [STEM<"hechauka">,
-    SYNSEM.LKEYS.KEYREL.PRED "_show_v_rel"].
-
-meHeN := ditrans-verb-lex &
-   [STEM<"meHeN">,
-    SYNSEM.LKEYS.KEYREL.PRED "_give_v_rel"].
-
-eHi := ditrans-verb-lex &
-  [ STEM <"eHi">,
-    SYNSEM.LKEYS.KEYREL.PRED "_say_v_rel"]. 
-
-—— Phrasal Type
-
-As ditransitive verbs have two COMPS elements, we added a second head-comp/comp-head rule to connect those complements to the head predicate. Because of the free word order in PG, we have head-comp and comp-head versions:
-
-
-head-comp-phrase-2 := basic-head-2nd-comp-phrase & head-initial-head-nexus  &
- [ SYNSEM.LOCAL.CAT [ HEAD +nvjrcdmo, 
-          	      EC #ec,
-          	      IC #ic,
-                      VAL.COMPS.FIRST.OPT - ], 
-   HEAD-DTR.SYNSEM.LOCAL.CAT [ EC #ec,
-                               IC #ic ]].
-
-comp-head-phrase-2 := basic-head-2nd-comp-phrase & head-final-head-nexus &
-   [ SYNSEM.LOCAL.CAT [	HEAD +nvjrcdmo, 
-        		EC #ec,
-          		IC #ic,
-                      VAL.COMPS.FIRST.OPT - ],  
-   NON-HEAD-DTR.SYNSEM.LOCAL.CAT [ EC #ec,
-             			   IC #ic ]].
-
-They were already defined in our grammar with the following:
-
-head-comp-phrase-2 := basic-head-2nd-comp-phrase & head-initial-head-nexus.
-
-comp-head-phrase-2 := basic-head-2nd-comp-phrase & head-final-head-nexus.
-
-And in rules.tdl with:
-
-head-comp-2 := head-comp-phrase-2.
-
-comp-head-2 := comp-head-phrase-2.
-
-We expanded them to include and copy up the same features as our first head-comp/comp-head rules. Also, when we first tested the rules we observed that our indirect complement could attach as the first or the second complement when the direct object was dropped, leading to spurious double parses with the same MRS values. We fixed this by adding the constraint [VAL.COMPS.FIRST.OPT -].
-
-So now an unambiguous sentence like #51 parses correctly with just one parse:
-
-#Ex.51: Dynamic intransitive agrees with 2SG subject. Indirect object marked with 1SG dative pronoun.
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {wo, agr, pn}
-nde rehechauka cheve
-nde rehechauka cheve 
-nde re-hecha-uka cheve 
-2.SG.PRON.NOM A.2SG-see-CAUS 1.SG.PRON.DAT 
-'You show it to me'
-
-
-— CASE-MARKING ADPOSITIONS
-The indirect objects of DVPs are marked with an obligatory dative marker. These arguments can take the form of either a dative pronoun or an NP combined with the case-marking postposition ’pe.’  Because the accusative case-marking adposition shares the same form as the dative, these were originally instantiated in the lexicon with a single entry that was underspecified between dative and accusative case.   However, the accusative case markers are optional and the dative markers are not, which necessitated creating separate entries instead.  We added the following to lexicon.tdl:
-
-acc-marker := case-marking-adp-lex &
-  [ STEM < "pe" >,
-    SYNSEM.LOCAL [ CONT [ HOOK [ ICONS-KEY.IARG1 #clause,
-                                 CLAUSE-KEY #clause ],
-                          ICONS <!  !> ],
-                   CAT.HEAD [ CASE ACC,
-                              CASE-MARKED + ] ] ].
-
-dat-marker := case-marking-adp-lex &
-  [ STEM < "pe" >,
-    SYNSEM.LOCAL [ CONT [ HOOK [ ICONS-KEY.IARG1 #clause,
-                                 CLAUSE-KEY #clause ],
-                          ICONS <!  !> ],
-                   CAT.HEAD [ CASE DAT,
-                              CASE-MARKED + ] ] ].
-
-
-And, because these entries are semantically empty, updated trigger.mtr with the following:
-
-acc-marker_gr_1 := arg0e_gtr &
-  [ CONTEXT.RELS <! [ ARG1 individual & #i ] !>,
-    FLAGS [ SUBSUME < #i >,
-            TRIGGER "acc-marker" ] ].
-
-acc-marker_gr_2 := arg0e_gtr &
-  [ CONTEXT.RELS <! [ ARG2 individual & #i ] !>,
-    FLAGS [ SUBSUME < #i >,
-            TRIGGER "acc-marker" ] ].
-
-
-dat-marker_gr_1 := arg0e_gtr &
-  [ CONTEXT.RELS <! [ ARG1 individual & #i ] !>,
-    FLAGS [ SUBSUME < #i >,
-            TRIGGER "dat-marker" ] ].
-
-dat-marker_gr_2 := arg0e_gtr &
-  [ CONTEXT.RELS <! [ ARG2 individual & #i ] !>,
-    FLAGS [ SUBSUME < #i >,
-            TRIGGER "dat-marker" ] ].
-
-dat-marker_gr_3 := arg0e_gtr &
-  [ CONTEXT.RELS <! [ ARG3 individual & #i ] !>,
-    FLAGS [ SUBSUME < #i >,
-            TRIGGER "dat-marker" ] ].
-
-
-As the dative 'pe' is obligatory, but the accusative 'pe' optional, nouns were generally
-classified as having CASE non-dat. If a verb predicate needs a dative argument, this is handled through unification with the case marker 'pe' dative, which no longer identifies its case with that of its complement.  To implement this the case hierarchy was changed to include the type non-dat:
-
-case := *top*. 
-non-nom := case.
-non-dat := case.
-nom := non-dat.
-dat := non-nom.
-acc := non-nom & non-dat.
-loc := non-nom & non-dat.
-
-common-noun-lex was constrained to [CASE non-dat], and case-marking-adp-lex was updated so that there is no longer an identification between its case and the case of the noun complement it unifies with (which by default would be non-dat). 
-
-common-noun-lex := noun-lex & 
-  [ SYNSEM.LOCAL[ CAT.HEAD.CASE non-dat,
-                  CONT.HOOK.INDEX.PNG.PERNUM 3rd ]].
-
-
-case-marking-adp-lex :=  basic-one-arg & raise-sem-lex-item &
-  [ SYNSEM.LOCAL.CAT [  EC - , 
-                        IC - , 
-                        HEAD adp &
-                            [ MOD < > ],
-                       VAL [ SPR < >,
-                             SUBJ < >,
-                             COMPS < #comps >,
-                             SPEC < > ] ],
-    ARG-ST < #comps &
-             [ LOCAL.CAT [ VAL.SPR < >,
-                           HEAD noun &
-              		   [ CASE-MARKED - ] ] ] > ].
- 
-CASE-MARKED is defined as a property of +np head-types with the following in PG.tdl
-
-+np :+ [ CASE case,
-         CASE-MARKED bool].
-
-The [CASE-MARKED -] restriction on the complement of our case-marking-adp-lex prevents unification with pronoun complements, which are constrained in the following way:
-
-pron-nom-noun-lex := pron-noun-lex &
-  [ SYNSEM.LOCAL.CAT.HEAD [ CASE nom,
-                            CASE-MARKED + ] ].
-
-pron-nonagent-noun-lex := pron-noun-lex &
-  [ SYNSEM.LOCAL.CAT.HEAD [ CASE non-nom,
-                            CASE-MARKED + ] ]. 
-
-bare-np-phrase inherits from basic-bare-np-phrase which inherits from head-only in matrix.tdl which has the following identification between it’s HEAD-DTR and ARGS:
-
-head-only := unary-phrase & headed-phrase &
-  [ HEAD-DTR #head,
-    ARGS < #head > ].
-
-So we didn’t have to do any additional work to allow for arguments that have gone through the bare-np-rule.
-
-
-— ADDITIONAL CHANGES TO THE LEXICON
-
-Since we defined proper nouns last week, adding Pirulo was simple.  We just added the following new entry to lexicon.tdl:
-
-	Pirulo := proper-noun-lex &	
-	  [ STEM < “Pirulo” >,
-	    SYNSEM.LKEYS.KEYREL.CARG “Pirulo” ].
-
-Which inherits from our proper-noun-lex defined in PG.tdl:
-
-	proper-noun-lex := non-poss-com-noun-lex & no-spr-noun-lex & com-anim-noun-lex & 
-			   named-relation.
-
-Also, as alluded to above, we updated our entry for eHi so that instead of instantiating trans-verb-lex, it instantiates ditrans-verb-lex:
-
-	eHi := ditrans-verb-lex &
-	  [ STEM <"eHi">,
-	    SYNSEM.LKEYS.KEYREL.PRED "_say_v_rel"]. 
-
-
-— END STATE
-  
-Our new sentence now parses with our target semantics. We also get one additional parse, with the meaning “He said Pirulo to someone,” because the accusative marker is also written as ‘pe,’ and in our free word order language, this makes #22 ambiguous.  
-
-#Sentence.22
-Source: a, attested
-Vetted: t
-Judgment: g
-Phenomena: corpus
-Ha he'i Pirulo-pe
-Ha oeHi Pirulo pe 
-Ha o-eHi Pirulo=pe 
-and A.3-say Pirulo=DAT
-'and he said to Pirulo'
-
-We are able to generate from both of our parses. When we generate from the tree where =pe is identified as an accusative marker we get four parses: both Verb/Argument orders, each with a pe-marked and non-pe-marked option.  When we generate from the tree where =pe is identified as a dative marker, we correctly get only two parses: ‘ha Pirulo pe oeHi,’ and ‘ha oeHi Pirulo pe.’  
-
-
-2. Changes to semi.vpm
-
-— SF
-
-SF : SF
-  prop <> prop
-  ques <> ques
-  prop-or-ques >> prop-or-ques 
-  prop << prop-or-ques
-  comm <> comm
-  prop-or-ques << [e]
-  * <> *
-
-Initially or semi.vpm had the following line ‘prop-or-ques <> prop-or-ques’ which led us to get question variants of sentences without overt question marking, so the English sentence “Dogs sleep” generated Guarani sentences like “oike piko jagua”  All of the sentences with question particles were well formed and correspond to sentences like "Was it sleep, that the dogs did?"  and "Was it the dogs that slept?"   But we decided it would be better require sentences to be overtly marked as questions in a source language to get overt marks of questions in our language.  We did this by replacing the initial equivalency with a line ‘prop << prop-or-ques’ changing incoming prop-or-ques values to prop, and the line ‘prop-or-ques >> prop-or-ques’ which preserves the prop-or-ques value going out. We also added the line  ‘prop-or-ques << [e]’ assigning incoming event types with unlisted or undefined SF values the default value of prop-or-ques.   We did not assign a default SF to underspecified event types in Guarani, because we have set up our grammar to require all well-formed sentence to have non-under-specified SF value (more on this later.). 
-
-- COG-ST
-
-COG-ST : COG-ST
-  type-id <> type-id
-  uniq-id <> uniq-id
-  familiar <> familiar
-  activated <> activated
-  in-foc <> in-foc
-  activ+fam <> activ+fam
-  uniq+fam <> uniq+fam
-  activ-or-more <> activ-or-more
-  uniq-or-less <> uniq-or-less
-  uniq+fam+act <> uniq+fam+act
-  fam-or-more <> fam-or-more
-  fam-or-less <> fam-or-less
-  uniq-or-more <> uniq-or-more
-  activ-or-less <> activ-or-less
-  * >> type-id
-  * <> *
-
-Our grammars were very clear that cog-st values for common nouns are underspecified in Guarani, but to cut down generation, which, in a free word order language can already be pretty robust, we decided to add the line  * >> type-id.  This cuts down our generation from sentence like “jagua oguata,” “(the)dogs walk” from 4 to 2. We feel doing this is helpful, since, as it is, a sentence like our old standby “juHi ohecha vakaA” with the MRS the corresponding to “the frog sees the cow” still generates 12 parses, all well-formed.
-We left the catch all ‘* <> *’ line at the end to allow underspecified or other COG-ST to remain underspecified in Guarani.
-
-
-—PERNUM
-
-Guarani uses a PERNUM feature which, using the DELPHIN wiki for guidance, I mapped out to PER and NUM features in the following way. 
-
-PNG.PERNUM : PER NUM
-  1sg <> first sg
-  2sg <> second sg
-  3sg <> third sg
-  1pl <> first pl
-  1pl_incl <> first_incl pl
-  1pl_excl <> first_excl pl
-  2pl <> second pl
-  3pl <> third pl
-  1st <> first !
-  1st << first *
-  2nd <> second !
-  2nd << second *
-  3rd <> third !
-  3rd << third *
-  sg <> ! sg
-  sg << * sg
-  pl <> ! pl
-  pl << * pl
-  * >> ! !
-  ! << * *
-
-
-We also took this opportunity to fix the our naming of PERNUM types grammar-internally.  We had been using capitalized names, but that is now fixed both the here and in all the relevant places in our grammar.  Side note: We had a similar capitalization issue with our CASE types, which we also fixed in grammar-internally this week, but is of course not relevant to semi.vpm.
-
-—TENSE
-
-E.TENSE : TENSE
-  ! << [e]
-  [e] >> !
-  * <> *
-
-Since tense is not relevant to Guarani, semi.vpm now explicitly states that we ignore all tense information coming in and output no tense information.  I left the catch-all at the end, though it is technically no longer necessary. 
-
-—ASPECT
-
-As set out in the lab instructions, I defined no-aspect in PG.tdl:
-
-;;; Aspect
-
-no-aspect := aspect.
-perfective := aspect.
-completive := aspect.
-future := aspect.
-prospective := aspect.
-future-completive := future & completive.
-future-perfective := future & perfective.
-
-I used ‘* >> no-aspect’ and ‘no-aspect << [e],’  to set default value for events with underspecified aspect to be no-aspect and assign that same value to events from a source language that have either underspecified aspect or an aspect that is not in our current inventory.
-
-E.ASPECT : ASPECT
-  future-perfective <> future-perfective
-  perfective <> perfective
-  future-completive <> future-completive
-  completive <> completive
-  future-completive <> future-completive
-  future-perfective <> future-perfective
-  future <> future
-  prospective <> prospective
-  * >> no-aspect
-  no-aspect << [e] 
-
-—MOOD
-
-E.MOOD : MOOD
-  * >> mood
-  mood << [e]
-
-Mood is also not relevant for our current grammar. In this instance I copied the notations used in semi.vpm for the English grammar we are working with this week.  Rather than using the same notation I used to deal with tense. 
-
-- GENDER
-
-I initially dealt with gender mismatches with the following.
-
-PNG.GEND : GEND
-  hum <> hum
-  inam <> inam
-  anim <> anim
-  * << [p]
-  * << !
-  * <> *
-
-But following the comments in class, I just deleted the section entirely and that works just as well :)
-
-
-3. First MT
-
-Machine translation is working! Our first sentence was ‘Dogs sleep’  which we used to help guide all of the semi.vpm changes outlined above.  We now get two parses in the target language: ‘jagua oike’ and ‘oike jagua.’ 
-
--ADDITIONAL WORK
-Because we had extra time this week, we translated all of the MT sentences into Guarani and added the relevant vocabulary to our lexicon.  More on that next week, but it allowed us to play with translating more sentences.  
-
-Attempt #2:
-
-We tried: 
-“Who sleeps” 
-
-Which worked beautifully with the three parses we expect!!!
-“maAva piko oike,”  “maAva pa oike,” and “maAva oike”
-
-
-Attempt #3:
-
-We also tried:
-“Do dogs chase cats” 
-
-Which works but gives us all the possible constituents in first position, and we may or may not want to say that we want a Guarani result equivalent to the English, “Do DOGS chase cats?” —> i.e., “Is it dogs that chase cats?”
-  
-
-Attempt #4:
-
-Then we got (perhaps too) bold thought it would be fun to try: 
-“I ask whether you know that dogs chase cars.”  
-
-Which pointed us to a mismatch in the way we had defined the PRED values for our pronouns, which was originally _pron_n_rel.  We changed the predications to match what was in the English grammar so now we have the following in our lexicon:
-
-che := 1sg-pron-nom-noun-lex &
-  [ STEM < "che" >,
-    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
-
-nde := 2sg-pron-nom-noun-lex &
-  [ STEM < "nde" >,
-    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
-
-haHe := 3sg-pron-nom-noun-lex &
-  [ STEM < "haHe" >,
-    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
-
-nNande := 1pl-incl-pron-nom-noun-lex &
-  [ STEM < "nNande" >,
-    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
-
-ore := 1pl-excl-pron-nom-noun-lex &
-  [ STEM < "ore" >,
-    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
-
-peeN := 2pl-pron-nom-noun-lex &
-  [ STEM < "peeN" >,
-    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
-
-haHekueAra := 3pl-pron-nom-noun-lex &
-  [ STEM < "haHekueAra" >,
-    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
-
-cheve := 1sg-pron-nonag-noun-lex &
-  [ STEM < "cheve" >,
-    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
-
-ndeve := 2sg-pron-nonag-noun-lex &
-  [ STEM < "ndeve" >,
-    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
-
-chupe := 3sg-pron-nonag-noun-lex &
-  [ STEM < "chupe" >,
-    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
-
-nNandeve := 1pl-incl-pron-nonag-noun-lex &
-  [ STEM < "nNandeve" >,
-    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
-
-oreve := 1pl-excl-pron-nonag-noun-lex &
-  [ STEM < "oreve" >,
-    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
-
-pendeve := 2pl-pron-nonag-noun-lex &
-  [ STEM < "pendeve" >,
-    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
-
-chupekueAra := 3pl-pron-nonag-noun-lex &
-  [ STEM < "chupekueAra" >,
-    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
-
-
-And now the sentence works, which is exciting! But, with a LOT of parses in the source language, which is less exciting.  Of course, this isn’t surprising given free word order and how long the sentence is. Plus one of the sources of this large number of parses is that ask is defined in English as as having three semantic arguments, “I ask someone something” so Guarani is producing paraphrases with pronouns for ALL of the possible PERNUM values, which, of course are optionally present or absent. We suspect constraining this will be the work of a transfer rule (?) but we’ll have to wait and see.
-
-
-4. More improvements to the grammar
-
-
-—OVERGENERATION
-
-——Spurious piko/pa
-#Sentence.20
-Source: a, attested
-Vetted: t
-Judgment: g
-Phenomena: corpus
-Ha he'i Huanchi:
-ha  oeHi   Juanchi
-ha  o-eHi  Juanchi
-and A.3-say Juan.DIM
-'And Juanito says:'
-
-Last week when we generated from the parses from our corpus example we got a lot of sentences.  Some of this generation was well-formed and due to the fact that we had not specified a default for underspecified aspect values.  With the changes to semi.vpm that problem was fixed. However, when generating from parses that used coordination we were also seeing a lot of options with ‘pa’ and ‘piko,’ e.g. ‘ha oeHi ha Juanchi piko,’ not only in this example but in other examples.  When we looked closely at our coordinated phrases, we noticed that they were underspecified for SF, and this was leading to a lot of over-generation when they “fired” so to speak.  There were a lot of ways to potentially fix this, but in our investigations we also noticed that our coordinated phrases were the only phrases allowed to unify with the root, without first passing through and int-cl or decl-cl, and we thought for the purposes of uniformity it would be better to make that a requirement for our coordinated phrases as well.  This fix was accomplished by changing making sure our s-coord phrase was designated as [MC na].
-
+;;Inherited by all sentential coordination phrases
 s-coord-phrase :+
-  [ SYNSEM.LOCAL.CAT [ MC na, EC #ec, IC #ic],
-    LCOORD-DTR.SYNSEM.LOCAL.CAT [ MC bool, EC #ec,  IC #ic],
-    RCOORD-DTR.SYNSEM.LOCAL.CAT [ MC bool, EC #ec,  IC #ic]].
+  [ SYNSEM [ NON-LOCAL #nl,
+       LOCAL [ CONT.HOOK.INDEX.SF #sf,
+         CAT [ MC na, EC #ec, IC #ic ] ] ],
+    LCOORD-DTR.SYNSEM [ NON-LOCAL #nl & [SLASH 0-dlist],
+      LOCAL [ CONT.HOOK.INDEX.SF #sf,
+        CAT [ ScM -, MC +, EC #ec,  IC #ic] ] ],
+    RCOORD-DTR.SYNSEM [ NON-LOCAL #nl & [SLASH 0-dlist],
+      LOCAL [ CONT.HOOK.INDEX.SF #sf,
+        CAT [ ScM -, MC bool, EC #ec,  IC #ic] ] ] ].
+        
+s-bottom-coord-phrase :+
+  [ SYNSEM [ NON-LOCAL #nl,
+       LOCAL [ CONT.HOOK.INDEX.SF #sf,
+                   CAT [ MC bool, EC #ec, IC #ic ] ] ],
+    NONCONJ-DTR.SYNSEM [ NON-LOCAL #nl & [ SLASH 0-dlist], 
+       LOCAL [ CONT.HOOK.INDEX.SF #sf,
+         CAT [ ScM -, MC bool, EC #ec, IC #ic ] ] ] ].
 
-Now our coordination phrases are required to pass through either int-cl or decl-cl before unifying with the root, in keeping with the way we are treating all other phrases in the grammar, and because of this none of our well-formed sentences has an underspecified SF value. 
 
-Once we implemented that change, we are not getting any parses with piko and pa, but we were getting some spurious parses with complementizer “ha” appearing in a non-embedded clause, and this led us to discover that our EC and IC information, after being carefully passed up, was being ignored by the gug-scopal-mod-phrase we added last week.  So we added the constraint that the head daughter of this phrase be both [EC -] and [IC -], and that fixed the problem.   Now when we generate from our coordinated sentences we see only the two parses we expect, with and with out the coordination word, which (of course) is also spelled ‘ha.’
+We also added an additional constraint after a Thursday class suggestion, requiring the daughters of our coordination rules to have an empty SLASH value, which also cut down on edges. This is present now in the rule above.
+
+--- Removal of Mid-Coord
+One of our major works this week was looking at coordination rules. We began to realize that because Guarani has asyndenton sentential coordination, the mid-coord rule for our Strategy 2 coordination (with ha) was effectively redundant. We could get the same semantics with asyndenton coordination of T-coord phrases. 
+
+s2-mid-coord-rule := basic-s-mid-coord-rule & monopoly-mid-coord-rule &
+  [ SYNSEM.LOCAL [ COORD-STRAT "2",
+       CAT[ EC #ec, IC #ic]], 
+     RCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic],
+     LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
+
+With the permission of the instructor, we have opted NOT to implement mid-coordination for sentences in our grammar.  We fixed this by commented out the rule in rules.tdl:
+
+;s2-mid-coord := s2-mid-coord-rule.
+
+This allowed us to loose some spurious ambiguiuty, effectively reducing the edges generation by over 1000 in sentences that use s2 coordination like 
+
+"jagua omunNa mbaHyru pe ha mbarakaja omunNa jagua pe"
+         Dogs chase cars and cats chase dogs
+
+-- NP Coordination rules
+We realized that in some of the string realizations, in which two nouns were combined in coordination, the attaching verb predicate had several different subject markers, related to PERNUM 1pl-incl, 1pl-excl, 2pl, 3er. This overgeneration, was due to an underspecification in the PER value of the NP top node of NP coordinated structures. In English, to have a NUM plural is enough, but languages like PG require the specification of the PER value of those plural nouns. Also, as it was reported, this feature is being curently worked out by another graduate student, and it is planed to be add it in the future to the customization system. After consultation with the instructor, we implemented a temporary fix, which does not represent a final solution, but let us go over the requirements of this week's lab. We made this adjustement in the NP top coordination rule.
+
+np2-top-coord-rule := basic-np-top-coord-rule & monopoly-top-coord-rule &
+  [ SYNSEM.LOCAL [ COORD-STRAT "2",
+       CAT[ EC #ec, IC #ic],
+                   CONT.HOOK.INDEX.PNG.PERNUM #pernum ],
+     RCOORD-DTR.SYNSEM.LOCAL[ CAT [ EC #ec, IC #ic],
+                              CONT.HOOK.INDEX.PNG.PERNUM #pernum],
+     LCOORD-DTR.SYNSEM.LOCAL.CAT [ EC #ec, IC #ic] ].
+
+The rule identifies the PERNUM value of the parent node, with one of the daughter's PERNUM value.
+
+-- VP coordination rule
+We had this week to work with a verb coordination rule. In order to avoid unnecessary edges, we limited the way some coordinatio rules can unify with the root. Here the vp2 top rule includes now a constrain [MC na] for that purpose. 
+
+ vp2-top-coord-rule := basic-vp-top-coord-rule & monopoly-top-coord-rule &
+  [ SYNSEM.LOCAL [CAT.MC na, 
+       COORD-STRAT "2" ] ].
+
+
+-- Changes to be+located raising verb
+Playing with translation this week also showed us that our semantics for sentences like  #10 and #164  were broken. 
+
+#Ex.10: be+located raising verb. PP argument and PP modifier.
+Source: author
+Vetted: f
+Judgment: g
+Phenomena: adp
+jagua oime avatitýapyteApe ju'indi
+jagua oime avatityA apyteApe juHi ndi
+jagua o-ime avatityA=apyteApe juHi=ndi
+dog A.3-be+located cornfield=in juHi=with
+'The dog is located in the cornfield with the frog'
+
+#Ex.164: be+located raising verb. Contentful postpositions.  
+Source: b
+Vetted: f
+Judgment: g
+Phenomena: {cop, adp}
+Oime kotýmbyteApe jaguandi
+oime koty mbyteApe jagua ndi
+o-ime koty=mbyteApe jagua=ndi
+3.ACT-be.located room=inside dog=with
+'He/She is located inside the room with the dog'
+
+Through a conversation on goPost we discovered that the problem was that our contentful-adps were not identifying their ARG1 with their XARG. Also our instructor pointed out that since our raising verb identifies the XARG of the complement with the subject's index if that XARG does not point to anything it breaks the chain of identies.  
+
+contentful-adp-lex := basic-int-mod-adposition-lex & norm-zero-arg &
+  [ SYNSEM.LOCAL [ CONT [HOOK.XARG #arg,
+       RELS <![arg1 #arg]!> ],
+       CAT [  EC - , 
+        IC - ,
+        HEAD adp & 
+           [ CASE loc,
+             MOD <[ LOCAL.CAT [HEAD verb,
+             VAL [ COMPS < >, 
+                   SUBJ cons ] ] ] > ],
+        VAL [ SPR < >,
+        COMPS < #comps >,
+        SPEC < >, 
+        SUBJ < > ] ] ],
+    ARG-ST < #comps & [ OPT -,
+                        LOCAL.CAT [ HEAD +np & [CASE nom],
+            VAL [SPR < >] ] ] > ].
+
+This fixed the MRS on our end and, which ,together with implementeation of the transfer rule for be+located, allowed us to get the appropriate translations from sentences like "The dogs are in the park." 
+
+Further testing after that change made us realize that our PP predicates when attaching as modifiers were attaching too high, and that we needed to constrain our contentful-adp-lex to only modify verby things that are [SUBJ cons] but [COMPS < >]. We experimented with the sentence "juHi ohecha jagua ndi" - "the frog saw something with the dog" / "something saw the frog with the dog" to make sure we still got both of those parses and we do. As mentioned in an earlier lab, we could easily modify our contentful adp's to allow them to also modify nouny constituents, by changing their MOD constraint from [HEAD verb] to [HEAD +nv] but, as you brought up in your feedback, we aren't sure that this is motivated for Guarani, so we have left it as is.
+
+-- Changes to Question-Clitic MOD
+As pointed by our instructor, our question-clitics had MOD values that were not constrained enough, so we added a [LOCAL.CAT.HEAD +nv] constraint to the MOD value, so that it doesn't try to apply with anything that isn't nouny or verby.
+
+question-clitic-lex := no-hcons-lex-item &
+ [ SYNSEM [ LOCAL [ CAT [ IC +, 
+                          VAL [ SPR < >, 
+        COMPS < >, 
+        SUBJ < >, 
+        SPEC < >],
+                          HEAD adj & [ MOD < [ LOCAL.CAT.HEAD +nv,
+                                               LIGHT +,
+                                               L-PERIPH +,
+                       LOCAL intersective-mod] > ]],
+        CONT.RELS <! !> ],
+            NON-LOCAL[ REL <! !>,
+           SLASH <! !>,
+                       QUE <! !>,
+                       YNQ <! *top* !>  ]]].
+
+
+-- Comp-head rule and EC/IC feature
+We adjusted the transmission of the EC/IC values through the comp-head-phrase rule, coming now from the head-dtr instead of the non-head-dtr. The motivation for this change, is many of the generated strings with embedded sentences of this week, had unexpected word orders, we had not experimented with before. That increased the use of the comp-head rule in embedding VP, where in the past we had used only the head-comp rule. Before we where only concerned on passing these two values 'from the left', without having an extended testing over different word order combinations (which for embedding sentences includes more sentences that we anticipated). So the new comp-head rule looks as follows: 
+
+  comp-head-phrase := basic-head-1st-comp-phrase & head-final-head-nexus & 
+   [ SYNSEM.LOCAL.CAT [ EC #ec,
+            IC #ic ], 
+    HEAD-DTR.SYNSEM.LOCAL.CAT [EC #ec,
+            IC #ic ]].
+
+-- Undefined EC/IC feature values in determiners
+We were getting some strings realized this week, because our the EC/IC values were undefined in determiners, and a wrongly defined head-spec-phrase rule was pushing those undefined bools into unification with the requirements for embedded clauses. This resulted in embedded clauses that should not be one, because the respective clitics (complementizer of question clitic) were missing.
+Therefore we fixed that by securing that the head-spec-phrase rule copies those values from the head daugher, which had already by EC -, IC - (all nouns, and verbs other than decl-cl-verb-lex and int-cl-verbl-lex have those default values).
+
+  head-spec-phrase := basic-head-spec-phrase & head-final & 
+    [ SYNSEM.LOCAL.CAT [ EC #ec,
+                         IC #ic], 
+     HEAD-DTR.SYNSEM.LOCAL.CAT [ EC #ec,
+                                IC #ic ],
+      NON-HEAD-DTR.SYNSEM.OPT - ].
+
+Additionally, as a precausion, we included the negative default values for the determiner, so that in unexpected parses, they would not be responsably for a wrong behaviour.
+
+  determiner-lex := basic-determiner-lex & norm-zero-arg & 
+                    non-mod-lex-item & norm-sem-lex-item &
+    [ SYNSEM.LOCAL.CAT[ EC -,
+                        IC -,
+                        VAL [ SPR < >,
+                             COMPS < >,
+                               SUBJ < >,
+           SPEC<[LOCAL.CONT.HOOK.INDEX.COG-ST uniq+fam+act]>]]].
+
+
+-- Adjustements int-cl-verb-lex and decl-cl-verb-lex
+We observed that the verb lexemes to which question or declarative clauses attach were not attaching to nominative subjects in some of the string generations we experienced this week. Therefore we added the case restriction to the subject of this verb types. Additionaly, be added the [MC +] constrain in the comps elements, so that they could accepts a clause that has passed through the int-cl or decl-cl respectively. So we had these final entries for these verb lexemes:
+
+int-cl-verb-lex:= cl-verb-lex &
+  [ SYNSEM.LOCAL.CAT [ IC - , 
+           VAL [ SUBJ < [LOCAL.CAT.HEAD noun & [CASE nom]]>,
+           SPR < >,
+           COMPS < [ LOCAL [ CAT [ MC +,
+                 IC +,
+                 HEAD verb,
+                 VAL [ COMPS < >, 
+                 SUBJ < > ]],
+                 CONT.HOOK.INDEX.SF ques ]]>]]].
+
+decl-cl-verb-lex:= cl-verb-lex &
+  [ SYNSEM [ LOCAL.CAT [ EC -,
+       IC -,
+       VAL [ SUBJ  < [LOCAL.CAT.HEAD noun & [CASE nom]]>,
+             SPR < > ,
+             COMPS < [ LOCAL [ CAT [ MC +,
+                   EC +,
+                   IC -,
+                   HEAD verb,
+                   VAL.COMPS < > ],
+             CONT.HOOK.INDEX.SF prop-or-ques ]]>]]]].
+
+
+-- Scopal modifier changes
+Even though the focus of the week was MT, we also did a lot of work to try to reduce edges in our coordinated phrases, both to improve the performance of our grammar and to make it easier to debug what we needed to.  
+
+Scopal Modifier Changes
+Our scopal modifier is derived from our conjuction "ha" and they are homographs, so when we were testing parsing sentences with the conjuction "ha" we were getting some interference from the scopal modifier, which led us to finally decide to constrain its behaviour further.
+
+#Sentence.20
+Source: a, attested
+Vetted: t
+Judgment: g
+Phenomena: corpus
+Ha he'i Huanchi:
+ha  oeHi   Juanchi
+ha  o-eHi  Juanchi
+and A.3-say Juan.DIM
+'And Juanito says:'
+
+There are three parses that we want for #20. The two which reflect subject/object ambiguity, and one where "ha" attaches to the coordinated phrase that means something like "Someone says something at it is Juanchi."  We were intially getting on additional phrase where ha was attaching low to the S “oeHi” and then being coordinated with the predicate Juanchi. This high/low attachment ambiguity only created one additional parse here, but with longer sentences the problem grew quickly.  
+
+Following a suggestion in office hours we decided to fix this by implementing a new cat feature:
+
+; Features for scopal-mod (reducing overgeneration)
+cat :+ [ScM bool].
+
+The definition for scopal-modifiers is given below. From last week it already constrains them to modify only elements that are [HEAD verb] and [MC +], which in our grammar is restricted to int-cl and decl-cl.  Because our scopal-mod is already constrained to apply only to an int-cl or decl-cl, only those two phrases, our coordination rules, and our scopal mod-rule needed to specify values for ScM to get the result we wanted. 
+
+; Scopal-modifiers
+scopal-lex := scopal-mod-lex & norm-sem-lex-item & norm-zero-arg & 
+        non-ynq-word &
+  [ SYNSEM.LOCAL.CAT [  HEAD adv & [ MOD  < [ LOCAL.CAT [ HEAD verb,
+                MC + ] ] > ],
+                        EC -, 
+                        IC -,
+                        VAL [ SPR < >,
+                              COMPS < >,
+                              SUBJ < >,
+                              SPEC < > ]]].
+
+
+Our gug-scopal-mod-phrase now specifies that it adds the value [ScM +].  In principle we could constrain this further if we needed to in the future, but in our current grammar this is enough because scopal-modifiers are the only elements defined as adverbs in our grammar and our already rule constrains its daughter to be [HEAD adv].
 
 gug-scopal-mod-phrase := basic-head-mod-phrase-simple & head-final & 
-			 head-compositional &
-  [ SYNSEM [ LOCAL.CAT [ MC na,                       
-			 EC -,                        
-			 IC -],
-	     NON-LOCAL [ QUE <! !>, 
-			 SLASH <! !>, 
-			 YNQ <! !> ]],
-    HEAD-DTR.SYNSEM.LOCAL.CAT [ MC na,
+       head-compositional &
+  [ SYNSEM [ LOCAL.CAT [ ScM +,
+       MC na,                       
+       EC -,                        
+       IC -],
+       NON-LOCAL [ QUE <! !>, 
+       SLASH <! !>, 
+       YNQ <! !> ]],
+    HEAD-DTR.SYNSEM.LOCAL.CAT [ MC +,
                                 IC -,
                                 EC -,
-                                HEAD verb & [MOD < >],
+                                HEAD verb & [ MOD < > ],
                                 VAL [ SPEC < >, 
                                       SPR < >, 
                                       SUBJ < >, 
                                       COMPS < > ]],
     NON-HEAD-DTR.SYNSEM.LOCAL [ CAT [ HEAD adv & 
-					   [ MOD < [ LOCAL scopal-mod ] >],
+             [ MOD < [ LOCAL scopal-mod ] >],
                                       VAL [SPR < >, 
-					   SUBJ < >, 
-					   COMPS < > ]],
+             SUBJ < >, 
+             COMPS < > ]],
                                       CONT.HOOK #hook ],
     C-CONT [ HOOK #hook,
-	     HCONS <! !>,
-	     ICONS <! !> ] ].
-
-Since we were already specifying [EC -] and [IC -] on the phrase itself, we will do a little more experimenting next week to see if wouldn’t be better to just identify those values between the rule and the head daughter.  For now we are satisfied that this works and we haven’t lost any parses we wanted to keep. 
-
-—— spurious ‘piko pe’ and ‘piko pa’ parses
-
-As you noted last week generating from sentences like #125 resulted in spurious parses where =pe was attaching after =piko or =pa to create sentences like “mbaHeA piko pe rejapo”
-
-#Ex.125: Wh question for 'what' object, with piko question clitic
-Source: d
-Vetted: f
-Judgment: g
-Phenomena: {wh, wo}
-mba'é piko rejapo ?
-mbaHeA piko rejapo
-mbaHeA=piko re-japo
-what=Q A.2SG-do
-'What do you do?'
-
-Thanks to the information provided by the parse tree from the spurious generated sentences, this turned out to be a relatively straightforward fix.  We just added a constraint to the COMPS of case-marking-adp-lex requiring its complement to be an empty YNQ dif-list.  
-
-case-marking-adp-lex :=  basic-one-arg & raise-sem-lex-item &
-  [ SYNSEM.LOCAL.CAT [  EC - , 
-                        IC - , 
-                        HEAD adp & [MOD < >] ,
-                       VAL [ SPR < >,
-                             SUBJ < >,
-                             COMPS < #comps & [NON-LOCAL.YNQ <! !>] >,
-                             SPEC < > ] ],
-    ARG-ST < #comps &
-             [ LOCAL.CAT [ VAL.SPR < >,
-                           HEAD noun & [CASE-MARKED - ] ] ] > ].
-
-Now generating from #125 gets the four well-formed parses we expect. The one identical to the original sentence as well as: ‘mbaHeA pa rejapo,’ ‘mbaHeA pe rejapo’ ‘mbaHeA rejapo.’
-  
-
-—NOUNS REQUIRING A POSSESSOR
-The last fix we accomplished this week was to deal with our perpetually ill-formed sentence #105. Guarani forbids inalianable possessions from occurring without possessive marking.  Somewhat disturbingly this is true even if you are saying something like “I had liver for dinner.” This means that while #104 is grammatical, #105 is not, but we had not implemented a way to block it from parsing until this week. 
-
-#Ex.104: Affix-marked Possessive. Human Possessor. Inanimate Inalienable Possession. Subject Drop.
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: poss
-ahunga chepo
-ahunga chepo
-a-hunga che-po
-A.1SG-hurt 0.1SG-hand.INAM
-'I hurt my hands'
-
-#Ex.105: Inalianable possession cannot have a non-possessive determiner, requires a possessor.
-Source: author
-Vetted: f
-Judgment: u
-Phenomena: poss
-ahunga lo po
-ahunga lo po
-a-hunga lo po
-A.1SG-hurt the.PL hand.INAM
-*'I hurt the hands'
-
-We implemented that this week by defining a new FLAG and a new lexical-type.   
-First we added a flag POSS-FLAG to inflected and infl-satisfied in PG.tdl
-
-inflected :+ [ POSS-FLAG luk,
-    PERNUM-STAT-INTRANS-FLAG luk,
-    NEG1-FLAG luk,
-    PERNUM-DYN-INTRANS-OR-PERNUM-TRANS-FLAG luk,
-    NEG2-FLAG luk,
-    PERNUM-DYN-INTRANS-OR-PERNUM-STAT-INTRANS-OR-PERNUM-TRANS-FLAG luk,
-    PERNUM-TRANS-FLAG luk ].
-
-infl-satisfied :+ [ POSS-FLAG na-or-+,
-    PERNUM-STAT-INTRANS-FLAG na-or-+,
-    NEG1-FLAG na-or-+,
-    PERNUM-DYN-INTRANS-OR-PERNUM-TRANS-FLAG na-or-+,
-    NEG2-FLAG na-or-+,
-    PERNUM-DYN-INTRANS-OR-PERNUM-STAT-INTRANS-OR-PERNUM-TRANS-FLAG na-or-+,
-    PERNUM-TRANS-FLAG na-or-+ ].
-
-Then we created a new lexical type inheriting from common-noun-lex with a [INFLECTED.POSS-FLAG -], value.
-
-;; category for words like hand
-poss-only-com-noun-lex := common-noun-lex & 
-[INFLECTED.POSS-FLAG -].
-
-Then we updated poss-lex-rule-super to include [ INFLECTED [POSS-FLAG +]. 
-
-;; The possessive lexical rule as possessive affixes to possessums
-;; e.g., chesy, che-sy, "my mother"
-poss-lex-rule-super := infl-add-only-lex-rule &
- [ INFLECTED [POSS-FLAG +],
-   SYNSEM.LKEYS.ALTKEYREL #altkeyrel,
-   DTR common-noun-lex & [ SYNSEM.LOCAL [ CONT.HOOK [  INDEX #index,  
-						       LTOP #lbl  ] ,
-					  CAT [ HEAD.POSS poss-or ,
-						VAL.SPR <[OPT +]> ] ]],  
-   C-CONT [ HOOK [INDEX #index, 
-		  LTOP #lbl  ],
-	    RELS <! arg12-ev-relation &
-		  [ PRED "poss_rel",
-		    LBL #lbl,
-		    ARG1 #index,
-		    ARG2 #arg2 ],
-		  quant-relation &
-		  [ PRED "exist_q_rel",
-		    ARG0 #arg2, 			 
-		    RSTR #harg ],			
-		  #altkeyrel & noun-relation &			
-		  [PRED "pron_rel",			 
-		   LBL #lbl2,			 
-		   ARG0 #arg2 & [ COG-ST activ-or-more,			       
-				  SPECI + ] ] !>,		  
-	    HCONS <! qeq & [ HARG #harg, 				   
-			     LARG #lbl2 ] !>,		  
-	    ICONS <! !>] ].
-
-This combination of changes forces inalianable nouns like ‘hand’ to go through a poss-lex-rule before they can “play in the syntax,” and we finally have the results we want for #104 and #105. 
+       HCONS <! !>,
+       ICONS <! !> ] ].
 
 
-5. Statement of the current overage of the grammar over your testsuite (using number you can get from Analyze|Coverage and Analyze|Overgeneration in [incr tsdb()]) and a comparison between your baseline testsuite run and your final one for this lab (see Compare|Competence).
+Our int-cl and decl-cl rules now pass up ScM information, identifying their ScM value with their head (only) daughter's ScM value.  One bonus feature of implementing this change is that we finally (after looking so many times and not seeing!) noticed that both types had some unconstrained MOD values, so we made sure to constrain that, which also helped. Though we made the changes sequentially, testing them seperately to make sure that BOTH changes got us a pay off.  
+We had some additional changes to our int-cl and decl-cl rules.
+We noticed that some of our embedded sentences were generating interrogative clauses where there weren't any. We realized that our interrogative clause phrase rule (int-cl), had still missing some constraints that would cut that behavior. We added the requirement of an empty QUE list, and eliminated IC + and left it undefined, so it still unifies with the int-cl-verb-lex.
 
-—Corpus Stats
 
-Analyze | Coverage
-	Total Items: 21
-	Positive Items: 21
-	Word String 0: 6.14
-	Lexical Items 0: 6.00
-	Distinct Analyses: 3.00
-	Total Results: 1
-	Overall Coverage: 4.8
+int-cl := head-only-int-decl-clause & interrogative-clause &
+  [ SYNSEM [ LOCAL.CAT [ HEAD.MOD < >,
+       VAL #val & [ SPEC < >,
+              SUBJ < >, 
+              COMPS < >, 
+              SPR < > ], 
+       MC bool,
+       ScM #scope],
+       NON-LOCAL [ SLASH #sl, 
+       YNQ <! !> ]],
+    HEAD-DTR.SYNSEM [ LOCAL.CAT [ ScM #scope, 
+          MC na, 
+          VAL #val, 
+          HEAD verb ],
+          NON-LOCAL [ SLASH #sl, 
+          YNQ <! *top* !>, 
+          QUE <! !> ]]].
 
-Analyze | Overgeneration
-	Total Items: 0
-	Negative Items: 0
-	Word String 0: 0
-	Lexical Items 0: 0
-	Distinct Analyses: 0 
-	Total Results: 0
-	Overall Coverage: 100
+At the same time the declarative clause pharse rule was being generated in conjuntions with the interrogative clause verb lexeme (e.g. 'to ask'). Therefore we added to its IC feature the negative value.
+We added additional constraints around to our coordination with respect to both SLASH and SF.  Following your in-class suggestion, the SF changes started by updating our decl-cl rules so that they now specify that they are [SF prop] instead of [SF prop-or-ques] as we had originally designated them. 
 
-Comparison of baseline(gold-lab7) and final version of this lab 
-(Compare | Competence)
+decl-cl := head-only-int-decl-clause & declarative-clause & 
+  [ SYNSEM [ LOCAL [ CAT [ HEAD.MOD < >,
+         VAL #val & [ SPEC  < >,
+          SUBJ < >, 
+          COMPS < >, 
+          SPR < > ], 
+         ScM #scope,
+         MC bool, 
+         IC -, 
+         EC #ec],
+         CONT.HOOK.INDEX.SF prop ],
+       NON-LOCAL [SLASH #sl, YNQ 0-dlist ] ],
+    HEAD-DTR.SYNSEM [ LOCAL.CAT [ ScM #scope, 
+          MC na, 
+          VAL #val, 
+          HEAD verb, 
+          EC #ec, IC -],
+          NON-LOCAL [ SLASH #sl, 
+          YNQ 0-dlist,
+          QUE <! !> ]]].
 
-	Baseline
-		lexical 0:  .70
-		analyses 0: 3.0
-		in 0:       4.3
-		out 0:      100.0
+Finally in order for this to have any pay off we made sure to specify that our sentential coordination rules require their daughters to be ScM -, so they cannot coordinate decl or int clauses to which a scopal modifier has already attached. 
 
-	New
-		lexical 0:  .80
-		analyses 0: 3.00
-		in 0:       8.7
-		out 0:      100.0
+;;Inherited by all sentential coordination phrases
+s-coord-phrase :+
+  [ SYNSEM [ NON-LOCAL #nl,
+       LOCAL.CAT [ MC na, EC #ec, IC #ic ] ],
+    LCOORD-DTR.SYNSEM [ NON-LOCAL #nl,
+      LOCAL [ CONT.HOOK.INDEX.SF #sf,
+        CAT [ ScM -, MC +, EC #ec,  IC #ic] ] ],
+    RCOORD-DTR.SYNSEM [ NON-LOCAL #nl,
+      LOCAL [ CONT.HOOK.INDEX.SF #sf,
+        CAT [ ScM -, MC bool, EC #ec,  IC #ic] ] ] ].
+        
 
-We didn’t ‘lose’ our sentence from last week with the grammar changes we made, and have also achieved our goal of parsing one more sentence from our corpus this week.
+s-bottom-coord-phrase :+
+  [ SYNSEM [ NON-LOCAL #nl,
+       LOCAL [ CONT.HOOK.INDEX.SF #sf,
+                   CAT [ MC bool, EC #ec, IC #ic ] ] ],
+    NONCONJ-DTR.SYNSEM [ NON-LOCAL #nl & [ SLASH 0-dlist], 
+       LOCAL [ CONT.HOOK.INDEX.SF #sf,
+         CAT [ ScM -, MC bool, EC #ec, IC #ic ] ] ] ].
 
-#Sentence.22
-Source: a, attested
-Vetted: t
-Judgment: g
-Phenomena: corpus
-Ha he'i Pirulo-pe
-Ha oeHi Pirulo pe 
-Ha o-eHi Pirulo=pe 
-and A.3-say Pirulo=DAT
-'and he said to Pirulo'
-
-Which as noted earlier in the write-up is correctly parsing with two possible readings. the one place where we are arguably performing worse is in the one additional parse of Sentence #20.
+Payoff:  Now #20 has only the three parses that we want and we reduced a lot of the noise when we were debugging sentences with ha in them
 
 #Sentence.20
 Source: a, attested
@@ -999,256 +396,413 @@ ha  o-eHi  Juanchi
 and A.3-say Juan.DIM
 'And Juanito says:'
 
-Previously this was parsing with three parses.  The two which reflect subject/object ambiguity, and one coordinated phrase where ha was attaching to the S “oeHi” and then being coordinated with the predicate Juanchi.  Because of our changes to the coordination rule this scopal modifier is now allowed to attach to the coordinated phrase “oeHi Juanchi.”   The resulting MRSs ARE subtly different, but I’m not sure if we want both possibilities. If time allows, we probably still want to look into constraining this a bit more next week.
-  
 
---TestSuite General Stats
+3. Describe the transfer rules you instantiated, and why.
 
-Analyze | Coverage
-	Total Items: 211
-	Positive Items: 135
-	Word String 0: 2.96
-	Lexical Items 0: 4.91	
-	Distinct Analyses: 2.61
-	Total Results: 131
-	Overall Coverage: 97
+PG has pronouns, but they are generally dropped when context and/or the use of cross-referential markers on the predicates make their overt use obvious. Therefore it is important that, compared to a language like English, the pronoun could be dropped in a translation eng2gug. In the file named acm.mtr , available in each of the grammars for English and Chadian Arabic we instantiated the rule:
 
-Analyze | Overgeneration
-	Total Items: 211
-	Negative Items: 76
-	Word String 0: 2.97
-	Lexical Items 0: 4.87
-	Distinct Analyses: 0.00
-	Total Results: 0
-	Overall Coverage: 0.0
+  pro-drop:= pronoun-delete-mtr
 
-Comparison of baseline(gold-lab7) and final version of this lab 
-(Compare | Competence)
+This rule refers to following entry in the acm.tdl file:
 
-	Baseline
-		lexical 0:  1.45
-		analyses 0: 2.62
-		in 0:       85.9
-		out 0:      1.3
+  pronoun-delete-mtr := monotonic_omtr &
+    [ INPUT [ RELS <! [ PRED "pron_rel",
+                        ARG0 #x,
+                        LBL #larg ],
+                      [ PRED "exist_q_rel",
+                        ARG0 #x,
+                        RSTR #harg ] !>,
+              HCONS <! qeq & [ LARG #larg,
+              HARG #harg ] !> ],
+       OUTPUT [ RELS <! !>,
+                HCONS <! !> ]].
 
-	New
-		lexical 0:  1.60
-		analyses 0: 2.61
-		in 0:       97.0
-		out 0:      0.0
+This rules says that an input that contains a predicate pronoun in the RELS list (together with is q relationship and its qeq value in the HCONS list), is deleted in the output RELS and HCONS lists. As the super-type monotic_omtr suggests, this is an optional rule, therefore applied optionally to transfer rules, so that pronouns can be produced on some realized strings and not in other. 
 
+4. Describe any further transfer rules you needed to develop, and why.
 
-General analysis:
+For the purpose of the translation of some of the MMT sentences in this week's lab, we added three additional transfer rules. 
 
-Now that we finally implemented our ditransitive verbs we saw a huge jump in coverage, from 85.9 to 97.0.  When we look at longer sentences (i-length in [5…10]), the difference is even more dramatic—-our coverage goes from 78.3 to 95.7. 
+-- Transitive predicae 'eat' with unspecified dropped argument
+The sentence #4 ("Dogs eat") uses in English and Chadian Arabic a transitive verb 'eat', that attaches a [COG-ST type-id] to its dropped argument. PG has a different interpretation. If an argument is dropped in a transitive verb, it is generally assumed to be relevant in the situation context where the uterance is used. Therefore it is [COG-ST in-foc]. Therefore the transitive verb in PG is not the optimal for such a translation. As PG has also an intransitive verb for eat, which has a different form, we assume that its function is similar to the transitive verb in English/Chadian Arabic with dropped complement. Therefore we decide to implement a transfer rule that link the predication of a transitive verb 'eat' in the input, with the predication of an intransitve 'eat' in the output. We implemented the following transfer rule in acm.tdl in the English and Chadian Arabic grammars:
 
-In our overgeneration results we see that we no longer have any ill-formed sentences (Yay!) the result of finally getting #105 to NOT parse for the right reasons (e.g., while still making sure #104 parsed).  This was done with the POSS-FLAG fix outlined above. 
+  eat-intrans-mtr := monotonic_mtr &
+  [ INPUT [ RELS <! [ PRED "_eat_v_rel",
+          LBL #lbl,
+          ARG0 #arg0,
+          ARG1 #arg1,
+          ARG2 #arg2 & [ COG-ST type-id ] ] !> ],
+    FILTER [ RELS <! [ ARG0 #arg2 ] !> ],
+    OUTPUT [ RELS <! [ PRED "_eat_v_rel",
+           LBL #lbl,
+           ARG0 #arg0,
+           ARG1 #arg1 ] !> ]].
 
+This transfer rule changes the predication of a transitive verb 'eat', therefore with three arguments, where the complement has the feature value [COG-ST type-id], into the predication of an intranstiv verb for 'eat' with only two arguments (the index value of the predication and the subject). This transfer rule is not optional.
+This rule was implemented in acm.mtr with the following entry:
 
-#Ex.104: Affix-marked Possessive. Human Possessor. Inanimate Inalienable Possession. Subject Drop.
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: poss
-ahunga chepo
-ahunga chepo
-a-hunga che-po
-A.1SG-hurt 0.1SG-hand.INAM
-'I hurt my hands'
+  eat-intrans := eat-intrans-mtr
 
-#Ex.105: Inalianable possession cannot have a non-possessive determiner, requires a possessor.
-Source: author
-Vetted: f
-Judgment: u
-Phenomena: poss
-ahunga lo po
-ahunga lo po
-a-hunga lo po
-A.1SG-hurt the.PL hand.INAM
-*'I hurt the hands'
+-- Locative verb with prepositional predicate
+In sentences like MMT # 16 ('The dogs are in the park'), English uses a copula verb with no semantic content to attach a PP predicate to its subject argument. Chadian Arabic seems to attach directly the subject argument to the PP predicate. PG has a different strategy. As explained in a previous lab, PG uses a raising verb that introduces a predicate '_be+located', which has a contentful PP predicate as its complement argument. Therefore we need a transfer rule, that in the case of languages that use semantically empty 'verb' or not verb at all, together with the PP predication, would introduce the 'be+located' predication needed in PG. We implemented therefore following rule in the acm.tdl file of English and Chadian Arabic grammars:
 
-When look at our errors, there are some errors we expect, resulting from the grammar (correctly) not recognizing verb forms with incorrect or incomplete negation markers.  The other two errors are the result of our only still-standing to do item from the beginning of the quarter. While we have combined aspect working as we can see in 
+  locative-mtr := monotonic_mtr &
+  [ INPUT [ RELS <! [ PRED "_in_p_rel",
+          LBL #lbl,
+          ARG0 #arg0,
+          ARG1 #arg1,
+          ARG2 #arg2 ] !>,
+      HCONS <! !> ],
+    FILTER [ RELS <! [ PRED "_be+located_v_rel" ] !> ],
+    OUTPUT [ RELS <! [ PRED "_in_p_rel",
+           LBL #larg,
+           ARG1 #arg1,
+           ARG2 #arg2 ],
+       [ PRED "_be+located_v_rel",
+         LBL #lbl,
+         ARG0 #arg0,
+         ARG1 #arg1,
+         ARG2 #harg ] !>,
+       HCONS <! [ HARG #harg,
+            LARG #larg ] !> ] ].   
 
-#Ex.63: Transitive verb. Completive aspect. Future aspect. Subject drop. Object drop.
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {agr, tam, pro-d}
-ahendupata
-ahendupata
-a-hendu-pa-ta
-A.1SG-hear-COMPL-FUT
-'I will have heard it all'
+This transfer rule is not optional. This included following entry in the file acm.mtr of both the English and Chadian Arabic grammars:
+
+  locative := locative-mtr.
 
 
-#Ex.66: Transitive verb. Perfective aspect. Future aspect. Subject drop. Object drop.
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {agr, tam, pro-d}
-ahendumata
-ahendumata
-a-hendu-ma-ta
-A.1SG-hear-PERF-FUT
-'I will have heard it already'
+-- Adverb 'quickly' to adjective 'quick'
+In PG, adverbs and adjectives work functionally the same with no difference in their form. Therefore, as explained in a previous lab, we implemented both as one class of words, as adjectives.
+When dealing with other languages that make the distinction of adverbs and adjectives, we need to change the predication, if the form has a relevant difference. This is the case in MMT sentence #14, which uses the adverb quickly, which has a predication '_quickly_a_rel' in the English and Chadian Arabic sentence. The corresponding entry in PG is '_quick_a_rel', so we needed a transfer rule, that transforms the PRED value. We implemented in acm.tdl of English and Chadian Arabic:
 
-We have still not implemented free word-ordering in aspect markers, so #64 and #67 still do not parse. 
+  quick-mtr := monotonic_mtr &
+  [ INPUT [ RELS <! [ PRED "_quickly_a_rel",
+         LBL #lbl,
+         ARG0 #arg0,
+         ARG1 #arg1 ] !> ],
+    OUTPUT [ RELS <! [ PRED "_quick_a_rel",
+         LBL #lbl,
+         ARG0 #arg0,
+         ARG1 #arg1] !>]]. 
+The input takes a RELS element with [PRED "_quickly_a_rel"] and produces in the output [PRED "_quick_a_rel"], without changes the rest of the elements entry. This transfer rule is not optional. This was then implemented in the acm.mtr file of both English and Chadian Arabic grammars:
 
-#Ex.64: Transitive verb. Future aspect. Completive aspect. Subject drop. Object drop.
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {agr, tam, pro-d}
-ahendutapa
-ahendutapa
-a-hendu-ta-pa
-A.1SG-hear-FUT-COMPL
-'I will have heard it all'
-
-#Ex.67: Transitive verb. Future aspect. Perfective aspect. Subject drop. Object drop.
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {agr, tam, pro-d}
-ahendutama
-ahendutama
-a-hendu-ta-ma
-A.1SG-hear-FUT-PERF
-'I will have heard it already'
-
-We know next week is focused on machine translation, but if the fix isn’t to complicated it would be nice to try it. We think it would be very satisfying to see those last two sentences parsing, and now that we have set a default aspect value we won’t have to worry that the change will result in lots of new generation.
+  quick := quick-mtr.
 
 
-Comparisons: 
+5. Document your current coverage on translating the MMT sentences from English and Chadian Arabic into your language. If you are generating more than one output for each input, explain the sources of variation.
+
+". . . combinatorics, a sort of glorified dice-throwing . . ." Roberb Kanigel
+
+The choices we have made for PG based on the reference grammars available to us make our grammar relatively generous for the realization of different strings, even when based on a single semantic interpretation, as represented through the MRS. The main factors that contribute to this flexibility are the free word order, the optionality of overt predicate arguments, the optionality of certain adpositions like accusative markers, question/complementizer clitics or even the optional use of the sentential conjunction clitic. We will see how some of these factors worked independently or together to realize multiple strings in our translations.
+
+We were able to generate strings in PG for all of the presented English and Chadian Arabic sentences. In all of our generated strings, we have more than one realization, so we explain in detail how the numbers come up.
+
+We introduce each sentence with the English (eng), Chadian Arabic (shu) and a representative PG sentence (gug), as well a description of the realized strings in an English to PG (eng2gug) and a Chadian Arabic to PG (shu2gug) translation.
 
 
-Compare - Wellformed/Readings/Detail
-Here we see the effect of our added ditransitive verbs and we are now getting correct parses for all of the following (and many more). 
+MMT sentence # 1
+eng: dogs sleep
+shu: kalib-PL y-unuum-u 
+gug: jagua oike
+     dogs   A3.sleep
+EXPLANATION:
+This sentence is translated satisfactorily in eng2gug and shu2gug. In both translations, there are each 2 strings realized, which correspond to the two word orders of the constituents (VP NP and NP VP), as PG is a free word-order language.
 
-#Ex.41: Ditransitive verb agrees with 3SG object. Inanimate direct object. Animate indirect object with dative marking.
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {wo, agr, c}
-ju'i ohechauka tunich vakápe
-juHi ohechauka tunich vakaA pe
-juHi o-hecha-uka tunich vakaA=pe
-frog.ANIM.NOM A.3-gsee-CAUS stone.INAM.SG cow.ANIM=ACC
-'The frog shows the stone to the cow'
+MMT sentence # 2
+eng: dogs chase cars
+shu: kalib-PL y-itaarid-u watiir-PL
+gug: jagua omunNa    mbaHyru pe
+     dogs   A3.chase cars    acc
+EXPLANATION:
+The translation into gug from both eng and shu generates each 12 different string sentences. 
+Each of these 12 string groups is generated through these factors:
+There are three 3 constituents (NP V NP), which can appear in 6 different orders.
+The 'car' object argument can optionally have the accusative =pe clitic.
+Therefore the one transfer output generate 12 possible parses (6*2) (each for eng2gug/shu2gug)
 
-#Ex.43: Ditransitive verb agrees with 3SG object. Overt accusative marking and dative marking.
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: agr
-ju'i ohechauka vakápe tunichpe
-juHi ohechauka vakaA pe tunich pe
-juHi o-hecha-uka vakaA=pe tunich=pe
-frog.ANIM.NOM A.3-see-CAUS cow.ANIM=ACC stone.INAM=DAT
-'The frog shows the cow to the stones'
+MMT sentence # 3
+eng: I chase you 
+shu: ana n-itaarid-0-k
+gug: romunNa
+     A1sg.O2sg.chase
+EXPLANATION:
+The translation into PG worked differently depending on the start language. English has an ambiguity in the NUM value of the pronoun 'you', which can be singular or plural. Chadian Arabic on the other side had just a 'singular you' in its sentence. This distinction generates different strings for eng2gug and shu2gug.
+In the case of eng, we obtained 38 translation realizations. We have four transfer outputs applying depending on the optionality of pronoun drop, with results 2+4+8+24 = 38 strings.
+2 strings were the individual verb predicates with portmanteau clitics and without overt pronouns were realized, with marker ro- for 1sg subject/2sg object, or marker po- for 1sg subject/2pl object. 
+4 additional realized strings with the subject pronoun ('che', 1sg pronoun), present in two different positions for each of the two differently marked predicates.
+8 additional realized strings, if the object pronouns ('ndeve', 2sg pronoun, or 'pendeve', 2pl pronoun) are allowed. Here a new predicate is allowed by the subsumption rules, AMUNNA (for 'I chase'). We discuss in section 5 the possible reason why it doesn't not show in the previous transfer outputs. The predicate AMUNNA ('I chase') has no restriction on the object therefore it combines with both singular and plural pronouns. The predicates with portmanteau markers though can combine only with the respective pronouns. So ro- (1sg subject/2sg object) can only combine with the 2sg pronoun, and po- (1sg subject/2sg object) only with the 2pl pronoun. These four pronoun-predicate combination in two different word orders, allows then for 8 realized strings.
+24 additional realized strings, when both subject and object pronouns are overt. With three constituents we have 6 possible word orders, which given the 4 possible predicate/pronoun combinations, allows for 24 strings.
+In the case of shu2gug, the Chadian Arabic used only a 'you' pronoun with [NUM sg] value, although only marked in the verb. There are only two transfer outputs applying with a total of 3 realizations (1+ 2), because there is no overt object pronoun in the original sentence.
+1 realization for a predicate without overt pronouns. This is the verb predicate with the portmanteau marker ro- for subject 1sg and object 2sg. 
+2 realizations with the overt pronoun 'I'. The two realizations are just the demonstrations of free word order of NP and VP.
 
-#Ex.54: Dynamic intransitive agrees with 2SG subject. Inanimate direct object. Indirect object marked with 1SG dative pronoun. Subject drop.
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {wo, agr, pn}
-rehechauka tunich cheve
-rehechauka tunich cheve
-re-hecha-uka tunich cheve
-A.2SG-see-CAUS stone.INAM 1.SG.PRON.DAT
-'You show me the stone'
+MMT sentence # 4
+eng: dogs eat
+shu: kalib-PL y-aakul-u
+gug: jagua okaru
+     dogs  A3.eat
+EXPLANATION:
+Both eng2gug and shu2gug generated each 2 sentence strings in PG. They correspond to the 2 words in free word order.
 
-#Ex.69: Ditransitive. Human subject and human object. 12.SG Portmanteau marking on verb.  Subject drop. Object drop. 
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {agr, pn, pro-d}
-rome'e᷉ chupe
-romeHeN chupe
-ro-meHeN chupe
-12.SG-give 3.SG.PRON.DAT
-'I gave you to him'
+MMT sentence # 5
+eng: the dogs chase cars
+shu: al-kalib-PL y-itaarid-u watiir-PL
+gug: lo     jagua omunNa   mbaHyru pe
+     DET.pl dogs  A3.chase cars    acc
+EXPLANATION:
+Both eng2gug and shu2gug generate each a set of 24 realized strings in PG. 
+The 3 constituents have 6 possible word orders. Additionally, the definite article ('the dogs') is optional, therefore 2 possibilities. Then, the accussative adposition clitic =pe is optional, therefore 2 possibilities.
+That makes for 24 realized strings (6 * 2 * 2).
 
-#Ex.70:  Ditransitive agrees with 2SG subject. Indirect object marked with 1SG dative pronoun. Object drop prohibited because of human object.
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {pro-d, agr, pn, c}
-reme'e᷉ cheve mbo'ehárape
-remeHeN cheve mboHehaAra pe
-re-meHeN cheve mboHehaAra=pe
-A.2SG-give 1.SG.PRON.DAT professor.ANIM=ACC
-'You gave the professor to me'
+MMT sentence # 6
+eng: the dogs don't chase cars
+shu: al-kalib-PL ma y-itaarid-u watiir-PL
+gug: lo     jagua ndomunNai         mbaHyru pe
+     DET.pl dogs  neg.A3.chase.neg  cars    acc
+EXPLANATION:
+Both eng2gug and shu2gug generate each a set of 24 realized strings in PG. This is parallel the same as in sentence #5, because the negation happens as adpositions attached to the predicates, therefore the predicate remains a unit.
+Similarily, 3 constituents have 6 possible word orders, the definite article ('the dogs') is optional, therefore 2 possibilities. Then, the accussative adposition clitic =pe is optional, therefore 2 possibilities. That is a total of 24 realized strings (6*2*2).
 
-#Ex.111: Portmanteau marker for 12PL
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: {agr, pn, pro-d}
-pome'e᷉  chupe
-pomeHeN chupe
-po-meHeN chupe
-12.PL-give 3.SG.PRON.DAT
-'I gave you to him' (meaning you plural)
+MMT sentence # 7
+eng: I think that you know that dogs chase cars 
+shu: ana n-ahsib-0 kadar inta t-a'arif-0 kadar kalib-PL y-itaarid-u watiir-PL 
+gug: aimoHaA     reikuua    ha    omunNa ha      jagua mbaHyru pe
+     A1sg.think  A2sg.know  COMPL A3.chase COMPL dogs  cars    acc
+EXPLANATION:
+There are different numbers of realized strings for eng2gug and shu2gug due to the difference of number of the 'you' pronoun, which in English is ambiguous between singular and plural, while only being singular in the Chadian Arabic sentence.
+For eng2gug we have four different transfer outputs applying depending on the number of overt pronouns (16+32+48+96 = 192 realizations):
+16 realized strings for sentence without overt pronouns. 2 times for the singular/plural 'you', 2 times for the optional accusative clitic =pe, 2 times for the free word order of the most internal embedded sentence, and 2 times for the word order of the outside embedding main clause. Therefore 2*2*2*2 = 16 realizations.
+32 realized strings if we add only the overt pronouns for 'you', singular and plural. Because that adds 2 times the word order for the middle embedded clause, that doubles the previous count of 16 to 32 realizations.
+48 realized strings, if we add only the overt pronoun for 'I' in the main clause sentence. 3 constituents in the main clause allow for 6 word order. Additionally 2 times for the optional accussative clitic =pe, 2 times for 'you' singular and plural, and 2 times for the word order of the internal embedded clause. Therefore 6*2*2*2=48 strings.
+96 realized strings when all overt pronouns are allowed. This is the same as the previous 48 realized strings time 2 for the free word order of the middle embedded sentence between the pronoun 'you' and its VP. 
+For shu2gug, the number of realized strings is just the half of what is shown for eng2gug, because Chadian Arabic uses just the singular 'you', which is interpreted not only in the pronoun used in Guarani, but also in the marker of the middle embedding predicate verb.
+Therefore we have here in equivalent form 8 + 16 + 24 + 48 = 96 realized strings.
 
-Of course examples with the word ‘give’ are a little pragmatically weird, but they ARE syntactically correct and they are modeled off of an example close to #111 in our source grammars (the original sentence had some additional aspectual information).  
+MMT sentence # 8
+eng: I ask whether you know that dogs chase cars
+shu: ana n-as'al-0 kan inta t-a'arif-0 kadar kalib-PL y-itaarid-u watiir-PL
+gug: aporandu reikuua   pa omunNa   ha    jagua mbaHyru pe
+     A1sg.ask A2sg.know Q  A3.chase COMPL dogs  cars    acc
+EXPLANATION:
+There are different number of realized strings for eng2gug and shu2gug, due to the difference of number of the 'you' pronoun, which in English is ambiguous between singular and plural, while only being singular in Chadian Arabic.
+There are 4 transfer outputs that generate strings in eng2gug, with a total of 640 parses (32+96+128+384).
+32 realized strings without any overt pronouns. 2 possibilitis for 'you' singular/plural. 2 possibilites for the question clitics =pa/=piko. 2 possibilities for the word order in the main clause. 2 possibilities for the optional use of the accusative clitic =pe. 2 possibilites for the word order of the internal embedded clause. That is 2*2*2*2*2 = 32.
+96 realized strings when only the overt pronoun 'I' is used. As the 3 word group at the level of the main clause can have 6 word orders, the calculation is the same as in the previous group of 32 realized strings, but instead of just 2 possible word order for the main clause, now 6. 6*2*2*2*2 = 96
+128 realized strings with only the overt pronoun 'you' in singular/plural in the middle embedded clause. The external main cluase has still 2 word order. The middle embedded clause though, with 3 elements, has 4 possible combination as a front element, as one of the elements that is not the internal embedded clause has to be at the front of this clause with the question clitic =pa/=piko, those are one of the two 'you's or the corresponding verb predicates. Then 2 possible combinations for the rest of that middle embedded clause. Then 2 possible question clitics. 2 possibilites because of the optional use of the accussative clitics, and two possiblities in the word order of the most internal embedded clause: 2*4*2*2*2*2 = 128.
+384  realized strings when all overt pronouns are used. 6 word orders at the main cluase level. 4 possible front word for the middle embedded clause, 2 possible question clitics =pa/=piko, and 2 possible order for the rest of word groups in the middle embedded clause. 2 times for the optional use of accusative markers, and two times for the word order of the most internal embedded clause. That makes 6*4*2*2*2*2 = 384 realizations.
+For shu2gug, the realized strings are just cut in half, because the 'you' pronoun is singular. Therefore we have 16+48+64+192 =  320 realized strings.
+
+MMT sentence # 9
+eng: cats and dogs chase cars
+shu: biss-PL wa kalib-PL y-itaarid-u watiir-PL
+gug: mbarakaja ha   jagua omunNa   mbaHyru pe
+     cats      CONJ dogs  A3.chase cars    acc
+EXPLANATION:
+For eng2gug and shu2gug, we get 12 string realizations in PG. These realizations, coming in a single transfer output, are composed of:
+6 word orders of the 3 word groups.
+2 times the optional use of the accusative clitic marker =pe.
+Therefore 6*2 = 12 realized strings.
+
+MMT sentence # 10
+eng: Dogs chase cars and cats chase dogs
+shu: kalib-PL y-itaarid-u watiir-PL wa biss-PL y-itaarid-u kalib-PL
+gug: jagua omunNa   mbaHyru pe  mbarakaja omunNa   jagua pe
+     dogs  A3.chase cars    acc cats      A3.chase dogs  acc
+EXPLANATION:
+For eng2gug and shu2gug, by using a single transfer output, we get 270 realized strings in PG. Nevertheless, we have noticed that there are some strings missing in the realizations, as they should be 288.
+These are two sentences, separated optionally by the conj clitic ha. Therefore 2 times.
+Each sentence is composed of three words, that can combine into 6 different word orders.
+The accussative clitic can be use optionally in each sentence direct object argument.
+Therefore: 2 * 6 *2 *6* 2 = 288.
+In section 5 we discuss our findings when trying to find the missing string realizations.
+
+MMT sentence # 11
+eng: Cats chase dogs and sleep
+shu: biss-PL y-itaarid-u kalib-PL wa naam-o
+gug: mbarakaja omunNa   jagua ha   oike
+     cats      A3.chase dogs  CONJ A3.sleep
+EXPLANATION:
+For eng2gug and shu2gug we get the same 8 string realizations in PG. They come together from the combination of the following factors:  
+There are two word order for the constituents inside the transitive VP (V, NP and NP,V).
+The optional use of the transitive clitic =pe on the noun 'dog'.
+The free word order of the main clause cat/VP.
+Therefore 2*2*2  = 8 string realizations.
+
+MMT sentence # 12
+eng: Do cats chase dogs ?
+shu: biss-PL y-itaarid-u kalib-PL walla
+gug: mbarakaja pa omunNa   jagua pe
+     cats      Q  A3.chase dogs  acc
+EXPLANATION:
+For eng2gug and shu2gug we get the same 20 string realizations in our PG grammar. There are 6 word order for the three word constituents (subject, object, verb predicate) in the sentence. 2 times for each of the question clitics =pa/=piko. Then for the VOS, VSO, SVO, SOV word orders, 2 times, as the object can take optionally the =pe accussative clitic. In our grammar, we were not able to implement the =pe clitic in the yes/no question clause, when the direct object is at the front of the sentence, therefore this last part doesn't happen for OSV and OVS word order.
+Therefore (6*2) + (4*2) = 20 realized strings.  
+
+MMT sentence # 13
+eng: Hungry dogs eat
+shu: kalib-PL jii'aan-PL y-aakul-u
+gug: jagua vareHa okaru
+     dogs  hungry A3.eat
+EXPLANATION:
+For eng2gug and shu2gug we get the same 2 string realizations in PG. As the adjectives come in our grammar after the noun they modifiy forming an NP, there are only two word order possible (NP + VP, VP + NP). 
+Therefore 2 string realizations.
+
+MMT sentence # 14
+eng: Dogs eat quickly
+shu: kalib-PL y-aakul-u ajala
+gug: jagua okaru  pyaHe
+     dogs  A3.eat quick
+EXPLANATION:
+For eng2gug and shu2gug we get the same 2 string realizations in PG. Adverbs function the same way as adjectives in PG. They follow their modifee, in this case the verb predicate, forming a VP. Therefore there are only two word order possible: (NP + VP, VP + NP). 
+Therefore 2 string realizations.
+
+MMT sentence # 15
+eng: The dogs are hungry
+shu: al-kalib-PL jii'aan-PL
+gug: lo     jagua ivareHa
+     DET.pl dogs  O3.hungry
+EXPLANATION:
+For eng2gug and shu2gug we get the same 4 string realizations in PG. The factors influencing these different realizations are:
+2 times for the optional use of a determiner in front of the noun.
+2 times for the free word order of the constituents: NP + AP, AP + NP
+Therefore 2*2 = 4 string realizations.
+
+MMT sentence # 16
+eng: The dogs are in the park
+shu: al-kalib-PL fi al-naga'a
+gug: lo     jagua oime           yvyraty apyteApe
+     DET.PL dogs  A3.be+located  park    in
+EXPLANATION:
+For eng2gug and shu2gug we get the same 24 string realizations in PG.
+2 times for the optional use of a determiner in front of the noun 'dog'.
+2 times for the optional use of a determiner in front of the noun 'park'.
+6 times for the free word order of the constituents: NP, V, PP
+Therefore 6*2*2 = 24 string realizations.
+
+MMT sentence # 17
+eng: The dogs are the cats
+shu: al-kalib-PL al-biss-PL
+gug: jagua mbarakaja
+     dogs  cats.PRED
+EXPLANATION:
+For eng2gug and shu2gug we get the same 4 string realizations in PG. This sentence uses a zero copula construction where the second noun 'cat' is a noun predicate that takes 'the dog' as an argument.
+2 times for the optional use of a determiner in front of the noun 'dog'.
+2 times for the free word order of the constituents: NP, VP.
+Therefore 2*2 = 4 string realizations.
+
+MMT sentence # 18
+eng: Who sleeps ?
+shu: yaatu y-unuum-0
+gug: maAva pa oike
+     who   Q  A3.sleep
+EXPLANATION:
+For eng2gug and shu2gug we get the same 3 string realizations in PG. The three strings come because of the optional use of the =pa/=piko or none question marker after the wh-pronoun at the front of the question.
+Therefore 3 string realizations.
 
 
-Compare - Illformed/Readings/Detail
-Here we focus in on our 5 ungrammatical examples have gone from producing and error, to correctly not parsing. Mostly from our new ditransitive verbs #52, #53 below.
+MMT sentence # 19
+eng: What do the dogs chase ?
+shu: al-kalib-PL y-itaarid-u chunu
+gug: mbaHeA pa lo     jagua omunNa
+     what   Q  DET.pl dogs  A3.chase
+EXPLANATION:
+For eng2gug and shu2gug we get the same 12 string realizations in PG. The factors influencing this number of realizations is:
+2 times for the optional use of a determiner in front of the noun 'dog'.
+3 times for the optional use of the question clitic =pa/=piko.
+2 times for the free word order of the constituents inside of the question clause: NP, V
+Therefore 3*2*2 = 12 string realizations.
+
+MMT sentence # 20
+eng: What do you think the dogs chase ?
+shu: inta t-ahsib-0 kadar al-kalib-PL y-itaarid-u chunu
+gug: mbaHeA pa reimoHaA    omunNa   ha    lo     jagua 
+     what   Q  A2sg.think  A3.chase COMPL DET.pl dogs
+EXPLANATION:
+As English is ambiguous in the number of the pronoun 'you', singular or plural, there is a distinction in the number of strings generated by the eng2gug and the shu2gug translations.
+For the eng2gug, we have two generating transfer outputs: 24 + 72 = 96 string realizations.
+24 realized strings for realizations without overt pronouns: 3 times for the optional use of question clitics =pa/=piko, 2 times for the 'you' singular or plural marker on the question verb predicate, 2 times for the optional use of determiner for the noun 'dog', and 2 times for word order inside of embedded clause. Therefor 3*2*2*2 = 24 strings.
+96 realized strings for realizations with overt pronoun 'you', for singular and plural. With thee constituents inside of the question sentence (apart from the wh-pronoun), we have 6 possible word orders instead of just two, therefore counting the other elements as in the previous transfer output rule we have 3*2*2*6 = 96 string.
+For the shu2eng, the numbers are just half, as 'you' is only singular in the Chadian Arabic sentence. Therefore using  in a similar way the calculations as in the eng2shu transfers, we have 12 + 36 = 48 realizations.
+
+MMT sentence # 21
+eng: Who asked what the dogs chase ?
+shu: yaatu sa'al-0 al-kalib-PL y-itaarid-u chunu
+gug: maAva pa oporandu mbaHeA lo     jagua omunNa
+     who   Q  A3.ask   what   DET.pl dogs  A3.chase
+EXPLANATION:
+For eng2gug and shu2gug we get the same 72 string realizations in PG. These are the factos involved in the generation of theses strings in a single transfer output:
+3 times for the optional use of the question clitic =pa/=piko for 'who'.
+3 times for the optional use of the question clitic =pa/=piko for 'what'.
+2 times for the free word order of the embedded question (VP, Clause).
+2 times for the optional use of a determiner in front of the noun 'dog'.
+2 times for the free word order of the constituents inside the embedded question (dog/chase).
+Therefore 3*3*2*2*2 = 72 string realizations.
+
+MMT sentence # 22
+eng: I asked what the dogs chased
+shu: ana sa'al-t al-kalib-PL taarad-o chunu
+gug: aporandu mbaHeA lo     jagua omunNa 
+     A1sg.ask what   DET.pl dogs  A3.chase
+EXPLANATION:
+For eng2gug and shu2gug we get the same 96 string realizations in PG, generated in two transfer ouputs, one for 24 strings, and the other for 72 strings.
+24 string realization without the overt pronoun 'I':
+2 times for the free word order WH-pronoun/Clause.
+3 times for the optional use of the question clitics =pa/=piko for 'what'.
+2 times for the optional use of a determiner in front of the noun 'dog'.
+2 times for the free word order of the constituents of the question sentence (dog/chase).
+Therefore 2*3*2*2 = 24 realizations.
+72 string realization with overt pronoun 'I'. As the overt pronoun increases the possible word order of the main clause with 3 constituents (WH-pronoun, pronoun, clause) to 6 orders, we use the same calculations as before, including the change for the word order. Therefore 6*3*2*2 = 72 strings.
+
+MMT sentence # 23
+eng: The dog's car sleeps
+gug: jagua    mbaHyru oike
+     dog,POSS car     A3.sleeps
+EXPLANATION:
+For eng2gug and shu2gug we get the same 4 string realizations in PG. As two nouns in a possessive construction have to come in a specific order, they are fixed as a constituent. Therefore the above sentence has only two constituents to consider when looking at the number of possible free word order, which are then only two. 
+Additionally, 2 times for the optional use of the determiner for the noun 'dog'.
+Therefore 2*2 = 4 realizations.
+
+MMT sentence # 24
+eng: My dogs sleep
+gug: chejagua      oike
+     1sg.POSS.dogs A3.sleep
+EXPLANATION: 
+For eng2gug and shu2gug we get the same 2 string realizations in PG. Possessive pronouns occurr in PG as adpositions attached before the corresponding noun. Therefore the two realization here just demonstrate the two different positions of NP and VP. 
 
 
-#Ex.52: Indirect object marked with nominative pronoun instead of dative pronoun.
-Source: author
-Vetted: f
-Judgment: u
-Phenomena: agr
-che nde rehechauka tunich 
-che nde rehechauka tunich
-che nde re-hecha-uka tunich
-1.SG.PRON.NOM 2.SG.PRON.NOM A.2SG-see-CAUS stone.INAM
-*'You show me the stone'
+5.If you don't have full coverage, describe why not.
 
-#Ex.53: Ditransitive verb has 2SG agreement but 3SG subject.
-Source: author
-Vetted: f
-Judgment: u
-Phenomena: pn
-ha'e rehechauka tunich cheve
-haHe rehechauka tunich cheve
-haHe re-hecha-uka tunich cheve
-3.SG.PRON.NOM A.2SG-see-CAUS stone.INAM 1.SG.PRON.DAT
-*'He showed me the stone'
+There are two sentence that in our analysis did not produce all the parses that we would have expected:
 
-This is also another place where we see #105  (the hand example) correctly going from parsing to no longer parsing.
-
-COMPARE - READING/MRS
-
-When we originally saw this test we were seeing universal disagreement in MRS values between this week and last week because of differences to semi.vpm.  However, after adding a baseline with an updated .vpm file we can see the effects of the change to our SF values of our coordinated clauses.   In fact, with the exception of ditransitives and the other sentences that previously produced errors, scrolling through the list is quick way of identifying how many of the parses for each sentence are the result of coordination.  We were pleased how quickly we were able to identify sentence #109 and #160.
-
-#Ex.109: Shows non-possessable noun. The only grammatical readings involve coordination of noun predicates
-Source: author
-Vetted: f
-Judgment: g
-Phenomena: poss
-ahendu avatitý yvytu hata 
-ahendu avatityA yvytu hata 
-a-hendu avatityA yvytu hata
-A.1SG-hear cornfield wind.INAM strong
-'I hear it, it is the cornfield, it is the strong wind'
-
-#Ex.160: asyndenton coordination with subject drop
-Source: b
-Vetted: f
-Judgment: g
-Phenomena: {crd, wo}
-aguara opo okañy
-aguara opo okanNy
-aguara o-po o-kanNy
-fox.ANIM.NOM A.3-jump A.3-hide
-'the fox jumped and (he) hid'
-
-Both of which we thought might contain errors because of the lack of overlap, but thanks to our notes, we quickly saw they were not expected to have any parses that didn’t involve coordination.
+MMT sentence # 3
+eng: I chase you 
+shu: ana n-itaarid-0-k
+gug: romunNa
+DISCUSSION:
+According to our understanding of PG grammar, there are some strings that are missing splitted between two of the transfer outputs used in this translation.
+The transfer output that produces predicates without any overt pronoun, generates predicative verbs marked only with the portmanteau markers ro- (subject 1sg, object 2sg) and/or po- (subject 1sg, object 2pl). We are missing the predicative verb AMUNNA ('I chase'), which is only marked for the subject, but underspecified for the object (and therefore can be second or third person in the given context). The same situation happens in the second transfer output that introduces the subject pronoun (che, 'I'), as it generates strings with predicates that include only the pormanteau marker, but again we don't see AMUNNA ('I chase'). In this second transfer output, due to the free-word order, there would be two possible strings. That makes for 3 missing strings in each eng2gug and shu2gug translations.
+As discussed in class, this seems to be related with the subsumption rules, which check the constrains of realized strings based on the eng2gug requirements, but also in the other direction, gug2eng. This behavious seems to be a default in our grammar, and therefore at this stage we just document it.
 
 
+MMT sentence # 10
+eng: Dogs chase cars and cats chase dogs
+shu: kalib-PL y-itaarid-u watiir-PL wa biss-PL y-itaarid-u kalib-PL
+gug: jagua omunNa   mbaHyru pe  mbarakaja omunNa   jagua pe
+     dogs  A3.chase cars    acc cats      A3.chase dogs  acc
 
+Both eng2gug and shu2gug generated each a total of 270 PG strings in a single transfer output. Nevertheless in a close inspection of the output, we realized that 18 strings were not generated. We expected a total of 288 realizations (12*12*2, as each individual sentence of the coordination can have 12 different realizations, and because the conjuntion is optional).
+We tried different options to find the reason of this underperfomance. 
+First we tried to identify some pattern of constituents in the missing parses. According to the combinatorics of different patterns, each possible string realization in the first sentence (from which there were twelve), should have 12 possible string realizations of the second sentence (we ignored the conjunct 'ha', as it was irrelevant for the distinction). There were three first sentences which combined with specific three second sentences would only produce the 9 different patterns (which doubled to the missing 18 considering the optional conjuntion) Using constituent labels, these are the patterns we found unavailabe:
+
+NP V NP=ACC (CONJ) NP V NP=ACC
+NP V NP=ACC (CONJ) NP NP=ACC V
+NP V NP=ACC (CONJ) NP=ACC NP V
+NP NP=ACC V (CONJ) NP V NP=ACC
+NP NP=ACC V (CONJ) NP NP=ACC V
+NP NP=ACC V (CONJ) NP=ACC NP V
+NP=ACC NP V (CONJ) NP V NP=ACC
+NP=ACC NP V (CONJ) NP NP=ACC V
+NP=ACC NP V (CONJ) NP=ACC NP V
+
+We took several of the missing string sentences and confirmed that the parses, which corresponded to the MRS we were missing, were being generated in a monolingual context. Also RELS and HCONS liste were not broken. The MRS of those missing parses looked also identical to the MRS of the generated realized strings in the eng2gug and shu2gug.
+Also when translating from gug2eng, using othe correspondng string and MRS, we would find our original English sentece in one of the resulting realizations. We were not able to find for now the reason of thos missing parses.
+After consultation with the instructor, we decided to document our findings.
